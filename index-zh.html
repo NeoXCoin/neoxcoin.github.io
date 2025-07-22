@@ -5,64 +5,91 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NeoX Coin</title>
   <style>
-body {
-  margin: 0;
-  font-family: sans-serif;
-  background: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4') no-repeat center center fixed;
-  background-size: cover;
-  color: white;
-  text-align: center;
-}
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      text-align: center;
+    }
 
-.logo {
-  position: relative;  /* 改為 relative */
-  margin: 20px;
-  width: 110px;
-  opacity: 0.95;
-  z-index: 10;
-}
+    .header {
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.lang-switch {
-  position: relative;  /* 改為 relative */
-  text-align: right;
-  margin: -80px 20px 0 0;  /* 將語言選擇推到右上角 */
-  z-index: 10;
-}
+    .logo img {
+      width: 110px;
+      opacity: 0.95;
+    }
 
-.lang-switch a {
-  color: white;
-  margin: 0 5px;
-  text-decoration: underline;
-}
+    .lang-switch a {
+      color: white;
+      margin: 0 5px;
+      text-decoration: underline;
+      font-weight: bold;
+    }
 
-.content {
-  margin-top: 10vh;
-}
+    .content {
+      margin-top: 10vh;
+    }
 
-.content img {
-  width: 300px;
-}
+    .content img {
+      width: 300px;
+    }
 
-.content h1 {
-  font-size: 2.5em;
-  margin-top: 20px;
-}
-</style>
+    .content h1 {
+      font-size: 2.5em;
+      margin-top: 20px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin: 10px 10px;
+      padding: 12px 20px;
+      background-color: #00aaff;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1em;
+      transition: background-color 0.3s;
+    }
+
+    .buttons a:hover {
+      background-color: #0088cc;
+    }
+  </style>
 </head>
 <body>
-  <div class="logo">
-    <img src="your_logo_url.png" alt="NeoX Logo" width="110" />
-  </div>
 
-  <div class="lang-switch">
-    <a href="index.html">EN</a> | <a href="index-zh.html">繁</a>
+  <div class="header">
+    <div class="logo">
+      <img src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+    </div>
+    <div class="lang-switch">
+      <a href="index.html">EN</a> | <a href="index-zh.html">繁</a>
+    </div>
   </div>
 
   <div class="content">
-    <!-- Your main content here -->
-    <img src="your_coin_image_url.png" alt="NeoX Coin" />
+    <img src="https://gateway.lighthouse.storage/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin" />
     <h1>未來幣，今日擁有</h1>
-    <!-- 按鈕或其他內容 -->
+    <div class="buttons">
+      <a href="#">關於 NeoX</a>
+      <a href="#">購買教學</a>
+      <a href="#">為何選擇 NeoX？</a>
+      <a href="#">如何運作？</a>
+    </div>
   </div>
+
 </body>
 </html>
