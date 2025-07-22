@@ -5,51 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NeoX Coin</title>
   <style>
-  body {
+body {
   margin: 0;
   font-family: sans-serif;
   background: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4') no-repeat center center fixed;
   background-size: cover;
-  background-color: #000;  /* ✅ 加呢行：修補白邊背景 */
-  height: 100vh;            /* ✅ 加呢行：確保佢鋪滿整個畫面 */
   color: white;
   text-align: center;
 }
 
-  .logo {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 110px; /* 加大10% */
-    opacity: 0.95;
-    z-index: 1000;
-  }
+.logo {
+  position: relative;  /* 改為 relative */
+  margin: 20px;
+  width: 110px;
+  opacity: 0.95;
+  z-index: 10;
+}
 
-  .lang-switch {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-  }
+.lang-switch {
+  position: relative;  /* 改為 relative */
+  text-align: right;
+  margin: -80px 20px 0 0;  /* 將語言選擇推到右上角 */
+  z-index: 10;
+}
 
-  .lang-switch a {
-    color: white;
-    margin: 0 5px;
-    text-decoration: underline;
-  }
+.lang-switch a {
+  color: white;
+  margin: 0 5px;
+  text-decoration: underline;
+}
 
-  .content {
-    margin-top: 25vh;
-  }
+.content {
+  margin-top: 10vh;
+}
 
-  .content img {
-    width: 300px;
-  }
+.content img {
+  width: 300px;
+}
 
-  .content h1 {
-    font-size: 2.5em;
-    margin-top: 20px;
-  }
+.content h1 {
+  font-size: 2.5em;
+  margin-top: 20px;
+}
 </style>
 </head>
 <body>
