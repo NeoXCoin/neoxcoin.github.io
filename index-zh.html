@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NeoX Coin</title>
+  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
       margin: 0;
@@ -14,6 +15,7 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      text-align: center;
     }
 
     .logo {
@@ -21,6 +23,7 @@
       top: 20px;
       left: 20px;
       width: 60px;
+      opacity: 0.85;
     }
 
     .language-switch {
@@ -31,20 +34,30 @@
       font-size: 16px;
     }
 
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
     .container {
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       padding: 80px 20px 40px;
     }
 
     .tagline {
       font-size: 20px;
-      margin-bottom: 20px;
+      margin-top: 60px;
+      opacity: 0.9;
     }
 
     .coin {
-      width: 265px;
-      max-width: 100%;
-      margin: 20px auto;
+      width: 180px;
+      margin: 30px auto;
       display: block;
     }
 
@@ -53,6 +66,7 @@
       justify-content: center;
       gap: 24px;
       margin-top: 20px;
+      flex-wrap: wrap;
     }
 
     .nav-bar a {
@@ -62,10 +76,37 @@
       font-size: 16px;
     }
 
-    /* 📱 Mobile responsive menu */
+    .headline {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 30px 0;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      background-color: #006eff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
     @media (max-width: 600px) {
       .nav-bar {
-        display: flex;
         flex-direction: column;
         align-items: center;
         gap: 12px;
@@ -88,20 +129,20 @@
 
   <div class="container">
     <div class="tagline">Web3 革命，由 NeoX 領航</div>
-    <img class="coin" src="https://cloudflare-ipfs.com/ipfs/bafybeihdbhshigdbwn6es2pouentkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin" />
+    <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouentkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin" />
 
     <div class="nav-bar">
-      <a href="#">什麼是 NeoX？</a>
-      <a href="#">如何購買？</a>
-      <a href="#">為何選擇 NeoX？</a>
-      <a href="#">運作方式？</a>
+      <a href="what-is-neox-zh.html">什麼是 NeoX？</a>
+      <a href="how-to-buy-zh.html">如何購買？</a>
+      <a href="why-neox-zh.html">為何選擇 NeoX？</a>
+      <a href="how-it-works-zh.html">運作方式？</a>
     </div>
 
-    <h2>The future is coming, own it today</h2>
+    <div class="headline">未來即將來臨，立即擁有</div>
 
-    <div style="margin-top: 20px;">
-      <button onclick="location.href='#'" style="padding: 10px 20px; font-size: 16px; background-color: #006eff; color: white; border: none; border-radius: 8px; cursor: pointer;">購買 NXC</button>
-      <button onclick="addToken()" style="padding: 10px 20px; font-size: 16px; background-color: #006eff; color: white; border: none; border-radius: 8px; margin-left: 10px; cursor: pointer;">加入 MetaMask</button>
+    <div class="btn-row">
+      <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">購買 NXC</a>
+      <button class="btn" onclick="addToken()">加入 MetaMask</button>
     </div>
   </div>
 
@@ -113,7 +154,7 @@
           params: {
             type: 'ERC20',
             options: {
-              address: '0xYourTokenAddressHere',
+              address: '0x80AD039927cDf2341c1428b0ABF8D3421dc122e1',
               symbol: 'NXC',
               decimals: 18,
               image: 'https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe'
