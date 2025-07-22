@@ -1,99 +1,135 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>NeoX Coin</title>
   <style>
     body {
       margin: 0;
-      font-family: sans-serif;
-      background: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4') no-repeat center center fixed;
+      font-family: Arial, sans-serif;
+      color: white;
+      background-color: #000;
+      background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
-      color: white;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+    }
+
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .container {
       text-align: center;
+      padding: 80px 20px 40px;
     }
 
-    .header {
+    .tagline {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .coin {
+      width: 265px;
+      max-width: 100%;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .nav-bar {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .logo img {
-      width: 100px;
-      opacity: 0.95;
-    }
-
-    .lang-switch a {
-      color: white;
-      margin: 0 5px;
-      text-decoration: underline;
-    }
-
-    .content {
-      margin-top: 15vh;
-    }
-
-    .slogan {
-      font-size: 1.3em;
-      font-weight: 400;
-      color: #ffffff;
-      opacity: 0.85;
-      margin-bottom: 15px;
-    }
-
-    .content img {
-      width: 300px;
-    }
-
-    .content h1 {
-      font-size: 2.5em;
-      margin: 20px 0;
-    }
-
-    .buttons {
+      justify-content: center;
+      gap: 24px;
       margin-top: 20px;
     }
 
-    .buttons a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
-      background-color: #007bff;
-      color: white;
+    .nav-bar a {
       text-decoration: none;
-      border-radius: 8px;
+      color: white;
       font-weight: bold;
+      font-size: 16px;
     }
 
-    .buttons a:hover {
-      background-color: #0056b3;
+    /* 📱 Mobile responsive menu */
+    @media (max-width: 600px) {
+      .nav-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .coin {
+        width: 265px;
+        max-width: 100%;
+        margin: 20px auto;
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="logo">
-      <img src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-    </div>
-    <div class="lang-switch">
-      <a href="index.html">EN</a> | <a href="index-zh.html">繁</a>
-    </div>
+  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+  <div class="language-switch">
+    <a href="index.html">EN</a> | <a href="index-zh.html">繁</a>
   </div>
 
-  <div class="content">
-    <div class="slogan">Web3 革命，由 NeoX 引領</div>
-    <img src="https://gateway.lighthouse.storage/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin" />
-    <h1>未來幣，今日擁有</h1>
+  <div class="container">
+    <div class="tagline">Web3 革命，由 NeoX 領航</div>
+    <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbhshigdbwn6es2pouentkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin" />
 
-    <div class="buttons">
-      <a href="#">關於 NeoX</a>
-      <a href="#">購買教學</a>
+    <div class="nav-bar">
+      <a href="#">什麼是 NeoX？</a>
+      <a href="#">如何購買？</a>
       <a href="#">為何選擇 NeoX？</a>
-      <a href="#">如何運作？</a>
+      <a href="#">運作方式？</a>
+    </div>
+
+    <h2>The future is coming, own it today</h2>
+
+    <div style="margin-top: 20px;">
+      <button onclick="location.href='#'" style="padding: 10px 20px; font-size: 16px; background-color: #006eff; color: white; border: none; border-radius: 8px; cursor: pointer;">購買 NXC</button>
+      <button onclick="addToken()" style="padding: 10px 20px; font-size: 16px; background-color: #006eff; color: white; border: none; border-radius: 8px; margin-left: 10px; cursor: pointer;">加入 MetaMask</button>
     </div>
   </div>
+
+  <script>
+    async function addToken() {
+      try {
+        const wasAdded = await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: '0xYourTokenAddressHere',
+              symbol: 'NXC',
+              decimals: 18,
+              image: 'https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe'
+            }
+          }
+        });
+
+        if (wasAdded) {
+          console.log('Token added');
+        } else {
+          console.log('Token not added');
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  </script>
 </body>
 </html>
