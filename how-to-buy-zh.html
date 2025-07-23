@@ -2,30 +2,115 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>如何購買 NeoX？</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>如何購買 NeoX</title>
   <style>
     body {
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      color: white;
+      margin: 0;
       font-family: Arial, sans-serif;
-      padding: 40px;
+      color: white;
+      background-color: #000;
+      background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
     }
-    a {
-      color: #00bfff;
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      opacity: 0.85;
+    }
+
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .language-switch a {
+      color: white;
       text-decoration: none;
+      margin: 0 8px;
+    }
+
+    .container {
+      padding: 100px 20px 40px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .button-back {
+      margin-top: 40px;
+      background-color: #007bff;
+      color: white;
+      padding: 12px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding-top: 80px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      .button-back {
+        margin-top: 30px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>如何購買 NeoX？</h1>
-  <ol>
-    <li>安裝 MetaMask 錢包</li>
-    <li>切換至 Sepolia 測試網</li>
-    <li>按下 <a href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1" target="_blank">購買連結</a> 進行交易</li>
-  </ol>
-  <p>請確保您擁有足夠的測試 ETH 以進行交易。</p>
-  <br/>
-  <a href="index-zh.html">← 返回首頁</a>
+
+  <a href="index-zh.html">
+    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+  </a>
+
+  <div class="language-switch">
+    <a href="how-to-buy.html">EN</a> | <a href="how-to-buy-zh.html">繁</a>
+  </div>
+
+  <div class="container">
+    <h1>如何購買 NeoX？</h1>
+
+    <p>1️⃣ 安裝並打開你的 <strong>MetaMask 錢包</strong></p>
+    <p>2️⃣ 確保你已切換至 <strong>Sepolia 測試網</strong></p>
+    <p>3️⃣ 點擊「購買 NXC」按鈕後，MetaMask 會顯示交易視窗</p>
+    <p>4️⃣ 確認交易後，你就擁有了 NeoX 測試幣！</p>
+
+    <h1>免費體驗 NeoX（測試網）</h1>
+
+    <p><strong>NeoX 正在 Sepolia 測試鏈上運行。</strong> 你可以免費體驗購買流程，無需任何真實資金！</p>
+
+    <p>🔸 切換到 Sepolia 測試網：<br/>
+    👉 <a href="https://chainlist.org/?search=sepolia" style="color:#00d9ff;" target="_blank">一鍵加入 Sepolia 測試網</a></p>
+
+    <p>🔸 領取免費測試 ETH：<br/>
+    👉 <a href="https://sepoliafaucet.com" style="color:#00d9ff;" target="_blank">Sepolia 測試水龍頭</a></p>
+
+    <a href="index-zh.html" class="button-back">⬅ 返回主頁</a>
+  </div>
 </body>
-</html>
+</html> 
