@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add NXC to MetaMask</title>
+  <style>
+    body {
+      background-color: #0b0b1f;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      opacity: 0.85;
+    }
+    .btn {
+      background-color: #007bff;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .back-link {
+      display: block;
+      margin-top: 40px;
+      color: #aaa;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+
+  <h1>Add NXC Token to MetaMask</h1>
+  <p>Click the button below to add the NeoX Token (NXC) to your MetaMask wallet.</p>
+
+  <button class="btn" onclick="addToken()">Add NXC Token</button>
+
+  <a href="index.html" class="back-link">← Back to Home</a>
+
+  <script>
+    async function addToken() {
+      try {
+        const wasAdded = await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: {
+            type: 'ERC20',
+            options: {
+              address: '0x80AD039927cDf2341c1428b0ABF8D3421dc122e1',
+              symbol: 'NXC',
+              decimals: 18,
+              image: 'https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu',
+            },
+          },
+        });
+
+        if (wasAdded) {
+          alert('NXC Token added!');
+        } else {
+          alert('User rejected token addition.');
+        }
+      } catch (error) {
+        console.error(error);
+        alert('MetaMask not detected or error occurred.');
+      }
+    }
+  </script>
+</body>
+</html> 
