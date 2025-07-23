@@ -48,18 +48,38 @@
     }
     .coin {
       width: 180px;
-      margin: 30px auto;
+      margin: 20px auto;
     }
     .headline {
-      font-size: 28px;
+      font-size: 30px;
       font-weight: bold;
-      margin: 10px 0 30px 0;
+      margin: 20px 0 30px 0;
+      color: #ffffff;
+      text-shadow: 1px 1px 3px #000;
+    }
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .nav-bar a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+    .nav-bar a:hover {
+      color: #00bfff;
     }
     .btn-row {
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
       justify-content: center;
+      margin-top: 25px;
     }
     .btn {
       background-color: #007bff;
@@ -75,34 +95,21 @@
     .btn:hover {
       background-color: #0056b3;
     }
-    .nav-bar {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 20px;
-}
 
-.nav-bar a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-/* 📱 Mobile responsive menu */
-@media (max-width: 600px) {
-  .nav-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
- .coin {
-  width: 265px ;
-  max-width: 100%;
-  margin: 20px auto;
-  display: block;
-} 
+    @media (max-width: 600px) {
+      .nav-bar {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .coin {
+        width: 240px;
+      }
+      .headline {
+        font-size: 22px;
+        margin: 15px 0 25px 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -112,21 +119,22 @@
   </div>
 
   <div class="container">
-  <div class="tagline">Web3 Revolution, Led by NeoX</div>
-  <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin"/>
-  
-  <div class="nav-bar">
-    <a href="what-is-neox.html">What is NeoX?</a>
-    <a href="how-to-buy.html">How to Buy?</a>
-    <a href="why-neox.html">Why NeoX?</a>
-    <a href="how-it-works.html">How it Works?</a>
-  </div>
+    <div class="tagline">Web3 Revolution, Led by NeoX</div>
+    <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin"/>
+    
+    <div class="headline">Shape the Future with NeoX</div>
 
-  <div class="headline">The future is coming, own it today</div>
-  <div class="btn-row">
-    <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">Buy NXC</a>
-    <a class="btn" href="https://neoxcoin.github.io/add-to-metamask.html">Add to MetaMask</a>
+    <div class="nav-bar">
+      <a href="what-is-neox.html">What is NeoX?</a>
+      <a href="how-to-buy.html">How to Buy?</a>
+      <a href="why-neox.html">Why NeoX?</a>
+      <a href="how-it-works.html">How it Works?</a>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">Buy NXC</a>
+      <a class="btn" href="https://neoxcoin.github.io/add-to-metamask.html">Add to MetaMask</a>
+    </div>
   </div>
-</div>
 </body>
 </html>
