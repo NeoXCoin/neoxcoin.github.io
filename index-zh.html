@@ -42,6 +42,21 @@
       width: 150px;
       margin-bottom: 20px;
     }
+    .fade-in {
+    opacity: 0;
+    animation: fadeIn ease-in 1s forwards;
+    animation-delay: 0.3s;
+    }
+
+    @keyframes fadeIn {
+    0% {
+    opacity: 0;
+    transform: translateY(10px);
+    }
+     100% {
+     opacity: 1;
+     transform: translateY(0);
+    }
     .nav-bar a {
       margin: 0 10px;
       color: white;
@@ -89,10 +104,10 @@
       <a href="how-it-works-zh.html">運作方式？</a>
     </div>
 
-    <div class="headline">
-      未來即將來臨 — 擁抱 NeoX，擁有屬於你的數碼自由資產。<br/>
-      NeoX 是進化中的 Web3 通證，帶你走進去中心化新時代。<br/>
-      掌控由你開始，立即參與。
+    <div class="headline fade-in">
+  未來即將來臨 — 擁抱 NeoX，擁有屬於你的數碼自由資產。<br/>
+  NeoX 是進化中的 Web3 通證，帶你走進去中心化新時代。<br/>
+  掌控由你開始，立即參與。
     </div>
 
     <div class="btn-row">
