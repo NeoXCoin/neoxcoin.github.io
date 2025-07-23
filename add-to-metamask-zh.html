@@ -3,110 +3,98 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>加入 MetaMask | NeoX</title>
+  <title>加入 NXC Token 到 MetaMask</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
-      margin: 0;
-      background-color: #000;
-      background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
-      background-size: cover;
-      background-position: center;
+      background-color: #0a0a2a;
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
+      padding: 40px 20px;
     }
-
     .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
       width: 60px;
-      opacity: 0.85;
-    }
-
-    .container {
-      padding: 100px 20px 40px;
-      max-width: 600px;
-      margin: auto;
-    }
-
-    h1 {
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-
-    p {
-      font-size: 16px;
       margin-bottom: 20px;
+      opacity: 0.9;
     }
-
-    button {
+    h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    p {
+      margin-bottom: 30px;
+      font-size: 16px;
+      color: #ccc;
+    }
+    .btn {
       background-color: #007bff;
       color: white;
       border: none;
-      padding: 12px 24px;
-      font-size: 16px;
+      padding: 12px 22px;
+      margin: 10px;
       border-radius: 8px;
+      font-size: 16px;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background-color 0.3s ease;
     }
-
-    button:hover {
+    .btn:hover {
       background-color: #0056b3;
     }
-
-    .back {
-      margin-top: 40px;
-      display: inline-block;
+    .back-link {
+      margin-top: 30px;
+      display: block;
+      color: #ccc;
       text-decoration: none;
-      color: white;
-      font-size: 16px;
-      padding: 10px 20px;
-      border: 1px solid white;
-      border-radius: 6px;
     }
-
-    .back:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+    .note {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <a href="index-zh.html"><img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo"></a>
+  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+  <h1>將 NXC Token 加入 MetaMask</h1>
+  <p>點擊以下按鈕，將 NeoX Token (NXC) 加入你的 MetaMask 錢包。</p>
 
-  <div class="container">
-    <h1>將 NeoX 加入 MetaMask 錢包</h1>
-    <p>點擊以下按鈕，即可將 NeoX (NXC) 加入你的 MetaMask 錢包，支援 Sepolia 測試網。</p>
-    <button onclick="addToken()">加入 MetaMask</button>
+  <button class="btn" onclick="addToken()">加入 NXC Token</button>
+  <a class="btn" href="https://metamask.app.link/" target="_blank">打開 MetaMask App</a>
 
-    <br><br>
-    <a class="back" href="index-zh.html">返回主頁</a>
-  </div>
+  <a class="back-link" href="index-zh.html">← 返回主頁</a>
+  <p class="note">如未能自動反應，請直接開啟 MetaMask App。</p>
 
   <script>
     async function addToken() {
       try {
-        const wasAdded = await window.ethereum.request({
-          method: 'wallet_watchAsset',
-          params: {
-            type: 'ERC20',
-            options: {
-              address: '0x80AD039927cDf2341c1428b0ABF8D3421dc122e1',
-              symbol: 'NXC',
-              decimals: 18,
-              image: 'https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe'
-            }
-          }
-        });
+        if (window.ethereum) {
+          const wasAdded = await window.ethereum.request({
+            method: 'wallet_watchAsset',
+            params: {
+              type: 'ERC20',
+              options: {
+                address: '0x80AD039927cDf2341c1428b0ABF8D3421dc122e1',
+                symbol: 'NXC',
+                decimals: 18,
+                image: 'https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu',
+              },
+            },
+          });
 
-        if (wasAdded) {
-          alert('NeoX 已成功加入 MetaMask！');
+          if (wasAdded) {
+            alert('成功加入 NXC Token!');
+          } else {
+            alert('使用者取消或未完成加入。');
+          }
         } else {
-          alert('使用者取消了操作。');
+          alert('未偵測到 MetaMask 或發生錯誤。');
         }
       } catch (error) {
-        console.log(error);
-        alert('請先開啟 MetaMask 或使用支援的瀏覽器。');
+        console.error(error);
+        alert('發生錯誤，請檢查控制台。');
       }
     }
   </script>
