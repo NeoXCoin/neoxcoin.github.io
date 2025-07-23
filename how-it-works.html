@@ -1,88 +1,130 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>How It Works | NeoX</title>
+  <title>How it Works – NeoX</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: black;
-      background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      background: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4') no-repeat center center fixed;
       background-size: cover;
-      background-repeat: no-repeat;
-      text-align: center;
       color: white;
     }
+
     .logo {
       position: absolute;
       top: 20px;
       left: 20px;
       width: 60px;
-      cursor: pointer;
     }
+
     .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
-      font-weight: bold;
-      font-size: 16px;
     }
+
     .language-switch a {
       color: white;
       text-decoration: none;
-      margin: 0 8px;
-    }
-    .container {
-      padding-top: 120px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .headline {
-      font-size: 32px;
-      margin-bottom: 20px;
+      margin-left: 10px;
       font-weight: bold;
     }
-    .text {
-      font-size: 18px;
+
+    .container {
+      max-width: 900px;
+      margin: 120px auto 100px;
+      padding: 20px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.45);
+      border-radius: 14px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-size: 17px;
       line-height: 1.8;
-      text-align: left;
-      padding: 0 20px;
+      margin-bottom: 20px;
+    }
+
+    .button-wrapper {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .home-button {
+      background-color: #00aaff;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .home-button:hover {
+      background-color: #0088cc;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 100px 20px 80px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
 <body>
 
-<a href="index.html">
-  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24xmrtyrjxeh2etzql4cz2nfe" alt="NeoX Logo" />
-</a>
+  <!-- Logo -->
+  <a href="index.html">
+    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
+  </a>
 
-<div class="language-switch">
-  <a href="how-it-works.html">EN</a> | <a href="how-it-works-zh.html">繁</a>
-</div>
-
-<div class="container">
-  <div class="headline">How NeoX Works</div>
-  <div class="text">
-    <p><strong>NeoX (NXC)</strong> is a decentralized token powered by smart contracts on the Ethereum network (Sepolia for testing).</p>
-    <p>NeoX enables seamless participation in digital economies, allowing users to buy, hold, and interact with NFTs, DeFi, and future Web3 applications.</p>
-    <p>The token is launched using <strong>ERC-20</strong> standards and is publicly accessible through a secure minting platform.</p>
-    <p>NeoX aims to evolve into a utility or governance token that supports the NeoX NFT ecosystem and future blockchain features.</p>
+  <!-- Language -->
+  <div class="language-switch">
+    <a href="how-it-works.html">EN</a> | <a href="how-it-works-zh.html">繁</a>
   </div>
- 
- <div style="margin-top: 40px;">
-  <a href="index.html" style="
-    color: white;
-    background-color: #00aaff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    display: inline-block;
-  ">← Back to Home</a>
-  
-</div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>How it Works</h1>
+    <p>
+      NeoX operates as a decentralized digital currency built on the Ethereum blockchain using the ERC-20 standard. It is designed for speed, security, and compatibility with popular wallets like MetaMask.
+    </p>
+    <p>
+      Every token transaction is recorded on-chain, ensuring transparency and immutability. Users can easily connect to dApps, trade tokens, or interact with smart contracts using their preferred Web3 wallet.
+    </p>
+    <p>
+      NeoX also integrates with a multi-generation NFT ecosystem, offering holders access to exclusive content, governance features, and evolving utilities.
+    </p>
+    <p>
+      As the ecosystem expands, new tools and community-driven innovations will enhance the NeoX experience across DeFi, gaming, identity, and more.
+    </p>
+  </div>
+
+  <!-- Back Button -->
+  <div class="button-wrapper">
+    <a href="index.html" class="home-button">← Back to Home</a>
+  </div>
 
 </body>
-</html>
+</html> 
