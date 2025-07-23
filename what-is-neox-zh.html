@@ -2,26 +2,110 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>什麼是 NeoX？</title>
   <style>
     body {
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      color: white;
+      margin: 0;
       font-family: Arial, sans-serif;
-      padding: 40px;
+      color: white;
+      background-color: #000;
+      background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-align: center;
     }
-    a {
-      color: #00bfff;
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      opacity: 0.85;
+    }
+
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 16px;
+    }
+
+    .language-switch a {
+      color: white;
       text-decoration: none;
+      margin: 0 8px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 120px auto 80px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.4);
+      border-radius: 12px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .back-btn {
+      margin-top: 40px;
+      background-color: #007bff;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin-top: 100px;
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      .back-btn {
+        font-size: 14px;
+        padding: 10px 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>什麼是 NeoX？</h1>
-  <p>NeoX 是一種嶄新的 Web3 虛擬貨幣，旨在打造去中心化的金融生態系統。</p>
-  <p>它融合了創新、安全及未來科技，以實現真正的用戶自主權。</p>
-  <br/>
-  <a href="index-zh.html">← 返回首頁</a>
+  <a href="index-zh.html">
+    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+  </a>
+
+  <div class="language-switch">
+    <a href="what-is-neox.html">EN</a> | <a href="what-is-neox-zh.html">繁</a>
+  </div>
+
+  <div class="container">
+    <h1>什麼是 NeoX？</h1>
+    <p>NeoX 是一種新一代加密貨幣，結合了創新科技與數位資產的未來願景。我們不只是一枚代幣，更是一場 Web3 革命的開端。</p>
+    <p>NeoX 的設計理念融合了安全性、可擴展性與社群驅動，讓每一位持有者都能參與並見證區塊鏈世界的演進。透過 NFT 系列、DAO 治理及即將推出的 NeoX Coin，打造一個完整、生態互聯的未來金融網絡。</p>
+    <p>我們的目標是：令虛擬資產更容易被大眾接觸、理解與使用，從而推動全球的數位轉型與自由經濟。</p>
+
+    <a class="back-btn" href="index-zh.html">返回主頁</a>
+  </div>
 </body>
-</html>
+</html> 
