@@ -3,57 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Add NXC to MetaMask</title>
+  <title>Add NXC Token to MetaMask</title>
   <style>
     body {
-      background-color: #0b0b1f;
+      background-color: #0a0a2a;
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 40px 20px;
     }
     .logo {
+      width: 60px;
       position: absolute;
       top: 20px;
       left: 20px;
-      width: 60px;
       opacity: 0.85;
     }
     .btn {
       background-color: #007bff;
       color: white;
-      padding: 12px 24px;
       border: none;
+      padding: 14px 28px;
       border-radius: 8px;
       font-size: 16px;
+      margin: 20px 10px;
       cursor: pointer;
-      margin-top: 30px;
+      text-decoration: none;
+      display: inline-block;
     }
     .btn:hover {
       background-color: #0056b3;
     }
-    .back-link {
-      display: block;
-      margin-top: 40px;
+    .note {
+      margin-top: 30px;
+      font-size: 14px;
       color: #aaa;
-      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-
   <h1>Add NXC Token to MetaMask</h1>
   <p>Click the button below to add the NeoX Token (NXC) to your MetaMask wallet.</p>
 
   <button class="btn" onclick="addToken()">Add NXC Token</button>
+  <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask.html">Open in MetaMask App</a>
+  <br><br>
+  <a href="index.html" style="color: #ccc;">← Back to Home</a>
 
-  <a href="index.html" class="back-link">← Back to Home</a>
+  <div class="note">If MetaMask doesn't respond, try using MetaMask App directly.</div>
 
   <script>
     async function addToken() {
+      if (typeof window.ethereum === 'undefined') {
+        alert('MetaMask not detected or error occurred.');
+        return;
+      }
+
       try {
-        const wasAdded = await window.ethereum.request({
+        const wasAdded = await ethereum.request({
           method: 'wallet_watchAsset',
           params: {
             type: 'ERC20',
@@ -67,14 +75,20 @@
         });
 
         if (wasAdded) {
-          alert('NXC Token added!');
+          alert('NXC token added!');
         } else {
-          alert('User rejected token addition.');
+          alert('User rejected the request.');
         }
       } catch (error) {
         console.error(error);
-        alert('MetaMask not detected or error occurred.');
+        alert('MetaMask error occurred.');
       }
+    }
+
+    // 📱 Auto-redirect if on mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile && !window.ethereum) {
+      window.location.href = "https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask.html";
     }
   </script>
 </body>
