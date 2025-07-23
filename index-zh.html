@@ -16,7 +16,6 @@
       color: white;
       text-align: center;
     }
-
     .logo {
       position: absolute;
       top: 20px;
@@ -24,20 +23,17 @@
       width: 60px;
       opacity: 0.85;
     }
-
     .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
       font-size: 16px;
     }
-
     .language-switch a {
       color: white;
       text-decoration: none;
       margin: 0 8px;
     }
-
     .container {
       display: flex;
       flex-direction: column;
@@ -45,35 +41,25 @@
       justify-content: center;
       min-height: 100vh;
     }
-
     .tagline {
       font-size: 18px;
       margin-top: 100px;
       opacity: 0.9;
     }
-
     .coin {
       width: 180px;
       margin: 30px auto;
     }
-
     .headline {
+      font-size: 20px;
+      font-weight: bold;
       margin: 20px 0 30px 0;
       line-height: 1.6;
-    }
-
-    .headline span {
-      display: block;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1s ease-out forwards;
+      animation: fadeIn 2s ease-in-out forwards;
+      animation-delay: 1s;
     }
-
-    .headline span:nth-child(1) { animation-delay: 0.5s; }
-    .headline span:nth-child(2) { animation-delay: 1s; }
-    .headline span:nth-child(3) { animation-delay: 1.5s; }
-    .headline span:nth-child(4) { animation-delay: 2s; }
-
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -84,28 +70,26 @@
         transform: translateY(0);
       }
     }
-
     .nav-bar {
       display: flex;
       justify-content: center;
       gap: 24px;
       margin-top: 20px;
+      flex-wrap: wrap;
     }
-
     .nav-bar a {
       text-decoration: none;
       color: white;
       font-weight: bold;
       font-size: 16px;
     }
-
     .btn-row {
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
       justify-content: center;
+      margin-top: 20px;
     }
-
     .btn {
       background-color: #007bff;
       color: white;
@@ -117,23 +101,16 @@
       transition: background-color 0.3s ease;
       text-decoration: none;
     }
-
     .btn:hover {
       background-color: #0056b3;
     }
-
     @media (max-width: 600px) {
       .nav-bar {
         flex-direction: column;
-        align-items: center;
         gap: 12px;
       }
-
       .coin {
-        width: 265px;
-        max-width: 100%;
-        margin: 20px auto;
-        display: block;
+        width: 260px;
       }
     }
   </style>
@@ -156,10 +133,9 @@
     </div>
 
     <div class="headline">
-      <span>未來即將來臨 — 擁抱屬於 Web3 的自由貨幣。</span>
-      <span>NeoX，開啟數位貨幣的新紀元。</span>
-      <span>加入去中心化浪潮，重新掌握你的資產。</span>
-      <span>主宰你的自由，主宰未來，主宰 NeoX。</span>
+      未來即將來臨 — 擁抱 NeoX，擁有屬於你的數碼自由資產。<br/>
+      NeoX 是進化中的 Web3 通證，帶你走進去中心化新時代。<br/>
+      掌控由你開始，立即參與。
     </div>
 
     <div class="btn-row">
@@ -168,4 +144,4 @@
     </div>
   </div>
 </body>
-</html>
+</html> 
