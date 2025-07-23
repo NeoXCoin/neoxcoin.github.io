@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX Coin</title>
+  <title>NeoX Coin 繁體中文版</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
@@ -51,44 +51,15 @@
       margin: 30px auto;
     }
     .headline {
-      font-size: 20px;
+      font-size: 28px;
       font-weight: bold;
-      margin: 20px 0 30px 0;
-      line-height: 1.6;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-      opacity: 0;
-      animation: fadeIn 2s ease-in-out forwards;
-      animation-delay: 1s;
-    }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    .nav-bar {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-    .nav-bar a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
+      margin: 10px 0 30px 0;
     }
     .btn-row {
       display: flex;
       gap: 15px;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 20px;
     }
     .btn {
       background-color: #007bff;
@@ -104,13 +75,31 @@
     .btn:hover {
       background-color: #0056b3;
     }
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-bar a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
     @media (max-width: 600px) {
       .nav-bar {
         flex-direction: column;
         gap: 12px;
       }
       .coin {
-        width: 260px;
+        width: 265px;
+        max-width: 100%;
+        margin: 20px auto;
+        display: block;
       }
     }
   </style>
@@ -122,26 +111,22 @@
   </div>
 
   <div class="container">
-    <div class="tagline">Web3 革命，由 NeoX 領航</div>
+    <div class="tagline">NeoX 引領 Web3 革命</div>
     <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin"/>
 
     <div class="nav-bar">
       <a href="what-is-neox-zh.html">什麼是 NeoX？</a>
       <a href="how-to-buy-zh.html">如何購買？</a>
       <a href="why-neox-zh.html">為何選擇 NeoX？</a>
-      <a href="how-it-works-zh.html">運作方式？</a>
+      <a href="how-it-works-zh.html">如何運作？</a>
+      <a href="add-to-metamask-zh.html">加入 MetaMask</a>
     </div>
 
-    <div class="headline">
-      未來即將來臨 — 擁抱 NeoX，擁有屬於你的數碼自由資產。<br/>
-      NeoX 是進化中的 Web3 通證，帶你走進去中心化新時代。<br/>
-      掌控由你開始，立即參與。
-    </div>
-
+    <div class="headline">未來由你掌控，NeoX 開啟新紀元</div>
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">購買 NXC</a>
-      <a class="btn" href="https://neoxcoin.github.io/add-to-metamask.html">加入 MetaMask</a>
+      <a class="btn" href="add-to-metamask-zh.html">加入 MetaMask</a>
     </div>
   </div>
 </body>
-</html> 
+</html>
