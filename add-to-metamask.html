@@ -6,109 +6,113 @@
   <title>Add NXC Token to MetaMask</title>
   <style>
     body {
-      background-color: #0b0f23;
+      background-color: #0a0a2a;
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding-top: 100px;
-      margin: 0;
+      padding: 40px 20px;
     }
 
     .logo {
+      width: 60px;
       position: absolute;
       top: 20px;
       left: 20px;
-      width: 60px;
+      opacity: 0.85;
     }
 
-    h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 16px;
-      color: #ccc;
-    }
-
-    .button-group {
-      margin-top: 30px;
-    }
-
-    .button-group button {
+    .btn {
       background-color: #007bff;
-      border: none;
       color: white;
-      padding: 12px 20px;
-      margin: 10px;
-      font-size: 15px;
-      border-radius: 6px;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 16px;
+      margin: 20px 10px;
       cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
     }
 
-    .button-group button:hover {
+    .btn:hover {
       background-color: #0056b3;
     }
 
-    .back-link {
-      display: block;
-      margin-top: 40px;
-      color: #999;
+    .btn-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-icon img {
+      height: 20px;
+    }
+
+    .note {
+      margin-top: 30px;
       font-size: 14px;
-      text-decoration: none;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-
-  <!-- Floating logo -->
-  <img src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" class="logo" />
-
+  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   <h1>Add NXC Token to MetaMask</h1>
-  <p>Click any button below to interact with MetaMask or buy NXC token.</p>
+  <p>Click the button below to add the NeoX Token (NXC) to your MetaMask wallet.</p>
 
-  <div class="button-group">
-    <!-- Buy NXC button -->
-    <button onclick="window.open('https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1', '_blank')">
-      🛒 Buy NXC
-    </button>
+  <!-- Add NXC Token Button -->
+  <button class="btn" onclick="addToken()">Add NXC Token</button>
 
-    <!-- Open in MetaMask App button -->
-    <button onclick="window.open('https://metamask.app.link/dapp/neoxcoin.github.io', '_blank')">
-      🦊 Buy via MetaMask App
-    </button>
+  <!-- Buy NXC on MetaMask (with icon) -->
+  <a class="btn btn-icon" href="https://metamask.app.link/dapp/neoxcoin.github.io/index.html">
+    <img src="https://raw.githubusercontent.com/MetaMask/brand-resources/master/SVG/metamask-fox.svg" alt="MetaMask Icon" />
+    Buy NXC on MetaMask
+  </a>
 
-    <!-- Add Token to MetaMask button -->
-    <button onclick="addToken()">➕ Add NXC Token</button>
-  </div>
+  <!-- Open in MetaMask App -->
+  <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask.html">Open in MetaMask App</a>
 
-  <a class="back-link" href="index.html">← Back to Home</a>
+  <br><br>
+  <a href="index.html" style="color: #ccc;">← Back to Home</a>
+
+  <div class="note">If MetaMask doesn't respond, try using MetaMask App directly.</div>
 
   <script>
     async function addToken() {
+      if (typeof window.ethereum === 'undefined') {
+        alert('MetaMask not detected or error occurred.');
+        return;
+      }
+
       try {
-        const wasAdded = await window.ethereum.request({
+        const wasAdded = await ethereum.request({
           method: 'wallet_watchAsset',
           params: {
             type: 'ERC20',
             options: {
-              address: '0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1',
+              address: '0x80AD039927cDf2341c1428b0ABF8D3421dc122e1',
               symbol: 'NXC',
               decimals: 18,
-              image: 'https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe',
+              image: 'https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu',
             },
           },
         });
 
         if (wasAdded) {
-          alert('✅ NXC Token has been added to MetaMask!');
+          alert('NXC token added!');
         } else {
-          alert('❌ Request was rejected.');
+          alert('User rejected the request.');
         }
       } catch (error) {
         console.error(error);
-        alert('⚠️ Error adding token. Make sure MetaMask is installed.');
+        alert('MetaMask error occurred.');
       }
+    }
+
+    // 📱 Auto-redirect if on mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile && !window.ethereum) {
+      window.location.href = "https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask.html";
     }
   </script>
 </body>
