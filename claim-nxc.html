@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeoX 認購頁面</title>
+  <script src="https://sdk.thirdweb.com/thirdweb.latest.umd.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #000010, #1e1e40);
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    h1 { font-size: 28px; margin-bottom: 20px; }
+    .input-group {
+      margin: 20px auto;
+      max-width: 300px;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #status {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #00ffcc;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔵 認購 NeoX Token</h1>
+  <p>每枚 NXC 價格為 <strong>0.001 ETH</strong></p>
+  <div class="input-group">
+    <input type="number" id="amount" placeholder="輸入想購買的 Token 數量" min="1">
+  </div>
+  <button onclick="claimTokens()">立即認購</button>
+  <p id="status"></p>
+
+  <script>
+    const contractAddress = "0x80AD039927cDf2341c1428b0ABF8D3421dc122e1";
+    const chain = "sepolia";
+
+    async function claimTokens() {
+      const amount = document.getElementById("amount").value;
+      const status = document.getElementById("status");
+      if (!amount || isNaN(amount) || amount <= 0) {
+        status.innerText = "請輸入有效的 Token 數量";
+        return;
+      }
+
+      try {
+        const wallet = await thirdweb.connectWallet("metamask", { chain });
+        const contract = await thirdweb.getContract(contractAddress, "token-drop");
+        status.innerText = "交易進行中，請稍等...";
+
+        const tx = await contract.claim(amount);
+        status.innerText = "✅ 認購成功！交易哈希：" + tx.receipt.transactionHash;
+      } catch (err) {
+        console.error(err);
+        status.innerText = "❌ 發生錯誤：" + (err.message || "請檢查錢包或網絡");
+      }
+    }
+  </script>
+</body>
+</html> 
