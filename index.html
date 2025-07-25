@@ -109,25 +109,30 @@
     }
 
     .btn {
-      background-color: #007bff;
+      background: linear-gradient(to right, #2e8bff, #7b4fff);
       color: white;
       border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
+      padding: 14px 28px;
+      border-radius: 10px;
       font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
       text-decoration: none;
       display: flex;
       align-items: center;
       gap: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
     }
 
     .btn:hover {
-      background-color: #0056b3;
       transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.35);
+      box-shadow: 0 6px 20px rgba(0, 136, 255, 0.6);
+    }
+
+    .btn:active {
+      transform: translateY(1px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) inset;
     }
 
     @media (max-width: 600px) {
