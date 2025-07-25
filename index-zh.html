@@ -146,43 +146,77 @@
         display: block;
       }
     }
-  </style>
-</head>
-<body>
-  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-  <div class="language-switch">
-    <a href="index.html">EN</a> | <a href="index-zh.html">繁</a>
-  </div>
+  <style>
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
 
-  <div class="container">
-    <div class="tagline">Web3 革命，由 NeoX 引領</div>
-    <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin"/>
+.btn {
+  background: linear-gradient(145deg, #0099ff, #007acc);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  min-width: 180px;
+}
 
-    <div class="nav-bar">
-      <a href="what-is-neox-zh.html">關於 NeoX</a>
-      <a href="how-to-buy-zh.html">購買方法</a>
-      <a href="why-neox-zh.html">為何選擇 NeoX</a>
-      <a href="how-it-works-zh.html">運作原理</a>
-    </div>
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(145deg, #007acc, #005fa3);
+}
 
-    <div class="headline">
-      <span>未來已來 — 擁有推動 Web3 自由的貨幣</span>
-      <span>塑造未來，由 NeoX 開始 — 新世代數位貨幣</span>
-      <span>加入 Web3 革命 — 掌握屬於你嘅控制權</span>
-      <span>擁有自由，擁有未來，擁有 NeoX</span>
-    </div>
+@media (max-width: 768px) {
+  .btn-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+</style>
 
-    <div class="btn-row">
-    <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/">
-    🦊 Buy via MetaMask
-    </a>
-    <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">
-    🛒 Buy NXC
-    </a>
-    <a class="btn" href="https://neoxcoin.github.io/add-to-metamask.html">
-    🦊 Add to MetaMask
-    </a>
-   </div>
-  </div>
+<div class="btn-container">
+  <a href="https://example.com/buy-nxc" class="btn">🛒 購買 NXC</a>
+  <a href="https://metamask.app.link/dapp/neoxcoin.github.io" class="btn">🦊 使用 MetaMask 購買</a>
+  <a href="#" class="btn" onclick="addToken()">🦊 加入至 MetaMask</a>
+</div>
+
+<script>
+function addToken() {
+  if (typeof window.ethereum !== 'undefined') {
+    ethereum.request({
+      method: 'wallet_watchAsset',
+      params: {
+        type: 'ERC20',
+        options: {
+          address: '0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1',
+          symbol: 'NXC',
+          decimals: 18,
+          image: 'https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe'
+        },
+      },
+    }).then((success) => {
+      if (success) {
+        console.log("Token added!");
+      } else {
+        console.log("Token add rejected");
+      }
+    }).catch(console.error);
+  } else {
+    alert('請先安裝 MetaMask！');
+  }
+}
+</script>
 </body>
 </html> 
