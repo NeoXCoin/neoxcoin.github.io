@@ -100,20 +100,13 @@
       }
     }
 
-    .btn-row {
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 25px;
-    }
-
     .btn {
+      position: relative;
       background: linear-gradient(to right, #2e8bff, #7b4fff);
       color: white;
       border: none;
       padding: 14px 28px;
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
@@ -123,6 +116,28 @@
       align-items: center;
       gap: 10px;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 150%;
+      height: 100%;
+      background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.25) 0%,
+      rgba(255, 255, 255, 0) 100%
+      );
+      transform: skewX(-25deg);
+      transition: left 0.5s ease-in-out;
+      pointer-events: none;
+    }
+
+    .btn:hover::before {
+      left: 100%;
     }
 
     .btn:hover {
