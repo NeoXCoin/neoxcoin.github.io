@@ -3,71 +3,132 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>常見問題排解 | NeoX Coin</title>
+  <meta name="description" content="NeoX 幫助你解決常見的 MetaMask 與 NXC 相關問題，包括瀏覽器限制、網路錯誤與無法看到代幣等。" />
+  <title>疑難排解 - NeoX</title>
+  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
       margin: 0;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      color: white;
+      background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      background-size: cover;
+      background-position: center;
       font-family: Arial, sans-serif;
-      padding: 20px;
-      line-height: 1.6;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
     }
 
     .logo {
+      width: 60px;
       position: absolute;
       top: 20px;
       left: 20px;
-      width: 60px;
       opacity: 0.85;
     }
 
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 16px;
+    }
+
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
     h1 {
-      text-align: center;
-      margin-top: 100px;
+      font-size: 32px;
+      margin-bottom: 20px;
     }
 
-    .content {
-      max-width: 800px;
-      margin: auto;
+    .issue {
+      background-color: rgba(255, 255, 255, 0.06);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 700px;
+      border-radius: 10px;
+      text-align: left;
     }
 
-    ul {
+    .issue h3 {
+      color: #00d9ff;
+      margin-bottom: 8px;
+    }
+
+    .issue ul {
+      margin-top: 8px;
       padding-left: 20px;
     }
 
-    a {
-      color: #66cfff;
+    .back-btn {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 24px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 600px) {
+      .issue {
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
     }
   </style>
 </head>
 <body>
-  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-  <h1>常見問題排解</h1>
-  <div class="content">
-    <p>如果你是使用 NeoX Coin 或購買 NXC 時遇到問題，可以參考以下建議解決方法：</p>
+  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX 標誌" />
+  <div class="language-switch">
+    <a href="troubleshooting.html">EN</a> | <a href="troubleshooting-zh.html">繁</a>
+  </div>
 
+  <h1>🔧 疑難排解指南</h1>
+
+  <div class="issue">
+    <h3>1. 「透過 MetaMask 購買」在 iPhone 無法直接打開？</h3>
+    <p>這是 Safari 瀏覽器的限制，iOS 可能無法直接啟動 MetaMask 應用程式。</p>
+    <p><strong>解決方法：</strong>開啟 MetaMask App → 點選左上角選單 (≡) → 選擇「瀏覽器」→ 輸入網址：<code>https://neoxcoin.github.io</code></p>
+  </div>
+
+  <div class="issue">
+    <h3>2. 出現「不支援的網路」錯誤？</h3>
+    <p>這代表你的 MetaMask 錢包當前連線至錯誤的區塊鏈網路。</p>
+    <p><strong>解決方法：</strong>請切換至正確的網路（例如：測試階段請使用 <strong>Sepolia</strong>）。你可以在 MetaMask 錢包頂部點擊網路名稱進行切換。</p>
+  </div>
+
+  <div class="issue">
+    <h3>3. 點選「加入錢包」按鈕無反應？</h3>
+    <p>建議使用 MetaMask 桌面擴充功能或於 MetaMask 手機 App 的內建瀏覽器中操作。</p>
+    <p><strong>注意：</strong>某些瀏覽器（如 Safari、Chrome 手機版）可能阻擋 MetaMask 的提示。</p>
+    <p><strong>小提示：</strong>你也可以手動加入代幣：</p>
     <ul>
-      <li><strong>問題：</strong> 點擊「透過 MetaMask 購買」沒有反應／打開不了 App<br />
-        <strong>解決方法：</strong> 常見 iPhone 瀏覽器（例如 Safari）無法正確跳轉，建議使用 <strong>Chrome</strong> 或 <strong>MetaMask 內建瀏覽器</strong>（打開 App → 瀏覽器 → 輸入 <code>https://neoxcoin.github.io</code>）。
-      </li>
-      <br />
-      <li><strong>問題：</strong> 「加入 MetaMask」按鈕無效<br />
-        <strong>解決方法：</strong> 確保已安裝 MetaMask，並使用支援 Web3 的瀏覽器（如 MetaMask App 或有擴充功能嘅電腦瀏覽器）。
-      </li>
-      <br />
-      <li><strong>問題：</strong> 加入 Token 後仍然看不見<br />
-        <strong>解決方法：</strong> 檢查 MetaMask 網絡是否設為 <strong>Sepolia</strong>（測試網），並手動刷新 Token 清單。
-      </li>
+      <li><strong>代幣合約地址：</strong><code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code></li>
+      <li><strong>符號：</strong><code>NXC</code></li>
+      <li><strong>小數位數：</strong><code>18</code></li>
     </ul>
+  </div>
 
-    <p>如果仍然遇到問題，歡迎透過 IG 聯絡我哋：  
-      <a href="https://www.instagram.com/neocoingenesis/" target="_blank">@neocoingenesis</a>
-    </p>
+  <div class="issue">
+    <h3>4. 購買後錢包中看不到 NXC？</h3>
+    <p>可能是交易尚未確認完成，或尚未將代幣手動加入錢包。</p>
+    <p><strong>解決方法：</strong>請嘗試重新整理你的 MetaMask 錢包，或依上方提供的資料手動新增 NXC 代幣。</p>
   </div>
-   
-  <div class="back">
-    <a href="index.html">← Back to Home</a>
-  </div>
+
+  <a class="back-btn" href="index-zh.html">← 回到首頁</a>
 </body>
 </html>
