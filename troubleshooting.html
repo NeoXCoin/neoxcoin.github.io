@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Troubleshooting | NeoX</title>
+  <title>Troubleshooting - NeoX</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
@@ -19,10 +19,10 @@
     }
 
     .logo {
+      width: 60px;
       position: absolute;
       top: 20px;
       left: 20px;
-      width: 60px;
       opacity: 0.85;
     }
 
@@ -40,49 +40,47 @@
     }
 
     h1 {
-      font-size: 28px;
-      margin-top: 100px;
-      margin-bottom: 30px;
+      font-size: 32px;
+      margin-bottom: 20px;
     }
 
-    .faq {
-      max-width: 720px;
-      margin: 0 auto;
+    .issue {
+      background-color: rgba(255, 255, 255, 0.06);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 700px;
+      border-radius: 10px;
       text-align: left;
     }
 
-    .faq-item {
-      margin-bottom: 30px;
+    .issue h3 {
+      color: #00d9ff;
+      margin-bottom: 8px;
     }
 
-    .faq-item h3 {
-      margin-bottom: 10px;
-      color: #00d4ff;
-    }
-
-    .faq-item p {
-      margin: 0;
-      line-height: 1.6;
-      color: #f0f0f0;
-    }
-
-    .back-home {
+    .back-btn {
+      display: inline-block;
       margin-top: 40px;
+      padding: 12px 24px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
     }
 
-    .back-home a {
-      color: #ccc;
-      text-decoration: none;
-      font-size: 14px;
+    .back-btn:hover {
+      background-color: #0056b3;
     }
 
     @media (max-width: 600px) {
-      h1 {
-        font-size: 22px;
+      .issue {
+        padding: 16px;
       }
 
-      .faq {
-        padding: 0 10px;
+      h1 {
+        font-size: 26px;
       }
     }
   </style>
@@ -93,30 +91,32 @@
     <a href="troubleshooting.html">EN</a> | <a href="troubleshooting-zh.html">繁</a>
   </div>
 
-  <h1>🔧 Troubleshooting</h1>
+  <h1>🔧 Troubleshooting Guide</h1>
 
-  <div class="faq">
-    <div class="faq-item">
-      <h3>1. Why doesn’t the “Buy via MetaMask” button open MetaMask directly on iPhone?</h3>
-      <p>Some iOS Safari browsers open a confirmation screen instead of launching MetaMask directly.</p>
-      <p><strong>Solution:</strong> Open the NeoX site inside the MetaMask in-app browser:<br/>MetaMask → Tap browser icon → Go to <code>https://neoxcoin.github.io</code></p>
-    </div>
-
-    <div class="faq-item">
-      <h3>2. Why do I get a "Network not supported" error?</h3>
-      <p>This means you're not connected to the Sepolia Testnet.</p>
-      <p><strong>Solution:</strong> In MetaMask, tap "Add Network" and select Sepolia from the list, or switch manually.</p>
-    </div>
-
-    <div class="faq-item">
-      <h3>3. Why doesn't anything happen when I click “Add to MetaMask”?</h3>
-      <p>This can happen if MetaMask is not installed or the browser blocks the popup.</p>
-      <p><strong>Solution:</strong> Use the MetaMask browser or ensure MetaMask is installed and enabled in your browser.</p>
-    </div>
+  <div class="issue">
+    <h3>1. “Buy via MetaMask” doesn’t open directly on iPhone?</h3>
+    <p>This is a limitation of Safari. iOS may redirect instead of launching MetaMask directly.</p>
+    <p><strong>Solution:</strong> Open MetaMask App → Use its built-in browser → Visit: <code>https://neoxcoin.github.io</code></p>
   </div>
 
-  <div class="back-home">
-    <a href="index.html">← Back to Home</a>
+  <div class="issue">
+    <h3>2. Getting “Network Not Supported” error?</h3>
+    <p>This happens when your MetaMask is connected to a wrong network.</p>
+    <p><strong>Solution:</strong> Please switch to the correct network (e.g. Sepolia for testing).</p>
   </div>
+
+  <div class="issue">
+    <h3>3. Add Token button doesn’t work?</h3>
+    <p>Make sure you’re using MetaMask desktop extension or in-app browser on mobile.</p>
+    <p><strong>Note:</strong> Some browsers may block MetaMask prompts.</p>
+  </div>
+
+  <div class="issue">
+    <h3>4. Can’t see your NXC after purchase?</h3>
+    <p>Your transaction may still be pending or the token isn’t added yet.</p>
+    <p><strong>Solution:</strong> Try refreshing your wallet or manually add NXC using the token address.</p>
+  </div>
+
+  <a class="back-btn" href="index.html">← Back to Home</a>
 </body>
 </html>
