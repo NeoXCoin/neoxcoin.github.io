@@ -3,15 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Troubleshooting | NeoX Coin</title>
+  <title>Troubleshooting | NeoX</title>
+  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
       margin: 0;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      color: white;
+      background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      background-size: cover;
+      background-position: center;
       font-family: Arial, sans-serif;
-      padding: 20px;
-      line-height: 1.6;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
     }
 
     .logo {
@@ -22,48 +26,97 @@
       opacity: 0.85;
     }
 
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 16px;
+    }
+
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
     h1 {
-      text-align: center;
       margin-top: 100px;
+      font-size: 32px;
     }
 
-    .content {
+    .faq {
       max-width: 800px;
-      margin: auto;
+      margin: 40px auto;
+      text-align: left;
     }
 
-    ul {
-      padding-left: 20px;
+    .faq-item {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
     }
 
-    a {
-      color: #66cfff;
+    .faq-item h3 {
+      margin-top: 0;
+      color: #00d4ff;
+    }
+
+    .back-link {
+      margin-top: 40px;
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 26px;
+      }
+
+      .faq-item {
+        padding: 16px;
+      }
     }
   </style>
 </head>
 <body>
   <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-  <h1>Troubleshooting Guide</h1>
-  <div class="content">
-    <p>If you're experiencing issues when using NeoX Coin with MetaMask or purchasing NXC, here are some common fixes:</p>
-
-    <ul>
-      <li><strong>Problem:</strong> Clicking <em>Buy via MetaMask</em> doesn't open the app directly<br />
-        <strong>Solution:</strong> On some iPhones, Safari may not redirect properly. Try using <strong>Chrome</strong> or <strong>MetaMask's in-app browser</strong> (open MetaMask app → Browser tab → visit <code>https://neoxcoin.github.io</code>).
-      </li>
-      <br />
-      <li><strong>Problem:</strong> Add to MetaMask button doesn't work<br />
-        <strong>Solution:</strong> Make sure MetaMask is installed and your browser supports Web3 interactions (e.g., MetaMask mobile, desktop with extension).
-      </li>
-      <br />
-      <li><strong>Problem:</strong> You can't see the token after adding it<br />
-        <strong>Solution:</strong> Check your MetaMask network is set to <strong>Sepolia</strong> (testnet), and refresh the token list manually.
-      </li>
-    </ul>
-
-    <p>Still having trouble? Feel free to contact us via Instagram:  
-      <a href="https://www.instagram.com/neocoingenesis/" target="_blank">@neocoingenesis</a>
-    </p>
+  <div class="language-switch">
+    <a href="troubleshooting.html">EN</a> | <a href="troubleshooting-zh.html">繁</a>
   </div>
+
+  <h1>🔧 Troubleshooting</h1>
+
+  <div class="faq">
+
+    <div class="faq-item">
+      <h3>1. Why doesn’t the “Buy via MetaMask” button open the app directly on iPhone?</h3>
+      <p>On some iOS Safari browsers, tapping the button may open a confirmation page instead of launching MetaMask directly.</p>
+      <p><strong>✅ Solution:</strong> Use the built-in browser inside the MetaMask app.</p>
+      <p>→ Open MetaMask → Tap the browser icon → Visit <code>https://neoxcoin.github.io</code></p>
+    </div>
+
+    <div class="faq-item">
+      <h3>2. I get a "Network not supported" error.</h3>
+      <p>This means your MetaMask wallet is not connected to the correct network (e.g., Sepolia testnet).</p>
+      <p><strong>✅ Solution:</strong> Add the correct network manually or switch to the network when prompted.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>3. The token doesn’t show up in my wallet after clicking “Add to MetaMask”.</h3>
+      <p>Sometimes MetaMask may not refresh immediately.</p>
+      <p><strong>✅ Solution:</strong> Restart the app or manually check the token under “Imported Tokens”.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>4. Nothing happens when I click the button.</h3>
+      <p>This may occur if MetaMask is not installed or the browser does not support wallet connections.</p>
+      <p><strong>✅ Solution:</strong> Ensure MetaMask is installed and you’re using a supported browser like Chrome, Brave, or MetaMask app browser.</p>
+    </div>
+
+  </div>
+
+  <a class="back-link" href="index.html">← Back to Home</a>
 </body>
-</html> 
+</html>
