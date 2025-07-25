@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Troubleshooting common MetaMask and NXC issues on the NeoX platform. Fix mobile browser issues, network errors, and token visibility problems." />
   <title>Troubleshooting - NeoX</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
@@ -58,6 +59,11 @@
       margin-bottom: 8px;
     }
 
+    .issue ul {
+      margin-top: 8px;
+      padding-left: 20px;
+    }
+
     .back-btn {
       display: inline-block;
       margin-top: 40px;
@@ -95,26 +101,32 @@
 
   <div class="issue">
     <h3>1. “Buy via MetaMask” doesn’t open directly on iPhone?</h3>
-    <p>This is a limitation of Safari. iOS may redirect instead of launching MetaMask directly.</p>
-    <p><strong>Solution:</strong> Open MetaMask App → Use its built-in browser → Visit: <code>https://neoxcoin.github.io</code></p>
+    <p>This is due to Safari limitations — iOS may redirect instead of launching MetaMask directly.</p>
+    <p><strong>Solution:</strong> Open the MetaMask App → Tap the menu (≡) in the top-left → Choose “Browser” → Visit: <code>https://neoxcoin.github.io</code></p>
   </div>
 
   <div class="issue">
-    <h3>2. Getting “Network Not Supported” error?</h3>
-    <p>This happens when your MetaMask is connected to a wrong network.</p>
-    <p><strong>Solution:</strong> Please switch to the correct network (e.g. Sepolia for testing).</p>
+    <h3>2. Getting a “Network Not Supported” error?</h3>
+    <p>This occurs when your MetaMask is connected to the wrong network.</p>
+    <p><strong>Solution:</strong> Switch to the correct network (e.g. <strong>Sepolia</strong> for testing). You can change networks by clicking the network name at the top of your MetaMask wallet.</p>
   </div>
 
   <div class="issue">
-    <h3>3. Add Token button doesn’t work?</h3>
-    <p>Make sure you’re using MetaMask desktop extension or in-app browser on mobile.</p>
-    <p><strong>Note:</strong> Some browsers may block MetaMask prompts.</p>
+    <h3>3. “Add to MetaMask” button doesn’t work?</h3>
+    <p>This button works best on MetaMask desktop extension or inside MetaMask’s mobile browser.</p>
+    <p><strong>Note:</strong> Some regular mobile browsers (like Safari/Chrome) may block MetaMask prompts.</p>
+    <p><strong>Tip:</strong> You can also manually add the token:</p>
+    <ul>
+      <li><strong>Token Contract:</strong> <code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code></li>
+      <li><strong>Symbol:</strong> <code>NXC</code></li>
+      <li><strong>Decimals:</strong> <code>18</code></li>
+    </ul>
   </div>
 
   <div class="issue">
     <h3>4. Can’t see your NXC after purchase?</h3>
-    <p>Your transaction may still be pending or the token isn’t added yet.</p>
-    <p><strong>Solution:</strong> Try refreshing your wallet or manually add NXC using the token address.</p>
+    <p>Your transaction may still be pending, or the token isn't added to your wallet yet.</p>
+    <p><strong>Solution:</strong> Try refreshing your MetaMask wallet. If NXC doesn’t appear, manually add it using the above token info.</p>
   </div>
 
   <a class="back-btn" href="index.html">← Back to Home</a>
