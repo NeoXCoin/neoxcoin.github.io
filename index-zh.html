@@ -2,18 +2,18 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NeoX Coin 繁體中文版</title>
-
+  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
+      background: linear-gradient(135deg, #0a0a2a, #1f005c);
       background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
       background-position: center;
+      font-family: Arial, sans-serif;
+      color: white;
       text-align: center;
     }
 
@@ -29,88 +29,128 @@
       position: absolute;
       top: 20px;
       right: 20px;
-      font-size: 14px;
+      font-size: 16px;
+    }
+
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
     }
 
     .container {
-      padding-top: 120px;
-      max-width: 800px;
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
     }
 
     .tagline {
-      font-size: 20px;
-      margin-bottom: 16px;
+      font-size: 18px;
+      margin-top: 100px;
+      opacity: 0.9;
     }
 
     .coin {
-      width: 260px;
-      max-width: 100%;
-      margin: 0 auto 30px auto;
+      width: 180px;
+      margin: 30px auto;
+    }
+
+    .headline {
+      margin: 20px 0 30px 0;
+      line-height: 1.6;
+    }
+
+    .headline span {
       display: block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .headline span:nth-child(1) { animation-delay: 0.5s; }
+    .headline span:nth-child(2) { animation-delay: 1s; }
+    .headline span:nth-child(3) { animation-delay: 1.5s; }
+    .headline span:nth-child(4) { animation-delay: 2s; }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .nav-bar {
       display: flex;
       justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
       flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 28px;
     }
 
     .nav-bar a {
-      color: #ffffff;
       text-decoration: none;
+      color: white;
       font-weight: bold;
-    }
-
-    .headline {
       font-size: 16px;
-      line-height: 1.8;
-      margin: 0 auto 32px auto;
-      max-width: 90%;
     }
 
-    .btn-container {
+    .btn-row {
       display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
       flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 30px;
     }
 
     .btn {
-      background: linear-gradient(145deg, #0099ff, #007acc);
+      background: linear-gradient(to bottom, #0f88ff, #005bb5);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       color: white;
-      font-size: 16px;
-      font-weight: bold;
-      padding: 14px 24px;
       border: none;
-      border-radius: 12px;
-      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
-      transition: all 0.2s ease-in-out;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 16px;
       cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       text-decoration: none;
-      display: inline-block;
-      text-align: center;
-      min-width: 180px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
-      background: linear-gradient(145deg, #007acc, #005fa3);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
     }
 
-    @media (max-width: 768px) {
-      .btn-container {
+    @media (max-width: 600px) {
+      .nav-bar {
         flex-direction: column;
         align-items: center;
+        gap: 12px;
+      }
+
+      .btn-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .coin {
+        width: 265px;
+        max-width: 100%;
+        margin: 20px auto;
+        display: block;
       }
     }
   </style>
 </head>
-
 <body>
   <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   <div class="language-switch">
@@ -119,7 +159,7 @@
 
   <div class="container">
     <div class="tagline">Web3 革命，由 NeoX 引領</div>
-    <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin" />
+    <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin"/>
 
     <div class="nav-bar">
       <a href="what-is-neox-zh.html">關於 NeoX</a>
@@ -129,45 +169,25 @@
     </div>
 
     <div class="headline">
-      <span>未來已來 — 擁有推動 Web3 自由的貨幣</span><br />
-      <span>塑造未來，由 NeoX 開始 — 新世代數位貨幣</span><br />
-      <span>加入 Web3 革命 — NeoX 將控制權放回你手中</span><br />
+      <span>未來已來 — 擁有推動 Web3 自由的貨幣</span>
+      <span>塑造未來，由 NeoX 開始 — 新世代數位貨幣</span>
+      <span>加入 Web3 革命 — NeoX 將控制權放回你手中</span>
       <span>擁有自由，擁有未來，擁有 NeoX</span>
     </div>
 
-    <div class="btn-container">
-      <a href="https://example.com/buy-nxc" class="btn">🛒 購買 NXC</a>
-      <a href="https://metamask.app.link/dapp/neoxcoin.github.io/" class="btn">🦊 使用 MetaMask 購買</a>
-      <a href="#" class="btn" onclick="addToken()">🦊 加入至 MetaMask</a>
+    <div class="btn-row">
+      <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">
+        🛒 購買 NXC
+      </a>
+      <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/">
+        🦊 使用 MetaMask 購買
+      </a>
+      <a class="btn" href="https://neoxcoin.github.io/add-to-metamask.html">
+        🦊 加入至 MetaMask
+      </a>
     </div>
   </div>
-
-  <script>
-    function addToken() {
-      if (typeof window.ethereum !== 'undefined') {
-        ethereum.request({
-          method: 'wallet_watchAsset',
-          params: {
-            type: 'ERC20',
-            options: {
-              address: '0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1',
-              symbol: 'NXC',
-              decimals: 18,
-              image: 'https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe'
-            },
-          },
-        }).then((success) => {
-          if (success) {
-            console.log("Token added!");
-          } else {
-            console.log("Token add rejected");
-          }
-        }).catch(console.error);
-      } else {
-        alert('請先安裝 MetaMask！');
-      }
-    }
-  </script>
 </body>
-</html>
+</html> 
+
 
