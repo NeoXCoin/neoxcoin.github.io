@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Troubleshooting | NeoX Coin</title>
+  <title>Troubleshooting | NeoX</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
@@ -40,45 +40,50 @@
     }
 
     h1 {
-      font-size: 32px;
+      font-size: 28px;
       margin-top: 100px;
+      margin-bottom: 30px;
     }
 
-    .section {
+    .faq {
       max-width: 720px;
-      margin: 40px auto;
+      margin: 0 auto;
       text-align: left;
-      background-color: rgba(0, 0, 0, 0.4);
-      padding: 24px;
-      border-radius: 12px;
     }
 
-    .section h2 {
-      font-size: 20px;
-      color: #00ccff;
+    .faq-item {
+      margin-bottom: 30px;
     }
 
-    .section p {
-      font-size: 16px;
+    .faq-item h3 {
+      margin-bottom: 10px;
+      color: #00d4ff;
+    }
+
+    .faq-item p {
+      margin: 0;
       line-height: 1.6;
+      color: #f0f0f0;
     }
 
-    a {
-      color: #00ccff;
-    }
-
-    .back {
+    .back-home {
       margin-top: 40px;
-      font-size: 16px;
     }
 
-    .back a {
+    .back-home a {
       color: #ccc;
       text-decoration: none;
+      font-size: 14px;
     }
 
-    .back a:hover {
-      color: #fff;
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      .faq {
+        padding: 0 10px;
+      }
     }
   </style>
 </head>
@@ -90,37 +95,27 @@
 
   <h1>🔧 Troubleshooting</h1>
 
-  <div class="section">
-    <h2>1. “Buy via MetaMask” doesn’t open MetaMask directly (iPhone)</h2>
-    <p>On some iPhones using Safari, tapping the button may open a prompt instead of launching MetaMask.</p>
-    <p><strong>✅ Solution:</strong> Open the site inside the <strong>MetaMask App browser</strong>.</p>
-    <p>Steps: Open MetaMask → Tap browser icon → Enter <code>https://neoxcoin.github.io</code></p>
+  <div class="faq">
+    <div class="faq-item">
+      <h3>1. Why doesn’t the “Buy via MetaMask” button open MetaMask directly on iPhone?</h3>
+      <p>Some iOS Safari browsers open a confirmation screen instead of launching MetaMask directly.</p>
+      <p><strong>Solution:</strong> Open the NeoX site inside the MetaMask in-app browser:<br/>MetaMask → Tap browser icon → Go to <code>https://neoxcoin.github.io</code></p>
+    </div>
+
+    <div class="faq-item">
+      <h3>2. Why do I get a "Network not supported" error?</h3>
+      <p>This means you're not connected to the Sepolia Testnet.</p>
+      <p><strong>Solution:</strong> In MetaMask, tap "Add Network" and select Sepolia from the list, or switch manually.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>3. Why doesn't anything happen when I click “Add to MetaMask”?</h3>
+      <p>This can happen if MetaMask is not installed or the browser blocks the popup.</p>
+      <p><strong>Solution:</strong> Use the MetaMask browser or ensure MetaMask is installed and enabled in your browser.</p>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>2. “Network not supported” error</h2>
-    <p>This usually means your wallet is connected to the wrong network.</p>
-    <p><strong>✅ Solution:</strong> Switch to the Sepolia Testnet manually inside your MetaMask settings.</p>
-  </div>
-
-  <div class="section">
-    <h2>3. Nothing happens after clicking “Add to MetaMask”</h2>
-    <p>If you click the Add button and nothing pops up, it may be blocked by browser or extensions.</p>
-    <p><strong>✅ Solution:</strong> Ensure MetaMask is installed, enabled, and you are using a supported browser like Chrome or Firefox.</p>
-  </div>
-
-  <div class="section">
-    <h2>4. I can’t mint the token</h2>
-    <p>Make sure you’re connected to the right wallet and network (Sepolia). If you’ve already minted the max allowed per wallet, minting will be disabled.</p>
-  </div>
-
-  <div class="section">
-    <h2>5. Where can I get Sepolia ETH for gas?</h2>
-    <p>This is a test token and needs testnet ETH to complete transactions.</p>
-    <p><strong>✅ You can request free Sepolia ETH at:</strong> <a href="https://sepoliafaucet.com" target="_blank">https://sepoliafaucet.com</a></p>
-  </div>
-
-  <div class="back">
+  <div class="back-home">
     <a href="index.html">← Back to Home</a>
   </div>
 </body>
