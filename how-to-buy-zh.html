@@ -7,96 +7,128 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      background-color: #000;
-      background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      padding: 2rem;
+      background: linear-gradient(135deg, #0a0a2a, #1f005c);
+      background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      text-align: center;
-      padding: 80px 20px 40px;
+      color: white;
+      font-family: Arial, sans-serif;
+      line-height: 1.8;
     }
-    .logo {
+
+    .language-switch {
       position: absolute;
       top: 20px;
-      left: 20px;
-      width: 60px;
-      opacity: 0.85;
+      right: 20px;
+      font-size: 16px;
+      z-index: 10;
     }
+
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
     h1 {
-      font-size: 28px;
-      margin-bottom: 20px;
+      color: #00bfff;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+      text-align: center;
     }
-    p {
-      font-size: 18px;
-      line-height: 1.6;
+
+    ol {
       max-width: 720px;
-      margin: 0 auto 20px;
+      margin: 0 auto 2rem auto;
+      padding-left: 1.2rem;
     }
+
+    li {
+      margin-bottom: 1rem;
+    }
+
     a {
       color: #00d9ff;
-      text-decoration: none;
+      text-decoration: underline;
     }
-    .button-back {
-      display: inline-block;
-      margin-top: 40px;
+
+    .highlight {
+      font-weight: bold;
+      color: #00ffff;
+    }
+
+    .note {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 1rem 1.2rem;
+      border-left: 4px solid #00bfff;
+      border-radius: 6px;
+      max-width: 720px;
+      margin: 0 auto 2rem auto;
+    }
+
+    .note code {
+      display: block;
+      margin-top: 0.5rem;
+      font-family: monospace;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+
+    .back-btn {
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
       padding: 12px 24px;
       background-color: #007bff;
       color: white;
       text-decoration: none;
+      font-weight: bold;
       border-radius: 8px;
       font-size: 16px;
+      transition: background-color 0.3s ease;
     }
-    .button-back:hover {
+
+    .back-btn:hover {
       background-color: #0056b3;
-    }
-    .btn-buy {
-      display: inline-block;
-      background-color: #00bfff;
-      color: white;
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-top: 20px;
-    }
-    @media (max-width: 600px) {
-      body {
-        padding-top: 120px;
-      }
-      .button-back {
-        margin-bottom: 40px;
-      }
     }
   </style>
 </head>
 <body>
-  <a href="index-zh.html">
-    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-  </a>
 
-  <h1>如何購買 NeoX？</h1>
+  <!-- 語言切換 -->
+  <div class="language-switch">
+    <a href="how-to-buy.html">EN</a> | <a href="how-to-buy-zh.html">繁</a>
+  </div>
 
-  <p><strong>目前 NeoX 處於測試階段。</strong><br/>你可以透過簡單幾個步驟，親身體驗購買流程：</p>
+  <!-- 標題 -->
+  <h1>🛒 如何購買 NeoX</h1>
 
-  <p>1️⃣ 安裝並打開 MetaMask 錢包</p>
-  <p>2️⃣ 將網絡切換至 <strong>Sepolia 測試網</strong></p>
-  <p>3️⃣ 使用測試水龍頭領取免費 ETH</p>
-  <p>4️⃣ 前往 NeoX 測試平台，完成購買體驗</p>
+  <!-- 教學步驟 -->
+  <ol>
+    <li>安裝 <span class="highlight">MetaMask</span> 瀏覽器擴充功能或手機應用程式。</li>
+    <li>開啟 MetaMask，並切換至 <span class="highlight">Sepolia 測試網</span>。</li>
+    <li>透過水龍頭領取測試用 ETH（Sepolia）：
+      <ul>
+        <li>🔗 建議使用：<a href="https://cloud.google.com/application/web3/faucet/ethereum/sepolia" target="_blank">Google Sepolia 水龍頭（支援 Web3）</a></li>
+        <li>備用選項：<a href="https://sepoliafaucet.com" target="_blank">sepoliafaucet.com</a></li>
+      </ul>
+    </li>
+    <li>造訪 <a href="index-zh.html">NeoX 官方網站</a> 並點擊「<span class="highlight">加入 MetaMask</span>」來新增 NXC 代幣。</li>
+    <li>按下「<span class="highlight">購買</span>」或「<span class="highlight">Mint</span>」按鈕以領取 NeoX 代幣。</li>
+    <li>完成交易後，於 MetaMask 錢包中查看你的 NXC 餘額。</li>
+  </ol>
 
-  <h1>免費體驗 NeoX（測試網）</h1>
+  <!-- 代幣合約資訊提示 -->
+  <div class="note">
+    💡 <strong>提示：</strong> 如果你在 Mint 後看不到 NXC，可以手動加入合約地址：
+    <code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code>
+  </div>
 
-  <p>🔹 一鍵加入 Sepolia 測試網：<br/>
-  👉 <a href="https://chainlist.org/?search=sepolia" target="_blank">https://chainlist.org</a></p>
+  <!-- 回首頁按鈕 -->
+  <a class="back-btn" href="index-zh.html">← 回到首頁</a>
 
-  <p>🔹 領取免費測試 ETH：<br/>
-  👉 <a href="https://sepoliafaucet.com" target="_blank">https://sepoliafaucet.com</a></p>
-
-  <p>🔹 開始購買測試版 NXC：</p>
-  <a class="btn-buy" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1" target="_blank">🛒 購買 NXC 測試幣</a>
-
-  <br/>
-  <a class="button-back" href="index-zh.html">返回主頁</a>
 </body>
-</html> 
+</html>
