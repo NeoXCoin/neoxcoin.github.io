@@ -49,7 +49,7 @@
       color: #00d9ff;
       text-decoration: none;
     }
-    .btn-back {
+    .button-back {
       display: inline-block;
       margin-top: 40px;
       padding: 12px 24px;
@@ -59,7 +59,7 @@
       border-radius: 8px;
       font-size: 16px;
     }
-    .btn-back:hover {
+    .button-back:hover {
       background-color: #0056b3;
     }
     .btn-buy {
@@ -72,11 +72,29 @@
       text-decoration: none;
       margin-top: 20px;
     }
+    .reminder-box {
+      margin-top: 30px;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .reminder-box p {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+    code {
+      background-color: rgba(0,0,0,0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
     @media (max-width: 600px) {
       body {
         padding-top: 120px;
       }
-      .btn-back {
+      .button-back {
         margin-bottom: 40px;
       }
     }
@@ -91,25 +109,34 @@
     <a href="how-to-buy.html">EN</a> | <a href="how-to-buy-zh.html">繁</a>
   </div>
 
-  <h1>🛒 How to Buy NeoX?</h1>
+  <h1>How to Buy NeoX (Testnet)</h1>
 
-  <p><strong>⚠️ This page is for testing purposes only.</strong><br>NeoX has not officially launched. Please do not use real funds.</p>
+  <p><strong>NeoX is currently in the testing phase.</strong><br/>You can experience the buying process in just a few steps:</p>
 
-  <p>You only need a few simple steps to experience the process of purchasing NeoX on the testnet:</p>
+  <p>1️⃣ Install and open the 🦊MetaMask wallet</p>
+  <p>2️⃣ Switch your network to <strong>Sepolia Testnet</strong></p>
+  <p>3️⃣ Get free Sepolia ETH from a faucet:<br/>
+     🔗 <a href="https://faucet.quicknode.com/ethereum/sepolia" target="_blank">QuickNode Sepolia Faucet (by Google)</a></p>
+  <p>4️⃣ Visit the NeoX testnet platform and try minting NXC</p>
 
-  <p>1️⃣ Install and open the 🦊<strong>MetaMask</strong> wallet<br>
-     👉 <a href="https://metamask.io/download/" target="_blank">Download from official site</a></p>
+  <h1>Start Your Free NeoX Test</h1>
 
-  <p>2️⃣ Switch to the <strong>Sepolia Test Network</strong><br>
-     👉 Use <a href="https://chainlist.org/?search=sepolia" target="_blank">Chainlist.org</a> to add Sepolia with one click</p>
+  <p>🔹 Add Sepolia network with one click:<br/>
+     👉 <a href="https://chainlist.org/?search=sepolia" target="_blank">https://chainlist.org</a></p>
 
-  <p>3️⃣ Claim test ETH (Sepolia)<br>
-     👉 Use the <a href="https://faucet.quicknode.com/ethereum/sepolia" target="_blank">Google Sepolia Faucet</a></p>
+  <p>🔹 Get free Sepolia ETH:<br/>
+     👉 <a href="https://faucet.quicknode.com/ethereum/sepolia" target="_blank">https://faucet.quicknode.com</a></p>
 
-  <p>4️⃣ Go to the NeoX test platform to start your trial purchase:</p>
-  <a class="btn-buy" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1" target="_blank">🚀 Try Buying NXC (Test Token)</a>
+  <p>🔹 Mint your test NXC token:</p>
+  <a class="btn-buy" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1" target="_blank">🛒 Buy NXC Test Token</a>
 
-  <br/>
-  <a class="btn-back" href="index.html">← Back to Home</a>
+  <div class="reminder-box">
+    <p>📌 <strong>Reminder:</strong> If NXC doesn't appear in your 🦊MetaMask wallet automatically, please add it manually:</p>
+    <p>Contract Address:<br/>
+      <code>0x80AD039927cDf2341c1428b0ABF8D3421dc122e1</code></p>
+    <p>You can also use the “Add to 🦊MetaMask” button on the homepage for one-click import.</p>
+  </div>
+
+  <a class="button-back" href="index.html">← Back to Home</a>
 </body>
 </html>
