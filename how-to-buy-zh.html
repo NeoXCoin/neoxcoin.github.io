@@ -35,8 +35,15 @@
       color: #00bfff;
       font-size: 30px;
       font-weight: bold;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
       text-align: center;
+    }
+
+    .disclaimer {
+      text-align: center;
+      color: #ffcc00;
+      font-weight: bold;
+      margin-bottom: 2rem;
     }
 
     ol {
@@ -103,10 +110,15 @@
     <a href="how-to-buy.html">EN</a> | <a href="how-to-buy-zh.html">繁</a>
   </div>
 
-  <!-- 標題 -->
+  <!-- 主標題 -->
   <h1>🛒 如何購買 NeoX</h1>
 
-  <!-- 教學步驟 -->
+  <!-- 測試版提醒 -->
+  <p class="disclaimer">
+    ⚠️ 本頁為測試用途，NeoX 尚未正式上線，請勿使用真實資金。
+  </p>
+
+  <!-- 步驟教學 -->
   <ol>
     <li>安裝 <span class="highlight">MetaMask</span> 瀏覽器擴充功能或手機應用程式。</li>
     <li>開啟 MetaMask，並切換至 <span class="highlight">Sepolia 測試網</span>。</li>
@@ -121,7 +133,7 @@
     <li>完成交易後，於 MetaMask 錢包中查看你的 NXC 餘額。</li>
   </ol>
 
-  <!-- 代幣合約資訊提示 -->
+  <!-- 手動加入合約提示 -->
   <div class="note">
     💡 <strong>提示：</strong> 如果你在 Mint 後看不到 NXC，可以手動加入合約地址：
     <code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code>
