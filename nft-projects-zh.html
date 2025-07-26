@@ -2,82 +2,136 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="瀏覽 NeoX 所推出的 NFT 系列，包括 NeoCoin Genesis 和 NeoX Genesis 多階級科幻主題 NFT 收藏品。" />
   <title>NFT 系列介紹 - NeoX</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
-      background: linear-gradient(to right, #0f0526, #1a0f3f);
-      color: #ffffff;
-      font-family: "Segoe UI", "Microsoft JhengHei", sans-serif;
-      padding: 2rem;
+      margin: 0;
+      background-color: #0a0a2a;
+      background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: white;
       text-align: center;
+      padding: 40px 20px;
     }
-    h1 {
-      font-size: 32px;
-      color: #66ccff;
+
+    .logo {
+      width: 60px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      opacity: 0.85;
     }
-    h2 {
-      font-size: 24px;
-      color: #00ffff;
-      margin-top: 2rem;
-    }
-    p {
+
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
       font-size: 16px;
-      line-height: 1.8;
-      margin: 1rem auto;
-      max-width: 800px;
     }
-    img.logo {
-      margin-top: 1rem;
-      width: 200px;
-      height: auto;
-    }
-    .back-button {
-      margin-top: 3rem;
-    }
-    .back-button a {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
-      border-radius: 5px;
+
+    .language-switch a {
       color: white;
       text-decoration: none;
-      font-weight: bold;
+      margin: 0 8px;
     }
-    .back-button a:hover {
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .nft-series {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: left;
+    }
+
+    .nft-series h3 {
+      color: #00d9ff;
+      margin-top: 0;
+    }
+
+    .nft-series img {
+      display: block;
+      margin: 10px auto;
+      max-width: 180px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 24px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
       background-color: #0056b3;
     }
-    .highlight {
-      color: #00ffcc;
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      line-height: 1.6;
+    }
+
+    .note {
+      font-size: 14px;
+      color: #bbbbbb;
+      margin-top: 5px;
     }
   </style>
 </head>
 <body>
+  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX 標誌" />
+  <div class="language-switch">
+    <a href="nft-projects.html">EN</a> | <a href="nft-projects-zh.html">繁</a>
+  </div>
+
   <h1>🎨 NFT 系列介紹</h1>
 
-  <h2>NeoCoin Genesis Edition（已完成）</h2>
-  <img src="https://gateway.lighthouse.storage/ipfs/bafkreihcrs5gaqpzrc323fytrl7huso55wik563k5eezxqo6677kuhmcam" alt="NeoCoin Genesis Logo" class="logo" />
-  <p>一套共 5 階段的收藏型 NFT 系列，作為 NeoCoin ERC-20 代幣正式推出前的鋪墊。</p>
-  <p>🎨 設計風格：黑金羅馬風格徽章、銀色浮雕文字</p>
-  <p>🚀 第一代：<span class="highlight">Quantum Seed</span>（限量 88 枚）－ 已於 OpenSea 發行</p>
-  <p>🔗 <a href="https://opensea.io" target="_blank" style="color:#00ffff;">前往 OpenSea 瀏覽</a></p>
-
-  <h2>NeoX Genesis NFT（持續開發中）</h2>
-  <img src="https://gateway.lighthouse.storage/ipfs/bafkreicmzdx2fs3ry5cra2hfeconclnaznes3zjc52gm2e2ce4a27me6rm" alt="NeoX Timekeeper Logo" class="logo" />
-  <p>一個以未來科技與美學為主題的系列，共分為六種等級，結合視覺敘事與區塊鏈收藏設計。</p>
-  <ul style="list-style:none; padding-left:0;">
-    <li>🪐 Orbit Class（普通）</li>
-    <li>🔵 Nova Pulse（稀有）</li>
-    <li>❄️ Stellar Frost（稀有）</li>
-    <li>🧬 Quantum Core（史詩）</li>
-    <li>🕳️ Dark Singularity（傳奇）</li>
-    <li>⏳ Timekeeper Edition（傳奇・限量 8 枚）</li>
-  </ul>
-  <p>✅ <span class="highlight">Timekeeper Edition</span> 已透過 Thirdweb 在 Sepolia 測試網部署</p>
-  <p>📢 更多系列即將登場，敬請期待！</p>
-
-  <div class="back-button">
-    <a href="index-zh.html">← 回到首頁</a>
+  <div class="nft-series">
+    <h3>NeoCoin Genesis Edition（已完成）</h3>
+    <img src="https://gateway.lighthouse.storage/ipfs/bafkreihcrs5gaqpzrc323fytrl7huso55wik563k5eezxqo6677kuhmcam" alt="NeoCoin Genesis Edition" />
+    <p>一套共 5 階段的收藏型 NFT 系列，作為 NeoCoin ERC-20 代幣正式推出前的鋪墊。</p>
+    <p>🎨 設計風格：黑金羅馬風格徽章、銀色浮雕文字</p>
+    <p>🚀 第一代：<strong>Quantum Seed</strong>（限量 88 枚）－ 已於 OpenSea 發行</p>
+    <p>🔗 <a href="https://opensea.io/0x2b15d8f1d634a84acb33fc2519ace3d13bd72bd2" target="_blank" style="color:#00d9ff;">前往 OpenSea 瀏覽</a></p>
+    <p class="note">⚠️ 註：目前 OpenSea 僅顯示 1 枚 NFT，其餘 87 枚暫未公開展示，正在排查中。</p>
   </div>
+
+  <div class="nft-series">
+    <h3>NeoX Genesis NFT（持續開發中）</h3>
+    <img src="https://gateway.lighthouse.storage/ipfs/bafkreicmzdx2fs3ry5cra2hfeconclnaznes3zjc52gm2e2ce4a27me6rm" alt="NeoX Timekeeper Logo" />
+    <p>一個以未來科幻美學為主題的系列，共分為六種等級，結合視覺敘事與區塊鏈收藏設計。</p>
+    <ul>
+      <li>⚪ Orbit Class（普通）</li>
+      <li>🔵 Nova Pulse（稀有）</li>
+      <li>❄️ Stellar Frost（稀有）</li>
+      <li>🔮 Quantum Core（史詩）</li>
+      <li>⚫ Dark Singularity（傳奇）</li>
+      <li>⏳ Timekeeper Edition（傳奇，限量 8 枚）</li>
+    </ul>
+    <p>✅ <strong>Timekeeper Edition</strong> 已透過 Thirdweb 在 Sepolia 測試網部署</p>
+    <p>📡 更多系列即將登場，敬請期待！</p>
+  </div>
+
+  <a class="back-btn" href="index-zh.html">← 回到首頁</a>
 </body>
 </html>
