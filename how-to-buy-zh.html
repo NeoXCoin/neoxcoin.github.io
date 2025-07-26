@@ -17,7 +17,6 @@
       text-align: center;
       padding: 80px 20px 40px;
     }
-
     .logo {
       position: absolute;
       top: 20px;
@@ -25,136 +24,123 @@
       width: 60px;
       opacity: 0.85;
     }
-
     .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
       font-size: 16px;
     }
-
     .language-switch a {
       color: white;
       text-decoration: none;
       margin: 0 8px;
     }
-
     h1 {
       font-size: 28px;
       margin-bottom: 20px;
     }
-
     p {
       font-size: 18px;
-      line-height: 1.8;
+      line-height: 1.6;
       max-width: 720px;
       margin: 0 auto 20px;
     }
-
-    .tip {
-      font-size: 15px;
-      background-color: rgba(255, 255, 255, 0.08);
-      border-left: 4px solid #00d9ff;
-      padding: 12px;
-      margin: 30px auto;
-      max-width: 720px;
-      color: #ddd;
-      text-align: left;
-      border-radius: 8px;
-    }
-
     a {
       color: #00d9ff;
       text-decoration: none;
     }
-
-    .btn-buy, .button-back {
+    .button-back {
       display: inline-block;
-      margin-top: 20px;
+      margin-top: 40px;
+      padding: 12px 24px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .button-back:hover {
+      background-color: #0056b3;
+    }
+    .btn-buy {
+      display: inline-block;
+      background-color: #00bfff;
+      color: white;
       padding: 12px 24px;
       font-size: 16px;
       border-radius: 8px;
       text-decoration: none;
-      transition: background-color 0.3s ease;
+      margin-top: 20px;
     }
-
-    .btn-buy {
-      background-color: #00bfff;
-      color: white;
+    .reminder-box {
+      margin-top: 30px;
+      background-color: rgba(255, 255, 255, 0.08);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
     }
-
-    .btn-buy:hover {
-      background-color: #0099cc;
+    .reminder-box p {
+      margin-bottom: 10px;
+      font-size: 16px;
     }
-
-    .button-back {
-      background-color: #007bff;
-      color: white;
+    code {
+      background-color: rgba(0,0,0,0.3);
+      padding: 2px 6px;
+      border-radius: 4px;
     }
-
-    .button-back:hover {
-      background-color: #0056b3;
-    }
-
     @media (max-width: 600px) {
       body {
-        padding-top: 100px;
+        padding-top: 120px;
       }
-
       .button-back {
         margin-bottom: 40px;
-      }
-
-      .tip {
-        text-align: left;
-        font-size: 14px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Logo -->
   <a href="index-zh.html">
     <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   </a>
 
-  <!-- Language Switch -->
   <div class="language-switch">
     <a href="how-to-buy.html">EN</a> | <a href="how-to-buy-zh.html">繁</a>
   </div>
 
-  <!-- Main Title -->
-  <h1>🛒 如何購買 NeoX？</h1>
+  <h1>🛒 如何購買 NeoX ?</h1>
 
-  <p><strong>⚠️ 本頁為測試用途，NeoX 尚未正式上線，請勿使用真實資金。</strong></p>
+  <p><strong>NeoX 尚在測試階段。</strong><br/>你可以按照以下步驟，體驗完整購買流程：</p>
 
-  <p>只需幾個簡單步驟，即可體驗 NeoX 測試幣購買流程：</p>
+  <p>1️⃣ 安裝並開啟 🦊MetaMask 錢包<br/>
+     👉 <a href="https://metamask.io/download/" target="_blank">前往官方網站下載</a></p>
 
-  <p>1️⃣ 安裝並開啟 🦊<strong>MetaMask 錢包</strong><br/>
-     👉 <a href="https://metamask.io/download/" target="_blank">前往官方下載</a></p>
+  <p>2️⃣ 將網絡切換至 <strong>Sepolia 測試網</strong></p>
 
-  <p>2️⃣ 切換至 <strong>Sepolia 測試網</strong><br/>
-     👉 使用 <a href="https://chainlist.org/?search=sepolia" target="_blank">Chainlist.org 一鍵加入</a></p>
+  <p>3️⃣ 領取免費 Sepolia 測試幣：<br/>
+     🔗 <a href="https://faucet.quicknode.com/ethereum/sepolia" target="_blank">QuickNode Sepolia 水龍頭（由 Google 提供）</a></p>
 
-  <p>3️⃣ 領取測試用 ETH（Sepolia）<br/>
-     🔗 使用 <a href="https://faucet.quicknode.com/ethereum/sepolia" target="_blank">Google Sepolia 水龍頭（支援 Web3）</a></p>
+  <p>4️⃣ 前往 NeoX 測試平台，開始體驗購買 NXC</p>
 
-  <p>4️⃣ 前往 NeoX 測試平台，開始體驗購買</p>
+  <h1>開始你的 NeoX 測試體驗</h1>
 
-  <!-- Buy Button -->
-  <a class="btn-buy" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1" target="_blank">🚀 點我購買 NXC 測試幣</a>
+  <p>🔹 一鍵加入 Sepolia 測試網：<br/>
+     👉 <a href="https://chainlist.org/?search=sepolia" target="_blank">https://chainlist.org</a></p>
 
-  <!-- Contract Info Tip -->
-  <div class="tip">
-    💡 <strong>提示：</strong><br/>
-    若完成 Mint 後在 🦊MetaMask 錢包中看不到 NXC，可手動加入代幣：<br/>
-    ➤ <strong>合約地址：</strong><br/>
-    <code>0x80AD039927cDf2341c1428b0ABF8D3421dc122e1</code><br/>
-    ➤ <strong>代幣符號：</strong> NXC<br/>
-    ➤ <strong>小數位：</strong> 18
+  <p>🔹 領取測試 ETH：<br/>
+     👉 <a href="https://faucet.quicknode.com" target="_blank">https://faucet.quicknode.com</a></p>
+
+  <p>🔹 鑄造你的 NXC 測試幣：</p>
+  <a class="btn-buy" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1" target="_blank">🛒 點我購買 NXC 測試幣</a>
+
+  <div class="reminder-box">
+    <p>📌 <strong>提示：</strong>如果 NXC 沒有自動出現在你的 🦊MetaMask 錢包中，你可以手動加入：</p>
+    <p>合約地址：<br/>
+      <code>0x80AD039927cDf2341c1428b0ABF8D3421dc122e1</code></p>
+    <p>你亦可使用首頁上的「🦊 Add to MetaMask」按鈕一鍵導入。</p>
   </div>
 
-  <!-- Back Button -->
   <a class="button-back" href="index-zh.html">← 返回主頁</a>
 </body>
 </html>
