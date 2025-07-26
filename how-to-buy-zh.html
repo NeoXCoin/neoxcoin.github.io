@@ -26,6 +26,19 @@
       opacity: 0.85;
     }
 
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 16px;
+    }
+
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
     h1 {
       font-size: 28px;
       margin-bottom: 20px;
@@ -100,17 +113,24 @@
   </style>
 </head>
 <body>
+  <!-- Logo -->
   <a href="index-zh.html">
     <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   </a>
 
+  <!-- Language Switch -->
+  <div class="language-switch">
+    <a href="how-to-buy.html">EN</a> | <a href="how-to-buy-zh.html">繁</a>
+  </div>
+
+  <!-- Main Title -->
   <h1>🛒 如何購買 NeoX？</h1>
 
   <p><strong>⚠️ 本頁為測試用途，NeoX 尚未正式上線，請勿使用真實資金。</strong></p>
 
   <p>只需幾個簡單步驟，即可體驗 NeoX 測試幣購買流程：</p>
 
-  <p>1️⃣ 安裝並開啟 🦊<strong>MetaMask 錢包</strong><br/>
+  <p>1️⃣ 安裝並開啟 <strong>MetaMask 錢包</strong><br/>
      👉 <a href="https://metamask.io/download/" target="_blank">前往官方下載</a></p>
 
   <p>2️⃣ 切換至 <strong>Sepolia 測試網</strong><br/>
@@ -121,17 +141,20 @@
 
   <p>4️⃣ 前往 NeoX 測試平台，開始體驗購買</p>
 
+  <!-- Buy Button -->
   <a class="btn-buy" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1" target="_blank">🚀 點我購買 NXC 測試幣</a>
 
+  <!-- Contract Info Tip -->
   <div class="tip">
     💡 <strong>提示：</strong><br/>
-    若完成 Mint 後在 🦊MetaMask 錢包中看不到 NXC，可手動加入代幣：<br/>
+    若完成 Mint 後在 MetaMask 錢包中看不到 NXC，可手動加入代幣：<br/>
     ➤ <strong>合約地址：</strong><br/>
     <code>0x80AD039927cDf2341c1428b0ABF8D3421dc122e1</code><br/>
     ➤ <strong>代幣符號：</strong> NXC<br/>
     ➤ <strong>小數位：</strong> 18
   </div>
 
+  <!-- Back Button -->
   <a class="button-back" href="index-zh.html">← 返回主頁</a>
 </body>
 </html>
