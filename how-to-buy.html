@@ -6,11 +6,29 @@
   <title>How to Buy NeoX</title>
   <style>
     body {
-      background-color: #000;
+      margin: 0;
+      padding: 2rem;
+      background: linear-gradient(135deg, #0a0a2a, #1f005c);
+      background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      background-size: cover;
+      background-position: center;
       color: white;
       font-family: Arial, sans-serif;
-      padding: 2rem;
       line-height: 1.8;
+    }
+
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 16px;
+      z-index: 10;
+    }
+
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
     }
 
     h1 {
@@ -18,10 +36,13 @@
       font-size: 30px;
       font-weight: bold;
       margin-bottom: 1.5rem;
+      text-align: center;
     }
 
     ol {
-      margin-left: 1.2rem;
+      max-width: 720px;
+      margin: 0 auto 2rem auto;
+      padding-left: 1.2rem;
     }
 
     li {
@@ -39,29 +60,53 @@
     }
 
     .note {
-      margin-top: 2rem;
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.08);
       padding: 1rem 1.2rem;
       border-left: 4px solid #00bfff;
       border-radius: 6px;
+      max-width: 720px;
+      margin: 0 auto 2rem auto;
     }
 
-    .back-link {
-      margin-top: 2.5rem;
-      display: inline-block;
-      color: #00d9ff;
+    .note code {
+      display: block;
+      margin-top: 0.5rem;
+      font-family: monospace;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 6px 10px;
+      border-radius: 4px;
+    }
+
+    .back-btn {
+      display: block;
+      width: fit-content;
+      margin: 0 auto;
+      padding: 12px 24px;
+      background-color: #007bff;
+      color: white;
       text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
       font-size: 16px;
+      transition: background-color 0.3s ease;
     }
 
-    .back-link:hover {
-      text-decoration: underline;
+    .back-btn:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
+
+  <!-- Language Switch -->
+  <div class="language-switch">
+    <a href="how-to-buy.html">EN</a> | <a href="how-to-buy-zh.html">繁</a>
+  </div>
+
+  <!-- Main Heading -->
   <h1>🛒 How to Buy NeoX</h1>
 
+  <!-- Steps -->
   <ol>
     <li>Install the <span class="highlight">MetaMask</span> browser extension or mobile app.</li>
     <li>Open MetaMask and switch your network to <span class="highlight">Sepolia Testnet</span>.</li>
@@ -76,11 +121,14 @@
     <li>Check your NXC balance in MetaMask once the transaction is complete.</li>
   </ol>
 
+  <!-- Token Info Tip -->
   <div class="note">
     💡 <strong>Tip:</strong> If your NXC token is not visible after minting, you can add it manually using the contract address:
-    <br/>📄 <code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code>
+    <code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code>
   </div>
 
-  <a href="index.html" class="back-link">← Back to Home</a>
+  <!-- Back to Home Button -->
+  <a class="back-btn" href="index.html">← Back to Home</a>
+
 </body>
-</html>
+</html> 
