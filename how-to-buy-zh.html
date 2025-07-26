@@ -38,6 +38,18 @@
       margin: 0 auto 20px;
     }
 
+    .tip {
+      font-size: 15px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-left: 4px solid #00d9ff;
+      padding: 12px;
+      margin: 30px auto;
+      max-width: 720px;
+      color: #ddd;
+      text-align: left;
+      border-radius: 8px;
+    }
+
     a {
       color: #00d9ff;
       text-decoration: none;
@@ -79,6 +91,11 @@
       .button-back {
         margin-bottom: 40px;
       }
+
+      .tip {
+        text-align: left;
+        font-size: 14px;
+      }
     }
   </style>
 </head>
@@ -106,7 +123,15 @@
 
   <a class="btn-buy" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1" target="_blank">🚀 點我購買 NXC 測試幣</a>
 
-  <br/><br/>
+  <div class="tip">
+    💡 <strong>提示：</strong><br/>
+    若完成 Mint 後在 🦊MetaMask 錢包中看不到 NXC，可手動加入代幣：<br/>
+    ➤ <strong>合約地址：</strong><br/>
+    <code>0x80AD039927cDf2341c1428b0ABF8D3421dc122e1</code><br/>
+    ➤ <strong>代幣符號：</strong> NXC<br/>
+    ➤ <strong>小數位：</strong> 18
+  </div>
+
   <a class="button-back" href="index-zh.html">← 返回主頁</a>
 </body>
 </html>
