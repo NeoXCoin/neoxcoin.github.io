@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -35,8 +35,15 @@
       color: #00bfff;
       font-size: 30px;
       font-weight: bold;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.5rem;
       text-align: center;
+    }
+
+    .disclaimer {
+      text-align: center;
+      color: #ffcc00;
+      font-weight: bold;
+      margin-bottom: 2rem;
     }
 
     ol {
@@ -98,37 +105,42 @@
 </head>
 <body>
 
-  <!-- Language Switch -->
+  <!-- Language switch -->
   <div class="language-switch">
     <a href="how-to-buy.html">EN</a> | <a href="how-to-buy-zh.html">繁</a>
   </div>
 
-  <!-- Main Heading -->
+  <!-- Title -->
   <h1>🛒 How to Buy NeoX</h1>
 
-  <!-- Steps -->
+  <!-- Disclaimer -->
+  <p class="disclaimer">
+    ⚠️ This page is for testing purposes only. NeoX is not officially launched. Please do not use real funds.
+  </p>
+
+  <!-- Instruction Steps -->
   <ol>
     <li>Install the <span class="highlight">MetaMask</span> browser extension or mobile app.</li>
-    <li>Open MetaMask and switch your network to <span class="highlight">Sepolia Testnet</span>.</li>
+    <li>Open MetaMask and switch your network to the <span class="highlight">Sepolia Testnet</span>.</li>
     <li>Claim test ETH using a faucet:
       <ul>
         <li>🔗 Recommended: <a href="https://cloud.google.com/application/web3/faucet/ethereum/sepolia" target="_blank">Google Sepolia Faucet (Web3 supported)</a></li>
         <li>Alternative: <a href="https://sepoliafaucet.com" target="_blank">sepoliafaucet.com</a></li>
       </ul>
     </li>
-    <li>Visit the <a href="index.html">NeoX website</a> and click “<span class="highlight">Add to MetaMask</span>” to add the NXC token.</li>
-    <li>Click the “<span class="highlight">Buy</span>” or “<span class="highlight">Mint</span>” button to receive NeoX tokens.</li>
-    <li>Check your NXC balance in MetaMask once the transaction is complete.</li>
+    <li>Visit the <a href="index.html">NeoX website</a> and click <span class="highlight">“Add to MetaMask”</span> to add the NXC token.</li>
+    <li>Click the <span class="highlight">“Buy”</span> or <span class="highlight">“Mint”</span> button to receive NeoX tokens.</li>
+    <li>Once the transaction is complete, check your NXC balance in MetaMask.</li>
   </ol>
 
-  <!-- Token Info Tip -->
+  <!-- Token address note -->
   <div class="note">
-    💡 <strong>Tip:</strong> If your NXC token is not visible after minting, you can add it manually using the contract address:
+    💡 <strong>Tip:</strong> If your NXC token is not visible after minting, you can manually add it using the contract address:
     <code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code>
   </div>
 
-  <!-- Back to Home Button -->
+  <!-- Back button -->
   <a class="back-btn" href="index.html">← Back to Home</a>
 
 </body>
-</html> 
+</html>
