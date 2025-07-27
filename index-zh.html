@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NeoX Coin</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
@@ -23,7 +23,7 @@
       top: 20px;
       left: 20px;
       width: 60px;
-      cursor: pointer;
+      opacity: 0.85;
     }
 
     .language-switch {
@@ -58,7 +58,6 @@
     .coin {
       width: 180px;
       margin: 30px auto;
-      display: block;
     }
 
     .nav-bar {
@@ -76,10 +75,20 @@
       font-size: 16px;
     }
 
-    .headline {
-      font-size: 24px;
-      font-weight: bold;
-      margin: 30px 0;
+    .headline-container p {
+      font-size: 20px;
+      margin: 10px 0;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    .headline-container p:nth-child(1) { animation-delay: 0.5s; }
+    .headline-container p:nth-child(2) { animation-delay: 1.3s; }
+    .headline-container p:nth-child(3) { animation-delay: 2.1s; }
+    .headline-container p:nth-child(4) { animation-delay: 2.9s; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
     }
 
     .btn-row {
@@ -87,26 +96,25 @@
       gap: 15px;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 20px;
+      margin-top: 30px;
     }
 
     .btn {
-      background-color: #006eff;
-      color: white;
+      background: linear-gradient(135deg, #c0c0c0, #e0e0e0);
+      color: black;
       border: none;
       padding: 12px 24px;
       border-radius: 8px;
       font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: transform 0.3s ease;
       text-decoration: none;
-      font-weight: bold;
       min-width: 180px;
-      text-align: center;
+      font-weight: bold;
     }
 
     .btn:hover {
-      background-color: #0056b3;
+      transform: scale(1.05);
     }
 
     @media (max-width: 600px) {
@@ -120,21 +128,12 @@
         width: 265px;
         max-width: 100%;
         margin: 20px auto;
-        display: block;
-      }
-
-      .btn-row {
-        flex-direction: column;
-        align-items: center;
       }
     }
   </style>
 </head>
 <body>
-  <a href="index-zh.html">
-    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-  </a>
-
+  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   <div class="language-switch">
     <a href="index.html">EN</a> | <a href="index-zh.html">繁</a>
   </div>
@@ -148,13 +147,20 @@
       <a href="how-to-buy-zh.html">如何購買？</a>
       <a href="why-neox-zh.html">為何選擇 NeoX？</a>
       <a href="how-it-works-zh.html">運作方式？</a>
+      <a href="nft-projects-zh.html">NFT 項目</a>
+      <a href="troubleshooting-zh.html">疑難排解</a>
     </div>
 
-    <div class="headline">未來即將來臨，立即擁有</div>
+    <div class="headline-container">
+      <p>未來即將來臨 — 擁有屬於你的 Web3 自由貨幣。</p>
+      <p>與 NeoX 一起塑造未來 — 下一代數位貨幣革命。</p>
+      <p>成為 Web3 革命的一部分 — 掌控權回到你手中。</p>
+      <p>掌握你的自由、你的未來、你的 NeoX。</p>
+    </div>
 
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">🛒 購買 NXC</a>
-      <a class="btn" href="how-to-buy-zh.html">🦊 使用 MetaMask 購買</a>
+      <a class="btn" href="https://neoxcoin.github.io/buy-via-metamask-zh.html">🦊 使用 MetaMask 購買</a>
       <button class="btn" onclick="addToken()">🦊 加入 MetaMask</button>
     </div>
   </div>
@@ -174,14 +180,9 @@
             }
           }
         });
-
-        if (wasAdded) {
-          console.log('Token added');
-        } else {
-          console.log('Token not added');
-        }
+        console.log(wasAdded ? 'Token added' : 'Token not added');
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
   </script>
