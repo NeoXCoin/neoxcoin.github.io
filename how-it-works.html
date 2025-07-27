@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>How it Works – NeoX</title>
+  <title>How it Works - NeoX</title>
   <style>
     html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
-      height: 100%;
-      font-family: Arial, sans-serif;
-      background: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4') no-repeat center center fixed;
+    }
+
+    body {
+      background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
       color: white;
     }
 
@@ -37,40 +43,39 @@
 
     .container {
       max-width: 900px;
-      margin: 120px auto 100px;
-      padding: 20px;
+      margin: 120px auto 0;
+      padding: 30px 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
       text-align: center;
-      background-color: rgba(0, 0, 0, 0.45);
-      border-radius: 14px;
     }
 
-    h1 {
+    .headline {
       font-size: 28px;
+      font-weight: bold;
       margin-bottom: 30px;
     }
 
-    p {
-      font-size: 17px;
+    .text p {
+      font-size: 16px;
       line-height: 1.8;
-      margin-bottom: 20px;
+      margin: 15px 0;
     }
 
     .button-wrapper {
-      position: fixed;
-      bottom: 20px;
-      width: 100%;
       text-align: center;
+      margin-top: 50px;
     }
 
     .home-button {
       background-color: #00aaff;
       color: white;
-      padding: 12px 24px;
-      border: none;
+      padding: 12px 28px;
+      text-decoration: none;
+      font-weight: bold;
       border-radius: 8px;
       font-size: 16px;
-      font-weight: bold;
-      text-decoration: none;
+      display: inline-block;
     }
 
     .home-button:hover {
@@ -79,52 +84,48 @@
 
     @media (max-width: 768px) {
       .container {
-        margin: 100px 20px 80px;
+        margin: 100px 20px 40px;
+        padding: 25px 15px;
       }
 
-      h1 {
+      .headline {
         font-size: 24px;
       }
 
-      p {
-        font-size: 16px;
+      .text p {
+        font-size: 15px;
       }
     }
   </style>
 </head>
 <body>
-
   <!-- Logo -->
   <a href="index.html">
     <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
   </a>
 
-  <!-- Language -->
+  <!-- Language Switch -->
   <div class="language-switch">
     <a href="how-it-works.html">EN</a> | <a href="how-it-works-zh.html">繁</a>
   </div>
 
   <!-- Main Content -->
   <div class="container">
-    <h1>How it Works</h1>
-    <p>
-      NeoX operates as a decentralized digital currency built on the Ethereum blockchain using the ERC-20 standard. It is designed for speed, security, and compatibility with popular wallets like MetaMask.
-    </p>
-    <p>
-      Every token transaction is recorded on-chain, ensuring transparency and immutability. Users can easily connect to dApps, trade tokens, or interact with smart contracts using their preferred Web3 wallet.
-    </p>
-    <p>
-      NeoX also integrates with a multi-generation NFT ecosystem, offering holders access to exclusive content, governance features, and evolving utilities.
-    </p>
-    <p>
-      As the ecosystem expands, new tools and community-driven innovations will enhance the NeoX experience across DeFi, gaming, identity, and more.
-    </p>
+    <div class="headline">How it Works</div>
+    <div class="text">
+      <p><strong>The core of NeoX’s design is practicality, security, and decentralization.</strong></p>
+
+      <p>NeoX is built on the ERC-20 standard, ensuring high-speed, stable transactions and compatibility with popular wallets such as MetaMask. Transparency through smart contracts and community governance ensures the value integrity of Web3.</p>
+
+      <p>Beyond being a cryptocurrency, NeoX also provides foundational NFT infrastructure, allowing users to mint, trade, and hold NFTs — building a unique ecosystem of digital assets.</p>
+
+      <p>By participating in NeoX, you're not just investing once — you're joining a movement that unlocks an innovative, trusted future of digital finance.</p>
+    </div>
   </div>
 
-  <!-- Back Button -->
+  <!-- Back to Home -->
   <div class="button-wrapper">
     <a href="index.html" class="home-button">← Back to Home</a>
   </div>
-
 </body>
-</html> 
+</html>
