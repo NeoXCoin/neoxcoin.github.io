@@ -3,54 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>什麼是 NeoX？</title>
+  <title>什麼是 NeoX？ - NeoX</title>
   <style>
     html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
-      height: 100%;
-      font-family: "Arial", sans-serif;
-      color: white;
-      overflow: hidden;
     }
 
     body {
-      background: radial-gradient(ellipse at center, #0a0f2c 0%, #090a1a 100%);
-      position: relative;
-    }
-
-    canvas#particles {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-    }
-
-    .image-bg {
-      background-image: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44");
+      background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
-      background-position: center;
       background-repeat: no-repeat;
-      opacity: 0.25;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-    }
-
-    .content {
-      position: relative;
-      z-index: 2;
-      max-width: 850px;
-      margin: 120px auto 0;
-      padding: 30px;
-      background: rgba(0, 0, 0, 0.55);
-      border-radius: 12px;
-      text-align: center;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      font-family: Arial, sans-serif;
     }
 
     .logo {
@@ -58,14 +26,12 @@
       top: 20px;
       left: 20px;
       width: 60px;
-      z-index: 3;
     }
 
     .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 3;
     }
 
     .language-switch a {
@@ -75,20 +41,35 @@
       font-weight: bold;
     }
 
-    .content h1 {
+    .container {
+      max-width: 800px;
+      margin: 120px auto 0;
+      padding: 20px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+    }
+
+    .headline {
       font-size: 28px;
+      font-weight: bold;
       margin-bottom: 20px;
     }
 
-    .content p {
+    .text {
       font-size: 16px;
-      line-height: 1.8;
-      margin: 12px 0;
+      line-height: 1.6;
+    }
+
+    .features {
+      margin-top: 30px;
+      text-align: left;
+      padding-left: 40px;
     }
 
     .button-wrapper {
       text-align: center;
-      margin-top: 40px;
+      margin-top: 60px;
     }
 
     .home-button {
@@ -107,14 +88,8 @@
   </style>
 </head>
 <body>
-  <!-- 粒子動畫 -->
-  <canvas id="particles"></canvas>
-
-  <!-- 背景圖片 -->
-  <div class="image-bg"></div>
-
   <!-- NeoX Logo -->
-  <a href="index.html">
+  <a href="index-zh.html">
     <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
   </a>
 
@@ -123,75 +98,32 @@
     <a href="what-is-neox.html">EN</a> | <a href="what-is-neox-zh.html">繁</a>
   </div>
 
-  <!-- 內容 -->
-  <div class="content">
-    <h1>什麼是 NeoX？</h1>
-    <p>NeoX 是一種新一代加密貨幣，結合了創新科技與數位資產的未來願景。我們不只是一枚代幣，更是一場 Web3 革命的開端。</p>
-    <p>NeoX 的設計理念融合了安全性、可擴展性與社群驅動，讓每一位持有者都能參與並見證區塊鏈世界的演進。透過 NFT 系列、DAO 治理及即將推出的 NeoX Coin，打造一個完整、生態互聯的未來金融網絡。</p>
-    <p>我們的目標是：令虛擬資產更容易被大眾接受、理解與使用，從而推動全球的數位轉型與自由經濟。</p>
-
-    <div class="button-wrapper">
-      <a href="index.html" class="home-button">返回主頁</a>
+  <!-- 主要內容 -->
+  <div class="container">
+    <div class="headline">什麼是 NeoX？</div>
+    <div class="text">
+      <p>
+        NeoX 是為 Web3 時代而設計的下一代數位貨幣及區塊鏈生態系統，
+        提供安全、快速並可擴展的解決方案，涵蓋去中心化金融（DeFi）、數位身份與資產擁有權。
+      </p>
+      <p><strong>🔗 為未來而建</strong><br>
+        NeoX 連接傳統金融與區塊鏈創新之間的橋樑。
+        通過整合智能合約、跨鏈支援與 NFT 基礎設施，
+        NeoX 讓用戶與開發者都能在去中心化經濟中發光發熱。
+      </p>
+      <p><strong>⚙️ 核心特色</strong></p>
+      <ul class="features">
+        <li>基於 ERC-20 的 NXC 代幣，確保交易安全與快速</li>
+        <li>支援 MetaMask 等主流錢包，跨平台兼容</li>
+        <li>支援 NFT 發行與鏈上治理機制</li>
+        <li>開源社群驅動發展藍圖</li>
+      </ul>
     </div>
   </div>
 
-  <!-- 粒子效果 JavaScript -->
-  <script>
-    const canvas = document.getElementById("particles");
-    const ctx = canvas.getContext("2d");
-    let particles = [];
-
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-
-    window.addEventListener("resize", resize);
-    resize();
-
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.radius = Math.random() * 2 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-      }
-
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "#00ffff";
-        ctx.fill();
-      }
-
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-      }
-    }
-
-    function init() {
-      particles = [];
-      for (let i = 0; i < 120; i++) {
-        particles.push(new Particle());
-      }
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p) => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-
-    init();
-    animate();
-  </script>
+  <!-- 返回主頁 按鈕 -->
+  <div class="button-wrapper">
+    <a href="index-zh.html" class="home-button">← 返回主頁</a>
+  </div>
 </body>
 </html>
