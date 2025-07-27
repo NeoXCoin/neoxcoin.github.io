@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Why NeoX?</title>
+  <title>Why NeoX? - NeoX</title>
   <style>
     html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
-      height: 100%;
-      font-family: Arial, sans-serif;
-      background: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4') no-repeat center center fixed;
+    }
+
+    body {
+      background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
       color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .logo {
@@ -37,89 +46,80 @@
 
     .container {
       max-width: 900px;
-      margin: 120px auto 100px;
+      margin: 120px auto 0;
       padding: 20px;
       text-align: center;
-      background-color: rgba(0, 0, 0, 0.45);
-      border-radius: 14px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
     }
 
-    h1 {
+    .headline {
       font-size: 28px;
-      margin-bottom: 30px;
-    }
-
-    p {
-      font-size: 17px;
-      line-height: 1.8;
+      font-weight: bold;
       margin-bottom: 20px;
     }
 
-    .button-wrapper {
-      position: fixed;
-      bottom: 20px;
-      width: 100%;
+    .text {
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .footer {
       text-align: center;
+      margin: 40px 0;
     }
 
     .home-button {
-      background-color: #00aaff;
       color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
+      background-color: #00aaff;
+      padding: 10px 20px;
       text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      display: inline-block;
     }
 
     .home-button:hover {
       background-color: #0088cc;
     }
 
-    @media (max-width: 768px) {
+    @media screen and (max-width: 600px) {
       .container {
-        margin: 100px 20px 80px;
-      }
-
-      h1 {
-        font-size: 24px;
-      }
-
-      p {
-        font-size: 16px;
+        margin: 100px 20px 0;
       }
     }
   </style>
 </head>
 <body>
-
   <!-- Logo -->
   <a href="index.html">
     <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
   </a>
 
-  <!-- Language -->
+  <!-- Language Switch -->
   <div class="language-switch">
     <a href="why-neox.html">EN</a> | <a href="why-neox-zh.html">繁</a>
   </div>
 
   <!-- Main Content -->
   <div class="container">
-    <h1>Why NeoX?</h1>
-    <p><strong>NeoX</strong> isn’t just another token. It’s the core of a visionary Web3 journey.</p>
-    <p>
-      Backed by unique NFT collections and cutting-edge design, NeoX provides real utility, aesthetic identity, and community trust. Every generation of NeoX NFT reflects technological growth, bridging imagination and crypto utility.
-    </p>
-    <p>
-      NeoX is built for the future — one where digital currency is not only functional, but symbolic, inspiring, and secure. We’re not just creating coins. We’re building a timeless digital legacy.
-    </p>
+    <div class="headline">Why NeoX?</div>
+    <div class="text">
+      <p><strong>NeoX</strong> isn’t just another token. It’s the core of a visionary Web3 journey.</p>
+      <p>
+        Backed by unique NFT collections and cutting-edge design, NeoX provides real utility, aesthetic identity, and community trust.
+        Every generation of NeoX NFT reflects technological growth, bridging imagination and crypto utility.
+      </p>
+      <p>
+        NeoX is built for the future — one where digital currency is not only functional, but symbolic, inspiring, and secure.<br>
+        We’re not just creating coins. We’re building a timeless digital legacy.
+      </p>
+    </div>
   </div>
 
-  <!-- Back Button -->
-  <div class="button-wrapper">
+  <!-- Footer Button -->
+  <div class="footer">
     <a href="index.html" class="home-button">← Back to Home</a>
   </div>
-
 </body>
-</html> 
+</html>
