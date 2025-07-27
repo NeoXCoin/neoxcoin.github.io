@@ -5,102 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NeoX 如何運作</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 0;
+      height: 100%;
+    }
+    body {
       background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       color: white;
-      min-height: 100vh;
-    }
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.6);
-      min-height: 100vh;
-      padding: 20px;
-    }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      font-family: Arial, sans-serif;
     }
     .logo {
-      width: 50px;
-      margin-top: 10px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
     }
-    .lang-switch {
-      color: white;
-      margin-right: 10px;
-      margin-top: 10px;
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
-    .lang-switch a {
+    .language-switch a {
       color: white;
       text-decoration: none;
-      margin: 0 5px;
+      margin-left: 10px;
       font-weight: bold;
     }
-    .content {
+    .overlay {
       max-width: 800px;
-      margin: 80px auto 40px auto;
+      margin: 120px auto;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 30px 20px;
+      border-radius: 12px;
       text-align: center;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
     }
-    .content h1 {
-      font-size: 2.2em;
+    .headline {
+      font-size: 28px;
+      font-weight: bold;
       margin-bottom: 20px;
     }
-    .content p {
-      font-size: 1.1em;
-      line-height: 1.8em;
+    .text p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 16px;
     }
-    .back-button {
-      margin-top: 30px;
+    .button-wrap {
+      margin-top: 40px;
     }
-    .back-button a {
+    .home-button {
       display: inline-block;
-      background-color: #00aaff;
-      color: white;
+      background: #00aaff;
+      color: #fff;
       padding: 10px 20px;
-      border-radius: 8px;
       text-decoration: none;
+      border-radius: 8px;
       font-weight: bold;
     }
-
-    @media (max-width: 768px) {
-      .content {
-        margin-top: 60px;
-        padding: 15px;
-      }
-      .content h1 {
-        font-size: 1.6em;
-      }
-      .content p {
-        font-size: 1em;
+    .home-button:hover {
+      background: #0088cc;
+    }
+    @media (max-width: 600px) {
+      .overlay {
+        margin: 100px 20px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="overlay">
-    <div class="header">
-      <img src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" class="logo">
-      <div class="lang-switch">
-        <a href="how-it-works.html">EN</a> | <a href="#">繁</a>
-      </div>
-    </div>
+  <a href="index-zh.html"><img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo"></a>
+  <div class="language-switch"><a href="how-it-works.html">EN</a> | <a href="how-it-works-zh.html">繁</a></div>
 
-    <div class="content">
-      <h1>NeoX 如何運作</h1>
-      <p><strong>NeoX 的設計核心是實用性、安全性與去中心化。</strong></p>
-      <p>NeoX 採用 ERC-20 協議鑄造，確保交易高效穩定，並支援主流錢包如 MetaMask。透過透明合約部署與社群治理，實現 Web3 的價值承諾。</p>
-      <p>除了作為加密貨幣，NeoX 同時提供 NFT 基礎設施，讓用戶能在鏈上鑄造、交易與持有 NFT，建立獨特的數位身份與資產。</p>
-      <p>透過 NeoX，你參與的不只是一次投資，更是加入一個開放、創新與值得信賴的未來數位經濟系統。</p>
-      <div class="back-button">
-        <a href="index-zh.html">← 返回主頁</a>
-      </div>
+  <div class="overlay">
+    <div class="headline">NeoX 如何運作</div>
+    <div class="text">
+      <p><strong>NeoX</strong> 的設計核心是實用性、安全性與去中心化。</p>
+      <p>
+        NeoX 採用 ERC-20 協議鑄造，確保交易高效穩定，並支援主流錢包如 MetaMask。
+        透過透明合約部署與社群治理，實現 Web3 的價值承諾。
+      </p>
+      <p>
+        除了作為加密貨幣，NeoX 同時提供 NFT 基礎設施，讓用戶能在鏈上鑄造、交易與持有 NFT，
+        建立獨特的數位身份與資產。
+      </p>
+      <p>
+        透過 NeoX，你參與的不只是一項投資，更加是一個開放、創新與值得信賴的未來數位經濟系統。
+      </p>
+    </div>
+    <div class="button-wrap">
+      <a href="index-zh.html" class="home-button">← 返回主頁</a>
     </div>
   </div>
 </body>
-</html> 
+</html>
