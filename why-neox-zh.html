@@ -1,96 +1,96 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>什麼是 NeoX？ - NeoX</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>為何選擇 NeoX？</title>
+  <link rel="icon" href="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
-    html, body { margin:0; padding:0; height:100%; }
     body {
-      background: url('https://gateway.lighthouse.storage/ipfs/你舊背景CID') center/cover no-repeat fixed;
+      margin: 0;
+      background: linear-gradient(135deg, #0a0a2a, #1f005c);
+      background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      background-size: cover;
+      background-position: center;
       font-family: Arial, sans-serif;
       color: white;
-      position: relative;
-    }
-    /* 淡化中間覆蓋層 */
-    .overlay {
-      position:absolute;
-      top:0; left:0; width:100%; height:100%;
-      background: rgba(0,0,0,0.5);
-      z-index:1;
-    }
-    /* 內容容器 */
-    .container {
-      position: relative;
-      z-index:2;
-      max-width:800px;
-      margin: calc(15vh + 20px) auto;
-      background: rgba(0,0,0,0.6);
-      border-radius:10px;
-      padding:20px;
       text-align: center;
     }
     .logo {
       position: absolute;
-      top:20px; left:20px;
-      width:60px;
-      z-index:3;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      opacity: 0.85;
     }
-    .lang-switch {
-      position:absolute;
-      top:20px; right:20px;
-      z-index:3;
-    }
-    .lang-switch a {
-      color:white; margin-left:8px; text-decoration:none; font-weight:bold;
+    .content {
+      max-width: 800px;
+      margin: 100px auto 60px;
+      padding: 0 20px;
     }
     h1 {
-      font-size:32px; margin-bottom:16px;
+      font-size: 28px;
+      margin-bottom: 30px;
     }
     p {
-      font-size:16px; line-height:1.6; margin-bottom:16px; text-align:left;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
-    ul {
-      text-align:left; padding-left:40px;
+    .home-button {
+      margin-top: 40px;
     }
-    .btn-home {
-      display:inline-block;
-      margin-top:24px;
-      padding:12px 24px;
-      background:#00aaff;
-      color:white;
-      text-decoration:none;
-      border-radius:8px;
-      font-size:16px;
+    .btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
     }
-    .btn-home:hover { background:#0088cc; }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 16px;
+    }
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        margin: 60px auto 40px;
+      }
+    }
   </style>
 </head>
 <body>
-  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo"/>
-  <div class="lang-switch">
+  <a href="index-zh.html">
+    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
+  </a>
+  <div class="language-switch">
     <a href="why-neox.html">EN</a> | <a href="why-neox-zh.html">繁</a>
   </div>
 
-  <div class="overlay"></div>
+  <div class="content">
+    <h1>為何選擇 NeoX？</h1>
+    <p><strong>技術創新：</strong>NeoX 採用先進的智能合約架構，確保每一次交易都具備高效、安全及透明特性。</p>
+    <p><strong>去中心化治理：</strong>透過社群驅動的治理模型，用戶能真正參與決策，提升整個生態系的公平與可信度。</p>
+    <p><strong>稀有資產：</strong>NeoX 的代幣與 NFT 系統稀有且具收藏價值，為長期持有者提供潛在升值空間。</p>
+    <p><strong>國際視野：</strong>NeoX 面向全球市場，設有多語言支援與國際化推廣策略，擴大應用與認受性。</p>
+    <p><strong>生態可持續性：</strong>透過綠能部署與模組化設計，NeoX 力求打造一個具長期發展潛力的區塊鏈基礎建設。</p>
 
-  <div class="container">
-    <h1>什麼是 NeoX？</h1>
-    <p>
-      NeoX 是下一代的數位貨幣與區塊鏈生態系統，專為 Web3 時代而生，結合去中心化金融（DeFi）、數位身份與資產所有權，致力提供安全、便捷、可擴展的解決方案。
-    </p>
-    <p><strong>🔗 面向未來的設計</strong><br/>
-      NeoX 打破傳統金融與去中心化創新的隔閡，透過智能合約、跨鏈支援與 NFT 基礎建設，
-      讓使用者與開發者都能在這場數位經濟浪潮中茁壯。
-    </p>
-    <p><strong>⚙️核心特色</strong></p>
-    <ul>
-      <li>基於 ERC‑20 的 NXC 代幣，提供安全與交易速度</li>
-      <li>支援 MetaMask 等主流錢包跨平台使用</li>
-      <li>可發行 NFT，並內建鏈上治理機制</li>
-      <li>開源開放，社群驅動開發路線圖</li>
-    </ul>
-    <a href="index-zh.html" class="btn-home">← 返回主頁</a>
+    <div class="home-button">
+      <a class="btn" href="index-zh.html">返回主頁</a>
+    </div>
   </div>
 </body>
-</html>
+</html> 
