@@ -61,6 +61,13 @@
       font-size: 28px;
       font-weight: bold;
       margin: 10px 0 30px 0;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .btn-row {
@@ -71,21 +78,24 @@
     }
 
     .btn {
+      background: linear-gradient(145deg, #f0f0f0, #a9a9a9);
+      color: black;
+      border: 1px solid #ccc;
       padding: 12px 24px;
-      border-radius: 8px;
+      border-radius: 10px;
       font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
       text-decoration: none;
-      font-weight: bold;
-      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-      color: #000;
-      border: none;
-      transition: all 0.3s ease;
+      min-width: 180px;
+      box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.3);
+      transition: all 0.2s ease-in-out;
     }
 
     .btn:hover {
-      opacity: 0.85;
-      transform: translateY(-2px);
+      background: linear-gradient(145deg, #d0d0d0, #909090);
+      transform: translateY(1px);
+      box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
     }
 
     .nav-bar {
@@ -93,6 +103,7 @@
       justify-content: center;
       gap: 24px;
       margin-top: 20px;
+      flex-wrap: wrap;
     }
 
     .nav-bar a {
@@ -108,7 +119,6 @@
         align-items: center;
         gap: 12px;
       }
-
       .coin {
         width: 265px;
         max-width: 100%;
@@ -137,11 +147,11 @@
       <a href="troubleshooting.html">Troubleshooting</a>
     </div>
 
-    <div class="headline">The future is coming — Own the currency that empowers Web3 freedom.</div>
+    <div class="headline">The future is coming — own it today</div>
 
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">🛒 Buy NXC</a>
-      <a class="btn" href="https://neoxcoin.github.io/how-to-buy.html#metamask">🦊 Buy via MetaMask</a>
+      <a class="btn" href="https://neoxcoin.github.io/buy-on-metamask.html">🦊 Buy via MetaMask</a>
       <a class="btn" href="https://neoxcoin.github.io/add-to-metamask.html">🦊 Add to MetaMask</a>
     </div>
   </div>
