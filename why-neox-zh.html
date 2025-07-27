@@ -3,94 +3,195 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>為何選擇 NeoX？</title>
-  <link rel="icon" href="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
+  <title>什麼是 NeoX？</title>
   <style>
-    body {
+    html, body {
       margin: 0;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      padding: 0;
+      height: 100%;
+      font-family: "Arial", sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    body {
+      background: radial-gradient(ellipse at center, #0a0f2c 0%, #090a1a 100%);
+      position: relative;
+    }
+
+    canvas#particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .image-bg {
+      background-image: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44");
       background-size: cover;
       background-position: center;
-      font-family: Arial, sans-serif;
-      color: white;
+      background-repeat: no-repeat;
+      opacity: 0.25;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      max-width: 850px;
+      margin: 120px auto 0;
+      padding: 30px;
+      background: rgba(0, 0, 0, 0.55);
+      border-radius: 12px;
       text-align: center;
     }
+
     .logo {
       position: absolute;
       top: 20px;
       left: 20px;
       width: 60px;
-      opacity: 0.85;
+      z-index: 3;
     }
-    .content {
-      max-width: 800px;
-      margin: 100px auto 60px;
-      padding: 0 20px;
-    }
-    h1 {
-      font-size: 28px;
-      margin-bottom: 30px;
-    }
-    p {
-      font-size: 18px;
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-    .home-button {
-      margin-top: 40px;
-    }
-    .btn {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .btn:hover {
-      background-color: #0056b3;
-    }
+
     .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
-      font-size: 16px;
+      z-index: 3;
     }
+
     .language-switch a {
       color: white;
       text-decoration: none;
-      margin: 0 8px;
+      margin-left: 10px;
+      font-weight: bold;
     }
 
-    @media (max-width: 600px) {
-      .content {
-        margin: 60px auto 40px;
-      }
+    .content h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin: 12px 0;
+    }
+
+    .button-wrapper {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .home-button {
+      color: white;
+      background-color: #00aaff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .home-button:hover {
+      background-color: #0088cc;
     }
   </style>
 </head>
 <body>
-  <a href="index-zh.html">
-    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
+  <!-- 粒子動畫 -->
+  <canvas id="particles"></canvas>
+
+  <!-- 背景圖片 -->
+  <div class="image-bg"></div>
+
+  <!-- NeoX Logo -->
+  <a href="index.html">
+    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
   </a>
+
+  <!-- 語言切換 -->
   <div class="language-switch">
-    <a href="why-neox.html">EN</a> | <a href="why-neox-zh.html">繁</a>
+    <a href="what-is-neox.html">EN</a> | <a href="what-is-neox-zh.html">繁</a>
   </div>
 
+  <!-- 內容 -->
   <div class="content">
-    <h1>為何選擇 NeoX？</h1>
-    <p><strong>技術創新：</strong>NeoX 採用先進的智能合約架構，確保每一次交易都具備高效、安全及透明特性。</p>
-    <p><strong>去中心化治理：</strong>透過社群驅動的治理模型，用戶能真正參與決策，提升整個生態系的公平與可信度。</p>
-    <p><strong>稀有資產：</strong>NeoX 的代幣與 NFT 系統稀有且具收藏價值，為長期持有者提供潛在升值空間。</p>
-    <p><strong>國際視野：</strong>NeoX 面向全球市場，設有多語言支援與國際化推廣策略，擴大應用與認受性。</p>
-    <p><strong>生態可持續性：</strong>透過綠能部署與模組化設計，NeoX 力求打造一個具長期發展潛力的區塊鏈基礎建設。</p>
+    <h1>什麼是 NeoX？</h1>
+    <p>NeoX 是一種新一代加密貨幣，結合了創新科技與數位資產的未來願景。我們不只是一枚代幣，更是一場 Web3 革命的開端。</p>
+    <p>NeoX 的設計理念融合了安全性、可擴展性與社群驅動，讓每一位持有者都能參與並見證區塊鏈世界的演進。透過 NFT 系列、DAO 治理及即將推出的 NeoX Coin，打造一個完整、生態互聯的未來金融網絡。</p>
+    <p>我們的目標是：令虛擬資產更容易被大眾接受、理解與使用，從而推動全球的數位轉型與自由經濟。</p>
 
-    <div class="home-button">
-      <a class="btn" href="index-zh.html">返回主頁</a>
+    <div class="button-wrapper">
+      <a href="index.html" class="home-button">返回主頁</a>
     </div>
   </div>
+
+  <!-- 粒子效果 JavaScript -->
+  <script>
+    const canvas = document.getElementById("particles");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.radius = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = "#00ffff";
+        ctx.fill();
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+    }
+
+    function init() {
+      particles = [];
+      for (let i = 0; i < 120; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    init();
+    animate();
+  </script>
 </body>
-</html> 
+</html>
