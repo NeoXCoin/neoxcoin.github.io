@@ -1,117 +1,96 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>什麼是 NeoX？ - NeoX</title>
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
-      color: white;
+    html, body { margin:0; padding:0; height:100%; }
+    body {
+      background: url('https://gateway.lighthouse.storage/ipfs/你舊背景CID') center/cover no-repeat fixed;
       font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+      color: white;
+      position: relative;
     }
-
+    /* 淡化中間覆蓋層 */
+    .overlay {
+      position:absolute;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.5);
+      z-index:1;
+    }
+    /* 內容容器 */
+    .container {
+      position: relative;
+      z-index:2;
+      max-width:800px;
+      margin: calc(15vh + 20px) auto;
+      background: rgba(0,0,0,0.6);
+      border-radius:10px;
+      padding:20px;
+      text-align: center;
+    }
     .logo {
       position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
+      top:20px; left:20px;
+      width:60px;
+      z-index:3;
     }
-
-    .language-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+    .lang-switch {
+      position:absolute;
+      top:20px; right:20px;
+      z-index:3;
     }
-
-    .language-switch a {
-      color: white;
-      text-decoration: none;
-      margin-left: 10px;
-      font-weight: bold;
+    .lang-switch a {
+      color:white; margin-left:8px; text-decoration:none; font-weight:bold;
     }
-
-    .container {
-      max-width: 800px;
-      margin: 120px auto 0;
-      padding: 20px;
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 10px;
+    h1 {
+      font-size:32px; margin-bottom:16px;
     }
-
-    .headline {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 20px;
+    p {
+      font-size:16px; line-height:1.6; margin-bottom:16px; text-align:left;
     }
-
-    .text {
-      font-size: 16px;
-      line-height: 1.6;
+    ul {
+      text-align:left; padding-left:40px;
     }
-
-    .button-wrapper {
-      text-align: center;
-      margin: 40px 0 60px 0;
+    .btn-home {
+      display:inline-block;
+      margin-top:24px;
+      padding:12px 24px;
+      background:#00aaff;
+      color:white;
+      text-decoration:none;
+      border-radius:8px;
+      font-size:16px;
     }
-
-    .home-button {
-      color: white;
-      background-color: #00aaff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      display: inline-block;
-    }
-
-    .home-button:hover {
-      background-color: #0088cc;
-    }
+    .btn-home:hover { background:#0088cc; }
   </style>
 </head>
 <body>
-  <!-- NeoX Logo -->
-  <a href="index-zh.html">
-    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
-  </a>
-
-  <!-- 語言切換 -->
-  <div class="language-switch">
-    <a href="what-is-neox.html">EN</a> | <a href="what-is-neox-zh.html">繁</a>
+  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo"/>
+  <div class="lang-switch">
+    <a href="why-neox.html">EN</a> | <a href="why-neox-zh.html">繁</a>
   </div>
 
-  <!-- 主要內容 -->
+  <div class="overlay"></div>
+
   <div class="container">
-    <div class="headline">什麼是 NeoX？</div>
-    <div class="text">
-      <p>
-        NeoX 是一種新一代加密貨幣，結合了創新科技與數位資產的未來願景。我們不只是⼀枚代幣，更是一場 Web3 革命的開端。
-      </p>
-      <p>
-        NeoX 的設計理念融合了安全性、可擴展性與社群驅動，讓每一位持有者都能參與並見證區塊鏈世界的演進。
-        透過 NFT 系列、DAO 治理及即將推出的 NeoX Coin，打造一個完整、⽣態互聯的未來金融網絡。
-      </p>
-      <p>
-        我們的⽬標是：令虛擬資產更容易被⼤眾接觸、理解與使⽤，從⽽推動全球的數位轉型與自由經濟。
-      </p>
-    </div>
-  </div>
-
-  <!-- 返回主頁 按鈕 -->
-  <div class="button-wrapper">
-    <a href="index-zh.html" class="home-button">← 返回主頁</a>
+    <h1>什麼是 NeoX？</h1>
+    <p>
+      NeoX 是下一代的數位貨幣與區塊鏈生態系統，專為 Web3 時代而生，結合去中心化金融（DeFi）、數位身份與資產所有權，致力提供安全、便捷、可擴展的解決方案。
+    </p>
+    <p><strong>🔗 面向未來的設計</strong><br/>
+      NeoX 打破傳統金融與去中心化創新的隔閡，透過智能合約、跨鏈支援與 NFT 基礎建設，
+      讓使用者與開發者都能在這場數位經濟浪潮中茁壯。
+    </p>
+    <p><strong>⚙️核心特色</strong></p>
+    <ul>
+      <li>基於 ERC‑20 的 NXC 代幣，提供安全與交易速度</li>
+      <li>支援 MetaMask 等主流錢包跨平台使用</li>
+      <li>可發行 NFT，並內建鏈上治理機制</li>
+      <li>開源開放，社群驅動開發路線圖</li>
+    </ul>
+    <a href="index-zh.html" class="btn-home">← 返回主頁</a>
   </div>
 </body>
 </html>
