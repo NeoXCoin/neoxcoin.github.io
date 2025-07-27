@@ -57,47 +57,10 @@
       margin: 30px auto;
     }
 
-    .nav-bar {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-bar a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
     .headline {
-      margin: 20px 0 30px 0;
-      line-height: 1.6;
-    }
-
-    .headline span {
-      display: block;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1s ease-out forwards;
-    }
-
-    .headline span:nth-child(1) { animation-delay: 0.5s; }
-    .headline span:nth-child(2) { animation-delay: 1s; }
-    .headline span:nth-child(3) { animation-delay: 1.5s; }
-    .headline span:nth-child(4) { animation-delay: 2s; }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      font-size: 28px;
+      font-weight: bold;
+      margin: 10px 0 30px 0;
     }
 
     .btn-row {
@@ -105,34 +68,38 @@
       gap: 15px;
       flex-wrap: wrap;
       justify-content: center;
-      margin-top: 25px;
     }
 
     .btn {
-      background: linear-gradient(to right, #2e8bff, #7b4fff);
-      color: white;
-      border: none;
-      padding: 14px 28px;
-      border-radius: 10px;
+      padding: 12px 24px;
+      border-radius: 8px;
       font-size: 16px;
-      font-weight: bold;
       cursor: pointer;
-      transition: all 0.3s ease;
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      font-weight: bold;
+      background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+      color: #000;
+      border: none;
+      transition: all 0.3s ease;
     }
 
     .btn:hover {
+      opacity: 0.85;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0, 136, 255, 0.6);
     }
 
-    .btn:active {
-      transform: translateY(1px);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3) inset;
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 20px;
+    }
+
+    .nav-bar a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
     }
 
     @media (max-width: 600px) {
@@ -148,11 +115,6 @@
         margin: 20px auto;
         display: block;
       }
-
-      .btn-row {
-        flex-direction: column;
-        align-items: center;
-      }
     }
   </style>
 </head>
@@ -165,7 +127,7 @@
   <div class="container">
     <div class="tagline">Web3 Revolution, Led by NeoX</div>
     <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin"/>
-
+    
     <div class="nav-bar">
       <a href="what-is-neox.html">What is NeoX?</a>
       <a href="how-to-buy.html">How to Buy?</a>
@@ -175,24 +137,13 @@
       <a href="troubleshooting.html">Troubleshooting</a>
     </div>
 
-    <div class="headline">
-      <span>The future is coming — Own the currency that empowers Web3 freedom.</span>
-      <span>Shape the future with NeoX — the next evolution in digital currency.</span>
-      <span>Be part of the Web3 revolution — NeoX puts control back in your hands.</span>
-      <span>Own your freedom. Own the future. Own NeoX.</span>
-    </div>
+    <div class="headline">The future is coming — Own the currency that empowers Web3 freedom.</div>
 
     <div class="btn-row">
-      <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">
-        🛒 Buy NXC
-      </a>
-      <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/">
-        🦊 Buy via MetaMask
-      </a>
-      <a class="btn" href="https://neoxcoin.github.io/add-to-metamask.html">
-        🦊 Add to MetaMask
-      </a>
+      <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">🛒 Buy NXC</a>
+      <a class="btn" href="https://neoxcoin.github.io/how-to-buy.html#metamask">🦊 Buy via MetaMask</a>
+      <a class="btn" href="https://neoxcoin.github.io/add-to-metamask.html">🦊 Add to MetaMask</a>
     </div>
   </div>
 </body>
-</html> 
+</html>
