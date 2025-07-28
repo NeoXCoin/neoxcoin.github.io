@@ -10,7 +10,6 @@
       margin: 0;
       padding: 40px 20px;
       background: linear-gradient(to bottom right, #0a0a2a, #1f005c);
-      background-size: cover;
       font-family: Arial, sans-serif;
       color: white;
       line-height: 1.6;
@@ -56,17 +55,32 @@
       color: #ddd;
     }
 
+    .back-btn {
+      display: block;
+      margin: 30px auto 10px;
+      text-align: center;
+      background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
+      color: black;
+      padding: 12px 26px;
+      border-radius: 12px;
+      font-size: 16px;
+      text-decoration: none;
+      width: fit-content;
+      border: 3px solid #e0e0e0;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+    }
+
     .footer {
       text-align: center;
       margin-top: 40px;
       font-size: 13px;
       opacity: 0.6;
-    }
-
-    @media (max-width: 600px) {
-      .content {
-        padding: 20px;
-      }
     }
   </style>
 </head>
@@ -74,24 +88,26 @@
   <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
 
   <div class="language-switch">
-    <a href="disclaimer.html">繁體中文</a>
+    <a href="disclaimer-en.html">EN</a> | <a href="disclaimer-zh.html">繁</a>
   </div>
 
   <h1>Disclaimer</h1>
 
   <div class="content">
     <p>
-      The information provided on this website is for general informational purposes only and does not constitute financial, investment, legal, or other professional advice. NeoX is a community-driven project, and its token (NXC) is currently intended for experimental and educational use only.
+      The information provided on this website is for general informational purposes only and does not constitute financial, investment, legal, or professional advice. NeoX is a community-driven project, and its token (NXC) is currently experimental and intended for educational purposes.
     </p>
     <p>
-      We make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose. Any reliance you place on such information is strictly at your own risk.
+      We make no warranties or representations, express or implied, about the completeness, accuracy, reliability, or availability of the content on this site. Any reliance you place on such information is strictly at your own risk.
     </p>
     <p>
-      Cryptocurrency and Web3 projects involve significant risks. Please do your own research (DYOR) and consult a qualified professional before making any decisions. NeoX and its developers are not responsible for any loss or damage, including without limitation, indirect or consequential loss or damage, arising from or in connection with the use of this website or the associated digital assets.
+      Cryptocurrency and Web3 projects involve high risk. Please conduct your own research (DYOR) and consult qualified professionals before making any decisions. NeoX and its development team shall not be held liable for any loss or damage arising from the use of this website or any associated digital assets.
     </p>
     <p>
-      By interacting with this site or related smart contracts, you acknowledge and agree to these terms.
+      By using this site or interacting with its content, you acknowledge that you have read, understood, and agreed to the terms of this disclaimer.
     </p>
+
+    <a class="back-btn" href="index.html">← Back to Home</a>
   </div>
 
   <div class="footer">
