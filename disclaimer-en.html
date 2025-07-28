@@ -3,58 +3,99 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Disclaimer - NeoX</title>
+  <title>NeoX Disclaimer</title>
+  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
-      background-color: #0a0a2a;
-      color: white;
-      font-family: Arial, sans-serif;
+      margin: 0;
       padding: 40px 20px;
-      line-height: 1.7;
+      background: linear-gradient(to bottom right, #0a0a2a, #1f005c);
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: white;
+      line-height: 1.6;
     }
-    h1 {
-      text-align: center;
-      font-size: 26px;
-      margin-bottom: 30px;
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      opacity: 0.85;
     }
-    p {
-      margin-bottom: 20px;
-      color: #ccc;
-    }
-    a.back {
-      display: inline-block;
-      margin-top: 40px;
-      text-decoration: none;
-      color: #00bfff;
+
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
       font-size: 15px;
     }
-    a.back:hover {
-      text-decoration: underline;
+
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      margin-left: 10px;
     }
-    .footer {
-      margin-top: 60px;
-      font-size: 13px;
-      color: #666;
+
+    h1 {
       text-align: center;
+      margin-top: 80px;
+      font-size: 26px;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    .content p {
+      font-size: 15px;
+      color: #ddd;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 13px;
       opacity: 0.6;
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
+  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+
+  <div class="language-switch">
+    <a href="disclaimer.html">繁體中文</a>
+  </div>
+
   <h1>Disclaimer</h1>
 
-  <p><strong>NeoX</strong> is a community-driven Web3 project that is currently in development and experimentation stage. The information provided on this website and associated platforms is for general informational and educational purposes only.</p>
+  <div class="content">
+    <p>
+      The information provided on this website is for general informational purposes only and does not constitute financial, investment, legal, or other professional advice. NeoX is a community-driven project, and its token (NXC) is currently intended for experimental and educational use only.
+    </p>
+    <p>
+      We make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose. Any reliance you place on such information is strictly at your own risk.
+    </p>
+    <p>
+      Cryptocurrency and Web3 projects involve significant risks. Please do your own research (DYOR) and consult a qualified professional before making any decisions. NeoX and its developers are not responsible for any loss or damage, including without limitation, indirect or consequential loss or damage, arising from or in connection with the use of this website or the associated digital assets.
+    </p>
+    <p>
+      By interacting with this site or related smart contracts, you acknowledge and agree to these terms.
+    </p>
+  </div>
 
-  <p>Nothing on this website constitutes financial, investment, legal, or other professional advice. You should not interpret any of the content as encouragement to purchase, hold, or trade cryptocurrencies or any related digital assets.</p>
-
-  <p>By interacting with NeoX services, smart contracts, or content, you agree that you do so at your own risk. NeoX and its contributors are not responsible for any losses, damages, or risks that may arise, including but not limited to loss of funds, technical issues, or regulatory uncertainties.</p>
-
-  <p>Cryptocurrency markets are volatile and unpredictable. Please do your own research (DYOR) and consult a qualified financial advisor before making any investment decisions.</p>
-
-  <p>NeoX does not guarantee the accuracy, completeness, or security of the content provided. All features, visuals, and token functionalities are subject to change without notice.</p>
-
-  <a class="back" href="index.html">← Back to Home</a>
-
-  <div class="footer">© 2025 NeoX. This page is for informational purposes only and does not constitute legal advice.</div>
+  <div class="footer">
+    © 2025 NeoX. All rights reserved.
+  </div>
 </body>
 </html>
