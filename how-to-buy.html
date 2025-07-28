@@ -17,6 +17,7 @@
       text-align: center;
       padding: 80px 20px 40px;
     }
+
     .logo {
       position: absolute;
       top: 20px;
@@ -24,137 +25,147 @@
       width: 60px;
       opacity: 0.85;
     }
+
     .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
       font-size: 16px;
     }
+
     .language-switch a {
       color: white;
       text-decoration: none;
       margin: 0 8px;
     }
+
     h1 {
       font-size: 28px;
       margin-bottom: 20px;
-      color: #00bfff;
     }
+
     p {
       font-size: 18px;
-      line-height: 1.6;
+      line-height: 1.8;
       max-width: 720px;
       margin: 0 auto 20px;
     }
+
+    .tip {
+      font-size: 15px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-left: 4px solid #00d9ff;
+      padding: 12px;
+      margin: 30px auto;
+      max-width: 720px;
+      color: #ddd;
+      text-align: left;
+      border-radius: 8px;
+    }
+
     a {
       color: #00d9ff;
       text-decoration: none;
     }
-    .btn-blue {
+
+    .btn-buy, .button-back {
       display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-buy {
       background-color: #00bfff;
       color: white;
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-top: 20px;
     }
-    .btn-blue:hover {
-      background-color: #008ac7;
+
+    .btn-buy:hover {
+      background-color: #0099cc;
     }
+
     .button-back {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 12px 24px;
       background-color: #007bff;
       color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 16px;
     }
+
     .button-back:hover {
       background-color: #0056b3;
     }
-    .reminder-box {
-      margin-top: 30px;
-      background-color: rgba(255, 255, 255, 0.08);
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .reminder-box p {
-      margin-bottom: 10px;
-      font-size: 16px;
-    }
-    code {
-      background-color: rgba(0,0,0,0.3);
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
+
     .footer {
       margin-top: 60px;
       font-size: 13px;
       opacity: 0.6;
     }
+
     @media (max-width: 600px) {
       body {
-        padding-top: 120px;
+        padding-top: 100px;
       }
+
       .button-back {
         margin-bottom: 40px;
+      }
+
+      .tip {
+        text-align: left;
+        font-size: 14px;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Logo -->
   <a href="index.html">
     <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   </a>
 
+  <!-- Language Switch -->
   <div class="language-switch">
     <a href="how-to-buy.html">EN</a> | <a href="how-to-buy-zh.html">繁</a>
   </div>
 
+  <!-- Main Title -->
   <h1>🛒 How to Buy NeoX?</h1>
 
-  <p><strong>NeoX is currently in the testing phase.</strong><br/>You can experience the process in just a few steps:</p>
+  <p><strong>⚠️ This page is for test purposes only. NeoX is not officially launched. Please do not use real funds.</strong></p>
 
-  <p>1️⃣ Install and open the 🦊 MetaMask wallet:<br/>
+  <p>Just a few simple steps to try buying NeoX test token:</p>
+
+  <p>1️⃣ Install and open 🦊<strong>MetaMask Wallet</strong><br/>
      👉 <a href="https://metamask.io/download/" target="_blank">Download from official website</a></p>
 
-  <p>2️⃣ Switch your network to <strong>Sepolia Testnet</strong></p>
+  <p>2️⃣ Switch to <strong>Sepolia Testnet</strong><br/>
+     👉 Use <a href="https://chainlist.org/?search=sepolia" target="_blank">Chainlist.org one-click add</a></p>
 
-  <p>3️⃣ Get free Sepolia ETH from a faucet:<br/>
-     🔗 <a href="https://faucet.quicknode.com/ethereum/sepolia" target="_blank">QuickNode Sepolia Faucet</a></p>
+  <p>3️⃣ Claim Sepolia test ETH<br/>
+     🔗 Use <a href="https://faucet.quicknode.com/ethereum/sepolia" target="_blank">Google Sepolia Faucet (Web3 supported)</a></p>
 
-  <p>4️⃣ Visit the NeoX testnet platform and try minting NXC</p>
+  <p>4️⃣ Visit the NeoX test platform and try buying</p>
 
-  <h1>🚀 Start Your Free NeoX Test</h1>
+  <!-- Buy Button -->
+  <a class="btn-buy" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1" target="_blank">🚀 Buy NXC Test Token</a>
 
-  <p>🔹 One-click Sepolia network config:<br/>
-     👉 <a href="https://chainlist.org/?search=sepolia" target="_blank">https://chainlist.org</a></p>
-
-  <p>🔹 Get free Sepolia ETH:<br/>
-     👉 <a href="https://faucet.quicknode.com" target="_blank">https://faucet.quicknode.com</a></p>
-
-  <p>🔹 Mint your test NXC token:</p>
-  <a class="btn-blue" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1" target="_blank">🛒 Buy NXC Test Token</a>
-
-  <div class="reminder-box">
-    <p>📌 <strong>Reminder:</strong> If NXC doesn't appear in your 🦊MetaMask wallet, please add it manually:</p>
-    <p>Contract Address:<br/>
-      <code>0x80AD039927cDf2341c1428b0ABF8D3421dc122e1</code></p>
-    <p>You can also use the “🦊 Add to MetaMask” button on the homepage for one-click import.</p>
+  <!-- Contract Info Tip -->
+  <div class="tip">
+    💡 <strong>Tip:</strong><br/>
+    If NXC doesn't show in 🦊MetaMask after minting, you can add it manually:<br/>
+    ➤ <strong>Contract Address:</strong><br/>
+    <code>0x80AD039927cDf2341c1428b0ABF8D3421dc122e1</code><br/>
+    ➤ <strong>Token Symbol:</strong> NXC<br/>
+    ➤ <strong>Decimals:</strong> 18
   </div>
 
+  <!-- Back Button -->
   <a class="button-back" href="index.html">← Back to Home</a>
 
+  <!-- Footer -->
   <div class="footer">
-    © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer.html" style="color:#ccc;">Disclaimer</a>
+    © 2025 NeoX. All rights reserved. ｜ <a href="disclaimer.html" style="color: inherit; text-decoration: none;">Disclaimer</a>
   </div>
 </body>
 </html>
