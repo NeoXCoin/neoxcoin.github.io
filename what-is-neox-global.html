@@ -11,6 +11,7 @@
       background: linear-gradient(135deg, #001f3f, #32004b);
       color: #ffffff;
     }
+
     .bg-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -21,6 +22,7 @@
       opacity: 0.25;
       z-index: -1;
     }
+
     .logo {
       position: absolute;
       top: 20px;
@@ -28,12 +30,14 @@
       opacity: 0.6;
       height: 50px;
     }
+
     #google_translate_element {
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 1000;
+      z-index: 999;
     }
+
     .container {
       max-width: 800px;
       margin: 120px auto 40px;
@@ -42,20 +46,24 @@
       border-radius: 12px;
       text-align: center;
     }
+
     h1 {
       font-size: 32px;
       margin-bottom: 20px;
     }
+
     .icon {
       font-size: 18px;
       margin: 12px 0;
     }
+
     ul {
       list-style: disc;
       text-align: left;
       padding-left: 20px;
       margin-top: 20px;
     }
+
     .back-button {
       display: block;
       width: 200px;
@@ -69,41 +77,44 @@
       text-align: center;
       text-decoration: none;
     }
+
     .back-button:hover {
       background-color: #0088cc;
     }
+
     .footer {
       text-align: center;
       font-size: 13px;
       color: rgba(255, 255, 255, 0.5);
       margin-bottom: 30px;
     }
+
     @media (max-width: 768px) {
       .container {
         margin: 100px 20px;
         padding: 30px;
       }
+
       h1 {
         font-size: 26px;
       }
     }
   </style>
 
-  <!-- Google Translate Script -->
+  <!-- Google Translate -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement(
-        { pageLanguage: 'en' },
-        'google_translate_element'
-      );
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
     }
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
+
 <body>
   <div class="bg-overlay"></div>
 
-  <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6erwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+  <!-- LOGO & Translate -->
+  <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   <div id="google_translate_element"></div>
 
   <div class="container">
