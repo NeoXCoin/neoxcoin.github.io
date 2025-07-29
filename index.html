@@ -5,19 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NeoX Coin</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
-
-  <!-- Google Translate Script -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
   <style>
     body {
       margin: 0;
@@ -36,13 +23,6 @@
       left: 20px;
       width: 60px;
       opacity: 0.85;
-    }
-
-    #google_translate_element {
-      position: absolute;
-      top: 20px;
-      right: 160px;
-      z-index: 999;
     }
 
     .language-switch {
@@ -156,6 +136,15 @@
       opacity: 0.6;
     }
 
+    .footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 600px) {
       .nav-bar {
         flex-direction: column;
@@ -174,22 +163,16 @@
         margin: 20px auto;
         display: block;
       }
-
-      #google_translate_element {
-        right: 20px;
-        top: 60px;
-      }
     }
   </style>
 </head>
-
 <body>
   <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
 
-  <div id="google_translate_element"></div>
-
   <div class="language-switch">
-    <a href="index.html">EN</a> | <a href="index-zh.html">繁</a>
+    <a href="index.html">EN</a> |
+    <a href="index-zh.html">繁</a> |
+    <a href="index-global.html" title="Translate"><span style="font-size: 18px;">🌍</span></a>
   </div>
 
   <div class="container">
@@ -220,7 +203,7 @@
 
     <div class="footer">
       © 2025 NeoX. All rights reserved. |
-      <a href="disclaimer-en.html" style="color: #ccc; text-decoration: none;">Disclaimer</a>
+      <a href="disclaimer-en.html">Disclaimer</a>
     </div>
   </div>
 </body>
