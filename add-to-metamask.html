@@ -11,7 +11,9 @@
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 40px 20px;
+      position: relative;
     }
+
     .logo {
       width: 60px;
       position: absolute;
@@ -19,6 +21,20 @@
       left: 20px;
       opacity: 0.85;
     }
+
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
     .btn {
       background-color: #007bff;
       color: white;
@@ -31,19 +47,23 @@
       text-decoration: none;
       display: inline-block;
     }
+
     .btn:hover {
       background-color: #0056b3;
     }
+
     .note {
       margin-top: 30px;
       font-size: 14px;
       color: #aaa;
     }
+
     .footer {
       margin-top: 60px;
       font-size: 13px;
       color: rgba(255, 255, 255, 0.5);
     }
+
     .footer a {
       color: #aaa;
       text-decoration: none;
@@ -51,7 +71,14 @@
   </style>
 </head>
 <body>
+  <!-- Logo -->
   <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+
+  <!-- Language Switch -->
+  <div class="language-switch">
+    <a href="add-to-metamask.html">EN</a> | <a href="add-to-metamask-zh.html">繁</a>
+  </div>
+
   <h1>Add NXC Token to MetaMask</h1>
   <p>Click the button below to add the NeoX Token (NXC) to your MetaMask wallet.</p>
 
