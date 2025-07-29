@@ -3,8 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX Coin</title>
+  <title>NeoX Coin – Global</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
+  
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
   <style>
     body {
       margin: 0;
@@ -25,19 +38,11 @@
       opacity: 0.85;
     }
 
-    .top-bar {
+    #google_translate_element {
       position: absolute;
       top: 20px;
       right: 20px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 16px;
-    }
-
-    .top-bar a {
-      color: white;
-      text-decoration: none;
+      z-index: 999;
     }
 
     .container {
@@ -60,11 +65,6 @@
       margin: 30px auto;
     }
 
-    .headline {
-      margin: 20px 0 30px 0;
-      line-height: 1.6;
-    }
-
     .headline span {
       display: block;
       opacity: 0;
@@ -79,14 +79,8 @@
     .headline span:nth-child(4) { animation-delay: 2s; }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .nav-bar {
@@ -120,9 +114,7 @@
       border-radius: 12px;
       font-size: 16px;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
       text-decoration: none;
-      display: inline-block;
       min-width: 180px;
       box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     }
@@ -153,32 +145,17 @@
       .coin {
         width: 265px;
         max-width: 100%;
-        margin: 20px auto;
-        display: block;
       }
     }
   </style>
-
-  <!-- Google Translate -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-    }
-  </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
   <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-
-  <!-- Top Bar with Google Translate and Language Switch -->
-  <div class="top-bar">
-    <div id="google_translate_element">🌐</div>
-    <a href="index.html">EN</a> | <a href="index-zh.html">繁</a>
-  </div>
+  <div id="google_translate_element"></div>
 
   <div class="container">
     <div class="tagline">Web3 Revolution, Led by NeoX</div>
-    <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin"/>
+    <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin" />
 
     <div class="nav-bar">
       <a href="what-is-neox.html">What is NeoX?</a>
@@ -199,7 +176,7 @@
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">🛒 Buy NXC</a>
       <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/">🦊 Buy via MetaMask</a>
-      <a class="btn" href="https://neoxcoin.github.io/add-to-metamask.html">🦊 Add to MetaMask</a>
+      <a class="btn" href="add-to-metamask.html">🦊 Add to MetaMask</a>
     </div>
 
     <div class="footer">
