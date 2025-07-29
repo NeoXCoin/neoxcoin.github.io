@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>What is NeoX? - Global</title>
+  <title>What is NeoX?</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #000;
+      background: linear-gradient(135deg, #001f3f, #32004b);
       color: #ffffff;
     }
 
@@ -19,17 +19,8 @@
       height: 100%;
       background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
       background-size: cover;
-      opacity: 0.15; /* 深啲 */
+      opacity: 0.25;
       z-index: -1;
-    }
-
-    .logo {
-      position: fixed;
-      top: 40px;
-      left: 20px;
-      height: 50px;
-      opacity: 0.8;
-      z-index: 1000;
     }
 
     .google-translate {
@@ -39,11 +30,20 @@
       z-index: 1000;
     }
 
+    .logo {
+      position: fixed;
+      top: 40px;
+      left: 20px;
+      opacity: 0.8;
+      height: 50px;
+      z-index: 1000;
+    }
+
     .container {
       max-width: 800px;
-      margin: 140px auto 40px;
+      margin: 120px auto 40px;
       padding: 40px;
-      background-color: rgba(0, 0, 0, 0.4); /* 深啲嘅透明 */
+      background-color: rgba(0, 0, 0, 0.35);
       border-radius: 12px;
       text-align: center;
     }
@@ -97,7 +97,7 @@
 
     @media (max-width: 768px) {
       .container {
-        margin: 120px 20px 40px;
+        margin: 100px 20px;
         padding: 30px;
       }
 
@@ -146,16 +146,14 @@
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
-  <!-- Google Translate Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,ja,ko,fr,de,es,id,th,vi,pt,ru',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
       }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
