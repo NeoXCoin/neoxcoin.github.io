@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>What is NeoX?</title>
+  <title>What is NeoX? - Global</title>
   <style>
     body {
       margin: 0;
@@ -23,19 +23,20 @@
       z-index: -1;
     }
 
-    .google-translate {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 10;
-    }
-
     .logo {
-      position: absolute;
+      position: fixed;
       top: 20px;
       left: 20px;
-      opacity: 0.6;
+      opacity: 0.8;
       height: 50px;
+      z-index: 1000;
+    }
+
+    .google-translate {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
     }
 
     .container {
@@ -109,11 +110,13 @@
 <body>
   <div class="bg-overlay"></div>
 
+  <!-- Floating Logo -->
   <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
 
-  <!-- Google Translate Dropdown -->
+  <!-- Floating Google Translate -->
   <div class="google-translate" id="google_translate_element"></div>
 
+  <!-- Main Content -->
   <div class="container">
     <h1>What is NeoX?</h1>
     <p>NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
@@ -130,8 +133,10 @@
     </ul>
   </div>
 
+  <!-- Back to Home -->
   <a class="back-button" href="index-global.html">← Back to Home</a>
 
+  <!-- Footer -->
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
     <a href="disclaimer-global.html">Disclaimer</a>
@@ -140,7 +145,11 @@
   <!-- Google Translate Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-TW,ko,ja,fr,de,es',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
     }
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
