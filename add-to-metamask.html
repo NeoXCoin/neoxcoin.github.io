@@ -3,93 +3,173 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Add NXC Token to MetaMask</title>
+  <title>Add to MetaMask | NeoX</title>
   <style>
     body {
-      background-color: #0a0a2a;
-      color: white;
+      margin: 0;
       font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 40px 20px;
+      background: linear-gradient(135deg, #001f3f, #32004b);
+      color: #ffffff;
     }
+
+    .bg-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
+      background-size: cover;
+      opacity: 0.25;
+      z-index: -1;
+    }
+
     .logo {
-      width: 60px;
       position: absolute;
       top: 20px;
       left: 20px;
-      opacity: 0.85;
+      opacity: 0.6;
+      height: 50px;
     }
-    .btn {
-      background-color: #007bff;
+
+    #google_translate_element {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 120px auto 40px;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.35);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .icon {
+      font-size: 18px;
+      margin: 12px 0;
+    }
+
+    ul {
+      list-style: disc;
+      text-align: left;
+      padding-left: 20px;
+      margin-top: 20px;
+    }
+
+    .back-button, .metamask-button {
+      display: block;
+      width: 220px;
+      margin: 20px auto;
+      padding: 12px;
+      background-color: #00aaff;
       color: white;
+      font-weight: bold;
       border: none;
-      padding: 14px 28px;
       border-radius: 8px;
-      font-size: 16px;
-      margin: 20px 10px;
-      cursor: pointer;
+      text-align: center;
       text-decoration: none;
-      display: inline-block;
+      cursor: pointer;
     }
-    .btn:hover {
-      background-color: #0056b3;
+
+    .back-button:hover, .metamask-button:hover {
+      background-color: #0088cc;
     }
-    .note {
-      margin-top: 30px;
-      font-size: 14px;
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 30px;
+    }
+
+    .footer a {
       color: #aaa;
+      text-decoration: none;
     }
-  </style>
-</head>
-<body>
-  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-  <h1>Add NXC Token to MetaMask</h1>
-  <p>Click the button below to add the NeoX Token (NXC) to your MetaMask wallet.</p>
 
-  <button class="btn" onclick="addToken()">Add NXC Token</button>
-  <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask.html">Open in MetaMask App</a>
-  <br><br>
-  <a href="index.html" style="color: #ccc;">← Back to Home</a>
-
-  <div class="note">If MetaMask doesn't respond, try using MetaMask App directly.</div>
-
-  <script>
-    async function addToken() {
-      if (typeof window.ethereum === 'undefined') {
-        alert('MetaMask not detected or error occurred.');
-        return;
+    @media (max-width: 768px) {
+      .container {
+        margin: 100px 20px;
+        padding: 30px;
       }
 
+      h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <!-- Add to MetaMask Script -->
+  <script>
+    async function addTokenToMetaMask() {
       try {
-        const wasAdded = await ethereum.request({
+        const wasAdded = await window.ethereum.request({
           method: 'wallet_watchAsset',
           params: {
             type: 'ERC20',
             options: {
-              address: '0x80AD039927cDf2341c1428b0ABF8D3421dc122e1',
+              address: '0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1', // NeoX Token Address
               symbol: 'NXC',
               decimals: 18,
-              image: 'https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu',
+              image: 'https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe',
             },
           },
         });
 
         if (wasAdded) {
-          alert('NXC token added!');
+          alert('✅ NXC Token has been added to MetaMask!');
         } else {
-          alert('User rejected the request.');
+          alert('❌ Token addition was canceled.');
         }
       } catch (error) {
         console.error(error);
-        alert('MetaMask error occurred.');
+        alert('⚠️ MetaMask not available or error occurred.');
       }
     }
-
-    // 📱 Auto-redirect if on mobile device
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (isMobile && !window.ethereum) {
-      window.location.href = "https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask.html";
-    }
   </script>
+</head>
+
+<body>
+  <div class="bg-overlay"></div>
+
+  <!-- LOGO & Translate -->
+  <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+  <div id="google_translate_element"></div>
+
+  <div class="container">
+    <h1>Add NeoX to MetaMask</h1>
+    <p>This page will help you add the NXC Token to your MetaMask wallet.</p>
+
+    <p class="icon">🦊 <strong>Step-by-Step:</strong></p>
+    <ul>
+      <li>Make sure MetaMask is installed in your browser or mobile device.</li>
+      <li>Click the button below to add the NXC token to your MetaMask.</li>
+    </ul>
+
+    <button class="metamask-button" onclick="addTokenToMetaMask()">+ Add NXC to MetaMask</button>
+
+    <a class="back-button" href="index-global.html">← Back to Home</a>
+  </div>
+
+  <div class="footer">
+    © 2025 NeoX. All rights reserved. |
+    <a href="disclaimer-en.html">Disclaimer</a>
+  </div>
 </body>
-</html> 
+</html>
