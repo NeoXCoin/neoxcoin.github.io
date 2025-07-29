@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NeoX Coin</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
-  <style>
-  
+
+  <!-- Google Translate Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -16,8 +16,9 @@
       }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <style>
     body {
       margin: 0;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
@@ -35,6 +36,13 @@
       left: 20px;
       width: 60px;
       opacity: 0.85;
+    }
+
+    #google_translate_element {
+      position: absolute;
+      top: 20px;
+      right: 160px;
+      z-index: 999;
     }
 
     .language-switch {
@@ -166,12 +174,20 @@
         margin: 20px auto;
         display: block;
       }
+
+      #google_translate_element {
+        right: 20px;
+        top: 60px;
+      }
     }
   </style>
 </head>
+
 <body>
   <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-  <div id="google_translate_element" style="position: absolute; top: 20px; right: 140px;"></div>
+
+  <div id="google_translate_element"></div>
+
   <div class="language-switch">
     <a href="index.html">EN</a> | <a href="index-zh.html">繁</a>
   </div>
@@ -199,7 +215,7 @@
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">🛒 Buy NXC</a>
       <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/">🦊 Buy via MetaMask</a>
-      <a class="btn" href="https://neoxcoin.github.io/add-to-metamask.html">🦊 Add to MetaMask</a>
+      <a class="btn" href="add-to-metamask.html">🦊 Add to MetaMask</a>
     </div>
 
     <div class="footer">
