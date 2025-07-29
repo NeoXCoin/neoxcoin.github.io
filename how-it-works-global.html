@@ -1,0 +1,152 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How it Works - NeoX</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+    }
+
+    .translate {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 120px auto 0;
+      padding: 30px 20px;
+      background-color: rgba(0, 0, 0, 0.35);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .headline {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .text p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin: 15px 0;
+    }
+
+    .button-wrapper {
+      text-align: center;
+      margin: 40px 0 10px;
+    }
+
+    .home-button {
+      background-color: #00aaff;
+      color: white;
+      padding: 12px 28px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      font-size: 16px;
+      display: inline-block;
+    }
+
+    .home-button:hover {
+      background-color: #0088cc;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 100px 20px 40px;
+        padding: 25px 15px;
+      }
+
+      .headline {
+        font-size: 24px;
+      }
+
+      .text p {
+        font-size: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Logo -->
+  <a href="index-global.html">
+    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
+  </a>
+
+  <!-- Google Translate -->
+  <div class="translate" id="google_translate_element"></div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="headline">How it Works</div>
+    <div class="text">
+      <p><strong>The core of NeoX’s design is practicality, security, and decentralization.</strong></p>
+      <p>NeoX is built on the ERC-20 standard, ensuring high-speed, stable transactions and compatibility with popular wallets such as MetaMask. Transparency through smart contracts and community governance ensures the value integrity of Web3.</p>
+      <p>Beyond being a cryptocurrency, NeoX also provides foundational NFT infrastructure, allowing users to mint, trade, and hold NFTs — building a unique ecosystem of digital assets.</p>
+      <p>By participating in NeoX, you're not just investing once — you're joining a movement that unlocks an innovative, trusted future of digital finance.</p>
+    </div>
+  </div>
+
+  <!-- Back to Home -->
+  <div class="button-wrapper">
+    <a href="index-global.html" class="home-button">← Back to Home</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 NeoX. All rights reserved. |
+    <a href="disclaimer-global.html">Disclaimer</a>
+  </div>
+
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
