@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Troubleshooting common 🦊MetaMask and NXC issues on the NeoX platform. Fix mobile browser issues, network errors, and token visibility problems." />
+  <title>Troubleshooting - NeoX</title>
+  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0a0a2a, #1f005c);
+      background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .logo {
+      width: 60px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      opacity: 0.85;
+    }
+
+    .translate {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .issue {
+      background-color: rgba(255, 255, 255, 0.06);
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 700px;
+      border-radius: 10px;
+      text-align: left;
+    }
+
+    .issue h3 {
+      color: #00d9ff;
+      margin-bottom: 8px;
+    }
+
+    .issue ul {
+      margin-top: 8px;
+      padding-left: 20px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 24px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .issue {
+        padding: 16px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+  <div class="translate" id="google_translate_element"></div>
+
+  <h1>🔧 Troubleshooting Guide</h1>
+
+  <div class="issue">
+    <h3>1. “Buy via 🦊MetaMask” doesn’t open directly on iPhone?</h3>
+    <p>This is due to Safari limitations — iOS may redirect instead of launching 🦊MetaMask directly.</p>
+    <p><strong>Solution:</strong> Open the 🦊MetaMask App → Tap the menu (≡) in the top-left → Choose “Browser” → Visit: <code>https://neoxcoin.github.io</code></p>
+  </div>
+
+  <div class="issue">
+    <h3>2. Getting a “Network Not Supported” error?</h3>
+    <p>This occurs when your 🦊MetaMask is connected to the wrong network.</p>
+    <p><strong>Solution:</strong> Switch to the correct network (e.g. <strong>Sepolia</strong> for testing). You can change networks by clicking the network name at the top of your 🦊MetaMask wallet.</p>
+  </div>
+
+  <div class="issue">
+    <h3>3. “🦊Add to MetaMask” button doesn’t work?</h3>
+    <p>This button works best on MetaMask desktop extension or inside 🦊MetaMask’s mobile browser.</p>
+    <p><strong>Note:</strong> Some regular mobile browsers (like Safari/Chrome) may block 🦊MetaMask prompts.</p>
+    <p><strong>Tip:</strong> You can also manually add the token:</p>
+    <ul>
+      <li><strong>Token Contract:</strong> <code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code></li>
+      <li><strong>Symbol:</strong> <code>NXC</code></li>
+      <li><strong>Decimals:</strong> <code>18</code></li>
+    </ul>
+  </div>
+
+  <div class="issue">
+    <h3>4. Can’t see your NXC after purchase?</h3>
+    <p>Your transaction may still be pending, or the token isn't added to your wallet yet.</p>
+    <p><strong>Solution:</strong> Try refreshing your 🦊MetaMask wallet. If NXC doesn’t appear, manually add it using the above token info.</p>
+  </div>
+
+  <a class="back-btn" href="index-global.html">← Back to Home</a>
+
+  <div class="footer">
+    © 2025 NeoX. All rights reserved. |
+    <a href="disclaimer-global.html">Disclaimer</a>
+  </div>
+
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
