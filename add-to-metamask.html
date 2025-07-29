@@ -64,10 +64,10 @@
       margin-top: 20px;
     }
 
-    .back-button, .metamask-button {
+    .back-button {
       display: block;
-      width: 220px;
-      margin: 20px auto;
+      width: 200px;
+      margin: 40px auto 20px;
       padding: 12px;
       background-color: #00aaff;
       color: white;
@@ -76,10 +76,9 @@
       border-radius: 8px;
       text-align: center;
       text-decoration: none;
-      cursor: pointer;
     }
 
-    .back-button:hover, .metamask-button:hover {
+    .back-button:hover {
       background-color: #0088cc;
     }
 
@@ -114,35 +113,6 @@
     }
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-  <!-- Add to MetaMask Script -->
-  <script>
-    async function addTokenToMetaMask() {
-      try {
-        const wasAdded = await window.ethereum.request({
-          method: 'wallet_watchAsset',
-          params: {
-            type: 'ERC20',
-            options: {
-              address: '0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1', // NeoX Token Address
-              symbol: 'NXC',
-              decimals: 18,
-              image: 'https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe',
-            },
-          },
-        });
-
-        if (wasAdded) {
-          alert('✅ NXC Token has been added to MetaMask!');
-        } else {
-          alert('❌ Token addition was canceled.');
-        }
-      } catch (error) {
-        console.error(error);
-        alert('⚠️ MetaMask not available or error occurred.');
-      }
-    }
-  </script>
 </head>
 
 <body>
@@ -153,19 +123,11 @@
   <div id="google_translate_element"></div>
 
   <div class="container">
-    <h1>Add NeoX to MetaMask</h1>
-    <p>This page will help you add the NXC Token to your MetaMask wallet.</p>
-
-    <p class="icon">🦊 <strong>Step-by-Step:</strong></p>
-    <ul>
-      <li>Make sure MetaMask is installed in your browser or mobile device.</li>
-      <li>Click the button below to add the NXC token to your MetaMask.</li>
-    </ul>
-
-    <button class="metamask-button" onclick="addTokenToMetaMask()">+ Add NXC to MetaMask</button>
-
-    <a class="back-button" href="index-global.html">← Back to Home</a>
+    <h1>Add to MetaMask</h1>
+    <p>To add the NXC Token to your MetaMask wallet, please follow instructions on our homepage or MetaMask integration page.</p>
   </div>
+
+  <a class="back-button" href="index-global.html">← Back to Home</a>
 
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
