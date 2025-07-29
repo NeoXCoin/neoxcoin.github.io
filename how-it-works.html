@@ -19,6 +19,9 @@
       background-attachment: fixed;
       font-family: Arial, sans-serif;
       color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .logo {
@@ -45,7 +48,7 @@
       max-width: 900px;
       margin: 120px auto 0;
       padding: 30px 20px;
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: rgba(0, 0, 0, 0.35); /* 淡化背景 */
       border-radius: 12px;
       text-align: center;
     }
@@ -64,7 +67,7 @@
 
     .button-wrapper {
       text-align: center;
-      margin-top: 50px;
+      margin: 40px 0 10px;
     }
 
     .home-button {
@@ -80,6 +83,19 @@
 
     .home-button:hover {
       background-color: #0088cc;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 20px;
+    }
+
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 8px;
     }
 
     @media (max-width: 768px) {
@@ -114,11 +130,8 @@
     <div class="headline">How it Works</div>
     <div class="text">
       <p><strong>The core of NeoX’s design is practicality, security, and decentralization.</strong></p>
-
       <p>NeoX is built on the ERC-20 standard, ensuring high-speed, stable transactions and compatibility with popular wallets such as MetaMask. Transparency through smart contracts and community governance ensures the value integrity of Web3.</p>
-
       <p>Beyond being a cryptocurrency, NeoX also provides foundational NFT infrastructure, allowing users to mint, trade, and hold NFTs — building a unique ecosystem of digital assets.</p>
-
       <p>By participating in NeoX, you're not just investing once — you're joining a movement that unlocks an innovative, trusted future of digital finance.</p>
     </div>
   </div>
@@ -126,6 +139,12 @@
   <!-- Back to Home -->
   <div class="button-wrapper">
     <a href="index.html" class="home-button">← Back to Home</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 NeoX. All rights reserved. |
+    <a href="disclaimer-en.html">Disclaimer</a>
   </div>
 </body>
 </html>
