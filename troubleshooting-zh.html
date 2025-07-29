@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="NeoX 幫助你解決常見的 🦊MetaMask 與 NXC 相關問題，包括瀏覽器限制、網路錯誤與無法看到代幣等。" />
-  <title>疑難排解 - NeoX</title>
+  <meta name="description" content="針對 NeoX 平台上 🦊MetaMask 及 NXC 常見問題進行排解，包括手機瀏覽器限制、網絡錯誤、無法顯示代幣等狀況。" />
+  <title>故障排解 - NeoX</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
@@ -80,6 +80,18 @@
       background-color: #0056b3;
     }
 
+    .footer {
+      margin-top: 60px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 8px;
+    }
+
     @media (max-width: 600px) {
       .issue {
         padding: 16px;
@@ -92,43 +104,48 @@
   </style>
 </head>
 <body>
-  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX 標誌" />
+  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   <div class="language-switch">
     <a href="troubleshooting.html">EN</a> | <a href="troubleshooting-zh.html">繁</a>
   </div>
 
-  <h1>🔧 疑難排解指南</h1>
+  <h1>🔧 故障排解指南</h1>
 
   <div class="issue">
-    <h3>1. 「透過 🦊MetaMask 購買」在 iPhone 無法直接打開？</h3>
-    <p>這是 Safari 瀏覽器的限制，iOS 可能無法直接啟動 🦊MetaMask 應用程式。</p>
-    <p><strong>解決方法：</strong>開啟 🦊MetaMask App → 點選左上角選單 (≡) → 選擇「瀏覽器」→ 輸入網址：<code>https://neoxcoin.github.io</code></p>
+    <h3>1. 「透過 🦊MetaMask 購買」無法在 iPhone 直接打開？</h3>
+    <p>這是由於 Safari 限制所致，iOS 可能無法直接觸發 🦊MetaMask 開啟。</p>
+    <p><strong>解決方法：</strong> 打開 🦊MetaMask App → 點選左上角選單（≡）→ 選擇「瀏覽器」→ 輸入網址：<code>https://neoxcoin.github.io</code></p>
   </div>
 
   <div class="issue">
-    <h3>2. 出現「不支援的網路」錯誤？</h3>
-    <p>這代表你的 🦊MetaMask 錢包當前連線至錯誤的區塊鏈網路。</p>
-    <p><strong>解決方法：</strong>請切換至正確的網路（例如：測試階段請使用 <strong>Sepolia</strong>）。你可以在 🦊MetaMask 錢包頂部點擊網路名稱進行切換。</p>
+    <h3>2. 顯示「不支援的網絡」錯誤？</h3>
+    <p>這表示你的 🦊MetaMask 錢包連接錯誤的網絡。</p>
+    <p><strong>解決方法：</strong> 請切換至正確的網絡（例如測試階段為 <strong>Sepolia</strong>）。你可點擊 🦊MetaMask 上方的網絡名稱進行切換。</p>
   </div>
 
   <div class="issue">
-    <h3>3. 點選「加入錢包」按鈕無反應？</h3>
-    <p>建議使用 🦊MetaMask 桌面擴充功能或於 🦊MetaMask 手機 App 的內建瀏覽器中操作。</p>
-    <p><strong>注意：</strong>某些瀏覽器（如 Safari、Chrome 手機版）可能阻擋 🦊MetaMask 的提示。</p>
-    <p><strong>小提示：</strong>你也可以手動加入代幣：</p>
+    <h3>3. 「🦊加入至 MetaMask」按鈕沒反應？</h3>
+    <p>該按鈕在桌面瀏覽器的 🦊MetaMask 擴充功能或 MetaMask App 的內建瀏覽器中效果最佳。</p>
+    <p><strong>注意：</strong> 一般手機瀏覽器如 Safari 或 Chrome 可能阻擋彈出。</p>
+    <p><strong>小提示：</strong> 你亦可手動加入代幣：</p>
     <ul>
-      <li><strong>代幣合約地址：</strong><code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code></li>
-      <li><strong>符號：</strong><code>NXC</code></li>
-      <li><strong>小數位數：</strong><code>18</code></li>
+      <li><strong>代幣合約：</strong> <code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code></li>
+      <li><strong>代號：</strong> <code>NXC</code></li>
+      <li><strong>小數位數：</strong> <code>18</code></li>
     </ul>
   </div>
 
   <div class="issue">
-    <h3>4. 購買後錢包中看不到 NXC？</h3>
-    <p>可能是交易尚未確認完成，或尚未將代幣手動加入錢包。</p>
-    <p><strong>解決方法：</strong>請嘗試重新整理你的 🦊MetaMask 錢包，或依上方提供的資料手動新增 NXC 代幣。</p>
+    <h3>4. 購買後未看到 NXC？</h3>
+    <p>可能是交易尚未完成，或尚未將該代幣加入錢包。</p>
+    <p><strong>解決方法：</strong> 嘗試刷新你的 🦊MetaMask，若仍未出現，請手動加入代幣資料。</p>
   </div>
 
-  <a class="back-btn" href="index-zh.html">← 回到首頁</a>
+  <a class="back-btn" href="index-zh.html">← 返回主頁</a>
+
+  <div class="footer">
+    © 2025 NeoX. All rights reserved. |
+    <a href="disclaimer-zh.html">免責聲明</a>
+  </div>
 </body>
 </html>
