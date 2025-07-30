@@ -2,120 +2,147 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NeoX Global</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What is NeoX?</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-image: url('https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu');
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #ffffff;
+    }
+
+    .bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
       background-size: cover;
-      background-position: center;
-      color: white;
+      opacity: 1;
+    }
+
+    .logo {
+      position: fixed;
+      top: 60px;
+      left: 16px;
+      height: 40px;
+      z-index: 2;
+      opacity: 0.8;
+    }
+
+    .google-translate {
+      position: fixed;
+      top: 60px;
+      right: 16px;
+      z-index: 2;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 140px auto 40px;
+      padding: 0 20px;
       text-align: center;
     }
 
-    .overlay {
-      background: rgba(0, 0, 0, 0.6); /* 淡化背景 */
-      padding: 20px;
-      margin: 0 auto;
-      max-width: 800px;
-      border-radius: 8px;
-    }
-
-    .logo-translate-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px 0;
-    }
-
-    .logo-translate-container img {
-      height: 30px;
-    }
-
     h1 {
-      margin-top: 30px;
+      font-size: 32px;
+      margin-bottom: 20px;
     }
 
-    .button {
-      background: linear-gradient(to bottom right, #1e90ff, #007bff);
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 16px;
+    .icon {
+      font-size: 18px;
+      margin: 16px 0 10px;
+      font-weight: bold;
+    }
+
+    ul {
+      list-style: disc;
+      text-align: left;
+      padding-left: 20px;
       margin-top: 20px;
-      display: inline-block;
     }
 
-    footer {
+    .back-button {
+      display: inline-block;
       margin-top: 40px;
+      padding: 12px 20px;
+      background-color: #0088ff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      background-color: #0066cc;
+    }
+
+    .footer {
+      text-align: center;
       font-size: 13px;
-      color: #ccc;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 40px 10px 30px;
+    }
+
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
     }
 
     @media (max-width: 768px) {
-      .logo-translate-container {
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 20px;
+      .logo, .google-translate {
+        top: 80px;
+        height: 36px;
       }
 
       h1 {
-        font-size: 22px;
+        font-size: 26px;
       }
 
-      .button {
-        width: 80%;
+      .container {
+        margin-top: 160px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Logo + Google Translate Dropdown -->
-  <div class="logo-translate-container">
-    <img src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-    <div id="google_translate_element"></div>
-  </div>
+  <div class="bg-overlay"></div>
 
-  <!-- Content Overlay -->
-  <div class="overlay">
+  <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+
+  <div class="google-translate" id="google_translate_element"></div>
+
+  <div class="container">
     <h1>What is NeoX?</h1>
-    <p>
-      NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era.
-      It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.
-    </p>
-    <h3>🔗 Built for the Future</h3>
-    <p>
-      NeoX bridges the traditional world and the future of decentralization.
-      By integrating smart contracts, cross-chain support, and NFT infrastructure,
-      NeoX empowers both users and developers to thrive in the decentralized economy.
-    </p>
-    <h3>⚙️ Core Features</h3>
-    <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <p>NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
+
+    <p class="icon">🔗 Built for the Future</p>
+    <p>NeoX bridges the traditional world and the future of decentralization. By integrating smart contracts, cross-chain support, and NFT infrastructure, NeoX empowers both users and developers to thrive in the decentralized economy.</p>
+
+    <p class="icon">⚙️ Core Features</p>
+    <ul>
       <li>ERC-20 based NXC Token for secure and fast transactions</li>
       <li>Cross-platform compatibility with major wallets like MetaMask</li>
       <li>Supports NFT issuance and on-chain governance</li>
       <li>Open-source project with a community-driven roadmap</li>
     </ul>
 
-    <a href="index-global.html" class="button">← Back to Home</a>
+    <a class="back-button" href="index-global.html">← Back to Home</a>
+  </div>
 
-    <footer>
-      <p>© 2025 NeoX. All rights reserved. | <a href="disclaimer-global.html" style="color: #ccc;">Disclaimer</a></p>
-    </footer>
+  <div class="footer">
+    © 2025 NeoX. All rights reserved. |
+    <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
   <!-- Google Translate Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement(
-        { pageLanguage: 'en' },
-        'google_translate_element'
-      );
+      new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
     }
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
