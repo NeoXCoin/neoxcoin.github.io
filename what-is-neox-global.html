@@ -19,24 +19,22 @@
       height: 100%;
       background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
       background-size: cover;
-      opacity: 0.45;
+      opacity: 0.25;
       z-index: -1;
     }
 
-    .google-translate {
-      position: fixed;
-      top: 40px;
-      right: 100px;
-      z-index: 1000;
+    .bg-overlay .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      opacity: 0.6;
+      height: 50px;
     }
 
-    .logo {
-      position: fixed;
-      top: 40px;
-      left: 20px;
-      opacity: 0.85;
-      height: 50px;
-      z-index: 1000;
+    .bg-overlay .google-translate {
+      position: absolute;
+      top: 20px;
+      right: 20px;
     }
 
     .container {
@@ -105,23 +103,24 @@
         font-size: 26px;
       }
 
-      .google-translate {
-        right: 90px;
-        top: 40px;
+      .bg-overlay .logo {
+        top: 16px;
+        height: 45px;
       }
 
-      .logo {
-        top: 40px;
+      .bg-overlay .google-translate {
+        top: 16px;
+        right: 16px;
+        transform: scale(0.9);
       }
     }
   </style>
 </head>
 <body>
-  <div class="bg-overlay"></div>
-
-  <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-  <div class="google-translate">
-    <div id="google_translate_element"></div>
+  <!-- 背景層連 logo + Google Translate -->
+  <div class="bg-overlay">
+    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+    <div class="google-translate" id="google_translate_element"></div>
   </div>
 
   <div class="container">
@@ -147,14 +146,12 @@
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
+  <!-- Google Translate Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
-      }, 'google_translate_element');
+      new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
