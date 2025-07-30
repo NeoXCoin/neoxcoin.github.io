@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #000;
+      background: #000;
       color: #ffffff;
     }
 
@@ -17,17 +17,10 @@
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      background: url("https://gateway.lighthouse.storage/ipfs/bafybeicmd4up3fd6aipkdmlojtpm4ktfoymvh2eqfryvnq6ndahab2zcd4") no-repeat center center;
+      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
       background-size: cover;
-      opacity: 0.85;
       z-index: -1;
-    }
-
-    .google-translate {
-      position: absolute;
-      top: 60px;
-      right: 20px;
-      z-index: 10;
+      opacity: 0.35;
     }
 
     .logo {
@@ -35,16 +28,21 @@
       top: 60px;
       left: 20px;
       opacity: 0.7;
-      height: 50px;
-      z-index: 10;
+      height: 48px;
+      z-index: 2;
+    }
+
+    .google-translate {
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      z-index: 2;
     }
 
     .container {
       max-width: 800px;
-      margin: 140px auto 40px;
-      padding: 40px;
-      background-color: rgba(0, 0, 0, 0.35);
-      border-radius: 12px;
+      margin: 160px auto 60px;
+      padding: 0 20px;
       text-align: center;
     }
 
@@ -55,13 +53,13 @@
 
     .icon {
       font-size: 18px;
-      margin: 12px 0;
+      margin: 20px 0 10px;
     }
 
     ul {
       list-style: disc;
       text-align: left;
-      padding-left: 20px;
+      padding-left: 40px;
       margin-top: 20px;
     }
 
@@ -96,13 +94,12 @@
     }
 
     @media (max-width: 768px) {
-      .container {
-        margin: 120px 20px;
-        padding: 30px;
-      }
-
       .logo, .google-translate {
         top: 80px;
+      }
+
+      .container {
+        margin-top: 220px;
       }
 
       h1 {
@@ -116,6 +113,7 @@
 
   <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
 
+  <!-- Google Translate Dropdown -->
   <div class="google-translate" id="google_translate_element"></div>
 
   <div class="container">
