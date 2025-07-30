@@ -1,3 +1,5 @@
+[English](README.md) | [繁體中文](README-zh.md)
+
 # NeoX Token Website
 
 Welcome to the official website repository for **NeoX Token (NXC)** — a decentralized, innovative, and community-driven cryptocurrency project.
