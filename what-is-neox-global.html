@@ -8,40 +8,41 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #000;
+      background-color: #000;
       color: #ffffff;
     }
 
     .bg-overlay {
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
+      z-index: -2;
       width: 100%;
       height: 100%;
       background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
       background-size: cover;
-      z-index: -1;
-      opacity: 0.35;
+      opacity: 1;
     }
 
     .logo {
-      position: absolute;
+      position: fixed;
       top: 60px;
-      left: 20px;
-      opacity: 0.7;
-      height: 48px;
+      left: 16px;
+      height: 40px;
       z-index: 2;
+      opacity: 0.8;
     }
 
     .google-translate {
-      position: absolute;
+      position: fixed;
       top: 60px;
-      right: 20px;
+      right: 16px;
       z-index: 2;
     }
 
     .container {
       max-width: 800px;
-      margin: 160px auto 60px;
+      margin: 140px auto 40px;
       padding: 0 20px;
       text-align: center;
     }
@@ -53,39 +54,38 @@
 
     .icon {
       font-size: 18px;
-      margin: 20px 0 10px;
+      margin: 16px 0 10px;
+      font-weight: bold;
     }
 
     ul {
       list-style: disc;
       text-align: left;
-      padding-left: 40px;
+      padding-left: 20px;
       margin-top: 20px;
     }
 
     .back-button {
-      display: block;
-      width: 200px;
-      margin: 40px auto 20px;
-      padding: 12px;
-      background-color: #00aaff;
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 20px;
+      background-color: #0088ff;
       color: white;
       font-weight: bold;
       border: none;
       border-radius: 8px;
-      text-align: center;
       text-decoration: none;
     }
 
     .back-button:hover {
-      background-color: #0088cc;
+      background-color: #0066cc;
     }
 
     .footer {
       text-align: center;
       font-size: 13px;
       color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 30px;
+      margin: 40px 10px 30px;
     }
 
     .footer a {
@@ -96,14 +96,15 @@
     @media (max-width: 768px) {
       .logo, .google-translate {
         top: 80px;
-      }
-
-      .container {
-        margin-top: 220px;
+        height: 36px;
       }
 
       h1 {
         font-size: 26px;
+      }
+
+      .container {
+        margin-top: 160px;
       }
     }
   </style>
@@ -113,26 +114,25 @@
 
   <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
 
-  <!-- Google Translate Dropdown -->
   <div class="google-translate" id="google_translate_element"></div>
 
   <div class="container">
     <h1>What is NeoX?</h1>
     <p>NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
 
-    <p class="icon">🔗 <strong>Built for the Future</strong></p>
+    <p class="icon">🔗 Built for the Future</p>
     <p>NeoX bridges the traditional world and the future of decentralization. By integrating smart contracts, cross-chain support, and NFT infrastructure, NeoX empowers both users and developers to thrive in the decentralized economy.</p>
 
-    <p class="icon">⚙️ <strong>Core Features</strong></p>
+    <p class="icon">⚙️ Core Features</p>
     <ul>
       <li>ERC-20 based NXC Token for secure and fast transactions</li>
       <li>Cross-platform compatibility with major wallets like MetaMask</li>
       <li>Supports NFT issuance and on-chain governance</li>
       <li>Open-source project with a community-driven roadmap</li>
     </ul>
-  </div>
 
-  <a class="back-button" href="index-global.html">← Back to Home</a>
+    <a class="back-button" href="index-global.html">← Back to Home</a>
+  </div>
 
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
