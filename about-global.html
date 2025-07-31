@@ -22,7 +22,7 @@
     }
     .language-selector {
       position: fixed;
-      top: 60px;    /* 下移以避開手機頂部 */
+      top: 20px;
       right: 20px;
       z-index: 10;
     }
@@ -82,13 +82,17 @@
       text-decoration: none;
       margin-left: 10px;
     }
+
     @media (max-width: 768px) {
+      .logo {
+        width: 50px;
+      }
+      .language-selector {
+        transform: translateY(6px);
+      }
       .content-container {
         margin: 100px 16px 30px;
         padding: 24px;
-      }
-      .logo {
-        width: 50px;
       }
     }
   </style>
@@ -101,10 +105,10 @@
 
   <div class="content-container">
     <h1>About NeoX</h1>
-    <p><strong>NeoX is more than a token — it’s a powerful ecosystem built for the digital age.</strong></p>
-    <p>Our goal is to empower individuals with control over their identity, assets, and data by offering decentralized, scalable, and accessible Web3 tools.</p>
-    <p>We combine cross‑chain smart contracts, NFT infrastructure, and community governance into a unified platform designed for transparency and innovation.</p>
-    <p>Whether you're trading NXC, collecting NFTs, or building with our tools, NeoX supports you on your path to true digital ownership.</p>
+    <p><strong>NeoX is more than just a cryptocurrency — it’s a next-generation digital ecosystem.</strong></p>
+    <p>We envision a decentralized world where people have full control over their data, identity, and digital assets. NeoX enables secure, scalable, and accessible blockchain solutions for everyone.</p>
+    <p>From cross-chain smart contracts to NFT infrastructure and community governance, NeoX is built for transparency, innovation, and long-term sustainability.</p>
+    <p>Whether you're trading NXC, collecting NFTs, or building on top of our ecosystem, NeoX empowers you to be part of the future of digital ownership and finance.</p>
 
     <a class="btn-home" href="index-global.html">← Back to Home</a>
 
