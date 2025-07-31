@@ -3,88 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About NeoX – Global</title>
-  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
-
-  <!-- Google Translate -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+  <title>About NeoX - Global</title>
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
-      background: url("https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4") no-repeat center center;
+      padding: 0;
+    }
+
+    body {
+      background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
       font-family: Arial, sans-serif;
-      color: #fff;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .logo {
       position: absolute;
       top: 20px;
       left: 20px;
-      width: 55px;
-      opacity: 0.85;
-      z-index: 10;
+      width: 60px;
     }
 
-    .logo-link {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      z-index: 10;
-    }
-
-    #google_translate_element {
+    .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 10;
+    }
+
+    .language-switch select {
+      padding: 5px;
+      font-weight: bold;
+      border-radius: 4px;
+      border: none;
     }
 
     .container {
-      max-width: 800px;
-      margin: 120px auto 60px;
-      padding: 40px;
-      background-color: rgba(255, 255, 255, 0.12);
+      max-width: 900px;
+      margin: 120px auto 0;
+      padding: 30px 20px;
+      background-color: rgba(255, 255, 255, 0.07); /* 更淺色背景 */
       border-radius: 12px;
       text-align: center;
-      backdrop-filter: blur(6px);
     }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
+    .headline {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .text p {
+      font-size: 16px;
+      line-height: 1.8;
+      margin: 15px 0;
       color: #ffffff;
     }
 
-    p {
-      font-size: 16px;
-      line-height: 1.7;
-      color: #f2f2f2;
+    .button-wrapper {
+      text-align: center;
+      margin: 40px 0 10px;
     }
 
-    .back-button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 20px;
+    .home-button {
       background-color: #00aaff;
       color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
+      padding: 12px 28px;
       text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      font-size: 16px;
+      display: inline-block;
     }
 
-    .back-button:hover {
+    .home-button:hover {
       background-color: #0088cc;
     }
 
@@ -92,58 +90,70 @@
       text-align: center;
       font-size: 13px;
       color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
     .footer a {
-      color: #ccc;
+      color: #aaa;
       text-decoration: none;
+      margin-left: 8px;
     }
 
     @media (max-width: 768px) {
       .container {
-        margin: 100px 20px;
-        padding: 30px;
+        margin: 100px 20px 40px;
+        padding: 25px 15px;
       }
 
-      h1 {
-        font-size: 26px;
+      .headline {
+        font-size: 24px;
+      }
+
+      .text p {
+        font-size: 15px;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- Logo clickable -->
-  <a href="index.html" class="logo-link">
+  <!-- Logo -->
+  <a href="index.html">
     <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
   </a>
 
-  <!-- Google Translate Dropdown -->
-  <div id="google_translate_element"></div>
-
-  <!-- Main Container -->
-  <div class="container">
-    <h1>About NeoX</h1>
-    <p>
-      NeoX is more than just a cryptocurrency — it’s a full digital ecosystem built for the next generation of the internet. 
-      We believe in a decentralized future where individuals have full control over their data, assets, and identity.
-    </p>
-    <p>
-      Designed for scalability, security, and accessibility, NeoX bridges Web3 innovations with real-world utility. Our community-first approach ensures 
-      that every feature we build is aligned with transparency, empowerment, and growth.
-    </p>
-    <p>
-      From smart contract integrations to NFT support, from decentralized identity to community governance — NeoX is building 
-      the foundation for a truly open digital economy.
-    </p>
-
-    <a class="back-button" href="index-global.html">← Back to Home</a>
+  <!-- Google Translate -->
+  <div class="language-switch">
+    <div id="google_translate_element"></div>
   </div>
 
+  <!-- Main Content -->
+  <div class="container">
+    <div class="headline">About NeoX</div>
+    <div class="text">
+      <p><strong>NeoX is more than just a cryptocurrency — it's a next-generation digital ecosystem.</strong></p>
+      <p>We envision a decentralized world where people have full control over their data, identity, and digital assets. NeoX enables secure, scalable, and accessible blockchain solutions for everyone.</p>
+      <p>From cross-chain smart contracts to NFT infrastructure and community governance, NeoX is built for transparency, innovation, and long-term sustainability.</p>
+      <p>Whether you're trading NXC, collecting NFTs, or building on top of our ecosystem, NeoX empowers you to be part of the future of digital ownership and finance.</p>
+    </div>
+  </div>
+
+  <!-- Back to Home -->
+  <div class="button-wrapper">
+    <a href="index-global.html" class="home-button">← Back to Home</a>
+  </div>
+
+  <!-- Footer -->
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
+
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
