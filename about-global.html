@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About NeoX – Global</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
-  
+
   <!-- Google Translate -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
@@ -21,58 +21,64 @@
   <style>
     body {
       margin: 0;
+      background: linear-gradient(135deg, #0a0a2a, #1f005c);
       background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
       background-position: center;
       font-family: Arial, sans-serif;
       color: white;
+      text-align: center;
     }
 
     .logo {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: 12px;
+      left: 12px;
       width: 60px;
       opacity: 0.85;
       z-index: 1000;
     }
 
-    .logo:hover {
-      cursor: pointer;
-    }
-
     #google_translate_element {
       position: absolute;
-      top: 20px;
-      right: 20px;
+      top: 12px;
+      right: 12px;
       z-index: 1000;
     }
 
-    .container {
-      max-width: 850px;
-      margin: 120px auto 40px;
-      padding: 30px;
-      background-color: rgba(0, 0, 0, 0.5);
-      border-radius: 12px;
+    .content-box {
+      background: rgba(0, 0, 0, 0.6);
+      max-width: 800px;
+      margin: 120px auto 60px;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      text-align: left;
+    }
+
+    .content-box h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #ffffff;
       text-align: center;
     }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
+    .content-box p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 16px;
+      color: #dddddd;
     }
 
-    p {
-      font-size: 17px;
-      line-height: 1.7;
-      margin-bottom: 20px;
+    .content-box p strong {
+      color: #ffffff;
     }
 
     .footer {
-      text-align: center;
+      margin: 30px 0;
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.6);
-      margin: 40px 0 20px;
+      color: #cccccc;
+      opacity: 0.6;
     }
 
     .footer a {
@@ -81,39 +87,26 @@
     }
 
     @media (max-width: 600px) {
-      .container {
-        margin: 100px 20px;
-        padding: 20px;
-      }
-
-      h1 {
-        font-size: 26px;
+      .content-box {
+        margin: 100px 20px 40px;
+        padding: 24px 20px;
       }
     }
   </style>
 </head>
-<body>
-  <!-- Logo (clickable) -->
-  <a href="index.html">
-    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
-  </a>
 
-  <!-- Google Translate -->
+<body>
+  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   <div id="google_translate_element"></div>
 
-  <!-- Content -->
-  <div class="container">
+  <div class="content-box">
     <h1>About NeoX</h1>
     <p><strong>NeoX</strong> is a visionary blockchain initiative that bridges the world of traditional finance with the limitless potential of decentralized Web3 technologies.</p>
-
     <p>Founded with the mission to empower global users with secure, scalable, and user-friendly digital solutions, NeoX combines advanced smart contracts, cross-chain support, and tokenized ecosystems to support a new wave of innovation.</p>
-
     <p>Whether you're trading with our <strong>NXC token</strong>, exploring our NFT collections, or building on top of our infrastructure — NeoX is built for speed, transparency, and community-driven growth.</p>
-
     <p>Join us on this journey to decentralization, and discover how <strong>NeoX is reshaping the future of finance, ownership, and identity.</strong></p>
   </div>
 
-  <!-- Footer -->
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
     <a href="disclaimer-global.html">Disclaimer</a>
