@@ -8,161 +8,109 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-image: url("https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4");
+      font-family: Arial, sans-serif;
+      background: url("https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4") no-repeat center center fixed;
       background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      color: #ffffff;
+      color: #fff;
     }
-
     .logo {
-      position: absolute;
+      position: fixed;
       top: 20px;
       left: 20px;
       width: 60px;
-      height: 60px;
-      z-index: 2;
+      z-index: 10;
     }
-
-    .logo img {
-      width: 100%;
-      height: auto;
-      cursor: pointer;
-    }
-
     .language-selector {
-      position: absolute;
-      top: 20px;
+      position: fixed;
+      top: 60px;    /* 下移以避開手機頂部 */
       right: 20px;
-      z-index: 2;
+      z-index: 10;
     }
-
-    .container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      min-height: 100vh;
-      padding: 20px;
+    .content-container {
+      max-width: 860px;
+      margin: 140px auto 40px;
+      padding: 32px;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 14px;
+      text-align: left;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
     }
-
-    .content-box {
-      background-color: rgba(0, 0, 0, 0.45);
-      padding: 30px 30px 20px;
-      border-radius: 12px;
-      max-width: 720px;
-      margin-top: 100px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.6);
-    }
-
     h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       margin-bottom: 20px;
+      text-align: center;
     }
-
     p {
       font-size: 1.05rem;
-      line-height: 1.8;
-      margin: 10px 0;
+      line-height: 1.7;
+      margin: 12px 0;
+      color: #eaeaea;
     }
-
-    .button {
-      margin-top: 30px;
+    .btn-home {
+      display: block;
+      margin: 30px auto 20px;
       padding: 12px 28px;
-      font-size: 1rem;
-      background-color: #007bff;
+      background: #00aaff;
       color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
       text-decoration: none;
-      display: inline-block;
+      font-weight: bold;
+      border-radius: 8px;
+      width: fit-content;
     }
-
-    .button:hover {
-      background-color: #0056b3;
+    .btn-home:hover {
+      background: #0088cc;
     }
-
-    .footer {
-      text-align: center;
-      padding: 20px 0;
-      font-size: 0.9rem;
-      background-color: rgba(0, 0, 0, 0.2);
-    }
-
-    .footer a {
-      color: #ccc;
-      text-decoration: underline;
-      margin-left: 10px;
-    }
-
-    .readme-box {
+    .readme {
       margin-top: 40px;
       font-size: 0.95rem;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 20px;
+      background: rgba(255,255,255,0.07);
+      padding: 18px;
       border-radius: 10px;
-      text-align: left;
     }
-
-    .readme-box h3 {
-      margin-top: 0;
-    }
-
-    .readme-box ul {
-      list-style-type: disc;
+    .readme ul {
       padding-left: 20px;
+      margin: 8px 0;
     }
-
+    .footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.85rem;
+      background: rgba(0,0,0,0.2);
+    }
+    .footer a {
+      color: #ccc;
+      text-decoration: none;
+      margin-left: 10px;
+    }
     @media (max-width: 768px) {
-      .content-box {
-        margin-top: 80px;
-        padding: 20px;
+      .content-container {
+        margin: 100px 16px 30px;
+        padding: 24px;
+      }
+      .logo {
+        width: 50px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Floating Logo (Back to index.html) -->
-  <div class="logo">
-    <a href="index.html">
-      <img src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo"/>
-    </a>
-  </div>
+  <a href="index.html"><img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo"></a>
 
-  <!-- Language Dropdown -->
-  <div class="language-selector" id="google_translate_element"></div>
+  <div id="google_translate_element" class="language-selector"></div>
 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="content-box">
-      <h1>About NeoX</h1>
-      <p><strong>NeoX is more than just a cryptocurrency — it’s a next-generation digital ecosystem.</strong></p>
-      <p>We envision a decentralized world where people have full control over their data, identity, and digital assets. NeoX enables secure, scalable, and accessible blockchain solutions for everyone.</p>
-      <p>From cross-chain smart contracts to NFT infrastructure and community governance, NeoX is built for transparency, innovation, and long-term sustainability.</p>
-      <p>Whether you're trading NXC, collecting NFTs, or building on top of our ecosystem, NeoX empowers you to be part of the future of digital ownership and finance.</p>
+  <div class="content-container">
+    <h1>About NeoX</h1>
+    <p><strong>NeoX is more than a token — it’s a powerful ecosystem built for the digital age.</strong></p>
+    <p>Our goal is to empower individuals with control over their identity, assets, and data by offering decentralized, scalable, and accessible Web3 tools.</p>
+    <p>We combine cross‑chain smart contracts, NFT infrastructure, and community governance into a unified platform designed for transparency and innovation.</p>
+    <p>Whether you're trading NXC, collecting NFTs, or building with our tools, NeoX supports you on your path to true digital ownership.</p>
 
-      <a class="button" href="index-global.html">← Back to Home</a>
+    <a class="btn-home" href="index-global.html">← Back to Home</a>
 
-      <!-- README Section -->
-      <div class="readme-box">
-        <h3>📘 README (Global)</h3>
-        <p>This website includes multilingual resources for the NeoX ecosystem:</p>
-        <ul>
-          <li>What is NeoX?</li>
-          <li>Why choose NeoX?</li>
-          <li>How to buy NXC</li>
-          <li>How it works</li>
-          <li>NFT showcase</li>
-          <li>Troubleshooting</li>
-          <li>Legal disclaimer</li>
-        </ul>
-        <p>Google Translate is available in this version to support international users.</p>
-      </div>
+    <div class="readme">
+      <p>📘 For more in-depth information, we maintain a multilingual project README on GitHub:</p>
+      <p><strong><a href="https://neoxcoin.github.io/README-global.md" target="_blank" style="color: #00ccff; text-decoration: underline;">View README‑global.md</a></strong></p>
     </div>
   </div>
 
@@ -171,16 +119,11 @@
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
-  <!-- Google Translate -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
-      }, 'google_translate_element');
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
     }
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 </body>
 </html>
