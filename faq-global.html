@@ -3,7 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FAQ – NeoX</title>
+  <title>FAQ - NeoX</title>
+
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
   <style>
     body {
       margin: 0;
@@ -35,57 +47,53 @@
       max-width: 900px;
       margin: 120px auto 0;
       padding: 20px;
-      background-color: rgba(0, 0, 0, 0.35);
-      border-radius: 10px;
-    }
-
-    .headline {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 20px;
+      background-color: rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
       text-align: center;
     }
 
-    .faq-item {
-      margin-bottom: 24px;
-    }
-
-    .faq-question {
+    .headline {
+      font-size: 30px;
       font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 8px;
+      margin-bottom: 20px;
     }
 
-    .faq-answer {
+    .text {
       font-size: 16px;
       line-height: 1.8;
+      text-align: left;
     }
 
-    .home-button {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 10px 24px;
-      background-color: #00aaff;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    .home-button:hover {
-      background-color: #0088cc;
+    .text p {
+      margin-bottom: 16px;
     }
 
     .footer {
       text-align: center;
-      font-size: 13px;
       margin: 40px 0 20px;
-      color: rgba(255, 255, 255, 0.5);
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.6);
     }
 
     .footer a {
-      color: #aaa;
+      color: #ccc;
       text-decoration: none;
+      margin: 0 6px;
+    }
+
+    .home-button {
+      background-color: #00aaff;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .home-button:hover {
+      background-color: #0088cc;
     }
 
     @media screen and (max-width: 600px) {
@@ -96,64 +104,37 @@
   </style>
 </head>
 <body>
-  <!-- Logo -->
+
+  <!-- Logo (clickable to index.html) -->
   <a href="index.html">
-    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
+    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   </a>
 
   <!-- Google Translate -->
   <div class="translate" id="google_translate_element"></div>
 
-  <!-- Main Content -->
+  <!-- FAQ Content -->
   <div class="container">
     <div class="headline">Frequently Asked Questions</div>
+    <div class="text">
+      <p><strong>Q: Is NeoX a scam?</strong><br>
+      A: No. NeoX is not a scam. Our project is built with full transparency, using verifiable smart contracts and decentralized tools. Everything is open source and hosted on trusted platforms like GitHub and IPFS.</p>
 
-    <div class="faq-item">
-      <div class="faq-question">Is NeoX a scam?</div>
-      <div class="faq-answer">
-        Absolutely not. NeoX is a transparent, educational cryptocurrency initiative designed to explore Web3 technology through NFTs and utility tokens. All smart contracts are verifiable on blockchain, and our project is open-source on GitHub. We do not solicit private investments, promise returns, or engage in deceptive marketing. NeoX is a self-funded, public Web3 experiment created for learning, inspiration, and innovation.
-      </div>
+      <p><strong>Q: What is the purpose of NeoX?</strong><br>
+      A: NeoX is a decentralized token project that explores the intersection of Web3, community-driven design, and digital value. It includes NFT collections and a native token aimed at education, experimentation, and innovation.</p>
+
+      <p><strong>Q: Why should I trust this project?</strong><br>
+      A: We provide publicly viewable contracts, metadata, and IPFS-hosted assets. Our GitHub repo and social channels are open for review. NeoX does not promise unrealistic profits, and users are encouraged to DYOR (Do Your Own Research).</p>
+
+      <p><strong>Q: How do I buy or test NeoX?</strong><br>
+      A: Please visit our "How to Buy" page for detailed step-by-step guidance. We also provide a faucet option for testnet usage, and support MetaMask wallet integration.</p>
+
+      <p><strong>Q: Is this an official platform?</strong><br>
+      A: Yes. This website is the official NeoX site. You can find us on Instagram at <a href="https://www.instagram.com/neox__official?igsh=a2N5bTZ3MTlmMmNy&utm_source=qr" target="_blank" style="color:#00aaff;">@neox__official</a>.</p>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-question">How can I get NeoX tokens?</div>
-      <div class="faq-answer">
-        NeoX tokens (NXC) can be obtained through our official smart contract via MetaMask or Thirdweb. We also provide step-by-step guides on how to purchase NXC in our “How to Buy” section.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">Is there a whitelist or presale?</div>
-      <div class="faq-answer">
-        No. Our initial test versions are open to everyone. When public sales are available, the process will be transparent and accessible through our official channels only.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">Is NeoX officially registered as a company?</div>
-      <div class="faq-answer">
-        NeoX is currently a community-driven initiative, not a registered legal entity. Our goal is to remain open, flexible, and exploratory while maintaining transparency and ethical standards.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">Where can I view NeoX's smart contracts?</div>
-      <div class="faq-answer">
-        You can view and verify all deployed smart contracts on block explorers such as Sepolia Etherscan. Contract addresses are published on our website for public verification.
-      </div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-question">How can I stay up to date?</div>
-      <div class="faq-answer">
-        Follow our official Instagram at <a href="https://www.instagram.com/neoxofficial" target="_blank" style="color: #00aaff;">@neoxofficial</a> for updates, educational content, and roadmap information.
-      </div>
-    </div>
-
-    <!-- Back to Home -->
-    <div style="text-align:center;">
-      <a href="index-global.html" class="home-button">← Back to Home</a>
-    </div>
+    <!-- Back to Home button -->
+    <a href="index-global.html" class="home-button">← Back to Home</a>
   </div>
 
   <!-- Footer -->
@@ -162,15 +143,5 @@
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
-  <!-- Google Translate Script -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
