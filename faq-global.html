@@ -4,28 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FAQ - NeoX</title>
-
-  <!-- Google Translate -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
   <style>
-    body {
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
+    }
+
+    body {
       background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
+      background-repeat: no-repeat;
       background-position: center;
       background-attachment: fixed;
-      font-family: Arial, sans-serif;
       color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
     }
 
     .logo {
@@ -33,63 +28,61 @@
       top: 20px;
       left: 20px;
       width: 60px;
-      z-index: 999;
     }
 
     .translate {
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 999;
     }
 
     .container {
       max-width: 900px;
       margin: 120px auto 0;
       padding: 20px;
-      background-color: rgba(255, 255, 255, 0.12);
-      border-radius: 12px;
-      text-align: center;
+      text-align: left;
+      background-color: rgba(0, 0, 0, 0.35);
+      border-radius: 10px;
     }
 
     .headline {
-      font-size: 30px;
+      font-size: 28px;
       font-weight: bold;
-      margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 30px;
     }
 
-    .text {
-      font-size: 16px;
-      line-height: 1.8;
-      text-align: left;
+    .faq-item {
+      margin-bottom: 25px;
     }
 
-    .text p {
-      margin-bottom: 16px;
+    .faq-item strong {
+      color: #00aaff;
     }
 
     .footer {
       text-align: center;
       margin: 40px 0 20px;
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.6);
+      color: rgba(255, 255, 255, 0.5);
     }
 
     .footer a {
-      color: #ccc;
+      color: #aaa;
       text-decoration: none;
-      margin: 0 6px;
+      margin-left: 8px;
     }
 
     .home-button {
+      color: #ffffff !important;
       background-color: #00aaff;
-      color: white;
-      padding: 10px 22px;
-      border-radius: 8px;
+      padding: 10px 20px;
       text-decoration: none;
+      border-radius: 8px;
       font-weight: bold;
       display: inline-block;
-      margin-top: 20px;
+      border: none;
+      margin: 30px auto 10px;
     }
 
     .home-button:hover {
@@ -105,35 +98,46 @@
 </head>
 <body>
 
-  <!-- Logo (clickable to index.html) -->
+  <!-- Logo -->
   <a href="index.html">
-    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
   </a>
 
   <!-- Google Translate -->
   <div class="translate" id="google_translate_element"></div>
 
-  <!-- FAQ Content -->
+  <!-- Main FAQ Content -->
   <div class="container">
     <div class="headline">Frequently Asked Questions</div>
-    <div class="text">
-      <p><strong>Q: Is NeoX a scam?</strong><br>
-      A: No. NeoX is not a scam. Our project is built with full transparency, using verifiable smart contracts and decentralized tools. Everything is open source and hosted on trusted platforms like GitHub and IPFS.</p>
 
-      <p><strong>Q: What is the purpose of NeoX?</strong><br>
-      A: NeoX is a decentralized token project that explores the intersection of Web3, community-driven design, and digital value. It includes NFT collections and a native token aimed at education, experimentation, and innovation.</p>
-
-      <p><strong>Q: Why should I trust this project?</strong><br>
-      A: We provide publicly viewable contracts, metadata, and IPFS-hosted assets. Our GitHub repo and social channels are open for review. NeoX does not promise unrealistic profits, and users are encouraged to DYOR (Do Your Own Research).</p>
-
-      <p><strong>Q: How do I buy or test NeoX?</strong><br>
-      A: Please visit our "How to Buy" page for detailed step-by-step guidance. We also provide a faucet option for testnet usage, and support MetaMask wallet integration.</p>
-
-      <p><strong>Q: Is this an official platform?</strong><br>
-      A: Yes. This website is the official NeoX site. You can find us on Instagram at <a href="https://www.instagram.com/neox__official?igsh=a2N5bTZ3MTlmMmNy&utm_source=qr" target="_blank" style="color:#00aaff;">@neox__official</a>.</p>
+    <div class="faq-item">
+      <strong>Q: Is NeoX a scam?</strong><br/>
+      A: Absolutely not. NeoX is a transparent and educational Web3 project. All smart contracts are open-source and verifiable, and our assets are hosted on trusted platforms like GitHub and IPFS. We do not promise unrealistic returns or solicit investments — NeoX is a public, community-driven Web3 experiment.
     </div>
 
-    <!-- Back to Home button -->
+    <div class="faq-item">
+      <strong>Q: What is the purpose of NeoX?</strong><br/>
+      A: NeoX is a decentralized token project focused on Web3, design, and digital value exploration. It includes NFT collections, educational content, experimentation, and innovation at its core.
+    </div>
+
+    <div class="faq-item">
+      <strong>Q: Why should I trust this project?</strong><br/>
+      A: All smart contracts, metadata, and IPFS assets are publicly accessible. GitHub repositories and social channels provide transparency. We encourage all users to DYOR (Do Your Own Research) before engaging.
+    </div>
+
+    <div class="faq-item">
+      <strong>Q: How do I buy or test NeoX tokens?</strong><br/>
+      A: Visit our “How to Buy” page for step-by-step guidance. We support both testnet options and MetaMask integration.
+    </div>
+
+    <div class="faq-item">
+      <strong>Q: Is this the official platform?</strong><br/>
+      A: Yes. This is the official site of NeoX. You can also follow our official Instagram at <a href="https://www.instagram.com/neox__official" target="_blank">@neox__official</a>.
+    </div>
+  </div>
+
+  <!-- Back to Home -->
+  <div style="text-align: center;">
     <a href="index-global.html" class="home-button">← Back to Home</a>
   </div>
 
@@ -142,6 +146,17 @@
     © 2025 NeoX. All rights reserved. |
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
+
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
