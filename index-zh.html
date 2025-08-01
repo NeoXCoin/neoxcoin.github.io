@@ -23,6 +23,7 @@
       left: 20px;
       width: 60px;
       opacity: 0.85;
+      z-index: 999;
     }
 
     .language-switch {
@@ -30,6 +31,7 @@
       top: 20px;
       right: 20px;
       font-size: 16px;
+      z-index: 999;
     }
 
     .language-switch a {
@@ -77,14 +79,8 @@
     .headline span:nth-child(4) { animation-delay: 2s; }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .nav-bar {
@@ -118,9 +114,7 @@
       border-radius: 12px;
       font-size: 16px;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
       text-decoration: none;
-      display: inline-block;
       min-width: 180px;
       box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     }
@@ -131,9 +125,23 @@
     }
 
     .footer {
-      margin-top: 40px;
+      margin-top: 50px;
       font-size: 13px;
       opacity: 0.6;
+    }
+
+    .footer-links {
+      margin-bottom: 8px;
+    }
+
+    .footer a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 6px;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 600px) {
@@ -151,18 +159,22 @@
       .coin {
         width: 265px;
         max-width: 100%;
-        margin: 20px auto;
-        display: block;
       }
     }
   </style>
 </head>
 <body>
-  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+  <!-- Logo -->
+  <a href="index-global.html">
+    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+  </a>
+
+  <!-- Language Switch -->
   <div class="language-switch">
-    <a href="index.html">EN</a> | <a href="index-zh.html">繁</a>
+    <a href="index.html">EN</a> | <a href="index-zh.html">繁</a> | <a href="index-global.html">🌍</a>
   </div>
 
+  <!-- Main Container -->
   <div class="container">
     <div class="tagline">Web3 革命，由 NeoX 引領</div>
     <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin"/>
@@ -185,12 +197,18 @@
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">🛒 購買 NXC</a>
       <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/">🦊 使用 MetaMask 購買</a>
-      <a class="btn" href="https://neoxcoin.github.io/add-to-metamask-zh.html">🦊 加入至 MetaMask</a>
+      <a class="btn" href="add-to-metamask-zh.html">🦊 加入至 MetaMask</a>
     </div>
 
+    <!-- Footer -->
     <div class="footer">
-      © 2025 NeoX. All rights reserved. | 
-      <a href="disclaimer-zh.html" style="color: #aaa; text-decoration: none;">免責聲明</a>
+      <div class="footer-links">
+        <a href="faq-zh.html">FAQ</a> |
+        <a href="about-zh.html">關於我們</a> |
+        <a href="troubleshooting-zh.html">疑難排解</a>
+      </div>
+      © 2025 NeoX. All rights reserved. |
+      <a href="disclaimer-zh.html">免責聲明</a>
     </div>
   </div>
 </body>
