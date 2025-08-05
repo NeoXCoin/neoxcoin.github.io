@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Buy NeoX – Global</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
-
   <style>
     body {
       margin: 0;
@@ -43,11 +42,14 @@
       padding: 20px;
     }
 
-    .headline {
-      font-size: 22px;
-      font-weight: bold;
-      margin-top: 120px;
-      margin-bottom: 20px;
+    .coin {
+      width: 180px;
+      margin: 20px auto 10px auto;
+    }
+
+    h2 {
+      margin-top: 10px;
+      font-size: 20px;
     }
 
     .btn-row {
@@ -56,8 +58,6 @@
       gap: 15px;
       justify-content: center;
       margin-top: 30px;
-      width: 100%;
-      max-width: 300px;
     }
 
     .btn {
@@ -69,6 +69,7 @@
       font-size: 16px;
       cursor: pointer;
       text-decoration: none;
+      min-width: 220px;
       box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
       display: flex;
       align-items: center;
@@ -96,45 +97,30 @@
     .footer a:hover {
       text-decoration: underline;
     }
-
   </style>
 </head>
 <body>
-  <!-- Logo -->
   <a href="index-global.html">
     <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   </a>
-
-  <!-- Google Translate -->
   <div id="google_translate_element"></div>
 
-  <!-- Main Content -->
   <div class="container">
-    <div class="headline">Choose Your Purchase Method</div>
+    <!-- NeoX Coin Image -->
+    <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin" />
+
+    <h2>Choose Your Purchase Method</h2>
 
     <div class="btn-row">
       <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/"><span>🦊</span> Buy via MetaMask</a>
-      <a class="btn" href="https://walletconnect.com/"><span>🌐</span> Buy via WalletConnect</a>
-      <a class="btn" href="https://example.com"><span>💳</span> Buy via Credit Card</a>
+      <a class="btn" href="#"><span>🌐</span> Buy via WalletConnect</a>
+      <a class="btn" href="#"><span>💳</span> Buy via Credit Card</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      © 2025 NeoX. All rights reserved.
     </div>
   </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <a href="index-global.html">← Back to Home</a><br><br>
-    © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-global.html">Disclaimer</a>
-  </div>
-
-  <!-- Google Translate Script -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
-</html> 
+</html>
