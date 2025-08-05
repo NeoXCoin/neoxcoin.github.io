@@ -21,12 +21,13 @@
   <style>
     body {
       margin: 0;
+      background: linear-gradient(135deg, #0a0a2a, #1f005c),
+                  url('https://ipfs.io/ipfs/bafybeibksxe7sw5pmfklxmyojt54x4bkwnqipfzabxwrskj4q7kas2jjui');
+      background-size: cover;
+      background-position: center;
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
-      background: linear-gradient(135deg, rgba(10,10,42,0.85), rgba(31,0,92,0.85)),
-                  url('https://gateway.lighthouse.storage/ipfs/bafybeibksxe7sw5pmfklxmyojt54x4bkwnqipfzabxwrskj4q7kas2jjui') center/cover no-repeat;
-      position: relative;
     }
 
     .logo {
@@ -46,102 +47,96 @@
     }
 
     .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+      max-width: 900px;
+      margin: 100px auto;
+      background-color: rgba(0, 0, 0, 0.35);
       padding: 20px;
-      z-index: 1;
-      position: relative;
+      border-radius: 10px;
     }
 
-    .coin-img {
-      width: 180px;
+    .coin {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+
+    .headline {
+      font-size: 26px;
+      font-weight: bold;
       margin-bottom: 30px;
-      opacity: 0.95;
     }
 
-    h1 {
-      font-size: 22px;
-      margin-bottom: 30px;
+    iframe {
+      border: none;
+      width: 100%;
+      height: 600px;
     }
 
-    .btn-row {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .btn {
-      background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
-      border: 3px solid #e0e0e0;
-      color: black;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
+    .home-button {
+      background-color: #00aaff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
       text-decoration: none;
-      min-width: 220px;
-      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+    .home-button:hover {
+      background-color: #0088cc;
     }
 
     .footer {
-      margin-top: 40px;
+      text-align: center;
+      margin-top: 30px;
       font-size: 13px;
-      opacity: 0.6;
+      color: rgba(255, 255, 255, 0.6);
     }
 
     .footer a {
       color: #ccc;
       text-decoration: none;
-      margin: 0 6px;
     }
 
     .footer a:hover {
       text-decoration: underline;
     }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 80px 15px;
+      }
+      .coin {
+        width: 120px;
+      }
+    }
   </style>
 </head>
 <body>
-  <a href="index-global.html">
+  <!-- Logo -->
+  <a href="index.html">
     <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   </a>
 
+  <!-- Google Translate -->
   <div id="google_translate_element"></div>
 
+  <!-- Main Container -->
   <div class="container">
-    <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" 
-           alt="NeoX Coin" 
-           style="width: 180px; opacity: 0.9; margin-bottom: 20px;" /> 
+    <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin" />
+    <div class="headline">Choose Your Purchase Method</div>
 
-    <div class="btn-row">
-      <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">🛒 Buy NXC</a>
-      <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/">🦊 Buy via MetaMask</a>
-      <a class="btn" href="#">🌐 Buy via WalletConnect</a>
-      <a class="btn" href="#">💳 Buy via Credit Card</a>
-    </div>
+    <!-- Thirdweb Buy Widget -->
+    <iframe src="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1" title="Buy NXC"></iframe>
 
-    <div class="footer">
-      <div class="footer-links">
-        <a href="faq-global.html">FAQ</a> |
-        <a href="about-global.html">About</a> |
-        <a href="troubleshooting-global.html">Troubleshooting</a>
-      </div>
-      © 2025 NeoX. All rights reserved. |
-      <a href="disclaimer-global.html">Disclaimer</a>
-    </div>
+    <!-- Back to Home -->
+    <a href="index-global.html" class="home-button">← Back to Home</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 NeoX. All rights reserved. |
+    <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 </body>
 </html>
