@@ -21,12 +21,16 @@
   <style>
     body {
       margin: 0;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c),
-                  url('https://gateway.lighthouse.storage/ipfs/bafybeibksxe7sw5pmfklxmyojt54x4bkwnqipfzabxwrskj4q7kas2jjui') center/cover no-repeat;
-      background-blend-mode: overlay;
+      padding: 0;
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
+      background: linear-gradient(135deg, #0a0a2a, #1f005c),
+                  url('https://ipfs.io/ipfs/bafybeibksxe7sw5pmfklxmyojt54x4bkwnqipfzabxwrskj4q7kas2jjui');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-blend-mode: overlay;
     }
 
     .logo {
@@ -56,24 +60,25 @@
 
     .coin {
       width: 140px;
-      margin-bottom: 20px;
+      margin-top: 80px;
+      margin-bottom: 30px;
     }
 
-    h1 {
-      font-size: 22px;
+    h2 {
       margin-bottom: 30px;
     }
 
     .btn-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 16px;
       justify-content: center;
+      margin-bottom: 40px;
     }
 
     .btn {
       background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
-      border: 3px solid #e0e0e0;
+      border: 2px solid #e0e0e0;
       color: black;
       padding: 12px 24px;
       border-radius: 12px;
@@ -82,18 +87,40 @@
       text-decoration: none;
       min-width: 180px;
       box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .btn:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
       box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+    }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+
+    .footer a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 6px;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 600px) {
       .btn-row {
         flex-direction: column;
         align-items: center;
+      }
+
+      .coin {
+        width: 200px;
       }
     }
   </style>
@@ -102,16 +129,28 @@
   <a href="index-global.html">
     <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   </a>
+
   <div id="google_translate_element"></div>
 
   <div class="container">
     <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin" />
-    <h1>Choose Your Purchase Method</h1>
+    <h2>Choose Your Purchase Method</h2>
+
     <div class="btn-row">
-      <a class="btn" href="#">Buy NXC</a>
-      <a class="btn" href="#">Buy via MetaMask</a>
-      <a class="btn" href="#">Buy via WalletConnect</a>
-      <a class="btn" href="#">Buy via Credit Card</a>
+      <a class="btn" href="#"><span>Buy NXC</span></a>
+      <a class="btn" href="#"><span>Buy via MetaMask</span></a>
+      <a class="btn" href="#"><span>Buy via WalletConnect</span></a>
+      <a class="btn" href="#"><span>Buy via Credit Card</span></a>
+    </div>
+
+    <div class="footer">
+      <div class="footer-links">
+        <a href="faq-global.html">FAQ</a> |
+        <a href="about-global.html">About</a> |
+        <a href="troubleshooting-global.html">Troubleshooting</a>
+      </div>
+      © 2025 NeoX. All rights reserved. |
+      <a href="disclaimer-global.html">Disclaimer</a>
     </div>
   </div>
 </body>
