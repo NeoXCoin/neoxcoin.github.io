@@ -7,149 +7,126 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       color: white;
-      background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-                  url('https://gateway.lighthouse.storage/ipfs/bafybeibksxe7sw5pmfklxmyojt54x4bkwnqipfzabxwrskj4q7kas2jjui') no-repeat center center fixed;
+      text-align: center;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)),
+        url('https://gateway.lighthouse.storage/ipfs/bafybeibksxe7sw5pmfklxmyojt54x4bkwnqipfzabxwrskj4q7kas2jjui');
       background-size: cover;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .translate-container {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      z-index: 9999;
     }
 
     .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
-    }
-
-    .translate {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-
-    .content {
-      text-align: center;
       margin-top: 100px;
+      width: 120px;
+      height: 120px;
     }
 
-    .content img {
-      width: 100px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 1.8em;
-      margin-bottom: 30px;
+    h2 {
+      margin-top: 30px;
+      font-size: 24px;
     }
 
     .button-group {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: row;
       justify-content: center;
-      gap: 15px;
-      padding: 0 20px;
+      flex-wrap: wrap;
+      margin: 30px auto;
+      gap: 20px;
+      max-width: 800px;
     }
 
-    .button-group button {
-      padding: 15px 25px;
-      font-size: 16px;
-      border: none;
+    .button-group a {
+      padding: 15px 30px;
+      background-color: rgba(255, 255, 255, 0.85);
+      color: black;
       border-radius: 10px;
-      background: #ccc;
-      color: #000;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-      min-width: 200px;
-    }
-
-    .footer {
-      text-align: center;
-      font-size: 14px;
-      margin-bottom: 20px;
-      color: #ddd;
-    }
-
-    .footer a {
-      color: #ccc;
       text-decoration: none;
-      margin: 0 5px;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
     }
 
-    .footer a:hover {
+    .button-group a:hover {
+      background-color: #c7c7c7;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      padding: 20px;
+      color: #ccc;
+    }
+
+    footer a {
+      color: #ccc;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
       text-decoration: underline;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      .logo {
+        margin-top: 60px;
+        width: 100px;
+        height: 100px;
+      }
+
       .button-group {
         flex-direction: column;
         align-items: center;
-      }
-
-      h1 {
-        font-size: 1.5em;
-      }
-
-      .content {
-        margin-top: 80px;
-        padding: 0 10px;
-      }
-
-      .logo {
-        width: 50px;
+        gap: 15px;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- Logo -->
-  <img src="https://gateway.lighthouse.storage/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" class="logo" alt="NeoX Logo" />
-
-  <!-- Google Translate -->
-  <div class="translate">
+  <div class="translate-container">
     <div id="google_translate_element"></div>
   </div>
 
-  <!-- Main Content -->
-  <div class="content">
-    <img src="https://gateway.lighthouse.storage/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin" />
-    <h1>Choose Your Purchase Method</h1>
-    <div class="button-group">
-      <button onclick="location.href='#'">Buy NXC</button>
-      <button onclick="location.href='#'">Buy via MetaMask</button>
-      <button onclick="location.href='#'">Buy via WalletConnect</button>
-      <button onclick="location.href='#'">Buy via Credit Card</button>
-    </div>
+  <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafybeid3di5b6uyku6oicha2em7alpydh26on3ot32mm6bjkpdos5kz6xe" alt="NeoX Logo" />
+
+  <h2>Choose Your Purchase Method</h2>
+
+  <div class="button-group">
+    <a href="#">Buy NXC</a>
+    <a href="#">Buy via MetaMask</a>
+    <a href="#">Buy via WalletConnect</a>
+    <a href="#">Buy via Credit Card</a>
   </div>
 
-  <!-- Footer -->
-  <div class="footer">
+  <footer>
     <div>
       <a href="faq-global.html">FAQ</a> |
       <a href="about-global.html">About</a> |
       <a href="troubleshooting-global.html">Troubleshooting</a>
     </div>
-    <div style="margin-top: 5px;">
+    <div style="margin-top: 10px;">
       © 2025 NeoX. All rights reserved. |
       <a href="disclaimer-global.html">Disclaimer</a>
     </div>
-  </div>
+  </footer>
 
   <!-- Google Translate Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,es,de',
-        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
-      }, 'google_translate_element');
+      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 </body>
 </html>
