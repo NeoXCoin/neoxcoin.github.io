@@ -6,6 +6,18 @@
   <title>Buy NeoX – Global</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
 
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
   <style>
     body {
       margin: 0;
@@ -13,36 +25,26 @@
       color: white;
       text-align: center;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
+      background-image: url('https://gateway.lighthouse.storage/ipfs/bafybeibksxe7sw5pmfklxmyojt54x4bkwnqipfzabxwrskj4q7kas2jjui');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
 
-    .background-overlay {
-      position: fixed;
-      top: 0; left: 0;
+    /* 半透明遮罩 */
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.7);
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: url('https://gateway.lighthouse.storage/ipfs/bafybeibksxe7sw5pmfklxmyojt54x4bkwnqipfzabxwrskj4q7kas2jjui') no-repeat center center;
-      background-size: cover;
-      opacity: 0.3;
-      z-index: -1;
-    }
-
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
-      opacity: 0.85;
-      z-index: 999;
-    }
-
-    #google_translate_element {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 999;
+      z-index: 0;
     }
 
     .container {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -51,15 +53,31 @@
       padding: 20px;
     }
 
-    .coin {
-      width: 200px;
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      opacity: 0.85;
+      z-index: 10;
+    }
+
+    #google_translate_element {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+    }
+
+    .coin-gif {
+      max-width: 180px;
+      margin-top: 100px;
       margin-bottom: 30px;
     }
 
-    .headline {
-      font-size: 20px;
-      margin-bottom: 30px;
-      font-weight: bold;
+    h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
     }
 
     .btn-row {
@@ -80,8 +98,8 @@
       cursor: pointer;
       text-decoration: none;
       min-width: 200px;
+      text-align: center;
       box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-      display: inline-block;
     }
 
     .btn:hover {
@@ -92,7 +110,7 @@
     .footer {
       font-size: 13px;
       opacity: 0.6;
-      margin-bottom: 30px;
+      margin-top: 30px;
     }
 
     .footer a {
@@ -105,49 +123,33 @@
       text-decoration: underline;
     }
 
-    .footer-links {
-      margin-bottom: 8px;
-    }
-
     @media (max-width: 600px) {
       .btn-row {
         flex-direction: column;
         align-items: center;
       }
 
-      .coin {
-        width: 160px;
+      .coin-gif {
+        max-width: 160px;
       }
     }
   </style>
-
-  <!-- Google Translate -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 <body>
-  <div class="background-overlay"></div>
+  <!-- Background Overlay -->
+  <div class="overlay"></div>
 
-  <!-- Logo -->
-  <a href="index-global.html">
+  <!-- Top Logo -->
+  <a href="index.html">
     <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   </a>
 
   <!-- Google Translate -->
   <div id="google_translate_element"></div>
 
-  <!-- Main Content -->
   <div class="container">
-    <img class="coin" src="https://ipfs.io/ipfs/bafybeid3di5b6uyku6oicha2em7alpydh26on3ot32mm6bjkpdos5kz6xe" alt="NeoX Animated Coin" />
-    <div class="headline">Choose Your Purchase Method</div>
+    <img class="coin-gif" src="https://gateway.lighthouse.storage/ipfs/bafybeid3di5b6uyku6oicha2em7alpydh26on3ot32mm6bjkpdos5kz6xe" alt="NeoX Animated Coin" />
+    <h2>Choose Your Purchase Method</h2>
 
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/sepolia/0x80AD039927cDf2341c1428b0ABF8D3421dc122e1">Buy NXC</a>
@@ -156,9 +158,8 @@
       <a class="btn" href="#">Buy via Credit Card</a>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
-      <div class="footer-links">
+      <div>
         <a href="faq-global.html">FAQ</a> |
         <a href="about-global.html">About</a> |
         <a href="troubleshooting-global.html">Troubleshooting</a>
