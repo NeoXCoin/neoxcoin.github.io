@@ -14,20 +14,22 @@
       position: relative;
     }
 
+    /* 左上角 Logo（可點擊返回主頁） */
     .logo {
       width: 60px;
       position: absolute;
       top: 20px;
       left: 20px;
       opacity: 0.85;
+      cursor: pointer;
     }
 
+    /* 右上角語言切換 */
     .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
     }
-
     .language-switch a {
       color: white;
       text-decoration: none;
@@ -47,10 +49,7 @@
       text-decoration: none;
       display: inline-block;
     }
-
-    .btn:hover {
-      background-color: #0056b3;
-    }
+    .btn:hover { background-color: #0056b3; }
 
     .note {
       margin-top: 30px;
@@ -63,18 +62,16 @@
       font-size: 13px;
       color: rgba(255, 255, 255, 0.5);
     }
-
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-    }
+    .footer a { color: #aaa; text-decoration: none; }
   </style>
 </head>
 <body>
-  <!-- Logo -->
-  <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+  <!-- Logo：返回繁體首頁 -->
+  <a href="index-zh.html">
+    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+  </a>
 
-  <!-- Language Switch -->
+  <!-- 語言切換 -->
   <div class="language-switch">
     <a href="add-to-metamask.html">EN</a> | <a href="add-to-metamask-zh.html">繁</a>
   </div>
@@ -107,7 +104,7 @@
           params: {
             type: 'ERC20',
             options: {
-              address: '0x80AD039927cDf2341c1428b0ABF8D3421dc122e1',
+              address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', // Base Mainnet 合約地址
               symbol: 'NXC',
               decimals: 18,
               image: 'https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu',
@@ -126,6 +123,7 @@
       }
     }
 
+    // 手機版 fallback：沒有注入 provider 時導去 App
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
     if (isMobile && !window.ethereum) {
       window.location.href = "https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask-zh.html";
