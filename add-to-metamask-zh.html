@@ -9,7 +9,7 @@
       background:#0a0a2a; color:#fff; font-family:Arial, sans-serif; text-align:center;
       padding:88px 20px 40px; position:relative;
     }
-    /* 頂部區 */
+    /* Header */
     .logo{
       width:60px; position:absolute; top:20px; left:20px; opacity:.9;
     }
@@ -20,7 +20,7 @@
     .lang a{ color:#fff; text-decoration:none; opacity:.85; margin-left:10px; }
     .lang a:hover{ opacity:1; text-decoration:underline; }
 
-    h1{ font-size:28px; margin:0 0 8px; }
+    h1{ font-size:32px; margin:0 0 6px; }
     p.lead{ color:#cfd7ff; margin:0 0 26px; }
 
     .btn{
@@ -32,7 +32,7 @@
     .btn.secondary{ background:#1f2a44; box-shadow:0 6px 18px rgba(255,255,255,.08); }
     .btn[disabled]{ opacity:.6; cursor:not-allowed; }
 
-    .hint{ font-size:13px; color:#9fb0ff; margin-top:14px; min-height:1.2em; }
+    .hint{ font-size:13px; color:#9fb0ff; margin-top:14px; }
     .back{ margin-top:28px; color:#ccc; text-decoration:none; display:inline-block; }
     .back:hover{ text-decoration:underline; }
 
@@ -40,26 +40,29 @@
       margin-top:56px; font-size:13px; color:rgba(255,255,255,.55);
     }
     .footer a{ color:#aaa; text-decoration:none; }
+
     @media (max-width:600px){
       body{ padding-top:96px; }
-      h1{ font-size:24px; }
+      h1{ font-size:26px; }
     }
   </style>
 </head>
 <body>
-  <!-- Logo → 返回繁中主頁 -->
-  <a href="index-zh.html"><img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo"/></a>
+  <!-- Logo → 回主頁 -->
+  <a href="index-zh.html">
+    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo"/>
+  </a>
 
   <!-- 語言切換 -->
   <div class="lang"><a href="add-to-metamask.html">EN</a> | <a href="add-to-metamask-zh.html">繁</a></div>
 
   <h1>加入 NXC 代幣到 MetaMask</h1>
-  <p class="lead">選擇以下方式將 NeoX Token（NXC）加入你的 MetaMask 錢包。</p>
+  <p class="lead">點擊下方按鈕，將 NeoX Token（NXC）加入你的 MetaMask 錢包。</p>
 
-  <!-- 自動加入（3秒倒數後呼叫 wallet_watchAsset） -->
+  <!-- 自動加入（3 秒後呼叫 MetaMask） -->
   <button id="autoBtn" class="btn" onclick="queueAddToken()">加入 NXC 代幣（自動）</button>
 
-  <!-- 僅開啟 App（不自動加入），適合手機先進入 App 內建瀏覽器 -->
+  <!-- 安全開啟（只開 App，不自動加） -->
   <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask-zh.html">在 MetaMask App 開啟</a>
 
   <div id="status" class="hint"></div>
@@ -73,9 +76,9 @@
   </div>
 
 <script>
-  // ---- 代幣設定（Base 主網）----
+  // ---- 設定（Base 鏈）----
   const TOKEN = {
-    address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B',
+    address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', // 已正式開售的合約
     symbol: 'NXC',
     decimals: 18,
     image: 'https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu'
@@ -85,24 +88,24 @@
   const autoBtn  = document.getElementById('autoBtn');
 
   function inMetaMaskInApp(){
-    // MetaMask Mobile 內建瀏覽器的 UA 通常包含 MetaMaskMobile
+    // MetaMask Mobile 內建瀏覽器 UA 會包含 "MetaMaskMobile"
     return /MetaMaskMobile/i.test(navigator.userAgent);
   }
 
   function queueAddToken(){
-    if (!confirm('是否要加入 NXC 至你的 MetaMask？')) return;
+    if (!confirm('確定要加入 NXC 到 MetaMask？')) return;
 
     if (typeof window.ethereum === 'undefined' && !inMetaMaskInApp()){
-      // 非 MetaMask 內建瀏覽器：先引導開 App
+      // 引導使用者先用 MetaMask App 內建瀏覽器開啟
       window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask-zh.html';
       return;
     }
 
     autoBtn.disabled = true;
     let secs = 3;
-    statusEl.textContent = `準備中… ${secs} 秒`;
+    statusEl.textContent = `準備中… ${secs}s`;
     const t = setInterval(()=>{
-      secs--; statusEl.textContent = `準備中… ${secs} 秒`;
+      secs--; statusEl.textContent = `準備中… ${secs}s`;
       if (secs<=0){ clearInterval(t); addToken(); }
     }, 1000);
   }
@@ -115,16 +118,16 @@
         params: { type: 'ERC20', options: TOKEN }
       });
       if (ok){
-        statusEl.textContent = '已成功加入 NXC 代幣。';
+        statusEl.textContent = '已成功加入 NXC。';
       }else{
         statusEl.textContent = '你在 MetaMask 內取消了操作。';
       }
     }catch(e){
       console.error(e);
-      statusEl.textContent = 'MetaMask 發生錯誤。可改用「在 MetaMask App 開啟」。';
+      statusEl.textContent = 'MetaMask 發生錯誤。如有需要可使用「在 MetaMask App 開啟」。';
     }finally{
       autoBtn.disabled = false;
-      // 注意：在手機瀏覽器上，MetaMask 可能會接管並切到 App，屬於官方既定行為
+      // 提示：在手機環境，MetaMask 仍可能接管並切到 App，這屬官方行為
     }
   }
 </script>
