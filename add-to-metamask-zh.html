@@ -2,167 +2,131 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>加入 NXC 代幣到 MetaMask</title>
   <style>
-    :root { --bg:#0a0a2a; --text:#fff; --muted:#aeb3c2; --btn:#0a66ff; --btnHover:#084ecc; }
-    *{box-sizing:border-box}
     body{
-      margin:0; background-color:var(--bg); color:var(--text);
-      font-family:Arial,Helvetica,sans-serif; text-align:center; min-height:100svh;
-      padding:40px 20px; position:relative;
+      background:#0a0a2a; color:#fff; font-family:Arial, sans-serif; text-align:center;
+      padding:88px 20px 40px; position:relative;
     }
-    /* 左上 Logo（可點回主頁） */
+    /* 頂部區 */
     .logo{
-      width:60px; position:absolute; top:18px; left:18px; opacity:.9; z-index:2;
-      transition:transform .15s ease;
+      width:60px; position:absolute; top:20px; left:20px; opacity:.9;
     }
-    .logo:hover{ transform:scale(1.04) }
+    .logo:hover{ transform:translateY(-1px); }
+    .lang{
+      position:absolute; top:26px; right:20px; font-weight:bold; font-size:14px;
+    }
+    .lang a{ color:#fff; text-decoration:none; opacity:.85; margin-left:10px; }
+    .lang a:hover{ opacity:1; text-decoration:underline; }
 
-    /* 右上語言切換 */
-    .language-switch{
-      position:absolute; top:20px; right:20px; font-weight:bold; z-index:2;
-    }
-    .language-switch a{ color:#fff; text-decoration:none; margin-left:10px; opacity:.9 }
-    .language-switch a:hover{ text-decoration:underline; opacity:1 }
-
-    /* 主內容區：加頂部 padding，避免頂到 Logo */
-    .wrap{ max-width:720px; margin:0 auto; padding-top:70px }
-    h1{
-      font-size:clamp(26px, 4.6vw, 40px);
-      line-height:1.25; margin:12px 0 14px;
-      letter-spacing:.02em;
-    }
-    p.lead{
-      color:var(--muted); margin:0 auto 24px; max-width:560px; line-height:1.6
-    }
+    h1{ font-size:28px; margin:0 0 8px; }
+    p.lead{ color:#cfd7ff; margin:0 0 26px; }
 
     .btn{
-      background:var(--btn); color:#fff; border:0; padding:14px 24px; border-radius:10px;
-      font-size:16px; font-weight:700; cursor:pointer; display:inline-block; margin:10px 8px;
-      transition:transform .08s ease, background .12s ease, box-shadow .12s ease;
-      box-shadow:0 6px 18px rgba(10,102,255,.25);
+      background:#0d6efd; border:none; color:#fff; padding:14px 24px; border-radius:10px;
+      font-size:16px; margin:10px; cursor:pointer; display:inline-block; text-decoration:none;
+      box-shadow:0 6px 18px rgba(13,110,253,.25);
     }
-    .btn:hover{ background:var(--btnHover); transform:translateY(-1px); box-shadow:0 8px 22px rgba(10,102,255,.32) }
-    .btn.secondary{ background:#0f172a; box-shadow:0 6px 18px rgba(0,0,0,.25); border:1px solid #213051 }
-    .btn.secondary:hover{ background:#122046 }
+    .btn:hover{ filter:brightness(1.06); }
+    .btn.secondary{ background:#1f2a44; box-shadow:0 6px 18px rgba(255,255,255,.08); }
+    .btn[disabled]{ opacity:.6; cursor:not-allowed; }
 
-    .back{ display:inline-block; margin:26px 0 6px; color:#c9d3ff; text-decoration:none }
-    .back:hover{ text-decoration:underline }
-
-    .note{ margin-top:14px; font-size:13px; color:#9aa3b2 }
+    .hint{ font-size:13px; color:#9fb0ff; margin-top:14px; min-height:1.2em; }
+    .back{ margin-top:28px; color:#ccc; text-decoration:none; display:inline-block; }
+    .back:hover{ text-decoration:underline; }
 
     .footer{
-      margin:44px 0 8px; font-size:12px; color:rgba(255,255,255,.55)
+      margin-top:56px; font-size:13px; color:rgba(255,255,255,.55);
     }
-    .footer a{ color:#cfd6e6; text-decoration:none }
-    .footer a:hover{ text-decoration:underline }
-
-    @media (max-width:480px){
-      .logo{ width:54px; top:14px; left:14px }
-      .language-switch{ top:16px; right:14px }
-      .wrap{ padding-top:72px }
+    .footer a{ color:#aaa; text-decoration:none; }
+    @media (max-width:600px){
+      body{ padding-top:96px; }
+      h1{ font-size:24px; }
     }
   </style>
 </head>
 <body>
-  <!-- 左上 Logo：回繁中主頁 -->
-  <a href="index-zh.html" aria-label="返回主頁">
-    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo">
-  </a>
+  <!-- Logo → 返回繁中主頁 -->
+  <a href="index-zh.html"><img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo"/></a>
 
-  <!-- 右上語言切換 -->
-  <div class="language-switch">
-    <a href="add-to-metamask.html">EN</a> | <a href="add-to-metamask-zh.html">繁</a>
+  <!-- 語言切換 -->
+  <div class="lang"><a href="add-to-metamask.html">EN</a> | <a href="add-to-metamask-zh.html">繁</a></div>
+
+  <h1>加入 NXC 代幣到 MetaMask</h1>
+  <p class="lead">選擇以下方式將 NeoX Token（NXC）加入你的 MetaMask 錢包。</p>
+
+  <!-- 自動加入（3秒倒數後呼叫 wallet_watchAsset） -->
+  <button id="autoBtn" class="btn" onclick="queueAddToken()">加入 NXC 代幣（自動）</button>
+
+  <!-- 僅開啟 App（不自動加入），適合手機先進入 App 內建瀏覽器 -->
+  <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask-zh.html">在 MetaMask App 開啟</a>
+
+  <div id="status" class="hint"></div>
+
+  <br><br>
+  <a class="back" href="index-zh.html">← 返回主頁</a>
+
+  <div class="footer">
+    © 2025 NeoX. All rights reserved. |
+    <a href="disclaimer-zh.html">免責聲明</a>
   </div>
 
-  <main class="wrap">
-    <h1>加入 NXC 代幣到 MetaMask</h1>
-    <p class="lead">點擊下方按鈕將 NeoX Token（NXC）加入你的 MetaMask 錢包。</p>
+<script>
+  // ---- 代幣設定（Base 主網）----
+  const TOKEN = {
+    address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B',
+    symbol: 'NXC',
+    decimals: 18,
+    image: 'https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu'
+  };
 
-    <button class="btn" onclick="addToken()">加入 NXC 代幣</button>
-    <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask-zh.html">在 MetaMask App 開啟</a>
+  const statusEl = document.getElementById('status');
+  const autoBtn  = document.getElementById('autoBtn');
 
-    <br>
-    <a class="back" href="index-zh.html">← 返回主頁</a>
+  function inMetaMaskInApp(){
+    // MetaMask Mobile 內建瀏覽器的 UA 通常包含 MetaMaskMobile
+    return /MetaMaskMobile/i.test(navigator.userAgent);
+  }
 
-    <p class="note">貼士：如按「加入」後 MetaMask 彈窗被取消，頁面不會即時自動跳 App；如 MetaMask 未偵測到，會在 3 秒後引導到 App 開啟。</p>
+  function queueAddToken(){
+    if (!confirm('是否要加入 NXC 至你的 MetaMask？')) return;
 
-    <div class="footer">
-      © 2025 NeoX. All rights reserved. |
-      <a href="disclaimer-zh.html">免責聲明</a>
-    </div>
-  </main>
-
-  <script>
-    // ---- 常量（Base 主網 + 最新合約）----
-    const TOKEN = {
-      address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', // NXC 合約（Base）
-      symbol: 'NXC',
-      decimals: 18,
-      image: 'https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu'
-    };
-
-    const BASE = {
-      chainId: '0x2105', // 8453
-      chainName: 'Base',
-      rpcUrls: ['https://mainnet.base.org'],
-      nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-      blockExplorerUrls: ['https://basescan.org']
-    };
-
-    async function ensureBase() {
-      const current = await window.ethereum.request({ method: 'eth_chainId' });
-      if (current !== BASE.chainId) {
-        try {
-          await window.ethereum.request({
-            method: 'wallet_switchEthereumChain',
-            params: [{ chainId: BASE.chainId }]
-          });
-        } catch (e) {
-          // 錢包未有 Base → 加鏈
-          if (e.code === 4902) {
-            await window.ethereum.request({
-              method: 'wallet_addEthereumChain',
-              params: [BASE]
-            });
-          } else {
-            throw e;
-          }
-        }
-      }
+    if (typeof window.ethereum === 'undefined' && !inMetaMaskInApp()){
+      // 非 MetaMask 內建瀏覽器：先引導開 App
+      window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask-zh.html';
+      return;
     }
 
-    async function addToken() {
-      if (!window.ethereum) {
-        alert('未偵測到 MetaMask。請按「在 MetaMask App 開啟」。');
-        return;
-      }
-      try {
-        await ensureBase();
-        const ok = await window.ethereum.request({
-          method: 'wallet_watchAsset',
-          params: { type: 'ERC20', options: TOKEN }
-        });
-        if (ok) alert('已成功加入 NXC 代幣！');
-        // 用戶取消（code 4001）時靜默處理，避免即刻跳 App
-      } catch (err) {
-        if (err && err.code === 4001) {
-          console.warn('使用者取消加入 NXC。');
-        } else {
-          console.error(err);
-          alert('MetaMask 發生錯誤。');
-        }
-      }
-    }
+    autoBtn.disabled = true;
+    let secs = 3;
+    statusEl.textContent = `準備中… ${secs} 秒`;
+    const t = setInterval(()=>{
+      secs--; statusEl.textContent = `準備中… ${secs} 秒`;
+      if (secs<=0){ clearInterval(t); addToken(); }
+    }, 1000);
+  }
 
-    // ---- 手機自動檢測：延遲 3 秒先跳轉到 MetaMask App ----
-    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    if (isMobile && !window.ethereum) {
-      setTimeout(() => {
-        window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask-zh.html';
-      }, 3000);
+  async function addToken(){
+    try{
+      if (!window.ethereum){ throw new Error('MetaMask 未偵測到'); }
+      const ok = await window.ethereum.request({
+        method: 'wallet_watchAsset',
+        params: { type: 'ERC20', options: TOKEN }
+      });
+      if (ok){
+        statusEl.textContent = '已成功加入 NXC 代幣。';
+      }else{
+        statusEl.textContent = '你在 MetaMask 內取消了操作。';
+      }
+    }catch(e){
+      console.error(e);
+      statusEl.textContent = 'MetaMask 發生錯誤。可改用「在 MetaMask App 開啟」。';
+    }finally{
+      autoBtn.disabled = false;
+      // 注意：在手機瀏覽器上，MetaMask 可能會接管並切到 App，屬於官方既定行為
     }
-  </script>
+  }
+</script>
 </body>
 </html>
