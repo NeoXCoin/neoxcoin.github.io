@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX Coin 繁體中文版</title>
-  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
+  <title>NeoX Coin – 首頁</title>
+  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
       margin: 0;
@@ -30,14 +30,14 @@
       position: absolute;
       top: 20px;
       right: 20px;
-      font-size: 16px;
       z-index: 999;
+      font-size: 14px;
     }
 
     .language-switch a {
       color: white;
       text-decoration: none;
-      margin: 0 8px;
+      margin-left: 10px;
     }
 
     .container {
@@ -58,11 +58,6 @@
     .coin {
       width: 144px;
       margin: 30px auto;
-    }
-
-    .headline {
-      margin: 20px 0 30px 0;
-      line-height: 1.6;
     }
 
     .headline span {
@@ -98,6 +93,25 @@
       font-size: 16px;
     }
 
+    .emoji-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .emoji {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .emoji-link:hover {
+      text-decoration: underline;
+    }
+
     .btn-row {
       display: flex;
       flex-wrap: wrap;
@@ -115,10 +129,6 @@
       font-size: 16px;
       cursor: pointer;
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
       min-width: 180px;
       box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     }
@@ -128,23 +138,10 @@
       box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
     }
 
-    /* 自訂「emoji 大小」的 NeoX coin 圖示 */
-    .emoji-icon {
-      width: 2.1em;
-      height: 2.1em;
-      object-fit: contain;
-      vertical-align: -3px; /* 微調與文字對齊 */
-      pointer-events: none;
-    }
-
     .footer {
       margin-top: 50px;
       font-size: 13px;
       opacity: 0.6;
-    }
-
-    .footer-links {
-      margin-bottom: 8px;
     }
 
     .footer a {
@@ -155,6 +152,10 @@
 
     .footer a:hover {
       text-decoration: underline;
+    }
+
+    .footer-links {
+      margin-bottom: 8px;
     }
 
     @media (max-width: 600px) {
@@ -177,51 +178,52 @@
   </style>
 </head>
 <body>
-  <!-- Logo（連到國際版主頁） -->
+  <!-- Logo → Go to international version -->
   <a href="index-global.html">
-    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
   </a>
 
-  <!-- ENG / 繁 / 🌍 -->
+  <!-- Language Switch -->
   <div class="language-switch">
     <a href="index.html">EN</a> | <a href="index-zh.html">繁</a> | <a href="index-global.html">🌍</a>
   </div>
 
-  <!-- Main -->
   <div class="container">
     <div class="tagline">Web3 革命，由 NeoX 引領</div>
-    <img class="coin" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin"/>
+
+    <!-- NeoX Animated Coin -->
+    <img class="coin" src="https://gateway.lighthouse.storage/ipfs/bafybeibkf2olur4lorvt4iofzingwncxb32yixnsfpzo7ynzs264jbhfpe?v=1" alt="NeoX Animated Coin" />
 
     <div class="nav-bar">
       <a href="what-is-neox-zh.html">關於 NeoX</a>
       <a href="how-to-buy-zh.html">購買方法</a>
       <a href="why-neox-zh.html">為何選擇 NeoX</a>
       <a href="how-it-works-zh.html">運作原理</a>
-      <a href="nft-projects-zh.html">👉🏻探索我們的 NFT 項目</a>
+      <a href="nft-projects-zh.html" class="emoji-link">
+        <span class="emoji">👉🏻</span>
+        <span class="text">探索我們的 NFT 項目</span>
+      </a>
     </div>
 
     <div class="headline">
-      <span>未來已來 — 擁有推動 Web3 自由的貨幣</span>
-      <span>塑造未來，由 NeoX 開始 — 新世代數位貨幣</span>
-      <span>加入 Web3 革命 — NeoX 將控制權放回你手中</span>
+      <span>未來已來 – 擁有推動 Web3 自由的貨幣</span>
+      <span>塑造未來，由 NeoX 開始 – 新世代數位貨幣</span>
+      <span>加入 Web3 革命 – NeoX 將控制權放回你手中</span>
       <span>擁有自由，擁有未來，擁有 NeoX</span>
     </div>
 
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">🛒 購買 NXC</a>
       <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/">🦊 使用 MetaMask 購買</a>
-      <a class="btn" href="add-to-metamask-zh.html">
-        <img class="emoji-icon" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NXC Icon">
-        加入至 MetaMask
-      </a>
+      <a class="btn" href="add-to-metamask.html">🦊 加入至 MetaMask</a>
     </div>
 
     <!-- Footer -->
     <div class="footer">
       <div class="footer-links">
-        <a href="faq-zh.html">FAQ</a> |
+        <a href="faq-zh.html">常見問題</a> |
         <a href="about-zh.html">關於我們</a> |
-        <a href="troubleshooting-zh.html">疑難排解</a>
+        <a href="troubleshooting-zh.html">故障排解</a>
       </div>
       © 2025 NeoX. All rights reserved. |
       <a href="disclaimer-zh.html">免責聲明</a>
