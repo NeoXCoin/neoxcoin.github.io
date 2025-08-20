@@ -131,11 +131,24 @@
       text-decoration: none;
       min-width: 180px;
       box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
 
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+    }
+
+    /* NeoX Coin emoji icon (統一 2.1em) */
+    .emoji-icon {
+      width: 2.1em;
+      height: 2.1em;
+      object-fit: contain;
+      vertical-align: -3px;
+      pointer-events: none;
     }
 
     .footer {
@@ -213,7 +226,10 @@
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">🛒 Buy NXC</a>
       <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/">🦊 Buy via MetaMask</a>
-      <a class="btn" href="add-to-metamask.html">🦊 Add to MetaMask</a>
+      <a class="btn" href="add-to-metamask.html">
+        <img class="emoji-icon" src="https://ipfs.io/ipfs/bafybeibkf2olur4lorvt4iofzingwncxb32yixnsfpzo7ynzs264jbhfpe" alt="NeoX Coin" />
+        Add to MetaMask
+      </a>
     </div>
 
     <!-- Footer -->
