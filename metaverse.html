@@ -19,19 +19,20 @@
     }
 
     .logo {
-      width: 60px;
       position: absolute;
       top: 20px;
       left: 20px;
-      opacity: 0.85;
+      width: 60px;
+      opacity: 0.9;
     }
 
     .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
-      font-size: 16px;
+      font-size: 14px;
     }
+
     .language-switch a {
       color: white;
       text-decoration: none;
@@ -39,87 +40,132 @@
     }
 
     h1 {
-      font-size: 30px;
+      font-size: 32px;
       margin-bottom: 10px;
       color: #00d9ff;
     }
 
-    p.subtitle {
+    p.lead {
       color: #cfd7ff;
       margin-bottom: 30px;
     }
 
     .banner {
-      width: 50%; /* 縮小 50% */
-      max-width: 400px;
-      margin: 0 auto 30px auto;
+      max-width: 320px; /* 50% smaller */
+      margin: 0 auto 30px;
       display: block;
       border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
     }
 
     .btn {
-      background: linear-gradient(145deg, #c0c0c0, #9e9e9e); /* 銀色漸變 */
+      background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
       border: 3px solid #e0e0e0;
       color: black;
-      padding: 14px 28px;
+      padding: 12px 24px;
       border-radius: 12px;
       font-size: 16px;
-      font-weight: bold;
       cursor: pointer;
       text-decoration: none;
-      min-width: 200px;
-      margin: 10px;
-      display: inline-block;
-      box-shadow: 0 4px 10px rgba(255,255,255,0.2);
+      min-width: 180px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(255,255,255,0.2);
+      position: relative;
     }
+
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 14px rgba(255,255,255,0.3);
+      box-shadow: 0 6px 12px rgba(255,255,255,0.3);
     }
 
     .btn-blue {
-      background: #007bff; /* 科技藍 */
-      border: none;
+      background: #0d6efd;
+      border: 3px solid #3399ff;
       color: white;
-      box-shadow: 0 4px 10px rgba(0,123,255,0.4);
     }
-    .btn-blue:hover {
-      background: #0056b3;
+
+    /* Tooltip style for Buy Ticket */
+    .btn[disabled] {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .btn[disabled]:hover::after {
+      content: "Not available yet";
+      position: absolute;
+      bottom: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.75);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .notice {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #ccc;
     }
 
     .footer {
       margin-top: 60px;
       font-size: 13px;
-      color: rgba(255,255,255,0.6);
+      color: rgba(255,255,255,0.55);
+    }
+
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <!-- 左上角 Logo -->
+  <!-- Logo -->
   <a href="index-global.html">
-    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
+    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo"/>
   </a>
 
-  <!-- 語言切換 -->
+  <!-- Language Switch -->
   <div class="language-switch">
-    <a href="metaverse.html">EN</a> | <a href="metaverse-zh.html">繁</a>
+    <a href="exhibition.html">EN</a> | <a href="exhibition-zh.html">繁</a>
   </div>
 
   <h1>NeoX Metaverse Exhibition</h1>
-  <p class="subtitle">Step into the NeoX virtual gallery and experience the future of digital art in the metaverse.</p>
+  <p class="lead">Step into the NeoX virtual gallery and experience the future of digital art in the metaverse.</p>
 
-  <!-- 中間動畫 Banner -->
-  <img class="banner" src="https://gateway.lighthouse.storage/ipfs/bafybeibirpohx3wy4rqvq4q7pml5efwafsysy5pu3hynhtxraudzi63lze" alt="NeoX Banner Animation"/>
+  <!-- Banner Animation -->
+  <img class="banner" src="https://gateway.lighthouse.storage/ipfs/bafybeibirpohx3wy4rqvq4q7pml5efwafsysy5pu3hynhtxraudzi63lze" alt="NeoX Exhibition Banner" />
 
-  <!-- 按鈕區 -->
-  <div>
+  <!-- Buttons -->
+  <div class="btn-row">
     <a class="btn" href="https://oncyber.io/neoxart" target="_blank">🌐 Enter Exhibition</a>
+    <a class="btn" href="#" disabled>🎟️ Buy Ticket</a>
     <a class="btn btn-blue" href="index-global.html">← Back to Home</a>
   </div>
 
+  <!-- Notice -->
+  <p class="notice">💡 Current exhibition is free to explore. Tickets will be introduced in future events.</p>
+
+  <!-- Footer -->
   <div class="footer">
-    © 2025 NeoX. All rights reserved.
+    © 2025 NeoX. All rights reserved. |
+    <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 </body>
 </html>
