@@ -1,10 +1,10 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NeoX Metaverse Exhibition</title>
-  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
+  <link rel="icon" href="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" />
   <style>
     body {
       margin: 0;
@@ -23,12 +23,32 @@
       position: absolute;
       top: 20px;
       left: 20px;
+      opacity: 0.95;
+      z-index: 1000;
+    }
+
+    .language-switch {
+      position: absolute;
+      top: 26px;
+      right: 20px;
+      font-weight: bold;
+      font-size: 14px;
+      z-index: 1000;
+    }
+    .language-switch a {
+      color: white;
+      text-decoration: none;
       opacity: 0.85;
+      margin-left: 10px;
+    }
+    .language-switch a:hover {
+      opacity: 1;
+      text-decoration: underline;
     }
 
     h1 {
       font-size: 32px;
-      margin-bottom: 20px;
+      margin: 20px 0;
       color: #00d9ff;
     }
 
@@ -36,6 +56,16 @@
       font-size: 18px;
       margin-bottom: 30px;
       color: #ddd;
+    }
+
+    .banner {
+      margin: 40px auto;
+      max-width: 720px;
+    }
+    .banner video {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
     }
 
     .btn {
@@ -48,7 +78,6 @@
       font-size: 18px;
       transition: background-color 0.3s ease;
     }
-
     .btn:hover {
       background-color: #0056b3;
     }
@@ -69,7 +98,6 @@
       font-size: 13px;
       color: rgba(255, 255, 255, 0.5);
     }
-
     .footer a {
       color: #aaa;
       text-decoration: none;
@@ -77,13 +105,26 @@
   </style>
 </head>
 <body>
-  <!-- Logo -->
+  <!-- Logo (new IPFS) -->
   <a href="index-global.html">
-    <img class="logo" src="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" alt="NeoX Logo" />
+    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
   </a>
+
+  <!-- Language Switch -->
+  <div class="language-switch">
+    <a href="metaverse.html">EN</a> | <a href="metaverse-zh.html">繁</a>
+  </div>
 
   <h1>NeoX Metaverse Exhibition</h1>
   <p>Step into the NeoX virtual gallery and experience the future of digital art in the metaverse.</p>
+
+  <!-- Banner with animation -->
+  <div class="banner">
+    <video autoplay loop muted playsinline>
+      <source src="https://gateway.lighthouse.storage/ipfs/bafybeibirpohx3wy4rqvq4q7pml5efwafsysy5pu3hynhtxraudzi63lze" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
   <a class="btn" href="https://oncyber.io/neoxart" target="_blank">🌐 Enter Exhibition</a>
 
@@ -95,4 +136,4 @@
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 </body>
-</html> 
+</html>
