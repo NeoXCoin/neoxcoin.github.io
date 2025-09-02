@@ -23,117 +23,103 @@
       position: absolute;
       top: 20px;
       left: 20px;
-      opacity: 0.95;
-      z-index: 1000;
+      opacity: 0.85;
     }
 
     .language-switch {
       position: absolute;
-      top: 26px;
+      top: 20px;
       right: 20px;
-      font-weight: bold;
-      font-size: 14px;
-      z-index: 1000;
+      font-size: 16px;
     }
     .language-switch a {
       color: white;
       text-decoration: none;
-      opacity: 0.85;
       margin-left: 10px;
-    }
-    .language-switch a:hover {
-      opacity: 1;
-      text-decoration: underline;
     }
 
     h1 {
-      font-size: 32px;
-      margin: 20px 0;
+      font-size: 30px;
+      margin-bottom: 10px;
       color: #00d9ff;
     }
 
-    p {
-      font-size: 18px;
+    p.subtitle {
+      color: #cfd7ff;
       margin-bottom: 30px;
-      color: #ddd;
     }
 
     .banner {
-      margin: 40px auto;
-      max-width: 720px;
-    }
-    .banner video {
-      width: 100%;
+      width: 50%; /* 縮小 50% */
+      max-width: 400px;
+      margin: 0 auto 30px auto;
+      display: block;
       border-radius: 12px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
     }
 
     .btn {
-      display: inline-block;
+      background: linear-gradient(145deg, #c0c0c0, #9e9e9e); /* 銀色漸變 */
+      border: 3px solid #e0e0e0;
+      color: black;
       padding: 14px 28px;
-      background-color: #007bff;
-      color: white;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
       text-decoration: none;
-      border-radius: 8px;
-      font-size: 18px;
-      transition: background-color 0.3s ease;
+      min-width: 200px;
+      margin: 10px;
+      display: inline-block;
+      box-shadow: 0 4px 10px rgba(255,255,255,0.2);
     }
     .btn:hover {
-      background-color: #0056b3;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(255,255,255,0.3);
     }
 
-    .back-btn {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 10px 20px;
-      background-color: #444;
+    .btn-blue {
+      background: #007bff; /* 科技藍 */
+      border: none;
       color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 14px;
+      box-shadow: 0 4px 10px rgba(0,123,255,0.4);
+    }
+    .btn-blue:hover {
+      background: #0056b3;
     }
 
     .footer {
       margin-top: 60px;
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
-    }
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
+      color: rgba(255,255,255,0.6);
     }
   </style>
 </head>
 <body>
-  <!-- Logo (new IPFS) -->
+  <!-- 左上角 Logo -->
   <a href="index-global.html">
     <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
   </a>
 
-  <!-- Language Switch -->
+  <!-- 語言切換 -->
   <div class="language-switch">
     <a href="metaverse.html">EN</a> | <a href="metaverse-zh.html">繁</a>
   </div>
 
   <h1>NeoX Metaverse Exhibition</h1>
-  <p>Step into the NeoX virtual gallery and experience the future of digital art in the metaverse.</p>
+  <p class="subtitle">Step into the NeoX virtual gallery and experience the future of digital art in the metaverse.</p>
 
-  <!-- Banner with animation -->
-  <div class="banner">
-    <video autoplay loop muted playsinline>
-      <source src="https://gateway.lighthouse.storage/ipfs/bafybeibirpohx3wy4rqvq4q7pml5efwafsysy5pu3hynhtxraudzi63lze" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+  <!-- 中間動畫 Banner -->
+  <img class="banner" src="https://gateway.lighthouse.storage/ipfs/bafybeibirpohx3wy4rqvq4q7pml5efwafsysy5pu3hynhtxraudzi63lze" alt="NeoX Banner Animation"/>
+
+  <!-- 按鈕區 -->
+  <div>
+    <a class="btn" href="https://oncyber.io/neoxart" target="_blank">🌐 Enter Exhibition</a>
+    <a class="btn btn-blue" href="index-global.html">← Back to Home</a>
   </div>
 
-  <a class="btn" href="https://oncyber.io/neoxart" target="_blank">🌐 Enter Exhibition</a>
-
-  <br>
-  <a class="back-btn" href="index-global.html">← Back to Home</a>
-
   <div class="footer">
-    © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-global.html">Disclaimer</a>
+    © 2025 NeoX. All rights reserved.
   </div>
 </body>
 </html>
