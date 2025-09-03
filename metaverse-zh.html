@@ -9,9 +9,6 @@
     body {
       margin: 0;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
-      background-size: cover;
-      background-position: center;
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
@@ -50,11 +47,18 @@
       margin-bottom: 30px;
     }
 
-    .banner {
-      max-width: 320px; /* 縮小 50% */
+    .iframe-container {
+      max-width: 900px;
       margin: 0 auto 30px;
-      display: block;
       border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
     }
 
     .btn-row {
@@ -66,9 +70,9 @@
     }
 
     .btn {
-      background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
-      border: 3px solid #e0e0e0;
-      color: black;
+      background: #0a0a0a;
+      border: 2px solid #00d9ff;
+      color: #00d9ff;
       padding: 12px 24px;
       border-radius: 12px;
       font-size: 16px;
@@ -78,39 +82,21 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 8px rgba(255,255,255,0.2);
-      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(0,217,255,0.5);
     }
 
     .btn:hover {
+      background: #00d9ff;
+      color: #000;
+      box-shadow: 0 0 20px rgba(0,217,255,0.8);
       transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(255,255,255,0.3);
     }
 
     .btn-blue {
       background: #0d6efd;
-      border: 3px solid #3399ff;
+      border: 2px solid #3399ff;
       color: white;
-    }
-
-    /* 買票掣 - 禁用狀態 */
-    .btn[disabled] {
-      cursor: not-allowed;
-      opacity: 0.7;
-    }
-
-    .btn[disabled]:hover::after {
-      content: "尚未開放購票";
-      position: absolute;
-      bottom: -28px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.75);
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      white-space: nowrap;
     }
 
     .notice {
@@ -133,6 +119,38 @@
     .footer a:hover {
       text-decoration: underline;
     }
+
+    /* Modal Style */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.75);
+    }
+    .modal-content {
+      background: #0a0a0a;
+      margin: 15% auto;
+      padding: 20px;
+      border: 2px solid #00d9ff;
+      border-radius: 12px;
+      width: 80%; max-width: 400px;
+      color: white;
+      box-shadow: 0 0 20px rgba(0,217,255,0.7);
+      text-align: center;
+    }
+    .modal-content h2 {
+      color: #00d9ff;
+      margin-bottom: 10px;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    .close:hover { color: #fff; }
   </style>
 </head>
 <body>
@@ -149,14 +167,24 @@
   <h1>NeoX 元宇宙展覽</h1>
   <p class="lead">走進 NeoX 虛擬展館，體驗數位藝術在元宇宙中的未來。</p>
 
-  <!-- 中間 Banner 動畫 -->
-  <img class="banner" src="https://gateway.lighthouse.storage/ipfs/bafybeifxaibdij2pza4la33if36wr6vakktk3k77l3in4bwu3a36mvvvgy" alt="NeoX Exhibition Banner" />
+  <!-- 展覽廳 iFrame -->
+  <div class="iframe-container">
+    <iframe src="https://oncyber.io/neoxart" allowfullscreen></iframe>
+  </div>
 
   <!-- 按鈕 -->
   <div class="btn-row">
-    <a class="btn" href="https://oncyber.io/neoxart" target="_blank">🌐 進入展覽</a>
-    <a class="btn" href="#" disabled>🎟️ 購買門票</a>
+    <a class="btn" href="#" onclick="openModal(); return false;">🎟️ 購買門票</a>
     <a class="btn btn-blue" href="index-zh.html">← 返回首頁</a>
+  </div>
+
+  <!-- Modal -->
+  <div id="ticketModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>🎟️ 門票尚未開放</h2>
+      <p>敬請期待 NeoX 未來特別活動！</p>
+    </div>
   </div>
 
   <!-- 提示 -->
@@ -167,5 +195,19 @@
     © 2025 NeoX. All rights reserved. |
     <a href="disclaimer-zh.html">免責聲明</a>
   </div>
+
+  <!-- Modal Script -->
+  <script>
+    function openModal() {
+      document.getElementById("ticketModal").style.display = "block";
+    }
+    function closeModal() {
+      document.getElementById("ticketModal").style.display = "none";
+    }
+    window.onclick = function(event) {
+      let modal = document.getElementById("ticketModal");
+      if (event.target == modal) { closeModal(); }
+    }
+  </script>
 </body>
-</html>  
+</html>
