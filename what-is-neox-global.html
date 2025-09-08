@@ -23,7 +23,7 @@
       z-index: -1;
     }
 
-    /* Logo 左上角 */
+    /* 左上角 Logo */
     .logo {
       position: absolute;
       top: 20px;
@@ -32,7 +32,7 @@
       height: 50px;
     }
 
-    /* Google Translate 語言切換 (右上角) */
+    /* Google Translate 右上角 */
     #google_translate_element {
       position: absolute;
       top: 20px !important;
@@ -40,20 +40,33 @@
       z-index: 9999;
     }
 
+    /* 清除預設字體大小 */
     .goog-te-gadget {
       font-size: 0 !important;
       line-height: 0 !important;
     }
 
+    /* Dropdown 樣式 */
     .goog-te-gadget select {
       font-size: 13px !important;
       padding: 3px 6px;
       height: 28px !important;
       border-radius: 6px;
       border: none;
+      background: rgba(255,255,255,0.9);
+      color: #000;
     }
 
-    /* Main container */
+    /* 手機版縮小選單 */
+    @media (max-width: 768px) {
+      .goog-te-gadget select {
+        font-size: 11px !important;
+        padding: 2px 4px;
+        height: 24px !important;
+      }
+    }
+
+    /* Container */
     .container {
       max-width: 800px;
       margin: 120px auto 40px;
@@ -104,28 +117,17 @@
       color: rgba(255, 255, 255, 0.5);
       margin-bottom: 30px;
     }
-
-    @media (max-width: 768px) {
-      .container {
-        margin: 100px 20px;
-        padding: 30px;
-      }
-
-      h1 {
-        font-size: 26px;
-      }
-    }
   </style>
 </head>
 <body>
   <div class="bg-overlay"></div>
 
-  <!-- Logo 左上角返回主頁 -->
+  <!-- Logo 左上角 -->
   <a href="index-global.html" aria-label="Back to NeoX Home">
     <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
   </a>
 
-  <!-- Google Translate 插件 -->
+  <!-- Google Translate -->
   <div id="google_translate_element"></div>
 
   <div class="container">
@@ -162,4 +164,4 @@
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
-</html>
+</html> 
