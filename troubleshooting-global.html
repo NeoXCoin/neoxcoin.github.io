@@ -65,17 +65,26 @@
     }
 
     .back-btn {
-      display: inline-block;
-      margin-top: 40px;
+      display: block;                 /* 改成 block 令佢可以用 margin auto */
+      margin: 40px auto 20px;         /* 上 40px，下 20px，自動左右置中 */
       padding: 12px 24px;
-      background-color: #007bff;
-      color: white;
+      background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
+      border: 3px solid #e0e0e0;
+      color: black;
+      font-weight: bold;
       text-decoration: none;
-      border-radius: 8px;
+      border-radius: 12px;
       font-size: 16px;
-      transition: background-color 0.3s ease;
+      min-width: 180px;
+      text-align: center;             /* 確保文字置中 */
+      box-shadow: 0 4px 8px rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
     }
-    .back-btn:hover { background-color: #0056b3; }
+
+    .back-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 12px rgba(255,255,255,0.3);
+    }
 
     .footer {
       margin-top: 60px;
