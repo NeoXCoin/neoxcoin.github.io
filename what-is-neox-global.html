@@ -23,25 +23,7 @@
       z-index: -1;
     }
 
-    /* Google Translate Position */
-    #google_translate_element {
-      position: absolute;
-      top: 20px;   /* 保持同英文版一樣高度 */
-      right: 20px;
-      z-index: 999;
-    }
-
-    .goog-te-gadget {
-      font-size: 0 !important; /* 隱藏多餘字體 */
-    }
-
-    .goog-te-gadget select {
-      font-size: 13px !important;
-      padding: 2px 6px;
-      border-radius: 6px;
-      border: none;
-    }
-
+    /* Logo 左上角 */
     .logo {
       position: absolute;
       top: 20px;
@@ -50,6 +32,28 @@
       height: 50px;
     }
 
+    /* Google Translate 語言切換 (右上角) */
+    #google_translate_element {
+      position: absolute;
+      top: 20px !important;
+      right: 20px !important;
+      z-index: 9999;
+    }
+
+    .goog-te-gadget {
+      font-size: 0 !important;
+      line-height: 0 !important;
+    }
+
+    .goog-te-gadget select {
+      font-size: 13px !important;
+      padding: 3px 6px;
+      height: 28px !important;
+      border-radius: 6px;
+      border: none;
+    }
+
+    /* Main container */
     .container {
       max-width: 800px;
       margin: 120px auto 40px;
@@ -116,12 +120,12 @@
 <body>
   <div class="bg-overlay"></div>
 
-  <!-- Logo -->
+  <!-- Logo 左上角返回主頁 -->
   <a href="index-global.html" aria-label="Back to NeoX Home">
     <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
   </a>
-  
-  <!-- Google Translate -->
+
+  <!-- Google Translate 插件 -->
   <div id="google_translate_element"></div>
 
   <div class="container">
