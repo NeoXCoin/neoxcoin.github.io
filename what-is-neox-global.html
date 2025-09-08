@@ -23,21 +23,21 @@
       z-index: -1;
     }
 
-    /* 🔹 Header Flexbox：logo + Google Translate */
+    /* 🔹 Header: 固定在最上方 */
     .header {
-      position: absolute;
-      top: 20px;
+      position: fixed;
+      top: 15px;
       left: 20px;
       right: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 999;
+      z-index: 1000;
     }
 
     .logo {
       height: 50px;
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     h1 {
@@ -47,7 +47,7 @@
 
     .container {
       max-width: 800px;
-      margin: 120px auto 40px;
+      margin: 140px auto 40px; /* 👈 預留空間避免頂到 header */
       padding: 40px;
       background-color: rgba(0, 0, 0, 0.35);
       border-radius: 12px;
@@ -95,7 +95,7 @@
 <body>
   <div class="bg-overlay"></div>
 
-  <!-- 🔹 Header -->
+  <!-- 🔹 Header 獨立出嚟 -->
   <div class="header">
     <a href="index-global.html" aria-label="Back to NeoX Home">
       <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
@@ -103,6 +103,7 @@
     <div id="google_translate_element"></div>
   </div>
 
+  <!-- 🔹 Main Content -->
   <div class="container">
     <h1>What is NeoX?</h1>
     <p>NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
