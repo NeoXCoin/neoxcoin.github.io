@@ -19,44 +19,43 @@
       height: 100%;
       background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
       background-size: cover;
+      opacity: 0.55;
       z-index: -1;
     }
 
-    /* Logo */
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      opacity: 0.9;
-      height: 50px;
-      z-index: 999;
-    }
-
-    /* Google Translate */
     .lang-switch {
       position: absolute;
       top: 20px;
       right: 20px;
       font-size: 14px;
-      z-index: 999;
     }
 
-    /* Text container without dark box */
+    .lang-switch a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      opacity: 0.6;
+      height: 50px;
+    }
+
     .container {
       max-width: 800px;
       margin: 120px auto 40px;
-      padding: 20px;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.35); /* softer transparency */
+      border-radius: 12px;
       text-align: center;
-    }
-
-    h1, p, ul, li {
-      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
     }
 
     h1 {
       font-size: 32px;
       margin-bottom: 20px;
-      color: #00d9ff;
     }
 
     .icon {
@@ -99,8 +98,9 @@
     @media (max-width: 768px) {
       .container {
         margin: 100px 20px;
-        padding: 15px;
+        padding: 30px;
       }
+
       h1 {
         font-size: 26px;
       }
@@ -110,13 +110,13 @@
 <body>
   <div class="bg-overlay"></div>
 
-  <!-- Logo -->
-  <a href="index-global.html" aria-label="Back to NeoX Home">
-    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
+  <a href="index.html" aria-label="Back to NeoX Home">
+  <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
   </a>
   
-  <!-- Google Translate -->
-  <div class="lang-switch" id="google_translate_element"></div>
+  <div class="lang-switch">
+    <a href="what-is-neox.html">EN</a> | <a href="what-is-neox-zh.html">繁</a>
+  </div>
 
   <div class="container">
     <h1>What is NeoX?</h1>
@@ -134,19 +134,11 @@
     </ul>
   </div>
 
-  <a class="back-button" href="index-global.html">← Back to Home</a>
+  <a class="back-button" href="index.html">← Back to Home</a>
 
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-global.html" style="color: #aaa; text-decoration: none;">Disclaimer</a>
+    <a href="disclaimer-en.html" style="color: #aaa; text-decoration: none;">Disclaimer</a>
   </div>
-
-  <!-- Google Translate Script -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
