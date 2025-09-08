@@ -23,11 +23,23 @@
       z-index: -1;
     }
 
+    /* Google Translate Position */
     #google_translate_element {
       position: absolute;
-      top: 20px;
+      top: 20px;   /* 保持同英文版一樣高度 */
       right: 20px;
-      font-size: 14px;
+      z-index: 999;
+    }
+
+    .goog-te-gadget {
+      font-size: 0 !important; /* 隱藏多餘字體 */
+    }
+
+    .goog-te-gadget select {
+      font-size: 13px !important;
+      padding: 2px 6px;
+      border-radius: 6px;
+      border: none;
     }
 
     .logo {
@@ -42,7 +54,7 @@
       max-width: 800px;
       margin: 120px auto 40px;
       padding: 40px;
-      background-color: rgba(0, 0, 0, 0.35); /* softer transparency */
+      background-color: rgba(0, 0, 0, 0.35);
       border-radius: 12px;
       text-align: center;
     }
@@ -89,15 +101,6 @@
       margin-bottom: 30px;
     }
 
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
     @media (max-width: 768px) {
       .container {
         margin: 100px 20px;
@@ -113,8 +116,8 @@
 <body>
   <div class="bg-overlay"></div>
 
-  <!-- Logo link to Global Home -->
-  <a href="index-global.html" aria-label="Back to NeoX Global Home">
+  <!-- Logo -->
+  <a href="index-global.html" aria-label="Back to NeoX Home">
     <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
   </a>
   
@@ -141,7 +144,7 @@
 
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-global.html">Disclaimer</a>
+    <a href="disclaimer-global.html" style="color: #aaa; text-decoration: none;">Disclaimer</a>
   </div>
 
   <!-- Google Translate Script -->
