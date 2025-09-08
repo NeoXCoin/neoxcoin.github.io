@@ -23,50 +23,28 @@
       z-index: -1;
     }
 
-    /* 左上角 Logo */
-    .logo {
+    /* 🔹 Header Flexbox：logo + Google Translate */
+    .header {
       position: absolute;
       top: 20px;
       left: 20px;
-      opacity: 0.6;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .logo {
       height: 50px;
+      opacity: 0.8;
     }
 
-    /* Google Translate 右上角 */
-    #google_translate_element {
-      position: absolute;
-      top: 20px !important;
-      right: 20px !important;
-      z-index: 9999;
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
     }
 
-    /* 清除預設字體大小 */
-    .goog-te-gadget {
-      font-size: 0 !important;
-      line-height: 0 !important;
-    }
-
-    /* Dropdown 樣式 */
-    .goog-te-gadget select {
-      font-size: 13px !important;
-      padding: 3px 6px;
-      height: 28px !important;
-      border-radius: 6px;
-      border: none;
-      background: rgba(255,255,255,0.9);
-      color: #000;
-    }
-
-    /* 手機版縮小選單 */
-    @media (max-width: 768px) {
-      .goog-te-gadget select {
-        font-size: 11px !important;
-        padding: 2px 4px;
-        height: 24px !important;
-      }
-    }
-
-    /* Container */
     .container {
       max-width: 800px;
       margin: 120px auto 40px;
@@ -74,11 +52,6 @@
       background-color: rgba(0, 0, 0, 0.35);
       border-radius: 12px;
       text-align: center;
-    }
-
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
     }
 
     .icon {
@@ -122,13 +95,13 @@
 <body>
   <div class="bg-overlay"></div>
 
-  <!-- Logo 左上角 -->
-  <a href="index-global.html" aria-label="Back to NeoX Home">
-    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
-  </a>
-
-  <!-- Google Translate -->
-  <div id="google_translate_element"></div>
+  <!-- 🔹 Header -->
+  <div class="header">
+    <a href="index-global.html" aria-label="Back to NeoX Home">
+      <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
+    </a>
+    <div id="google_translate_element"></div>
+  </div>
 
   <div class="container">
     <h1>What is NeoX?</h1>
@@ -153,7 +126,7 @@
     <a href="disclaimer-global.html" style="color: #aaa; text-decoration: none;">Disclaimer</a>
   </div>
 
-  <!-- Google Translate Script -->
+  <!-- Google Translate -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -164,4 +137,4 @@
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
-</html> 
+</html>
