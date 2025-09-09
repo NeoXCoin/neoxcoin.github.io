@@ -5,120 +5,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>What is NeoX?</title>
   <style>
+    /* ===== Base ===== */
+    :root{
+      --header-h: 64px;
+      --btn-blue: #0d6efd;
+      --btn-blue-border: #3399ff;
+    }
+    html,body{height:100%;}
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #001f3f, #32004b);
-      color: #ffffff;
+      color: #fff;
     }
 
+    /* Background image layer */
     .bg-overlay {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
-      background-size: cover;
+      inset: 0;
+      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") center/cover no-repeat;
       opacity: 0.55;
       z-index: -1;
     }
 
-    .lang-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 14px;
+    /* ===== Fixed Header (Logo + Google Translate) ===== */
+    .header {
+      position: fixed !important;
+      top: 0; left: 0; right: 0;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      z-index: 10050 !important;       /* super high so it’s always on top */
+      pointer-events: none;             /* allow overlay clicks to pass through... */
     }
-
-    .lang-switch a {
-      color: #ffffff;
-      text-decoration: none;
-      margin-left: 10px;
-    }
+    .header > * { pointer-events: auto; } /* ...but keep header children clickable */
 
     .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      opacity: 0.6;
-      height: 50px;
+      height: 46px;
+      opacity: 0.9;
+      display: block;
     }
 
+    /* Google Translate box styling + fix visibility on dark bg */
+    #google_translate_element { z-index: 10060 !important; }
+    #google_translate_element .goog-te-gadget-simple {
+      background-color: rgba(0,0,0,0.55);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 8px;
+      padding: 4px 8px;
+    }
+    #google_translate_element .goog-te-gadget-simple span { color:#fff; }
+    #google_translate_element .goog-te-gadget-icon { display:none; }
+
+    /* ===== Main card ===== */
     .container {
-      max-width: 800px;
-      margin: 120px auto 40px;
+      max-width: 860px;
+      margin: calc(120px + var(--header-h)) auto 44px; /* push down below header */
       padding: 40px;
-      background-color: rgba(0, 0, 0, 0.35); /* softer transparency */
-      border-radius: 12px;
+      background: rgba(0,0,0,0.55);  /* darker like the main site */
+      border-radius: 14px;
       text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
     }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
+    h1 { font-size: 32px; margin: 0 0 20px; }
+    .icon { font-size: 18px; margin: 12px 0; }
 
-    .icon {
-      font-size: 18px;
-      margin: 12px 0;
-    }
-
-    ul {
+    ul{
       list-style: disc;
       text-align: left;
       padding-left: 20px;
       margin-top: 20px;
     }
 
+    /* Back to Home – blue button like homepage */
     .back-button {
       display: block;
-      width: 200px;
-      margin: 40px auto 20px;
-      padding: 12px;
-      background-color: #00aaff;
-      color: white;
+      width: 220px;
+      margin: 36px auto 20px;
+      padding: 12px 16px;
+      background-color: var(--btn-blue);
+      border: 2px solid var(--btn-blue-border);
+      color: #fff;
       font-weight: bold;
-      border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       text-align: center;
       text-decoration: none;
+      transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
+      box-shadow: 0 6px 14px rgba(13,110,253,0.35);
     }
-
-    .back-button:hover {
-      background-color: #0088cc;
-    }
+    .back-button:hover { background-color:#0b5ed7; transform: translateY(-1px); }
+    .back-button:active { transform: translateY(0); }
 
     .footer {
       text-align: center;
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 30px;
+      color: rgba(255,255,255,0.55);
+      margin: 24px 0 40px;
     }
+    .footer a { color:#aaa; text-decoration:none; margin-left:8px; }
+    .footer a:hover { text-decoration:underline; }
 
-    @media (max-width: 768px) {
-      .container {
-        margin: 100px 20px;
-        padding: 30px;
-      }
-
-      h1 {
-        font-size: 26px;
-      }
+    /* ===== Responsive ===== */
+    @media (max-width: 768px){
+      :root{ --header-h: 56px; }
+      .logo{ height: 42px; }
+      .container{ padding: 28px; margin: calc(96px + var(--header-h)) 20px 36px; }
+      h1{ font-size: 26px; }
     }
   </style>
 </head>
 <body>
   <div class="bg-overlay"></div>
 
-  <a href="index.html" aria-label="Back to NeoX Home">
-  <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
-  </a>
-  
-  <div class="lang-switch">
-    <a href="what-is-neox.html">EN</a> | <a href="what-is-neox-zh.html">繁</a>
+  <!-- Fixed Header -->
+  <div class="header">
+    <a href="index-global.html" aria-label="Back to NeoX Home">
+      <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo">
+    </a>
+    <div id="google_translate_element"></div>
   </div>
 
-  <div class="container">
+  <!-- Main content -->
+  <div class="container" role="main">
     <h1>What is NeoX?</h1>
     <p>NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
 
@@ -134,11 +145,23 @@
     </ul>
   </div>
 
-  <a class="back-button" href="index.html">← Back to Home</a>
+  <a class="back-button" href="index-global.html">← Back to Home</a>
 
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-en.html" style="color: #aaa; text-decoration: none;">Disclaimer</a>
+    <a href="disclaimer-global.html">Disclaimer</a>
   </div>
+
+  <!-- Google Translate -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        autoDisplay: false,
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html> 
