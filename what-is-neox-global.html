@@ -3,131 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>What is NeoX?</title>
+  <title>What is NeoX? - NeoX</title>
   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #001f3f, #32004b);
-      color: #ffffff;
-    }
-
-    .bg-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
+      background: #0a0a2a;
+      background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
-      opacity: 0.55;
-      z-index: -1;
-    }
-
-    /* 🔹 Header: 固定在最上方 */
-    .header {
-      position: fixed;
-      top: 15px;
-      left: 20px;
-      right: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
+      background-position: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
     }
 
     .logo {
-      height: 50px;
-      opacity: 0.9;
+      width: 60px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      opacity: 0.85;
+      z-index: 9999;
     }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
+    #google_translate_element {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
     }
 
     .container {
-      max-width: 800px;
-      margin: 140px auto 40px; /* 👈 預留空間避免頂到 header */
-      padding: 40px;
+      max-width: 900px;
+      margin: 120px auto 0;
+      padding: 20px;
+      text-align: center;
       background-color: rgba(0, 0, 0, 0.35);
-      border-radius: 12px;
-      text-align: center;
+      border-radius: 10px;
     }
 
-    .icon {
-      font-size: 18px;
-      margin: 12px 0;
-    }
-
-    ul {
-      list-style: disc;
-      text-align: left;
-      padding-left: 20px;
-      margin-top: 20px;
-    }
-
-    .back-button {
-      display: block;
-      width: 200px;
-      margin: 40px auto 20px;
-      padding: 12px;
-      background-color: #00aaff;
-      color: white;
+    .headline {
+      font-size: 28px;
       font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      text-align: center;
-      text-decoration: none;
+      margin-bottom: 20px;
     }
 
-    .back-button:hover {
-      background-color: #0088cc;
+    .text {
+      font-size: 16px;
+      line-height: 1.8;
     }
 
     .footer {
       text-align: center;
+      margin: 40px 0 20px;
       font-size: 13px;
       color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 30px;
+    }
+
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 8px;
+    }
+
+    .home-button {
+      color: #ffffff !important;
+      background-color: #00aaff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      display: inline-block;
+      border: none;
+    }
+
+    .home-button:hover {
+      background-color: #0088cc;
+    }
+
+    @media screen and (max-width: 600px) {
+      .container {
+        margin: 100px 20px 0;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="bg-overlay"></div>
-
-  <!-- 🔹 Header 獨立出嚟 -->
-  <div class="header">
-    <a href="index-global.html" aria-label="Back to NeoX Home">
-      <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
-    </a>
-    <div id="google_translate_element"></div>
-  </div>
-
-  <!-- 🔹 Main Content -->
-  <div class="container">
-    <h1>What is NeoX?</h1>
-    <p>NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
-
-    <p class="icon">🔗 <strong>Built for the Future</strong></p>
-    <p>NeoX bridges the traditional world and the future of decentralization. By integrating smart contracts, cross-chain support, and NFT infrastructure, NeoX empowers both users and developers to thrive in the decentralized economy.</p>
-
-    <p class="icon">⚙️ <strong>Core Features</strong></p>
-    <ul>
-      <li>ERC-20 based NXC Token for secure and fast transactions</li>
-      <li>Cross-platform compatibility with major wallets like MetaMask</li>
-      <li>Supports NFT issuance and on-chain governance</li>
-      <li>Open-source project with a community-driven roadmap</li>
-    </ul>
-  </div>
-
-  <a class="back-button" href="index-global.html">← Back to Home</a>
-
-  <div class="footer">
-    © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-global.html" style="color: #aaa; text-decoration: none;">Disclaimer</a>
-  </div>
+  <!-- Logo -->
+  <a href="index-global.html">
+    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo">
+  </a>
 
   <!-- Google Translate -->
+  <div class="translate" id="google_translate_element"></div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="headline">What is NeoX?</div>
+    <div class="text">
+      <p><strong>NeoX</strong> is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
+      
+      <p><strong>🔗 Built for the Future</strong><br/>
+      NeoX bridges the traditional world and the future of decentralization. By integrating smart contracts, cross-chain support, and NFT infrastructure, NeoX empowers both users and developers to thrive in the decentralized economy.</p>
+      
+      <p><strong>⚙️ Core Features</strong></p>
+      <ul style="text-align:left; max-width:700px; margin:20px auto;">
+        <li>ERC-20 based NXC Token for secure and fast transactions</li>
+        <li>Cross-platform compatibility with major wallets like MetaMask</li>
+        <li>Supports NFT issuance and on-chain governance</li>
+        <li>Open-source project with a community-driven roadmap</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <a href="index-global.html" class="home-button">← Back to Home</a><br/><br/>
+    © 2025 NeoX. All rights reserved. |
+    <a href="disclaimer-global.html">Disclaimer</a>
+  </div>
+
+  <!-- Google Translate Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
