@@ -4,14 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Disclaimer - NeoX</title>
-  <meta name="description" content="Disclaimer for the NeoX project. Learn about risks, responsibilities, and important information before engaging with NXC or Web3 projects." />
-  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
+  <link rel="icon" href="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" />
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
+      background-image: url("https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4");
       background-size: cover;
       background-position: center;
       color: white;
@@ -20,11 +19,11 @@
     }
 
     .logo {
+      width: 60px;
       position: absolute;
       top: 20px;
       left: 20px;
-      width: 60px;
-      opacity: 0.9;
+      opacity: 0.85;
     }
 
     .translate {
@@ -38,25 +37,20 @@
       max-width: 900px;
       margin: 120px auto 40px;
       padding: 40px;
-      background-color: rgba(0, 0, 0, 0.35);
+      background-color: rgba(0, 0, 0, 0.45);
       border-radius: 12px;
       text-align: left;
+      line-height: 1.6;
     }
 
     h1 {
       text-align: center;
       margin-bottom: 20px;
-      font-size: 32px;
     }
 
-    p {
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-
-    /* 銀色按鈕 */
+    /* 銀色按掣 - 跟主頁 */
     .back-btn {
-      display: block;
+      display: inline-block;
       margin: 40px auto 20px;
       padding: 12px 24px;
       background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
@@ -66,7 +60,7 @@
       text-decoration: none;
       border-radius: 12px;
       font-size: 16px;
-      min-width: 180px;
+      min-width: 200px;
       text-align: center;
       box-shadow: 0 4px 8px rgba(255,255,255,0.2);
       transition: all 0.3s ease;
@@ -80,28 +74,13 @@
     .footer {
       margin-top: 40px;
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.55);
+      color: rgba(255,255,255,0.55);
       text-align: center;
     }
 
     .footer a {
       color: #aaa;
       text-decoration: none;
-    }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        margin: 100px 20px;
-        padding: 30px;
-      }
-
-      h1 {
-        font-size: 26px;
-      }
     }
   </style>
 </head>
@@ -114,6 +93,7 @@
   <!-- Google Translate -->
   <div class="translate" id="google_translate_element"></div>
 
+  <!-- Disclaimer -->
   <div class="container">
     <h1>Disclaimer</h1>
     <p>The information provided on this website is for general informational purposes only and does not constitute financial, investment, legal, or professional advice. NeoX is a community-driven cryptocurrency project. Its token (NXC) has officially launched and is publicly accessible.</p>
@@ -126,12 +106,13 @@
   </div>
 
   <!-- Back Button -->
-  <a class="back-btn" href="index-global.html">← Back to Home</a>
+  <div style="text-align:center;">
+    <a class="back-btn" href="index-global.html">← Back to Home</a>
+  </div>
 
   <!-- Footer -->
   <div class="footer">
-    © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-global.html">Disclaimer</a>
+    © 2025 NeoX. All rights reserved.
   </div>
 
   <!-- Google Translate Script -->
@@ -145,4 +126,4 @@
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
-</html>
+</html> 
