@@ -92,19 +92,19 @@
     }
 
     .nav-bar a {
-      display: inline-flex;        
-      align-items: center;         
-      gap: 6px;                    
-      line-height: 1;              
-      vertical-align: middle; 
-      color: #ffffff;     
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      line-height: 1;
+      vertical-align: middle;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 16px;
+      text-decoration: none;  /* ✅ 移除底線 */
     }
 
-    .nav-bar .emoji {
-      display: inline-block;       
-      line-height: 1;              
-      transform: translateY(1px);  
-      color: #ffffff;
+    .nav-bar a:hover {
+      text-decoration: underline; /* ✅ 滑鼠移過去先顯示底線 */
     }
 
     .btn-row {
@@ -142,7 +142,7 @@
       width: 2.1em;
       height: 2.1em;
       object-fit: contain;
-      vertical-align: -3px; /* 微調與文字對齊 */
+      vertical-align: -3px;
       pointer-events: none;
     }
 
@@ -205,8 +205,8 @@
       <a href="what-is-neox-zh.html">關於 NeoX</a>
       <a href="how-to-buy-zh.html">購買方法</a>
       <a href="why-neox-zh.html">為何選擇 NeoX</a>
-      <a href="metaverse-zh.html"><span class="emoji">🔥</span><span>NeoX VR</span></a>
-      <a href="nft-projects-zh.html">👉🏻探索我們的 NFT 項目</a>
+      <a href="metaverse-zh.html">🔥 NeoX VR</a>
+      <a href="nft-projects-zh.html">👉🏻 探索我們的 NFT 項目</a>
     </div>
 
     <div class="headline">
