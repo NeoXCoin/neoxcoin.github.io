@@ -3,199 +3,163 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>What is NeoX? (Global)</title>
-  <meta name="description" content="NeoX is a next-generation digital currency and blockchain ecosystem for Web3." />
-  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
+  <title>What is NeoX?</title>
   <style>
-    /* ===== Base ===== */
-    :root{
-      --overlay-bg: rgba(0,0,0,0.55); /* 與英文版一致的深度 */
-      --panel-bg: rgba(0,0,0,0.55);
-      --text: #ffffff;
-      --muted: rgba(255,255,255,0.7);
-      --btn: #00aaff;
-      --btn-hover: #0088cc;
-      --radius: 14px;
-      --maxw: 900px;
-    }
-
-    html, body {
+    body {
       margin: 0;
       font-family: Arial, sans-serif;
-      color: var(--text);
       background: linear-gradient(135deg, #001f3f, #32004b);
+      color: #ffffff;
     }
 
-    /* 背景圖層 */
     .bg-overlay {
       position: fixed;
-      inset: 0;
-      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center / cover;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
+      background-size: cover;
       opacity: 0.55;
-      z-index: 0; /* 低於 header 和內容 */
-      pointer-events: none;
+      z-index: -1;
     }
 
-    /* ===== Header（固定左上 Logo、右上翻譯器）===== */
+    /* 🔹 固定 header */
     .header {
       position: fixed;
-      inset: 0 0 auto 0;
-      height: 0;              /* 只用嚟承載絕對定位元素 */
-      z-index: 2000;          /* 高層確保永遠可見 */
-      pointer-events: none;   /* 唔阻擋下方捲動／點擊 */
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 25px;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 2000;
     }
 
     .logo {
-      width: 60px;
-      position: absolute;
-      top: 20px;
-      left: 20px;
+      height: 50px;
       opacity: 0.85;
     }
 
     #google_translate_element {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+      z-index: 2100;
     }
 
-    /* ===== 內容區 ===== */
     .container {
-      position: relative;
-      z-index: 1000; /* 高於背景，低於 header */
-      max-width: var(--maxw);
-      margin: 120px auto 48px;
-      padding: 44px 36px;
-      background: var(--panel-bg);
-      border-radius: var(--radius);
+      max-width: 800px;
+      margin: 140px auto 40px;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.55);
+      border-radius: 12px;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
 
     h1 {
-      margin: 0 0 18px;
-      font-size: 36px;
+      font-size: 32px;
+      margin-bottom: 20px;
     }
 
-    .lead {
-      color: var(--muted);
-      line-height: 1.6;
-      margin: 0 auto 18px;
-      max-width: 840px;
-      text-align: left;
-    }
-
-    .section-title {
-      margin: 18px 0 10px;
-      font-weight: bold;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+    .icon {
+      font-size: 18px;
+      margin: 12px 0;
     }
 
     ul {
+      list-style: disc;
       text-align: left;
-      line-height: 1.7;
-      margin: 16px 0 0;
+      padding-left: 20px;
+      margin-top: 20px;
     }
 
-    /* 返回首頁按鈕（藍色） */
-    .back-wrap {
-      text-align: center;
-      margin: 36px 0 28px;
-    }
     .back-button {
-      display: inline-block;
-      min-width: 220px;
-      padding: 14px 22px;
-      background: var(--btn);
-      color: #fff;
+      display: block;
+      width: 200px;
+      margin: 40px auto 20px;
+      padding: 12px;
+      background-color: #00aaff;
+      color: white;
       font-weight: bold;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
+      text-align: center;
       text-decoration: none;
-      box-shadow: 0 8px 18px rgba(0,170,255,0.35);
     }
-    .back-button:hover { background: var(--btn-hover); }
+
+    .back-button:hover {
+      background-color: #0088cc;
+    }
 
     .footer {
-      position: relative;
-      z-index: 1000;
       text-align: center;
-      color: rgba(255,255,255,0.6);
       font-size: 13px;
-      margin: 10px 0 40px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 30px;
     }
-    .footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
-    .footer a:hover { text-decoration: underline; }
 
-    /* ===== 手機調整 ===== */
-    @media (max-width: 768px){
-      .logo{ top: 14px; left: 14px; height: 44px; }
-      #google_translate_element{ top: 12px; right: 12px; }
-      .container{
-        margin: 100px 12px 40px;
-        padding: 30px 18px;
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 120px 20px;
+        padding: 30px;
       }
-      h1{ font-size: 28px; }
+
+      h1 {
+        font-size: 26px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="bg-overlay" aria-hidden="true"></div>
+  <div class="bg-overlay"></div>
 
-  <!-- 固定 Header：Logo + Google Translate -->
+  <!-- 🔹 Header -->
   <div class="header">
-    <a href="index-global.html" aria-label="Back to NeoX Home">
+    <a href="index-global.html">
       <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
     </a>
     <div id="google_translate_element"></div>
   </div>
 
-  <!-- 內容面板（深色透明卡片） -->
-  <main class="container" role="main">
+  <!-- 🔹 Main Content -->
+  <div class="container">
     <h1>What is NeoX?</h1>
+    <p>NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
 
-    <p class="lead">
-      NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era.
-      It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity,
-      and asset ownership.
-    </p>
+    <p class="icon">🔗 <strong>Built for the Future</strong></p>
+    <p>NeoX bridges the traditional world and the future of decentralization. By integrating smart contracts, cross-chain support, and NFT infrastructure, NeoX empowers both users and developers to thrive in the decentralized economy.</p>
 
-    <p class="section-title">🔗 <span>Built for the Future</span></p>
-    <p class="lead">
-      NeoX bridges the traditional world and the future of decentralization. By integrating smart
-      contracts, cross-chain support, and NFT infrastructure, NeoX empowers both users and developers
-      to thrive in the decentralized economy.
-    </p>
-
-    <p class="section-title">⚙️ <span>Core Features</span></p>
+    <p class="icon">⚙️ <strong>Core Features</strong></p>
     <ul>
       <li>ERC-20 based NXC Token for secure and fast transactions</li>
       <li>Cross-platform compatibility with major wallets like MetaMask</li>
       <li>Supports NFT issuance and on-chain governance</li>
       <li>Open-source project with a community-driven roadmap</li>
     </ul>
+  </div>
 
-    <div class="back-wrap">
-      <a class="back-button" href="index-global.html">← Back to Home</a>
-    </div>
-  </main>
+  <!-- 🔹 Back button -->
+  <a class="back-button" href="index-global.html">← Back to Home</a>
 
+  <!-- 🔹 Footer -->
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
-  <!-- Google Translate（保持最尾載入） -->
-  <script>
-    function googleTranslateElementInit(){
-      new google.translate.TranslateElement(
-        { pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
-        'google_translate_element'
-      );
+  <!-- Google Translate -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
-</html> 
+</html>
