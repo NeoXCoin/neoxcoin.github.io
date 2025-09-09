@@ -5,133 +5,95 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>What is NeoX?</title>
   <style>
-    body {
+    /* ==== Base ==== */
+    :root {
+      --panel-bg: rgba(0,0,0,0.55);
+      --text-main: #ffffff;
+      --muted: #cccccc;
+      --btn: #00aaff;
+      --btn-hover: #0088cc;
+    }
+    html, body {
       margin: 0;
       font-family: Arial, sans-serif;
+      color: var(--text-main);
       background: linear-gradient(135deg, #001f3f, #32004b);
-      color: #ffffff;
     }
-
-    .bg-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
-      background-size: cover;
-      opacity: 0.55;
+    /* Background image overlay */
+    .bg-overlay{
+      position: fixed; inset: 0;
+      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44")
+                  no-repeat center/cover;
+      opacity: .55;
       z-index: -1;
     }
 
-    .lang-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+    /* ==== Fixed header (Logo + Google Translate) ==== */
+    .header{
+      position: fixed;
+      top: 20px; left: 0; right: 0;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 20px;
+      z-index: 10000; /* 永遠在最頂 */
+      pointer-events: none; /* 令容器唔阻擋點擊 */
+    }
+    .header a, .header #google_translate_element{ pointer-events: auto; }
+
+    .logo{
+      height: 50px; opacity: .8;
+    }
+    /* 右上角 Google Translate */
+    #google_translate_element{
       font-size: 14px;
     }
-    
-    #google_translate_element {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
-    }
 
-    .lang-switch a {
-      color: #ffffff;
-      text-decoration: none;
-      margin-left: 10px;
-    }
-
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      opacity: 0.6;
-      height: 50px;
-    }
-
-    .container {
+    /* ==== Main card ==== */
+    .container{
       max-width: 800px;
-      margin: 120px auto 40px;
+      margin: 120px auto 40px;  /* 預留位俾 fixed header */
       padding: 40px;
-      background-color: rgba(0, 0, 0, 0.55);
+      background: var(--panel-bg);
       border-radius: 12px;
       text-align: center;
     }
+    h1{ font-size: 32px; margin: 0 0 20px; }
+    .icon{ font-size: 18px; margin: 12px 0; }
+    ul{ list-style: disc; text-align: left; padding-left: 20px; margin-top: 20px; }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
+    /* Back button（藍色） */
+    .back-button{
+      display: block; width: 200px;
+      margin: 40px auto 20px; padding: 12px;
+      background: var(--btn); color: #fff; font-weight: bold;
+      border: none; border-radius: 8px; text-align: center; text-decoration: none;
     }
+    .back-button:hover{ background: var(--btn-hover); }
 
-    .icon {
-      font-size: 18px;
-      margin: 12px 0;
-    }
-
-    ul {
-      list-style: disc;
-      text-align: left;
-      padding-left: 20px;
-      margin-top: 20px;
-    }
-
-    .back-button {
-      display: block;
-      width: 200px;
-      margin: 40px auto 20px;
-      padding: 12px;
-      background-color: #00aaff;
-      color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      text-align: center;
-      text-decoration: none;
-    }
-
-    .back-button:hover {
-      background-color: #0088cc;
-    }
-
-    .footer {
-      text-align: center;
-      font-size: 13px;
-      color: #ccc;
+    .footer{
+      text-align: center; font-size: 13px; color: var(--muted);
       margin: 20px 0 40px;
     }
+    .footer a{ color: var(--muted); text-decoration: none; margin-left: 8px; }
 
-    .footer a {
-      color: #ccc;
-      text-decoration: none;
-      margin-left: 8px;
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        margin: 100px 20px;
-        padding: 30px;
-      }
-
-      h1 {
-        font-size: 26px;
-      }
+    /* ==== Mobile tweaks ==== */
+    @media (max-width: 768px){
+      .container{ margin: 110px 20px 30px; padding: 30px; }
+      h1{ font-size: 26px; }
     }
   </style>
 </head>
 <body>
   <div class="bg-overlay"></div>
 
-  <!-- 🔹 Header 獨立出嚟 -->
+  <!-- Header: 固定於畫面頂部 -->
   <div class="header">
     <a href="index-global.html" aria-label="Back to NeoX Home">
-      <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
+      <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo">
     </a>
     <div id="google_translate_element"></div>
   </div>
 
-  <!-- 🔹 Main Content -->
+  <!-- Main content -->
   <div class="container">
     <h1>What is NeoX?</h1>
     <p>NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
@@ -152,12 +114,12 @@
 
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-global.html" style="color: #aaa; text-decoration: none;">Disclaimer</a>
+    <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
   <!-- Google Translate -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
+  <script>
+    function googleTranslateElementInit(){
       new google.translate.TranslateElement({
         pageLanguage: 'en',
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE
