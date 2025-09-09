@@ -23,30 +23,35 @@
       z-index: -1;
     }
 
+    /* 🔹 Header 固定浮層 */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 9999;
+    }
+
+    .logo {
+      height: 50px;
+      opacity: 0.85;
+    }
+
+    #google_translate_element {
+      font-size: 14px;
+    }
+
     .container {
       max-width: 800px;
       margin: 120px auto 40px;
-      padding: 60px 40px 40px;
+      padding: 40px;
       background-color: rgba(0, 0, 0, 0.55);
       border-radius: 12px;
       text-align: center;
-      position: relative; /* 🔹 讓 logo & translate 相對於 container */
-    }
-
-    /* 🔹 Logo 掛在 banner 左上角 */
-    .logo {
-      position: absolute;
-      top: 15px;
-      left: 20px;
-      height: 45px;
-      opacity: 0.9;
-    }
-
-    /* 🔹 Google Translate 掛在 banner 右上角 */
-    #google_translate_element {
-      position: absolute;
-      top: 15px;
-      right: 20px;
     }
 
     h1 {
@@ -91,23 +96,14 @@
       margin-bottom: 30px;
     }
 
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-    }
-
     @media (max-width: 768px) {
       .container {
         margin: 100px 20px;
-        padding: 50px 20px 30px;
+        padding: 30px;
       }
 
       h1 {
         font-size: 26px;
-      }
-
-      .logo {
-        height: 38px;
       }
     }
   </style>
@@ -115,13 +111,16 @@
 <body>
   <div class="bg-overlay"></div>
 
-  <!-- 🔹 Main Content (Banner 包埋 Logo & Translate) -->
-  <div class="container">
-    <a href="index-global.html">
+  <!-- 🔹 Header 固定在最上層 -->
+  <div class="header">
+    <a href="index-global.html" aria-label="Back to NeoX Home">
       <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
     </a>
     <div id="google_translate_element"></div>
+  </div>
 
+  <!-- 🔹 Main Content -->
+  <div class="container">
     <h1>What is NeoX?</h1>
     <p>NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
 
@@ -137,16 +136,14 @@
     </ul>
   </div>
 
-  <!-- 🔹 Back button -->
   <a class="back-button" href="index-global.html">← Back to Home</a>
 
-  <!-- 🔹 Footer -->
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-global.html">Disclaimer</a>
+    <a href="disclaimer-global.html" style="color: #aaa; text-decoration: none;">Disclaimer</a>
   </div>
 
-  <!-- Google Translate -->
+  <!-- Google Translate Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
