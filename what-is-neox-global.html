@@ -20,38 +20,41 @@
       background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
       background-size: cover;
       opacity: 0.55;
-      z-index: -1;
+      z-index: -1; /* 永遠在最底層 */
     }
 
-    /* 🔹 Header: 固定在最上方 */
-    .header {
-      position: fixed;
-      top: 15px;
-      left: 20px;
-      right: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 1000;
-    }
-
+    /* 🔹固定 Logo */
     .logo {
+      position: fixed !important;
+      top: 20px !important;
+      left: 20px !important;
       height: 50px;
-      opacity: 0.9;
+      opacity: 0.8;
+      z-index: 10010 !important;
+    }
+
+    /* 🔹固定 Google Translate */
+    #google_translate_element {
+      position: fixed !important;
+      top: 20px !important;
+      right: 20px !important;
+      z-index: 10010 !important;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 120px auto 40px;
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.55); /* 深色 overlay */
+      border-radius: 12px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
     }
 
     h1 {
       font-size: 32px;
       margin-bottom: 20px;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 140px auto 40px; /* 👈 預留空間避免頂到 header */
-      padding: 40px;
-      background-color: rgba(0, 0, 0, 0.35);
-      border-radius: 12px;
-      text-align: center;
     }
 
     .icon {
@@ -66,18 +69,20 @@
       margin-top: 20px;
     }
 
+    /* 🔹Back to Home 藍色掣 */
     .back-button {
       display: block;
       width: 200px;
       margin: 40px auto 20px;
       padding: 12px;
-      background-color: #00aaff;
+      background-color: #0d6efd;
+      border: 2px solid #3399ff;
       color: white;
       font-weight: bold;
-      border: none;
       border-radius: 8px;
       text-align: center;
       text-decoration: none;
+      transition: 0.25s;
     }
 
     .back-button:hover {
@@ -87,23 +92,46 @@
     .footer {
       text-align: center;
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
-      margin-bottom: 30px;
+      color: rgba(255, 255, 255, 0.55);
+      margin: 40px 0;
+    }
+
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 8px;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 100px 20px;
+        padding: 30px;
+      }
+
+      h1 {
+        font-size: 26px;
+      }
+
+      .logo { height: 44px; }
     }
   </style>
 </head>
 <body>
   <div class="bg-overlay"></div>
 
-  <!-- 🔹 Header 獨立出嚟 -->
-  <div class="header">
-    <a href="index-global.html" aria-label="Back to NeoX Home">
-      <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
-    </a>
-    <div id="google_translate_element"></div>
-  </div>
+  <!-- 🔹Logo 固定左上角 -->
+  <a href="index-global.html" aria-label="Back to NeoX Home">
+    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
+  </a>
 
-  <!-- 🔹 Main Content -->
+  <!-- 🔹Google Translate 固定右上角 -->
+  <div id="google_translate_element"></div>
+
+  <!-- 🔹主要內容 -->
   <div class="container">
     <h1>What is NeoX?</h1>
     <p>NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
@@ -120,14 +148,16 @@
     </ul>
   </div>
 
+  <!-- 🔹Back 按鈕 -->
   <a class="back-button" href="index-global.html">← Back to Home</a>
 
+  <!-- 🔹Footer -->
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-global.html" style="color: #aaa; text-decoration: none;">Disclaimer</a>
+    <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
-  <!-- Google Translate -->
+  <!-- Google Translate Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
