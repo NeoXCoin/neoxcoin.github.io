@@ -5,87 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>What is NeoX?</title>
   <style>
-    /* ----- Base ----- */
-    body{
-      margin:0;
-      font-family:Arial,sans-serif;
-      background:linear-gradient(135deg,#001f3f,#32004b);
-      color:#fff;
-    }
-    .bg-overlay{
-      position:fixed; inset:0;
-      background:url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center/cover;
-      opacity:.55; z-index:-1;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #001f3f, #32004b);
+      color: #ffffff;
     }
 
-    /* ----- Header items (match homepage) ----- */
-    .logo{
-      position:fixed; top:20px; left:20px;
-      height:50px; opacity:.6; z-index:1001;
-    }
-    #google_translate_element{
-      position:fixed; top:20px; right:20px;
-      z-index:1001;
+    .bg-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
+      background-size: cover;
+      opacity: 0.55;
+      z-index: -1;
     }
 
-    /* 防止 Google 翻譯橫幅把頁面往下推 */
-    .goog-te-banner-frame{ display:none !important; }
-    body{ top:0 !important; }
-    /* 去掉 "由 Google 提供翻譯" 連結（可留可去） */
-    .goog-logo-link, .goog-te-gadget span a{ display:none !important; }
-    .goog-te-gadget{ font-size:0 !important; }    /* 收起多餘文字，只保留下拉 */
-    .goog-te-combo{ font-size:14px; }             /* 下拉字級 */
-
-    /* ----- Main card ----- */
-    .container{
-      max-width:800px;
-      margin:120px auto 40px;   /* 預留頂部空間給固定的 logo/翻譯 */
-      padding:40px;
-      background:rgba(0,0,0,.35);
-      border-radius:12px;
-      text-align:center;
+    /* 🔹 Header: 固定在最上方 */
+    .header {
+      position: fixed;
+      top: 15px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
     }
-    h1{ font-size:32px; margin:0 0 20px; }
-    .icon{ font-size:18px; margin:12px 0; }
-    ul{ list-style:disc; text-align:left; padding-left:20px; margin-top:20px; }
 
-    /* ----- Back button (blue, like homepage) ----- */
-    .back-button{
-      display:block; width:220px;
-      margin:36px auto 24px;
-      padding:12px 16px;
-      background:#10a5ff; color:#fff; font-weight:bold;
-      border:none; border-radius:10px; text-align:center; text-decoration:none;
-      box-shadow:0 6px 18px rgba(16,165,255,.35);
-      transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
+    .logo {
+      height: 50px;
+      opacity: 0.9;
     }
-    .back-button:hover{ background:#0894ea; transform:translateY(-2px); box-shadow:0 10px 22px rgba(16,165,255,.45); }
 
-    .footer{
-      text-align:center; font-size:13px; color:#ccc;
-      margin:6px 0 40px;
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
     }
-    .footer a{ color:#ccc; text-decoration:none; margin-left:8px; }
 
-    /* ----- Mobile tweaks ----- */
-    @media (max-width:768px){
-      .container{ margin:110px 20px 32px; padding:28px; }
-      h1{ font-size:26px; }
-      .logo{ height:46px; top:16px; left:16px; }
-      #google_translate_element{ top:16px; right:16px; }
+    .container {
+      max-width: 800px;
+      margin: 140px auto 40px; /* 👈 預留空間避免頂到 header */
+      padding: 40px;
+      background-color: rgba(0, 0, 0, 0.35);
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .icon {
+      font-size: 18px;
+      margin: 12px 0;
+    }
+
+    ul {
+      list-style: disc;
+      text-align: left;
+      padding-left: 20px;
+      margin-top: 20px;
+    }
+
+    .back-button {
+      display: block;
+      width: 200px;
+      margin: 40px auto 20px;
+      padding: 12px;
+      background-color: #00aaff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      background-color: #0088cc;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 30px;
     }
   </style>
 </head>
 <body>
   <div class="bg-overlay"></div>
 
-  <!-- Fixed header items (same positions as homepage) -->
-  <a href="index-global.html" aria-label="Back to NeoX Home">
-    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo">
-  </a>
-  <div id="google_translate_element"></div>
+  <!-- 🔹 Header 獨立出嚟 -->
+  <div class="header">
+    <a href="index-global.html" aria-label="Back to NeoX Home">
+      <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
+    </a>
+    <div id="google_translate_element"></div>
+  </div>
 
-  <!-- Main -->
+  <!-- 🔹 Main Content -->
   <div class="container">
     <h1>What is NeoX?</h1>
     <p>NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
@@ -106,16 +124,16 @@
 
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-global.html">Disclaimer</a>
+    <a href="disclaimer-global.html" style="color: #aaa; text-decoration: none;">Disclaimer</a>
   </div>
 
   <!-- Google Translate -->
-  <script>
-    function googleTranslateElementInit(){
-      new google.translate.TranslateElement(
-        { pageLanguage:'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
-        'google_translate_element'
-      );
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
