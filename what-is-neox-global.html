@@ -3,163 +3,201 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>What is NeoX?</title>
+  <title>What is NeoX? (Global)</title>
+  <meta name="description" content="NeoX is a next-generation digital currency and blockchain ecosystem for Web3." />
+  <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     /* ===== Base ===== */
     :root{
-      --header-h: 64px;
-      --btn-blue: #0d6efd;
-      --btn-blue-border: #3399ff;
-    }
-    html,body{height:100%;}
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #001f3f, #32004b);
-      color: #fff;
+      --overlay-bg: rgba(0,0,0,0.55); /* 與英文版一致的深度 */
+      --panel-bg: rgba(0,0,0,0.55);
+      --text: #ffffff;
+      --muted: rgba(255,255,255,0.7);
+      --btn: #00aaff;
+      --btn-hover: #0088cc;
+      --radius: 14px;
+      --maxw: 900px;
     }
 
-    /* Background image layer */
+    html, body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(135deg, #001f3f, #32004b);
+    }
+
+    /* 背景圖層 */
     .bg-overlay {
       position: fixed;
       inset: 0;
-      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") center/cover no-repeat;
+      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center / cover;
       opacity: 0.55;
-      z-index: -1;
+      z-index: 0; /* 低於 header 和內容 */
+      pointer-events: none;
     }
 
-    /* ===== Fixed Header (Logo + Google Translate) ===== */
+    /* ===== Header（固定左上 Logo、右上翻譯器）===== */
     .header {
-      position: fixed !important;
-      top: 0; left: 0; right: 0;
-      height: var(--header-h);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 12px 20px;
-      z-index: 10050 !important;       /* super high so it’s always on top */
-      pointer-events: none;             /* allow overlay clicks to pass through... */
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 0;              /* 只用嚟承載絕對定位元素 */
+      z-index: 2000;          /* 高層確保永遠可見 */
+      pointer-events: none;   /* 唔阻擋下方捲動／點擊 */
     }
-    .header > * { pointer-events: auto; } /* ...but keep header children clickable */
 
     .logo {
-      height: 46px;
-      opacity: 0.9;
-      display: block;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      height: 50px;
+      opacity: 0.85;
+      pointer-events: auto;   /* 俾到 click 回首頁 */
     }
 
-    /* Google Translate box styling + fix visibility on dark bg */
-    #google_translate_element { z-index: 10060 !important; }
-    #google_translate_element .goog-te-gadget-simple {
-      background-color: rgba(0,0,0,0.55);
-      border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 8px;
-      padding: 4px 8px;
+    /* Google Translate 容器固定右上角 */
+    #google_translate_element {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 2100;
+      pointer-events: auto;   /* 可操作 */
     }
-    #google_translate_element .goog-te-gadget-simple span { color:#fff; }
-    #google_translate_element .goog-te-gadget-icon { display:none; }
 
-    /* ===== Main card ===== */
+    /* ===== 內容區 ===== */
     .container {
-      max-width: 860px;
-      margin: calc(120px + var(--header-h)) auto 44px; /* push down below header */
-      padding: 40px;
-      background: rgba(0,0,0,0.55);  /* darker like the main site */
-      border-radius: 14px;
+      position: relative;
+      z-index: 1000; /* 高於背景，低於 header */
+      max-width: var(--maxw);
+      margin: 120px auto 48px;
+      padding: 44px 36px;
+      background: var(--panel-bg);
+      border-radius: var(--radius);
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
 
-    h1 { font-size: 32px; margin: 0 0 20px; }
-    .icon { font-size: 18px; margin: 12px 0; }
+    h1 {
+      margin: 0 0 18px;
+      font-size: 36px;
+    }
 
-    ul{
-      list-style: disc;
+    .lead {
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0 auto 18px;
+      max-width: 840px;
       text-align: left;
-      padding-left: 20px;
-      margin-top: 20px;
     }
 
-    /* Back to Home – blue button like homepage */
+    .section-title {
+      margin: 18px 0 10px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    ul {
+      text-align: left;
+      line-height: 1.7;
+      margin: 16px 0 0;
+    }
+
+    /* 返回首頁按鈕（藍色） */
+    .back-wrap {
+      text-align: center;
+      margin: 36px 0 28px;
+    }
     .back-button {
-      display: block;
-      width: 220px;
-      margin: 36px auto 20px;
-      padding: 12px 16px;
-      background-color: var(--btn-blue);
-      border: 2px solid var(--btn-blue-border);
+      display: inline-block;
+      min-width: 220px;
+      padding: 14px 22px;
+      background: var(--btn);
       color: #fff;
       font-weight: bold;
+      border: none;
       border-radius: 10px;
-      text-align: center;
       text-decoration: none;
-      transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease;
-      box-shadow: 0 6px 14px rgba(13,110,253,0.35);
+      box-shadow: 0 8px 18px rgba(0,170,255,0.35);
     }
-    .back-button:hover { background-color:#0b5ed7; transform: translateY(-1px); }
-    .back-button:active { transform: translateY(0); }
+    .back-button:hover { background: var(--btn-hover); }
 
     .footer {
+      position: relative;
+      z-index: 1000;
       text-align: center;
+      color: rgba(255,255,255,0.6);
       font-size: 13px;
-      color: rgba(255,255,255,0.55);
-      margin: 24px 0 40px;
+      margin: 10px 0 40px;
     }
-    .footer a { color:#aaa; text-decoration:none; margin-left:8px; }
-    .footer a:hover { text-decoration:underline; }
+    .footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
 
-    /* ===== Responsive ===== */
+    /* ===== 手機調整 ===== */
     @media (max-width: 768px){
-      :root{ --header-h: 56px; }
-      .logo{ height: 42px; }
-      .container{ padding: 28px; margin: calc(96px + var(--header-h)) 20px 36px; }
-      h1{ font-size: 26px; }
+      .logo{ top: 14px; left: 14px; height: 44px; }
+      #google_translate_element{ top: 12px; right: 12px; }
+      .container{
+        margin: 100px 12px 40px;
+        padding: 30px 18px;
+      }
+      h1{ font-size: 28px; }
     }
   </style>
 </head>
 <body>
-  <div class="bg-overlay"></div>
+  <div class="bg-overlay" aria-hidden="true"></div>
 
-  <!-- Fixed Header -->
+  <!-- 固定 Header：Logo + Google Translate -->
   <div class="header">
     <a href="index-global.html" aria-label="Back to NeoX Home">
-      <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo">
+      <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
     </a>
     <div id="google_translate_element"></div>
   </div>
 
-  <!-- Main content -->
-  <div class="container" role="main">
+  <!-- 內容面板（深色透明卡片） -->
+  <main class="container" role="main">
     <h1>What is NeoX?</h1>
-    <p>NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era. It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity, and asset ownership.</p>
 
-    <p class="icon">🔗 <strong>Built for the Future</strong></p>
-    <p>NeoX bridges the traditional world and the future of decentralization. By integrating smart contracts, cross-chain support, and NFT infrastructure, NeoX empowers both users and developers to thrive in the decentralized economy.</p>
+    <p class="lead">
+      NeoX is a next-generation digital currency and blockchain ecosystem designed for the Web3 era.
+      It offers secure, fast, and scalable solutions for decentralized finance (DeFi), digital identity,
+      and asset ownership.
+    </p>
 
-    <p class="icon">⚙️ <strong>Core Features</strong></p>
+    <p class="section-title">🔗 <span>Built for the Future</span></p>
+    <p class="lead">
+      NeoX bridges the traditional world and the future of decentralization. By integrating smart
+      contracts, cross-chain support, and NFT infrastructure, NeoX empowers both users and developers
+      to thrive in the decentralized economy.
+    </p>
+
+    <p class="section-title">⚙️ <span>Core Features</span></p>
     <ul>
       <li>ERC-20 based NXC Token for secure and fast transactions</li>
       <li>Cross-platform compatibility with major wallets like MetaMask</li>
       <li>Supports NFT issuance and on-chain governance</li>
       <li>Open-source project with a community-driven roadmap</li>
     </ul>
-  </div>
 
-  <a class="back-button" href="index-global.html">← Back to Home</a>
+    <div class="back-wrap">
+      <a class="back-button" href="index-global.html">← Back to Home</a>
+    </div>
+  </main>
 
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
-  <!-- Google Translate -->
+  <!-- Google Translate（保持最尾載入） -->
   <script>
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        autoDisplay: false,
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
+    function googleTranslateElementInit(){
+      new google.translate.TranslateElement(
+        { pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE },
+        'google_translate_element'
+      );
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
