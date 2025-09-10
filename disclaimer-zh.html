@@ -20,13 +20,19 @@
       padding: 40px 20px;
     }
 
-    .logo {
-      position: absolute;
+    .logo-wrap {
+      position: fixed;   /* 改做 fixed，desktop/mobile 都唔會跟住容器跑 */
       top: 20px;
       left: 20px;
-      width: 60px;
-      opacity: 0.85;
+      z-index: 9999;
     }
+    #neoxLogo {
+      width: 60px;
+      height: 60px;
+      opacity: 0.9;
+      object-fit: contain;
+    }
+    #neoxLogo:hover { transform: translateY(-1px); }
 
     .language-switch {
       position: absolute;
