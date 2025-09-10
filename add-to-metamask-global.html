@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add NXC Token to MetaMask - Global</title>
+  <style>
+    body{
+      margin: 0; min-height: 100vh; background:#0a0a2a; color:#fff; 
+      font-family:Arial, sans-serif; text-align:center;
+      padding:88px 20px 40px; position:relative;
+    }
+    /* header */
+    .logo{
+      width:60px; position:absolute; top:20px; left:20px; opacity:.9; z-index:1000;
+    }
+    .logo:hover{ transform:translateY(-1px); }
+    #google_translate_element{
+      position:absolute; top:20px; right:20px; z-index:1000;
+    }
+
+    h1{ font-size:32px; margin:0 0 6px; }
+    p.lead{ color:#cfd7ff; margin:0 0 26px; }
+
+    .btn{
+      background:#0d6efd; border:none; color:#fff; padding:14px 24px; border-radius:10px;
+      font-size:16px; margin:10px; cursor:pointer; display:inline-block; text-decoration:none;
+      box-shadow:0 6px 18px rgba(13,110,253,.25);
+    }
+    .btn:hover{ filter:brightness(1.06); }
+    .btn.secondary{ background:#1f2a44; box-shadow:0 6px 18px rgba(255,255,255,.08); }
+    .btn[disabled]{ opacity:.6; cursor:not-allowed; }
+
+    .hint{ font-size:13px; color:#9fb0ff; margin-top:14px; }
+    .back{ margin-top:28px; color:#ccc; text-decoration:none; display:inline-block; }
+    .back:hover{ text-decoration:underline; }
+
+    .footer{
+      margin-top:56px; font-size:13px; color:rgba(255,255,255,.55);
+    }
+    .footer a{ color:#aaa; text-decoration:none; }
+    @media (max-width:600px){
+      body{ padding-top:96px; }
+      h1{ font-size:26px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Logo → Home -->
+  <a href="index-global.html">
+    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo"/>
+  </a>
+
+  <!-- Google Translate -->
+  <div id="google_translate_element"></div>
+
+  <h1>Add NXC Token to MetaMask</h1>
+  <p class="lead">Click a button below to add the NeoX Token (NXC) to your MetaMask wallet.</p>
+
+  <!-- Auto add (will handoff to MetaMask after 3s) -->
+  <button id="autoBtn" class="btn" onclick="queueAddToken()">Add NXC Token (Auto)</button>
+
+  <!-- Safe open (no auto add, just opens the app / in-app browser) -->
+  <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask-global.html">Open in MetaMask App</a>
+
+  <div id="status" class="hint"></div>
+
+  <br><br>
+  <a class="back" href="index-global.html">← Back to Home</a>
+
+  <div class="footer">
+    © 2025 NeoX. All rights reserved. |
+    <a href="disclaimer-global.html">Disclaimer</a>
+  </div>
+
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script>
+  // ---- Config ----
+  const TOKEN = {
+    address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', // Base chain
+    symbol: 'NXC',
+    decimals: 18,
+    image: 'https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu'
+  };
+
+  const statusEl = document.getElementById('status');
+  const autoBtn  = document.getElementById('autoBtn');
+
+  function inMetaMaskInApp(){
+    return /MetaMaskMobile/i.test(navigator.userAgent);
+  }
+
+  function queueAddToken(){
+    if (!confirm('Proceed to add NXC to MetaMask?')) return;
+
+    if (typeof window.ethereum === 'undefined' && !inMetaMaskInApp()){
+      window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-metamask-global.html';
+      return;
+    }
+
+    autoBtn.disabled = true;
+    let secs = 3;
+    statusEl.textContent = `Preparing… ${secs}s`;
+    const t = setInterval(()=>{
+      secs--; statusEl.textContent = `Preparing… ${secs}s`;
+      if (secs<=0){ clearInterval(t); addToken(); }
+    }, 1000);
+  }
+
+  async function addToken(){
+    try{
+      if (!window.ethereum){ throw new Error('MetaMask not detected'); }
+      const ok = await window.ethereum.request({
+        method: 'wallet_watchAsset',
+        params: { type: 'ERC20', options: TOKEN }
+      });
+      if (ok){
+        statusEl.textContent = 'NXC added successfully.';
+      }else{
+        statusEl.textContent = 'User cancelled in MetaMask.';
+      }
+    }catch(e){
+      console.error(e);
+      statusEl.textContent = 'MetaMask error. You can use “Open in MetaMask App”.';
+    }finally{
+      autoBtn.disabled = false;
+    }
+  }
+</script>
+</body>
+</html>
