@@ -20,19 +20,13 @@
       padding: 40px 20px;
     }
 
-    .logo-wrap {
-      position: fixed;   /* 改做 fixed，desktop/mobile 都唔會跟住容器跑 */
+    .logo {
+      position: absolute;
       top: 20px;
       left: 20px;
-      z-index: 9999;
-    }
-    #neoxLogo {
       width: 60px;
-      height: 60px;
-      opacity: 0.9;
-      object-fit: contain;
+      opacity: 0.85;
     }
-    #neoxLogo:hover { transform: translateY(-1px); }
 
     .language-switch {
       position: absolute;
@@ -97,24 +91,6 @@
 </head>
 <body>
   <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
-  
-<script>      
-  const logo = document.getElementById('neoxLogo');
-  logo.onerror = function() {
-    if (!logo.dataset.triedIpfs) {
-      logo.dataset.triedIpfs = '1';
-      logo.src = "https://ipfs.io/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi";
-    } else {
-      // 第二重保險：用 SVG
-      logo.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
-        <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60">
-          <rect width="100%" height="100%" rx="8" fill="#1e90ff"/>
-          <text x="50%" y="54%" font-size="26" text-anchor="middle" fill="#fff" font-family="Arial">N</text>
-        </svg>
-      `);
-    }
-  };
-</script>
 
   <div class="language-switch">
     <a href="disclaimer-en.html">EN</a> | <a href="disclaimer-zh.html">繁</a>
