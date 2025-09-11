@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX Coin 繁體中文版</title>
+  <title>NeoX Coin – 繁體中文版</title>
   <link rel="icon" href="https://ipfs.io/ipfs/bafybeib6hm52eg6gerwgligznhqe6pl7i24rmrtyrjxeh2eztql4cz2nfe" />
   <style>
     body {
@@ -17,28 +17,35 @@
       text-align: center;
     }
 
-    .logo {
-      position: absolute;
+    /* ---- Logo ---- */
+    .logo-wrap {
+      position: fixed;
       top: 20px;
       left: 20px;
-      width: 60px;
-      opacity: 0.85;
-      z-index: 999;
+      z-index: 9999;
     }
+    #neoxLogo {
+      width: 60px;
+      height: 60px;
+      opacity: 0.9;
+      object-fit: contain;
+    }
+    #neoxLogo:hover { transform: translateY(-1px); }
 
+    /* ---- Language Switch ---- */
     .language-switch {
-      position: absolute;
+      position: fixed;
       top: 20px;
       right: 20px;
       font-size: 16px;
-      z-index: 999;
+      z-index: 9999;
     }
-
     .language-switch a {
       color: white;
       text-decoration: none;
       margin: 0 8px;
     }
+    .language-switch a:hover { text-decoration: underline; }
 
     .container {
       display: flex;
@@ -63,6 +70,7 @@
     .headline {
       margin: 20px 0 30px 0;
       line-height: 1.6;
+      text-align: center;
     }
 
     .headline span {
@@ -95,17 +103,12 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      line-height: 1;
-      vertical-align: middle;
       color: #ffffff;
       font-weight: bold;
       font-size: 16px;
-      text-decoration: none;  /* ✅ 移除底線 */
+      text-decoration: none;
     }
-
-    .nav-bar a:hover {
-      text-decoration: underline; /* ✅ 滑鼠移過去先顯示底線 */
-    }
+    .nav-bar a:hover { text-decoration: underline; }
 
     .btn-row {
       display: flex;
@@ -124,20 +127,18 @@
       font-size: 16px;
       cursor: pointer;
       text-decoration: none;
+      min-width: 180px;
+      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      min-width: 180px;
-      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     }
-
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
     }
 
-    /* 自訂「emoji 大小」的 NeoX coin 圖示 */
     .emoji-icon {
       width: 2.1em;
       height: 2.1em;
@@ -161,42 +162,27 @@
       text-decoration: none;
       margin: 0 6px;
     }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
+    .footer a:hover { text-decoration: underline; }
 
     @media (max-width: 600px) {
-      .nav-bar {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .btn-row {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .coin {
-        width: 144px;
-        max-width: 100%;
-      }
+      .nav-bar { flex-direction: column; align-items: center; gap: 12px; }
+      .btn-row { flex-direction: column; align-items: center; }
+      .coin { width: 144px; max-width: 100%; }
     }
   </style>
 </head>
 <body>
-  <!-- Logo（連到國際版主頁） -->
-  <a href="index-global.html">
-    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
+  <!-- Logo -->
+  <a href="index-global.html" class="logo-wrap">
+    <img id="neoxLogo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo"/>
   </a>
 
-  <!-- ENG / 繁 / 🌍 -->
+  <!-- 語言切換 -->
   <div class="language-switch">
     <a href="index.html">EN</a> | <a href="index-zh.html">繁</a> | <a href="index-global.html">🌍</a>
   </div>
 
-  <!-- Main -->
+  <!-- 主內容 -->
   <div class="container">
     <div class="tagline">Web3 革命，由 NeoX 引領</div>
     <img class="coin" src="https://ipfs.io/ipfs/bafybeibkf2olur4lorvt4iofzingwncxb32yixnsfpzo7ynzs264jbhfpe" alt="NeoX Coin"/>
@@ -236,5 +222,23 @@
       <a href="disclaimer-zh.html">免責聲明</a>
     </div>
   </div>
+
+  <!-- Logo fallback -->
+  <script>
+    const logo = document.getElementById('neoxLogo');
+    logo.onerror = function() {
+      if (!logo.dataset.triedIpfs) {
+        logo.dataset.triedIpfs = '1';
+        logo.src = "https://ipfs.io/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi";
+      } else {
+        logo.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+            <rect width="100%" height="100%" rx="8" fill="#1e90ff"/>
+            <text x="50%" y="54%" font-size="26" text-anchor="middle" fill="#fff" font-family="Arial">N</text>
+          </svg>
+        `);
+      }
+    };
+  </script>
 </body>
 </html>
