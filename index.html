@@ -17,23 +17,29 @@
       text-align: center;
     }
 
-    .logo {
-      position: absolute;
+    /* ---- Logo Fix ---- */
+    .logo-wrap {
+      position: fixed;
       top: 20px;
       left: 20px;
-      width: 60px;
-      opacity: 0.85;
-      z-index: 999;
+      z-index: 9999;
     }
+    #neoxLogo {
+      width: 60px;
+      height: 60px;
+      opacity: 0.9;
+      object-fit: contain;
+    }
+    #neoxLogo:hover { transform: translateY(-1px); }
 
+    /* ---- Language Switch ---- */
     .language-switch {
-      position: absolute;
+      position: fixed;
       top: 20px;
       right: 20px;
       font-size: 16px;
-      z-index: 999;
+      z-index: 9999;
     }
-
     .language-switch a {
       color: white;
       text-decoration: none;
@@ -148,7 +154,6 @@
       box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
     }
 
-    /* NeoX Coin emoji icon (統一 2.1em) */
     .emoji-icon {
       width: 2.1em;
       height: 2.1em;
@@ -198,8 +203,10 @@
 </head>
 <body>
   <!-- Logo → Go to international version -->
-  <a href="index-global.html">
-    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
+  <a href="index-global.html" class="logo-wrap">
+    <img id="neoxLogo" 
+         src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" 
+         alt="NeoX Logo" />
   </a>
 
   <!-- Language Switch -->
@@ -246,5 +253,23 @@
       <a href="disclaimer-en.html">Disclaimer</a>
     </div>
   </div>
+
+  <!-- Logo fallback script -->
+  <script>
+    const logo = document.getElementById('neoxLogo');
+    logo.onerror = function() {
+      if (!logo.dataset.triedIpfs) {
+        logo.dataset.triedIpfs = '1';
+        logo.src = "https://ipfs.io/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi";
+      } else {
+        logo.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
+          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60">
+            <rect width="100%" height="100%" rx="8" fill="#1e90ff"/>
+            <text x="50%" y="54%" font-size="26" text-anchor="middle" fill="#fff" font-family="Arial">N</text>
+          </svg>
+        `);
+      }
+    };
+  </script>
 </body>
 </html>
