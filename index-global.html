@@ -21,8 +21,6 @@
   <style>
     body {
       margin: 0;
-      min-height: 100vh;
-      background: #0a0a2a;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
       background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
@@ -32,14 +30,20 @@
       text-align: center;
     }
 
-    .logo {
+    /* ---- Logo Fix ---- */
+    .logo-wrap {
       position: absolute;
       top: 20px;
       left: 20px;
-      width: 60px;
-      opacity: 0.85;
-      z-index: 999;
+      z-index: 9999;
     }
+    #neoxLogo {
+      width: 60px;
+      height: 60px;
+      opacity: 0.9;
+      object-fit: contain;
+    }
+    #neoxLogo:hover { transform: translateY(-1px); }
 
     #google_translate_element {
       position: absolute;
@@ -67,13 +71,13 @@
       width: 144px;
       margin: 30px auto;
     }
-
+    
     .headline {
       margin: 20px 0 30px 0;   
       line-height: 1.6;        
       text-align: center;      
     }
-    
+
     .headline span {
       display: block;
       opacity: 0;
@@ -105,14 +109,25 @@
       color: white;
       font-weight: bold;
       font-size: 16px;
+    }
+
+    .emoji-link {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
     }
 
     .emoji {
-      display: inline-block;
-      transform: translateY(1px);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    .emoji-link:hover {
+      text-decoration: underline;
     }
 
     .btn-row {
@@ -134,7 +149,7 @@
       text-decoration: none;
       min-width: 180px;
       box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-      display: flex;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
@@ -146,10 +161,11 @@
     }
 
     .emoji-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      vertical-align: middle;
+      width: 2.1em;
+      height: 2.1em;
+      object-fit: contain;
+      vertical-align: -3px;
+      pointer-events: none;
     }
 
     .footer {
