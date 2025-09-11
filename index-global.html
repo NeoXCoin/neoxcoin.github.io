@@ -16,12 +16,13 @@
       }, 'google_translate_element');
     }
   </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <style>
     body {
       margin: 0;
       min-height: 100vh;
+      background: #0a0a2a;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
       background-image: url('https://ipfs.io/ipfs/bafybeibuio6wm2lb25ee6u3zy7rw5d6zodxtbl5uri2f27bxvtnkovuxi4');
       background-size: cover;
@@ -31,29 +32,20 @@
       text-align: center;
     }
 
-    /* Logo 固定在左上角 */
-    .logo-wrap {
+    .logo {
       position: absolute;
       top: 20px;
       left: 20px;
-      z-index: 9999;
-    }
-    .logo {
       width: 60px;
-      height: 60px;
-      opacity: 0.9;
-      object-fit: contain;
+      opacity: 0.85;
+      z-index: 999;
     }
 
-    /* Google Translate 固定在右上角 */
     #google_translate_element {
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 9999;
-      background: rgba(0,0,0,0.3);
-      padding: 4px 6px;
-      border-radius: 6px;
+      z-index: 999;
     }
 
     .container {
@@ -89,6 +81,7 @@
       animation: fadeIn 1s ease-out forwards;
       font-size: 15px;
     }
+
     .headline span:nth-child(1) { animation-delay: 0.5s; }
     .headline span:nth-child(2) { animation-delay: 2.5s; }
     .headline span:nth-child(3) { animation-delay: 4.5s; }
@@ -116,7 +109,11 @@
       align-items: center;
       gap: 6px;
     }
-    .nav-bar a:hover { text-decoration: underline; }
+
+    .emoji {
+      display: inline-block;
+      transform: translateY(1px);
+    }
 
     .btn-row {
       display: flex;
@@ -142,6 +139,7 @@
       justify-content: center;
       gap: 8px;
     }
+
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
@@ -159,28 +157,46 @@
       font-size: 13px;
       opacity: 0.6;
     }
-    .footer a { color: #ccc; text-decoration: none; margin: 0 6px; }
-    .footer a:hover { text-decoration: underline; }
 
-    .footer-links { margin-bottom: 8px; }
-
-    @media (min-width: 1024px) {
-    .logo-wrap { top: 60px; }
-    #google_translate_element { top: 60px; }
+    .footer a {
+      color: #ccc;
+      text-decoration: none;
+      margin: 0 6px;
     }
-    
-  </style>
-</head> 
-<body>
-  <!-- Logo -->
-  <a href="index.html" class="logo-wrap">
-    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo"/>
-  </a>
 
-  <!-- Google Translate -->
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .nav-bar {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .btn-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .coin {
+        width: 144px;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html">
+    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
+  </a>
   <div id="google_translate_element"></div>
 
-  <!-- Main Content -->
   <div class="container">
     <div class="tagline">Web3 Revolution, Led by NeoX</div>
     <img class="coin" src="https://ipfs.io/ipfs/bafybeibkf2olur4lorvt4iofzingwncxb32yixnsfpzo7ynzs264jbhfpe" alt="NeoX Coin" />
@@ -190,7 +206,7 @@
       <a href="how-to-buy-global.html">How to Buy?</a>
       <a href="why-neox-global.html">Why NeoX?</a>
       <a href="metaverse-global.html">🔥 NeoX VR</a>
-      <a href="nft-projects-global.html">👉🏻 Explore Our NFT Projects</a>
+      <a href="nft-projects-global.html"><span class="emoji">👉🏻</span><span>Explore Our NFT Projects</span></a>
     </div>
 
     <div class="headline">
@@ -201,15 +217,14 @@
     </div>
 
     <div class="btn-row">
-      <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">🛒 Buy NXC</a>
-      <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/">🦊 Buy via MetaMask</a>
+      <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B"><span class="emoji">🛒</span> Buy NXC</a>
+      <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/"><span class="emoji">🦊</span> Buy via MetaMask</a>
       <a class="btn" href="add-to-metamask-global.html">
         <img class="emoji-icon" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin Icon" />
         Add to MetaMask
       </a>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
       <div class="footer-links">
         <a href="faq-global.html">FAQ</a> |
