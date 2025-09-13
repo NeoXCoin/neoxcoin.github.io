@@ -16,7 +16,8 @@
       }, 'google_translate_element');
     }
   </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
   <style>
     body {
       margin: 0;
@@ -29,6 +30,7 @@
       text-align: center;
     }
 
+    /* Logo */
     .logo {
       position: absolute;
       top: 20px;
@@ -38,15 +40,8 @@
       z-index: 9999;
     }
     .logo:hover { transform: translateY(-1px); }
-    
-    #Logo {
-      width: 60px;
-      height: 60px;
-      opacity: 0.9;
-      object-fit: contain;
-    }
-    #Logo:hover { transform: translateY(-1px); }
 
+    /* Google Translate */
     #google_translate_element {
       position: absolute;
       top: 20px;
@@ -54,6 +49,7 @@
       z-index: 9999;
     }
 
+    /* Container */
     .container {
       display: flex;
       flex-direction: column;
@@ -74,6 +70,7 @@
       margin: 30px auto;
     }
 
+    /* Headline animation */
     .headline {
       margin: 20px 0 30px 0;   
       line-height: 1.6;        
@@ -98,6 +95,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* Nav bar */
     .nav-bar {
       display: flex;
       justify-content: center;
@@ -121,6 +119,7 @@
       transform: translateY(1px);
     }
 
+    /* Buttons */
     .btn-row {
       display: flex;
       flex-wrap: wrap;
@@ -158,6 +157,7 @@
       vertical-align: middle;
     }
 
+    /* Footer */
     .footer {
       margin-top: 50px;
       font-size: 13px;
@@ -178,6 +178,7 @@
       margin-bottom: 8px;
     }
 
+    /* Responsive */
     @media (max-width: 600px) {
       .nav-bar {
         flex-direction: column;
@@ -198,12 +199,15 @@
   </style>
 </head>
 <body>
+  <!-- Logo -->
   <a href="index.html">
-  <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" 
-       alt="NeoX Logo" />
+    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
   </a>
+
+  <!-- Google Translate -->
   <div id="google_translate_element"></div>
 
+  <!-- Main container -->
   <div class="container">
     <div class="tagline">Web3 Revolution, Led by NeoX</div>
     <img class="coin" src="https://ipfs.io/ipfs/bafybeibkf2olur4lorvt4iofzingwncxb32yixnsfpzo7ynzs264jbhfpe" alt="NeoX Coin" />
@@ -232,6 +236,7 @@
       </a>
     </div>
 
+    <!-- Footer -->
     <div class="footer">
       <div class="footer-links">
         <a href="faq-global.html">FAQ</a> |
@@ -242,22 +247,5 @@
       <a href="disclaimer-global.html">Disclaimer</a>
     </div>
   </div>
-  
-  <script>
-    const logo = document.getElementById('Logo');
-    logo.onerror = function() {
-      if (!logo.dataset.triedIpfs) {
-        logo.dataset.triedIpfs = '1';
-        logo.src = "https://ipfs.io/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi";
-      } else {
-        logo.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
-          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60">
-            <rect width="100%" height="100%" rx="8" fill="#1e90ff"/>
-            <text x="50%" y="54%" font-size="26" text-anchor="middle" fill="#fff" font-family="Arial">N</text>
-          </svg>
-        `);
-      }
-    };
-  </script>
 </body>
 </html>
