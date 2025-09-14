@@ -147,6 +147,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      position: relative;
     }
 
     .btn:hover {
@@ -159,6 +160,25 @@
       height: 32px;
       border-radius: 50%;
       vertical-align: middle;
+    }
+
+    /* Tooltip for buttons */
+    .btn[data-tooltip] {
+      position: relative;
+    }
+    .btn[data-tooltip]:hover::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      z-index: 1000;
     }
 
     /* Footer */
@@ -234,15 +254,15 @@
     </div>
 
     <div class="btn-row">
-      <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B"><span class="emoji">🛒</span> Buy NXC</a>
-      <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/"><span class="emoji">🦊</span> Buy via MetaMask</a>
+      <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">🛒 Buy NXC</a>
+      <a class="btn" 
+         href="https://metamask.app.link/dapp/neoxcoin.github.io/"
+         data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link">🦊 Buy via MetaMask</a>
       <a class="btn" href="add-to-metamask-global.html">
         <img class="emoji-icon" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin Icon" />
         Add to MetaMask
       </a>
     </div>
-    
-    <div class="note">⚠️ You will be redirected to MetaMask. Tap “Continue” if you trust this link.</div>
 
     <!-- Footer -->
     <div class="footer">
@@ -256,7 +276,7 @@
     </div>
   </div>
 
-   
+  <!-- Logo fallback -->
   <script>
     const logo = document.getElementById('neoxLogo');
     logo.onerror = function() {
@@ -273,24 +293,5 @@
       }
     };
   </script>
-  
-  <div class="btn-row">
-  <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">
-    🛒 Buy NXC
-  </a>
-
-  <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/">
-    🦊 Buy via MetaMask
-  </a>
-  <!-- 🔽 新增提示文字 🔽 -->
-  <div class="note">
-    (Clicking will open MetaMask App. MetaMask may show a security reminder — press <strong>Continue</strong> to proceed.)
-  </div>
-
-  <a class="btn" href="add-to-metamask.html">
-    <img class="emoji-icon" src="https://ipfs.io/ipfs/bafybeihdbshigdbwn6es2pouetnkctuuittpyfzs4gt6vapcf5uwhi2wdu" alt="NeoX Coin" />
-    Add to MetaMask
-  </a>
-</div>
 </body>
-</html> 
+</html>
