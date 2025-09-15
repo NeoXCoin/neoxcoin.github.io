@@ -14,59 +14,48 @@
       padding: 40px 20px;
     }
 
-    .logo {
-      width: 60px;
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      opacity: 0.85;
+    h1 { font-size: 34px; margin-bottom: 40px; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    .language-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
-    .language-switch a { color: white; margin: 0 8px; text-decoration: none; }
-
-    h1 { font-size: 32px; margin-bottom: 40px; }
-
-    /* 每個系列框 */
-    .nft-box {
-      max-width: 880px;
-      margin: 40px auto;
+    .nft-card {
       background: rgba(255,255,255,0.08);
-      border-radius: 16px;
-      overflow: hidden;
+      border-radius: 18px;
+      padding: 24px;
+      text-align: center;
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .nft-box:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+    .nft-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.5);
     }
 
-    .nft-box a {
-      display: block;
-      color: white;
+    .nft-card a {
+      color: inherit;
       text-decoration: none;
-      padding: 30px;
-    }
-
-    .nft-box img {
-      max-width: 240px;
-      margin: 0 auto 20px;
-      border-radius: 8px;
       display: block;
     }
 
-    .nft-box h3 {
-      margin: 0 0 10px;
-      color: #00d9ff;
+    .nft-card img {
+      max-width: 220px;
+      border-radius: 10px;
+      margin-bottom: 18px;
     }
 
-    .nft-box p {
+    .nft-card h3 {
+      color: #00d9ff;
+      margin-bottom: 10px;
+    }
+
+    .nft-card p {
       font-size: 15px;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     .footer {
@@ -78,54 +67,44 @@
   </style>
 </head>
 <body>
-  <!-- Logo -->
-  <a href="index.html">
-    <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
-  </a>
-  <div class="language-switch">
-    <a href="nft-projects.html">EN</a> | <a href="nft-projects-zh.html">繁</a>
-  </div>
-
   <h1>NFT Collections Overview</h1>
 
-  <!-- 1. Cosmic Visions -->
-  <div class="nft-box">
-    <a href="https://opensea.io/collection/neox-cosmic-visions" target="_blank">
-      <h3>NeoX Cosmic Visions (New Collection)</h3>
-      <img src="https://gateway.lighthouse.storage/ipfs/bafkreie6uuivqlcbzr7qpcsmkeqs4hjdv6ymgxd5xuh242phwly7tf26n4" alt="Cosmic Visions"/>
-      <p>🌌 8 unique chapters of luminous waves, prisms, and the eternal harmony of the universe.</p>
-    </a>
-  </div>
+  <div class="grid">
+    <!-- Cosmic -->
+    <div class="nft-card">
+      <a href="https://opensea.io/collection/neox-cosmic-visions" target="_blank">
+        <img src="https://gateway.lighthouse.storage/ipfs/bafkreie6uuivqlcbzr7qpcsmkeqs4hjdv6ymgxd5xuh242phwly7tf26n4" alt="Cosmic Visions"/>
+        <h3>NeoX Cosmic Visions</h3>
+        <p>🌌 8 unique chapters of luminous waves, prisms, and cosmic harmony.</p>
+      </a>
+    </div>
 
-  <!-- 2. Abstract Realms -->
-  <div class="nft-box">
-    <a href="https://opensea.io/collection/neox-abstract-realms" target="_blank">
-      <h3>NeoX Abstract Realms (New Collection)</h3>
-      <img src="https://gateway.lighthouse.storage/ipfs/bafkreie3cp3f2a6n73jyzjppnemumlpabqi26pwm25ibcihnqthjetfg4q" alt="Abstract Realms"/>
-      <p>🖼️ A bold journey into abstract expression. Contains 3 unique NFTs, each one-of-a-kind.</p>
-    </a>
-  </div>
+    <!-- Abstract -->
+    <div class="nft-card">
+      <a href="https://opensea.io/collection/neox-abstract-realms" target="_blank">
+        <img src="https://gateway.lighthouse.storage/ipfs/bafkreie3cp3f2a6n73jyzjppnemumlpabqi26pwm25ibcihnqthjetfg4q" alt="Abstract Realms"/>
+        <h3>NeoX Abstract Realms</h3>
+        <p>🖼️ 3 unique NFTs merging futuristic digital art with abstract chaos.</p>
+      </a>
+    </div>
 
-  <!-- 3. Van Gogh Visions -->
-  <div class="nft-box">
-    <a href="https://opensea.io/collection/neox-van-gogh-visions" target="_blank">
-      <h3>NeoX Van Gogh Visions (Ongoing)</h3>
-      <img src="https://gateway.lighthouse.storage/ipfs/bafkreicjpx5lcjyvcibhhk7zmzdj4tw55eaf7hua4l7yvosz4cdokxkfie" alt="Van Gogh Visions"/>
-      <p>🎨 Unique 1/1 NFTs reimagining Van Gogh’s artistry through the NeoX lens.</p>
-    </a>
-  </div>
+    <!-- Van Gogh -->
+    <div class="nft-card">
+      <a href="https://opensea.io/collection/neox-van-gogh-visions" target="_blank">
+        <img src="https://gateway.lighthouse.storage/ipfs/bafkreicjpx5lcjyvcibhhk7zmzdj4tw55eaf7hua4l7yvosz4cdokxkfie" alt="Van Gogh Visions"/>
+        <h3>NeoX Van Gogh Visions</h3>
+        <p>🎨 Unique 1/1 NFTs reimagining Van Gogh’s artistry through NeoX.</p>
+      </a>
+    </div>
 
-  <!-- 4. Genesis Series -->
-  <div class="nft-box">
-    <a href="https://opensea.io/collection/neocoin-genesis-edition-g1" target="_blank">
-      <h3>NeoX Genesis Series</h3>
-      <img src="https://gateway.lighthouse.storage/ipfs/bafkreiaxvrt2u2yzzm2wctxjyo4xyhvoeee2dwtkr3dsj6gpjqiczzj2kq" alt="Genesis NFT"/>
-      <p>🪙 Genesis Edition – 1/1 historic mint.</p>
-    </a>
-    <a href="https://opensea.io/collection/neox-timekeeper-edition" target="_blank">
-      <img src="https://gateway.lighthouse.storage/ipfs/bafkreicmzdx2fs3ry5cra2hfeconclnaznes3zjc52gm2e2ce4a27me6rm" alt="Timekeeper"/>
-      <p>⏳ Timekeeper Edition – futuristic design, limited to 8 NFTs.</p>
-    </a>
+    <!-- Genesis -->
+    <div class="nft-card">
+      <a href="https://opensea.io/collection/neox-timekeeper-edition" target="_blank">
+        <img src="https://gateway.lighthouse.storage/ipfs/bafkreicmzdx2fs3ry5cra2hfeconclnaznes3zjc52gm2e2ce4a27me6rm" alt="Genesis Series"/>
+        <h3>NeoX Genesis Series</h3>
+        <p>🪙 Historic Genesis Edition + ⏳ Timekeeper Edition (limited 8).</p>
+      </a>
+    </div>
   </div>
 
   <div class="footer">
