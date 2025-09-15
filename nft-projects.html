@@ -3,109 +3,125 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX NFT Collections</title>
+  <meta name="description" content="Explore NeoX NFT collections directly from OpenSea: Cosmic Visions, Abstract Realms, Van Gogh Visions, and Genesis Series." />
+  <title>NFT Collections - NeoX</title>
+  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" />
+
   <style>
     body {
       margin: 0;
-      background: #0a0a2a url('https://neoxcoin.github.io/NeoXBlackG.PNG') center/cover no-repeat;
+      background: #0a0a2a;
+      background-image: url('https://neoxcoin.github.io/NeoXBlackG.PNG');
+      background-size: cover;
+      background-position: center;
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
+      padding: 40px 20px;
+    }
+
+    .logo {
+      width: 60px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      opacity: 0.85;
+    }
+
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 16px;
+    }
+
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
     }
 
     h1 {
-      padding: 40px 20px;
-      font-size: 34px;
+      font-size: 32px;
+      margin-bottom: 40px;
     }
 
-    .section {
-      padding: 60px 20px;
-      background: rgba(0,0,0,0.55);
-      margin: 40px auto;
-      border-radius: 20px;
-      max-width: 1100px;
-      transition: transform 0.3s, box-shadow 0.3s;
+    .nft-series {
+      max-width: 1000px;
+      margin: 0 auto 50px;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 20px;
+      border-radius: 16px;
     }
 
-    .section:hover {
-      transform: scale(1.02);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.6);
-    }
-
-    .section a {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-    }
-
-    .section img {
-      max-width: 340px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-    }
-
-    .section h2 {
-      font-size: 26px;
+    .nft-series h3 {
       color: #00d9ff;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
 
-    .section p {
-      font-size: 16px;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 0 auto;
+    iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 12px;
+      background: white;
     }
 
     .footer {
-      margin: 60px auto;
+      margin-top: 60px;
       font-size: 13px;
-      opacity: 0.6;
+      color: rgba(255, 255, 255, 0.5);
     }
-    .footer a { color: #aaa; }
+
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
+  <!-- Logo -->
+  <a href="index-global.html">
+    <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
+  </a>
+
+  <!-- Language Switch -->
+  <div class="language-switch">
+    <a href="nft-projects-global.html">EN</a> | <a href="nft-projects-zh.html">繁</a>
+  </div>
+
   <h1>NFT Collections Overview</h1>
 
-  <!-- Cosmic -->
-  <div class="section">
-    <a href="https://opensea.io/collection/neox-cosmic-visions" target="_blank">
-      <img src="https://gateway.lighthouse.storage/ipfs/bafkreie6uuivqlcbzr7qpcsmkeqs4hjdv6ymgxd5xuh242phwly7tf26n4" alt="Cosmic Visions"/>
-      <h2>NeoX Cosmic Visions</h2>
-      <p>🌌 8 unique chapters of luminous waves, prisms, and the eternal harmony of the universe.</p>
-    </a>
+  <!-- NeoX Cosmic Visions -->
+  <div class="nft-series">
+    <h3>NeoX Cosmic Visions</h3>
+    <iframe src="https://opensea.io/collection/neox-cosmic-visions"></iframe>
   </div>
 
-  <!-- Abstract -->
-  <div class="section">
-    <a href="https://opensea.io/collection/neox-abstract-realms" target="_blank">
-      <img src="https://gateway.lighthouse.storage/ipfs/bafkreie3cp3f2a6n73jyzjppnemumlpabqi26pwm25ibcihnqthjetfg4q" alt="Abstract Realms"/>
-      <h2>NeoX Abstract Realms</h2>
-      <p>🖼️ 3 unique NFTs merging futuristic digital art with timeless chaos and harmony.</p>
-    </a>
+  <!-- NeoX Abstract Realms -->
+  <div class="nft-series">
+    <h3>NeoX Abstract Realms</h3>
+    <iframe src="https://opensea.io/collection/neox-abstract-realms"></iframe>
   </div>
 
-  <!-- Van Gogh -->
-  <div class="section">
-    <a href="https://opensea.io/collection/neox-van-gogh-visions" target="_blank">
-      <img src="https://gateway.lighthouse.storage/ipfs/bafkreicjpx5lcjyvcibhhk7zmzdj4tw55eaf7hua4l7yvosz4cdokxkfie" alt="Van Gogh Visions"/>
-      <h2>NeoX Van Gogh Visions</h2>
-      <p>🎨 A tribute to Van Gogh’s visionary artistry, reimagined through NeoX with unique 1/1 NFTs.</p>
-    </a>
+  <!-- NeoX Van Gogh Visions -->
+  <div class="nft-series">
+    <h3>NeoX Van Gogh Visions</h3>
+    <iframe src="https://opensea.io/collection/neox-van-gogh-visions"></iframe>
   </div>
 
-  <!-- Genesis -->
-  <div class="section">
-    <a href="https://opensea.io/collection/neox-timekeeper-edition" target="_blank">
-      <img src="https://gateway.lighthouse.storage/ipfs/bafkreicmzdx2fs3ry5cra2hfeconclnaznes3zjc52gm2e2ce4a27me6rm" alt="Genesis Series"/>
-      <h2>NeoX Genesis Series</h2>
-      <p>🪙 Genesis Edition & ⏳ Timekeeper Edition — the original and most historic NeoX NFTs.</p>
-    </a>
+  <!-- NeoX Genesis Series -->
+  <div class="nft-series">
+    <h3>NeoX Genesis Series</h3>
+    <iframe src="https://opensea.io/collection/neocoin-genesis-edition-g1"></iframe>
+    <br/><br/>
+    <iframe src="https://opensea.io/collection/neox-timekeeper-edition"></iframe>
   </div>
 
+  <!-- Footer -->
   <div class="footer">
-    © 2025 NeoX. All rights reserved. | <a href="disclaimer-en.html">Disclaimer</a>
+    © 2025 NeoX. All rights reserved. |
+    <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 </body>
 </html>
