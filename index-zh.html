@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NeoX Coin – 繁體中文版</title>
-  <link rel="icon" href="https://neoxcoin.github.io/NeoXCoin360.gif" />
+  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" />
   <style>
     body {
       margin: 0;
@@ -241,24 +241,5 @@
       © 2025 NeoX. All rights reserved. |
       <a href="disclaimer-zh.html">免責聲明</a>
     </div>
-  </div>
-
-  <!-- Logo fallback -->
-  <script>
-    const logo = document.getElementById('neoxLogo');
-    logo.onerror = function() {
-      if (!logo.dataset.triedIpfs) {
-        logo.dataset.triedIpfs = '1';
-        logo.src = "https://ipfs.io/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi";
-      } else {
-        logo.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(`
-          <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60">
-            <rect width="100%" height="100%" rx="8" fill="#1e90ff"/>
-            <text x="50%" y="54%" font-size="26" text-anchor="middle" fill="#fff" font-family="Arial">N</text>
-          </svg>
-        `);
-      }
-    };
-  </script>
 </body>
 </html>
