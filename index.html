@@ -18,19 +18,14 @@
     }
 
     /* ---- Logo Fix ---- */
-    .logo-wrap {
+    .logo {
       position: absolute;
       top: 20px;
       left: 20px;
-      z-index: 9999;
-    }
-    #neoxLogo {
       width: 60px;
-      height: 60px;
-      opacity: 0.9;
-      object-fit: contain;
+      opacity: 0.85;
+      z-index: 999;
     }
-    #neoxLogo:hover { transform: translateY(-1px); }
 
     /* ---- Language Switch ---- */
     .language-switch {
@@ -221,10 +216,8 @@
 </head>
 <body>
   <!-- Logo → Go to international version -->
-  <a href="index-global.html" class="logo-wrap">
-    <img id="neoxLogo" 
-         src="https://neoxcoin.github.io/XNXC.png" 
-         alt="NeoX Logo" />
+  <a href="index-global.html">
+    <img class="logo" src="https://gateway.lighthouse.storage/ipfs/bafkreiai575znlwbab5fezgmjwchhb4f5z73oqjzqml6po4vkpsonzmzzi" alt="NeoX Logo" />
   </a>
 
   <!-- Language Switch -->
