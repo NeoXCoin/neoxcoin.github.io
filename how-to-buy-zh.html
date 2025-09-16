@@ -5,23 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>如何購買 NeoX</title>
   <style>
-   html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    
     body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a0a2a, #1f005c);
       background-image: url('https://neoxcoin.github.io/NeoXbackG.JPG');
       background-size: cover;
-      background-repeat: no-repeat;
       background-position: center;
-      background-attachment: fixed;
       font-family: Arial, sans-serif;
       color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      text-align: center;
     }
 
     .logo {
@@ -29,80 +22,97 @@
       top: 20px;
       left: 20px;
       width: 60px;
+      opacity: 0.85;
     }
 
-    .translate {
+    .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 120px auto 0;
-      padding: 30px 20px;
-      background-color: rgba(0, 0, 0, 0.35);
-      border-radius: 12px;
-      text-align: center;
-    }
-
-    .headline {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
-
-    .text p {
       font-size: 16px;
-      line-height: 1.8;
-      margin: 15px 0;
     }
 
-    .button-wrapper {
-      text-align: center;
-      margin: 40px 0 10px;
-    }
-
-    .home-button {
-      background-color: #00aaff;
+    .language-switch a {
       color: white;
-      padding: 12px 28px;
       text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      font-size: 16px;
-      display: inline-block;
+      margin: 0 8px;
     }
 
-    .home-button:hover {
-      background-color: #0088cc;
-    }
-
-    .footer {
-      text-align: center;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
+    h1 {
+      font-size: 28px;
       margin-bottom: 20px;
     }
 
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 8px;
+    p {
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 720px;
+      margin: 0 auto 20px;
     }
 
-    @media (max-width: 768px) {
-      .container {
-        margin: 100px 20px 40px;
-        padding: 25px 15px;
+    .tip {
+      font-size: 15px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-left: 4px solid #00d9ff;
+      padding: 12px;
+      margin: 30px auto;
+      max-width: 720px;
+      color: #ddd;
+      text-align: left;
+      border-radius: 8px;
+    }
+
+    a {
+      color: #00d9ff;
+      text-decoration: none;
+    }
+
+    .btn-buy, .button-back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-buy {
+      background-color: #00bfff;
+      color: white;
+    }
+
+    .btn-buy:hover {
+      background-color: #0099cc;
+    }
+
+    .button-back {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .button-back:hover {
+      background-color: #0056b3;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding-top: 100px;
       }
 
-      .headline {
-        font-size: 24px;
+      .button-back {
+        margin-bottom: 40px;
       }
 
-      .text p {
-        font-size: 15px;
+      .tip {
+        text-align: left;
+        font-size: 14px;
       }
     }
   </style>
