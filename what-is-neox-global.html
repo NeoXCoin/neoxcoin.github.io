@@ -17,7 +17,7 @@
       text-align: center;
       padding: 40px 20px;
     }
-    
+
     .bg-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -29,68 +29,76 @@
       z-index: -1;
     }
 
+    .lang-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 14px;
+    }
+
+    .lang-switch a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
     .logo {
       width: 60px;
       position: absolute;
       top: 20px;
       left: 20px;
       opacity: 0.85;
-      z-index: 9999;
-    }
-
-    #google_translate_element {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
     }
 
     .container {
       max-width: 800px;
-      margin: 120px auto 40;
+      margin: 120px auto 40px;
       padding: 40px;
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.55);
+      background-color: rgba(0, 0, 0, 0.55); /* softer transparency */
       border-radius: 12px;
+      text-align: center;
     }
 
-    .headline {
+    h1 {
       font-size: 32px;
-      font-weight: bold;
       margin-bottom: 20px;
     }
 
-    .text {
-      font-size: 16px;
-      line-height: 1.8;
+    .icon {
+      font-size: 18px;
+      margin: 12px 0;
+    }
+
+    ul {
+      list-style: disc;
+      text-align: left;
+      padding-left: 20px;
+      margin-top: 20px;
+    }
+
+    .back-button {
+      display: block;
+      width: 200px;
+      margin: 40px auto 20px;
+      padding: 12px;
+      background-color: #00aaff;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      background-color: #0088cc;
     }
 
     .footer {
       text-align: center;
-      margin: 40px 0 20px;
       font-size: 13px;
       color: rgba(255, 255, 255, 0.5);
-    }
-
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 8px;
-    }
-
-    .home-button {
-      color: #ffffff !important;
-      background-color: #00aaff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      display: inline-block;
-      border: none;
-    }
-
-    .home-button:hover {
-      background-color: #0088cc;
+      margin-bottom: 30px;
     }
 
     @media (max-width: 768px) {
