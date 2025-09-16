@@ -13,6 +13,7 @@
     
     body {
       margin: 0;
+      min-height: 100vh;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
       background-image: url('https://neoxcoin.github.io/NeoXbackG.JPG');
       background-size: cover;
@@ -20,14 +21,13 @@
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
-      padding: 40px 20px;
     }
 
     .logo {
-      width: 60px;
       position: absolute;
       top: 20px;
       left: 20px;
+      width: 60px;
       opacity: 0.85;
     }
 
@@ -35,74 +35,92 @@
       position: absolute;
       top: 20px;
       right: 20px;
-      font-size: 14px;
+      font-size: 16px;
     }
 
     .language-switch a {
       color: white;
       text-decoration: none;
-      margin: 10px;
+      margin: 0 8px;
     }
 
-    h1 {
+  h1 {
       font-size: 32px;
-      margin-bottom: 20px;
+      margin-top: 80px; /* 原本可能係 20px 左右，改大啲 */
+      margin-bottom: 30px;
+      text-align: center;
     }
 
-    .issue {
-      background-color: rgba(255, 255, 255, 0.06);
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 700px;
-      border-radius: 10px;
+    p {
+      font-size: 18px;
+      line-height: 1.8;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+
+    .tip {
+      font-size: 15px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-left: 4px solid #00d9ff;
+      padding: 12px;
+      margin: 30px auto;
+      max-width: 720px;
+      color: #ddd;
       text-align: left;
-    }
-
-    .issue h3 {
-      color: #00d9ff;
-      margin-bottom: 8px;
-    }
-
-    .issue ul {
-      margin-top: 8px;
-      padding-left: 20px;
-    }
-
-    .back-btn {
-      display: inline-block;
-      margin-top: 40px;
-      padding: 12px 24px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
       border-radius: 8px;
+    }
+
+    a {
+      color: #00d9ff;
+      text-decoration: none;
+    }
+
+    .btn-buy, .button-back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
       font-size: 16px;
+      border-radius: 8px;
+      text-decoration: none;
       transition: background-color 0.3s ease;
     }
 
-    .back-btn:hover {
+    .btn-buy {
+      background-color: #00bfff;
+      color: white;
+    }
+
+    .btn-buy:hover {
+      background-color: #0099cc;
+    }
+
+    .button-back {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .button-back:hover {
       background-color: #0056b3;
     }
 
     .footer {
       margin-top: 60px;
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 8px;
+      opacity: 0.6;
     }
 
     @media (max-width: 600px) {
-      .issue {
-        padding: 16px;
+      body {
+        padding-top: 100px;
       }
 
-      h1 {
-        font-size: 26px;
+      .button-back {
+        margin-bottom: 40px;
+      }
+
+      .tip {
+        text-align: left;
+        font-size: 14px;
       }
     }
   </style>
