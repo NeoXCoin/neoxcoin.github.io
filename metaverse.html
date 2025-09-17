@@ -155,7 +155,7 @@
   </style>
 </head>
 <body>
-  <!-- Logo -->
+  <!-- Logo top-left -->
   <a href="index.html">
     <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
   </a>
@@ -189,7 +189,7 @@
   </div>
 
   <!-- Notice -->
-  <p class="notice">💡 Current exhibition is free to explore. Tickets will be introduced in future events.</p>
+  <p class="notice">💡 The current exhibition is free to explore. Tickets will be introduced in future events.</p>
 
   <!-- Footer -->
   <div class="footer">
@@ -210,11 +210,11 @@
       if (event.target == modal) { closeModal(); }
     }
 
-    // 🔍 檢測 IG / Threads 瀏覽器
+    // 🔍 Detect IG / Threads browser
     (function() {
       const ua = navigator.userAgent || navigator.vendor || window.opera;
       if (ua.includes("Instagram") || ua.includes("Threads")) {
-        // 替換 iframe 內容
+        // Replace iframe content
         const container = document.querySelector(".iframe-container");
         container.innerHTML = `
           <div style="padding:30px; background:#111; border-radius:12px; color:#fff;">
