@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -10,7 +10,7 @@
       margin: 0;
       min-height: 100vh;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      font-family: Arial, sans-serif;
+      font-family: Arial, "Microsoft JhengHei", "PingFang TC", "Heiti TC", sans-serif;
       color: white;
       text-align: center;
       padding: 40px 20px;
@@ -60,6 +60,10 @@
       width: 100%;
       height: 500px;
       border: none;
+    }
+
+    @media (max-width: 600px) {
+      iframe { height: 400px; }
     }
 
     .btn-row {
@@ -210,21 +214,20 @@
       if (event.target == modal) { closeModal(); }
     }
 
-    // 🔍 檢測 IG / Threads 瀏覽器
+    // 🔍 Detect IG / Threads browser
     (function() {
       const ua = navigator.userAgent || navigator.vendor || window.opera;
       if (ua.includes("Instagram") || ua.includes("Threads")) {
-        // 替換 iframe 內容
         const container = document.querySelector(".iframe-container");
         container.innerHTML = `
           <div style="padding:30px; background:#111; border-radius:12px; color:#fff;">
-            <h2 style="color:#00d9ff;">⚠️ 瀏覽器不支援</h2>
-            <p>Instagram / Threads 內建瀏覽器無法顯示此展覽。<br>
-            👉 請使用 <b>Safari</b> 或 <b>Chrome</b> 開啟，體驗完整效果。</p>
+            <h2 style="color:#00d9ff;">⚠️ Browser Not Supported</h2>
+            <p>Instagram / Threads in-app browser cannot display this exhibition.<br>
+            👉 Please open in <b>Safari</b> or <b>Chrome</b>.</p>
             <a href="https://neoxcoin.github.io/metaverse-zh.html" target="_blank"
                style="display:inline-block;margin-top:15px;padding:10px 20px;
                background:#00d9ff;color:#000;border-radius:8px;text-decoration:none;">
-               在瀏覽器中開啟
+               Open in Browser
             </a>
           </div>
         `;
