@@ -119,6 +119,30 @@
         text-align: left;
         font-size: 14px;
       }
+      
+      .steps {
+        max-width: 720px;
+        margin: 30px auto;
+        text-align: left;
+        font-size: 18px;
+        line-height: 1.8;
+      }
+
+      .step {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+
+      .step .icon {
+        width: 40px;       /* 固定寬度，確保 1️⃣ 2️⃣ 3️⃣ 4️⃣ 對齊 */
+        flex-shrink: 0;
+        font-size: 22px;
+      }
+
+      .step .text {
+        flex: 1;
+      }
     }
   </style>
 </head>
