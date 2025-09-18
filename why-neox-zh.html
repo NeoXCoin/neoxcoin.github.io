@@ -76,19 +76,42 @@
       margin-left: 8px;
     }
 
-    .home-button {
-      color: #ffffff !important;
-      background-color: #00aaff;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      display: inline-block;
-      border: none;
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
     }
 
-    .home-button:hover {
-      background-color: #0088cc;
+    .btn {
+      background: #0a0a0a;
+      border: 2px solid #00d9ff;
+      color: #00d9ff;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      min-width: 180px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(0,217,255,0.5);
+    }
+
+    .btn:hover {
+      background: #00d9ff;
+      color: #000;
+      box-shadow: 0 0 20px rgba(0,217,255,0.8);
+      transform: translateY(-3px);
+    }
+
+    .btn-blue {
+      background: #0d6efd;
+      border: 2px solid #3399ff;
+      color: white;
     }
 
     @media screen and (max-width: 600px) {
@@ -123,11 +146,14 @@
         我們不只是創造代幣，我們正在打造一份永恆的數位傳承。
       </p>
     </div>
+    
   </div>
-
+  
+  <div class="btn-row">
+    <a class="btn btn-blue" href="index-zh.html">← 返回主頁</a>
+  </div>
   <!-- Footer -->
   <div class="footer">
-    <a href="index-zh.html" class="home-button">← 返回主頁</a><br/><br/>
     © 2025 NeoX. 保留所有權利。|
     <a href="disclaimer-zh.html">免責聲明</a>
   </div>
