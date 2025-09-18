@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="NeoX Coin – Web3 革命，由 NeoX 引領。擁有自由，擁有未來，擁有 NeoX。" />
   <title>NeoX Coin – 繁體中文版</title>
-  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" />
+  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" type="image/png"/>
   <style>
     body {
       margin: 0;
@@ -26,7 +27,7 @@
       z-index: 999;
     }
 
-    /* ---- Language Switch ---- */
+    /* ---- 語言切換 ---- */
     .language-switch {
       position: absolute;
       top: 20px;
@@ -75,10 +76,11 @@
       font-size: 15px;
     }
 
+    /* 動畫縮短時間 */
     .headline span:nth-child(1) { animation-delay: 0.5s; }
-    .headline span:nth-child(2) { animation-delay: 2.5s; }
-    .headline span:nth-child(3) { animation-delay: 4.5s; }
-    .headline span:nth-child(4) { animation-delay: 6.5s; }
+    .headline span:nth-child(2) { animation-delay: 1.5s; }
+    .headline span:nth-child(3) { animation-delay: 2.5s; }
+    .headline span:nth-child(4) { animation-delay: 3.5s; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -127,6 +129,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      position: relative;
     }
     .btn:hover {
       transform: translateY(-3px);
@@ -134,20 +137,16 @@
     }
 
     .emoji-icon {
-      width: 2.0em;
-      height: 2.0em;
+      width: 1.6em;
+      height: 1.6em;
       object-fit: contain;
-      vertical-align: -3px;
       pointer-events: none;
     }
     
-    .btn[data-tooltip] {
-      position: relative;
-    }
     .btn[data-tooltip]:hover::after {
       content: attr(data-tooltip);
       position: absolute;
-      bottom: -32px;
+      top: -38px; /* 改到上面，避免出視窗 */
       left: 50%;
       transform: translateX(-50%);
       background: rgba(0,0,0,0.8);
@@ -184,8 +183,8 @@
   </style>
 </head>
 <body>
-  <!-- Logo -->
-  <a href="index-global.html">
+  <!-- Logo → 返回中文版首頁 -->
+  <a href="index-zh.html">
     <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
   </a>
 
@@ -204,7 +203,7 @@
       <a href="how-to-buy-zh.html">購買方法</a>
       <a href="why-neox-zh.html">為何選擇 NeoX</a>
       <a href="metaverse-zh.html">🔥 NeoX VR</a>
-      <a href="nft-projects-zh.html">👉🏻 探索NeoX NFT 項目</a>
+      <a href="nft-projects-zh.html">👉🏻 探索 NeoX NFT 項目</a>
     </div>
 
     <div class="headline">
@@ -217,10 +216,10 @@
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">🛒 購買 NXC</a>
       <a class="btn" 
-   href="https://metamask.app.link/dapp/neoxcoin.github.io/"
-   data-tooltip="⚠️ 將跳轉至 MetaMask。若信任此連結，請點擊「繼續」">🦊 使用 MetaMask 購買</a>
+         href="https://metamask.app.link/dapp/neoxcoin.github.io/"
+         data-tooltip="⚠️ 將跳轉至 MetaMask。若信任此連結，請點擊「繼續」">🦊 使用 MetaMask 購買</a>
       <a class="btn" href="add-to-metamask-zh.html">
-        <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NXC Icon">
+        <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-64.png" alt="NXC Icon">
         加入至 MetaMask
       </a>
     </div>
@@ -228,12 +227,13 @@
     <!-- Footer -->
     <div class="footer">
       <div class="footer-links">
-        <a href="faq-zh.html">FAQ</a> |
+        <a href="faq-zh.html">常見問題</a> |
         <a href="about-zh.html">關於我們</a> |
         <a href="troubleshooting-zh.html">疑難排解</a>
       </div>
       © 2025 NeoX. All rights reserved. |
       <a href="disclaimer-zh.html">免責聲明</a>
     </div>
+  </div>
 </body>
 </html>
