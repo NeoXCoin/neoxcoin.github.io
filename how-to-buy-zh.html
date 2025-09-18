@@ -91,13 +91,42 @@
       background-color: #0099cc;
     }
 
-    .button-back {
-      background-color: #007bff;
-      color: white;
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
     }
 
-    .button-back:hover {
-      background-color: #0056b3;
+    .btn {
+      background: #0a0a0a;
+      border: 2px solid #00d9ff;
+      color: #00d9ff;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      min-width: 180px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(0,217,255,0.5);
+    }
+
+    .btn:hover {
+      background: #00d9ff;
+      color: #000;
+      box-shadow: 0 0 20px rgba(0,217,255,0.8);
+      transform: translateY(-3px);
+    }
+
+    .btn-blue {
+      background: #0d6efd;
+      border: 2px solid #3399ff;
+      color: white;
     }
 
     .footer {
@@ -189,7 +218,9 @@
   </div>
 
   <!-- Back Button -->
-  <a class="button-back" href="index-zh.html">← 返回主頁</a>
+  <div class="btn-row">
+    <a class="btn btn-blue" href="index-zh.html">← 返回主頁</a>
+  </div>
 
   <!-- Footer -->
   <div class="footer">
