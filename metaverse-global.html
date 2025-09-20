@@ -179,7 +179,7 @@
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
-  <!-- Google Translate Script -->
+  <!-- Google Translate Script + IG/Threads Fix -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -200,6 +200,26 @@
       let modal = document.getElementById("ticketModal");
       if (event.target == modal) { closeModal(); }
     }
+
+    // 🔍 Detect IG / Threads browser
+    (function() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      if (ua.includes("Instagram") || ua.includes("Threads")) {
+        const container = document.querySelector(".iframe-container");
+        container.innerHTML = `
+          <div style="padding:30px; background:#111; border-radius:12px; color:#fff;">
+            <h2 style="color:#00d9ff;">⚠️ Browser Not Supported</h2>
+            <p>Instagram / Threads in-app browser cannot display this exhibition.<br>
+            👉 Please open in <b>Safari</b> or <b>Chrome</b> for the full experience.</p>
+            <a href="https://neoxcoin.github.io/metaverse-global.html" target="_blank"
+               style="display:inline-block;margin-top:15px;padding:10px 20px;
+               background:#00d9ff;color:#000;border-radius:8px;text-decoration:none;">
+               Open in Browser
+            </a>
+          </div>
+        `;
+      }
+    })();
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
