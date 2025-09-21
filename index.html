@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- 🔽 SEO 優化 Meta -->
+  <!-- ▼ SEO 優化 Meta -->
   <title>NeoX Coin (NXC) – NFTs, Token & Metaverse</title>
   <meta name="description" content="NeoX Coin (NXC) official site – NFTs, ERC-20 token on Base Mainnet, and Web3 art projects including NeoX Cosmic Visions, Van Gogh Visions, Timekeeper Edition, and more." />
   <meta name="keywords" content="NeoX, NeoX Coin, NXC, NFT, Web3 art, Base Mainnet, Crypto, NeoX Cosmic Visions, NeoX Timekeeper Edition, NeoX Van Gogh Visions, NeoX Abstract Realms" />
   <meta name="author" content="NeoX Official" />
 
-  <!-- Open Graph (Facebook / IG / WhatsApp) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="NeoX Coin (NXC) – NFTs, Token & Metaverse" />
   <meta property="og:description" content="Explore NeoX NFTs & Coin (NXC) – Cosmic Visions, Timekeeper Edition, Van Gogh Visions, Abstract Realms." />
   <meta property="og:image" content="https://neoxcoin.github.io/XNXC.png" />
@@ -23,9 +23,10 @@
   <meta name="twitter:description" content="Explore NeoX NFTs & Coin (NXC) – Cosmic Visions, Timekeeper Edition, Van Gogh Visions, Abstract Realms." />
   <meta name="twitter:image" content="https://neoxcoin.github.io/XNXC.png" />
 
-  <meta name="google-site-verification" content="googlea69ad61f2464c50e" />
+  <!-- 🔽 Google Search Console 驗證 meta (換成你專屬嘅 code) -->
+  <meta name="google-site-verification" content="xxxxxx" />
 
-  <!-- 建議 favicon 用 PNG -->
+  <!-- favicon -->
   <link rel="icon" href="https://neoxcoin.github.io/NeoXCoin.png" type="image/png"/>
 
   <style>
@@ -40,7 +41,6 @@
       text-align: center;
     }
 
-    /* ---- Logo ---- */
     .logo {
       position: absolute;
       top: 20px;
@@ -50,7 +50,6 @@
       z-index: 999;
     }
 
-    /* ---- Language Switch ---- */
     .language-switch {
       position: absolute;
       top: 20px;
@@ -123,23 +122,8 @@
       font-size: 16px;
     }
 
-    .emoji-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
     .emoji {
       font-size: 18px;
-      line-height: 1;
-    }
-
-    .emoji-link:hover {
-      text-decoration: underline;
     }
 
     .btn-row {
@@ -179,21 +163,6 @@
       object-fit: contain;
       pointer-events: none;
     }
-    
-    .btn[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      top: -38px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.8);
-      color: #fff;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      white-space: nowrap;
-      z-index: 1000;
-    }
 
     .footer {
       margin-top: 50px;
@@ -207,35 +176,13 @@
       margin: 0 6px;
     }
 
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
     .footer-links {
       margin-bottom: 8px;
-    }
-
-    @media (max-width: 600px) {
-      .nav-bar {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .btn-row {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .coin {
-        width: 144px;
-        max-width: 100%;
-      }
     }
   </style>
 </head>
 <body>
-  <!-- Logo → 返回主頁 -->
+  <!-- Logo -->
   <a href="index.html">
     <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
   </a>
@@ -253,8 +200,8 @@
       <a href="what-is-neox.html">What is NeoX?</a>
       <a href="how-to-buy.html">How to Buy?</a>
       <a href="why-neox.html">Why NeoX?</a>
-      <a href="metaverse.html"><span class="emoji">🔥</span><span>NeoX VR</span></a>
-      <a href="nft-projects.html"><span class="emoji">👉🏻</span><span>NeoX NFT Projects</span></a>
+      <a href="metaverse.html"><span class="emoji">🔥</span> NeoX VR</a>
+      <a href="nft-projects.html"><span class="emoji">👉🏻</span> NeoX NFT Projects</a>
     </div>
 
     <div class="headline">
@@ -266,9 +213,7 @@
 
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">🛒 Buy NXC</a>
-      <a class="btn" 
-         href="https://metamask.app.link/dapp/neoxcoin.github.io/"
-         data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link">🦊 Buy via MetaMask</a>
+      <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/" data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link">🦊 Buy via MetaMask</a>
       <a class="btn" href="add-to-metamask.html">
         <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
         Add to MetaMask
@@ -287,4 +232,4 @@
     </div>
   </div>
 </body>
-</html> 
+</html>
