@@ -51,8 +51,15 @@
 
     iframe {
       width: 100%;
-      height: 500px;
+      height: 500px; /* Portrait 預設高度 */
       border: none;
+    }
+
+    /* 📱 Landscape 模式下，iframe 幾乎全屏 */
+    @media screen and (orientation: landscape) {
+      iframe {
+        height: 90vh; /* 90% 螢幕高度，你可改 100vh */
+      }
     }
 
     .btn-row {
@@ -179,7 +186,7 @@
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
-  <!-- Google Translate Script + Orientation Logic -->
+  <!-- Google Translate Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -200,23 +207,6 @@
       let modal = document.getElementById("ticketModal");
       if (event.target == modal) { closeModal(); }
     }
-
-    // Orientation Logic
-    function handleOrientation() {
-      if (window.matchMedia("(orientation: landscape)").matches) {
-        // 橫向 → 跳轉 OnCyber
-        window.location.href = "https://oncyber.io/neoxart";
-      } else {
-        // 直向 → 留喺 metaverse.html
-        if (window.location.href.includes("oncyber.io")) {
-          window.location.href = "https://neoxcoin.github.io/metaverse.html";
-        }
-      }
-    }
-
-    // 初始檢查 + 監聽旋轉
-    handleOrientation();
-    window.addEventListener("orientationchange", handleOrientation);
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
