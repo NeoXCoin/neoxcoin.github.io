@@ -153,8 +153,10 @@
   <h1>NeoX Metaverse Exhibition</h1>
   <p class="lead">Step into the NeoX virtual gallery and experience the future of digital art in the metaverse.</p>
 
-  <!-- Exhibition Section -->
-  <div id="exhibition"></div>
+  <!-- Exhibition iFrame -->
+  <div class="iframe-container">
+    <iframe src="https://oncyber.io/neoxart" allowfullscreen></iframe>
+  </div>
 
   <!-- Buttons -->
   <div class="btn-row">
@@ -177,7 +179,7 @@
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
-  <!-- Google Translate Script + Device Logic -->
+  <!-- Google Translate Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -198,57 +200,6 @@
       let modal = document.getElementById("ticketModal");
       if (event.target == modal) { closeModal(); }
     }
-
-    // Device + Orientation Logic
-    function loadExhibition() {
-      const ua = navigator.userAgent.toLowerCase();
-      const isMobile = /iphone|android|ipad/.test(ua);
-      const container = document.getElementById("exhibition");
-
-      // 🔍 IG / Threads 特殊處理
-      if (ua.includes("instagram") || ua.includes("threads")) {
-        container.innerHTML = `
-          <div style="padding:30px; background:#111; border-radius:12px; color:#fff;">
-            <h2 style="color:#00d9ff;">⚠️ Browser Not Supported</h2>
-            <p>Instagram / Threads in-app browser cannot display this exhibition.<br>
-            👉 Please open in <b>Safari</b> or <b>Chrome</b> for the full experience.</p>
-            <a href="https://oncyber.io/neoxart" target="_blank"
-               style="display:inline-block;margin-top:15px;padding:10px 20px;
-               background:#00d9ff;color:#000;border-radius:8px;text-decoration:none;">
-               Open in Browser
-            </a>
-          </div>
-        `;
-        return;
-      }
-
-      if (!isMobile) {
-        // 🖥️ Desktop → iframe
-        container.innerHTML = `
-          <div class="iframe-container">
-            <iframe src="https://oncyber.io/neoxart" allowfullscreen></iframe>
-          </div>
-        `;
-      } else {
-        if (window.matchMedia("(orientation: landscape)").matches) {
-          // 📱 Mobile Landscape → 自動跳轉
-          window.location.href = "https://oncyber.io/neoxart";
-        } else {
-          // 📱 Mobile Portrait → 顯示按鈕
-          container.innerHTML = `
-            <div style="margin-top:30px;">
-              <p>📱 Portrait Mode: Click below to enter the exhibition</p>
-              <a href="https://oncyber.io/neoxart" target="_blank" class="btn">🚀 Enter OnCyber Exhibition</a>
-            </div>
-          `;
-        }
-      }
-    }
-
-    // 初始化
-    loadExhibition();
-    // 監聽旋轉
-    window.addEventListener("orientationchange", loadExhibition);
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
