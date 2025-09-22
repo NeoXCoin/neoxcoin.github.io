@@ -24,17 +24,10 @@
       opacity: 0.9;
     }
 
-    .language-switch {
+    #google_translate_element {
       position: absolute;
       top: 20px;
       right: 20px;
-      font-size: 14px;
-    }
-
-    .language-switch a {
-      color: white;
-      text-decoration: none;
-      margin: 0 8px;
     }
 
     h1 {
@@ -58,7 +51,7 @@
 
     iframe {
       width: 100%;
-      height: 480px;
+      height: 90vh;
       border: none;
     }
 
@@ -98,12 +91,6 @@
       background: #0d6efd;
       border: 2px solid #3399ff;
       color: white;
-    }
-
-    .notice {
-      margin-top: 12px;
-      font-size: 13px;
-      color: #ccc;
     }
 
     .footer {
@@ -155,15 +142,13 @@
   </style>
 </head>
 <body>
-  <!-- Logo top-left -->
-  <a href="index.html">
-    <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
+  <!-- Logo -->
+  <a href="index-global.html">
+    <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
   </a>
 
-  <!-- Language Switch -->
-  <div class="language-switch">
-    <a href="metaverse.html">EN</a> | <a href="metaverse-zh.html">繁</a>
-  </div>
+  <!-- Google Translate -->
+  <div id="google_translate_element"></div>
 
   <h1>NeoX Metaverse Exhibition</h1>
   <p class="lead">Step into the NeoX virtual gallery and experience the future of digital art in the metaverse.</p>
@@ -176,7 +161,7 @@
   <!-- Buttons -->
   <div class="btn-row">
     <a class="btn" href="#" onclick="openModal(); return false;">🎟️ Buy Ticket</a>
-    <a class="btn btn-blue" href="index.html">← Back to Home</a>
+    <a class="btn btn-blue" href="index-global.html">← Back to Home</a>
   </div>
 
   <!-- Modal -->
@@ -188,17 +173,23 @@
     </div>
   </div>
 
-  <!-- Notice -->
-  <p class="notice">💡 The current exhibition is free to explore. Tickets will be introduced in future events.</p>
-
   <!-- Footer -->
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-en.html">Disclaimer</a>
+    <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
-  <!-- Modal Script -->
-  <script>
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+
+    // Modal JS
     function openModal() {
       document.getElementById("ticketModal").style.display = "block";
     }
@@ -209,27 +200,7 @@
       let modal = document.getElementById("ticketModal");
       if (event.target == modal) { closeModal(); }
     }
-
-    // 🔍 Detect IG / Threads browser
-    (function() {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      if (ua.includes("Instagram") || ua.includes("Threads")) {
-        // Replace iframe content
-        const container = document.querySelector(".iframe-container");
-        container.innerHTML = `
-          <div style="padding:30px; background:#111; border-radius:12px; color:#fff;">
-            <h2 style="color:#00d9ff;">⚠️ Browser Not Supported</h2>
-            <p>Instagram / Threads in-app browser cannot display this exhibition.<br>
-            👉 Please open in <b>Safari</b> or <b>Chrome</b> for the full experience.</p>
-            <a href="https://neoxcoin.github.io/metaverse.html" target="_blank"
-               style="display:inline-block;margin-top:15px;padding:10px 20px;
-               background:#00d9ff;color:#000;border-radius:8px;text-decoration:none;">
-               Open in Browser
-            </a>
-          </div>
-        `;
-      }
-    })();
   </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
