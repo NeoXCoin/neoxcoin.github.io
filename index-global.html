@@ -39,12 +39,53 @@
       z-index: 999;
     }
 
-    /* Google Translate */
-    #google_translate_element {
+    /* ▼ 語言選單 */
+    .language-dropdown {
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 9999;
+      display: inline-block;
+      font-family: Arial, sans-serif;
+      z-index: 1000;
+    }
+
+    .dropbtn {
+      background-color: transparent;
+      color: white;
+      padding: 10px 16px;
+      font-size: 14px;
+      border: 1px solid white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #1a1a2e;
+      min-width: 200px;
+      border: 1px solid #444;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 8px 12px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #333;
+    }
+
+    .show { display: block; }
+
+    /* Google Translate dropdown 調整 */
+    #google_translate_element {
+      margin-top: 8px;
     }
 
     /* Container */
@@ -220,8 +261,16 @@
     <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
   </a>
 
-  <!-- Google Translate -->
-  <div id="google_translate_element"></div>
+  <!-- ▼ 語言選單 -->
+  <div class="language-dropdown">
+    <button class="dropbtn" onclick="toggleDropdown()">🌐 Language</button>
+    <div id="langDropdown" class="dropdown-content">
+      <a href="index.html">EN</a>
+      <a href="index-zh.html">繁體中文</a>
+      <!-- Google Translate 清單 -->
+      <div id="google_translate_element"></div>
+    </div>
+  </div>
 
   <!-- Main container -->
   <div class="container">
@@ -265,4 +314,21 @@
       <a href="disclaimer-global.html">Disclaimer</a>
     </div>
 </body>
+
+<script>
+function toggleDropdown() {
+  document.getElementById("langDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 </html>
