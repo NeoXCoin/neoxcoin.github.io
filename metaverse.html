@@ -155,7 +155,7 @@
   </style>
 </head>
 <body>
-  <!-- Logo top-left -->
+  <!-- Logo -->
   <a href="index.html">
     <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
   </a>
@@ -189,7 +189,7 @@
   </div>
 
   <!-- Notice -->
-  <p class="notice">💡 The current exhibition is free to explore. Tickets will be introduced in future events.</p>
+  <p class="notice">💡 Current exhibition is free to explore. Tickets will be introduced in future events.</p>
 
   <!-- Footer -->
   <div class="footer">
@@ -209,27 +209,6 @@
       let modal = document.getElementById("ticketModal");
       if (event.target == modal) { closeModal(); }
     }
-
-    // 🔍 Detect IG / Threads browser
-    (function() {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      if (ua.includes("Instagram") || ua.includes("Threads")) {
-        // Replace iframe content
-        const container = document.querySelector(".iframe-container");
-        container.innerHTML = `
-          <div style="padding:30px; background:#111; border-radius:12px; color:#fff;">
-            <h2 style="color:#00d9ff;">⚠️ Browser Not Supported</h2>
-            <p>Instagram / Threads in-app browser cannot display this exhibition.<br>
-            👉 Please open in <b>Safari</b> or <b>Chrome</b> for the full experience.</p>
-            <a href="https://neoxcoin.github.io/metaverse.html" target="_blank"
-               style="display:inline-block;margin-top:15px;padding:10px 20px;
-               background:#00d9ff;color:#000;border-radius:8px;text-decoration:none;">
-               Open in Browser
-            </a>
-          </div>
-        `;
-      }
-    })();
   </script>
 </body>
 </html>
