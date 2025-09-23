@@ -11,7 +11,7 @@
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi',
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi,ar,tr,fa,uk,pl',
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE
       }, 'google_translate_element');
     }
@@ -39,12 +39,53 @@
       z-index: 999;
     }
 
-    /* Google Translate */
-    #google_translate_element {
+    /* ▼ 語言選單 */
+    .language-dropdown {
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 9999;
+      display: inline-block;
+      font-family: Arial, sans-serif;
+      z-index: 1000;
+    }
+
+    .dropbtn {
+      background-color: transparent;
+      color: white;
+      padding: 10px 16px;
+      font-size: 14px;
+      border: 1px solid white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #1a1a2e;
+      min-width: 200px;
+      border: 1px solid #444;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    .dropdown-content a {
+      color: white;
+      padding: 8px 12px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #333;
+    }
+
+    .show { display: block; }
+
+    /* Google Translate dropdown 調整 */
+    #google_translate_element {
+      margin-top: 8px;
     }
 
     /* Container */
@@ -84,9 +125,9 @@
     }
 
     .headline span:nth-child(1) { animation-delay: 0.5s; }
-    .headline span:nth-child(2) { animation-delay: 2.5s; }
-    .headline span:nth-child(3) { animation-delay: 4.5s; }
-    .headline span:nth-child(4) { animation-delay: 6.5s; }
+    .headline span:nth-child(2) { animation-delay: 1.5s; }
+    .headline span:nth-child(3) { animation-delay: 2.5s; }
+    .headline span:nth-child(4) { animation-delay: 3.5s; }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
@@ -150,21 +191,18 @@
     }
 
     .emoji-icon {
-      width: 1.4em;
-      height: 1.4em;
+      width: 2.0em;
+      height: 2.0em;
       object-fit: contain;
       vertical-align: -3px;
       pointer-events: none;
     }
 
     /* Tooltip for buttons */
-    .btn[data-tooltip] {
-      position: relative;
-    }
     .btn[data-tooltip]:hover::after {
       content: attr(data-tooltip);
       position: absolute;
-      bottom: -32px;
+      top: -38px;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(0,0,0,0.8);
@@ -223,8 +261,16 @@
     <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
   </a>
 
-  <!-- Google Translate -->
-  <div id="google_translate_element"></div>
+  <!-- ▼ 語言選單 -->
+  <div class="language-dropdown">
+    <button class="dropbtn" onclick="toggleDropdown()">🌐 Language</button>
+    <div id="langDropdown" class="dropdown-content">
+      <a href="index.html">EN</a>
+      <a href="index-zh.html">繁體中文</a>
+      <!-- Google Translate 清單 -->
+      <div id="google_translate_element"></div>
+    </div>
+  </div>
 
   <!-- Main container -->
   <div class="container">
@@ -235,7 +281,7 @@
       <a href="what-is-neox-global.html">What is NeoX?</a>
       <a href="how-to-buy-global.html">How to Buy?</a>
       <a href="why-neox-global.html">Why NeoX?</a>
-      <a href="metaverse-global.html">🔥 NeoX VR</a>
+      <a href="metaverse-global.html">🔥 NeoX Metaverse Exhibition</a>
       <a href="nft-projects-global.html"><span class="emoji">👉🏻</span><span>NeoX NFT Projects</span></a>
     </div>
 
@@ -268,4 +314,21 @@
       <a href="disclaimer-global.html">Disclaimer</a>
     </div>
 </body>
+
+<script>
+function toggleDropdown() {
+  document.getElementById("langDropdown").classList.toggle("show");
+}
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    for (var i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
 </html>
