@@ -64,14 +64,15 @@
       position: absolute;
       right: 0;
       background-color: #1a1a2e;
-      min-width: 160px;
+      min-width: 200px;
       border: 1px solid #444;
       border-radius: 5px;
+      padding: 10px;
     }
 
     .dropdown-content a {
       color: white;
-      padding: 10px 14px;
+      padding: 8px 12px;
       text-decoration: none;
       display: block;
     }
@@ -81,6 +82,11 @@
     }
 
     .show { display: block; }
+
+    /* Google Translate dropdown 調整 */
+    #google_translate_element {
+      margin-top: 8px;
+    }
 
     /* Container */
     .container {
@@ -261,7 +267,8 @@
     <div id="langDropdown" class="dropdown-content">
       <a href="index.html">EN</a>
       <a href="index-zh.html">繁體中文</a>
-      <a href="index-global.html">🌍 Global</a>
+      <!-- Google Translate 清單 -->
+      <div id="google_translate_element"></div>
     </div>
   </div>
 
