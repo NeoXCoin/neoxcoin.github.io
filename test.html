@@ -11,8 +11,8 @@
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi,ar,tr,fa,uk,pl',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,it,ms,hi,ar,tr,fa,uk,pl,th',
+        layout: google.translate.TranslateElement.InlineLayout.VERTICAL
       }, 'google_translate_element');
     }
   </script>
@@ -39,54 +39,52 @@
       z-index: 999;
     }
 
-    /* ▼ 語言選單 */
+    /* Language dropdown */
     .language-dropdown {
       position: absolute;
       top: 20px;
       right: 20px;
-      display: inline-block;
-      font-family: Arial, sans-serif;
-      z-index: 1000;
+      z-index: 9999;
     }
 
     .dropbtn {
       background-color: transparent;
+      border: 1px solid #ccc;
       color: white;
-      padding: 10px 16px;
-      font-size: 14px;
-      border: 1px solid white;
-      border-radius: 5px;
+      padding: 8px 14px;
+      border-radius: 6px;
       cursor: pointer;
+      font-size: 14px;
     }
 
     .dropdown-content {
       display: none;
       position: absolute;
       right: 0;
+      margin-top: 6px;
       background-color: #1a1a2e;
-      min-width: 200px;
       border: 1px solid #444;
       border-radius: 5px;
+      min-width: 220px;
       padding: 10px;
+      text-align: left;
+      z-index: 10000;
     }
 
-    .dropdown-content a {
-      color: white;
-      padding: 8px 12px;
-      text-decoration: none;
-      display: block;
-    }
-
-    .dropdown-content a:hover {
-      background-color: #333;
+    .dropdown-content div {
+      color: #fff;
+      font-size: 14px;
     }
 
     .show { display: block; }
 
-    /* Google Translate dropdown 調整 */
-    #google_translate_element {
-      margin-top: 8px;
+    /* Hide Google top bar */
+    .goog-te-banner-frame.skiptranslate,
+    .goog-logo-link,
+    .goog-te-gadget span {
+      display: none !important;
     }
+    body { top: 0px !important; }
 
     /* Container */
     .container {
@@ -109,32 +107,12 @@
       margin: 30px auto;
     }
 
-    /* Headline animation */
-    .headline {
-      margin: 22px 0 30px 0;   
-      line-height: 1.6;        
-      text-align: center;      
-    }
-    
     .headline span {
       display: block;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1s ease-out forwards;
+      margin: 8px 0;
       font-size: 15px;
     }
 
-    .headline span:nth-child(1) { animation-delay: 0.5s; }
-    .headline span:nth-child(2) { animation-delay: 1.5s; }
-    .headline span:nth-child(3) { animation-delay: 2.5s; }
-    .headline span:nth-child(4) { animation-delay: 3.5s; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Nav bar */
     .nav-bar {
       display: flex;
       justify-content: center;
@@ -148,17 +126,8 @@
       color: white;
       font-weight: bold;
       font-size: 16px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    .emoji {
-      display: inline-block;
-      transform: translateY(1px);
-    }
-
-    /* Buttons */
     .btn-row {
       display: flex;
       flex-wrap: wrap;
@@ -185,36 +154,6 @@
       position: relative;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
-    }
-
-    .emoji-icon {
-      width: 2.0em;
-      height: 2.0em;
-      object-fit: contain;
-      vertical-align: -3px;
-      pointer-events: none;
-    }
-
-    /* Tooltip for buttons */
-    .btn[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      top: -38px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.8);
-      color: #fff;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      white-space: nowrap;
-      z-index: 1000;
-    }
-
-    /* Footer */
     .footer {
       margin-top: 50px;
       font-size: 13px;
@@ -226,52 +165,22 @@
       text-decoration: none;
       margin: 0 6px;
     }
-
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    .footer-links {
-      margin-bottom: 8px;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .nav-bar {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .btn-row {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .coin {
-        width: 144px;
-        max-width: 100%;
-      }
-    }
   </style>
 </head>
 <body>
   <!-- Logo -->
-   <a href="index.html">
-    <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
+  <a href="index-global.html">
+    <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
   </a>
 
-  <!-- ▼ 語言選單 -->
-  <!-- ▼ 語言選單 (只保留 Google Translate) -->
+  <!-- Language Menu -->
   <div class="language-dropdown">
     <button class="dropbtn" onclick="toggleDropdown()">🌐 Language</button>
     <div id="langDropdown" class="dropdown-content">
-      <!-- Google Translate 清單 -->
       <div id="google_translate_element"></div>
     </div>
   </div>
 
-  <!-- Main container -->
   <div class="container">
     <div class="tagline">Web3 Revolution, Led by NeoX</div>
     <img class="coin" src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin" />
@@ -281,7 +190,7 @@
       <a href="how-to-buy-global.html">How to Buy?</a>
       <a href="why-neox-global.html">Why NeoX?</a>
       <a href="metaverse-global.html">🔥 NeoX Metaverse Exhibition</a>
-      <a href="nft-projects-global.html"><span class="emoji">👉🏻</span><span>NeoX NFT Projects</span></a>
+      <a href="nft-projects-global.html">👉 NeoX NFT Projects</a>
     </div>
 
     <div class="headline">
@@ -293,13 +202,8 @@
 
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">🛒 Buy NXC</a>
-      <a class="btn" 
-         href="https://metamask.app.link/dapp/neoxcoin.github.io/"
-         data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link">🦊 Buy via MetaMask</a>
-      <a class="btn" href="add-to-metamask-global.html">
-        <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin Icon" />
-        Add to MetaMask
-      </a>
+      <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/">🦊 Buy via MetaMask</a>
+      <a class="btn" href="add-to-metamask-global.html">🌐 Add to MetaMask</a>
     </div>
 
     <!-- Footer -->
@@ -312,22 +216,23 @@
       © 2025 NeoX. All rights reserved. |
       <a href="disclaimer-global.html">Disclaimer</a>
     </div>
-</body>
+  </div>
 
-<script>
-function toggleDropdown() {
-  document.getElementById("langDropdown").classList.toggle("show");
-}
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    for (var i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
+  <script>
+    function toggleDropdown() {
+      document.getElementById("langDropdown").classList.toggle("show");
+    }
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
       }
     }
-  }
-}
-</script>
+  </script>
+</body>
 </html>
