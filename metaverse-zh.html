@@ -209,6 +209,27 @@
       let modal = document.getElementById("ticketModal");
       if (event.target == modal) { closeModal(); }
     }
+
+    // 🔍 檢測 IG / Threads 瀏覽器
+    (function() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+      if (ua.includes("Instagram") || ua.includes("Threads")) {
+        // 替換 iframe 內容
+        const container = document.querySelector(".iframe-container");
+        container.innerHTML = `
+          <div style="padding:30px; background:#111; border-radius:12px; color:#fff;">
+            <h2 style="color:#00d9ff;">⚠️ 瀏覽器不支援</h2>
+            <p>Instagram / Threads 內建瀏覽器無法顯示此展覽。<br>
+            👉 請使用 <b>Safari</b> 或 <b>Chrome</b> 開啟，體驗完整效果。</p>
+            <a href="https://neoxcoin.github.io/metaverse-zh.html" target="_blank"
+               style="display:inline-block;margin-top:15px;padding:10px 20px;
+               background:#00d9ff;color:#000;border-radius:8px;text-decoration:none;">
+               在瀏覽器中開啟
+            </a>
+          </div>
+        `;
+      }
+    })();
   </script>
 </body>
 </html>
