@@ -24,7 +24,7 @@
   </url>
   <url>
     <loc>https://neoxcoin.github.io/metaverse.html</loc>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://neoxcoin.github.io/faq.html</loc>
@@ -53,11 +53,27 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://neoxcoin.github.io/metaverse-zh.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://neoxcoin.github.io/how-to-buy-zh.html</loc>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://neoxcoin.github.io/disclaimer-zh.html</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.github.io/faq-zh.html</loc>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.github.io/about-zh.html</loc>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.github.io/troubleshooting-zh.html</loc>
     <priority>0.5</priority>
   </url>
 
@@ -68,6 +84,10 @@
   </url>
   <url>
     <loc>https://neoxcoin.github.io/nft-projects-global.html</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.github.io/metaverse-global.html</loc>
     <priority>0.9</priority>
   </url>
   <url>
