@@ -10,7 +10,7 @@ Welcome to the official website repository for **NeoX (NXC)** — a decentralize
 
 ## 📖 Overview
 
-The NeoX website is a bilingual (English and Traditional Chinese) responsive site built with pure HTML, designed to introduce and support the NeoX ecosystem. It provides essential information about NeoX Token, including:
+The NeoX website is a bilingual (English and Traditional Chinese) responsive site built with pure HTML, designed to introduce and support the NeoX ecosystem. It provides essential information about NeoX , including:
 
 - What is NeoX?
 - Why choose NeoX?
