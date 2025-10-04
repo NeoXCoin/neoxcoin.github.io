@@ -1,200 +1,215 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jump Runner</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <title>NeoX Metaverse Exhibition</title>
+  <link rel="icon" href="https://neoxcoin.github.io/apple-touch-icon.png" />
+  <link rel="canonical" href="https://neoxcoin.github.io/metaverse.html" />
+  <link rel="alternate" href="https://neoxcoin.github.io/metaverse-zh.html" hreflang="zh-Hant" />
+  <link rel="alternate" href="https://neoxcoin.github.io/metaverse.html" hreflang="x-default" />
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="NeoX Metaverse Exhibition" />
+  <meta property="og:description" content="Step into the NeoX virtual gallery and experience the future of digital art in the metaverse." />
+  <meta property="og:image" content="https://neoxcoin.github.io/apple-touch-icon.png" />
+  <meta property="og:url" content="https://neoxcoin.github.io/metaverse.html" />
+  <meta property="og:type" content="website" />
   <style>
-    html, body { margin: 0; background:#111; color:#fff; font-family: system-ui, Arial; }
-    #wrap { max-width: 760px; margin: 0 auto; padding: 12px 16px; }
-    canvas { width: 100%; height: auto; background: linear-gradient(#0a0a2a, #1f005c); border:1px solid #333; border-radius: 8px; display:block; }
-    .hud { display:flex; justify-content:space-between; margin:8px 0 4px; font-weight:600; }
-    .tip { opacity:.7; font-size:14px; }
-    button { background:#2e6fff; color:#fff; border:0; padding:8px 12px; border-radius:6px; cursor:pointer;}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0a0a2a, #1f005c);
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      opacity: 0.9;
+    }
+    .language-switch {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 14px;
+    }
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: #00d9ff;
+    }
+    p.lead {
+      color: #cfd7ff;
+      margin-bottom: 30px;
+    }
+    .iframe-container {
+      max-width: 900px;
+      margin: 0 auto 30px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .btn {
+      background: #0a0a0a;
+      border: 2px solid #00d9ff;
+      color: #00d9ff;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      min-width: 180px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px rgba(0,217,255,0.5);
+    }
+    .btn:hover {
+      background: #00d9ff;
+      color: #000;
+      box-shadow: 0 0 20px rgba(0,217,255,0.8);
+      transform: translateY(-3px);
+    }
+    .btn-blue {
+      background: #0d6efd;
+      border: 2px solid #3399ff;
+      color: white;
+    }
+    .notice {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #ccc;
+    }
+    .footer {
+      margin-top: 60px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+    }
+    .footer a {
+      color: #aaa;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.75);
+    }
+    .modal-content {
+      background: #0a0a0a;
+      margin: 15% auto;
+      padding: 20px;
+      border: 2px solid #00d9ff;
+      border-radius: 12px;
+      width: 80%;
+      max-width: 400px;
+      color: white;
+      box-shadow: 0 0 20px rgba(0,217,255,0.7);
+      text-align: center;
+    }
+    .modal-content h2 {
+      color: #00d9ff;
+      margin-bottom: 10px;
+    }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    .close:hover {
+      color: #fff;
+    }
   </style>
 </head>
 <body>
-<div id="wrap">
-  <div class="hud">
-    <div>Score: <span id="score">0</span></div>
-    <div>Best: <span id="best">0</span></div>
+  <!-- Logo -->
+  <a href="https://neoxcoin.github.io/index.html">
+    <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo" />
+  </a>
+
+  <!-- Language Switch -->
+  <div class="language-switch">
+    <a href="https://neoxcoin.github.io/metaverse.html">EN</a> | <a href="https://neoxcoin.github.io/metaverse-zh.html">繁</a>
   </div>
-  <canvas id="game" width="760" height="260"></canvas>
-  <div class="tip">按空白鍵 / 點擊畫面 跳躍（在空中不能二段跳）。</div>
-  <div style="margin-top:8px;">
-    <button id="restart" hidden>重新開始</button>
+
+  <h1>NeoX Metaverse Exhibition</h1>
+  <p class="lead">Step into the NeoX virtual gallery and experience the future of digital art in the metaverse.</p>
+
+  <!-- Exhibition iFrame -->
+  <div class="iframe-container">
+    <iframe src="https://oncyber.io/neoxart" allowfullscreen loading="lazy" onerror="this.style.display='none';"></iframe>
+    <noscript><p>Please enable JavaScript to view the virtual exhibition or visit <a href="https://oncyber.io/neoxart">oncyber.io/neoxart</a>.</p></noscript>
   </div>
-</div>
 
-<script>
-(() => {
-  const c = document.getElementById('game');
-  const ctx = c.getContext('2d');
-  const scoreEl = document.getElementById('score');
-  const bestEl  = document.getElementById('best');
-  const restartBtn = document.getElementById('restart');
+  <!-- Buttons -->
+  <div class="btn-row">
+    <a class="btn" href="#" onclick="openModal(); return false;">🎟️ Buy Ticket</a>
+    <a class="btn btn-blue" href="https://neoxcoin.github.io/index.html">← Back to Home</a>
+  </div>
 
-  let best = Number(localStorage.getItem('runner_best')||0);
-  bestEl.textContent = best;
+  <!-- Modal -->
+  <div id="ticketModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>🎟️ Tickets Not Available Yet</h2>
+      <p>Please stay tuned for upcoming NeoX special events!</p>
+    </div>
+  </div>
 
-  // 世界設定
-  const GROUND_Y = 210;
-  const GRAVITY = 0.9;
-  const JUMP_VY = -14;
+  <!-- Notice -->
+  <p class="notice">💡 Current exhibition is free to explore. Tickets will be introduced in future events.</p>
 
-  // 玩家
-  const player = { x: 80, y: GROUND_Y, w: 28, h: 32, vy: 0, onGround: true, alive: true };
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 NeoX. All rights reserved. |
+    <a href="https://neoxcoin.github.io/disclaimer-en.html">Disclaimer</a>
+  </div>
 
-  // 障礙
-  let obstacles = [];
-  let spawnTimer = 0;
-  let speed = 6;
-
-  // 狀態
-  let running = true;
-  let score = 0;
-
-  // 輸入
-  function jump() {
-    if (player.onGround && player.alive) {
-      player.vy = JUMP_VY;
-      player.onGround = false;
+  <!-- Modal Script -->
+  <script defer>
+    function openModal() {
+      document.getElementById("ticketModal").style.display = "block";
     }
-  }
-  window.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); jump(); }});
-  c.addEventListener('pointerdown', jump);
-
-  restartBtn.onclick = () => {
-    // reset
-    obstacles = [];
-    spawnTimer = 0;
-    speed = 6;
-    score = 0;
-    player.x = 80; player.y = GROUND_Y; player.vy = 0; player.onGround = true; player.alive = true;
-    running = true;
-    restartBtn.hidden = true;
-    requestAnimationFrame(loop);
-  };
-
-  function aabb(a, b) {
-    return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
-  }
-
-  function spawnObstacle() {
-    const height = 20 + Math.random()*40; // 20-60
-    const width  = 18 + Math.random()*20; // 18-38
-    obstacles.push({ x: c.width + 10, y: GROUND_Y + 2 - height, w: width, h: height, passed:false });
-  }
-
-  function drawGround() {
-    ctx.strokeStyle = 'rgba(255,255,255,.15)';
-    ctx.beginPath();
-    ctx.moveTo(0, GROUND_Y + 2);
-    ctx.lineTo(c.width, GROUND_Y + 2);
-    ctx.stroke();
-  }
-
-  function drawPlayer() {
-    // 簡單的方塊 + 眼睛
-    ctx.fillStyle = '#ffd166';
-    ctx.fillRect(player.x, player.y - player.h, player.w, player.h);
-    ctx.fillStyle = '#111';
-    ctx.fillRect(player.x + player.w*0.65, player.y - player.h + 8, 4, 4);
-  }
-
-  function drawObstacles() {
-    ctx.fillStyle = '#06d6a0';
-    for (const o of obstacles) {
-      ctx.fillRect(o.x, o.y, o.w, o.h);
+    function closeModal() {
+      document.getElementById("ticketModal").style.display = "none";
     }
-  }
-
-  function drawParallax(t) {
-    // 背景星點
-    ctx.fillStyle = 'rgba(255,255,255,.25)';
-    for (let i=0;i<40;i++){
-      const sx = (i*97 + (t*0.03)) % c.width;
-      const sy = (i*53 % (GROUND_Y-40)) + 20;
-      ctx.fillRect(sx, sy, 2, 2);
-    }
-  }
-
-  let last = performance.now();
-  function loop(now) {
-    if (!running) return;
-    const dt = (now - last) / 16.67; // 相對於 60fps
-    last = now;
-
-    // 更新
-    ctx.clearRect(0,0,c.width,c.height);
-    drawParallax(now);
-
-    // 玩家物理
-    player.vy += GRAVITY * dt;
-    player.y += player.vy * dt;
-    if (player.y >= GROUND_Y) { player.y = GROUND_Y; player.vy = 0; player.onGround = true; }
-
-    // 生成障礙
-    spawnTimer -= dt;
-    if (spawnTimer <= 0) {
-      spawnObstacle();
-      spawnTimer = 40/ speed + Math.random()*20/ speed; // 隨速度調節間距
-    }
-
-    // 移動障礙 & 計分
-    for (const o of obstacles) {
-      o.x -= speed * dt * 3.5;
-      if (!o.passed && o.x + o.w < player.x) {
-        o.passed = true;
-        score++;
-        scoreEl.textContent = score;
-        // 提升難度
-        if (score % 5 === 0) speed += 0.6;
+    window.onclick = function(event) {
+      let modal = document.getElementById("ticketModal");
+      if (event.target == modal) {
+        closeModal();
       }
     }
-    // 清理離場
-    obstacles = obstacles.filter(o => o.x + o.w > -20);
-
-    // 碰撞
-    const pBox = { x: player.x, y: player.y - player.h, w: player.w, h: player.h };
-    for (const o of obstacles) {
-      if (aabb(pBox, o)) {
-        player.alive = false;
-        running = false;
-        if (score > best) { best = score; localStorage.setItem('runner_best', best); }
-        bestEl.textContent = best;
-        restartBtn.hidden = false;
-      }
-    }
-
-    // 繪圖
-    drawGround();
-    drawObstacles();
-    drawPlayer();
-
-    // 文案
-    if (!player.alive) {
-      ctx.fillStyle = 'rgba(0,0,0,.45)';
-      ctx.fillRect(0,0,c.width,c.height);
-      ctx.fillStyle = '#fff';
-      ctx.font = 'bold 28px system-ui, Arial';
-      ctx.textAlign = 'center';
-      ctx.fillText('Game Over', c.width/2, 110);
-      ctx.font = '16px system-ui, Arial';
-      ctx.fillText('按「重新開始」或 R 鍵再玩', c.width/2, 140);
-    } else {
-      requestAnimationFrame(loop);
-    }
-  }
-
-  // R 鍵重開
-  window.addEventListener('keydown', e => {
-    if (e.key.toLowerCase()==='r' && restartBtn.hidden===false) restartBtn.click();
-  });
-
-  // 開始
-  requestAnimationFrame(loop);
-})();
-</script>
+  </script>
 </body>
 </html>
