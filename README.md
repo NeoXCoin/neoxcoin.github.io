@@ -1,8 +1,8 @@
 [English](README.md) | [繁體中文](README-zh.md)
 
-# NeoX Token Website
+# NeoX Website
 
-Welcome to the official website repository for **NeoX Token (NXC)** — a decentralized, innovative, and community-driven cryptocurrency project.
+Welcome to the official website repository for **NeoX (NXC)** — a decentralized, innovative, and community-driven cryptocurrency project.
 
 🌐 **Live site**: [https://neoxcoin.github.io](https://neoxcoin.github.io)
 
@@ -10,7 +10,7 @@ Welcome to the official website repository for **NeoX Token (NXC)** — a decent
 
 ## 📖 Overview
 
-The NeoX Token website is a bilingual (English and Traditional Chinese) responsive site built with pure HTML, designed to introduce and support the NeoX ecosystem. It provides essential information about NeoX Token, including:
+The NeoX website is a bilingual (English and Traditional Chinese) responsive site built with pure HTML, designed to introduce and support the NeoX ecosystem. It provides essential information about NeoX Token, including:
 
 - What is NeoX?
 - Why choose NeoX?
