@@ -15,7 +15,7 @@ The NeoX Token website is a bilingual (English and Traditional Chinese) responsi
 - What is NeoX?
 - Why choose NeoX?
 - How to buy NeoX
-- How it works
+- metaverse
 - NFT Projects showcase
 - Troubleshooting guide
 - Disclaimer and legal information
