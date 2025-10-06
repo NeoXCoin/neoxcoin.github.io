@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-  <title>NeoX Catch the Coins – v4 (fixed)</title>
+  <title>NeoX Catch the Coins – v4c</title>
   <meta name="theme-color" content="#0a0b1f">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="https://neoxcoin.github.io/neox-emoji-128.png">
@@ -56,7 +56,7 @@
 </head>
 <body>
   <div id="wrap">
-    <canvas id="game" width="450" height="800" aria-label="NeoX Catch the Coins – v4"></canvas>
+    <canvas id="game" width="450" height="800" aria-label="NeoX Catch the Coins – v4c"></canvas>
 
     <div class="hud" aria-live="polite">
       <div class="topbar">
@@ -88,6 +88,13 @@
             控制模式：
             <button id="btnCtlTouch" class="alt">觸控</button>
             <button id="btnCtlTilt"  class="alt">重力感應</button>
+          </div>
+
+          <div class="note" style="margin-top:6px;">
+            版本：
+            <button id="btnModeM" class="alt">📱 手機</button>
+            <button id="btnModeD" class="alt">🖥️ 桌面</button>
+            <span id="modeNow" class="note"></span>
           </div>
 
           <div class="leaderboard" id="startLeaderboard">
@@ -144,20 +151,46 @@
   </div>
 
   <script>
-    // ====== 畫布 HiDPI（行動裝置 DPR 上限） ======
+    // ====== 自動模式偵測（手機/桌面） ======
+    function detectMode(){
+      const coarse = matchMedia('(pointer: coarse)').matches;
+      const narrow = window.innerWidth < 520;
+      const tall   = window.innerHeight > window.innerWidth;
+      return (coarse || narrow || tall) ? 'mobile' : 'desktop';
+    }
+    let MODE = localStorage.getItem('neox_mode') || detectMode();
+    let SPEED_BASE = 6.3, SPAWN_SCALE = 1.0;
+
+    function applyModeUI(){
+      const el = document.getElementById('modeNow');
+      if (el) el.textContent = `（目前：${MODE==='mobile'?'手機':'桌面'}）`;
+    }
+    function applyMode(){
+      const isM = MODE==='mobile';
+      // 畫質：手機限制 DPR，上機器放寬
+      window.__DPR_CAP__ = isM ? 1.5 : 2;
+      // 難度/節奏：手機稍慢一點更易控
+      SPEED_BASE = isM ? 5.2 : 6.8;
+      SPAWN_SCALE = isM ? 1.1 : 1.0;   // 數值 >1 表示生成稍慢
+      applyModeUI();
+      fitHiDPI(); layoutTray();        // 立即調整一次
+    }
+    applyMode();
+
+    // ====== 畫布 HiDPI（讀取 MODE 提供的 DPR 上限） ======
     const canvas = document.getElementById('game');
     const ctx = canvas.getContext('2d');
     function fitHiDPI(){
       const cssW = canvas.clientWidth, cssH = canvas.clientHeight;
-      const isMobile = /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent);
-      const cap = isMobile ? 1.5 : 2;
+      const cap = window.__DPR_CAP__ ?? 2;
       const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, cap));
       if (canvas.width !== Math.round(cssW*dpr)) {
         canvas.width = Math.round(cssW*dpr); canvas.height = Math.round(cssH*dpr);
       }
       ctx.setTransform(dpr,0,0,dpr,0,0);
+      layoutTray();
     }
-    fitHiDPI(); addEventListener('resize', fitHiDPI);
+    fitHiDPI(); addEventListener('resize', ()=>{ fitHiDPI(); });
 
     // ====== 狀態與 HUD ======
     const State = { READY:0, PLAYING:1, PAUSED:2, WIN:3 };
@@ -178,9 +211,19 @@
     const lbListStart  = document.getElementById('lbListStart');
     const lbListWin    = document.getElementById('lbListWin');
     const nameInput    = document.getElementById('nameInput');
+    const modeNow      = document.getElementById('modeNow');
 
     // ====== 玩家（NeoX 盾牌托盤） ======
     const tray = { x: 225, y: 758, w: 128, h: 22, r: 14, speed: 6.3, vx: 0 };
+
+    // 依畫布自動布局托盤
+    function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+    function layoutTray(){
+      tray.y = canvas.clientHeight - 42; // 距底 ~42px
+      tray.w = Math.round(Math.min(160, Math.max(100, canvas.clientWidth * 0.32)));
+      tray.h = 22;
+      tray.x = clamp(tray.x || canvas.clientWidth/2, tray.w/2 + 10, canvas.clientWidth - tray.w/2 - 10);
+    }
 
     // ====== NeoX Coin 圖片 ======
     const coinImg = new Image();
@@ -191,7 +234,6 @@
     const coins = [];
     const particles = [];
     function rand(a,b){ return Math.random()*(b-a)+a; }
-    function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
 
     // ====== 等級規則 ======
     const LEVELS = [
@@ -299,9 +341,7 @@
 
     // ====== 控制觸控層 on/off ======
     const touchPads = document.getElementById('touchPads');
-    function setPads(on){
-      touchPads.style.pointerEvents = on ? 'auto' : 'none';
-    }
+    function setPads(on){ touchPads.style.pointerEvents = on ? 'auto' : 'none'; }
 
     // ====== 輸入（鍵盤 + 大面積觸控 + 重力感應） ======
     const keys = new Set();
@@ -319,7 +359,7 @@
       if (e.key === 'ArrowRight') keys.delete('R');
     });
 
-    // 觸控（整頁拖動）
+    // 觸控拖動
     let pointerId=null;
     function onPointerDown(e){ const p=(e.changedTouches&&e.changedTouches[0])||e; pointerId = p.identifier ?? 'mouse'; if (state===State.READY) start(); e.preventDefault(); }
     function onPointerMove(e){
@@ -376,15 +416,15 @@
     document.getElementById('btnCtlTilt').onclick  = ()=>{ enableTilt(); SFX.click(); };
     if (controlMode==='tilt') enableTilt();
 
+    // 版本手動切換（覆蓋自動判斷）
+    document.getElementById('btnModeM').onclick = ()=>{ MODE='mobile'; localStorage.setItem('neox_mode', MODE); applyMode(); SFX.click(); };
+    document.getElementById('btnModeD').onclick = ()=>{ MODE='desktop'; localStorage.setItem('neox_mode', MODE); applyMode(); SFX.click(); };
+
     // 首次互動啟用音訊（手機政策）
     ['pointerdown','keydown'].forEach(evt=>{ window.addEventListener(evt, resumeAudio, {once:true, passive:true}); });
 
     // 視窗失焦、分頁不可見：節能暫停
-    let docHidden = false;
-    document.addEventListener('visibilitychange', ()=>{
-      docHidden = document.hidden;
-      if (docHidden && state === State.PLAYING) togglePause(true);
-    });
+    document.addEventListener('visibilitychange', ()=>{ if (document.hidden && state === State.PLAYING) togglePause(true); });
     addEventListener('blur', ()=>{ if(state===State.PLAYING) togglePause(true); });
 
     // ====== 流程 ======
@@ -393,19 +433,21 @@
       score = 0; best = Number(localStorage.getItem('neox_catch_best') || 0);
       levelIdx = 0; caughtThisLevel = 0; coins.length = 0; particles.length = 0; spawnTimer = 0;
       combo = 0; comboMult = 1.0;
+      applyMode();                     // 以目前 MODE 套參數
+      tray.speed = canvas.clientWidth < 420 ? SPEED_BASE : SPEED_BASE + 1.0;
+      layoutTray();
       tray.x = canvas.clientWidth/2; tray.vx=0;
-      // 窄屏稍慢，易控
-      const W = canvas.clientWidth; tray.speed = W < 420 ? 5.2 : 6.3;
+
       state = State.PLAYING;
       show(panelStart,false); show(panelPause,false); show(panelWin,false);
       flashLevelBanner('LEVEL 1'); refreshHUD();
-      setPads(controlMode === 'touch'); // ★ 開始時才啟用觸控層
+      setPads(controlMode === 'touch'); // 開始時才啟用觸控層
     }
     function togglePause(forcePause){
       if (state===State.PLAYING && (forcePause ?? true)) {
         state = State.PAUSED; show(panelPause,true);
         document.getElementById('btnPause').textContent = '⏵ 繼續';
-        setPads(false); // 暫停時關閉觸控層，避免遮擋按鈕
+        setPads(false); // 暫停時關閉觸控層
       } else if (state===State.PAUSED) {
         state = State.PLAYING; show(panelPause,false);
         document.getElementById('btnPause').textContent = '⏸ 暫停';
@@ -417,14 +459,14 @@
       best = Math.max(best, Math.floor(score));
       localStorage.setItem('neox_catch_best', String(best));
       refreshHUD(); SFX.win(); show(panelWin,true); maybeRecordScore(score);
-      setPads(false); // 通關顯示面板時關閉觸控層
+      setPads(false);
     }
     function restart(){ show(panelWin,false); show(panelPause,false); start(); }
 
     // ====== 生成硬幣（含 Bonus） ======
     function spawnCoins(dt){
       const L = LEVELS[levelIdx];
-      spawnTimer -= dt;
+      spawnTimer -= dt * (1/SPAWN_SCALE); // 手機稍慢
       const currentMax = L.concurrent;
       if (spawnTimer <= 0 && coins.length < currentMax) {
         const isBonus = Math.random() < (0.18 + levelIdx*0.02);
