@@ -1,7 +1,7 @@
 // sw.js — NeoX Catch v4c
-const CACHE = 'neox-cache-v4c'; // ← 新版名，確保強制刷新
+const CACHE = 'neox-cache-v4'; // ← 新版名，確保強制刷新
 const ASSETS = [
-  './catchgame-v4c.html',
+  './catchgame-v4.html',
   './manifest.webmanifest',
   'https://neoxcoin.github.io/neox-emoji-128.png'
 ];
@@ -33,7 +33,7 @@ self.addEventListener('fetch', (e) => {
         const copy = res.clone();
         caches.open(CACHE).then((c) => c.put(e.request, copy));
         return res;
-      }).catch(() => caches.match('./catchgame-v4c.html'));
+      }).catch(() => caches.match('./catchgame-v4.html'));
     })
   );
 });
