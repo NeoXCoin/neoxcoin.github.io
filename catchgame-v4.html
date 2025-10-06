@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-  <title>NeoX Catch the Coins – v4</title>
+  <title>NeoX Catch the Coins – v4 (fixed)</title>
   <meta name="theme-color" content="#0a0b1f">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="https://neoxcoin.github.io/neox-emoji-128.png">
@@ -44,8 +44,11 @@
     #splash{ position:absolute; inset:0; display:grid; place-items:center; background: radial-gradient(1200px 800px at 50% 30%, #0e1440 0%, #090b24 60%, #050614 100%); z-index: 9; }
     #neoxLogo{ font-weight:900; font-size: clamp(28px, 8vw, 54px); letter-spacing:.1em; text-shadow:0 0 18px rgba(80,150,255,.55), 0 0 36px rgba(80,150,255,.25); filter: drop-shadow(0 6px 24px rgba(0,0,0,.6)); opacity:0; transform: translateY(8px) scale(.98); transition: opacity .8s ease, transform .8s ease; }
     #splashHint{ margin-top:10px; color:#b9c1ff; opacity:0; transition: opacity .6s .5s; }
-    /* 手機大面積觸控板 */
-    #touchPads{ position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; opacity:.08; pointer-events:auto; }
+    /* 手機大面積觸控板（初始關閉 pointer events） */
+    #touchPads{
+      position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr;
+      opacity:.08; pointer-events:none;
+    }
     #touchPads > div{ margin:6px; border:1px dashed rgba(255,255,255,.18); border-radius:12px; }
     /* 橫向提示 */
     #orientTip{ position:absolute; inset:0; display:none; place-items:center; background:rgba(0,0,0,.6); z-index:10; font-weight:700; }
@@ -125,7 +128,7 @@
       <div class="level-banner hidden" id="levelBanner">LEVEL 1</div>
     </div>
 
-    <!-- 手機大面積觸控區 -->
+    <!-- 手機大面積觸控區（開始後才會開啟點擊） -->
     <div id="touchPads"><div id="padLeft"></div><div id="padRight"></div></div>
 
     <!-- 橫向提示 -->
@@ -294,6 +297,12 @@
       SFX.toggle(soundOn);
     });
 
+    // ====== 控制觸控層 on/off ======
+    const touchPads = document.getElementById('touchPads');
+    function setPads(on){
+      touchPads.style.pointerEvents = on ? 'auto' : 'none';
+    }
+
     // ====== 輸入（鍵盤 + 大面積觸控 + 重力感應） ======
     const keys = new Set();
     addEventListener('keydown', e=>{
@@ -349,11 +358,13 @@
         }
         window.addEventListener('deviceorientation', onTilt);
         tiltEnabled = true; controlMode = 'tilt'; localStorage.setItem('neox_control_mode', controlMode);
+        setPads(false); // 切到重力感應 → 關閉大面積觸控
       }catch(e){}
     }
     function disableTilt(){
       window.removeEventListener('deviceorientation', onTilt);
       tiltEnabled = false; controlMode = 'touch'; localStorage.setItem('neox_control_mode', controlMode);
+      setPads(state===State.PLAYING); // 回到觸控模式，如在遊戲中則開啟
     }
     function onTilt(e){
       if (state !== State.PLAYING) return;
@@ -388,16 +399,25 @@
       state = State.PLAYING;
       show(panelStart,false); show(panelPause,false); show(panelWin,false);
       flashLevelBanner('LEVEL 1'); refreshHUD();
+      setPads(controlMode === 'touch'); // ★ 開始時才啟用觸控層
     }
     function togglePause(forcePause){
-      if (state===State.PLAYING && (forcePause ?? true)) { state = State.PAUSED; show(panelPause,true); document.getElementById('btnPause').textContent = '⏵ 繼續'; }
-      else if (state===State.PAUSED) { state = State.PLAYING; show(panelPause,false); document.getElementById('btnPause').textContent = '⏸ 暫停'; }
+      if (state===State.PLAYING && (forcePause ?? true)) {
+        state = State.PAUSED; show(panelPause,true);
+        document.getElementById('btnPause').textContent = '⏵ 繼續';
+        setPads(false); // 暫停時關閉觸控層，避免遮擋按鈕
+      } else if (state===State.PAUSED) {
+        state = State.PLAYING; show(panelPause,false);
+        document.getElementById('btnPause').textContent = '⏸ 暫停';
+        setPads(controlMode === 'touch'); // 繼續時恢復
+      }
     }
     function win(){
       state = State.WIN;
       best = Math.max(best, Math.floor(score));
       localStorage.setItem('neox_catch_best', String(best));
       refreshHUD(); SFX.win(); show(panelWin,true); maybeRecordScore(score);
+      setPads(false); // 通關顯示面板時關閉觸控層
     }
     function restart(){ show(panelWin,false); show(panelPause,false); start(); }
 
