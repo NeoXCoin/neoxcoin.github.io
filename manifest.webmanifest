@@ -1,7 +1,7 @@
 {
   "name": "NeoX Catch the Coins",
   "short_name": "NeoX Catch",
-  "start_url": "./catchgame-v4.html",
+  "start_url": "./catchgame-v4c.html",
   "display": "standalone",
   "background_color": "#0a0b1f",
   "theme_color": "#0a0b1f",
