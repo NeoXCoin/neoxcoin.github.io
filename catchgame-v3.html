@@ -1,0 +1,545 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+<title>NeoX Catch the Coins – v3 (single)</title>
+<meta name="theme-color" content="#0a0b1f">
+<style>
+  :root{ --safe-top: env(safe-area-inset-top); }
+  html, body { height:100%; margin:0; background:#0a0b1f; color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans TC",Arial,sans-serif; overflow:hidden;}
+  #wrap { position:relative; height:100%; display:grid; place-items:center; }
+  canvas {
+    display:block; width:min(92vw,700px); aspect-ratio:9/16; height:auto;
+    border-radius:16px; background:linear-gradient(180deg,#0f1240,#0a0c22);
+    box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
+    touch-action:none;
+  }
+  .hud { position:absolute; inset:0; display:grid; grid-template-rows:auto 1fr auto; pointer-events:none;}
+  .topbar{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:calc(10px + var(--safe-top)) 14px 10px; font-weight:700; }
+  .badges{ display:flex; gap:8px; flex-wrap:wrap;}
+  .badge{ padding:6px 10px; border-radius:10px; background:rgba(255,255,255,.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);}
+  .buttons{ display:flex; gap:8px; }
+  button, select{ pointer-events:auto; border:0; border-radius:10px; padding:8px 12px; font-weight:700; background:#1f2648; color:#fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
+  button.primary{ background:#2b7cff; color:#fff; box-shadow:0 6px 18px rgba(43,124,255,.35); }
+  .center{ display:grid; place-items:center; padding:10px;}
+  .panel{ pointer-events:auto; min-width:clamp(260px,82%,560px); text-align:center; padding:18px 16px 20px; border-radius:14px; background:rgba(10,12,34,.85); box-shadow:0 20px 60px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.06); backdrop-filter: blur(4px); }
+  .panel h1{ margin:8px 0 6px; font-size: clamp(20px,4.8vw,28px);}
+  .panel p{ margin:6px 0 14px; color:#b9c1ff; font-size:14px; line-height:1.5;}
+  .panel .row{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap;}
+  .hidden{ display:none !important; }
+  .level-banner{ position:absolute; left:50%; top:60px; transform:translateX(-50%); background:rgba(255,255,255,.08); border-radius:999px; padding:8px 14px; font-weight:800; letter-spacing:.3px; pointer-events:none; }
+  .leaderboard { text-align:left; margin-top:10px; background:rgba(255,255,255,.05); border-radius:10px; padding:10px; }
+  .leaderboard h3{ margin:6px 0 8px; font-size:16px; }
+  .leaderboard ol{ margin:0; padding-left:22px; }
+  .leaderboard li{ margin:4px 0; }
+  .field { display:flex; gap:8px; justify-content:center; align-items:center; margin-top:8px;}
+  .field input{ width: 60%; max-width: 260px; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#111638; color:#fff; }
+  .note { color:#9fb0ff; font-size:13px; }
+
+  /* HUD 額外統計的收合 */
+  .extraStat { display:none; }
+  #hudBar.show-all .extraStat { display:inline-block; }
+
+  /* 開場動畫 */
+  #splash{ position:absolute; inset:0; display:grid; place-items:center; background: radial-gradient(1200px 800px at 50% 30%, #0e1440 0%, #090b24 60%, #050614 100%); z-index: 9; }
+  #neoxLogo{ font-weight:900; font-size: clamp(28px, 8vw, 54px); letter-spacing:.1em; text-shadow:0 0 18px rgba(80,150,255,.55), 0 0 36px rgba(80,150,255,.25); filter: drop-shadow(0 6px 24px rgba(0,0,0,.6)); opacity:0; transform: translateY(8px) scale(.98); transition: opacity .8s ease, transform .8s ease; }
+  #splashHint{ margin-top:10px; color:#b9c1ff; opacity:0; transition: opacity .6s .5s; }
+</style>
+</head>
+<body>
+  <div id="wrap">
+    <canvas id="game" width="450" height="800" aria-label="NeoX Catch the Coins – v3"></canvas>
+
+    <div class="hud" aria-live="polite">
+      <div class="topbar">
+        <div class="badges" id="hudBar">
+          <div class="badge" id="scoreBadge">Score: 0</div>
+          <div class="badge" id="levelBadge">Level 1 / 5</div>
+          <div class="badge extraStat" id="progressBadge">Progress: 0 / 10</div>
+          <div class="badge extraStat" id="comboBadge">Combo: 0</div>
+          <div class="badge extraStat" id="multBadge">Multiplier: x1.0</div>
+          <div class="badge extraStat" id="bestBadge">Best: 0</div>
+          <button id="btnShowMore" class="alt" style="margin-left:8px;">📊 Show Stats</button>
+        </div>
+        <div class="buttons">
+          <select id="langSelect" title="Language"></select>
+          <button id="btnSound"  class="alt" title="Sound (M)">🔊 Sound</button>
+          <button id="btnPause"  class="alt" title="Pause/Resume (P)">⏸ Pause</button>
+          <button id="btnRestart" class="primary" title="Restart (R)">🔄 Restart</button>
+        </div>
+      </div>
+
+      <div class="center">
+        <div id="panelStart" class="panel">
+          <h1>NeoX Catch the Coins</h1>
+          <p>
+            Move the tray at the bottom to catch falling <b>NeoX Coins</b>.<br>
+            <b>Bonus (blue) = x3</b> • Consecutive catches increase <b>Combo</b> (max x3) • Missing deducts points & resets Combo.<br>
+            Clear each target to level up (5 levels). After winning you can save your name to the local leaderboard.
+          </p>
+          <div class="row"><button id="btnStart" class="primary">▶ Start</button></div>
+
+          <div class="leaderboard" id="startLeaderboard">
+            <h3>🏆 Leaderboard (Local)</h3>
+            <ol id="lbListStart"></ol>
+            <div class="note">Tip: leaderboard is only stored in your browser (localStorage).</div>
+          </div>
+        </div>
+
+        <div id="panelPause" class="panel hidden">
+          <h1>Paused</h1>
+          <p>Ready to continue?</p>
+          <div class="row">
+            <button id="btnResume" class="primary">⏵ Resume</button>
+            <button id="btnRestart2" class="alt">🔄 Restart</button>
+          </div>
+        </div>
+
+        <div id="panelWin" class="panel hidden">
+          <h1>Congrats!</h1>
+          <p><span id="finalScore">Score: 0</span><br><span id="bestScore">Best: 0</span></p>
+          <div class="field">
+            <input id="nameInput" type="text" maxlength="20" placeholder="Enter your name (max 20)"/>
+            <button id="btnSaveScore" class="primary">💾 Save to Leaderboard</button>
+          </div>
+          <div class="note" style="margin-top:6px;">(Stored locally in your browser)</div>
+          <div class="leaderboard" style="margin-top:12px;">
+            <h3>📝 Leaderboard (Local)</h3>
+            <ol id="lbListWin"></ol>
+          </div>
+          <div class="row" style="margin-top:10px;"><button id="btnPlayAgain" class="primary">Play Again</button></div>
+        </div>
+      </div>
+
+      <div class="level-banner hidden" id="levelBanner">LEVEL 1</div>
+    </div>
+
+    <!-- 開場動畫 -->
+    <div id="splash">
+      <div style="text-align:center;">
+        <div id="neoxLogo">NEOX</div>
+        <div id="splashHint">Loading…</div>
+      </div>
+    </div>
+  </div>
+
+<script>
+/* ===================== i18n (multi-language) ===================== */
+const I18N = {
+  en:{name:'English',
+    score:'Score', level:'Level', progress:'Progress', best:'Best',
+    combo:'Combo', mult:'Multiplier',
+    start_title:'NeoX Catch the Coins',
+    start_desc:'Move the tray at the bottom to catch falling NeoX Coins. <b>Bonus (blue) coin = x3 points</b>; consecutive catches increase <b>Combo</b> (max x3); missing a coin deducts points and resets Combo. Clear each goal to level up (5 levels). After you beat the game, you can save your name to the local leaderboard.',
+    start_btn:'Start', sound:'Sound', pause_btn:'Pause', resume_btn:'Resume', restart_btn:'Restart',
+    paused_title:'Paused', paused_desc:'Ready to continue?',
+    win_title:'Congrats!', save_btn:'Save to Leaderboard',
+    name_ph:'Enter your name (max 20)', lb_title:'Leaderboard (Local)', lb_note:'Tip: the leaderboard is only stored in your browser (localStorage).', play_again:'Play Again',
+    show_stats:'📊 Show Stats', hide_stats:'📉 Hide Stats'
+  },
+  'zh-Hant':{name:'繁體中文',
+    score:'分數', level:'Level', progress:'進度', best:'最佳',
+    combo:'Combo', mult:'乘數',
+    start_title:'NeoX Catch the Coins',
+    start_desc:'用底部的「托盤」左右移動，接住掉下來的 NeoX Coin。<b>Bonus 藍幣 = x3 分</b>；<b>連續接</b>會提升 <b>Combo 乘數</b>（上限 x3）；<b>漏接會扣分並清 Combo</b>。完成每關目標會升級（共 5 關）。通關後可把名字儲存到本機排行榜。',
+    start_btn:'開始遊戲', sound:'音效', pause_btn:'暫停', resume_btn:'繼續', restart_btn:'重新開始',
+    paused_title:'暫停中', paused_desc:'準備好就繼續吧！',
+    win_title:'恭喜通關！', save_btn:'儲存到排行榜',
+    name_ph:'輸入你的名字（最多20字）', lb_title:'排行榜（本機）', lb_note:'提示：排行榜只儲存在你的瀏覽器（localStorage）。', play_again:'再玩一次',
+    show_stats:'📊 顯示統計', hide_stats:'📉 隱藏統計'
+  },
+  'zh-Hans':{name:'简体中文',
+    score:'分数', level:'Level', progress:'进度', best:'最佳',
+    combo:'连击', mult:'倍数',
+    start_title:'NeoX Catch the Coins',
+    start_desc:'用底部“托盘”左右移动，接住掉下来的 NeoX Coin。<b>蓝色 Bonus = x3 分</b>；<b>连续接住</b>提升 <b>连击倍数</b>（上限 x3）；<b>漏接会扣分并清空连击</b>。完成每关目标即可升级（共 5 关）。通关后可将名字保存到本机排行榜。',
+    start_btn:'开始游戏', sound:'音效', pause_btn:'暂停', resume_btn:'继续', restart_btn:'重开',
+    paused_title:'已暂停', paused_desc:'准备好就继续吧！',
+    win_title:'恭喜通关！', save_btn:'保存到排行榜',
+    name_ph:'输入你的名字（最多20字）', lb_title:'排行榜（本机）', lb_note:'提示：排行榜仅保存在你的浏览器（localStorage）。', play_again:'再玩一次',
+    show_stats:'📊 显示统计', hide_stats:'📉 隐藏统计'
+  },
+  ja:{name:'日本語',
+    score:'スコア', level:'レベル', progress:'進行', best:'ベスト',
+    combo:'コンボ', mult:'倍率',
+    start_title:'NeoX Catch the Coins',
+    start_desc:'下部のトレイを左右に動かして NeoX コインをキャッチ。<b>ボーナス（青）= x3</b>。連続キャッチで<b>コンボ</b>上昇（最大 x3）、取り逃しで減点＆コンボ解除。各目標を達成してレベルアップ（全5）。クリア後はローカルのランキングに名前を保存できます。',
+    start_btn:'スタート', sound:'サウンド', pause_btn:'一時停止', resume_btn:'再開', restart_btn:'リスタート',
+    paused_title:'一時停止中', paused_desc:'準備ができたら再開！',
+    win_title:'クリア！', save_btn:'ランキングに保存',
+    name_ph:'名前を入力（最大20文字）', lb_title:'ランキング（ローカル）', lb_note:'ランキングはブラウザにのみ保存されます（localStorage）。', play_again:'もう一度',
+    show_stats:'📊 ステータスを表示', hide_stats:'📉 ステータスを隠す'
+  },
+  ko:{name:'한국어',
+    score:'점수', level:'레벨', progress:'진행', best:'최고',
+    combo:'콤보', mult:'배수',
+    start_title:'NeoX Catch the Coins',
+    start_desc:'하단 트레이를 좌우로 움직여 NeoX 코인을 받으세요. <b>보너스(파랑)= x3</b>. 연속 성공 시 <b>콤보</b> 증가(최대 x3), 놓치면 감점 및 콤보 초기화. 목표 달성 시 레벨업(총 5단계). 클리어 후 로컬 랭킹에 이름을 저장할 수 있습니다.',
+    start_btn:'시작', sound:'사운드', pause_btn:'일시정지', resume_btn:'계속', restart_btn:'재시작',
+    paused_title:'일시정지', paused_desc:'준비되면 계속!',
+    win_title:'축하합니다!', save_btn:'랭킹에 저장',
+    name_ph:'이름 입력(최대 20자)', lb_title:'랭킹(로컬)', lb_note:'랭킹은 브라우저에만 저장됩니다(localStorage).', play_again:'다시 하기',
+    show_stats:'📊 통계 보기', hide_stats:'📉 통계 숨기기'
+  },
+  es:{name:'Español',
+    score:'Puntos', level:'Nivel', progress:'Progreso', best:'Mejor',
+    combo:'Combo', mult:'Multiplicador',
+    start_title:'NeoX Catch the Coins',
+    start_desc:'Mueve la bandeja inferior para atrapar las monedas NeoX. <b>Moneda bonus (azul) = x3</b>; los aciertos consecutivos aumentan el <b>Combo</b> (máx x3); fallar resta puntos y reinicia el Combo. Completa los objetivos para subir de nivel (5 niveles). Al completar, puedes guardar tu nombre en la clasificación local.',
+    start_btn:'Jugar', sound:'Sonido', pause_btn:'Pausa', resume_btn:'Seguir', restart_btn:'Reiniciar',
+    paused_title:'Pausado', paused_desc:'¿Listo para continuar?',
+    win_title:'¡Felicidades!', save_btn:'Guardar en Ranking',
+    name_ph:'Tu nombre (máx 20)', lb_title:'Ranking (Local)', lb_note:'El ranking solo se guarda en tu navegador (localStorage).', play_again:'Jugar de nuevo',
+    show_stats:'📊 Mostrar Estadísticas', hide_stats:'📉 Ocultar Estadísticas'
+  }
+};
+
+function getParam(name){ return new URLSearchParams(location.search).get(name); }
+let lang = (getParam('lang')) || localStorage.getItem('neox_lang') || (()=> {
+  const n=(navigator.language||'').toLowerCase();
+  if(n.startsWith('zh-tw')||n.startsWith('zh-hk')) return 'zh-Hant';
+  if(n.startsWith('zh')) return 'zh-Hans';
+  if(n.startsWith('ja')) return 'ja';
+  if(n.startsWith('ko')) return 'ko';
+  if(n.startsWith('es')) return 'es';
+  return 'en';
+})();
+if(!I18N[lang]) lang='en';
+function t(k){ return (I18N[lang] && I18N[lang][k]) || I18N.en[k] || k; }
+function setLang(next){ if(!I18N[next]) return; lang=next; localStorage.setItem('neox_lang',lang); applyLang(); refreshHUD(); }
+
+/* ===================== Canvas/HiDPI ===================== */
+const canvas = document.getElementById('game');
+const ctx = canvas.getContext('2d');
+function fitHiDPI(){
+  const cssW = canvas.clientWidth, cssH = canvas.clientHeight;
+  const isMobile = /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent);
+  const cap = isMobile ? 1.5 : 2;
+  const dpr = Math.max(1, Math.min(window.devicePixelRatio||1, cap));
+  if (canvas.width !== Math.round(cssW*dpr)) {
+    canvas.width = Math.round(cssW*dpr); canvas.height = Math.round(cssH*dpr);
+  }
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+fitHiDPI(); addEventListener('resize', fitHiDPI);
+
+/* ===================== State & UI refs ===================== */
+const State = { READY:0, PLAYING:1, PAUSED:2, WIN:3 };
+let state = State.READY;
+
+const scoreBadge   = document.getElementById('scoreBadge');
+const levelBadge   = document.getElementById('levelBadge');
+const progressBadge= document.getElementById('progressBadge');
+const comboBadge   = document.getElementById('comboBadge');
+const multBadge    = document.getElementById('multBadge');
+const bestBadge    = document.getElementById('bestBadge');
+const panelStart   = document.getElementById('panelStart');
+const panelPause   = document.getElementById('panelPause');
+const panelWin     = document.getElementById('panelWin');
+const finalScore   = document.getElementById('finalScore');
+const bestScoreEl  = document.getElementById('bestScore');
+const levelBanner  = document.getElementById('levelBanner');
+const lbListStart  = document.getElementById('lbListStart');
+const lbListWin    = document.getElementById('lbListWin');
+const nameInput    = document.getElementById('nameInput');
+const langSelect   = document.getElementById('langSelect');
+
+/* ===================== Player/Tray (Cute Chest) ===================== */
+const tray = { x: 225, y: 758, w: 128, h: 26, r: 14, speed: 6.3, vx: 0 };
+const chest = { open: 0.18, bump: 0 }; // 0~1
+
+/* ===================== Coin image ===================== */
+const coinImg = new Image();
+coinImg.src = "https://neoxcoin.github.io/neox-emoji-128.png";
+let coinReady=false; coinImg.onload=()=>coinReady=true;
+
+/* ===================== Objects ===================== */
+const coins = [];
+const particles = []; // not used (tails removed)
+const EMIT_TRAIL=false, EMIT_BURST=false;
+function rand(a,b){ return Math.random()*(b-a)+a; }
+function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+
+/* ===================== Levels ===================== */
+const LEVELS = [
+  { target: 10, vy:[2.0, 2.8], spawn:[0.9, 1.2], concurrent: 2, mult:1.0 },
+  { target: 25, vy:[2.6, 3.4], spawn:[0.7, 1.0], concurrent: 3, mult:1.2 },
+  { target: 45, vy:[3.0, 3.8], spawn:[0.55,0.85], concurrent: 4, mult:1.4 },
+  { target: 70, vy:[3.6, 4.6], spawn:[0.45,0.75], concurrent: 5, mult:1.7 },
+  { target:100, vy:[4.2, 5.4], spawn:[0.36,0.66], concurrent: 6, mult:2.1 },
+];
+let levelIdx=0, caughtThisLevel=0;
+
+/* ===================== Score & Leaderboard ===================== */
+let score=0, best=Number(localStorage.getItem('neox_catch_best')||0);
+const LB_KEY='neox_catch_leaderboard', NAME_KEY='neox_player_name';
+function loadLeaderboard(){ try{ return JSON.parse(localStorage.getItem(LB_KEY)||'[]'); }catch(e){ return []; } }
+function saveLeaderboard(lb){ localStorage.setItem(LB_KEY, JSON.stringify(lb)); }
+function renderLeaderboard(listEl, lb){
+  listEl.innerHTML=''; if(!lb.length){ listEl.innerHTML='<li>(no records)</li>'; return; }
+  lb.slice(0,5).forEach((it,i)=>{ const li=document.createElement('li'); li.textContent=`${i+1}. ${it.name} — ${it.score}`; listEl.appendChild(li); });
+}
+function maybeRecordScore(finalScore){
+  const lb = loadLeaderboard();
+  const nameDefault = localStorage.getItem(NAME_KEY)||''; nameInput.value=nameDefault; setTimeout(()=>nameInput.focus(),50);
+  renderLeaderboard(lbListWin, lb);
+  document.getElementById('btnSaveScore').onclick = ()=>{
+    const name=(nameInput.value||'Player').trim().slice(0,20);
+    localStorage.setItem(NAME_KEY,name);
+    const entry={name, score:Math.floor(finalScore), ts:Date.now()};
+    lb.push(entry); lb.sort((a,b)=> b.score-a.score || a.ts-b.ts);
+    saveLeaderboard(lb.slice(0,5)); renderLeaderboard(lbListWin,loadLeaderboard()); renderLeaderboard(lbListStart,loadLeaderboard());
+  };
+}
+renderLeaderboard(lbListStart, loadLeaderboard());
+
+/* ===================== Sound (WebAudio) ===================== */
+let audioCtx=null, masterGain=null; let soundOn=true;
+function ensureAudio(){ if(audioCtx) return; audioCtx = new (window.AudioContext||window.webkitAudioContext)(); masterGain=audioCtx.createGain(); masterGain.gain.value=0.8; masterGain.connect(audioCtx.destination); }
+async function resumeAudio(){ try{ ensureAudio(); if(audioCtx.state!=='running') await audioCtx.resume(); }catch(e){} }
+function beep({freq=440,dur=0.12,type='sine',gain=0.2,decay=0.02,start=0}){ if(!soundOn||!audioCtx) return; const now=audioCtx.currentTime+start; const o=audioCtx.createOscillator(), g=audioCtx.createGain(); o.type=type; o.frequency.setValueAtTime(freq,now); g.gain.setValueAtTime(gain,now); g.gain.exponentialRampToValueAtTime(0.0001, now+Math.max(0.01,dur-decay)); o.connect(g).connect(masterGain); o.start(now); o.stop(now+dur); }
+const SFX={ click(){beep({freq:700,dur:0.07,type:'triangle',gain:0.12});}, catch(){beep({freq:880,dur:0.08,gain:0.18}); beep({freq:1320,dur:0.10,gain:0.12,start:0.04});}, level(){beep({freq:500,dur:0.10,type:'square',gain:0.15}); beep({freq:750,dur:0.12,type:'square',gain:0.15,start:0.08}); beep({freq:1100,dur:0.14,type:'square',gain:0.12,start:0.16});}, win(){[660,880,990,1320].forEach((f,i)=>beep({freq:f,dur:0.14,gain:0.14,start:i*0.09}));}, toggle(on){ on?beep({freq:900,dur:0.07,type:'triangle',gain:0.15}):beep({freq:300,dur:0.12,type:'triangle',gain:0.12}); } };
+
+/* ===================== UI helpers ===================== */
+function show(el,s=true){ el.classList.toggle('hidden',!s); }
+function flashLevelBanner(text){ levelBanner.textContent=text; show(levelBanner,true); setTimeout(()=>show(levelBanner,false),1100); }
+function refreshHUD(){
+  scoreBadge.textContent    = `${t('score')}: ${Math.floor(score)}`;
+  levelBadge.textContent    = `${t('level')} ${levelIdx+1} / 5`;
+  progressBadge.textContent = `${t('progress')}: ${caughtThisLevel} / ${LEVELS[levelIdx].target}`;
+  comboBadge.textContent    = `${t('combo')}: 0`;
+  multBadge.textContent     = `${t('mult')}: x1.0`;
+  bestBadge.textContent     = `${t('best')}: ${Math.floor(best)}`;
+  finalScore.textContent    = `${t('score')}: ${Math.floor(score)}`;
+  bestScoreEl.textContent   = `${t('best')}: ${Math.floor(best)}`;
+}
+
+/* Buttons */
+document.getElementById('btnStart').onclick   = ()=>{ SFX.click(); start(); };
+document.getElementById('btnPause').onclick   = ()=>{ SFX.click(); togglePause(); };
+document.getElementById('btnResume').onclick  = ()=>{ SFX.click(); togglePause(false); };
+document.getElementById('btnRestart').onclick = ()=>{ SFX.click(); restart(); };
+document.getElementById('btnRestart2').onclick= ()=>{ SFX.click(); restart(); };
+document.getElementById('btnPlayAgain').onclick=()=>{ SFX.click(); restart(); };
+
+const btnSound = document.getElementById('btnSound');
+btnSound.addEventListener('click', async ()=>{ await resumeAudio(); soundOn=!soundOn; btnSound.textContent=(soundOn?'🔊 ':'🔈 ')+t('sound'); SFX.toggle(soundOn); });
+
+/* HUD 展開/收起 */
+const hudBar = document.getElementById('hudBar');
+const btnShowMore = document.getElementById('btnShowMore');
+let showAllStats=false;
+function updateStatsButton(){ if(btnShowMore) btnShowMore.textContent = showAllStats ? t('hide_stats') : t('show_stats'); }
+btnShowMore.addEventListener('click', ()=>{ showAllStats=!showAllStats; hudBar.classList.toggle('show-all', showAllStats); updateStatsButton(); });
+
+/* ===================== Input ===================== */
+const keys=new Set();
+addEventListener('keydown', e=>{
+  if(e.repeat) return;
+  if(e.key==='ArrowLeft') keys.add('L');
+  if(e.key==='ArrowRight') keys.add('R');
+  if(e.key.toLowerCase()==='p') togglePause();
+  if(e.key.toLowerCase()==='r') restart();
+  if(e.key.toLowerCase()==='m') btnSound.click();
+  if(state===State.READY && (e.key===' '||e.key==='Enter')) start();
+});
+addEventListener('keyup', e=>{ if(e.key==='ArrowLeft') keys.delete('L'); if(e.key==='ArrowRight') keys.delete('R'); });
+
+// Touch drag
+let pointerId=null;
+function onPointerDown(e){ const p=(e.changedTouches&&e.changedTouches[0])||e; pointerId=p.identifier??'mouse'; if(state===State.READY) start(); e.preventDefault(); }
+function onPointerMove(e){
+  const p=(e.changedTouches && ([...e.changedTouches].find(t => (t.identifier ?? 'mouse')===pointerId)))||e; if(!p) return;
+  const rect=canvas.getBoundingClientRect(); const cx=(p.clientX-rect.left)/rect.width*canvas.clientWidth; const diff=cx-tray.x;
+  tray.vx = clamp(diff*0.25, -tray.speed, tray.speed); e.preventDefault();
+}
+function onPointerUp(e){ pointerId=null; tray.vx=0; e.preventDefault(); }
+canvas.addEventListener('pointerdown', onPointerDown, {passive:false});
+addEventListener('pointermove', onPointerMove, {passive:false});
+addEventListener('pointerup', onPointerUp, {passive:false});
+addEventListener('pointercancel', onPointerUp, {passive:false});
+
+// First interaction enables audio
+['pointerdown','keydown'].forEach(evt=>{ window.addEventListener(evt, resumeAudio, {once:true, passive:true}); });
+addEventListener('blur', ()=>{ if(state===State.PLAYING) togglePause(true); });
+
+/* ===================== Flow ===================== */
+let spawnTimer=0;
+function start(){
+  score=0; best=Number(localStorage.getItem('neox_catch_best')||0);
+  levelIdx=0; caughtThisLevel=0; coins.length=0; particles.length=0; spawnTimer=0;
+  tray.x = canvas.clientWidth/2; tray.vx=0; tray.y = canvas.clientHeight - 28;
+  const W = canvas.clientWidth; tray.speed = W<420 ? 5.2 : 6.3;
+  chest.open=0.18; chest.bump=0;
+  state=State.PLAYING; show(panelStart,false); show(panelPause,false); show(panelWin,false);
+  flashLevelBanner('LEVEL 1'); refreshHUD();
+}
+function togglePause(forcePause){
+  if(state===State.PLAYING && (forcePause ?? true)){ state=State.PAUSED; show(panelPause,true); document.getElementById('btnPause').textContent='⏵ '+t('resume_btn'); }
+  else if(state===State.PAUSED){ state=State.PLAYING; show(panelPause,false); document.getElementById('btnPause').textContent='⏸ '+t('pause_btn'); }
+}
+function win(){
+  state=State.WIN; best=Math.max(best, Math.floor(score)); localStorage.setItem('neox_catch_best', String(best));
+  refreshHUD(); SFX.win(); show(panelWin,true); maybeRecordScore(score);
+}
+function restart(){ show(panelWin,false); show(panelPause,false); start(); }
+
+/* Spawn coins */
+function spawnCoins(dt){
+  const L=LEVELS[levelIdx]; spawnTimer-=dt; const currentMax=L.concurrent;
+  if(spawnTimer<=0 && coins.length<currentMax){
+    coins.push({ x:rand(18, canvas.clientWidth-18), y:-20, r:12, vy:rand(L.vy[0], L.vy[1]), spin:rand(0,Math.PI*2), vspin:rand(-0.12,0.12) });
+    spawnTimer = rand(L.spawn[0], L.spawn[1]);
+  }
+}
+
+/* ===================== Drawing ===================== */
+function drawBackground(t){
+  const w=canvas.clientWidth, h=canvas.clientHeight;
+  ctx.clearRect(0,0,w,h);
+  const g = ctx.createRadialGradient(w*0.5, h*0.25, 20, w*0.5, h*0.25, h*0.95);
+  g.addColorStop(0,'rgba(90,180,255,0.10)'); g.addColorStop(1,'rgba(0,0,0,0)'); ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
+  ctx.globalAlpha=0.6; ctx.fillStyle='rgba(255,255,255,0.8)';
+  for(let i=0;i<40;i++){ const x=(t*0.02 + i*97)%w; const y=(t*0.06 + i*53)%h; ctx.fillRect(x,y,1,1); }
+  ctx.globalAlpha=1;
+}
+function roundRect(x,y,w,h,r,fill){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); if(fill){ctx.fillStyle=fill; ctx.fill();} else ctx.stroke(); }
+
+// Cute golden chest tray
+function drawChestTray(){
+  const x=tray.x, y=tray.y, w=tray.w, h=tray.h, r=Math.min(16,h*0.9);
+  const glow=ctx.createRadialGradient(x,y,6,x,y,96); glow.addColorStop(0,'rgba(255,196,64,0.40)'); glow.addColorStop(1,'rgba(255,196,64,0)'); ctx.fillStyle=glow; ctx.beginPath(); ctx.arc(x,y,74,0,Math.PI*2); ctx.fill();
+  const bumpY = -Math.sin(chest.bump*Math.PI)*2.5; const tY=y+bumpY;
+
+  // base
+  roundRect(x-w/2, tY-h*0.95, w, h*0.95, r, '#6b4a00');
+  roundRect(x-w/2, tY-h*0.95, w, h*0.95, r, 'rgba(255,205,80,0.95)');
+  ctx.lineWidth=2; ctx.strokeStyle='rgba(140,80,0,0.35)'; ctx.stroke();
+
+  // inner glass
+  const glassH=h*0.58, gy=tY-glassH*0.65;
+  const glassGrad=ctx.createLinearGradient(0, gy-glassH/2, 0, gy+glassH/2);
+  glassGrad.addColorStop(0,'rgba(255,255,255,0.18)'); glassGrad.addColorStop(1,'rgba(255,255,255,0.05)');
+  roundRect(x-w*0.46, gy-glassH/2, w*0.92, glassH, h*0.2, glassGrad);
+  ctx.beginPath(); ctx.moveTo(x-w*0.40, gy-glassH*0.35); ctx.lineTo(x-w*0.10, gy-glassH*0.15); ctx.lineTo(x-w*0.40, gy+glassH*0.05); ctx.closePath(); ctx.fillStyle='rgba(255,255,255,0.12)'; ctx.fill();
+  ctx.strokeStyle='rgba(255,230,160,0.9)'; ctx.lineWidth=1.2; ctx.beginPath(); ctx.moveTo(x-w*0.46, tY-h*0.72); ctx.lineTo(x+w*0.46, tY-h*0.72); ctx.stroke();
+
+  // lid
+  const lidOpen = Math.max(0, Math.min(1, chest.open));
+  const lidAngle = -Math.PI/7 * lidOpen; const lidH=h*0.80, lidW=w*0.92;
+  ctx.save();
+  const hingeX=x, hingeY=tY-h*0.95;
+  ctx.translate(hingeX, hingeY); ctx.rotate(lidAngle); ctx.translate(-hingeX, -hingeY);
+  roundRect(hingeX-lidW/2, hingeY-lidH, lidW, lidH, h*0.22, 'rgba(255,205,80,0.95)');
+  ctx.lineWidth=2; ctx.strokeStyle='rgba(140,80,0,0.35)'; ctx.stroke();
+  const lidGlass=ctx.createLinearGradient(0, hingeY-lidH, 0, hingeY);
+  lidGlass.addColorStop(0,'rgba(255,255,255,0.16)'); lidGlass.addColorStop(1,'rgba(255,255,255,0.05)');
+  roundRect(hingeX-lidW*0.46, hingeY-lidH*0.86, lidW*0.92, lidH*0.72, h*0.18, lidGlass);
+  roundRect(hingeX-10, hingeY-lidH*0.12, 20, 10, 4, 'rgba(255,220,120,0.95)');
+  ctx.restore();
+}
+
+function drawCoins(){ for(const c of coins){ drawCoin(c.x,c.y,c.r*3,c.spin); } }
+function drawCoin(x,y,size,rot){
+  const r=size/2; ctx.save(); ctx.translate(x,y); ctx.rotate(rot);
+  const g=ctx.createRadialGradient(0,0,0,0,0,r*0.9); g.addColorStop(0,'rgba(255,230,160,.9)'); g.addColorStop(1,'rgba(255,230,160,0)'); ctx.fillStyle=g; ctx.beginPath(); ctx.arc(0,0,r*0.95,0,Math.PI*2); ctx.fill();
+  if(coinReady) ctx.drawImage(coinImg, -r, -r, size, size);
+  else { const grad=ctx.createRadialGradient(0,0,r*0.2,0,0,r); grad.addColorStop(0,'#fff6cc'); grad.addColorStop(1,'#e3b23c'); ctx.fillStyle=grad; ctx.beginPath(); ctx.arc(0,0,r,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#402f00'; ctx.font=`${r*1.2}px Arial Black`; ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText('N',0,2); }
+  ctx.restore();
+}
+
+/* ===================== Loop ===================== */
+let last=performance.now();
+function loop(now){
+  requestAnimationFrame(loop);
+  fitHiDPI();
+  const dt=Math.min(50, now-last)/16.6667; last=now;
+
+  drawBackground(now);
+
+  if(state===State.PLAYING){
+    tray.vx = (keys.has('L')?-tray.speed:0) + (keys.has('R')?tray.speed:0) || tray.vx*0.9;
+    tray.x += tray.vx; tray.x = clamp(tray.x, tray.w/2+10, canvas.clientWidth - tray.w/2 - 10);
+    tray.y = canvas.clientHeight - 28;
+
+    spawnCoins(dt);
+    for(let c of coins){ c.y += c.vy*dt; c.spin += c.vspin*dt; }
+
+    // collisions
+    for(let i=coins.length-1;i>=0;i--){
+      const c=coins[i];
+      const rx=tray.x-tray.w/2, ry=tray.y-tray.h/2, rw=tray.w, rh=tray.h;
+      const nx=clamp(c.x, rx, rx+rw), ny=clamp(c.y, ry, ry+rh);
+      const dx=c.x-nx, dy=c.y-ny;
+      if(dx*dx+dy*dy <= c.r*c.r){
+        const mult = LEVELS[levelIdx].mult;
+        score += Math.round(10*mult);
+        caughtThisLevel++;
+        coins.splice(i,1);
+        SFX.catch();
+        // chest animation
+        chest.open = Math.min(1, chest.open + 0.28);
+        chest.bump = 1;
+
+        if(caughtThisLevel >= LEVELS[levelIdx].target){
+          if(levelIdx<LEVELS.length-1){ levelIdx++; caughtThisLevel=0; flashLevelBanner(`LEVEL ${levelIdx+1}`); SFX.level(); }
+          else { win(); }
+        }
+        refreshHUD();
+      } else if (c.y > canvas.clientHeight + 30){
+        coins.splice(i,1);
+      }
+    }
+
+    // chest easing
+    chest.open += (0.18 - chest.open)*0.08;
+    if(chest.bump>0) chest.bump=Math.max(0, chest.bump-0.12);
+  }
+
+  drawChestTray();
+  drawCoins();
+
+  if(state===State.READY){
+    tipText('Tap or press Space to Start', canvas.clientWidth/2, canvas.clientHeight*0.62);
+  }
+}
+requestAnimationFrame(loop);
+
+function tipText(text,x,y){ ctx.font='600 18px system-ui, -apple-system, "Segoe UI"'; ctx.textAlign='center'; ctx.fillStyle='rgba(255,255,255,.9)'; ctx.fillText(text,x,y); }
+
+/* ===================== Language apply ===================== */
+function applyLang(){
+  // build dropdown once
+  if(langSelect && !langSelect.options.length){
+    langSelect.innerHTML = Object.entries(I18N).map(([code,data])=>`<option value="${code}">${data.name}</option>`).join('');
+    langSelect.value = lang;
+    langSelect.addEventListener('change', e=> setLang(e.target.value));
+  } else if(langSelect) langSelect.value = lang;
+
+  // top buttons
+  btnSound.textContent  = (soundOn?'🔊 ':'🔈 ')+t('sound');
+  document.getElementById('btnPause').textContent = state===State.PAUSED ? ('⏵ '+t('resume_btn')) : ('⏸ '+t('pause_btn'));
+  document.getElementById('btnRestart').textContent = '🔄 '+t('restart_btn');
+  const br2=document.getElementById('btnRestart2'); if(br2) br2.textContent='🔄 '+t('restart_btn');
+  const brs=document.getElementById('btnResume'); if(brs) brs.textContent='⏵ '+t('resume_btn');
+  const pAg=document.getElementById('btnPlayAgain'); if(pAg) pAg.textContent=t('play_again');
+  const bSt=document.getElementById('btnStart'); if(bSt) bSt.textContent='▶ '+t('start_btn');
+
+  // panels
+  const ps=document.getElementById('panelStart'); if(ps){ const h1=ps.querySelector('h1'); const p=ps.querySelector('p'); if(h1) h1.textContent=t('start_title'); if(p) p.innerHTML=t('start_desc'); const lb= document.getElementById('startLeaderboard'); if(lb){ const h3=lb.querySelector('h3'); const note=lb.querySelector('.note'); if(h3) h3.textContent='🏆 '+t('lb_title'); if(note) note.textContent=t('lb_note'); } }
+  const pp=document.getElementById('panelPause'); if(pp){ const h1=pp.querySelector('h1'); const p=pp.querySelector('p'); if(h1) h1.textContent=t('paused_title'); if(p) p.textContent=t('paused_desc'); }
+  const pw=document.getElementById('panelWin'); if(pw){ const h1=pw.querySelector('h1'); if(h1) h1.textContent=t('win_title'); const sbtn=document.getElementById('btnSaveScore'); if(sbtn) sbtn.textContent='💾 '+t('save_btn'); const ni=document.getElementById('nameInput'); if(ni) ni.placeholder=t('name_ph'); const h3=pw.querySelector('h3'); if(h3) h3.textContent='📝 '+t('lb_title'); }
+
+  updateStatsButton(); // 📊/📉
+}
+applyLang();
+
+/* ===================== Splash ===================== */
+const splash=document.getElementById('splash'); const neoxLogo=document.getElementById('neoxLogo'); const splashHint=document.getElementById('splashHint');
+requestAnimationFrame(()=>{ neoxLogo.style.opacity='1'; neoxLogo.style.transform='translateY(0) scale(1)'; splashHint.style.opacity='1'; });
+setTimeout(()=>{ if(!splash) return; splash.style.transition='opacity .5s ease'; splash.style.opacity='0'; setTimeout(()=> splash.style.display='none', 520); }, 1000);
+
+</script>
+</body>
+</html>
