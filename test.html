@@ -3,379 +3,198 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-  <title>NeoX Catch the Stars</title>
+  <title>NeoX Catch the Coins – v4d2</title>
+  <meta name="theme-color" content="#0a0b1f">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="https://neoxcoin.github.io/neox-emoji-128.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
   <style>
-    html, body { height:100%; margin:0; background:#0a0b1f; color:#fff; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans TC",Arial,sans-serif; overflow:hidden;}
-    #wrap { position:relative; height:100%; display:grid; place-items:center; }
-    canvas {
-      display:block; width:min(92vw,700px); aspect-ratio:9/16; height:auto;
-      border-radius:16px; background:linear-gradient(180deg,#0f1240,#0a0c22);
-      box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
-      touch-action:none;
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: #0a0b1f;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans TC", Arial, sans-serif;
+      overflow: hidden;
     }
-    .hud { position:absolute; inset:0; display:grid; grid-template-rows:auto 1fr auto; pointer-events:none;}
-    .topbar{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 14px; font-weight:700; }
-    .badges{ display:flex; gap:8px; flex-wrap:wrap;}
-    .badge{ padding:6px 10px; border-radius:10px; background:rgba(255,255,255,.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);}
-    .buttons{ display:flex; gap:8px;}
-    button{ pointer-events:auto; border:0; border-radius:10px; padding:8px 12px; font-weight:700; background:#2b7cff; color:#fff; cursor:pointer; box-shadow:0 6px 18px rgba(43,124,255,.35); }
-    button.alt{ background:#1f2648; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
-    .center{ display:grid; place-items:center; padding:10px;}
-    .panel{ pointer-events:auto; min-width:clamp(240px,80%,520px); text-align:center; padding:18px 16px 20px; border-radius:14px; background:rgba(10,12,34,.85); box-shadow:0 20px 60px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.06); backdrop-filter: blur(4px); }
-    .panel h1{ margin:8px 0 6px; font-size: clamp(20px,4.8vw,28px);}
-    .panel p{ margin:6px 0 14px; color:#b9c1ff; font-size:14px; line-height:1.5;}
-    .panel .row{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap;}
-    .hidden{ display:none !important; }
-    .level-banner{ position:absolute; left:50%; top:60px; transform:translateX(-50%); background:rgba(255,255,255,.08); border-radius:999px; padding:8px 14px; font-weight:800; letter-spacing:.3px; pointer-events:none; }
-    .touch-hints{ position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; pointer-events:none; opacity:.08;}
-    .touch-hints>div{ border:1px dashed rgba(255,255,255,.12); margin:6px; border-radius:12px; }
-    @media (hover:hover) and (pointer:fine){ .touch-hints{ display:none; } }
+
+    #wrap {
+      position: relative;
+      height: 100%;
+      display: grid;
+      place-items: center;
+    }
+
+    canvas {
+      display: block;
+      width: min(92vw, 700px);
+      aspect-ratio: 9/16;
+      height: auto;
+      border-radius: 16px;
+      background: linear-gradient(180deg, #0f1240, #0a0c22);
+      box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
+      touch-action: none;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* --- HUD 強制置頂 --- */
+    .hud {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      z-index: 1000 !important;
+      pointer-events: none;
+    }
+    #panelStart { display: block !important; }
+    #touchPads { z-index: 20; pointer-events: none; }
+    #splash { z-index: 2000; }
+
+    .panel {
+      pointer-events: auto;
+      min-width: clamp(260px, 82%, 560px);
+      text-align: center;
+      padding: 18px 16px 20px;
+      border-radius: 14px;
+      background: rgba(10,12,34,.85);
+      box-shadow: 0 20px 60px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.06);
+      backdrop-filter: blur(4px);
+    }
+
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-weight: 700;
+      background: #2b7cff;
+      color: #fff;
+      cursor: pointer;
+      box-shadow: 0 6px 18px rgba(43,124,255,.35);
+      margin: 4px;
+    }
+
+    #splash {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(1200px 800px at 50% 30%, #0e1440 0%, #090b24 60%, #050614 100%);
+      z-index: 2000;
+    }
+
+    #neoxLogo {
+      font-weight: 900;
+      font-size: clamp(28px, 8vw, 54px);
+      letter-spacing: .1em;
+      text-shadow: 0 0 18px rgba(80,150,255,.55), 0 0 36px rgba(80,150,255,.25);
+      filter: drop-shadow(0 6px 24px rgba(0,0,0,.6));
+      opacity: 0;
+      transform: translateY(8px) scale(.98);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    #splashHint {
+      margin-top: 10px;
+      color: #b9c1ff;
+      opacity: 0;
+      transition: opacity .6s .5s;
+    }
+
+    #buildTag {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      font: 700 12px/1 system-ui;
+      opacity: .6;
+      pointer-events: none;
+      z-index: 3000;
+    }
   </style>
 </head>
 <body>
   <div id="wrap">
-    <canvas id="game" width="450" height="800" aria-label="NeoX Catch the Stars"></canvas>
+    <canvas id="game" width="450" height="800" aria-label="NeoX Catch the Coins – v4d2"></canvas>
 
     <div class="hud" aria-live="polite">
-      <div class="topbar">
-        <div class="badges">
-          <div class="badge" id="scoreBadge">分數：0</div>
-          <div class="badge" id="levelBadge">Level 1 / 5</div>
-          <div class="badge" id="progressBadge">進度：0 / 10</div>
-          <div class="badge" id="bestBadge">最佳：0</div>
-        </div>
-        <div class="buttons">
-          <button id="btnPause" class="alt" title="暫停/繼續 (P)">⏸ 暫停</button>
-          <button id="btnRestart" title="重新開始 (R)">🔄 重新開始</button>
-        </div>
+      <div class="panel" id="panelStart">
+        <h1>NeoX Catch the Coins</h1>
+        <p>用底部的托盤接住 NeoX Coin。<br>Bonus Coin = x3 分；漏接會扣分。</p>
+        <button id="btnStart">▶ 開始遊戲</button>
       </div>
-
-      <div class="center">
-        <div id="panelStart" class="panel">
-          <h1>NeoX Catch the Stars</h1>
-          <p>用底部的「盆」左右移動去接住掉下來的星星⭐。<br>
-             接得越多分數越高，完成目標數量就升級（共 5 關）。<br>
-             鍵盤 <b>← →</b> 或點按／拖曳左右半邊螢幕移動。</p>
-          <div class="row"><button id="btnStart">▶ 開始遊戲</button></div>
-        </div>
-
-        <div id="panelPause" class="panel hidden">
-          <h1>暫停中</h1>
-          <p>準備好就繼續吧！</p>
-          <div class="row">
-            <button id="btnResume">⏵ 繼續</button>
-            <button id="btnRestart2" class="alt">🔄 重開</button>
-          </div>
-        </div>
-
-        <div id="panelWin" class="panel hidden">
-          <h1>恭喜通關！</h1>
-          <p><span id="finalScore">分數：0</span><br><span id="bestScore">最佳：0</span></p>
-          <div class="row"><button id="btnPlayAgain">再玩一次</button></div>
-        </div>
-      </div>
-
-      <div class="level-banner hidden" id="levelBanner">LEVEL 1</div>
-      <div class="touch-hints" aria-hidden="true"><div></div><div></div></div>
     </div>
+
+    <div id="splash">
+      <div style="text-align:center;">
+        <div id="neoxLogo">NEOX</div>
+        <div id="splashHint">Loading…</div>
+      </div>
+    </div>
+
+    <div id="buildTag">v4d2</div>
   </div>
 
   <script>
-    // —— 畫布 HiDPI —— //
+    console.log("NeoX Catch v4d2 Loaded ✅");
+
+    // 🔹 保證開始面板顯示
+    const panelStart = document.getElementById('panelStart');
+    if (panelStart) {
+      panelStart.classList.remove('hidden');
+      panelStart.style.display = 'block';
+    }
+
+    // 🔹 開場動畫
+    const splash = document.getElementById('splash');
+    const neoxLogo = document.getElementById('neoxLogo');
+    const splashHint = document.getElementById('splashHint');
+
+    requestAnimationFrame(() => {
+      neoxLogo.style.opacity = '1';
+      neoxLogo.style.transform = 'translateY(0) scale(1)';
+      splashHint.style.opacity = '1';
+    });
+
+    setTimeout(() => {
+      splash.style.transition = 'opacity .8s ease';
+      splash.style.opacity = '0';
+      setTimeout(() => splash.style.display = 'none', 800);
+    }, 1600);
+
+    // 🔹 測試動畫背景（確保有動作）
     const canvas = document.getElementById('game');
     const ctx = canvas.getContext('2d');
-    function fitHiDPI(){
-      const cssW = canvas.clientWidth, cssH = canvas.clientHeight;
-      const dpr = Math.max(1, Math.min(devicePixelRatio||1, 2));
-      if (canvas.width !== Math.round(cssW*dpr)) {
-        canvas.width = Math.round(cssW*dpr); canvas.height = Math.round(cssH*dpr);
-      }
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-    }
-    fitHiDPI(); addEventListener('resize', fitHiDPI);
-
-    // —— 狀態 —— //
-    const State = { READY:0, PLAYING:1, PAUSED:2, WIN:3 };
-    let state = State.READY;
-
-    // —— HUD 元件 —— //
-    const scoreBadge   = document.getElementById('scoreBadge');
-    const levelBadge   = document.getElementById('levelBadge');
-    const progressBadge= document.getElementById('progressBadge');
-    const bestBadge    = document.getElementById('bestBadge');
-    const panelStart   = document.getElementById('panelStart');
-    const panelPause   = document.getElementById('panelPause');
-    const panelWin     = document.getElementById('panelWin');
-    const finalScore   = document.getElementById('finalScore');
-    const bestScoreEl  = document.getElementById('bestScore');
-    const levelBanner  = document.getElementById('levelBanner');
-
-    // —— UI 按鈕 —— //
-    document.getElementById('btnStart').onclick = start;
-    document.getElementById('btnPause').onclick = () => togglePause();
-    document.getElementById('btnResume').onclick = () => togglePause(false);
-    document.getElementById('btnRestart').onclick = restart;
-    document.getElementById('btnRestart2').onclick = restart;
-    document.getElementById('btnPlayAgain').onclick = restart;
-
-    // —— 玩家（盆） —— //
-    const bowl = {
-      x: 225, y: 760, w: 110, h: 16, r: 12, speed: 6.2, vx: 0
-    };
-
-    // —— 星星 —— //
-    const stars = [];
-    function rand(a,b){ return Math.random()*(b-a)+a; }
-    function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
-
-    // —— 等級規則 —— //
-    // 每關設定：目標顆數、掉落速度範圍、生成間隔、同場上限、得分倍率
-    const LEVELS = [
-      { target: 10, vy:[2.0, 2.8], spawn:[0.9, 1.2], concurrent: 2, mult:1.0 }, // Lv1：4-5 粒感覺
-      { target: 25, vy:[2.6, 3.4], spawn:[0.7, 1.0], concurrent: 3, mult:1.2 },
-      { target: 45, vy:[3.0, 3.8], spawn:[0.55,0.85], concurrent: 4, mult:1.4 },
-      { target: 70, vy:[3.6, 4.6], spawn:[0.45,0.75], concurrent: 5, mult:1.7 },
-      { target:100, vy:[4.2, 5.4], spawn:[0.36,0.66], concurrent: 6, mult:2.1 }, // Lv5
-    ];
-    let levelIdx = 0;
-    let caughtThisLevel = 0;
-
-    // —— 分數 —— //
-    let score = 0;
-    let best = Number(localStorage.getItem('neox_catch_best') || 0);
-
-    // —— 輸入 —— //
-    const keys = new Set();
-    addEventListener('keydown', e=>{
-      if (e.repeat) return;
-      if (e.key === 'ArrowLeft') keys.add('L');
-      if (e.key === 'ArrowRight') keys.add('R');
-      if (e.key.toLowerCase() === 'p') togglePause();
-      if (e.key.toLowerCase() === 'r') restart();
-      if (state === State.READY && (e.key === ' ' || e.key === 'Enter')) start();
-    });
-    addEventListener('keyup', e=>{
-      if (e.key === 'ArrowLeft') keys.delete('L');
-      if (e.key === 'ArrowRight') keys.delete('R');
-    });
-
-    // 觸控/指標：點按左右半屏 / 拖曳
-    let pointerId=null, lastX=null;
-    function onPointerDown(e){
-      const p=(e.changedTouches&&e.changedTouches[0])||e;
-      pointerId = p.identifier ?? 'mouse';
-      lastX = p.clientX;
-      if (state===State.READY) start();
-      e.preventDefault();
-    }
-    function onPointerMove(e){
-      const p=(e.changedTouches && ([...e.changedTouches].find(t => (t.identifier ?? 'mouse')===pointerId)))||e;
-      if (!p) return;
-      const rect = canvas.getBoundingClientRect();
-      const cx = (p.clientX - rect.left) / rect.width * canvas.clientWidth;
-      const diff = cx - bowl.x;
-      bowl.vx = clamp(diff*0.25, -bowl.speed, bowl.speed);
-      e.preventDefault();
-    }
-    function onPointerUp(e){ pointerId=null; lastX=null; bowl.vx=0; e.preventDefault(); }
-
-    canvas.addEventListener('pointerdown', onPointerDown, {passive:false});
-    addEventListener('pointermove', onPointerMove, {passive:false});
-    addEventListener('pointerup', onPointerUp, {passive:false});
-    addEventListener('pointercancel', onPointerUp, {passive:false});
-    addEventListener('blur', ()=>{ if(state===State.PLAYING) togglePause(true); });
-
-    // —— 工具 —— //
-    function show(el, s=true){ el.classList.toggle('hidden', !s); }
-    function flashLevelBanner(text){
-      levelBanner.textContent = text;
-      show(levelBanner, true);
-      setTimeout(()=> show(levelBanner,false), 1100);
-    }
-    function refreshHUD(){
-      scoreBadge.textContent = `分數：${Math.floor(score)}`;
-      levelBadge.textContent = `Level ${levelIdx+1} / 5`;
-      progressBadge.textContent = `進度：${caughtThisLevel} / ${LEVELS[levelIdx].target}`;
-      bestBadge.textContent = `最佳：${Math.floor(best)}`;
-      finalScore.textContent = `分數：${Math.floor(score)}`;
-      bestScoreEl.textContent = `最佳：${Math.floor(best)}`;
-    }
-
-    // —— 流程 —— //
-    let spawnTimer = 0;
-    function start(){
-      score = 0; levelIdx = 0; caughtThisLevel = 0; stars.length = 0; spawnTimer = 0;
-      bowl.x = canvas.clientWidth/2; bowl.vx=0;
-      state = State.PLAYING;
-      show(panelStart,false); show(panelPause,false); show(panelWin,false);
-      flashLevelBanner('LEVEL 1');
-      refreshHUD();
-    }
-    function togglePause(forcePause){
-      if (state===State.PLAYING && (forcePause ?? true)) {
-        state = State.PAUSED; show(panelPause,true);
-        document.getElementById('btnPause').textContent = '⏵ 繼續';
-      } else if (state===State.PAUSED) {
-        state = State.PLAYING; show(panelPause,false);
-        document.getElementById('btnPause').textContent = '⏸ 暫停';
-      }
-    }
-    function win(){
-      state = State.WIN;
-      best = Math.max(best, Math.floor(score));
-      localStorage.setItem('neox_catch_best', String(best));
-      refreshHUD();
-      show(panelWin,true);
-    }
-    function restart(){ show(panelWin,false); show(panelPause,false); start(); }
-
-    // —— 生成星星 —— //
-    function spawnStars(dt){
-      const L = LEVELS[levelIdx];
-      spawnTimer -= dt;
-      const currentMax = L.concurrent;
-      if (spawnTimer <= 0 && stars.length < currentMax) {
-        stars.push({
-          x: rand(18, canvas.clientWidth-18), y: -20,
-          r: 9, vy: rand(L.vy[0], L.vy[1]),
-          spin: rand(0,Math.PI*2), vspin: rand(-0.08,0.08)
-        });
-        spawnTimer = rand(L.spawn[0], L.spawn[1]);
-      }
-    }
-
-    // —— 主循環 —— //
-    let last = performance.now();
-    function loop(now){
+    let t = 0;
+    function loop() {
       requestAnimationFrame(loop);
-      fitHiDPI();
-      const dt = Math.min(50, now-last)/16.6667; last = now;
-
-      drawBackground(now);
-
-      if (state === State.PLAYING){
-        // 控制（鍵盤）
-        bowl.vx = (keys.has('L') ? -bowl.speed : 0) + (keys.has('R') ? bowl.speed : 0) || bowl.vx*0.92;
-        bowl.x += bowl.vx;
-        bowl.x = clamp(bowl.x, bowl.w/2 + 8, canvas.clientWidth - bowl.w/2 - 8);
-
-        spawnStars(dt);
-        for (let s of stars){ s.y += s.vy*dt; s.spin += s.vspin*dt; }
-
-        // 接到？（星 vs 盆）
-        for (let i=stars.length-1; i>=0; i--){
-          const s = stars[i];
-          // 盆矩形
-          const rx = bowl.x - bowl.w/2, ry = bowl.y - bowl.h/2, rw = bowl.w, rh = bowl.h;
-          const nx = clamp(s.x, rx, rx+rw), ny = clamp(s.y, ry, ry+rh);
-          const dx = s.x - nx, dy = s.y - ny;
-          if (dx*dx + dy*dy <= s.r*s.r){
-            // 接住！
-            const mult = LEVELS[levelIdx].mult;
-            score += Math.round(10 * mult); // 每顆星基礎10分，乘倍率
-            caughtThisLevel++;
-            stars.splice(i,1);
-            // 升關？
-            if (caughtThisLevel >= LEVELS[levelIdx].target){
-              if (levelIdx < LEVELS.length-1){
-                levelIdx++; caughtThisLevel = 0; flashLevelBanner(`LEVEL ${levelIdx+1}`);
-              } else {
-                win(); // 通關
-              }
-            }
-            refreshHUD();
-          } else if (s.y > canvas.clientHeight + 30){
-            // 掉出畫面就移除（不扣分，保持輕鬆玩法）
-            stars.splice(i,1);
-          }
-        }
-      }
-
-      drawBowl();
-      drawStars();
-
-      if (state === State.READY){
-        tipText('點擊或按空白鍵開始', canvas.clientWidth/2, canvas.clientHeight*0.62);
+      const w = canvas.width = canvas.clientWidth;
+      const h = canvas.height = canvas.clientHeight;
+      t += 0.03;
+      const g = ctx.createRadialGradient(w/2, h/3, 0, w/2, h/3, h/1.2);
+      g.addColorStop(0, 'rgba(80,160,255,0.2)');
+      g.addColorStop(1, 'rgba(0,0,40,0.9)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, w, h);
+      for (let i = 0; i < 40; i++) {
+        const x = (i * 97 + t * 50) % w;
+        const y = (i * 53 + t * 30) % h;
+        ctx.fillStyle = "rgba(255,255,255,0.7)";
+        ctx.fillRect(x, y, 1, 1);
       }
     }
-    requestAnimationFrame(loop);
+    loop();
 
-    // —— 繪製 —— //
-    function drawBackground(t){
-      const w=canvas.clientWidth, h=canvas.clientHeight;
-      ctx.clearRect(0,0,w,h);
-      const g = ctx.createRadialGradient(w*0.5, h*0.25, 20, w*0.5, h*0.25, h*0.95);
-      g.addColorStop(0,'rgba(90,180,255,0.10)');
-      g.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+    // 🔹 按鈕功能
+    document.getElementById('btnStart').addEventListener('click', () => {
+      alert('🚀 遊戲啟動成功！（此版本僅測試 UI 顯示）');
+    });
 
-      // 星塵
-      ctx.globalAlpha = 0.6; ctx.fillStyle='rgba(255,255,255,0.8)';
-      for (let i=0;i<40;i++){
-        const x = (t*0.02 + i*97)%w;
-        const y = (t*0.06 + i*53)%h;
-        ctx.fillRect(x,y,1,1);
-      }
-      ctx.globalAlpha = 1;
+    // 🔹 PWA Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(()=>{});
     }
-
-    function drawBowl(){
-      const x=bowl.x, y=bowl.y, w=bowl.w, h=bowl.h, r=bowl.r;
-      // 外光暈
-      const grad = ctx.createRadialGradient(x, y, 4, x, y, 90);
-      grad.addColorStop(0,'rgba(43,124,255,0.40)');
-      grad.addColorStop(1,'rgba(43,124,255,0)');
-      ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(x,y,70,0,Math.PI*2); ctx.fill();
-
-      // 盆身（圓角矩形 + 內凹弧形）
-      roundRect(x-w/2, y-h/2, w, h, r, '#1c274f', '#90bfff');
-      // 內弧口
-      ctx.beginPath();
-      ctx.ellipse(x, y-h/2, w*0.48, h*0.85, 0, Math.PI, 0);
-      ctx.strokeStyle = 'rgba(255,255,255,.25)'; ctx.lineWidth = 2; ctx.stroke();
-    }
-
-    function roundRect(x,y,w,h,r, fill, highlight){
-      ctx.beginPath();
-      ctx.moveTo(x+r,y);
-      ctx.arcTo(x+w,y,x+w,y+h,r);
-      ctx.arcTo(x+w,y+h,x,y+h,r);
-      ctx.arcTo(x,y+h,x,y,r);
-      ctx.arcTo(x,y,x+w,y,r);
-      ctx.closePath();
-      ctx.fillStyle = fill; ctx.fill();
-      // 高光
-      ctx.strokeStyle = highlight; ctx.globalAlpha = .35; ctx.lineWidth=2; ctx.stroke(); ctx.globalAlpha=1;
-    }
-
-    function drawStars(){
-      for (let s of stars){
-        drawStar(s.x, s.y, s.r, 5, s.spin);
-      }
-    }
-    function drawStar(x,y,r,spikes,rot){
-      const outer=r, inner=r*0.5;
-      let a=rot??0, cx=x, cy=y;
-      ctx.beginPath();
-      for(let i=0;i<spikes;i++){
-        ctx.lineTo(cx + Math.cos(a)*outer, cy + Math.sin(a)*outer);
-        a += Math.PI/spikes;
-        ctx.lineTo(cx + Math.cos(a)*inner, cy + Math.sin(a)*inner);
-        a += Math.PI/spikes;
-      }
-      ctx.closePath();
-      ctx.fillStyle='#ffd76b';
-      ctx.shadowColor='#ffd76b'; ctx.shadowBlur=12; ctx.fill(); ctx.shadowBlur=0;
-    }
-
-    function tipText(text,x,y){
-      ctx.font='600 18px system-ui, -apple-system, "Segoe UI"';
-      ctx.textAlign='center'; ctx.fillStyle='rgba(255,255,255,.9)';
-      ctx.fillText(text,x,y);
-    }
-
-    // —— 初始化 HUD —— //
-    refreshHUD();
   </script>
 </body>
 </html>
