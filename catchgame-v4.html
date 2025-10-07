@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-  <title>NeoX Catch the Coins – v4c</title>
+  <title>NeoX Catch the Coins – v4d</title>
   <meta name="theme-color" content="#0a0b1f">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="https://neoxcoin.github.io/neox-emoji-128.png">
@@ -14,12 +14,13 @@
     html, body { height:100%; margin:0; background:#0a0b1f; color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans TC",Arial,sans-serif; overflow:hidden;}
     #wrap { position:relative; height:100%; display:grid; place-items:center; }
     canvas {
+      position:relative; z-index:1;
       display:block; width:min(92vw,700px); aspect-ratio:9/16; height:auto;
       border-radius:16px; background:linear-gradient(180deg,#0f1240,#0a0c22);
       box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
       touch-action:none;
     }
-    .hud { position:absolute; inset:0; display:grid; grid-template-rows:auto 1fr auto; pointer-events:none;}
+    .hud { position:absolute; inset:0; display:grid; grid-template-rows:auto 1fr auto; pointer-events:none; z-index:3;}
     .topbar{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:calc(10px + var(--safe-top)) 14px 10px; font-weight:700; }
     .badges{ display:flex; gap:8px; flex-wrap:wrap;}
     .badge{ padding:6px 10px; border-radius:10px; background:rgba(255,255,255,.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);}
@@ -41,22 +42,21 @@
     .field input{ width: 60%; max-width: 260px; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#111638; color:#fff; }
     .note { color:#9fb0ff; font-size:13px; }
     /* 開場動畫 */
-    #splash{ position:absolute; inset:0; display:grid; place-items:center; background: radial-gradient(1200px 800px at 50% 30%, #0e1440 0%, #090b24 60%, #050614 100%); z-index: 9; }
+    #splash{ position:absolute; inset:0; display:grid; place-items:center; background: radial-gradient(1200px 800px at 50% 30%, #0e1440 0%, #090b24 60%, #050614 100%); z-index:9; }
     #neoxLogo{ font-weight:900; font-size: clamp(28px, 8vw, 54px); letter-spacing:.1em; text-shadow:0 0 18px rgba(80,150,255,.55), 0 0 36px rgba(80,150,255,.25); filter: drop-shadow(0 6px 24px rgba(0,0,0,.6)); opacity:0; transform: translateY(8px) scale(.98); transition: opacity .8s ease, transform .8s ease; }
     #splashHint{ margin-top:10px; color:#b9c1ff; opacity:0; transition: opacity .6s .5s; }
-    /* 手機大面積觸控板（初始關閉 pointer events） */
-    #touchPads{
-      position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr;
-      opacity:.08; pointer-events:none;
-    }
+    /* 手機大面積觸控板（初始關掉事件，避免遮 UI） */
+    #touchPads{ position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; opacity:.08; pointer-events:none; z-index:2; }
     #touchPads > div{ margin:6px; border:1px dashed rgba(255,255,255,.18); border-radius:12px; }
     /* 橫向提示 */
     #orientTip{ position:absolute; inset:0; display:none; place-items:center; background:rgba(0,0,0,.6); z-index:10; font-weight:700; }
+    /* 版本角標（方便你確認載入的是 v4d） */
+    #buildTag{ position:absolute; right:10px; bottom:10px; font:700 12px/1 system-ui; opacity:.6; pointer-events:none; z-index:11;}
   </style>
 </head>
 <body>
   <div id="wrap">
-    <canvas id="game" width="450" height="800" aria-label="NeoX Catch the Coins – v4c"></canvas>
+    <canvas id="game" width="450" height="800" aria-label="NeoX Catch the Coins – v4d"></canvas>
 
     <div class="hud" aria-live="polite">
       <div class="topbar">
@@ -88,13 +88,6 @@
             控制模式：
             <button id="btnCtlTouch" class="alt">觸控</button>
             <button id="btnCtlTilt"  class="alt">重力感應</button>
-          </div>
-
-          <div class="note" style="margin-top:6px;">
-            版本：
-            <button id="btnModeM" class="alt">📱 手機</button>
-            <button id="btnModeD" class="alt">🖥️ 桌面</button>
-            <span id="modeNow" class="note"></span>
           </div>
 
           <div class="leaderboard" id="startLeaderboard">
@@ -142,47 +135,21 @@
     <div id="orientTip"><div style="padding:14px 18px;background:#10153a;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.4)">請以直向遊玩 📱</div></div>
 
     <!-- 開場動畫 / Loading -->
-    <div id="splash">
-      <div style="text-align:center;">
-        <div id="neoxLogo">NEOX</div>
-        <div id="splashHint">Loading…</div>
-      </div>
-    </div>
+    <div id="splash"><div style="text-align:center;"><div id="neoxLogo">NEOX</div><div id="splashHint">Loading…</div></div></div>
+    <div id="buildTag">v4d</div>
   </div>
 
   <script>
-    // ====== 自動模式偵測（手機/桌面） ======
-    function detectMode(){
-      const coarse = matchMedia('(pointer: coarse)').matches;
-      const narrow = window.innerWidth < 520;
-      const tall   = window.innerHeight > window.innerWidth;
-      return (coarse || narrow || tall) ? 'mobile' : 'desktop';
-    }
-    let MODE = localStorage.getItem('neox_mode') || detectMode();
-    let SPEED_BASE = 6.3, SPAWN_SCALE = 1.0;
+    // ====== 版本標示 ======
+    console.log('NeoX Catch v4d');
 
-    function applyModeUI(){
-      const el = document.getElementById('modeNow');
-      if (el) el.textContent = `（目前：${MODE==='mobile'?'手機':'桌面'}）`;
-    }
-    function applyMode(){
-      const isM = MODE==='mobile';
-      // 畫質：手機限制 DPR，上機器放寬
-      window.__DPR_CAP__ = isM ? 1.5 : 2;
-      // 難度/節奏：手機稍慢一點更易控
-      SPEED_BASE = isM ? 5.2 : 6.8;
-      SPAWN_SCALE = isM ? 1.1 : 1.0;   // 數值 >1 表示生成稍慢
-      applyModeUI();
-      fitHiDPI(); layoutTray();        // 立即調整一次
-    }
-    applyMode();
-
-    // ====== 畫布 HiDPI（讀取 MODE 提供的 DPR 上限） ======
+    // ====== 畫布 HiDPI（行動裝置 DPR 上限） ======
     const canvas = document.getElementById('game');
     const ctx = canvas.getContext('2d');
     function fitHiDPI(){
       const cssW = canvas.clientWidth, cssH = canvas.clientHeight;
-      const cap = window.__DPR_CAP__ ?? 2;
+      const isMobile = /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent);
+      const cap = isMobile ? 1.5 : 2;
       const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, cap));
       if (canvas.width !== Math.round(cssW*dpr)) {
         canvas.width = Math.round(cssW*dpr); canvas.height = Math.round(cssH*dpr);
@@ -190,7 +157,7 @@
       ctx.setTransform(dpr,0,0,dpr,0,0);
       layoutTray();
     }
-    fitHiDPI(); addEventListener('resize', ()=>{ fitHiDPI(); });
+    fitHiDPI(); addEventListener('resize', fitHiDPI);
 
     // ====== 狀態與 HUD ======
     const State = { READY:0, PLAYING:1, PAUSED:2, WIN:3 };
@@ -211,28 +178,24 @@
     const lbListStart  = document.getElementById('lbListStart');
     const lbListWin    = document.getElementById('lbListWin');
     const nameInput    = document.getElementById('nameInput');
-    const modeNow      = document.getElementById('modeNow');
 
-    // ====== 玩家（NeoX 盾牌托盤） ======
+    // ====== 玩家（托盤） ======
     const tray = { x: 225, y: 758, w: 128, h: 22, r: 14, speed: 6.3, vx: 0 };
-
-    // 依畫布自動布局托盤
     function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
     function layoutTray(){
-      tray.y = canvas.clientHeight - 42; // 距底 ~42px
+      tray.y = canvas.clientHeight - 42;
       tray.w = Math.round(Math.min(160, Math.max(100, canvas.clientWidth * 0.32)));
       tray.h = 22;
       tray.x = clamp(tray.x || canvas.clientWidth/2, tray.w/2 + 10, canvas.clientWidth - tray.w/2 - 10);
     }
 
-    // ====== NeoX Coin 圖片 ======
+    // ====== 圖片 ======
     const coinImg = new Image();
     coinImg.src = "https://neoxcoin.github.io/neox-emoji-128.png";
     let coinReady = false; coinImg.onload = () => coinReady = true;
 
-    // ====== 掉落物 & 粒子 ======
-    const coins = [];
-    const particles = [];
+    // ====== 掉落物/粒子 ======
+    const coins = [], particles = [];
     function rand(a,b){ return Math.random()*(b-a)+a; }
 
     // ====== 等級規則 ======
@@ -243,74 +206,44 @@
       { target: 70, vy:[3.6, 4.6], spawn:[0.45,0.75], concurrent: 5, mult:1.7 },
       { target:100, vy:[4.2, 5.4], spawn:[0.36,0.66], concurrent: 6, mult:2.1 },
     ];
-    let levelIdx = 0;
-    let caughtThisLevel = 0;
+    let levelIdx = 0, caughtThisLevel = 0;
 
-    // ====== 分數、Combo、排行榜 ======
-    let score = 0;
+    // ====== 分數/排行榜 ======
+    let score = 0, combo = 0, comboMult = 1.0;
     let best  = Number(localStorage.getItem('neox_catch_best') || 0);
-    let combo = 0;
-    let comboMult = 1.0; // 1.0 ~ 3.0
-
-    const LB_KEY = 'neox_catch_leaderboard';
-    const NAME_KEY = 'neox_player_name';
-
-    function loadLeaderboard(){ try { return JSON.parse(localStorage.getItem(LB_KEY) || '[]'); } catch(e){ return []; } }
-    function saveLeaderboard(lb){ localStorage.setItem(LB_KEY, JSON.stringify(lb)); }
-    function renderLeaderboard(listEl, lb){
-      listEl.innerHTML = '';
-      if (!lb.length){ listEl.innerHTML = '<li>（暫無紀錄）</li>'; return; }
-      lb.slice(0,5).forEach((it,i)=>{
-        const li = document.createElement('li');
-        li.textContent = `${i+1}. ${it.name} — ${it.score} 分`;
-        listEl.appendChild(li);
-      });
-    }
+    const LB_KEY='neox_catch_leaderboard', NAME_KEY='neox_player_name';
+    function loadLB(){ try{return JSON.parse(localStorage.getItem(LB_KEY)||'[]')}catch(e){return[]} }
+    function saveLB(lb){ localStorage.setItem(LB_KEY, JSON.stringify(lb)); }
+    function renderLB(el, lb){ el.innerHTML = lb.length? lb.slice(0,5).map((it,i)=>`<li>${i+1}. ${it.name} — ${it.score} 分</li>`).join(''): '<li>（暫無紀錄）</li>'; }
+    const lbStart = document.getElementById('lbListStart'); renderLB(lbStart, loadLB());
     function maybeRecordScore(finalScore){
-      const lb = loadLeaderboard();
-      const nameDefault = localStorage.getItem(NAME_KEY) || '';
-      nameInput.value = nameDefault; setTimeout(()=> nameInput.focus(), 50);
-      renderLeaderboard(lbListWin, lb);
-      document.getElementById('btnSaveScore').onclick = ()=>{
-        const name = (nameInput.value || 'Player').trim().slice(0,20);
-        localStorage.setItem(NAME_KEY, name);
-        const entry = { name, score: Math.floor(finalScore), ts: Date.now() };
-        lb.push(entry);
-        lb.sort((a,b)=> b.score - a.score || a.ts - b.ts);
-        saveLeaderboard(lb.slice(0,5));
-        renderLeaderboard(lbListWin, loadLeaderboard());
-        renderLeaderboard(lbListStart, loadLeaderboard());
+      const lb = loadLB(); const nameDefault = localStorage.getItem(NAME_KEY)||''; nameInput.value = nameDefault;
+      renderLB(lbListWin, lb);
+      document.getElementById('btnSaveScore').onclick=()=>{
+        const name=(nameInput.value||'Player').trim().slice(0,20);
+        localStorage.setItem(NAME_KEY,name);
+        const entry={name, score:Math.floor(finalScore), ts:Date.now()};
+        lb.push(entry); lb.sort((a,b)=> b.score-a.score || a.ts-b.ts); saveLB(lb.slice(0,5));
+        renderLB(lbListWin, loadLB()); renderLB(lbStart, loadLB());
       };
     }
-    renderLeaderboard(lbListStart, loadLeaderboard());
 
-    // ====== 音效（Web Audio 合成） + 震動回饋 ======
-    let audioCtx = null, masterGain = null;
-    let soundOn = true;
-    function ensureAudio(){ if (audioCtx) return; audioCtx = new (window.AudioContext||window.webkitAudioContext)(); masterGain = audioCtx.createGain(); masterGain.gain.value = 0.8; masterGain.connect(audioCtx.destination); }
-    async function resumeAudio(){ try{ ensureAudio(); if (audioCtx.state!=='running') await audioCtx.resume(); }catch(e){} }
-    function beep({freq=440, dur=0.12, type='sine', gain=0.2, decay=0.02, start=0}) {
-      if (!soundOn || !audioCtx) return;
-      const now = audioCtx.currentTime + start;
-      const osc = audioCtx.createOscillator();
-      const g = audioCtx.createGain();
-      osc.type = type; osc.frequency.setValueAtTime(freq, now);
-      g.gain.setValueAtTime(gain, now);
-      g.gain.exponentialRampToValueAtTime(0.0001, now + Math.max(0.01, dur - decay));
-      osc.connect(g).connect(masterGain); osc.start(now); osc.stop(now + dur);
-    }
-    function haptic(ms=12){ if (navigator.vibrate) navigator.vibrate(ms); }
-    const SFX = {
-      click(){ beep({freq:700, dur:0.07, type:'triangle', gain:0.12}); },
-      catch(){ beep({freq:880, dur:0.08, type:'sine', gain:0.18}); beep({freq:1320, dur:0.10, type:'sine', gain:0.12, start:0.04}); haptic(10); },
-      bonus(){ beep({freq:660, dur:0.10, type:'triangle', gain:0.18}); beep({freq:990, dur:0.12, type:'triangle', gain:0.16, start:0.06}); haptic(18); },
-      miss(){  beep({freq:280, dur:0.16, type:'sawtooth', gain:0.14}); haptic(35); },
-      level(){ beep({freq:500, dur:0.10, type:'square', gain:0.15}); beep({freq:750, dur:0.12, type:'square', gain:0.15, start:0.08}); beep({freq:1100,dur:0.14, type:'square', gain:0.12, start:0.16}); haptic(20); },
-      win(){  [660,880,990,1320].forEach((f,i)=>beep({freq:f, dur:0.14, type:'sine', gain:0.14, start:i*0.09})); haptic(40); },
-      toggle(on){ on?beep({freq:900, dur:0.07, type:'triangle', gain:0.15}):beep({freq:300, dur:0.12, type:'triangle', gain:0.12}); }
+    // ====== 音效 + 震動 ======
+    let audioCtx=null, masterGain=null, soundOn=true;
+    function ensureAudio(){ if(audioCtx) return; audioCtx=new (window.AudioContext||window.webkitAudioContext)(); masterGain=audioCtx.createGain(); masterGain.gain.value=0.8; masterGain.connect(audioCtx.destination); }
+    async function resumeAudio(){ try{ ensureAudio(); if(audioCtx.state!=='running') await audioCtx.resume(); }catch(e){} }
+    function beep({freq=440,dur=0.12,type='sine',gain=0.2,decay=0.02,start=0}){ if(!soundOn||!audioCtx) return; const now=audioCtx.currentTime+start; const o=audioCtx.createOscillator(), g=audioCtx.createGain(); o.type=type; o.frequency.setValueAtTime(freq,now); g.gain.setValueAtTime(gain,now); g.gain.exponentialRampToValueAtTime(0.0001, now+Math.max(0.01,dur-decay)); o.connect(g).connect(masterGain); o.start(now); o.stop(now+dur); }
+    function haptic(ms=12){ if(navigator.vibrate) navigator.vibrate(ms); }
+    const SFX={ click(){beep({freq:700,dur:0.07,type:'triangle',gain:0.12});},
+      catch(){beep({freq:880,dur:0.08,gain:0.18});beep({freq:1320,dur:0.10,gain:0.12,start:0.04});haptic(10);},
+      bonus(){beep({freq:660,dur:0.10,type:'triangle',gain:0.18});beep({freq:990,dur:0.12,type:'triangle',gain:0.16,start:0.06});haptic(18);},
+      miss(){beep({freq:280,dur:0.16,type:'sawtooth',gain:0.14});haptic(35);},
+      level(){[500,750,1100].forEach((f,i)=>beep({freq:f,dur:0.1+0.04*i,type:'square',gain:0.15,start:0.08*i}));haptic(20);},
+      win(){[660,880,990,1320].forEach((f,i)=>beep({freq:f,dur:0.14,gain:0.14,start:i*0.09}));haptic(40);},
+      toggle(on){ on?beep({freq:900,dur:0.07,type:'triangle',gain:0.15}):beep({freq:300,dur:0.12,type:'triangle',gain:0.12}); }
     };
 
-    // ====== UI 操作 ======
+    // ====== UI ======
     function show(el, s=true){ el.classList.toggle('hidden', !s); }
     function flashLevelBanner(text){ levelBanner.textContent=text; show(levelBanner,true); setTimeout(()=>show(levelBanner,false),1100); }
     function refreshHUD(){
@@ -332,18 +265,13 @@
     document.getElementById('btnPlayAgain').onclick=()=> { SFX.click(); restart(); };
 
     const btnSound = document.getElementById('btnSound');
-    btnSound.addEventListener('click', async ()=>{
-      await resumeAudio();
-      soundOn = !soundOn;
-      btnSound.textContent = soundOn ? '🔊 音效' : '🔈 靜音';
-      SFX.toggle(soundOn);
-    });
+    btnSound.addEventListener('click', async ()=>{ await resumeAudio(); soundOn=!soundOn; btnSound.textContent = soundOn ? '🔊 音效' : '🔈 靜音'; SFX.toggle(soundOn); });
 
-    // ====== 控制觸控層 on/off ======
+    // 觸控層 on/off
     const touchPads = document.getElementById('touchPads');
     function setPads(on){ touchPads.style.pointerEvents = on ? 'auto' : 'none'; }
 
-    // ====== 輸入（鍵盤 + 大面積觸控 + 重力感應） ======
+    // ====== 輸入 ======
     const keys = new Set();
     addEventListener('keydown', e=>{
       if (e.repeat) return;
@@ -398,60 +326,49 @@
         }
         window.addEventListener('deviceorientation', onTilt);
         tiltEnabled = true; controlMode = 'tilt'; localStorage.setItem('neox_control_mode', controlMode);
-        setPads(false); // 切到重力感應 → 關閉大面積觸控
+        setPads(false);
       }catch(e){}
     }
     function disableTilt(){
       window.removeEventListener('deviceorientation', onTilt);
       tiltEnabled = false; controlMode = 'touch'; localStorage.setItem('neox_control_mode', controlMode);
-      setPads(state===State.PLAYING); // 回到觸控模式，如在遊戲中則開啟
+      setPads(state===State.PLAYING);
     }
-    function onTilt(e){
-      if (state !== State.PLAYING) return;
-      const g = (e.gamma || 0);
-      const targetVX = g * 0.12;
-      tray.vx = clamp(targetVX, -tray.speed, tray.speed);
-    }
+    function onTilt(e){ if (state !== State.PLAYING) return; const g = (e.gamma || 0); const targetVX = g * 0.12; tray.vx = clamp(targetVX, -tray.speed, tray.speed); }
     document.getElementById('btnCtlTouch').onclick = ()=>{ disableTilt(); SFX.click(); };
     document.getElementById('btnCtlTilt').onclick  = ()=>{ enableTilt(); SFX.click(); };
     if (controlMode==='tilt') enableTilt();
 
-    // 版本手動切換（覆蓋自動判斷）
-    document.getElementById('btnModeM').onclick = ()=>{ MODE='mobile'; localStorage.setItem('neox_mode', MODE); applyMode(); SFX.click(); };
-    document.getElementById('btnModeD').onclick = ()=>{ MODE='desktop'; localStorage.setItem('neox_mode', MODE); applyMode(); SFX.click(); };
-
-    // 首次互動啟用音訊（手機政策）
+    // 首次互動啟用音訊
     ['pointerdown','keydown'].forEach(evt=>{ window.addEventListener(evt, resumeAudio, {once:true, passive:true}); });
 
-    // 視窗失焦、分頁不可見：節能暫停
+    // 視窗不可見：暫停
     document.addEventListener('visibilitychange', ()=>{ if (document.hidden && state === State.PLAYING) togglePause(true); });
     addEventListener('blur', ()=>{ if(state===State.PLAYING) togglePause(true); });
 
     // ====== 流程 ======
     let spawnTimer = 0;
     function start(){
-      score = 0; best = Number(localStorage.getItem('neox_catch_best') || 0);
-      levelIdx = 0; caughtThisLevel = 0; coins.length = 0; particles.length = 0; spawnTimer = 0;
-      combo = 0; comboMult = 1.0;
-      applyMode();                     // 以目前 MODE 套參數
-      tray.speed = canvas.clientWidth < 420 ? SPEED_BASE : SPEED_BASE + 1.0;
-      layoutTray();
-      tray.x = canvas.clientWidth/2; tray.vx=0;
+      score=0; best=Number(localStorage.getItem('neox_catch_best')||0);
+      levelIdx=0; caughtThisLevel=0; coins.length=0; particles.length=0; spawnTimer=0;
+      combo=0; comboMult=1.0;
+      const W = canvas.clientWidth; tray.speed = W < 420 ? 5.2 : 6.3;
+      layoutTray(); tray.x = canvas.clientWidth/2; tray.vx=0;
 
       state = State.PLAYING;
       show(panelStart,false); show(panelPause,false); show(panelWin,false);
       flashLevelBanner('LEVEL 1'); refreshHUD();
-      setPads(controlMode === 'touch'); // 開始時才啟用觸控層
+      setPads(controlMode === 'touch'); // 只在遊戲中啟用大面積觸控
     }
     function togglePause(forcePause){
       if (state===State.PLAYING && (forcePause ?? true)) {
         state = State.PAUSED; show(panelPause,true);
         document.getElementById('btnPause').textContent = '⏵ 繼續';
-        setPads(false); // 暫停時關閉觸控層
+        setPads(false);
       } else if (state===State.PAUSED) {
         state = State.PLAYING; show(panelPause,false);
         document.getElementById('btnPause').textContent = '⏸ 暫停';
-        setPads(controlMode === 'touch'); // 繼續時恢復
+        setPads(controlMode === 'touch');
       }
     }
     function win(){
@@ -463,113 +380,55 @@
     }
     function restart(){ show(panelWin,false); show(panelPause,false); start(); }
 
-    // ====== 生成硬幣（含 Bonus） ======
+    // ====== 生成硬幣 ======
     function spawnCoins(dt){
       const L = LEVELS[levelIdx];
-      spawnTimer -= dt * (1/SPAWN_SCALE); // 手機稍慢
-      const currentMax = L.concurrent;
-      if (spawnTimer <= 0 && coins.length < currentMax) {
+      spawnTimer -= dt;
+      if (spawnTimer <= 0 && coins.length < L.concurrent) {
         const isBonus = Math.random() < (0.18 + levelIdx*0.02);
-        coins.push({
-          x: rand(18, canvas.clientWidth-18), y: -20,
-          r: 12, vy: rand(L.vy[0], L.vy[1]),
-          spin: rand(0,Math.PI*2), vspin: rand(-0.12,0.12),
+        coins.push({ x: rand(18, canvas.clientWidth-18), y: -20, r: 12,
+          vy: rand(L.vy[0], L.vy[1]), spin: rand(0,Math.PI*2), vspin: rand(-0.12,0.12),
           type: isBonus ? 'bonus' : 'normal'
         });
         spawnTimer = rand(L.spawn[0], L.spawn[1]);
       }
     }
 
-    // ====== 粒子效果 ======
-    function emitTrail(x,y,color='gold'){
-      const col = color==='blue' ? [180,200,255] : [255,200,80];
-      for(let i=0;i<2;i++){
-        particles.push({ x, y, vx: rand(-0.2,0.2), vy: rand(0.1,0.6), life: rand(14,22), a: 0.9, col });
-      }
-    }
-    function emitBurst(x,y,color='gold'){
-      const col = color==='blue' ? [160,200,255] : [255,230,150];
-      for(let i=0;i<14;i++){
-        const ang = rand(0, Math.PI*2), sp = rand(1.2, 2.6);
-        particles.push({ x, y, vx: Math.cos(ang)*sp, vy: Math.sin(ang)*sp, life: rand(18,26), a: 1.0, col });
-      }
-    }
-    function updateParticles(dt){
-      for(let i=particles.length-1;i>=0;i--){
-        const p=particles[i];
-        p.x += p.vx * dt * 1.2;
-        p.y += p.vy * dt * 1.2;
-        p.life -= 1*dt;
-        p.a = Math.max(0, p.life/24);
-        if (p.life<=0) particles.splice(i,1);
-      }
-    }
-    function drawParticles(){
-      for(const p of particles){
-        ctx.globalAlpha = p.a;
-        const [r,g,b] = p.col || [255,230,150];
-        const grd = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,8);
-        grd.addColorStop(0,`rgba(${r},${g},${b},1)`);
-        grd.addColorStop(1,`rgba(${r},${g},${b},0)`);
-        ctx.fillStyle = grd; ctx.beginPath(); ctx.arc(p.x,p.y,8,0,Math.PI*2); ctx.fill();
-        ctx.globalAlpha = 1;
-      }
-    }
+    // ====== 粒子 ======
+    function emitTrail(x,y,color='gold'){ const col = color==='blue' ? [180,200,255] : [255,200,80]; for(let i=0;i<2;i++){ particles.push({ x, y, vx: rand(-0.2,0.2), vy: rand(0.1,0.6), life: rand(14,22), a: 0.9, col }); } }
+    function emitBurst(x,y,color='gold'){ const col = color==='blue' ? [160,200,255] : [255,230,150]; for(let i=0;i<14;i++){ const ang = rand(0, Math.PI*2), sp = rand(1.2, 2.6); particles.push({ x, y, vx: Math.cos(ang)*sp, vy: Math.sin(ang)*sp, life: rand(18,26), a: 1.0, col }); } }
+    function updateParticles(dt){ for(let i=particles.length-1;i>=0;i--){ const p=particles[i]; p.x+=p.vx*dt*1.2; p.y+=p.vy*dt*1.2; p.life-=1*dt; p.a=Math.max(0,p.life/24); if(p.life<=0) particles.splice(i,1); } }
+    function drawParticles(){ for(const p of particles){ ctx.globalAlpha=p.a; const [r,g,b]=p.col||[255,230,150]; const grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,8); grd.addColorStop(0,`rgba(${r},${g},${b},1)`); grd.addColorStop(1,`rgba(${r},${g},${b},0)`); ctx.fillStyle=grd; ctx.beginPath(); ctx.arc(p.x,p.y,8,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1; } }
 
-    // ====== Combo 與扣分 ======
-    function onCatch(coin){
-      const levelMult = LEVELS[levelIdx].mult;
-      const typeMult  = (coin.type==='bonus') ? 3.0 : 1.0;
-      combo = Math.min(combo + 1, 200);
-      comboMult = Math.min(1 + combo * 0.10, 3.0);
-      const gain = Math.round(10 * levelMult * typeMult * comboMult);
-      score += gain; caughtThisLevel++;
-      emitBurst(coin.x, coin.y - 6, coin.type==='bonus'?'blue':'gold');
-      if (coin.type==='bonus') SFX.bonus(); else SFX.catch();
-      if (caughtThisLevel >= LEVELS[levelIdx].target){
-        if (levelIdx < LEVELS.length-1){ levelIdx++; caughtThisLevel = 0; flashLevelBanner(`LEVEL ${levelIdx+1}`); SFX.level(); }
-        else { win(); }
-      }
-      refreshHUD();
-    }
-    function onMiss(coin){
-      const levelMult = LEVELS[levelIdx].mult;
-      const penalty = Math.round(5 * levelMult);
-      score = Math.max(0, score - penalty);
-      combo = 0; comboMult = 1.0;
-      SFX.miss(); refreshHUD();
-    }
+    // ====== 得分/失分 ======
+    function onCatch(c){ const L=LEVELS[levelIdx].mult, T=(c.type==='bonus')?3:1; combo=Math.min(combo+1,200); comboMult=Math.min(1+combo*0.10,3.0); const gain=Math.round(10*L*T*comboMult); score+=gain; caughtThisLevel++; emitBurst(c.x,c.y-6,c.type==='bonus'?'blue':'gold'); (c.type==='bonus')?SFX.bonus():SFX.catch(); if(caughtThisLevel>=LEVELS[levelIdx].target){ if(levelIdx<LEVELS.length-1){ levelIdx++; caughtThisLevel=0; flashLevelBanner(`LEVEL ${levelIdx+1}`); SFX.level(); } else { win(); } } refreshHUD(); }
+    function onMiss(){ const penalty=Math.round(5*LEVELS[levelIdx].mult); score=Math.max(0,score-penalty); combo=0; comboMult=1.0; SFX.miss(); refreshHUD(); }
 
     // ====== 主循環 ======
     let last = performance.now();
     function loop(now){
       requestAnimationFrame(loop);
-      if (document.hidden) return; // 節能：隱藏時不更新
+      if (document.hidden) return;
       fitHiDPI();
       const dt = Math.min(50, now-last)/16.6667; last = now;
 
       drawBackground(now);
 
       if (state === State.PLAYING){
-        // 托盤移動
         tray.vx = (keys.has('L') ? -tray.speed : 0) + (keys.has('R') ? tray.speed : 0) || tray.vx*0.9;
         tray.x += tray.vx;
         tray.x = clamp(tray.x, tray.w/2 + 10, canvas.clientWidth - tray.w/2 - 10);
 
         spawnCoins(dt);
-        for (let c of coins){ c.y += c.vy*dt; c.spin += c.vspin*dt; emitTrail(c.x, c.y, c.type==='bonus'?'blue':'gold'); }
+        for (let c of coins){ c.y += c.vy*dt; c.spin += c.vspin*dt; emitTrail(c.x,c.y, c.type==='bonus'?'blue':'gold'); }
 
-        // 碰撞（硬幣 vs 托盤）
         for (let i=coins.length-1; i>=0; i--){
           const c = coins[i];
-          const rx = tray.x - tray.w/2, ry = tray.y - tray.h/2, rw = tray.w, rh = tray.h;
+          const rx=tray.x-tray.w/2, ry=tray.y-tray.h/2, rw=tray.w, rh=tray.h;
           const nx = clamp(c.x, rx, rx+rw), ny = clamp(c.y, ry, ry+rh);
-          const dx = c.x - nx, dy = c.y - ny;
-          if (dx*dx + dy*dy <= c.r*c.r){
-            coins.splice(i,1); onCatch(c);
-          } else if (c.y > canvas.clientHeight + 30){
-            coins.splice(i,1); onMiss(c);
-          }
+          const dx=c.x-nx, dy=c.y-ny;
+          if (dx*dx + dy*dy <= c.r*c.r){ coins.splice(i,1); onCatch(c); }
+          else if (c.y > canvas.clientHeight + 30){ coins.splice(i,1); onMiss(); }
         }
 
         updateParticles(dt);
@@ -607,12 +466,7 @@
       ctx.beginPath(); ctx.moveTo(x-w*0.45, y-h*0.55); ctx.quadraticCurveTo(x, y-h*0.95, x+w*0.45, y-h*0.55);
       ctx.strokeStyle='rgba(170,210,255,.6)'; ctx.lineWidth=1.6; ctx.stroke();
     }
-    function roundRect(x,y,w,h,r,fill='#1c274f'){
-      ctx.beginPath(); ctx.moveTo(x+r,y);
-      ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r);
-      ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r);
-      ctx.closePath(); ctx.fillStyle = fill; ctx.fill();
-    }
+    function roundRect(x,y,w,h,r,fill='#1c274f'){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); ctx.fillStyle = fill; ctx.fill(); }
     function drawCoins(){ for (let c of coins){ drawCoin(c.x, c.y, c.r*3, c.spin, c.type); } }
     function drawCoin(x, y, size, rot, type){
       const r = size/2; ctx.save(); ctx.translate(x, y); ctx.rotate(rot);
@@ -639,7 +493,7 @@
     function checkOrientation(){ const portrait = window.matchMedia("(orientation: portrait)").matches; orientTip.style.display = portrait ? 'none' : 'grid'; }
     addEventListener('orientationchange', checkOrientation); addEventListener('resize', checkOrientation); checkOrientation();
 
-    // ====== PWA：註冊 service worker ======
+    // ====== PWA ======
     if ('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js').catch(()=>{}); }
   </script>
 </body>
