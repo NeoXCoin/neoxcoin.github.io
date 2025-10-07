@@ -3,24 +3,28 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
-  <title>NeoX Catch the Coins – v4d</title>
+  <title>NeoX Catch the Coins – v4e</title>
   <meta name="theme-color" content="#0a0b1f">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="https://neoxcoin.github.io/neox-emoji-128.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
   <style>
     :root{ --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom); }
-    html, body { height:100%; margin:0; background:#0a0b1f; color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans TC",Arial,sans-serif; overflow:hidden;}
+    html, body { height:100%; margin:0; background:#0a0b1f; color:#fff;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans TC",Arial,sans-serif; overflow:hidden;}
     #wrap { position:relative; height:100%; display:grid; place-items:center; }
+
     canvas {
-      position:relative; z-index:1;
       display:block; width:min(92vw,700px); aspect-ratio:9/16; height:auto;
       border-radius:16px; background:linear-gradient(180deg,#0f1240,#0a0c22);
       box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
-      touch-action:none;
+      touch-action:none; position:relative; z-index:10;
     }
-    .hud { position:absolute; inset:0; display:grid; grid-template-rows:auto 1fr auto; pointer-events:none; z-index:3;}
+
+    /* HUD 置頂（修正藍底不顯示問題） */
+    .hud{ position:absolute; inset:0; display:grid; grid-template-rows:auto 1fr auto; pointer-events:none; z-index:1000 !important; }
     .topbar{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:calc(10px + var(--safe-top)) 14px 10px; font-weight:700; }
     .badges{ display:flex; gap:8px; flex-wrap:wrap;}
     .badge{ padding:6px 10px; border-radius:10px; background:rgba(255,255,255,.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);}
@@ -41,22 +45,21 @@
     .field { display:flex; gap:8px; justify-content:center; align-items:center; margin-top:8px;}
     .field input{ width: 60%; max-width: 260px; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#111638; color:#fff; }
     .note { color:#9fb0ff; font-size:13px; }
-    /* 開場動畫 */
-    #splash{ position:absolute; inset:0; display:grid; place-items:center; background: radial-gradient(1200px 800px at 50% 30%, #0e1440 0%, #090b24 60%, #050614 100%); z-index:9; }
+
+    /* 觸控板只在遊戲中開啟事件 */
+    #touchPads{ position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; opacity:.08; pointer-events:none; z-index:20; }
+    #touchPads > div{ margin:6px; border:1px dashed rgba(255,255,255,.18); border-radius:12px; }
+
+    #orientTip{ position:absolute; inset:0; display:none; place-items:center; background:rgba(0,0,0,.6); z-index:1100; font-weight:700; }
+    #splash{ position:absolute; inset:0; display:grid; place-items:center; background: radial-gradient(1200px 800px at 50% 30%, #0e1440 0%, #090b24 60%, #050614 100%); z-index: 2000; }
     #neoxLogo{ font-weight:900; font-size: clamp(28px, 8vw, 54px); letter-spacing:.1em; text-shadow:0 0 18px rgba(80,150,255,.55), 0 0 36px rgba(80,150,255,.25); filter: drop-shadow(0 6px 24px rgba(0,0,0,.6)); opacity:0; transform: translateY(8px) scale(.98); transition: opacity .8s ease, transform .8s ease; }
     #splashHint{ margin-top:10px; color:#b9c1ff; opacity:0; transition: opacity .6s .5s; }
-    /* 手機大面積觸控板（初始關掉事件，避免遮 UI） */
-    #touchPads{ position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; opacity:.08; pointer-events:none; z-index:2; }
-    #touchPads > div{ margin:6px; border:1px dashed rgba(255,255,255,.18); border-radius:12px; }
-    /* 橫向提示 */
-    #orientTip{ position:absolute; inset:0; display:none; place-items:center; background:rgba(0,0,0,.6); z-index:10; font-weight:700; }
-    /* 版本角標（方便你確認載入的是 v4d） */
-    #buildTag{ position:absolute; right:10px; bottom:10px; font:700 12px/1 system-ui; opacity:.6; pointer-events:none; z-index:11;}
+    #buildTag{ position:absolute; right:10px; bottom:10px; font:700 12px/1 system-ui; opacity:.6; pointer-events:none; z-index:3000;}
   </style>
 </head>
 <body>
   <div id="wrap">
-    <canvas id="game" width="450" height="800" aria-label="NeoX Catch the Coins – v4d"></canvas>
+    <canvas id="game" width="450" height="800" aria-label="NeoX Catch the Coins – v4e"></canvas>
 
     <div class="hud" aria-live="polite">
       <div class="topbar">
@@ -78,9 +81,9 @@
       <div class="center">
         <div id="panelStart" class="panel">
           <h1>NeoX Catch the Coins</h1>
-          <p>用底部的「<b>NeoX 盾牌托盤</b>」左右移動，接住掉下來的 <b>NeoX Coin</b>。<br>
-             <b>Bonus 藍色硬幣 = x3 分</b>；<b>連續接</b>會提升<b>Combo 乘數</b>（上限 x3）；<b>漏接扣分</b>並清 Combo。<br>
-             完成每關目標就升級（共 5 關），通關後可登記名字進排行榜（本機 Top 5）。</p>
+          <p>用底部的「<b>托盤</b>」左右移動，接住 <b>NeoX Coin</b>。<br>
+             <b>Bonus 藍幣 = x3 分</b>；<b>連續接</b>提升<b>Combo乘數</b>（上限 x3）；<b>漏接扣分</b>並清 Combo。<br>
+             共 5 關，完成目標會升級；通關可把名字儲存到本機排行榜。</p>
 
           <div class="row"><button id="btnStart">▶ 開始遊戲</button></div>
 
@@ -128,22 +131,17 @@
       <div class="level-banner hidden" id="levelBanner">LEVEL 1</div>
     </div>
 
-    <!-- 手機大面積觸控區（開始後才會開啟點擊） -->
     <div id="touchPads"><div id="padLeft"></div><div id="padRight"></div></div>
-
-    <!-- 橫向提示 -->
     <div id="orientTip"><div style="padding:14px 18px;background:#10153a;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.4)">請以直向遊玩 📱</div></div>
 
-    <!-- 開場動畫 / Loading -->
     <div id="splash"><div style="text-align:center;"><div id="neoxLogo">NEOX</div><div id="splashHint">Loading…</div></div></div>
-    <div id="buildTag">v4d</div>
+    <div id="buildTag">v4e</div>
   </div>
 
   <script>
-    // ====== 版本標示 ======
-    console.log('NeoX Catch v4d');
+    console.log('NeoX Catch v4e');
 
-    // ====== 畫布 HiDPI（行動裝置 DPR 上限） ======
+    /* ---------- 畫布 HiDPI ---------- */
     const canvas = document.getElementById('game');
     const ctx = canvas.getContext('2d');
     function fitHiDPI(){
@@ -159,7 +157,7 @@
     }
     fitHiDPI(); addEventListener('resize', fitHiDPI);
 
-    // ====== 狀態與 HUD ======
+    /* ---------- 狀態/HUD ---------- */
     const State = { READY:0, PLAYING:1, PAUSED:2, WIN:3 };
     let state = State.READY;
 
@@ -179,7 +177,7 @@
     const lbListWin    = document.getElementById('lbListWin');
     const nameInput    = document.getElementById('nameInput');
 
-    // ====== 玩家（托盤） ======
+    /* ---------- 托盤 ---------- */
     const tray = { x: 225, y: 758, w: 128, h: 22, r: 14, speed: 6.3, vx: 0 };
     function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
     function layoutTray(){
@@ -189,16 +187,16 @@
       tray.x = clamp(tray.x || canvas.clientWidth/2, tray.w/2 + 10, canvas.clientWidth - tray.w/2 - 10);
     }
 
-    // ====== 圖片 ======
+    /* ---------- 圖片 ---------- */
     const coinImg = new Image();
     coinImg.src = "https://neoxcoin.github.io/neox-emoji-128.png";
     let coinReady = false; coinImg.onload = () => coinReady = true;
 
-    // ====== 掉落物/粒子 ======
+    /* ---------- 物件/工具 ---------- */
     const coins = [], particles = [];
     function rand(a,b){ return Math.random()*(b-a)+a; }
 
-    // ====== 等級規則 ======
+    /* ---------- 等級 ---------- */
     const LEVELS = [
       { target: 10, vy:[2.0, 2.8], spawn:[0.9, 1.2], concurrent: 2, mult:1.0 },
       { target: 25, vy:[2.6, 3.4], spawn:[0.7, 1.0], concurrent: 3, mult:1.2 },
@@ -208,14 +206,14 @@
     ];
     let levelIdx = 0, caughtThisLevel = 0;
 
-    // ====== 分數/排行榜 ======
+    /* ---------- 分數/排行榜 ---------- */
     let score = 0, combo = 0, comboMult = 1.0;
     let best  = Number(localStorage.getItem('neox_catch_best') || 0);
     const LB_KEY='neox_catch_leaderboard', NAME_KEY='neox_player_name';
     function loadLB(){ try{return JSON.parse(localStorage.getItem(LB_KEY)||'[]')}catch(e){return[]} }
     function saveLB(lb){ localStorage.setItem(LB_KEY, JSON.stringify(lb)); }
     function renderLB(el, lb){ el.innerHTML = lb.length? lb.slice(0,5).map((it,i)=>`<li>${i+1}. ${it.name} — ${it.score} 分</li>`).join(''): '<li>（暫無紀錄）</li>'; }
-    const lbStart = document.getElementById('lbListStart'); renderLB(lbStart, loadLB());
+    renderLB(lbListStart, loadLB());
     function maybeRecordScore(finalScore){
       const lb = loadLB(); const nameDefault = localStorage.getItem(NAME_KEY)||''; nameInput.value = nameDefault;
       renderLB(lbListWin, lb);
@@ -224,11 +222,11 @@
         localStorage.setItem(NAME_KEY,name);
         const entry={name, score:Math.floor(finalScore), ts:Date.now()};
         lb.push(entry); lb.sort((a,b)=> b.score-a.score || a.ts-b.ts); saveLB(lb.slice(0,5));
-        renderLB(lbListWin, loadLB()); renderLB(lbStart, loadLB());
+        renderLB(lbListWin, loadLB()); renderLB(lbListStart, loadLB());
       };
     }
 
-    // ====== 音效 + 震動 ======
+    /* ---------- 音效/震動 ---------- */
     let audioCtx=null, masterGain=null, soundOn=true;
     function ensureAudio(){ if(audioCtx) return; audioCtx=new (window.AudioContext||window.webkitAudioContext)(); masterGain=audioCtx.createGain(); masterGain.gain.value=0.8; masterGain.connect(audioCtx.destination); }
     async function resumeAudio(){ try{ ensureAudio(); if(audioCtx.state!=='running') await audioCtx.resume(); }catch(e){} }
@@ -243,7 +241,7 @@
       toggle(on){ on?beep({freq:900,dur:0.07,type:'triangle',gain:0.15}):beep({freq:300,dur:0.12,type:'triangle',gain:0.12}); }
     };
 
-    // ====== UI ======
+    /* ---------- UI 操作 ---------- */
     function show(el, s=true){ el.classList.toggle('hidden', !s); }
     function flashLevelBanner(text){ levelBanner.textContent=text; show(levelBanner,true); setTimeout(()=>show(levelBanner,false),1100); }
     function refreshHUD(){
@@ -267,11 +265,11 @@
     const btnSound = document.getElementById('btnSound');
     btnSound.addEventListener('click', async ()=>{ await resumeAudio(); soundOn=!soundOn; btnSound.textContent = soundOn ? '🔊 音效' : '🔈 靜音'; SFX.toggle(soundOn); });
 
-    // 觸控層 on/off
+    /* ---------- 觸控層 on/off ---------- */
     const touchPads = document.getElementById('touchPads');
     function setPads(on){ touchPads.style.pointerEvents = on ? 'auto' : 'none'; }
 
-    // ====== 輸入 ======
+    /* ---------- 輸入 ---------- */
     const keys = new Set();
     addEventListener('keydown', e=>{
       if (e.repeat) return;
@@ -287,7 +285,7 @@
       if (e.key === 'ArrowRight') keys.delete('R');
     });
 
-    // 觸控拖動
+    // 畫布拖動
     let pointerId=null;
     function onPointerDown(e){ const p=(e.changedTouches&&e.changedTouches[0])||e; pointerId = p.identifier ?? 'mouse'; if (state===State.READY) start(); e.preventDefault(); }
     function onPointerMove(e){
@@ -305,7 +303,7 @@
     addEventListener('pointerup', onPointerUp, {passive:false});
     addEventListener('pointercancel', onPointerUp, {passive:false});
 
-    // 左右大面積觸控板
+    // 左右大面積觸控鍵
     let controlMode = localStorage.getItem('neox_control_mode') || 'touch';
     const padLeft  = document.getElementById('padLeft');
     const padRight = document.getElementById('padRight');
@@ -342,11 +340,11 @@
     // 首次互動啟用音訊
     ['pointerdown','keydown'].forEach(evt=>{ window.addEventListener(evt, resumeAudio, {once:true, passive:true}); });
 
-    // 視窗不可見：暫停
+    // 不可見時暫停
     document.addEventListener('visibilitychange', ()=>{ if (document.hidden && state === State.PLAYING) togglePause(true); });
     addEventListener('blur', ()=>{ if(state===State.PLAYING) togglePause(true); });
 
-    // ====== 流程 ======
+    /* ---------- 流程 ---------- */
     let spawnTimer = 0;
     function start(){
       score=0; best=Number(localStorage.getItem('neox_catch_best')||0);
@@ -358,7 +356,7 @@
       state = State.PLAYING;
       show(panelStart,false); show(panelPause,false); show(panelWin,false);
       flashLevelBanner('LEVEL 1'); refreshHUD();
-      setPads(controlMode === 'touch'); // 只在遊戲中啟用大面積觸控
+      setPads(controlMode === 'touch');
     }
     function togglePause(forcePause){
       if (state===State.PLAYING && (forcePause ?? true)) {
@@ -380,7 +378,7 @@
     }
     function restart(){ show(panelWin,false); show(panelPause,false); start(); }
 
-    // ====== 生成硬幣 ======
+    /* ---------- 生成硬幣 ---------- */
     function spawnCoins(dt){
       const L = LEVELS[levelIdx];
       spawnTimer -= dt;
@@ -394,17 +392,17 @@
       }
     }
 
-    // ====== 粒子 ======
+    /* ---------- 粒子 ---------- */
     function emitTrail(x,y,color='gold'){ const col = color==='blue' ? [180,200,255] : [255,200,80]; for(let i=0;i<2;i++){ particles.push({ x, y, vx: rand(-0.2,0.2), vy: rand(0.1,0.6), life: rand(14,22), a: 0.9, col }); } }
     function emitBurst(x,y,color='gold'){ const col = color==='blue' ? [160,200,255] : [255,230,150]; for(let i=0;i<14;i++){ const ang = rand(0, Math.PI*2), sp = rand(1.2, 2.6); particles.push({ x, y, vx: Math.cos(ang)*sp, vy: Math.sin(ang)*sp, life: rand(18,26), a: 1.0, col }); } }
     function updateParticles(dt){ for(let i=particles.length-1;i>=0;i--){ const p=particles[i]; p.x+=p.vx*dt*1.2; p.y+=p.vy*dt*1.2; p.life-=1*dt; p.a=Math.max(0,p.life/24); if(p.life<=0) particles.splice(i,1); } }
     function drawParticles(){ for(const p of particles){ ctx.globalAlpha=p.a; const [r,g,b]=p.col||[255,230,150]; const grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,8); grd.addColorStop(0,`rgba(${r},${g},${b},1)`); grd.addColorStop(1,`rgba(${r},${g},${b},0)`); ctx.fillStyle=grd; ctx.beginPath(); ctx.arc(p.x,p.y,8,0,Math.PI*2); ctx.fill(); ctx.globalAlpha=1; } }
 
-    // ====== 得分/失分 ======
+    /* ---------- 計分 ---------- */
     function onCatch(c){ const L=LEVELS[levelIdx].mult, T=(c.type==='bonus')?3:1; combo=Math.min(combo+1,200); comboMult=Math.min(1+combo*0.10,3.0); const gain=Math.round(10*L*T*comboMult); score+=gain; caughtThisLevel++; emitBurst(c.x,c.y-6,c.type==='bonus'?'blue':'gold'); (c.type==='bonus')?SFX.bonus():SFX.catch(); if(caughtThisLevel>=LEVELS[levelIdx].target){ if(levelIdx<LEVELS.length-1){ levelIdx++; caughtThisLevel=0; flashLevelBanner(`LEVEL ${levelIdx+1}`); SFX.level(); } else { win(); } } refreshHUD(); }
     function onMiss(){ const penalty=Math.round(5*LEVELS[levelIdx].mult); score=Math.max(0,score-penalty); combo=0; comboMult=1.0; SFX.miss(); refreshHUD(); }
 
-    // ====== 主循環 ======
+    /* ---------- Main Loop ---------- */
     let last = performance.now();
     function loop(now){
       requestAnimationFrame(loop);
@@ -444,7 +442,7 @@
     }
     requestAnimationFrame(loop);
 
-    // ====== 繪製 ======
+    /* ---------- 繪圖 ---------- */
     function drawBackground(t){
       const w=canvas.clientWidth, h=canvas.clientHeight;
       ctx.clearRect(0,0,w,h);
@@ -481,20 +479,22 @@
     }
     function tipText(text,x,y){ ctx.font='600 18px system-ui, -apple-system, "Segoe UI"'; ctx.textAlign='center'; ctx.fillStyle='rgba(255,255,255,.9)'; ctx.fillText(text,x,y); }
 
-    // ====== 開場動畫 ======
+    /* ---------- 開場動畫/橫向提示 ---------- */
     const splash = document.getElementById('splash');
     const neoxLogo = document.getElementById('neoxLogo');
     const splashHint = document.getElementById('splashHint');
     requestAnimationFrame(()=>{ neoxLogo.style.opacity='1'; neoxLogo.style.transform='translateY(0) scale(1)'; splashHint.style.opacity='1'; });
     setTimeout(()=>{ if(!splash) return; splash.style.transition='opacity .5s ease'; splash.style.opacity='0'; setTimeout(()=> splash.style.display='none', 520); }, 1200);
 
-    // ====== 橫向提示 ======
     const orientTip = document.getElementById('orientTip');
     function checkOrientation(){ const portrait = window.matchMedia("(orientation: portrait)").matches; orientTip.style.display = portrait ? 'none' : 'grid'; }
     addEventListener('orientationchange', checkOrientation); addEventListener('resize', checkOrientation); checkOrientation();
 
-    // ====== PWA ======
+    /* ---------- PWA ---------- */
     if ('serviceWorker' in navigator){ navigator.serviceWorker.register('./sw.js').catch(()=>{}); }
+
+    /* ---------- 進入頁面保證 Start Panel 顯示 ---------- */
+    panelStart.classList.remove('hidden'); panelStart.style.display='block';
   </script>
 </body>
 </html>
