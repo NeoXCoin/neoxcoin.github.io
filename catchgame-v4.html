@@ -496,5 +496,40 @@
     /* ---------- 進入頁面保證 Start Panel 顯示 ---------- */
     panelStart.classList.remove('hidden'); panelStart.style.display='block';
   </script>
+  
+  <!-- ==== Hotfix: 強制建立/顯示開始面板 & 置頂（v4e2） ==== -->
+<style>
+  .hud{position:absolute;inset:0;z-index:10000 !important;pointer-events:none;display:grid;grid-template-rows:auto 1fr auto}
+  .panel{pointer-events:auto;min-width:clamp(260px,82%,560px);text-align:center;padding:18px 16px 20px;border-radius:14px;background:rgba(10,12,34,.85);box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.06)}
+</style>
+
+<script>
+(function(){
+  const wrap = document.getElementById('wrap') || document.body;
+  // 如 HUD/Start 面板不存在就建立
+  if (!document.querySelector('.hud') || !document.getElementById('panelStart')){
+    const hud = document.createElement('div'); hud.className = 'hud';
+    const center = document.createElement('div'); center.style.display='grid'; center.style.placeItems='center'; center.style.padding='10px';
+    const panel = document.createElement('div'); panel.className='panel'; panel.id='panelStart';
+    panel.innerHTML = `
+      <h1>NeoX Catch the Coins</h1>
+      <p>用底部托盤接住 <b>NeoX Coin</b>。<br>Bonus 藍幣 = x3 分；漏接會扣分。</p>
+      <div class="row"><button class="btn" id="btnStartHF">▶ 開始遊戲</button></div>
+    `;
+    center.appendChild(panel); hud.appendChild(center); wrap.appendChild(hud);
+    // 綁定按鈕：如已有 start() 就啟動；否則先隱藏面板避免遮擋
+    document.getElementById('btnStartHF').addEventListener('click', ()=>{
+      try{ typeof start === 'function' ? start() : (panel.style.display='none'); }catch(e){ panel.style.display='none'; }
+    });
+  }else{
+    // 如果本來就有面板，確保它可見
+    const p = document.getElementById('panelStart'); p.classList.remove('hidden'); p.style.display='block';
+  }
+  // 再把畫布和觸控層層級理順
+  const cvs = document.querySelector('canvas'); if (cvs) cvs.style.zIndex = '10';
+  const pads = document.getElementById('touchPads'); if (pads) { pads.style.zIndex='20'; if (pads.style.pointerEvents==='') pads.style.pointerEvents='none'; }
+})();
+</script>
+<!-- ==== /Hotfix v4e2 ==== -->
 </body>
 </html>
