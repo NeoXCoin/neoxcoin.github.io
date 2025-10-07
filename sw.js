@@ -1,5 +1,5 @@
 // sw.js — NeoX Catch v4d
-const CACHE = 'neox-cache-v4e';
+const CACHE = 'neox-cache-v4e2';
 const ASSETS = [
   './catchgame-v4.html',
   './manifest.webmanifest',
