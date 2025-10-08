@@ -152,7 +152,19 @@
   function rand(a,b){ return Math.random()*(b-a)+a; }
   function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
   function isMobile(){ return /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent); }
-
+  
+  function visibleCanvasHeight(){
+  const rect = canvas.getBoundingClientRect();
+  const vp = window.visualViewport;
+  if (vp) {
+    // 視口可見的底邊（考慮 iPad 橫向工具列/手勢區）
+    const visibleBottom = (vp.offsetTop || 0) + vp.height;
+    const h = Math.max(0, Math.min(rect.bottom, visibleBottom) - rect.top);
+    return Math.round(h);
+  }
+  return Math.round(rect.height); // 後備
+  }
+  
   // ===== Player (Chest) - SIZE/PLACEMENT FIXED =====
   const tray = { x: 225, y: 0, w: 160, h: 60, speed: 6.0, vx: 0 };
   let chestAR = 3.0; // aspect ratio placeholder
