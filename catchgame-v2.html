@@ -203,8 +203,10 @@
   // 夾在畫布內（防止任何情況算到畫布外）
   tray.y = clamp(desiredY, tray.h / 2 + 4, H - tray.h / 2 - 4);
   }
-  sizeChest(); placeTrayY();
+  sizeChest();
+  placeTrayY();
   addEventListener('resize', ()=>{ sizeChest(); placeTrayY(); });
+  addEventListener('orientationchange', ()=>{ sizeChest(); placeTrayY(); });
 
   // ===== Coins & Particles =====
   const coinImg = new Image();
