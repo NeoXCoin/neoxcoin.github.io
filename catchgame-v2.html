@@ -157,6 +157,9 @@
   const tray = { x: 225, y: 0, w: 160, h: 60, speed: 6.0, vx: 0 };
   let chestAR = 3.0; // aspect ratio placeholder
 
+  // 你的 neox-chest.png 寬高比例（約 560×315）
+  const CHEST_RATIO = 315/560; // height / width
+
   const chestImg = new Image();
   chestImg.src = "https://neoxcoin.github.io/neox-chest.png";
   let chestReady=false;
