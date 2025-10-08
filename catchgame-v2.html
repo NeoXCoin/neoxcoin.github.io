@@ -183,7 +183,7 @@
   const H = canvas.clientHeight;
 
   // 手機固定 18px；桌面用較保守的 3% 或至少 24px
-  const bottomMargin = isMobile() ? 18 : Math.max(24, Math.round(H * 0.02));
+  const bottomMargin = isMobile() ? 18 : Math.max(24, Math.round(H * 0.015));
 
   // 計算期望的中心 y
   const desiredY = H - (tray.h / 2 + bottomMargin);
