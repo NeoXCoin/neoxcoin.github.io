@@ -182,11 +182,14 @@
   function placeTrayY(){
   const H = canvas.clientHeight;
 
-  // 手機固定 18px；桌面用 7% 高度（至少 72px），避免被工具列/底欄遮住
-  const bottomMargin = isMobile() ? 18 : Math.max(72, Math.round(H * 0.07));
+  // 手機固定 18px；桌面用較保守的 3% 或至少 24px
+  const bottomMargin = isMobile() ? 18 : Math.max(24, Math.round(H * 0.02));
 
-  // y 是托盤中心點：底邊 = y + h/2
-  tray.y = H - (tray.h / 2 + bottomMargin);
+  // 計算期望的中心 y
+  const desiredY = H - (tray.h / 2 + bottomMargin);
+
+  // 夾在畫布內（防止任何情況算到畫布外）
+  tray.y = clamp(desiredY, tray.h / 2 + 4, H - tray.h / 2 - 4);
   }
   sizeChest(); placeTrayY();
   addEventListener('resize', ()=>{ sizeChest(); placeTrayY(); });
