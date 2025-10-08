@@ -180,8 +180,13 @@
     tray.speed = (w < 420) ? 5.2 : 6.2;
   }
   function placeTrayY(){
-    const extra = isMobile() ? 18 : 12;           // 留底邊距
-    tray.y = canvas.clientHeight - (tray.h/2 + extra);
+  const H = canvas.clientHeight;
+
+  // 手機固定 18px；桌面用 7% 高度（至少 72px），避免被工具列/底欄遮住
+  const bottomMargin = isMobile() ? 18 : Math.max(72, Math.round(H * 0.07));
+
+  // y 是托盤中心點：底邊 = y + h/2
+  tray.y = H - (tray.h / 2 + bottomMargin);
   }
   sizeChest(); placeTrayY();
   addEventListener('resize', ()=>{ sizeChest(); placeTrayY(); });
