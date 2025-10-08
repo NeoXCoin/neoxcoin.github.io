@@ -5,137 +5,496 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 <title>NeoX Catch the Coins – v3</title>
 <style>
-  html, body { height:100%; margin:0; background:#000; color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans TC",Arial,sans-serif; overflow:hidden;}
-  #wrap { position:relative; height:100%; display:grid; place-items:center; overflow:hidden; }
+  html, body { height:100%; margin:0; background:#0a0b1f; color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans TC",Arial,sans-serif; overflow:hidden;}
+  #wrap { position:relative; height:100%; display:grid; place-items:center; }
 
-  /* 背景影片 */
-  #bgVid {
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    z-index:0;
-    filter:brightness(0.8) saturate(1.2);
+  /* 背景影片層（最底） */
+  #bgVideo{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover; z-index:0; pointer-events:none;
+    opacity:.92; filter:brightness(.9) contrast(1.05) saturate(1.1);
+    background:radial-gradient(1200px 800px at 50% 30%, #0e1440 0%, #090b24 60%, #050614 100%);
   }
 
+  /* 遊戲畫布（中間） */
   canvas {
-    position:relative;
-    z-index:1;
-    display:block;
-    width:min(92vw,700px);
-    aspect-ratio:9/16;
-    height:auto;
-    border-radius:16px;
-    background:rgba(0,0,0,0.2);
-    box-shadow:0 20px 60px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.06);
+    position:relative; z-index:1;
+    display:block; width:min(92vw,700px); aspect-ratio:9/16; height:auto;
+    border-radius:16px; background:linear-gradient(180deg,#0f1240,#0a0c22);
+    box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
     touch-action:none;
   }
 
-  .hud { position:absolute; inset:0; display:grid; grid-template-rows:auto 1fr auto; pointer-events:none; z-index:2;}
+  /* HUD（最上） */
+  .hud { position:absolute; inset:0; z-index:2; display:grid; grid-template-rows:auto 1fr auto; pointer-events:none;}
   .topbar{ display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 14px; font-weight:700; }
   .badges{ display:flex; gap:8px; flex-wrap:wrap;}
-  .badge{ padding:6px 10px; border-radius:10px; background:rgba(255,255,255,.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);}
-  .buttons{ display:flex; gap:8px; }
+  .badge{ padding:6px 10px; border-radius:10px; background:rgba(0,0,0,.35); box-shadow:inset 0 0 0 1px rgba(255,255,255,.08); backdrop-filter: blur(2px);}
+  .buttons{ display:flex; gap:8px;}
   button{ pointer-events:auto; border:0; border-radius:10px; padding:8px 12px; font-weight:700; background:#2b7cff; color:#fff; cursor:pointer; box-shadow:0 6px 18px rgba(43,124,255,.35); }
   button.alt{ background:#1f2648; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
   .center{ display:grid; place-items:center; padding:10px;}
-  .panel{ pointer-events:auto; min-width:clamp(260px,82%,560px); text-align:center; padding:18px 16px 20px; border-radius:14px; background:rgba(10,12,34,.85); box-shadow:0 20px 60px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.06); backdrop-filter: blur(4px); }
+  .panel{ pointer-events:auto; min-width:clamp(260px,82%,560px); text-align:center; padding:18px 16px 20px; border-radius:14px; background:rgba(10,12,34,.85); box-shadow:0 20px 60px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.06); backdrop-filter: blur(6px); }
   .panel h1{ margin:8px 0 6px; font-size: clamp(20px,4.8vw,28px);}
   .panel p{ margin:6px 0 14px; color:#b9c1ff; font-size:14px; line-height:1.5;}
+  .panel .row{ display:flex; justify-content:center; gap:10px; flex-wrap:wrap;}
   .hidden{ display:none !important; }
   .level-banner{ position:absolute; left:50%; top:60px; transform:translateX(-50%); background:rgba(255,255,255,.08); border-radius:999px; padding:8px 14px; font-weight:800; letter-spacing:.3px; pointer-events:none; }
+
+  .leaderboard { text-align:left; margin-top:10px; background:rgba(255,255,255,.05); border-radius:10px; padding:10px; }
+  .leaderboard h3{ margin:6px 0 8px; font-size:16px; }
+  .leaderboard ol{ margin:0; padding-left:22px; }
+  .leaderboard li{ margin:4px 0; }
+  .field { display:flex; gap:8px; justify-content:center; align-items:center; margin-top:8px;}
+  .field input{ width: 60%; max-width: 260px; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#111638; color:#fff; }
+  .note { color:#9fb0ff; font-size:13px; }
+
+  /* 手機把右上三鍵預設隱藏，改用 ⋯ */
+  #btnMore{ display:none; pointer-events:auto; border:0; border-radius:10px; padding:8px 12px; font-weight:700; background:#1f2648; color:#fff; }
+  @media (max-width: 640px){
+    .buttons{ display:none; }
+    #btnMore{ display:inline-block; }
+  }
 </style>
 </head>
 <body>
   <div id="wrap">
-    <!-- 🔹 動態背景影片 -->
-    <video id="bgVid" playsinline muted autoplay loop preload="metadata">
+    <!-- 背景影片 -->
+    <video id="bgVideo" autoplay muted loop playsinline preload="metadata">
       <source src="https://neoxcoin.github.io/Galaxy.mp4" type="video/mp4">
     </video>
 
-    <!-- 🔹 遊戲畫布 -->
+    <!-- 遊戲畫布 -->
     <canvas id="game" width="450" height="800" aria-label="NeoX Catch the Coins – v3"></canvas>
 
+    <!-- HUD -->
     <div class="hud" aria-live="polite">
       <div class="topbar">
         <div class="badges">
           <div class="badge" id="scoreBadge">Score: 0</div>
           <div class="badge" id="levelBadge">Level 1 / 5</div>
+          <button id="btnStats" class="alt">📊 Show Stats</button>
+          <div class="badge hidden" id="progressBadge">Progress: 0 / 10</div>
+          <div class="badge hidden" id="comboBadge">Combo: 0</div>
+          <div class="badge hidden" id="multBadge">x1.0</div>
+          <div class="badge hidden" id="bestBadge">Best: 0</div>
+        </div>
+        <div>
+          <div class="buttons">
+            <button id="btnHome"  class="alt" title="Home">🏠 Home</button>
+            <button id="btnSound" class="alt" title="Sound (M)">🔊 Sound</button>
+            <button id="btnPause" class="alt" title="Pause/Resume (P)">⏸ Pause</button>
+            <button id="btnRestart" title="Restart (R)">🔄 Restart</button>
+          </div>
+          <button id="btnMore" class="alt" title="Menu">⋯</button>
         </div>
       </div>
+
+      <div class="center">
+        <div id="panelStart" class="panel">
+          <h1>NeoX Catch the Coins</h1>
+          <p>Move the <b>NeoX Chest</b> left & right to catch the falling <b>NeoX Coins</b>.<br>Clear all 5 levels to win and save your name to the local leaderboard.</p>
+          <div class="row"><button id="btnStart">▶ Start</button></div>
+
+          <div class="leaderboard" id="startLeaderboard">
+            <h3>🏆 Leaderboard (Local)</h3>
+            <ol id="lbListStart"></ol>
+            <div class="note">Saved in your browser only (localStorage).</div>
+          </div>
+        </div>
+
+        <div id="panelPause" class="panel hidden">
+          <h1>Paused</h1>
+          <div class="row">
+            <button id="btnResume">⏵ Resume</button>
+            <button id="btnRestart2" class="alt">🔄 Restart</button>
+          </div>
+        </div>
+
+        <div id="panelWin" class="panel hidden">
+          <h1>GG! You cleared all levels 🎉</h1>
+          <p><span id="finalScore">Score: 0</span><br><span id="bestScore">Best: 0</span></p>
+          <div class="field">
+            <input id="nameInput" type="text" maxlength="20" placeholder="Your name (max 20)"/>
+            <button id="btnSaveScore">💾 Save</button>
+          </div>
+          <div class="leaderboard" style="margin-top:12px;">
+            <h3>📝 Leaderboard (Local)</h3>
+            <ol id="lbListWin"></ol>
+          </div>
+          <div class="row" style="margin-top:10px;"><button id="btnPlayAgain">Play again</button></div>
+        </div>
+      </div>
+
       <div class="level-banner hidden" id="levelBanner">LEVEL 1</div>
     </div>
   </div>
 
 <script>
-/* ===== 背景影片播放保險 ===== */
-const bgVid = document.getElementById('bgVid');
-bgVid?.play().catch(()=>{});
-['pointerdown','touchstart','keydown'].forEach(evt=>{
-  window.addEventListener(evt,()=>{ bgVid?.play().catch(()=>{}); },{once:true,passive:true});
-});
+  // ===== 背景影片啟動/失敗處理 =====
+  const bgVideo = document.getElementById('bgVideo');
+  (async()=>{
+    try{
+      await bgVideo.play();
+    }catch{
+      // 等第一次互動再試
+      const once = ()=>{ bgVideo.play().catch(()=>{ bgVideo.style.display='none'; }); window.removeEventListener('pointerdown', once); window.removeEventListener('keydown', once); };
+      window.addEventListener('pointerdown', once, {once:true});
+      window.addEventListener('keydown', once, {once:true});
+    }
+  })();
 
-/* ===== 遊戲邏輯簡版（沿用v2核心） ===== */
-const canvas=document.getElementById('game');
-const ctx=canvas.getContext('2d');
-function fitHiDPI(){
-  const cssW=canvas.clientWidth,cssH=canvas.clientHeight;
-  const dpr=Math.max(1,Math.min(devicePixelRatio||1,2));
-  if(canvas.width!==Math.round(cssW*dpr)){canvas.width=Math.round(cssW*dpr);canvas.height=Math.round(cssH*dpr);}
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-}
-fitHiDPI();addEventListener('resize',fitHiDPI);
-
-const tray={x:225,y:750,w:160,h:60,speed:6,vx:0};
-const coinImg=new Image();coinImg.src="https://neoxcoin.github.io/neox-emoji-128.png";
-const chestImg=new Image();chestImg.src="https://neoxcoin.github.io/neox-chest.png";
-let coinReady=false,chestReady=false;coinImg.onload=()=>coinReady=true;chestImg.onload=()=>chestReady=true;
-const coins=[];let score=0,level=1,spawnTimer=0;const levelBanner=document.getElementById('levelBanner');const scoreBadge=document.getElementById('scoreBadge');const levelBadge=document.getElementById('levelBadge');
-
-function rand(a,b){return Math.random()*(b-a)+a;}
-function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
-
-function spawnCoin(){
-  coins.push({x:rand(20,canvas.clientWidth-20),y:-20,r:14,vy:rand(2.4,4.5),spin:rand(0,6.28)});
-}
-function drawCoin(c){
-  ctx.save();ctx.translate(c.x,c.y);ctx.rotate(c.spin);
-  if(coinReady){ctx.drawImage(coinImg,-c.r,-c.r,c.r*2,c.r*2);}
-  else{ctx.fillStyle="#ffd85a";ctx.beginPath();ctx.arc(0,0,c.r,0,Math.PI*2);ctx.fill();}
-  ctx.restore();
-}
-function drawChest(){
-  if(!chestReady)return;
-  const {x,y,w,h}=tray;
-  ctx.drawImage(chestImg,x-w/2,y-h/2,w,h);
-}
-
-function flashLevelBanner(text){
-  levelBanner.textContent=text;
-  levelBanner.classList.remove('hidden');
-  setTimeout(()=>levelBanner.classList.add('hidden'),1000);
-}
-function refreshHUD(){
-  scoreBadge.textContent=`Score: ${score}`;
-  levelBadge.textContent=`Level ${level}`;
-}
-
-function loop(now){
-  requestAnimationFrame(loop);
-  fitHiDPI();
-  ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
-  for(const c of coins){c.y+=c.vy;c.spin+=0.05;drawCoin(c);}
-  for(let i=coins.length-1;i>=0;i--){
-    const c=coins[i];
-    if(c.y>canvas.clientHeight-80 && Math.abs(c.x-tray.x)<tray.w/2){coins.splice(i,1);score+=10;refreshHUD();}
-    else if(c.y>canvas.clientHeight+40){coins.splice(i,1);}
+  // ===== HiDPI =====
+  const canvas = document.getElementById('game');
+  const ctx = canvas.getContext('2d');
+  function fitHiDPI(){
+    const cssW = canvas.clientWidth, cssH = canvas.clientHeight;
+    const dpr = Math.max(1, Math.min(devicePixelRatio||1, 2));
+    if (canvas.width !== Math.round(cssW*dpr)) {
+      canvas.width = Math.round(cssW*dpr); canvas.height = Math.round(cssH*dpr);
+    }
+    ctx.setTransform(dpr,0,0,dpr,0,0);
   }
-  drawChest();
-  spawnTimer-=0.016;
-  if(spawnTimer<=0){spawnCoin();spawnTimer=rand(0.5,1.2);}
-}
-requestAnimationFrame(loop);
+  fitHiDPI(); addEventListener('resize', fitHiDPI);
+
+  // ===== 狀態 =====
+  const State = { READY:0, PLAYING:1, PAUSED:2, WIN:3 };
+  let state = State.READY;
+
+  // ===== HUD =====
+  const scoreBadge   = document.getElementById('scoreBadge');
+  const levelBadge   = document.getElementById('levelBadge');
+  const progressBadge= document.getElementById('progressBadge');
+  const comboBadge   = document.getElementById('comboBadge');
+  const multBadge    = document.getElementById('multBadge');
+  const bestBadge    = document.getElementById('bestBadge');
+  const btnStats     = document.getElementById('btnStats');
+
+  const panelStart   = document.getElementById('panelStart');
+  const panelPause   = document.getElementById('panelPause');
+  const panelWin     = document.getElementById('panelWin');
+  const finalScore   = document.getElementById('finalScore');
+  const bestScoreEl  = document.getElementById('bestScore');
+  const levelBanner  = document.getElementById('levelBanner');
+  const lbListStart  = document.getElementById('lbListStart');
+  const lbListWin    = document.getElementById('lbListWin');
+  const nameInput    = document.getElementById('nameInput');
+
+  // ===== Helpers =====
+  function show(el, s=true){ el.classList.toggle('hidden', !s); }
+  function flashLevelBanner(text){ levelBanner.textContent=text; show(levelBanner,true); setTimeout(()=>show(levelBanner,false),1100); }
+  function rand(a,b){ return Math.random()*(b-a)+a; }
+  function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
+  function isMobile(){ return /Mobile|Android|iPhone|iPad/i.test(navigator.userAgent); }
+
+  // 可見高度（解決 iOS 工具列/手勢區）
+  function visibleCanvasHeight(){
+    const rect = canvas.getBoundingClientRect();
+    const vp = window.visualViewport;
+    if (vp){
+      const visibleBottom = (vp.offsetTop || 0) + vp.height;
+      const h = Math.max(0, Math.min(rect.bottom, visibleBottom) - rect.top);
+      return Math.round(h);
+    }
+    return Math.round(rect.height);
+  }
+
+  // ===== Player (Chest) 固定比例定位 =====
+  const tray = { x: 225, y: 0, w: 160, h: 60, speed: 6.0, vx: 0 };
+  let chestAR = 3.0;
+  const chestImg = new Image();
+  chestImg.src = "https://neoxcoin.github.io/neox-chest.png";
+  let chestReady=false;
+  chestImg.onload = ()=>{
+    chestReady=true;
+    if (chestImg.naturalWidth && chestImg.naturalHeight){
+      chestAR = chestImg.naturalWidth / chestImg.naturalHeight;
+    }
+    sizeChest(); placeTrayY();
+  };
+
+  function sizeChest(){
+    const w = canvas.clientWidth;
+    const targetRatio = isMobile() ? 0.24 : 0.20;   // 依寬度比例
+    const maxW = isMobile() ? 140 : 170;
+    tray.w = Math.min(w * targetRatio, maxW);
+    tray.h = Math.max(44, Math.round(tray.w / chestAR));
+    tray.speed = (w < 420) ? 5.2 : 6.2;
+  }
+  function placeTrayY(){
+    const H = visibleCanvasHeight();
+    const isLand = matchMedia('(orientation: landscape)').matches;
+    const bottomMargin = isMobile()
+      ? 18
+      : (isLand ? Math.max(24, Math.round(H * 0.05))
+                : Math.max(24, Math.round(H * 0.03)));
+    const desiredY = H - (tray.h/2 + bottomMargin);
+    tray.y = clamp(desiredY, tray.h/2 + 4, H - tray.h/2 - 4);
+  }
+  sizeChest(); placeTrayY();
+  addEventListener('resize', ()=>{ sizeChest(); placeTrayY(); });
+  addEventListener('orientationchange', ()=>{ sizeChest(); placeTrayY(); });
+  if (window.visualViewport){
+    visualViewport.addEventListener('resize', placeTrayY, {passive:true});
+    visualViewport.addEventListener('scroll', placeTrayY, {passive:true});
+  }
+
+  // ===== 硬幣與關卡 =====
+  const coinImg = new Image();
+  coinImg.src = "https://neoxcoin.github.io/neox-emoji-128.png";
+  let coinReady = false; coinImg.onload = () => coinReady = true;
+
+  const coins = [];
+  const LEVELS = [
+    { target: 10, vy:[2.0, 2.8], spawn:[0.9, 1.2], concurrent: 2, mult:1.0 },
+    { target: 25, vy:[2.6, 3.4], spawn:[0.7, 1.0], concurrent: 3, mult:1.2 },
+    { target: 45, vy:[3.0, 3.8], spawn:[0.55,0.85], concurrent: 4, mult:1.4 },
+    { target: 70, vy:[3.6, 4.6], spawn:[0.45,0.75], concurrent: 5, mult:1.7 },
+    { target:100, vy:[4.2, 5.4], spawn:[0.36,0.66], concurrent: 6, mult:2.1 },
+  ];
+  let levelIdx = 0, caughtThisLevel = 0;
+
+  // ===== 分數與排行榜 =====
+  let score = 0, combo=0, comboMult=1.0;
+  let best  = Number(localStorage.getItem('neox_catch_best') || 0);
+  const LB_KEY = 'neox_catch_leaderboard';
+  const NAME_KEY = 'neox_player_name';
+  function loadLeaderboard(){ try { return JSON.parse(localStorage.getItem(LB_KEY) || '[]'); } catch(e){ return []; } }
+  function saveLeaderboard(lb){ localStorage.setItem(LB_KEY, JSON.stringify(lb)); }
+  function renderLeaderboard(listEl, lb){
+    listEl.innerHTML = '';
+    if (!lb.length){ listEl.innerHTML = '<li>(no record)</li>'; return; }
+    lb.slice(0,5).forEach((it,i)=>{
+      const li = document.createElement('li');
+      li.textContent = `${i+1}. ${it.name} — ${it.score}`;
+      listEl.appendChild(li);
+    });
+  }
+  renderLeaderboard(lbListStart, loadLeaderboard());
+
+  function refreshHUD(){
+    scoreBadge.textContent = `Score: ${Math.floor(score)}`;
+    levelBadge.textContent = `Level ${levelIdx+1} / 5`;
+    progressBadge.textContent = `Progress: ${caughtThisLevel} / ${LEVELS[levelIdx].target}`;
+    comboBadge.textContent   = `Combo: ${combo}`;
+    multBadge.textContent    = `x${comboMult.toFixed(1)}`;
+    bestBadge.textContent    = `Best: ${Math.floor(best)}`;
+    finalScore.textContent   = `Score: ${Math.floor(score)}`;
+    bestScoreEl.textContent  = `Best: ${Math.floor(best)}`;
+  }
+
+  // Stats 顯示切換
+  let statsShown = false;
+  btnStats.addEventListener('click', ()=>{
+    statsShown = !statsShown;
+    btnStats.textContent = statsShown ? '📊 Hide Stats' : '📊 Show Stats';
+    [progressBadge, comboBadge, multBadge, bestBadge].forEach(el=> show(el, statsShown));
+  });
+
+  // ===== 音效 =====
+  let audioCtx=null, masterGain=null, soundOn=true;
+  function ensureAudio(){ if (audioCtx) return; audioCtx=new (window.AudioContext||window.webkitAudioContext)(); masterGain=audioCtx.createGain(); masterGain.gain.value=.8; masterGain.connect(audioCtx.destination); }
+  async function resumeAudio(){ try{ ensureAudio(); if (audioCtx.state!=='running') await audioCtx.resume(); }catch(e){} }
+  function beep({f=440,d=.1,g=.2,t='sine'}){ if(!soundOn||!audioCtx) return; const n=audioCtx.currentTime; const o=audioCtx.createOscillator(), ga=audioCtx.createGain(); o.type=t; o.frequency.value=f; ga.gain.value=g; ga.gain.exponentialRampToValueAtTime(0.0001,n+d); o.connect(ga).connect(masterGain); o.start(n); o.stop(n+d); }
+  const SFX={ click(){beep({f:700,d:.07,t:'triangle',g:.12});}, catch(){beep({f:880,d:.08,g:.18});}, level(){beep({f:750,d:.12,t:'square',g:.15});}, win(){[660,880,990,1320].forEach((f,i)=>setTimeout(()=>beep({f,d:.12,g:.14}),i*90));} };
+
+  // ===== 控制 =====
+  const keys = new Set();
+  addEventListener('keydown', e=>{
+    if (e.repeat) return;
+    if (e.key === 'ArrowLeft') keys.add('L');
+    if (e.key === 'ArrowRight') keys.add('R');
+    if (e.key.toLowerCase() === 'p') togglePause();
+    if (e.key.toLowerCase() === 'r') restart();
+    if (e.key.toLowerCase() === 'm') document.getElementById('btnSound').click();
+    if (state===State.READY && (e.key===' ' || e.key==='Enter')) start();
+  });
+  addEventListener('keyup', e=>{
+    if (e.key === 'ArrowLeft') keys.delete('L');
+    if (e.key === 'ArrowRight') keys.delete('R');
+  });
+
+  // pointer drag
+  let pointerId=null;
+  function onPointerDown(e){ const p=(e.changedTouches&&e.changedTouches[0])||e; pointerId=p.identifier??'mouse'; if(state===State.READY) start(); e.preventDefault(); }
+  function onPointerMove(e){
+    const p=(e.changedTouches && ([...e.changedTouches].find(t => (t.identifier ?? 'mouse')===pointerId)))||e;
+    if (!p) return;
+    const rect = canvas.getBoundingClientRect();
+    const cx = (p.clientX - rect.left) / rect.width * canvas.clientWidth;
+    const diff = cx - tray.x;
+    tray.vx = clamp(diff*0.25, -tray.speed, tray.speed);
+    e.preventDefault();
+  }
+  function onPointerUp(e){ pointerId=null; tray.vx=0; e.preventDefault(); }
+  canvas.addEventListener('pointerdown', onPointerDown, {passive:false});
+  addEventListener('pointermove', onPointerMove, {passive:false});
+  addEventListener('pointerup', onPointerUp, {passive:false});
+  addEventListener('pointercancel', onPointerUp, {passive:false});
+  ['pointerdown','keydown'].forEach(evt=>{ window.addEventListener(evt, resumeAudio, {once:true, passive:true}); });
+  addEventListener('blur', ()=>{ if(state===State.PLAYING) togglePause(true); });
+
+  // UI buttons
+  document.getElementById('btnStart').onclick   = () => { SFX.click(); start(); };
+  document.getElementById('btnPause').onclick   = () => { SFX.click(); togglePause(); };
+  document.getElementById('btnResume').onclick  = () => { SFX.click(); togglePause(false); };
+  document.getElementById('btnRestart').onclick = () => { SFX.click(); restart(); };
+  document.getElementById('btnRestart2').onclick= () => { SFX.click(); restart(); };
+  document.getElementById('btnPlayAgain').onclick=()=> { SFX.click(); restart(); };
+  document.getElementById('btnSound').addEventListener('click', async ()=>{
+    await resumeAudio(); soundOn = !soundOn;
+    document.getElementById('btnSound').textContent = soundOn ? '🔊 Sound' : '🔈 Mute';
+    SFX.click();
+  });
+  document.getElementById('btnHome').onclick = ()=>{ location.href = './'; };
+
+  // ⋯ menu（手機用）
+  const btnMore = document.getElementById('btnMore');
+  btnMore?.addEventListener('click', ()=>{
+    const group = document.querySelector('.buttons');
+    if (!group) return;
+    const showing = getComputedStyle(group).display !== 'none';
+    if (showing){ group.style.display='none'; btnMore.textContent='⋯'; }
+    else{ group.style.display='flex'; btnMore.textContent='×';
+      setTimeout(()=>{ if(isMobile()){ group.style.display='none'; btnMore.textContent='⋯'; } }, 3500);
+    }
+  });
+
+  // ===== Flow =====
+  let spawnTimer = 0;
+  function start(){
+    score = 0; levelIdx = 0; caughtThisLevel = 0; coins.length=0; spawnTimer=0; combo=0; comboMult=1.0;
+    tray.x = canvas.clientWidth/2; tray.vx=0; sizeChest(); placeTrayY();
+    state = State.PLAYING;
+    show(panelStart,false); show(panelPause,false); show(panelWin,false);
+    flashLevelBanner('LEVEL 1'); refreshHUD();
+  }
+  function togglePause(forcePause){
+    if (state===State.PLAYING && (forcePause ?? true)) { state = State.PAUSED; show(panelPause,true); document.getElementById('btnPause').textContent='⏵ Resume'; }
+    else if (state===State.PAUSED) { state = State.PLAYING; show(panelPause,false); document.getElementById('btnPause').textContent='⏸ Pause'; }
+  }
+  function win(){
+    state = State.WIN;
+    best = Math.max(best, Math.floor(score));
+    localStorage.setItem('neox_catch_best', String(best));
+    refreshHUD(); SFX.win(); show(panelWin,true); maybeRecordScore(score);
+  }
+  function restart(){ show(panelWin,false); show(panelPause,false); start(); }
+
+  function maybeRecordScore(finalScore){
+    const lb = loadLeaderboard();
+    const nameDefault = localStorage.getItem(NAME_KEY) || '';
+    nameInput.value = nameDefault; setTimeout(()=> nameInput.focus(), 50);
+    renderLeaderboard(lbListWin, lb);
+    document.getElementById('btnSaveScore').onclick = ()=>{
+      const name = (nameInput.value || 'Player').trim().slice(0,20);
+      localStorage.setItem(NAME_KEY, name);
+      const entry = { name, score: Math.floor(finalScore), ts: Date.now() };
+      lb.push(entry);
+      lb.sort((a,b)=> b.score - a.score || a.ts - b.ts);
+      saveLeaderboard(lb.slice(0,5));
+      renderLeaderboard(lbListWin, loadLeaderboard());
+      renderLeaderboard(lbListStart, loadLeaderboard());
+    };
+  }
+
+  // ===== 生成/碰撞 =====
+  function spawnCoins(dt){
+    const L = LEVELS[levelIdx];
+    spawnTimer -= dt;
+    if (spawnTimer <= 0 && coins.length < L.concurrent) {
+      coins.push({ x: rand(18, canvas.clientWidth-18), y: -20, r: 12,
+                   vy: rand(L.vy[0], L.vy[1]), spin: rand(0,Math.PI*2), vspin: rand(-0.12,0.12) });
+      spawnTimer = rand(L.spawn[0], L.spawn[1]);
+    }
+  }
+
+  // ===== 迴圈 =====
+  let last = performance.now();
+  function loop(now){
+    requestAnimationFrame(loop);
+    fitHiDPI();
+    const dt = Math.min(50, now-last)/16.6667; last = now;
+
+    // 背景輕微星點
+    drawBackground(now);
+
+    if (state === State.PLAYING){
+      tray.vx = (keys.has('L') ? -tray.speed : 0) + (keys.has('R') ? tray.speed : 0) || tray.vx*0.9;
+      tray.x += tray.vx;
+      tray.x = clamp(tray.x, tray.w/2 + 10, canvas.clientWidth - tray.w/2 - 10);
+
+      spawnCoins(dt);
+      for (let c of coins){ c.y += c.vy*dt; c.spin += c.vspin*dt; }
+
+      // 碰撞 chest
+      for (let i=coins.length-1; i>=0; i--){
+        const c = coins[i];
+        const rx = tray.x - tray.w/2, ry = tray.y - tray.h/2, rw = tray.w, rh = tray.h;
+        const nx = clamp(c.x, rx, rx+rw), ny = clamp(c.y, ry, ry+rh);
+        const dx = c.x - nx, dy = c.y - ny;
+        if (dx*dx + dy*dy <= c.r*c.r){
+          const mult = LEVELS[levelIdx].mult;
+          score += Math.round(10 * mult);
+          caughtThisLevel++; coins.splice(i,1); SFX.catch();
+          if (caughtThisLevel >= LEVELS[levelIdx].target){
+            if (levelIdx < LEVELS.length-1){ levelIdx++; caughtThisLevel = 0; flashLevelBanner(`LEVEL ${levelIdx+1}`); SFX.level(); }
+            else { win(); }
+          }
+          refreshHUD();
+        } else if (c.y > canvas.clientHeight + 30){
+          coins.splice(i,1);
+        }
+      }
+    }
+
+    drawChest();
+    drawCoins();
+
+    if (state === State.READY){
+      tipText('Tap or press Space to start', canvas.clientWidth/2, canvas.clientHeight*0.62);
+    }
+  }
+  requestAnimationFrame(loop);
+
+  // ===== 繪圖 =====
+  function drawBackground(t){
+    const w=canvas.clientWidth, h=canvas.clientHeight;
+    // 透明星點覆蓋到影片上
+    ctx.clearRect(0,0,w,h);
+    ctx.globalAlpha = 0.6; ctx.fillStyle='rgba(255,255,255,0.8)';
+    for (let i=0;i<40;i++){
+      const x=(t*0.02 + i*97)%w, y=(t*0.06 + i*53)%h;
+      ctx.fillRect(x,y,1,1);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function roundRect(x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); ctx.fill(); }
+  function roundRectStroke(x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); ctx.stroke(); }
+
+  function drawChest(){
+    const x=tray.x, y=tray.y, w=tray.w, h=tray.h;
+    const glow = ctx.createRadialGradient(x,y,6,x,y,96);
+    glow.addColorStop(0,'rgba(255,210,80,0.45)'); glow.addColorStop(1,'rgba(255,210,80,0)');
+    ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(x,y,72,0,Math.PI*2); ctx.fill();
+
+    if (chestReady){ ctx.drawImage(chestImg, x-w/2, y-h/2, w, h); }
+    else { ctx.fillStyle = '#2a2130'; roundRect(x-w/2, y-h/2, w, h, 10);
+           ctx.lineWidth=3; ctx.strokeStyle='rgba(255,230,160,.85)'; roundRectStroke(x-w/2, y-h/2, w, h, 10); }
+  }
+
+  function drawCoins(){ for (let c of coins){ drawCoin(c.x, c.y, c.r*3, c.spin); } }
+  function drawCoin(x, y, size, rot){
+    const r = size/2; ctx.save(); ctx.translate(x, y); ctx.rotate(rot);
+    const g = ctx.createRadialGradient(0,0,0, 0,0, r*0.9);
+    g.addColorStop(0,'rgba(255,230,160,.9)'); g.addColorStop(1,'rgba(255,230,160,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0,0,r*0.95,0,Math.PI*2); ctx.fill();
+    if (coinReady){ ctx.drawImage(coinImg, -r, -r, size, size); }
+    else { const grad = ctx.createRadialGradient(0,0,r*0.2,0,0,r); grad.addColorStop(0,'#fff6cc'); grad.addColorStop(1,'#e3b23c'); ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(0,0,r,0,Math.PI*2); ctx.fill(); }
+    ctx.restore();
+  }
+  function tipText(text,x,y){ ctx.font='600 18px system-ui, -apple-system, "Segoe UI"'; ctx.textAlign='center'; ctx.fillStyle='rgba(255,255,255,.9)'; ctx.fillText(text,x,y); }
 </script>
 </body>
 </html>
