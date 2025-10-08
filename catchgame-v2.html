@@ -192,10 +192,14 @@
     tray.speed = (w < 420) ? 5.2 : 6.2;
   }
   function placeTrayY(){
-  const H = canvas.clientHeight;
+  const H = visibleCanvasHeight();                          // ← 改：用可見高度
+  const isLand = matchMedia('(orientation: landscape)').matches; // ← 加：是否橫向
 
-  // 手機固定 18px；桌面用較保守的 3% 或至少 24px
-  const bottomMargin = isMobile() ? 18 : Math.max(24, Math.round(H * 0.015));
+  // 手機固定 18px；桌面/平板：直向 3%（≥24px），橫向 5%（≥24px）
+  const bottomMargin = isMobile()
+    ? 18
+    : (isLand ? Math.max(24, Math.round(H * 0.05))
+              : Math.max(24, Math.round(H * 0.03)));
 
   // 計算期望的中心 y
   const desiredY = H - (tray.h / 2 + bottomMargin);
