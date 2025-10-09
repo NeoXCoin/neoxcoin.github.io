@@ -1,459 +1,263 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
 <meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"/>
-<title>NeoX Catch the Coins – v4 (chest + bonus + leaderboard)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<title>NeoX Mini Demo – Scoring Test</title>
 <style>
-  html,body{height:100%;margin:0;background:#0a0b1f;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,"PingFang TC","Noto Sans TC",sans-serif;overflow:hidden}
-  #wrap{position:relative;height:100%;display:grid;place-items:center}
-  canvas{
-    display:block;width:min(92vw,720px);aspect-ratio:9/16;height:auto;
-    border-radius:16px;background:radial-gradient(60% 40% at 50% 28%,#13235a 0%,#0b1135 60%,#080b20 100%);
-    box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.06);
-    touch-action:none;
+  :root {
+    --bg:#0a0a2a; --fg:#fff; --gold:#ffd54a; --blue:#7ecbff; --bad:#ff5a5a;
+    --ui:#ffffff20; --ui2:#ffffff35;
   }
-  .hud{position:absolute;inset:0;display:grid;grid-template-rows:auto 1fr auto;pointer-events:none}
-  .topbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;font-weight:700}
-  .badges{display:flex;gap:8px;flex-wrap:wrap}
-  .badge{padding:6px 10px;border-radius:10px;background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-  .buttons{display:flex;gap:8px}
-  button{pointer-events:auto;border:0;border-radius:10px;padding:8px 12px;font-weight:700;background:#2b7cff;color:#fff;cursor:pointer;box-shadow:0 6px 18px rgba(43,124,255,.35)}
-  button.alt{background:#1f2648;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
-  .center{display:grid;place-items:center;padding:10px}
-  .panel{
-    pointer-events:auto;min-width:clamp(260px,82%,560px);text-align:center;padding:18px 16px 20px;border-radius:14px;
-    background:rgba(10,12,34,.85);box-shadow:0 20px 60px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.06);backdrop-filter:blur(4px)
-  }
-  .panel h1{margin:8px 0 6px;font-size:clamp(20px,4.8vw,28px)}
-  .panel p{margin:6px 0 12px;color:#b9c1ff;font-size:14px;line-height:1.5}
-  .panel .row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-  .hidden{display:none!important}
-  .level-banner{position:absolute;left:50%;top:60px;transform:translateX(-50%);background:rgba(255,255,255,.08);border-radius:999px;padding:8px 14px;font-weight:800;letter-spacing:.3px;pointer-events:none}
-  /* 開場動畫 */
-  #splash{position:absolute;inset:0;display:grid;place-items:center;background:radial-gradient(1200px 800px at 50% 30%,#0e1440 0%,#090b24 60%,#050614 100%);z-index:9}
-  #neoxLogo{font-weight:900;font-size:clamp(28px,8vw,54px);letter-spacing:.1em;text-shadow:0 0 18px rgba(80,150,255,.55),0 0 36px rgba(80,150,255,.25);filter:drop-shadow(0 6px 24px rgba(0,0,0,.6));opacity:0;transform:translateY(8px) scale(.98);transition:opacity .8s ease,transform .8s ease}
-  #splashHint{margin-top:10px;color:#b9c1ff;opacity:0;transition:opacity .6s .5s}
-  /* Show/Hide extra stats */
-  .stat.hiddenStat{display:none}
-  /* leaderboard */
-  .leaderboard { text-align:left; margin-top:10px; background:rgba(255,255,255,.05); border-radius:10px; padding:10px; }
-  .leaderboard h3{ margin:6px 0 8px; font-size:16px; }
-  .leaderboard ol{ margin:0; padding-left:22px; }
-  .field { display:flex; gap:8px; justify-content:center; align-items:center; margin-top:8px;}
-  .field input{ width: 60%; max-width: 260px; padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,.18); background:#111638; color:#fff; }
-  .note { color:#9fb0ff; font-size:13px; }
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--fg);font-family:system-ui, Arial, sans-serif;}
+  .wrap{position:relative;max-width:700px;margin:0 auto;height:100dvh;display:flex;flex-direction:column;gap:8px;padding:8px;}
+  header{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .score, .timer {font-weight:700}
+  .btn{background:var(--ui2);border:1px solid var(--ui);padding:6px 10px;border-radius:8px;color:#fff}
+  .btn:active{transform:translateY(1px)}
+  #game{flex:1;position:relative;border:1px solid var(--ui);border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#10214e,#07112b);}
+  /* on-screen controls for mobile */
+  .ctrls{display:flex;gap:8px;justify-content:center;margin-top:8px}
+  .ctrls .btn{min-width:90px;font-size:16px}
+  /* video overlay */
+  #endOverlay{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:#000;}
+  #endVideo{width:100%;height:100%;object-fit:cover}
+  /* canvas fills game */
+  canvas{position:absolute;inset:0;width:100%;height:100%}
+  /* tip */
+  .tips{font-size:12px;opacity:.8;text-align:center}
 </style>
 </head>
 <body>
-<div id="wrap">
-  <canvas id="game" width="450" height="800" aria-label="NeoX Catch the Coins – v4"></canvas>
+<div class="wrap">
+  <header>
+    <div class="score">Score: <span id="score">0</span></div>
+    <button id="startBtn" class="btn">Start</button>
+    <div class="timer">Time: <span id="time">60</span>s</div>
+  </header>
 
-  <div class="hud" aria-live="polite">
-    <div class="topbar">
-      <div class="badges">
-        <div class="badge" id="scoreBadge">Score: 0</div>
-        <div class="badge" id="levelBadge">Level 1 / 5</div>
-        <div class="badge stat hiddenStat" id="progressBadge">Progress: 0 / 10</div>
-        <div class="badge stat hiddenStat" id="comboBadge">Combo: 0</div>
-        <div class="badge stat hiddenStat" id="multBadge">Multiplier: x1.0</div>
-        <div class="badge stat hiddenStat" id="bestBadge">Best: 0</div>
-        <button id="btnToggleStats" class="alt" style="margin-left:6px">📊 Show Stats</button>
-      </div>
-      <div class="buttons">
-        <button id="btnSound" class="alt" title="Sound on/off (M)">🔊 Sound</button>
-        <button id="btnPause" class="alt" title="Pause/Resume (P)">⏸ Pause</button>
-        <button id="btnRestart" title="Restart (R)">🔄 Restart</button>
-      </div>
-    </div>
-
-    <div class="center">
-      <div id="panelStart" class="panel">
-        <h1>NeoX Catch the Coins</h1>
-        <p>Move the <b>Treasure Chest</b> at the bottom to catch the falling <b>NeoX Coins</b>.<br>
-           <b>Bonus (blue) coin = x3</b> • Consecutive catches raise <b>Combo</b> (up to x3) • Missing deducts points & resets Combo. <br>
-           Beat each target to level up (5 levels). Good luck!</p>
-        <div class="row"><button id="btnStart">▶ Start</button></div>
-
-        <div class="leaderboard" id="startLeaderboard">
-          <h3>🏆 Leaderboard (Local)</h3>
-          <ol id="lbListStart"></ol>
-          <div class="note">Tip: leaderboard is only stored in your browser (localStorage).</div>
-        </div>
-      </div>
-
-      <div id="panelPause" class="panel hidden">
-        <h1>Paused</h1>
-        <p>Ready?</p>
-        <div class="row">
-          <button id="btnResume">⏵ Resume</button>
-          <button id="btnRestart2" class="alt">🔄 Restart</button>
-        </div>
-      </div>
-
-      <div id="panelWin" class="panel hidden">
-        <h1>GG! You cleared all levels 🎉</h1>
-        <p><span id="finalScore">Score: 0</span><br><span id="bestScore">Best: 0</span></p>
-
-        <div class="field">
-          <input id="nameInput" type="text" maxlength="20" placeholder="Enter your name (max 20)"/>
-          <button id="btnSaveScore">💾 Save</button>
-        </div>
-        <div class="note" style="margin-top:6px;">(Stored locally in your browser)</div>
-
-        <div class="leaderboard" style="margin-top:12px;">
-          <h3>📝 Leaderboard</h3>
-          <ol id="lbListWin"></ol>
-        </div>
-
-        <div class="row" style="margin-top:10px;"><button id="btnPlayAgain">Play again</button></div>
-      </div>
-    </div>
-
-    <div class="level-banner hidden" id="levelBanner">LEVEL 1</div>
-  </div>
-
-  <!-- Splash -->
-  <div id="splash">
-    <div style="text-align:center;">
-      <div id="neoxLogo">NEOX</div>
-      <div id="splashHint">Loading…</div>
+  <div id="game">
+    <canvas id="cv" width="700" height="420"></canvas>
+    <div id="endOverlay">
+      <video id="endVideo" src="NeoX_End_Game_VictoryGlow.mp4"></video>
     </div>
   </div>
+
+  <div class="ctrls">
+    <button class="btn" id="leftBtn">← Left</button>
+    <button class="btn" id="rightBtn">Right →</button>
+  </div>
+
+  <div class="tips">操作：鍵盤 ← → 或點按畫面下方按鈕。接到🪙+10、💎+50；漏接會扣分；接到🔥會扣20。</div>
 </div>
 
 <script>
-/* ===== Canvas HiDPI ===== */
-const canvas = document.getElementById('game');
-const ctx = canvas.getContext('2d');
-function fitHiDPI(){
-  const cssW = canvas.clientWidth, cssH = canvas.clientHeight;
-  const dpr = Math.max(1, Math.min(window.devicePixelRatio||1, 2));
-  if (canvas.width !== Math.round(cssW*dpr)) {
-    canvas.width = Math.round(cssW*dpr); canvas.height = Math.round(cssH*dpr);
-  }
-  ctx.setTransform(dpr,0,0,dpr,0,0);
-}
-fitHiDPI(); addEventListener('resize', fitHiDPI);
+(() => {
+  const cv = document.getElementById('cv');
+  const ctx = cv.getContext('2d');
+  const scoreEl = document.getElementById('score');
+  const timeEl = document.getElementById('time');
+  const startBtn = document.getElementById('startBtn');
+  const endOverlay = document.getElementById('endOverlay');
+  const endVideo = document.getElementById('endVideo');
+  const leftBtn = document.getElementById('leftBtn');
+  const rightBtn = document.getElementById('rightBtn');
 
-/* ===== State & UI ===== */
-const State = { READY:0, PLAYING:1, PAUSED:2, WIN:3 };
-let state = State.READY;
-
-const scoreBadge   = document.getElementById('scoreBadge');
-const levelBadge   = document.getElementById('levelBadge');
-const progressBadge= document.getElementById('progressBadge');
-const comboBadge   = document.getElementById('comboBadge');
-const multBadge    = document.getElementById('multBadge');
-const bestBadge    = document.getElementById('bestBadge');
-const panelStart   = document.getElementById('panelStart');
-const panelPause   = document.getElementById('panelPause');
-const panelWin     = document.getElementById('panelWin');
-const finalScore   = document.getElementById('finalScore');
-const bestScoreEl  = document.getElementById('bestScore');
-const levelBanner  = document.getElementById('levelBanner');
-const btnToggleStats = document.getElementById('btnToggleStats');
-
-function show(el, s=true){ el.classList.toggle('hidden', !s); }
-function flashLevelBanner(text){ levelBanner.textContent=text; show(levelBanner,true); setTimeout(()=>show(levelBanner,false),1100); }
-
-/* ===== Player (Chest image) ===== */
-const tray = { x: 225, y: 0, w: 180, h: 60, r: 10, speed: 6.2, vx: 0 };
-function placeTrayY(){
-  const margin = 10;
-  tray.y = canvas.clientHeight - (tray.h/2 + margin);
-}
-
-/* ===== Assets ===== */
-const coinImg = new Image();
-coinImg.src = "https://neoxcoin.github.io/neox-emoji-128.png";
-let coinReady=false; coinImg.onload=()=>coinReady=true;
-
-const chestImg = new Image();
-chestImg.src = "https://neoxcoin.github.io/neox-chest.png";
-let chestReady=false; chestImg.onload=()=>chestReady=true;
-
-/* ===== Game Data ===== */
-const coins = [];
-function rand(a,b){ return Math.random()*(b-a)+a; }
-function clamp(v,a,b){ return Math.max(a, Math.min(b, v)); }
-
-const LEVELS = [
-  { target:10, vy:[2.0,2.8], spawn:[0.9,1.2],  concurrent:2, mult:1.0, bonus:0.16 },
-  { target:25, vy:[2.6,3.4], spawn:[0.7,1.0],  concurrent:3, mult:1.2, bonus:0.18 },
-  { target:45, vy:[3.0,3.8], spawn:[0.55,0.85],concurrent:4, mult:1.4, bonus:0.20 },
-  { target:70, vy:[3.6,4.6], spawn:[0.45,0.75],concurrent:5, mult:1.7, bonus:0.22 },
-  { target:100,vy:[4.2,5.4], spawn:[0.36,0.66],concurrent:6, mult:2.1, bonus:0.25 },
-];
-let levelIdx=0, caughtThisLevel=0;
-let score=0, best = Number(localStorage.getItem('neox_best')||0);
-let combo=0, comboMult=1;
-
-/* ===== Leaderboard (localStorage) ===== */
-const LB_KEY='neox_lb_v4', NAME_KEY='neox_name_v4';
-const lbStartList = document.getElementById('lbListStart');
-const lbWinList   = document.getElementById('lbListWin');
-const nameInput   = document.getElementById('nameInput');
-function loadLB(){ try{ return JSON.parse(localStorage.getItem(LB_KEY)||'[]'); }catch(e){ return []; } }
-function saveLB(lb){ localStorage.setItem(LB_KEY, JSON.stringify(lb)); }
-function renderLB(ol, lb){
-  ol.innerHTML=''; if(!lb.length){ ol.innerHTML='<li>(no records)</li>'; return; }
-  lb.slice(0,5).forEach((it,i)=>{ const li=document.createElement('li'); li.textContent=`${i+1}. ${it.name} — ${it.score}`; ol.appendChild(li); });
-}
-function setupWinSave(finalScore){
-  const lb = loadLB();
-  if(nameInput){ nameInput.value = localStorage.getItem(NAME_KEY)||''; setTimeout(()=>nameInput.focus(), 50); }
-  if(lbWinList) renderLB(lbWinList, lb);
-  const btn=document.getElementById('btnSaveScore');
-  if(btn) btn.onclick = ()=>{
-    const name=(nameInput.value||'Player').trim().slice(0,20);
-    localStorage.setItem(NAME_KEY,name);
-    const entry={name, score:Math.floor(finalScore), ts:Date.now()};
-    lb.push(entry); lb.sort((a,b)=> b.score-a.score || a.ts-b.ts);
-    saveLB(lb.slice(0,5));
-    if(lbWinList) renderLB(lbWinList, loadLB());
-    if(lbStartList) renderLB(lbStartList, loadLB());
+  // Responsive canvas (keeps aspect, fits container)
+  const fitCanvas = () => {
+    const rect = cv.parentElement.getBoundingClientRect();
+    const aspect = cv.width / cv.height;
+    let w = rect.width, h = rect.height;
+    if (w/h > aspect) w = h*aspect; else h = w/aspect;
+    cv.style.width = w+'px'; cv.style.height = h+'px';
   };
-}
-// init start leaderboard
-if(lbStartList) renderLB(lbStartList, loadLB());
+  new ResizeObserver(fitCanvas).observe(document.getElementById('game')); fitCanvas();
 
-/* ===== Sound (synth) ===== */
-let audioCtx=null, masterGain=null, soundOn=true;
-function ensureAudio(){ if(audioCtx) return; audioCtx = new (window.AudioContext||window.webkitAudioContext)(); masterGain=audioCtx.createGain(); masterGain.gain.value=0.8; masterGain.connect(audioCtx.destination); }
-async function resumeAudio(){ try{ ensureAudio(); if(audioCtx.state!=='running') await audioCtx.resume(); }catch(e){} }
-function beep({freq=440,dur=0.12,type='sine',gain=0.2,decay=0.02,start=0}) {
-  if(!soundOn||!audioCtx) return;
-  const t = audioCtx.currentTime + start;
-  const osc=audioCtx.createOscillator(), g=audioCtx.createGain();
-  osc.type=type; osc.frequency.setValueAtTime(freq,t);
-  g.gain.setValueAtTime(gain,t); g.gain.exponentialRampToValueAtTime(0.0001, t+Math.max(0.01,dur-decay));
-  osc.connect(g).connect(masterGain); osc.start(t); osc.stop(t+dur);
-}
-function haptic(ms=14){ if(navigator.vibrate) navigator.vibrate(ms); }
-const SFX = {
-  click(){ beep({freq:700,dur:0.07,type:'triangle',gain:0.12}); },
-  catch(){ beep({freq:880,dur:0.08,type:'sine',gain:0.18}); beep({freq:1320,dur:0.10,type:'sine',gain:0.12,start:0.04}); haptic(10); },
-  bonus(){ beep({freq:660,dur:0.10,type:'triangle',gain:0.18}); beep({freq:990,dur:0.12,type:'triangle',gain:0.16,start:0.06}); haptic(18); },
-  level(){ [520,760,1100].forEach((f,i)=>beep({freq:f,dur:0.1+0.03*i,type:'square',gain:0.15,start:i*0.08})); },
-  win(){ [660,880,990,1320].forEach((f,i)=>beep({freq:f,dur:0.14,type:'sine',gain:0.14,start:i*0.09})); haptic(40); },
-  toggle(on){ on?beep({freq:900,dur:0.07,type:'triangle',gain:0.15}):beep({freq:300,dur:0.12,type:'triangle',gain:0.12}); }
-};
+  // Game state
+  let running = false, t0=0, last=0, timer=60, score=0;
+  const player = { x: cv.width/2, y: cv.height-36, w:60, h:18, speed:360, vx:0 };
+  const coins = [];
+  const keys = {left:false, right:false};
+  let spawnAcc = 0;
 
-/* ===== UI wiring ===== */
-function refreshHUD(){
-  scoreBadge.textContent   = `Score: ${Math.floor(score)}`;
-  levelBadge.textContent   = `Level ${levelIdx+1} / 5`;
-  progressBadge.textContent= `Progress: ${caughtThisLevel} / ${LEVELS[levelIdx].target}`;
-  comboBadge.textContent   = `Combo: ${combo}`;
-  multBadge.textContent    = `Multiplier: x${comboMult.toFixed(1)}`;
-  bestBadge.textContent    = `Best: ${Math.floor(best)}`;
-  finalScore.textContent   = `Score: ${Math.floor(score)}`;
-  bestScoreEl.textContent  = `Best: ${Math.floor(best)}`;
-}
-document.getElementById('btnStart').onclick   = ()=>{ SFX.click(); start(); };
-document.getElementById('btnPause').onclick   = ()=>{ SFX.click(); togglePause(); };
-document.getElementById('btnResume').onclick  = ()=>{ SFX.click(); togglePause(false); };
-document.getElementById('btnRestart').onclick = ()=>{ SFX.click(); restart(); };
-document.getElementById('btnRestart2').onclick= ()=>{ SFX.click(); restart(); };
-document.getElementById('btnPlayAgain').onclick=()=>{ SFX.click(); restart(); };
-
-const btnSound = document.getElementById('btnSound');
-btnSound.addEventListener('click', async ()=>{
-  await resumeAudio();
-  soundOn = !soundOn;
-  btnSound.textContent = soundOn ? '🔊 Sound' : '🔈 Mute';
-  SFX.toggle(soundOn);
-});
-btnToggleStats.addEventListener('click', ()=>{
-  const stats = document.querySelectorAll('.stat');
-  const anyHidden = [...stats].some(s=>s.classList.contains('hiddenStat'));
-  stats.forEach(s=> s.classList.toggle('hiddenStat', !anyHidden ? true : false));
-  btnToggleStats.textContent = anyHidden ? '📊 Hide Stats' : '📊 Show Stats';
-});
-
-/* ===== Input ===== */
-const keys=new Set();
-addEventListener('keydown', e=>{
-  if(e.repeat) return;
-  if(e.key==='ArrowLeft') keys.add('L');
-  if(e.key==='ArrowRight') keys.add('R');
-  if(e.key.toLowerCase()==='p') togglePause();
-  if(e.key.toLowerCase()==='r') restart();
-  if(e.key.toLowerCase()==='m') btnSound.click();
-  if(state===State.READY && (e.key===' '||e.key==='Enter')) start();
-});
-addEventListener('keyup', e=>{
-  if(e.key==='ArrowLeft') keys.delete('L');
-  if(e.key==='ArrowRight') keys.delete('R');
-});
-let pointerId=null;
-function onPointerDown(e){ const p=(e.changedTouches&&e.changedTouches[0])||e; pointerId=p.identifier??'mouse'; if(state===State.READY) start(); e.preventDefault(); }
-function onPointerMove(e){
-  const p=(e.changedTouches && ([...e.changedTouches].find(t => (t.identifier ?? 'mouse')===pointerId)))||e;
-  if(!p) return;
-  const rect=canvas.getBoundingClientRect();
-  const cx=(p.clientX-rect.left)/rect.width*canvas.clientWidth;
-  const diff=cx-tray.x;
-  tray.vx = clamp(diff*0.25, -tray.speed, tray.speed);
-  e.preventDefault();
-}
-function onPointerUp(e){ pointerId=null; tray.vx=0; e.preventDefault(); }
-canvas.addEventListener('pointerdown', onPointerDown,{passive:false});
-addEventListener('pointermove', onPointerMove,{passive:false});
-addEventListener('pointerup', onPointerUp,{passive:false});
-addEventListener('pointercancel', onPointerUp,{passive:false});
-['pointerdown','keydown'].forEach(evt=> addEventListener(evt, resumeAudio, {once:true, passive:true}));
-
-/* ===== Flow ===== */
-let spawnTimer=0;
-function start(){
-  score=0; levelIdx=0; caughtThisLevel=0; coins.length=0; spawnTimer=0;
-  combo=0; comboMult=1;
-  tray.x = canvas.clientWidth/2; tray.vx=0; placeTrayY();
-  state=State.PLAYING;
-  show(panelStart,false); show(panelPause,false); show(panelWin,false);
-  flashLevelBanner('LEVEL 1'); refreshHUD();
-}
-function togglePause(forcePause){
-  if(state===State.PLAYING && (forcePause ?? true)){
-    state=State.PAUSED; show(panelPause,true); document.getElementById('btnPause').textContent='⏵ Resume';
-  }else if(state===State.PAUSED){
-    state=State.PLAYING; show(panelPause,false); document.getElementById('btnPause').textContent='⏸ Pause';
-  }
-}
-function win(){
-  state=State.WIN; best=Math.max(best, Math.floor(score));
-  localStorage.setItem('neox_best', String(best));
-  refreshHUD(); SFX.win(); show(panelWin,true); setupWinSave(score);
-}
-function restart(){ show(panelWin,false); show(panelPause,false); start(); }
-
-/* ===== Spawning ===== */
-function spawnCoins(dt){
-  const L=LEVELS[levelIdx];
-  spawnTimer -= dt;
-  if(spawnTimer<=0 && coins.length < L.concurrent){
-    const isBonus = Math.random() < L.bonus;
+  // Coin factory
+  function spawnCoin() {
+    // type weights: normal 60%, special 25%, fake 15%
+    const r = Math.random();
+    let type = 'normal';
+    if (r>0.85) type='fake'; else if (r>0.60) type='special';
+    const baseSpeed = {normal:120, special:180, fake:160}[type];
     coins.push({
-      x: rand(18, canvas.clientWidth-18), y:-22,
-      r: isBonus? 13 : 12,
-      vy: rand(L.vy[0],L.vy[1]),
-      spin: rand(0,Math.PI*2), vspin: rand(-0.12,0.12),
-      type: isBonus ? 'bonus' : 'normal'
+      x: Math.random()*(cv.width-24)+12,
+      y: -20,
+      r: 14,
+      vy: baseSpeed + Math.random()*60,
+      type,
+      caught:false
     });
-    spawnTimer = rand(L.spawn[0], L.spawn[1]);
   }
-}
 
-/* ===== Loop ===== */
-let last=performance.now();
-function loop(now){
-  requestAnimationFrame(loop);
-  fitHiDPI();
-  placeTrayY();
-  const dt = Math.min(50, now-last)/16.6667; last=now;
+  // Drawing helpers
+  function drawBackground(){
+    // simple stars/gradient already via CSS; add faint horizon shine
+    ctx.fillStyle = 'rgba(255,255,255,0.06)';
+    ctx.fillRect(0, cv.height-80, cv.width, 2);
+  }
+  function drawPlayer(){
+    // Cute cartoony catcher bar
+    ctx.save();
+    ctx.translate(player.x, player.y);
+    ctx.fillStyle = '#2ee6ff';
+    ctx.shadowColor = '#7ecbff'; ctx.shadowBlur = 12;
+    ctx.fillRect(-player.w/2, -player.h/2, player.w, player.h);
+    ctx.shadowBlur = 0;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(-player.w/2+6, -player.h/2+4, player.w-12, player.h-8);
+    ctx.restore();
+  }
+  function drawCoin(c){
+    ctx.save();
+    ctx.translate(c.x, c.y);
+    // glow
+    ctx.shadowBlur = 15;
+    if (c.type==='normal'){ ctx.shadowColor = '#ffd54a'; ctx.fillStyle = '#ffd54a'; }
+    else if (c.type==='special'){ ctx.shadowColor = '#7ecbff'; ctx.fillStyle = '#7ecbff'; }
+    else { ctx.shadowColor = '#ff5a5a'; ctx.fillStyle = '#ff5a5a'; }
+    // coin body
+    ctx.beginPath(); ctx.arc(0,0,c.r,0,Math.PI*2); ctx.fill();
+    // rim
+    ctx.shadowBlur = 0; ctx.lineWidth = 3; ctx.strokeStyle = 'rgba(255,255,255,.65)';
+    ctx.stroke();
+    // N mark (simple N as NeoX coin placeholder)
+    ctx.fillStyle = 'rgba(0,0,0,.35)'; ctx.font = 'bold 14px system-ui';
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText('N', 0, 0);
+    ctx.restore();
+  }
 
-  drawBackground(now);
+  // Collision
+  function intersects(c, p){
+    const nearestX = Math.max(p.x - p.w/2, Math.min(c.x, p.x + p.w/2));
+    const nearestY = Math.max(p.y - p.h/2, Math.min(c.y, p.y + p.h/2));
+    const dx = c.x - nearestX, dy = c.y - nearestY;
+    return (dx*dx + dy*dy) <= c.r*c.r;
+  }
 
-  if(state===State.PLAYING){
-    tray.vx = (keys.has('L')?-tray.speed:0) + (keys.has('R')?tray.speed:0) || tray.vx*0.9;
-    tray.x += tray.vx;
-    tray.x = clamp(tray.x, tray.w/2+10, canvas.clientWidth - tray.w/2 - 10);
+  // Scoring rules
+  function onCatch(type){
+    if (type==='normal') score += 10;
+    else if (type==='special') score += 50;
+    else if (type==='fake') score -= 20;
+    updateUI();
+  }
+  function onMiss(type){
+    if (type==='normal') score -= 5;
+    else if (type==='special') score -= 10;
+    // fake: no miss penalty
+    updateUI();
+  }
+  function updateUI(){
+    if (score < 0) score = 0;
+    scoreEl.textContent = score;
+  }
 
-    spawnCoins(dt);
-    for (let c of coins){ c.y += c.vy*dt; c.spin += c.vspin*dt; }
+  // Loop
+  function step(ts){
+    if (!running) return;
+    if (!t0) t0 = ts;
+    const dt = (ts - (last||ts))/1000;
+    last = ts;
 
-    for (let i=coins.length-1; i>=0; i--){
-      const c=coins[i];
-      // chest body as hitbox
-      const rx=tray.x-tray.w/2, ry=tray.y-tray.h/2, rw=tray.w, rh=tray.h;
-      const nx = clamp(c.x, rx, rx+rw), ny = clamp(c.y, ry, ry+rh);
-      const dx=c.x-nx, dy=c.y-ny;
-      if(dx*dx+dy*dy <= c.r*c.r){
-        const L=LEVELS[levelIdx];
-        combo=Math.min(combo+1,200);
-        comboMult=Math.min(1 + combo*0.10, 3.0);
-        const typeMult = (c.type==='bonus') ? 3.0 : 1.0;
-        score += Math.round(10 * L.mult * comboMult * typeMult);
-        caughtThisLevel++;
-        coins.splice(i,1);
-        (c.type==='bonus') ? SFX.bonus() : SFX.catch();
+    // timer
+    timer -= dt; if (timer<0) timer=0;
+    timeEl.textContent = Math.ceil(timer);
 
-        if(caughtThisLevel>=L.target){
-          if(levelIdx<LEVELS.length-1){ levelIdx++; caughtThisLevel=0; flashLevelBanner(`LEVEL ${levelIdx+1}`); SFX.level(); }
-          else { win(); }
-        }
-        refreshHUD();
-      }else if(c.y > canvas.clientHeight+30){
-        // miss: reset combo & small penalty
-        const L=LEVELS[levelIdx];
-        score = Math.max(0, score - Math.round(5*L.mult));
-        combo=0; comboMult=1;
-        coins.splice(i,1);
-        refreshHUD();
+    // spawn coins
+    spawnAcc += dt;
+    const spawnEvery = 0.55; // seconds
+    while (spawnAcc >= spawnEvery){
+      spawnAcc -= spawnEvery; spawnCoin();
+    }
+
+    // input -> velocity
+    player.vx = 0;
+    if (keys.left) player.vx -= player.speed;
+    if (keys.right) player.vx += player.speed;
+    player.x += player.vx * dt;
+    player.x = Math.max(player.w/2, Math.min(cv.width - player.w/2, player.x));
+
+    // update coins
+    for (const c of coins){
+      c.y += c.vy * dt;
+      if (!c.caught && intersects(c, player)){
+        c.caught = true; c.y = cv.height+50; onCatch(c.type);
+      } else if (c.y - c.r > cv.height && !c.caught){
+        c.caught = true; onMiss(c.type);
       }
     }
+    // remove offscreen
+    for (let i=coins.length-1;i>=0;i--) if (coins[i].y > cv.height+60) coins.splice(i,1);
+
+    // draw
+    ctx.clearRect(0,0,cv.width,cv.height);
+    drawBackground();
+    drawPlayer();
+    coins.forEach(drawCoin);
+
+    // end conditions
+    if (score >= 500 || timer <= 0){
+      endGame();
+      return;
+    }
+    requestAnimationFrame(step);
   }
 
-  // draw order: coins first, chest on top
-  drawCoins();
-  drawChest();
-}
-requestAnimationFrame(loop);
-
-/* ===== Drawing ===== */
-function drawBackground(t){
-  const w=canvas.clientWidth, h=canvas.clientHeight;
-  ctx.clearRect(0,0,w,h);
-  ctx.globalAlpha=0.6; ctx.fillStyle='rgba(255,255,255,0.8)';
-  for(let i=0;i<40;i++){ const x=(t*0.02 + i*97)%w; const y=(t*0.06 + i*53)%h; ctx.fillRect(x,y,1,1); }
-  ctx.globalAlpha=1;
-}
-function drawChest(){
-  const x=tray.x, y=tray.y, w=tray.w, h=tray.h;
-  // glow under chest
-  const glow = ctx.createRadialGradient(x,y,6,x,y,96);
-  glow.addColorStop(0,'rgba(255,210,80,0.55)');
-  glow.addColorStop(1,'rgba(255,210,80,0)');
-  ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(x,y,74,0,Math.PI*2); ctx.fill();
-
-  if (chestReady){
-    ctx.drawImage(chestImg, x-w/2, y-h/2, w, h);
-  } else {
-    // fallback rounded bar
-    ctx.fillStyle = '#2a2130';
-    roundRect(x-w/2, y-h/2, w, h, 10);
-    ctx.lineWidth=3; ctx.strokeStyle='rgba(255,230,160,.9)';
-    roundRectStroke(x-w/2, y-h/2, w, h, 10);
+  function startGame(){
+    // reset
+    running = true; t0=0; last=0; timer = 60; score = 0; coins.length=0;
+    updateUI(); timeEl.textContent = 60;
+    endOverlay.style.display = 'none';
+    endVideo.pause(); endVideo.currentTime = 0;
+    requestAnimationFrame(step);
   }
-}
-function roundRect(x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); ctx.fill(); }
-function roundRectStroke(x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); ctx.stroke(); }
 
-function drawCoins(){ for(const c of coins){ drawCoin(c.x,c.y,c.r*3,c.spin,c.type); } }
-function drawCoin(x,y,size,rot,type){
-  const r=size/2; ctx.save(); ctx.translate(x,y); ctx.rotate(rot);
-  // outer glow: gold or blue
-  const g=ctx.createRadialGradient(0,0,0,0,0,r*0.9);
-  if(type==='bonus'){ g.addColorStop(0,'rgba(160,200,255,.95)'); g.addColorStop(1,'rgba(160,200,255,0)'); }
-  else { g.addColorStop(0,'rgba(255,230,160,.9)'); g.addColorStop(1,'rgba(255,230,160,0)'); }
-  ctx.fillStyle=g; ctx.beginPath(); ctx.arc(0,0,r*0.95,0,Math.PI*2); ctx.fill();
+  function endGame(){
+    running = false;
+    // show video overlay and play
+    endOverlay.style.display = 'flex';
+    // Try to resume playback on mobile user gesture: we already had clicks for buttons
+    endVideo.play().catch(()=>{ /* if blocked, user tap will start */ });
+  }
 
-  if(coinReady){ ctx.drawImage(coinImg,-r,-r,size,size); }
-  else{ const grad=ctx.createRadialGradient(0,0,r*0.2,0,0,r); grad.addColorStop(0,'#fff6cc'); grad.addColorStop(1,'#e3b23c'); ctx.fillStyle=grad; ctx.beginPath(); ctx.arc(0,0,r,0,Math.PI*2); ctx.fill(); }
+  // Controls
+  startBtn.addEventListener('click', startGame);
 
-  // blue ring for bonus
-  if(type==='bonus'){ ctx.strokeStyle='rgba(140,190,255,.9)'; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(0,0,r*0.92,0,Math.PI*2); ctx.stroke(); }
-  ctx.restore();
-}
+  window.addEventListener('keydown', e=>{
+    if (e.key==='ArrowLeft' || e.key==='a') keys.left = true;
+    if (e.key==='ArrowRight' || e.key==='d') keys.right = true;
+  });
+  window.addEventListener('keyup', e=>{
+    if (e.key==='ArrowLeft' || e.key==='a') keys.left = false;
+    if (e.key==='ArrowRight' || e.key==='d') keys.right = false;
+  });
 
-/* ===== Splash ===== */
-const splash = document.getElementById('splash');
-const neoxLogo = document.getElementById('neoxLogo');
-const splashHint = document.getElementById('splashHint');
-requestAnimationFrame(()=>{ neoxLogo.style.opacity='1'; neoxLogo.style.transform='translateY(0) scale(1)'; splashHint.style.opacity='1'; });
-setTimeout(()=>{ if(!splash) return; splash.style.transition='opacity .5s ease'; splash.style.opacity='0'; setTimeout(()=> splash.style.display='none', 520); }, 1000);
+  // Touch buttons
+  let leftDown=false, rightDown=false;
+  const press = (k, v) => { keys[k]=v; };
+  leftBtn.addEventListener('pointerdown', ()=>press('left', true));
+  leftBtn.addEventListener('pointerup',   ()=>press('left', false));
+  leftBtn.addEventListener('pointerleave',()=>press('left', false));
+  rightBtn.addEventListener('pointerdown',()=>press('right', true));
+  rightBtn.addEventListener('pointerup',  ()=>press('right', false));
+  rightBtn.addEventListener('pointerleave',()=>press('right', false));
+
+  // Tap canvas to (re)play end video if autoplay blocked
+  document.getElementById('game').addEventListener('click', ()=>{
+    if (!running && endOverlay.style.display==='flex' && endVideo.paused){
+      endVideo.play();
+    }
+  });
+})();
 </script>
 </body>
 </html>
