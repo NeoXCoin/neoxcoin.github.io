@@ -17,24 +17,11 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: #0a0a2a;
-      background-image: url('https://neoxcoin.github.io/NeoXbackG.JPG');
-      background-size: cover;
-      background-position: center;
+      background: radial-gradient(circle at center, #0a0a2a 0%, #050519 100%);
       font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif;
       color: white;
       text-align: center;
       padding: 40px 20px;
-    }
-
-    /* 背景 overlay 可選（如需要可以加） */
-    .bg-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at center, rgba(0,0,0,0.45), rgba(0,0,0,0.85));
-      z-index: -1;
     }
 
     .logo {
@@ -161,11 +148,12 @@
 </head>
 <body>
 
+  <!-- 左上 NeoX Logo -->
   <a href="index-global.html">
     <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo">
   </a>
 
-  <!-- Google Translate bar -->
+  <!-- 右上 Google Translate Bar -->
   <div id="google_translate_element"></div>
 
   <header>
