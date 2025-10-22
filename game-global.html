@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,107 +7,178 @@
   <meta name="description" content="Play NeoX Catch – Catch coins, beat the clock, and rise to the top in the NeoX universe!"/>
   <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" />
 
-  <!-- Google Translate -->
-  <meta name="google" content="notranslate" />
   <style>
-    :root{
-      --bg1:#0a0a2a; --bg2:#050519;
-      --gold1:#ffd36b; --gold2:#ffb800;
-      --glass:rgba(255,255,255,.08); --glass-bd:rgba(255,255,255,.18);
-    }
-    *{box-sizing:border-box;}
-    html,body{height:100%;}
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif;
-      background:radial-gradient(circle at center, var(--bg1) 0%, var(--bg2) 100%);
-      color:#fff; text-align:center; overflow-x:hidden;
-      padding:40px 20px;
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
     }
 
-    /* Logo + Language button (same layout style) */
-    .logo{
-      position:absolute; top:20px; left:20px; width:60px; opacity:.95;
-    }
-    .translate-switch{
-      position:absolute; top:20px; right:20px; font-size:14px;
-      color:#fff; font-weight:bold; cursor:pointer;
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #0a0a2a;
+      background-image: url('https://neoxcoin.github.io/NeoXbackG.JPG');
+      background-size: cover;
+      background-position: center;
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
     }
 
-    header{padding-top:80px;}
-    h1{font-size:clamp(26px,5vw,40px); margin:10px 0 8px;}
-    p.subtitle{opacity:.85; font-size:clamp(14px,2vw,18px); margin-bottom:24px;}
+    /* 背景 overlay 可選（如需要可以加） */
+    .bg-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(0,0,0,0.45), rgba(0,0,0,0.85));
+      z-index: -1;
+    }
+
+    .logo {
+      width: 60px;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      opacity: 0.85;
+      z-index: 9999;
+    }
+
+    #google_translate_element {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    header {
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    p.subtitle {
+      font-size: 18px;
+      opacity: 0.85;
+      margin-bottom: 30px;
+    }
 
     /* Hero Video */
-    .hero{
-      position:relative; width:90%; max-width:900px; margin:0 auto;
-      border-radius:16px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,.45);
-      background:radial-gradient(1100px 340px at 50% 100%, rgba(0,152,255,.14), transparent);
+    .hero {
+      position: relative;
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.45);
     }
-    .hero-ratio{position:relative; padding-top:56.25%;}
-    .hero video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border:none; z-index:0; filter:contrast(1.05) saturate(1.08);}
-    .hero .fade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(5,7,20,.78) 100%); z-index:1; pointer-events:none;}
-    .hero .hero-link{position:absolute; inset:0; z-index:2; display:block;}
-
-    @media (max-width:480px){
-      .hero-ratio{padding-top:100%;}
-      .hero video{object-position:center;}
-    }
-
-    /* Buttons */
-    .btn{
-      display:inline-block; margin:10px 12px; padding:14px 30px;
-      font-weight:700; text-decoration:none; border-radius:999px; position:relative;
-      background:linear-gradient(90deg, var(--gold1), var(--gold2)); color:#0a0b1f;
-      box-shadow:0 6px 18px rgba(255,184,0,.35), inset 0 1px 0 #fff4cc;
-      transition:transform .15s ease, box-shadow .15s ease;
-      text-align:center; box-sizing:border-box;
-    }
-    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,184,0,.45);}
-    .btn-home{
-      background:rgba(255,255,255,.08) !important; color:#fff !important;
-      border:1px solid var(--glass-bd); backdrop-filter:blur(6px);
-      box-shadow:0 10px 24px rgba(255,184,0,.35), inset 0 1px 0 #fff4cc;
-    }
-    .btn-home:hover{box-shadow:0 14px 32px rgba(255,184,0,.45), inset 0 1px 0 #fff4cc;}
-    .btn-home::after{
-      content:''; position:absolute; left:50%; bottom:-8px; width:80%; height:12px;
-      transform:translateX(-50%); border-radius:50%;
-      background:radial-gradient(ellipse at center, rgba(255,184,0,.45), transparent 70%);
-      filter:blur(8px); opacity:.5; pointer-events:none;
+    .hero video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: none;
     }
 
-    .btn, .btn-home{
-      width:clamp(200px, 70%, 300px);
+    .overlay-text {
+      margin-top: 30px;
     }
 
-    footer{margin-top:40px; padding:20px; font-size:13px; opacity:.6;}
+    .overlay-text h2 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .overlay-text p {
+      opacity: 0.9;
+      font-size: 16px;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      margin: 10px 12px;
+      padding: 14px 30px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ffd36b, #ffb800);
+      color: #0a0b1f;
+      box-shadow: 0 6px 18px rgba(255,184,0,.35), inset 0 1px 0 #fff4cc;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      min-width: 220px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(255,184,0,.45);
+    }
+
+    .btn-home {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 24px rgba(255,184,0,.35), inset 0 1px 0 #fff4cc;
+      position: relative;
+    }
+
+    .btn-home::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -8px;
+      width: 80%;
+      height: 12px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(255,184,0,0.45), transparent 70%);
+      filter: blur(8px);
+      opacity: .5;
+      pointer-events: none;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+
+    @media (max-width: 480px) {
+      .btn { min-width: 70%; }
+      .btn-home { min-width: 70%; }
+      h1 { font-size: 28px; }
+      p.subtitle { font-size: 16px; }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Logo -->
-  <a href="/" aria-label="Back to Home">
+  <a href="index-global.html">
     <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo">
   </a>
 
-  <!-- Google Translate -->
-  <div id="google_translate_element" class="translate-switch">🌐 Language</div>
+  <!-- Google Translate bar -->
+  <div id="google_translate_element"></div>
 
   <header>
     <h1>NeoX Game</h1>
     <p class="subtitle">Catch the coins. Beat the clock. Claim the glory.</p>
   </header>
 
-  <!-- Clickable Hero Video -->
-  <section class="hero" aria-label="NeoX Catch Preview">
-    <div class="hero-ratio">
-      <a class="hero-link" href="https://neoxcoin.github.io/neox-game/" target="_blank" rel="noopener" aria-label="Play NeoX Game"></a>
+  <section class="hero">
+    <a href="https://neoxcoin.github.io/neox-game/" target="_blank">
       <video autoplay muted loop playsinline preload="metadata"
              poster="https://neoxcoin.github.io/XNXC.png"
              src="https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4"></video>
-      <div class="fade" aria-hidden="true"></div>
-    </div>
+    </a>
   </section>
 
   <div class="overlay-text">
@@ -116,16 +187,22 @@
       Step into the NeoX universe, catch coins, build combos, and race against time!<br>
       Each NeoX Coin boosts your score and pushes you up the leaderboard.
     </p>
-    <a href="https://neoxcoin.github.io/neox-game/" class="btn" target="_blank" rel="noopener">▶ Play Now</a>
-    <a href="/" class="btn btn-home">← Back to Home</a>
+    <a href="https://neoxcoin.github.io/neox-game/" class="btn" target="_blank">▶ Play Now</a>
+    <a href="index-global.html" class="btn btn-home">← Back to Home</a>
   </div>
 
-  <footer>© 2025 NeoX. All rights reserved.</footer>
+  <footer>
+    © 2025 NeoX. All rights reserved.
+  </footer>
 
   <!-- Google Translate Script -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
-      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi,ar,tr,fa,uk,pl',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
     }
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
