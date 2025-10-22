@@ -2,126 +2,125 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-  <title>NeoX Game – Play NeoX Catch</title>
-  <meta name="description" content="Play NeoX Catch – Catch the coins, beat the clock, and climb the leaderboard in the NeoX universe."/>
-  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png"/>
-  <link rel="canonical" href="https://neoxcoin.github.io/game"/>
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="NeoX Game – Play NeoX Catch">
-  <meta property="og:description" content="Catch the coins. Beat the clock. Claim the glory.">
-  <meta property="og:image" content="https://neoxcoin.github.io/XNXC.png">
-  <meta property="og:url" content="https://neoxcoin.github.io/game">
-  <meta name="twitter:card" content="summary_large_image">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeoX Game – Play NeoX Catch Coins</title>
+  <meta name="description" content="Play NeoX Catch – the official Web3 game by NeoX. Catch coins, beat the clock, and climb the leaderboard in the NeoX universe." />
+  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" />
   <style>
-    :root{
-      --bg1:#0a0a2a; --bg2:#050519;
-      --gold1:#ffd36b; --gold2:#ffb800;
-      --glass: rgba(255,255,255,.08);
-      --glass-bd: rgba(255,255,255,.18);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0; padding:0; background: radial-gradient(circle at 50% 20%, var(--bg1), var(--bg2)); color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif;}
-    a{color:inherit}
-    header{padding:28px 20px 10px; text-align:center}
-    .logo{width:72px; opacity:.95}
-    h1{margin:10px 0 6px; font-size:clamp(26px,4.8vw,42px)}
-    .subtitle{opacity:.9; margin:0 0 26px; font-size:clamp(14px,2.1vw,18px)}
-
-    /* Hero video */
-    .hero{
-      margin:0 auto; width:min(92vw,1000px);
-      border-radius:16px; overflow:hidden;
-      box-shadow:0 12px 28px rgba(0,0,0,.45);
-      position:relative; isolation:isolate;
-      background: radial-gradient(1100px 340px at 50% 100%, rgba(0,152,255,.14), transparent);
-    }
-    .hero-ratio{position:relative; padding-top:56.25%;}
-    .hero video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; filter:contrast(1.05) saturate(1.08)}
-    .hero .fade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(5,7,20,.78) 100%);}
-
-    /* CTA block */
-    .cta{
-      text-align:center; margin:18px auto 8px;
-      width:min(92vw,1000px);
-    }
-    .lead{margin:12px 0 18px; opacity:.92; font-size:clamp(15px,2vw,18px)}
-    .btn{
-      display:inline-block; margin:10px 12px; padding:14px 28px;
-      border-radius:999px; font-weight:800; text-decoration:none;
-      box-shadow:0 6px 18px rgba(255,184,0,.35), inset 0 1px 0 #fff4cc;
-      color:#0a0b1f; background:linear-gradient(90deg,var(--gold1),var(--gold2));
-      transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
-    }
-    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,184,0,.45); filter:brightness(1.05)}
-    .btn-ghost{
-      display:inline-block; margin:10px 12px; padding:14px 28px;
-      border-radius:999px; text-decoration:none; font-weight:700;
-      background:var(--glass); border:1px solid var(--glass-bd); backdrop-filter:blur(6px);
-      color:#fff;
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
+      background: radial-gradient(circle at center, #0a0a2a 0%, #050519 100%);
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
     }
 
-    /* Features / Coming next */
-    .panel{
-      margin:34px auto; width:min(92vw,1000px);
-      padding:18px 20px; border-radius:14px;
-      background:linear-gradient(135deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.12);
+    header {
+      padding: 40px 20px 10px;
     }
-    .panel h3{margin:0 0 10px; font-size:clamp(18px,2.4vw,22px)}
-    .panel ul{margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:8px 18px}
-    .panel li{opacity:.9}
-
-    footer{margin:40px 0 24px; text-align:center; font-size:13px; opacity:.65}
-
-    /* Respect "Reduce Motion" */
-    @media (prefers-reduced-motion: reduce){
-      .hero video{animation:none}
+    header img {
+      width: 80px;
+      opacity: 0.9;
     }
+    h1 {
+      font-size: clamp(26px, 5vw, 40px);
+      margin: 10px 0 8px;
+    }
+    p.subtitle {
+      opacity: 0.85;
+      font-size: clamp(14px, 2vw, 18px);
+      margin-bottom: 40px;
+    }
+
+    /* Video Section */
+    .video-container {
+      position: relative;
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+    }
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: none;
+    }
+
+    /* Overlay */
+    .overlay-text {
+      margin-top: 30px;
+    }
+    .overlay-text h2 {
+      font-size: clamp(22px, 4vw, 32px);
+      margin-bottom: 10px;
+    }
+    .overlay-text p {
+      opacity: 0.85;
+      font-size: clamp(14px, 2vw, 18px);
+      margin-bottom: 30px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      margin: 10px 12px;
+      padding: 14px 30px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ffd36b, #ffb800);
+      color: #0a0b1f;
+      box-shadow: 0 6px 18px rgba(255,184,0,.35), inset 0 1px 0 #fff4cc;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(255,184,0,.45);
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+
   </style>
 </head>
 <body>
 
   <header>
-    <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX logo">
+    <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo">
     <h1>NeoX Game</h1>
     <p class="subtitle">Catch the coins. Beat the clock. Claim the glory.</p>
   </header>
 
-  <!-- HERO VIDEO -->
-  <section class="hero" aria-label="NeoX Catch preview video">
-    <div class="hero-ratio">
-      <video
-        src="https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4"
-        autoplay muted loop playsinline preload="metadata"
-        poster="https://neoxcoin.github.io/XNXC.png">
-      </video>
-      <div class="fade" aria-hidden="true"></div>
-    </div>
+  <section class="video-container">
+    <video autoplay muted loop playsinline preload="metadata"
+      poster="https://neoxcoin.github.io/XNXC.png"
+      src="https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4">
+      Your browser does not support the video tag.
+    </video>
   </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <p class="lead">Catch NeoX Coins, hit streak combos, and race the timer. Climb the leaderboard and flex your score.</p>
-    <a class="btn" href="https://neoxcoin.github.io/neox-game/" target="_blank" rel="noopener">▶ Play NeoX Game</a>
-    <a class="btn-ghost" href="/" aria-label="Back to Home">← Back to Home</a>
-  </section>
+  <div class="overlay-text">
+    <h2>🎮 NeoX Game</h2>
+    <p>
+      Step into the NeoX Universe and test your reflexes!  
+      Catch as many NeoX Coins as you can before time runs out —  
+      every coin counts toward your score and leaderboard rank.
+    </p>
+    <a href="https://neoxcoin.github.io/neox-game/" class="btn">▶ Play Now</a>
+    <a href="https://neoxcoin.github.io/" class="btn" style="background:rgba(255,255,255,.08);color:#fff;">← Back to Home</a>
+  </div>
 
-  <!-- COMING NEXT -->
-  <section style="margin:40px auto;max-width:900px;text-align:center;
-    background:rgba(255,255,255,0.03);border-radius:12px;padding:18px 10px;opacity:.95;">
-    <h3 style="font-size:20px;margin-bottom:10px;">Coming Next</h3>
-    <ul style="list-style:none;padding:0;margin:0;font-size:15px;line-height:1.8;">
-      <li>⭐ Global Leaderboard</li>
-      <li>💎 Bonus NeoX Coin (rare drop)</li>
-      <li>🔊 Sound FX & BGM toggle</li>
-      <li>📱 Mobile haptics (iOS / Android)</li>
-    </ul>
-  </section>
-
-  <footer>© 2025 NeoX. All rights reserved.</footer>
+  <footer>
+    © 2025 NeoX. All rights reserved.
+  </footer>
 
 </body>
 </html>
