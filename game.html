@@ -26,7 +26,8 @@
       position:fixed; top:0; left:0; right:0; z-index:1000;
       display:flex; align-items:center; justify-content:space-between;
       padding:12px 20px;
-      background:rgba(0,0,0,.25); backdrop-filter:blur(8px);
+      background:transparent; /* ✅ 全透明 */
+      backdrop-filter:none;   /* ✅ 移除模糊 */
     }
     .topbar .logo{width:48px; height:auto; opacity:.95}
     .lang a{
