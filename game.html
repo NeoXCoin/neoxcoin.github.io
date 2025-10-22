@@ -6,6 +6,7 @@
   <title>NeoX Game – Play NeoX Catch Coins</title>
   <meta name="description" content="Play NeoX Catch – the official Web3 game by NeoX. Catch coins, beat the clock, and climb the leaderboard in the NeoX universe." />
   <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" />
+
   <style>
     :root{
       --bg1:#0a0a2a; --bg2:#050519;
@@ -20,7 +21,7 @@
       color:#fff; text-align:center; overflow-x:hidden;
     }
 
-    /* Top bar: logo left + language right */
+    /* Topbar */
     .topbar{
       position:fixed; top:0; left:0; right:0; z-index:1000;
       display:flex; align-items:center; justify-content:space-between;
@@ -35,8 +36,7 @@
     .lang a:hover{opacity:1; text-decoration:underline}
     .lang a.active{opacity:1; text-decoration:underline}
 
-    header{padding:100px 20px 10px;} /* push down to clear fixed topbar */
-    header img{width:80px; opacity:.9}
+    header{padding:100px 20px 10px;}
     h1{font-size:clamp(26px,5vw,40px); margin:10px 0 8px}
     p.subtitle{opacity:.85; font-size:clamp(14px,2vw,18px); margin-bottom:40px}
 
@@ -46,66 +46,61 @@
       border-radius:16px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,.45);
       background:radial-gradient(1100px 340px at 50% 100%, rgba(0,152,255,.14), transparent);
     }
-    .hero-ratio{position:relative; padding-top:56.25%} /* 16:9 default */
-    .hero video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; border:none; z-index:0; filter:contrast(1.05) saturate(1.08)}
-    .hero .fade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(5,7,20,.78) 100%); z-index:1; pointer-events:none}
-    .hero .hero-link{position:absolute; inset:0; z-index:2; display:block}
+    .hero-ratio{position:relative; padding-top:56.25%;}
+    .hero video{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; border:none; z-index:0; filter:contrast(1.05) saturate(1.08);}
+    .hero .fade{position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(5,7,20,.78) 100%); z-index:1; pointer-events:none;}
+    .hero .hero-link{position:absolute; inset:0; z-index:2; display:block;}
 
-    /* Mobile: 1:1 square preview */
     @media (max-width:480px){
-      .hero-ratio{padding-top:100%}
-      .hero video{object-position:center}
+      .hero-ratio{padding-top:100%;}
+      .hero video{object-position:center;}
     }
 
-    /* Overlay text + buttons */
-    .overlay-text{margin-top:30px}
-    .overlay-text h2{font-size:clamp(22px,4vw,32px); margin-bottom:10px}
-    .overlay-text p{opacity:.85; font-size:clamp(14px,2vw,18px); margin-bottom:30px}
-
+    /* Buttons */
     .btn{
-      display:inline-block; margin:10px 12px; padding:14px 30px;
-      font-weight:700; text-decoration:none; border-radius:999px;
+      display:inline-block;
+      margin:10px 12px;
+      padding:14px 30px;
+      font-weight:700;
+      text-decoration:none;
+      border-radius:999px;
       background:linear-gradient(90deg, var(--gold1), var(--gold2));
       color:#0a0b1f;
       box-shadow:0 6px 18px rgba(255,184,0,.35), inset 0 1px 0 #fff4cc;
       transition:transform .15s ease, box-shadow .15s ease;
-    }
-    .btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,184,0,.45)}
-    .btn-ghost{
-      display:inline-block;
-      margin:10px 12px;
-      padding:14px 30px;
-      border-radius:999px;
-      text-decoration:none;
-      font-weight:700;
-      background:rgba(255,255,255,.08);
-      border:1px solid rgba(255,255,255,.18);
-      backdrop-filter:blur(6px);
-      color:#fff;
       position:relative;
-      transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    }
+    .btn:hover{
+      transform:translateY(-2px);
+      box-shadow:0 10px 24px rgba(255,184,0,.45);
     }
 
-    /* 底部光暈效果 */
-    .btn-ghost::after{
+    /* Back-to-Home version (deep color + gold glow) */
+    .btn-home{
+      background:rgba(255,255,255,.08) !important;
+      color:#fff !important;
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(6px);
+      box-shadow:0 10px 24px rgba(255,184,0,.35), inset 0 1px 0 #fff4cc;
+    }
+    .btn-home:hover{
+      box-shadow:0 14px 32px rgba(255,184,0,.45), inset 0 1px 0 #fff4cc;
+      transform:translateY(-2px);
+    }
+    /* subtle bottom glow */
+    .btn-home::after{
       content:'';
       position:absolute;
-      left:50%; bottom:-6px;
+      left:50%;
+      bottom:-8px;
       width:80%;
       height:12px;
       transform:translateX(-50%);
       border-radius:50%;
-      background:radial-gradient(ellipse at center, rgba(255,200,80,0.4), transparent 70%);
-      filter:blur(6px);
-      opacity:0.4;
+      background:radial-gradient(ellipse at center, rgba(255,184,0,0.45), transparent 70%);
+      filter:blur(8px);
+      opacity:.5;
       pointer-events:none;
-    }
-
-    /* hover 時輕微提亮 */
-    .btn-ghost:hover{
-      transform:translateY(-2px);
-      box-shadow:0 6px 14px rgba(255,255,255,.2);
-      filter:brightness(1.1);
     }
 
     footer{margin-top:50px; padding:20px; font-size:13px; opacity:.6}
@@ -129,7 +124,7 @@
     <p class="subtitle">Catch the coins. Beat the clock. Claim the glory.</p>
   </header>
 
-  <!-- Clickable hero video -->
+  <!-- Clickable Hero Video -->
   <section class="hero" aria-label="NeoX Catch preview">
     <div class="hero-ratio">
       <a class="hero-link" href="https://neoxcoin.github.io/neox-game/" target="_blank" rel="noopener" aria-label="Play NeoX Game"></a>
@@ -149,7 +144,7 @@
       every coin counts toward your score and leaderboard rank.
     </p>
     <a href="https://neoxcoin.github.io/neox-game/" class="btn" target="_blank" rel="noopener">▶ Play Now</a>
-    <a href="https://neoxcoin.github.io/" class="btn-ghost">← Back to Home</a>
+    <a href="https://neoxcoin.github.io/" class="btn btn-home">← Back to Home</a>
   </div>
 
   <footer>
