@@ -33,14 +33,15 @@
       pointer-events:none;              /* ✅ 不擋點擊（背景層用） */
     }
     
-    .topbar .logo{width:48px; height:auto; opacity:.95}
-    .lang a{
-      color:#fff; text-decoration:none; font-weight:600; opacity:.85; margin-left:10px;
-      font-size:15px;
+    .topbar .logo{
+      width:48px;
+      opacity:.85;
+      pointer-events:auto;              /* ✅ 讓 Logo clickable */
     }
-    
-    .lang a:hover{opacity:1; text-decoration:underline}
-    .lang a.active{opacity:1; text-decoration:underline}
+
+    .lang{
+      pointer-events:auto;              /* ✅ 讓語言按鈕可點擊 */
+    }
 
     header{padding:100px 20px 10px;}
     h1{font-size:clamp(26px,5vw,40px); margin:10px 0 8px}
