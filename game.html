@@ -3,19 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX Game Zone</title>
+  <title>NeoX Game – Play NeoX Catch</title>
+  <meta name="description" content="Play NeoX Catch – the official Web3 game by NeoX. Catch coins, beat the clock, and climb the leaderboard in the NeoX universe." />
   <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" />
   <style>
     body {
       margin: 0;
-      background: #0a0a2a;
-      background-image: url('https://neoxcoin.github.io/NeoXBlackG.PNG');
-      background-size: cover;
-      background-position: center;
-      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
+      background: radial-gradient(circle at center, #0a0a2a 0%, #050519 100%);
+      color: #fff;
       text-align: center;
-      font-family: Arial, sans-serif;
-      padding: 40px 20px;
+      overflow-x: hidden;
     }
-    .logo {
-     
+
+    header {
+      padding: 40px 20px 10px;
+    }
+    header img {
+      width: 80px;
+      opacity: 0.9;
+    }
+    h1 {
+      font-size: clamp(26px, 5vw, 40px);
+      margin: 10px 0 8px;
+    }
+    p.subtitle {
+      opacity: 0.85;
+      font-size: clamp(14px, 2vw, 18px);
+      margin-bottom: 40px;
+    }
+
+    /* Video Section */
+    .video-container {
+      position: relative;
+      width: 90%;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.45);
+    }
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: none;
+    }
+
+    /* Overlay */
+    .overlay-text {
+      margin-top: 30px;
+    }
+    .overlay-text h2 {
+      font-size: clamp(22px, 4vw, 32px);
+      margin-bottom: 10px;
+    }
+    .overlay-text p {
+      opacity: 0.85;
+      font-size: clamp(14px, 2vw, 18px);
+      margin-bottom: 30px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      margin: 10px 12px;
+      padding: 14px 30px;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ffd36b, #ffb800);
+      color: #0a0b1f;
+      box-shadow: 0 6px 18px rgba(255,184,0,.35), inset 0 1px 0 #fff4cc;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(255,184,0,.45);
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 20px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo">
+    <h1>NeoX Game</h1>
+    <p class="subtitle">Catch the coins. Beat the clock. Claim the glory.</p>
+  </header>
+
+  <section class="video-container">
+    <video autoplay muted loop playsinline preload="metadata"
+      poster="https://neoxcoin.github.io/XNXC.png"
+      src="https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <div class="overlay-text">
+    <h2>🎮 NeoX Catch</h2>
+    <p>
+      Step into the NeoX Universe and test your reflexes!  
+      Catch as many NeoX Coins as you can before time runs out —  
+      every coin counts toward your score and leaderboard rank.
+    </p>
+    <a href="/game/v1.html" class="btn">▶ Play Now</a>
+    <a href="https://neoxcoin.github.io/" class="btn" style="background:rgba(255,255,255,.08);color:#fff;">← Back to Home</a>
+  </div>
+
+  <footer>
+    © 2025 NeoX. All rights reserved.
+  </footer>
+
+</body>
+</html>
