@@ -23,17 +23,22 @@
 
     /* Topbar */
     .topbar{
-      position:fixed; top:0; left:0; right:0; z-index:1000;
+      position:fixed;
+      top:0; left:0; right:0;
+      z-index:0;                        /* ✅ 放在背景層 */
       display:flex; align-items:center; justify-content:space-between;
-      padding:12px 20px;
-      background:transparent; /* ✅ 全透明 */
-      backdrop-filter:none;   /* ✅ 移除模糊 */
+      padding:18px 24px;
+      background:transparent;
+      backdrop-filter:none;
+      pointer-events:none;              /* ✅ 不擋點擊（背景層用） */
     }
+    
     .topbar .logo{width:48px; height:auto; opacity:.95}
     .lang a{
       color:#fff; text-decoration:none; font-weight:600; opacity:.85; margin-left:10px;
       font-size:15px;
     }
+    
     .lang a:hover{opacity:1; text-decoration:underline}
     .lang a.active{opacity:1; text-decoration:underline}
 
