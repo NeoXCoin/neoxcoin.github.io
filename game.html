@@ -72,8 +72,40 @@
     }
     .btn:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,184,0,.45)}
     .btn-ghost{
-      display:inline-block; margin:10px 12px; padding:14px 30px; border-radius:999px;
-      background:var(--glass); border:1px solid var(--glass-bd); color:#fff; text-decoration:none;
+      display:inline-block;
+      margin:10px 12px;
+      padding:14px 30px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:700;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter:blur(6px);
+      color:#fff;
+      position:relative;
+      transition:transform .15s ease, box-shadow .15s ease, filter .15s ease;
+    }
+
+    /* 底部光暈效果 */
+    .btn-ghost::after{
+      content:'';
+      position:absolute;
+      left:50%; bottom:-6px;
+      width:80%;
+      height:12px;
+      transform:translateX(-50%);
+      border-radius:50%;
+      background:radial-gradient(ellipse at center, rgba(255,255,255,0.25), transparent 70%);
+      filter:blur(6px);
+      opacity:0.4;
+      pointer-events:none;
+    }
+
+    /* hover 時輕微提亮 */
+    .btn-ghost:hover{
+      transform:translateY(-2px);
+      box-shadow:0 6px 14px rgba(255,255,255,.2);
+      filter:brightness(1.1);
     }
 
     footer{margin-top:50px; padding:20px; font-size:13px; opacity:.6}
