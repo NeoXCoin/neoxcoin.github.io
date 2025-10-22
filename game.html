@@ -103,6 +103,22 @@
       opacity:.5;
       pointer-events:none;
     }
+    
+    /* make both buttons same width */
+   .btn,
+   .btn-home {
+     min-width: 220px;          /* desktop 一樣闊 */
+     display: inline-block;
+     text-align: center;
+     box-sizing: border-box;
+   }
+
+   @media (max-width: 480px) {
+     .btn,
+     .btn-home {
+       min-width: 80%;          /* 手機時按鈕各佔 80% 畫面寬度 */
+   }
+  }
 
     footer{margin-top:50px; padding:20px; font-size:13px; opacity:.6}
   </style>
