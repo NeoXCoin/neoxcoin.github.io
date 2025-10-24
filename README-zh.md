@@ -31,7 +31,7 @@ NeoX 是一個去中心化、創新且由社群驅動的 Web3 生態系，
 ## ⚙️ 本地預覽
 
 無需額外工具，直接在電腦或平板 **雙擊** 任意 `.html` 檔案  
-即可以瀏覽器開啟（建議使用 **Chrome** 或 **Safari**）。
+即可使用瀏覽器開啟（建議使用 **Chrome** 或 **Safari**）。
 
 ---
 
@@ -40,7 +40,7 @@ NeoX 是一個去中心化、創新且由社群驅動的 Web3 生態系，
 1. 前往 GitHub 專案 → **Settings → Pages**  
 2. 設定：**Branch = `main`**，資料夾選擇 **`/(root)`**  
 3. 儲存後稍等片刻，即可於以下網址查看網站：  
-   🔗 https://neoxcoin.github.io
+   🔗 [https://neoxcoin.github.io](https://neoxcoin.github.io)
 
 ---
 
@@ -63,7 +63,7 @@ NeoX 是一個去中心化、創新且由社群驅動的 Web3 生態系，
 ## 🤝 聯絡方式
 
 如有合作、推廣或業務洽詢，歡迎透過 Instagram 聯繫我們：  
-📸 [@neoxofficial](https://www.instagram.com/neoxofficial)
+📸 [@neox__official](https://www.instagram.com/neox__official?igsh=a2N5bTZ3MTlmMmNy&utm_source=qr)
 
 ---
 
