@@ -33,6 +33,13 @@ to help visitors explore content in their preferred language.
 ---
 
 ## 🧭 File Structure
+index-global.html         → Global homepage (with Google Translate)
+game-global.html          → Global game page
+nft-projects-global.html  → Global NFT collections
+metaverse-global.html     → Global metaverse exhibition
+how-to-buy.html / -zh.html  → Buying guides
+why-neox.html / -zh.html    → Project introduction
+sitemap.xml               → SEO sitemap
 ---
 
 ## ⚙️ View Locally
