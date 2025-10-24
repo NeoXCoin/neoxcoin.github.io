@@ -1,17 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX Coin – Global</title>
-  <link rel="icon" href="https://neoxcoin.github.io/apple-touch-icon.png" />
-  
+
+  <!-- 🌍 Global SEO -->
+  <title>NeoX Coin (NXC) – Explore Web3 NFTs, Token & Metaverse</title>
+  <meta name="description" content="Discover NeoX Coin (NXC) – the decentralized Web3 ecosystem built on Base Mainnet. Explore NFTs, interactive games, and the NeoX Metaverse Exhibition." />
+  <meta name="keywords" content="NeoX, NeoX Coin, NXC, NFT, Web3, Base Mainnet, Crypto, Metaverse, NeoX Game, NeoX NFTs, NeoX Timekeeper Edition, Van Gogh Visions, Abstract Realms" />
+  <meta name="author" content="NeoX Official" />
+
+  <!-- Canonical & Multilingual -->
   <link rel="canonical" href="https://neoxcoin.github.io/index-global.html" />
   <link rel="alternate" href="https://neoxcoin.github.io/" hreflang="en" />
   <link rel="alternate" href="https://neoxcoin.github.io/index-zh.html" hreflang="zh-Hant" />
   <link rel="alternate" href="https://neoxcoin.github.io/index-global.html" hreflang="x-default" />
 
-  <!-- Google Translate -->
+  <!-- 🔗 Open Graph -->
+  <meta property="og:title" content="NeoX Coin (NXC) – Explore Web3 NFTs, Token & Metaverse" />
+  <meta property="og:description" content="Join NeoX – a decentralized Web3 experience with NFTs, games, and metaverse art on Base Mainnet." />
+  <meta property="og:image" content="https://neoxcoin.github.io/XNXC.png" />
+  <meta property="og:url" content="https://neoxcoin.github.io/index-global.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- 🐦 Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NeoX Coin (NXC) – Explore Web3 NFTs, Token & Metaverse" />
+  <meta name="twitter:description" content="Experience NeoX – Web3 NFTs, metaverse, and the next step of decentralized creativity." />
+  <meta name="twitter:image" content="https://neoxcoin.github.io/XNXC.png" />
+
+  <!-- 🔍 Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NeoX Coin (NXC)",
+    "url": "https://neoxcoin.github.io/",
+    "logo": "https://neoxcoin.github.io/XNXC.png",
+    "sameAs": [
+      "https://www.instagram.com/neox__official",
+      "https://opensea.io/collection/neox-timekeeper-edition"
+    ],
+    "description": "NeoX Coin (NXC) is a decentralized Web3 ecosystem combining NFTs, art, gaming, and metaverse experiences on Base Mainnet."
+  }
+  </script>
+
+  <!-- 🌐 Google Translate -->
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -23,6 +55,11 @@
   </script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+  <!-- 🖼️ Favicon / Icons -->
+  <link rel="icon" href="https://neoxcoin.github.io/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="https://neoxcoin.github.io/apple-touch-icon.png">
+
+  <!-- 🎨 CSS -->
   <style>
     body {
       margin: 0;
@@ -44,7 +81,6 @@
       z-index: 999;
     }
 
-    /* Google Translate */
     #google_translate_element {
       position: absolute;
       top: 20px;
@@ -52,7 +88,6 @@
       z-index: 9999;
     }
 
-    /* Container */
     .container {
       display: flex;
       flex-direction: column;
@@ -73,13 +108,12 @@
       margin: 30px auto;
     }
 
-    /* Headline animation */
     .headline {
       margin: 22px 0 30px 0;   
       line-height: 1.6;        
       text-align: center;      
     }
-    
+
     .headline span {
       display: block;
       opacity: 0;
@@ -98,7 +132,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Nav bar */
     .nav-bar {
       display: flex;
       justify-content: center;
@@ -117,12 +150,8 @@
       gap: 6px;
     }
 
-    .emoji {
-      display: inline-block;
-      transform: translateY(1px);
-    }
+    .emoji { display: inline-block; transform: translateY(1px); }
 
-    /* Buttons */
     .btn-row {
       display: flex;
       flex-wrap: wrap;
@@ -162,7 +191,6 @@
       pointer-events: none;
     }
 
-    /* Tooltip for buttons */
     .btn[data-tooltip]:hover::after {
       content: attr(data-tooltip);
       position: absolute;
@@ -178,7 +206,6 @@
       z-index: 1000;
     }
 
-    /* Footer */
     .footer {
       margin-top: 50px;
       font-size: 13px;
@@ -191,83 +218,14 @@
       margin: 0 6px;
     }
 
-    .footer a:hover {
-      text-decoration: underline;
-    }
+    .footer a:hover { text-decoration: underline; }
 
-    .footer-links {
-      margin-bottom: 8px;
-    }
+    .footer-links { margin-bottom: 8px; }
 
-    /* Responsive */
     @media (max-width: 600px) {
-      .nav-bar {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .btn-row {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .coin {
-        width: 144px;
-        max-width: 100%;
-      }
+      .nav-bar { flex-direction: column; align-items: center; gap: 12px; }
+      .btn-row { flex-direction: column; align-items: center; }
+      .coin { width: 144px; max-width: 100%; }
     }
   </style>
 </head>
-<body>
-  <!-- Logo -->
-   <a href="index.html">
-    <img class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo" />
-  </a>
-
-  <!-- Google Translate -->
-  <div id="google_translate_element"></div>
-
-  <!-- Main container -->
-  <div class="container">
-    <div class="tagline">Web3 Revolution, Led by NeoX</div>
-    <img class="coin" src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin" />
-
-    <div class="nav-bar">
-      <a href="what-is-neox-global.html">What is NeoX?</a>
-      <a href="how-to-buy-global.html">How to Buy?</a>
-      <a href="game-global.html">🎮 NeoX Game</a>
-      <a href="metaverse-global.html">🔥 NeoX Metaverse Exhibition</a>
-      <a href="nft-projects-global.html"><span class="emoji">👉🏻</span><span>NeoX NFT Projects</span></a>
-    </div>
-
-    <div class="headline">
-      <span>The future is coming – Own the currency that empowers Web freedom.</span>
-      <span>Shape the future with NeoX – the next evolution in digital currency.</span>
-      <span>Be part of the Web3 revolution – NeoX puts control back in your hands.</span>
-      <span>Own your freedom. Own the future. Own NeoX.</span>
-    </div>
-
-    <div class="btn-row">
-      <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">🛒 Buy NXC</a>
-      <a class="btn" 
-         href="https://metamask.app.link/dapp/neoxcoin.github.io/"
-         data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link">🦊 Buy via MetaMask</a>
-      <a class="btn" href="add-to-metamask-global.html">
-        <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin Icon" />
-        Add to MetaMask
-      </a>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      <div class="footer-links">
-        <a href="faq-global.html">FAQ</a> |
-        <a href="about-global.html">About</a> |
-        <a href="troubleshooting-global.html">Troubleshooting</a>
-      </div>
-      © 2025 NeoX. All rights reserved. |
-      <a href="disclaimer-global.html">Disclaimer</a>
-    </div>
-</body>
-</html>
