@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- English pages -->
+  <!-- English Version -->
   <url>
     <loc>https://neoxcoin.github.io/</loc>
     <lastmod>2025-10-24</lastmod>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://neoxcoin.github.io/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://neoxcoin.github.io/index-zh.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://neoxcoin.github.io/" />
   </url>
   <url>
     <loc>https://neoxcoin.github.io/what-is-neox.html</loc>
@@ -33,11 +38,14 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Traditional Chinese pages -->
+  <!-- Traditional Chinese Version -->
   <url>
     <loc>https://neoxcoin.github.io/index-zh.html</loc>
     <lastmod>2025-10-24</lastmod>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://neoxcoin.github.io/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://neoxcoin.github.io/index-zh.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://neoxcoin.github.io/index-global.html" />
   </url>
   <url>
     <loc>https://neoxcoin.github.io/what-is-neox-zh.html</loc>
@@ -65,7 +73,12 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Global (multilingual) pages -->
+  <!-- Global Version -->
+  <url>
+    <loc>https://neoxcoin.github.io/index-global.html</loc>
+    <lastmod>2025-10-24</lastmod>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://neoxcoin.github.io/metaverse-global.html</loc>
     <lastmod>2025-10-24</lastmod>
