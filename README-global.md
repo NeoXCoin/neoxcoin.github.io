@@ -1,28 +1,80 @@
-[🌐 Translate with Google](https://translate.google.com/translate?hl=&sl=auto&tl=en&u=https://neoxcoin.github.io)
+[English](README.md) | [繁體中文](README-zh.md) | [🌐 Global](README-global.md)
 
-# NeoX Token Website (Global Version)
+# 🌐 NeoX Global Website
 
-Welcome to the official website repository for **NeoX Token (NXC)** — a decentralized, innovative, and community-driven cryptocurrency project.
+Welcome to the **NeoX (NXC)** official website repository —  
+a global Web3 ecosystem combining **art, blockchain, and gaming**,  
+built to connect creators and communities worldwide.
 
-🌐 **Live site**: [https://neoxcoin.github.io](https://neoxcoin.github.io)  
-📸 **Instagram**: [@neoxofficial](https://www.instagram.com/neoxofficial)
+🔗 **Visit now:** [https://neoxcoin.github.io](https://neoxcoin.github.io)
 
 ---
 
-## 📖 Overview
+## 🌍 About NeoX
 
-The NeoX Token website is a multilingual, responsive site built in pure HTML. It provides clear access to important information about the NeoX ecosystem:
+**NeoX** is a decentralized and community-driven project based on **Base Mainnet (by Coinbase)**.  
+It merges digital art, NFTs, and interactive gaming into a single creative universe —  
+a place where innovation meets imagination.
 
-- What is NeoX?
-- Why choose NeoX?
-- How to buy NXC
-- How it works
-- NFT showcase
-- Troubleshooting
-- Legal disclaimer
+The NeoX website is available in multiple languages and includes a **Google Translate bar**  
+to help visitors explore content in their preferred language.
 
-Google Translate is integrated in this version to help readers view content in their preferred language.
+---
+
+## 💡 Key Highlights
+
+- 🌐 **Multi-language support** – English | Traditional Chinese | Global (auto-translate)  
+- 🪙 **NeoX Token (NXC)** – official ERC-20 token on Base Mainnet  
+- 🎮 **NeoX Game** – Web3 mini-arcade *“NeoX Catch”*  
+- 🎨 **NFT Collections** – *Timekeeper Edition*, *Van Gogh Visions*, *Abstract Realms*  
+- 🌌 **Metaverse Exhibition** – immersive 3D showcase on OnCyber  
+- 📖 **Guides** – tutorials for buying NXC and adding to MetaMask  
 
 ---
 
 ## 🧭 File Structure
+---
+
+## ⚙️ View Locally
+
+Simply **double-click** any `.html` file to open it directly in your browser.  
+Recommended browsers: **Chrome** or **Safari** for best translation results.
+
+---
+
+## 🚀 Deployment (GitHub Pages)
+
+1. Go to your GitHub repo → **Settings → Pages**  
+2. Choose: **Branch = `main`**, Folder = **`/(root)`**  
+3. Save — your live website will appear at:  
+   🔗 [https://neoxcoin.github.io](https://neoxcoin.github.io)
+
+---
+
+## 🔮 Future Vision
+
+- 🧩 Expand international reach with multilingual content  
+- 💰 Publish NeoX **Tokenomics** and roadmap  
+- ⛓️ Integrate on-chain analytics and live market data  
+- 🕹️ Enable wallet connection and interactive gameplay  
+- 🚀 Optimize SEO and global performance  
+
+---
+
+## 📜 Disclaimer
+
+This website is for educational and creative purposes only.  
+Before interacting with any blockchain products, please **Do Your Own Research (DYOR)**.  
+See our full disclaimer here:  
+📄 [`disclaimer-global.html`](https://neoxcoin.github.io/disclaimer-global.html)
+
+---
+
+## 🤝 Contact
+
+For partnerships, collaborations, or media inquiries:  
+📸 [@neox__official](https://www.instagram.com/neox__official?igsh=a2N5bTZ3MTlmMmNy&utm_source=qr)
+
+---
+
+© 2025 **NeoX Project** — All rights reserved.
