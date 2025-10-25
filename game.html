@@ -61,7 +61,8 @@
       border-radius:16px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.45);
       background:radial-gradient(1100px 340px at 50% 100%, rgba(0,152,255,.14), transparent);}
     .hero-ratio{position:relative;padding-top:56.25%;}
-    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.08)}
+    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.08);opacity:0;transition:opacity .8s ease}
+    .hero video.loaded{opacity:1}
     .hero .fade{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(5,7,20,.78) 100%);pointer-events:none;}
     .hero .hero-link{position:absolute;inset:0;z-index:2;display:block;}
 
@@ -116,10 +117,16 @@
 
   <section class="hero" aria-label="NeoX Catch preview">
     <div class="hero-ratio">
-      <a class="hero-link" href="https://neoxcoin.github.io/neox-game/iframe" target="_blank" rel="noopener" aria-label="Play NeoX Game"></a>
+      <!-- 這個全幅 clickable 區會開遊戲（我們會在腳本中攔截點擊先停音樂） -->
+      <a class="hero-link stop-bgm" href="https://neoxcoin.github.io/neox-game/iframe" target="_blank" rel="noopener" aria-label="Play NeoX Game"></a>
+
+      <!-- 🎥 Video with poster fallback -->
       <video autoplay muted loop playsinline preload="metadata"
-             poster="https://neoxcoin.github.io/NeoXGamePage.png"
-             src="https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4"></video>
+             poster="https://neoxcoin.github.io/NeoXGamePage.png">
+        <source src="https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4" type="video/mp4">
+        <img src="https://neoxcoin.github.io/NeoXGamePage.png" alt="NeoX Game Preview" style="width:100%;height:100%;object-fit:cover;">
+      </video>
+
       <div class="fade" aria-hidden="true"></div>
     </div>
   </section>
@@ -131,13 +138,69 @@
       Catch as many NeoX Coins as you can before time runs out —<br/>
       every coin counts toward your score and leaderboard rank.
     </p>
-    <a href="https://neoxcoin.github.io/neox-game/iframe" class="btn" target="_blank" rel="noopener">▶ Play Now</a>
+    <!-- Play Now 按鈕同樣設 stop-bgm class，點擊會先停音樂 -->
+    <a href="https://neoxcoin.github.io/neox-game/iframe" class="btn stop-bgm" target="_blank" rel="noopener">▶ Play Now</a>
     <a href="/" class="btn btn-home">← Back to Home</a>
   </div>
 
   <footer>© 2025 NeoX. All rights reserved.</footer>
-  
-  <!-- 🎵 背景音樂（預設靜音自動播放，互動後開聲） -->
+
+  <!-- 🎵 只在 game.html 播放的背景音樂 -->
   <audio id="bgm" src="https://neoxcoin.github.io/game-time-401349.mp3" loop preload="auto"></audio>
+
+  <script>
+  // 影片載入成功後淡入
+  (function(){
+    const v = document.querySelector('.hero video');
+    if(!v) return;
+    function onReady(){ v.classList.add('loaded'); }
+    v.addEventListener('loadeddata', onReady, {once:true});
+    v.addEventListener('canplay', onReady, {once:true});
+  })();
+
+  // 🎵 BGM：只在這頁播放；點擊開遊戲前立刻停止
+  (function(){
+    const bgm = document.getElementById('bgm');
+
+    // 初始：靜音自動播放（避免 iOS/Safari 阻擋）
+    bgm.volume = 0;
+    bgm.muted  = true;
+    bgm.play().catch(()=>{});
+
+    // 第一次互動 → 開聲
+    function unlockAudio(){
+      bgm.muted  = false;
+      bgm.volume = 0.8;           // 預設音量（可改）
+      bgm.play().catch(()=>{});
+      ['click','touchstart','keydown'].forEach(ev=>window.removeEventListener(ev, unlockAudio));
+    }
+    ['click','touchstart','keydown'].forEach(ev=>{
+      window.addEventListener(ev, unlockAudio, { once:true, passive:true });
+    });
+
+    // 停止音樂的統一方法
+    function stopBgm(){
+      try { bgm.pause(); } catch(e){}
+      bgm.currentTime = 0;
+      bgm.muted = true;
+      bgm.volume = 0;
+    }
+
+    // 1) 進入遊戲（hero 全幅連結、Play Now 按鈕）：先停 BGM 再開新頁
+    document.querySelectorAll('a.stop-bgm').forEach(a=>{
+      // 在 mousedown/touchstart 時先停，避免新頁開啟前有殘音
+      a.addEventListener('mousedown', stopBgm, {passive:true});
+      a.addEventListener('touchstart', stopBgm, {passive:true});
+      a.addEventListener('click', stopBgm, {passive:true});
+    });
+
+    // 2) 使用者離開此頁（導航/關閉/切分頁）也停止
+    window.addEventListener('pagehide', stopBgm);
+    window.addEventListener('beforeunload', stopBgm);
+    document.addEventListener('visibilitychange', ()=>{
+      if (document.visibilityState === 'hidden') stopBgm();
+    });
+  })();
+  </script>
 </body>
 </html>
