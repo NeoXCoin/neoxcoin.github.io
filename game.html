@@ -61,7 +61,8 @@
       border-radius:16px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,.45);
       background:radial-gradient(1100px 340px at 50% 100%, rgba(0,152,255,.14), transparent);}
     .hero-ratio{position:relative;padding-top:56.25%;}
-    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.08)}
+    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.05) saturate(1.08);opacity:0;transition:opacity .8s ease}
+    .hero video.loaded{opacity:1}
     .hero .fade{position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(5,7,20,.78) 100%);pointer-events:none;}
     .hero .hero-link{position:absolute;inset:0;z-index:2;display:block;}
 
@@ -97,6 +98,24 @@
     }
     .btn,.btn-home{width:clamp(200px,70%,300px);display:inline-block;text-align:center;box-sizing:border-box;}
     footer{margin-top:40px;padding:20px;font-size:13px;opacity:.6}
+
+    /* 🔊 音量控制（右下角） */
+    .audio-ctrl{
+      position: fixed; right: 16px; bottom: 16px; z-index: 50;
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; border-radius: 14px;
+      background: rgba(255,255,255,.08); backdrop-filter: blur(6px);
+      box-shadow: 0 10px 28px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.12);
+      transition: opacity .25s ease;
+    }
+    .audio-ctrl.hide{ opacity: .15 }
+    .audio-ctrl button{
+      border:0; border-radius:10px; padding:8px 10px; cursor:pointer; color:#fff;
+      background:#1b2144; box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);
+      font-weight:800;
+    }
+    .audio-ctrl input[type="range"]{ width: 150px; accent-color:#ffd36b; }
+    @media (max-width:600px){ .audio-ctrl input[type="range"]{ width: 120px; } }
   </style>
 </head>
 <body>
@@ -117,9 +136,15 @@
   <section class="hero" aria-label="NeoX Catch preview">
     <div class="hero-ratio">
       <a class="hero-link" href="https://neoxcoin.github.io/neox-game/iframe" target="_blank" rel="noopener" aria-label="Play NeoX Game"></a>
+
+      <!-- 🎥 Hero Video with Fallback -->
       <video autoplay muted loop playsinline preload="metadata"
-             poster="https://neoxcoin.github.io/NeoXGamePage.png"
-             src="https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4"></video>
+             poster="https://neoxcoin.github.io/NeoXGamePage.png">
+        <source src="https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4" type="video/mp4">
+        <!-- 如果影片完全不能播放 → 顯示靜態圖 -->
+        <img src="https://neoxcoin.github.io/NeoXGamePage.png" alt="NeoX Game Preview" style="width:100%;height:100%;object-fit:cover;">
+      </video>
+
       <div class="fade" aria-hidden="true"></div>
     </div>
   </section>
@@ -136,5 +161,96 @@
   </div>
 
   <footer>© 2025 NeoX. All rights reserved.</footer>
+
+  <!-- 🎵 背景音樂（預設靜音自動播放，互動後開聲） -->
+  <audio id="bgm" src="https://neoxcoin.github.io/game-time-401349.mp3" loop preload="auto"></audio>
+
+  <!-- 🔊 右下角音量控制（自動淡出） -->
+  <div class="audio-ctrl hide" id="audioCtrl" aria-label="Audio controls">
+    <button id="btnMute" title="Mute/Unmute">🔈</button>
+    <input id="volSlider" type="range" min="0" max="1" step="0.05" value="0.8" title="Volume">
+  </div>
+
+  <script>
+  // 影片載入成功後淡入
+  (function(){
+    const v = document.querySelector('.hero video');
+    if(!v) return;
+    function onReady(){ v.classList.add('loaded'); }
+    v.addEventListener('loadeddata', onReady, {once:true});
+    v.addEventListener('canplay', onReady, {once:true});
+  })();
+
+  // 背景音樂 + 控制
+  (function(){
+    const bgm = document.getElementById('bgm');
+    const ctrl = document.getElementById('audioCtrl');
+    const btnMute = document.getElementById('btnMute');
+    const vol = document.getElementById('volSlider');
+
+    // 讀取記憶設定
+    const savedVol  = Number(localStorage.getItem('nx_bgm_vol'));
+    const savedMute = localStorage.getItem('nx_bgm_mute') === '1';
+
+    // 初始：靜音自動播放（避免 iOS/Safari 阻擋）
+    bgm.volume = Number.isFinite(savedVol) ? savedVol : 0; // 0 先自動播放
+    bgm.muted  = true;                                     // 先 muted
+    vol.value  = (Number.isFinite(savedVol) ? savedVol : 0.8).toString();
+    if (savedMute) { bgm.muted = true; }
+
+    bgm.play().catch(()=>{});
+
+    // 第一次互動 → 自動開聲
+    function unlockAudio(){
+      bgm.muted = false;
+      bgm.volume = Number.isFinite(savedVol) ? savedVol : 0.8;
+      bgm.play().catch(()=>{});
+      updateIcon(); showCtrl();
+      ['click','touchstart','keydown'].forEach(ev=>window.removeEventListener(ev, unlockAudio));
+    }
+    ['click','touchstart','keydown'].forEach(ev=>{
+      window.addEventListener(ev, unlockAudio, { once:true, passive:true });
+    });
+
+    // 控制條：自動淡出
+    let hideTimer;
+    function showCtrl(){
+      ctrl.classList.remove('hide');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(()=>ctrl.classList.add('hide'), 4000);
+    }
+    ['mousemove','pointermove','pointerdown','touchstart','keydown'].forEach(evt=>{
+      window.addEventListener(evt, showCtrl, {passive:true});
+    });
+
+    // Mute/Unmute
+    function updateIcon(){
+      btnMute.textContent = (bgm.muted || bgm.volume === 0) ? '🔇' : '🔈';
+    }
+    btnMute.addEventListener('click', ()=>{
+      bgm.muted = !bgm.muted;
+      if (!bgm.muted && bgm.volume === 0) { bgm.volume = 0.5; vol.value = 0.5; }
+      bgm.play().catch(()=>{});
+      localStorage.setItem('nx_bgm_mute', bgm.muted ? '1' : '0');
+      updateIcon(); showCtrl();
+    });
+
+    // 音量滑桿
+    vol.addEventListener('input', ()=>{
+      bgm.muted = false;
+      bgm.volume = Number(vol.value);
+      localStorage.setItem('nx_bgm_vol', vol.value);
+      localStorage.setItem('nx_bgm_mute', '0');
+      updateIcon(); showCtrl();
+    });
+
+    // 回到頁面時嘗試恢復播放
+    document.addEventListener('visibilitychange', ()=>{
+      if(document.visibilityState === 'visible'){ bgm.play().catch(()=>{}); }
+    });
+
+    updateIcon();
+  })();
+  </script>
 </body>
 </html>
