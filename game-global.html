@@ -199,6 +199,76 @@
   <footer>
     © 2025 NeoX. All rights reserved.
   </footer>
+  
+  <!-- 🎵 背景音樂 + 🔈 控制鍵 -->
+  <audio id="bgm" src="https://neoxcoin.github.io/game-time-401349.mp3" loop preload="auto"></audio>
+
+  <div class="audio-toggle" id="audioToggle">
+    <button id="btnMute" type="button">🔈</button>
+    <small id="audioLabel">Sound on</small>
+  </div>
+
+  <script>
+  (function(){
+    const bgm = document.getElementById('bgm');
+    const btnMute = document.getElementById('btnMute');
+    const label = document.getElementById('audioLabel');
+
+    const savedMute = localStorage.getItem('nx_bgm_mute') === '1';
+
+    bgm.muted = true; bgm.volume = 0; bgm.play().catch(()=>{});
+    if (savedMute) bgm.muted = true;
+
+    function updateUI(){
+      const muted = bgm.muted || bgm.volume === 0;
+      btnMute.textContent = muted ? '🔇' : '🔈';
+      label.textContent = muted ? 'Sound off' : 'Sound on';
+    }
+
+    function unlockAudio(){
+      if (!savedMute){
+        bgm.muted = false; bgm.volume = 0.8;
+        bgm.play().catch(()=>{});
+      }
+      updateUI();
+      ['click','touchstart','keydown'].forEach(e=>window.removeEventListener(e, unlockAudio));
+    }
+    ['click','touchstart','keydown'].forEach(e=>window.addEventListener(e, unlockAudio, {once:true, passive:true}));
+
+    btnMute.addEventListener('click', ()=>{
+      bgm.muted = !bgm.muted;
+      localStorage.setItem('nx_bgm_mute', bgm.muted ? '1' : '0');
+      if(!bgm.muted) bgm.play().catch(()=>{});
+      updateUI();
+    });
+
+    // 入遊戲時先停止
+    function stopBgm(){
+      try{ bgm.pause(); }catch(e){}
+      bgm.currentTime = 0; bgm.muted = true;
+    }
+    document.querySelectorAll('a.stop-bgm').forEach(a=>{
+      a.addEventListener('mousedown', stopBgm, {passive:true});
+      a.addEventListener('touchstart', stopBgm, {passive:true});
+      a.addEventListener('click', stopBgm, {passive:true});
+    });
+    window.addEventListener('pagehide', stopBgm);
+    document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') stopBgm(); });
+
+    updateUI();
+  })();
+  </script>
+
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi,ar,tr,fa,uk,pl',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>b
 
   <!-- Google Translate Script -->
   <script type="text/javascript">
