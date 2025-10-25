@@ -161,11 +161,6 @@
       h1 { font-size: 28px; }
       p.subtitle { font-size: 16px; }
     }
-    
-    .audio-toggle {
-      opacity: 0;
-      pointer-events: none;
-    }
   </style>
 </head>
 <body>
@@ -205,75 +200,63 @@
     © 2025 NeoX. All rights reserved.
   </footer>
   
-  <!-- 🎵 背景音樂 + 🔈 控制鍵 -->
+  <!-- 🎵 只在 game.html 播放的背景音樂 -->
   <audio id="bgm" src="https://neoxcoin.github.io/game-time-401349.mp3" loop preload="auto"></audio>
 
-  <div class="audio-toggle" id="audioToggle">
-    <button id="btnMute" type="button">🔈</button>
-    <small id="audioLabel">Sound on</small>
-  </div>
-
   <script>
+  // 影片載入成功後淡入
+  (function(){
+    const v = document.querySelector('.hero video');
+    if(!v) return;
+    function onReady(){ v.classList.add('loaded'); }
+    v.addEventListener('loadeddata', onReady, {once:true});
+    v.addEventListener('canplay', onReady, {once:true});
+  })();
+
+  // 🎵 BGM：只在這頁播放；點擊開遊戲前立刻停止
   (function(){
     const bgm = document.getElementById('bgm');
-    const btnMute = document.getElementById('btnMute');
-    const label = document.getElementById('audioLabel');
 
-    const savedMute = localStorage.getItem('nx_bgm_mute') === '1';
+    // 初始：靜音自動播放（避免 iOS/Safari 阻擋）
+    bgm.volume = 0;
+    bgm.muted  = true;
+    bgm.play().catch(()=>{});
 
-    bgm.muted = true; bgm.volume = 0; bgm.play().catch(()=>{});
-    if (savedMute) bgm.muted = true;
-
-    function updateUI(){
-      const muted = bgm.muted || bgm.volume === 0;
-      btnMute.textContent = muted ? '🔇' : '🔈';
-      label.textContent = muted ? 'Sound off' : 'Sound on';
-    }
-
+    // 第一次互動 → 開聲
     function unlockAudio(){
-      if (!savedMute){
-        bgm.muted = false; bgm.volume = 0.8;
-        bgm.play().catch(()=>{});
-      }
-      updateUI();
-      ['click','touchstart','keydown'].forEach(e=>window.removeEventListener(e, unlockAudio));
+      bgm.muted  = false;
+      bgm.volume = 0.8;           // 預設音量（可改）
+      bgm.play().catch(()=>{});
+      ['click','touchstart','keydown'].forEach(ev=>window.removeEventListener(ev, unlockAudio));
     }
-    ['click','touchstart','keydown'].forEach(e=>window.addEventListener(e, unlockAudio, {once:true, passive:true}));
-
-    btnMute.addEventListener('click', ()=>{
-      bgm.muted = !bgm.muted;
-      localStorage.setItem('nx_bgm_mute', bgm.muted ? '1' : '0');
-      if(!bgm.muted) bgm.play().catch(()=>{});
-      updateUI();
+    ['click','touchstart','keydown'].forEach(ev=>{
+      window.addEventListener(ev, unlockAudio, { once:true, passive:true });
     });
 
-    // 入遊戲時先停止
+    // 停止音樂的統一方法
     function stopBgm(){
-      try{ bgm.pause(); }catch(e){}
-      bgm.currentTime = 0; bgm.muted = true;
+      try { bgm.pause(); } catch(e){}
+      bgm.currentTime = 0;
+      bgm.muted = true;
+      bgm.volume = 0;
     }
+
+    // 1) 進入遊戲（hero 全幅連結、Play Now 按鈕）：先停 BGM 再開新頁
     document.querySelectorAll('a.stop-bgm').forEach(a=>{
+      // 在 mousedown/touchstart 時先停，避免新頁開啟前有殘音
       a.addEventListener('mousedown', stopBgm, {passive:true});
       a.addEventListener('touchstart', stopBgm, {passive:true});
       a.addEventListener('click', stopBgm, {passive:true});
     });
-    window.addEventListener('pagehide', stopBgm);
-    document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') stopBgm(); });
 
-    updateUI();
+    // 2) 使用者離開此頁（導航/關閉/切分頁）也停止
+    window.addEventListener('pagehide', stopBgm);
+    window.addEventListener('beforeunload', stopBgm);
+    document.addEventListener('visibilitychange', ()=>{
+      if (document.visibilityState === 'hidden') stopBgm();
+    });
   })();
   </script>
-
-  <!-- Google Translate Script -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi,ar,tr,fa,uk,pl',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>b
 
   <!-- Google Translate Script -->
   <script type="text/javascript">
