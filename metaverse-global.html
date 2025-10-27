@@ -158,10 +158,32 @@
   <h1>NeoX Metaverse Exhibition</h1>
   <p class="lead">Step into the NeoX virtual gallery and experience the future of digital art in the metaverse.</p>
 
-  <!-- Exhibition iFrame -->
-  <div class="iframe-container">
-    <iframe src="https://oncyber.io/neoxdynamic" allowfullscreen></iframe>
+  <!-- 🎬 Clickable Video Entrance to OnCyber -->
+  <div class="iframe-container" style="position:relative;overflow:hidden;border-radius:12px;cursor:pointer;"
+       onclick="window.open('https://oncyber.io/neoxdynamic','_blank')">
+
+    <!-- 背景影片 -->
+    <video autoplay muted loop playsinline preload="auto"
+           style="width:100%;height:auto;display:block;border-radius:12px;">
+      <source src="https://neoxcoin.github.io/NeoXDynamicVisions%20.mp4" type="video/mp4">
+    </video>
+
+    <!-- 半透明漸層遮罩 -->
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,.15));"></div>
+
+    <!-- 🚀 動畫提示（可刪可留） -->
+    <div style="position:absolute;bottom:15px;left:50%;transform:translateX(-50%);
+                color:#00d9ff;font-size:15px;opacity:0.9;animation:floatHint 2s infinite;">
+      🚀 Tap to Enter NeoX Metaverse Exhibition
+    </div>
   </div>
+
+  <style>
+  @keyframes floatHint {
+    0%,100% { transform:translate(-50%,0); opacity:0.9; }
+    50% { transform:translate(-50%,-6px); opacity:1; }
+  }
+  </style>
 
   <!-- Buttons -->
   <div class="btn-row">
