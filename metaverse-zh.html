@@ -173,10 +173,32 @@
   <h1>NeoX 元宇宙展覽</h1>
   <p class="lead">走進 NeoX 虛擬展館，體驗數位藝術在元宇宙中的未來。</p>
 
-  <!-- 展覽廳 iFrame -->
-  <div class="iframe-container">
-    <iframe src="https://oncyber.io/neoxdynamic" allowfullscreen></iframe>
+  <!-- 🎬 點擊影片進入 OnCyber 展館 -->
+<div class="iframe-container" style="position:relative;overflow:hidden;border-radius:12px;cursor:pointer;"
+     onclick="window.open('https://oncyber.io/neoxdynamic','_blank')">
+
+  <!-- 背景影片 -->
+    <video autoplay muted loop playsinline preload="auto"
+           style="width:100%;height:auto;display:block;border-radius:12px;">
+      <source src="https://neoxcoin.github.io/NeoXDynamicVisions%20.mp4" type="video/mp4">
+    </video>
+
+    <!-- 半透明漸層遮罩 -->
+    <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,.15));"></div>
+
+    <!-- 🚀 提示文字（可刪可留） -->
+    <div style="position:absolute;bottom:15px;left:50%;transform:translateX(-50%);
+                color:#00d9ff;font-size:15px;opacity:0.9;animation:floatHint 2s infinite;">
+      🚀 點擊進入 NeoX 元宇宙展覽
+    </div>
   </div>
+
+  <style>
+  @keyframes floatHint {
+    0%,100% { transform:translate(-50%,0); opacity:0.9; }
+    50% { transform:translate(-50%,-6px); opacity:1; }
+  }
+  </style>
 
   <!-- 按鈕 -->
   <div class="btn-row">
