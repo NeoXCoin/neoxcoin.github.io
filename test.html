@@ -3,146 +3,109 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NeoX Metaverse – Ultra-Mini Test</title>
+<title>NeoX Metaverse – Test (Auto Fallback)</title>
 <link rel="icon" href="https://neoxcoin.github.io/XNXC.png"/>
 <style>
   :root{ --neo:#00d9ff }
-  html,body{margin:0;min-height:100%;background:linear-gradient(135deg,#0a0a2a,#1f005c);color:#fff;
-            font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif}
-  .logo{position:fixed;z-index:3;top:14px;left:14px;width:48px;opacity:.9}
-  .stage{max-width:920px;margin:80px auto 36px;padding:0 16px}
-  .card{position:relative;border-radius:14px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.55);background:#000}
-  video,iframe{width:100%;height:58vw;max-height:560px;border:0;display:block}
-  .mask{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),rgba(0,0,0,.12));pointer-events:none}
-  .hint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);font-size:13px;color:var(--neo);
-        padding:6px 12px;background:rgba(0,0,0,.34);border:1px solid rgba(0,217,255,.35);border-radius:999px;
-        animation:float 2s infinite;opacity:.92;transition:opacity .5s ease}
-  @keyframes float{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-6px)}}
-  /* 極小的右上角面板呼出鈕（3秒自動隱藏） */
-  .fab{position:fixed;z-index:4;top:12px;right:12px;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.18);
-       border-radius:10px;color:#ddd;font-size:12px;padding:6px 9px;cursor:pointer;opacity:.9;transition:opacity .4s}
-  .fab.hide{opacity:0;pointer-events:none}
-  .panel{position:fixed;z-index:5;top:44px;right:12px;background:#0b0b12;border:1px solid rgba(0,217,255,.25);
-         border-radius:12px;box-shadow:0 12px 32px rgba(0,0,0,.45);padding:10px 12px;display:none}
-  .panel button{display:block;width:100%;margin:6px 0;padding:8px 10px;border-radius:10px;border:1px solid rgba(0,217,255,.35);
-                background:#0f1d22;color:#dff;cursor:pointer;font-size:13px}
-  .toast{position:fixed;z-index:6;left:50%;top:14px;transform:translateX(-50%);background:rgba(0,0,0,.65);
-         color:#dff;padding:8px 12px;border-radius:10px;border:1px solid rgba(0,217,255,.35);display:none;font-size:13px}
-  /* 行動裝置：盡量清爽，提示快閃 */
-  @media (max-width:640px){
-    .stage{margin:64px auto 18px}
-    .hint{font-size:12px}
-    .fab{font-size:11px;padding:5px 8px}
+  html,body{
+    margin:0; min-height:100%;
+    background:linear-gradient(135deg,#0a0a2a,#1f005c);
+    color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif;
   }
+  /* 頂部小Logo（不擋畫面） */
+  .logo{ position:fixed; z-index:3; top:12px; left:12px; width:48px; opacity:.9 }
+
+  /* 主視覺區 */
+  .stage{ max-width:920px; margin:64px auto 28px; padding:0 16px; }
+  .card{
+    position:relative; border-radius:14px; overflow:hidden; background:#000;
+    box-shadow:0 8px 28px rgba(0,0,0,.55);
+  }
+  /* 影片 / iframe 高度：桌面固定 500px；手機比例 58vw */
+  #neoMount iframe, #neoMount video{ width:100%; height:500px; border:0; display:block }
+  @media (max-width:640px){
+    #neoMount iframe, #neoMount video{ height:58vw; max-height:560px }
+  }
+
+  /* 上層柔和遮罩，令影片更立體 */
+  .neo-mask{ position:absolute; inset:0; pointer-events:none;
+             background:linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,.12)); }
+
+  /* 進入提示（2.5s 後淡出） */
+  .neo-hint{
+    position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
+    font-size:13px; color:var(--neo); padding:6px 12px; border-radius:999px;
+    background:rgba(0,0,0,.34); border:1px solid rgba(0,217,255,.35);
+    animation:neoFloat 2s infinite; opacity:.95; transition:opacity .5s ease;
+  }
+  @keyframes neoFloat { 0%,100%{transform:translate(-50%,0)} 50%{transform:translate(-50%,-6px)} }
+
+  /* Footer（很淡，不干擾） */
+  .foot{ text-align:center; color:rgba(255,255,255,.6); font-size:12px; margin:10px 0 22px }
+  .foot a{ color:#9ab; text-decoration:none } .foot a:hover{ text-decoration:underline }
 </style>
 </head>
 <body>
 
-<a href="index.html"><img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX"/></a>
+<a href="index.html" aria-label="Back to Home">
+  <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX"/>
+</a>
 
 <div class="stage">
-  <div id="mount" class="card" role="button" aria-label="Enter NeoX Metaverse"></div>
+  <!-- 主要容器（由 JS 注入 iframe 或影片） -->
+  <div id="neoMount" class="card" style="position:relative; overflow:hidden; border-radius:14px;"></div>
 </div>
 
-<div id="fab" class="fab">⋮</div>
-<div id="panel" class="panel" role="dialog" aria-label="Mode Panel">
-  <button id="openNew">🚀 新分頁開啟 OnCyber</button>
-  <button id="toEmbed">🧪 切換 Embed 模式（桌面）</button>
-  <button id="toExternal">✅ 切換 External 模式（預設）</button>
-</div>
-
-<div id="toast" class="toast"></div>
+<div class="foot">© 2025 NeoX. All rights reserved.</div>
 
 <script>
 (function(){
-  // ===== Config =====
-  const slug = 'neoxdynamic';
-  const oncyber = `https://oncyber.io/${slug}`;
-  const bust = 'v='+new Date().toISOString().slice(0,10).replace(/-/g,'');
-  const videoSrc = 'https://neoxcoin.github.io/NeoXDynamicVisions%20.mp4';
-  const poster   = 'https://neoxcoin.github.io/XNXC.png';
-  const isMobile = /iPhone|Android|iPad/i.test(navigator.userAgent);
+  const slug   = 'neoxdynamic';
+  const base   = `https://oncyber.io/${slug}`;
+  const bust   = 'v=' + new Date().toISOString().slice(0,10).replace(/-/g,''); // yyyymmdd
+  const mp4    = 'https://neoxcoin.github.io/NeoXDynamicVisions%20.mp4';
+  const poster = 'https://neoxcoin.github.io/XNXC.png';
+  const mount  = document.getElementById('neoMount');
 
-  const key='neox_mode';
-  const qsMode = new URLSearchParams(location.search).get('mode');
-  let mode = (qsMode==='embed'||qsMode==='external')?qsMode:(localStorage.getItem(key)||'external');
-  if(isMobile) mode='external'; // 手機一律外開以最清爽穩定
+  // 在 IG / Threads 內建瀏覽器 → 直接用影片入口（避免 3D 與 cookie 限制）
+  const ua = navigator.userAgent || '';
+  const inApp = /Instagram|Threads/i.test(ua);
 
-  const mount = document.getElementById('mount');
-  const fab   = document.getElementById('fab');
-  const panel = document.getElementById('panel');
-  const toast = document.getElementById('toast');
-
-  function showToast(msg){
-    toast.textContent = msg; toast.style.display='block';
-    setTimeout(()=>toast.style.display='none',1600);
-  }
-
-  function renderExternal(){
+  function showVideo(){
     mount.innerHTML = `
       <video autoplay muted loop playsinline preload="auto" poster="${poster}"></video>
-      <div class="mask"></div>
-      <div id="hint" class="hint">🚀 輕觸進入 NeoX 元宇宙展覽</div>
+      <div class="neo-mask"></div>
+      <div id="neoHint" class="neo-hint">🚀 輕觸進入 NeoX 元宇宙展覽</div>
     `;
     const v = mount.querySelector('video');
-    v.src = videoSrc.replace(/\s/g,'%20');
-    // 點任何位置→新分頁開
-    mount.onclick = ()=> window.open(\`${oncyber}?\${bust}\`,'_blank','noopener');
-    // 手機：提示 2.5 秒後自動淡出
-    const h = document.getElementById('hint');
-    setTimeout(()=>{ if(h) h.style.opacity='0'; }, 2500);
+    // 安全處理空白
+    v.src = mp4.replace(/\\s/g, '%20');
+    mount.style.cursor = 'pointer';
+    mount.onclick = () => window.open(\`${base}?\${bust}\`, '_blank', 'noopener');
+
+    // 提示 2.5 秒後自動淡出
+    setTimeout(()=>{ const h = document.getElementById('neoHint'); if(h) h.style.opacity = '0'; }, 2500);
   }
 
-  function renderEmbed(){
-    mount.onclick=null;
+  function showIframe(){
+    mount.style.cursor = 'default';
     mount.innerHTML = `
-      <iframe id="oc" src="${oncyber}?${bust}"
+      <iframe
+        src="${base}?${bust}"
         allow="autoplay; fullscreen; xr-spatial-tracking; gyroscope; accelerometer"
-        allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <div class="mask"></div>
+        allowfullscreen
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div class="neo-mask"></div>
     `;
-    // 8 秒內未 settle → 靜默切回外開
-    let settled=false;
-    const f= document.getElementById('oc');
-    f.addEventListener('load',()=>{ settled=true; });
-    setTimeout(()=>{
-      if(!settled){
-        mode='external'; localStorage.setItem(key,mode);
-        renderExternal(); showToast('已自動切回外開模式');
-      }
-    },8000);
+    // 若 8 秒內沒有 onload（可能被阻擋/出錯），自動切換到影片入口
+    let loaded = false;
+    const f = mount.querySelector('iframe');
+    f.addEventListener('load', ()=>{ loaded = true; });
+    setTimeout(()=>{ if(!loaded) showVideo(); }, 8000);
   }
 
-  function render(){
-    (mode==='embed' ? renderEmbed : renderExternal)();
-  }
-
-  // 初始渲染
-  render(); localStorage.setItem(key,mode);
-
-  // ===== Tiny panel（3秒自動隱藏；長按畫面再次喚出） =====
-  setTimeout(()=>fab.classList.add('hide'), 3000);
-  let panelOpen=false;
-  function togglePanel(){
-    panelOpen=!panelOpen; panel.style.display=panelOpen?'block':'none';
-  }
-  fab.onclick=togglePanel;
-  document.addEventListener('click', (e)=>{
-    if(panelOpen && !panel.contains(e.target) && e.target!==fab){ togglePanel(); }
-  });
-  // 長按喚出
-  let pressT=null;
-  mount.addEventListener('touchstart', ()=>{ pressT=setTimeout(()=>{ fab.classList.remove('hide'); togglePanel(); },500); });
-  ['touchend','touchmove','touchcancel'].forEach(ev=>mount.addEventListener(ev,()=>{ clearTimeout(pressT); }));
-
-  // 面板動作
-  document.getElementById('openNew').onclick = ()=> window.open(`${oncyber}?${bust}`,'_blank','noopener');
-  document.getElementById('toEmbed').onclick = ()=>{
-    if(isMobile){ showToast('手機不建議 Embed'); return; }
-    mode='embed'; localStorage.setItem(key,mode); render(); togglePanel();
-  };
-  document.getElementById('toExternal').onclick = ()=>{ mode='external'; localStorage.setItem(key,mode); render(); togglePanel(); };
-
+  inApp ? showVideo() : showIframe();
 })();
 </script>
 </body>
