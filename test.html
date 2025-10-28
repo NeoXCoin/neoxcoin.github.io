@@ -1,144 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-<title>NeoX Game (iframe clean)</title>
-
-<style>
-  :root { --vh: 1vh; }
-
-  html, body {
-    margin: 0;
-    background: #0a0b1f;
-    color: #fff;
-    height: calc(var(--vh, 1vh) * 100);
-    display: grid;
-    place-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
-    overflow: hidden;
-    overscroll-behavior: none;
-    -webkit-overflow-scrolling: auto;
-    touch-action: manipulation;
-  }
-
-  iframe {
-    width: min(92vw, 440px);
-    aspect-ratio: 9/16;
-    border: 0;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0,0,0,.45);
-    padding: constant(safe-area-inset-top) constant(safe-area-inset-right)
-             constant(safe-area-inset-bottom) constant(safe-area-inset-left);
-    padding: env(safe-area-inset-top) env(safe-area-inset-right)
-             env(safe-area-inset-bottom) env(safe-area-inset-left);
-  }
-
-  /* 🏆 Top 3 Box */
-  .top3 {
-    position: fixed;
-    top: 16px; left: 50%; transform: translateX(-50%);
-    background: rgba(255,255,255,.08);
-    border-radius: 12px;
-    padding: 10px 16px;
-    font-weight: 800;
-    font-size: 15px;
-    box-shadow: 0 6px 20px rgba(0,0,0,.3);
-    backdrop-filter: blur(6px);
-    display: none;
-    opacity: 0;
-    transition: opacity .8s ease;
-  }
-  .top3.show { display: block; opacity: 1; }
-  .top3 ol { margin: 6px 0 0; padding-left: 20px; }
-  .top3 small { opacity: .8; font-weight: 600; }
-</style>
-
-<!-- 🎮 起始頁：整個遊戲流程 -->
-<iframe id="game" src="index.html" allow="gamepad *"></iframe>
-
-<!-- 🏆 全球排行榜 -->
-<div class="top3" id="top3Box">
-  <div>🏆 NeoX Top 3 Players</div>
-  <ol id="top3List"><li>Loading...</li></ol>
-  <small id="top3Hint"></small>
-</div>
-
-<!-- 🔧 固定可視高度（防止 iOS 地址列導致 iframe 高度跳動） -->
-<script>
-  (function setVh(){
-    function update(){
-      var h = (window.visualViewport ? visualViewport.height : window.innerHeight);
-      document.documentElement.style.setProperty('--vh', (h * 0.01) + 'px');
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeoX Metaverse – TEST (Embed/External)</title>
+  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png"/>
+  <style>
+    :root{ --neo: #00d9ff; }
+    body{
+      margin:0; min-height:100vh; background:linear-gradient(135deg,#0a0a2a,#1f005c);
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif;
+      color:#fff; text-align:center; padding:40px 20px;
     }
-    update();
-    window.addEventListener('resize', update, {passive:true});
-    window.addEventListener('orientationchange', update, {passive:true});
-    if (window.visualViewport) {
-      visualViewport.addEventListener('resize', update, {passive:true});
-      visualViewport.addEventListener('scroll', update, {passive:true});
+    .logo{ position:absolute; top:20px; left:20px; width:60px; opacity:.9; }
+    .language-switch{ position:absolute; top:20px; right:20px; font-size:14px; }
+    .language-switch a{ color:#fff; text-decoration:none; margin:0 8px; }
+    h1{ font-size:32px; margin:0 0 10px; color:var(--neo); }
+    p.lead{ color:#cfd7ff; margin:0 0 22px; }
+    .shell{
+      max-width:900px; margin:0 auto 28px; border-radius:12px; overflow:hidden;
+      box-shadow:0 4px 20px rgba(0,0,0,.6); position:relative; background:#000;
     }
+    iframe, video{ width:100%; height:500px; display:block; border:0; }
+    .mask{ position:absolute; inset:0;
+      background:linear-gradient(to top,rgba(0,0,0,.65),rgba(0,0,0,.12));
+      pointer-events:none;
+    }
+    .hint{
+      position:absolute; bottom:14px; left:50%; transform:translateX(-50%);
+      color:var(--neo); font-size:14px; opacity:.95; animation:floatHint 2s infinite;
+      padding:4px 10px; background:rgba(0,0,0,.35); border:1px solid rgba(0,217,255,.35); border-radius:999px;
+    }
+    @keyframes floatHint{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-6px)}}
+
+    .btn-row{ display:flex; justify-content:center; flex-wrap:wrap; gap:10px; margin-top:18px; }
+    .btn{
+      background:#0a0a0a; border:2px solid var(--neo); color:var(--neo);
+      padding:10px 18px; border-radius:12px; font-size:14px; cursor:pointer; text-decoration:none;
+      display:inline-flex; align-items:center; justify-content:center; gap:8px;
+      transition:all .25s ease; box-shadow:0 0 8px rgba(0,217,255,.45);
+    }
+    .btn:hover{ background:var(--neo); color:#000; box-shadow:0 0 20px rgba(0,217,255,.8); transform:translateY(-2px); }
+    .btn-blue{ background:#0d6efd; border-color:#3399ff; color:#fff; box-shadow:none; }
+    .footer{ margin-top:50px; font-size:13px; color:rgba(255,255,255,.6); }
+    .footer a{ color:#aaa; text-decoration:none; } .footer a:hover{ text-decoration:underline; }
+
+    /* Fallback card when embed fails */
+    .fallback{
+      padding:28px; background:#111; color:#ddd;
+      display:flex; flex-direction:column; align-items:center; gap:12px;
+    }
+    .mode-toggle{
+      position:fixed; z-index:1000; top:16px; right:16px;
+      background:#111; border:1px solid rgba(0,217,255,.35); color:#fff; border-radius:10px;
+      padding:8px 12px; font-size:13px; cursor:pointer; box-shadow:0 6px 18px rgba(0,0,0,.35);
+    }
+    .badge{ padding:2px 8px; border-radius:8px; font-weight:600; font-size:12px; margin-left:8px; }
+    .b-embed{ background:#102a32; color:var(--neo); border:1px solid rgba(0,217,255,.35); }
+    .b-external{ background:#2a102f; color:#ff7be6; border:1px solid rgba(255,123,230,.35); }
+    @media (max-width:600px){
+      iframe, video{ height:58vw; max-height:520px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Logo -->
+  <a href="index.html"><img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+
+  <!-- Lang -->
+  <div class="language-switch">
+    <a href="test.html?lang=en">EN</a> | <a href="test.html?lang=zh">繁</a>
+  </div>
+
+  <h1>NeoX Metaverse – TEST</h1>
+  <p class="lead">Switch between <b>Embed</b> and <b>External</b> modes to verify stability across browsers.</p>
+
+  <!-- Mode toggle -->
+  <button id="modeBtn" class="mode-toggle">Mode: <span id="modeBadge" class="badge"></span></button>
+
+  <!-- Main container (will be filled by JS) -->
+  <div id="mount" class="shell"></div>
+
+  <!-- Controls -->
+  <div class="btn-row">
+    <a class="btn" id="openDirect" target="_blank" rel="noopener">🚀 Open OnCyber (new tab)</a>
+    <a class="btn btn-blue" href="index.html">← Back to Home</a>
+  </div>
+
+  <div class="footer">
+    © 2025 NeoX. All rights reserved. | <a href="disclaimer-en.html">Disclaimer</a>
+  </div>
+
+  <script>
+  (function(){
+    // ====== CONFIG ======
+    const oncyberSlug = 'neoxdynamic';
+    const oncyberURL  = `https://oncyber.io/${oncyberSlug}`;
+    const cacheBust   = `ver=${new Date().toISOString().slice(0,10).replace(/-/g,'')}`; // yyyymmdd
+    const videoSrc    = 'https://neoxcoin.github.io/NeoXDynamicVisions%20.mp4';
+    const posterSrc   = 'https://neoxcoin.github.io/XNXC.png';
+
+    // ====== Helpers ======
+    const qs = new URLSearchParams(location.search);
+    const ua = navigator.userAgent || '';
+    const isInApp = /Instagram|FBAN|FBAV|FB_IAB|Line\/|Twitter|Discord/i.test(ua);
+    const isIGorThreads = /Instagram|Threads/i.test(ua);
+
+    function getInitMode(){
+      // priority: ?mode= -> localStorage -> default external
+      const q = qs.get('mode');
+      if(q === 'embed' || q === 'external') return q;
+      const saved = localStorage.getItem('neox_test_mode');
+      return (saved === 'embed' || saved === 'external') ? saved : 'external';
+    }
+
+    function setMode(m){
+      localStorage.setItem('neox_test_mode', m);
+      render(m);
+    }
+
+    function renderBadge(m){
+      const badge = document.getElementById('modeBadge');
+      badge.textContent = (m === 'embed') ? 'EMBED' : 'EXTERNAL';
+      badge.className = 'badge ' + (m === 'embed' ? 'b-embed' : 'b-external');
+      document.getElementById('modeBtn').onclick = () => setMode(m === 'embed' ? 'external' : 'embed');
+    }
+
+    function renderExternal(){
+      const el = document.getElementById('mount');
+      el.innerHTML = `
+        <video autoplay muted loop playsinline preload="auto" poster="${posterSrc}"></video>
+        <div class="mask"></div>
+        <div class="hint">🚀 點擊進入 NeoX 元宇宙展覽（新分頁）</div>
+      `;
+      const v = el.querySelector('video');
+      v.src = '${videoSrc}'.replace(/\\s/g,'%20'); // safety for space
+      el.style.cursor = 'pointer';
+      el.onclick = ()=> window.open('${oncyberURL}?${cacheBust}', '_blank', 'noopener');
+    }
+
+    function renderEmbed(){
+      const el = document.getElementById('mount');
+      el.style.cursor = 'default';
+      const src = `${oncyberURL}?${cacheBust}`;
+      el.innerHTML = `
+        <iframe id="ocFrame"
+          src="${src}"
+          allow="autoplay; fullscreen; xr-spatial-tracking; gyroscope; accelerometer"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      `;
+
+      // Fallback after 8s if not loaded (simple heuristic)
+      let settled = false;
+      const iframe = document.getElementById('ocFrame');
+      iframe.addEventListener('load', ()=> { settled = true; });
+
+      setTimeout(()=>{
+        if(!settled){
+          el.innerHTML = `
+            <div class="fallback">
+              <div style="font-size:18px; color: var(--neo);">⚠️ Embed not available in this browser</div>
+              <div style="opacity:.9">Some in-app/strict browsers block third-party 3D assets or cookies.</div>
+              <a class="btn" href="${oncyberURL}?${cacheBust}" target="_blank" rel="noopener">🚀 Open in new tab</a>
+              <button class="btn" id="switchExternal">Use External Mode</button>
+            </div>
+          `;
+          document.getElementById('switchExternal').onclick = ()=> setMode('external');
+        }
+      }, 8000);
+    }
+
+    function render(mode){
+      renderBadge(mode);
+      document.getElementById('openDirect').href = `${oncyberURL}?${cacheBust}`;
+
+      // In-app browsers: always show not-supported card (safer)
+      if(isIGorThreads){
+        const m = document.getElementById('mount');
+        m.innerHTML = `
+          <div class="fallback">
+            <div style="font-size:18px; color: var(--neo);">⚠️ In-app browser not supported</div>
+            <div style="opacity:.9">Instagram / Threads 內建瀏覽器無法載入 3D 展館。</div>
+            <a class="btn" href="${oncyberURL}?${cacheBust}" target="_blank" rel="noopener">在 Safari / Chrome 開啟</a>
+            <button class="btn" id="goExternal">改用 External 模式</button>
+          </div>
+        `;
+        document.getElementById('goExternal').onclick = ()=> setMode('external');
+        return;
+      }
+
+      if(mode === 'embed'){ renderEmbed(); } else { renderExternal(); }
+    }
+
+    // init
+    render(getInitMode());
   })();
-</script>
-
-<script>
-/* ====== 🌐 API Config ====== */
-const API_URL = 'https://script.google.com/macros/s/AKfycbw44w4f5hpmKiledO1XfIKsGgfMgCksmcU2Qsst56l68CPLvQs4GvIg0PrItIuUqkOT2g/exec';
-
-/* ====== 👤 Player Name (首次詢問) ====== */
-function getPlayerName(){
-  let name = localStorage.getItem('nx_player_name');
-  if(!name){
-    name = prompt('Enter your player name for the leaderboard:','Player') || 'Player';
-    name = String(name).slice(0,20);
-    localStorage.setItem('nx_player_name', name);
-  }
-  return name;
-}
-
-/* ====== 🏆 Fetch Top 3 from Google Script ====== */
-async function loadTop3(){
-  const box = document.getElementById('top3Box');
-  const list = document.getElementById('top3List');
-  const hint = document.getElementById('top3Hint');
-  try{
-    const res = await fetch(API_URL);
-    const data = await res.json();
-    list.innerHTML = '';
-    (data||[]).slice(0,3).forEach(r=>{
-      const li=document.createElement('li');
-      li.textContent = `${r.name} — ${r.score}`;
-      list.appendChild(li);
-    });
-    if(!list.children.length) list.innerHTML='<li>No scores yet</li>';
-    hint.textContent='Updated: '+new Date().toLocaleTimeString();
-    box.classList.add('show');
-  }catch(e){
-    list.innerHTML='<li>Network error</li>';
-  }
-}
-
-/* ====== 📨 Upload score to Google Script ====== */
-async function submitScore(score){
-  try{
-    await fetch(API_URL,{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({ name:getPlayerName(), score:Math.floor(score) })
-    });
-  }catch(e){}
-}
-
-/* ====== 🎮 Communication with iframe ====== */
-const frame=document.getElementById('game');
-window.addEventListener('message',async e=>{
-  const m=e.data||{};
-  
-  // 🏁 Game cleared
-  if(m.type==='NX_GAME_CLEARED'){
-    const total=Math.floor(m.total||m.score||0);
-    await submitScore(total);   // 上傳分數
-    await loadTop3();           // 取榜顯示
-  }
-});
-</script>
+  </script>
+</body>
 </html>
