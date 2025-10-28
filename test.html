@@ -53,6 +53,19 @@
       height: min(97vh, 1180px);
     }
   }
+  
+  /* ✅ iPad／平板直向：以高度為主，預留底部安全區，避免被遮 */
+  @media (orientation: portrait) and (min-width: 768px){
+    iframe{
+      /* 取較保守的 88% 可視高度（你可按需要改 86/84） */
+      height: min(88svh,
+                  calc(var(--vh, 1vh) * 88),
+                  calc(100dvh - 32px - env(safe-area-inset-bottom)));
+      width: auto;           /* 由 aspect-ratio 自動算寬 */
+      aspect-ratio: 9 / 16;  /* 保持 9:16 比例 */
+      max-width: 92vw;       /* 仍然不超出視窗寬 */
+    }
+  }
 
   /* 🏆 Top 3 Box */
   .top3 {
