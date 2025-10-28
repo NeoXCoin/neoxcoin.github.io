@@ -1,21 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX Game Zone</title>
-  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" />
-  <style>
-    body {
-      margin: 0;
-      background: #0a0a2a;
-      background-image: url('https://neoxcoin.github.io/NeoXBlackG.PNG');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      font-family: Arial, sans-serif;
-      padding: 40px 20px;
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>NeoX Game (iframe host)</title>
+<style>
+  :root { --vh: 1vh; }
+
+  html, body {
+    margin: 0;
+    background: #0a0b1f;
+    color: #fff;
+    height: calc(var(--vh, 1vh) * 100);
+    display: grid;
+    place-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
+    overflow: hidden;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: auto;
+    touch-action: manipulation;
+  }
+
+  iframe {
+    width: min(92vw, 440px);
+    aspect-ratio: 9/16;
+    border: 0;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.45);
+    background: #000;
+    /* iOS safe-area padding (no harm on desktop) */
+    padding: constant(safe-area-inset-top) constant(safe-area-inset-right)
+             constant(safe-area-inset-bottom) constant(safe-area-inset-left);
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+             env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  /* 🏆 Top 3 Box */
+  .top3 {
+    position: fixed;
+    top: 16px; left: 50%; transform: translateX(-50%);
+    background: rgba(255,255,255,.08);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-weight: 800;
+    font-size: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.3);
+    backdrop-filter: blur(6px);
+    display: none;
+    opacity: 0;
+    transition: opacity .6s ease;
+    max-width: min(92vw, 440px);
+  }
+  .top3.show { display: block; opacity: 1; }
+  .top3 ol { margin: 6px 0 0; padding-left: 20px; }
+  .top3 small { opacity: .8; font-weight: 600; display:block; margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<!-- 🎮 起始頁：整個遊戲流程（用絕對 URL + 旗標） -->
+<iframe
+  id="game"
+  title="NeoX Catch"
+  src="https://neoxcoin.github.io/neox-game/index.html#embed=1"
+  allow="autoplay *; fullscreen *; gamepad *; clipboard-write"
+  referrerpolicy="no-referrer-when-downgrade"
+  loading="eager">
+</iframe>
+
+<!-- 🏆 全球排行榜 -->
+<div class="top3" id="top3Box">
+  <div>🏆 NeoX Top 3 Players</div>
+  <ol id="top3List"><li>Loading...</li></ol>
+  <small id="top3Hint"></small>
+</div>
+
+<!-- 🔧 固定可視高度（防 iOS 地址列導致高度跳動） -->
+<script>
+  (function setVh(){
+    function update(){
+      var h = (window.visualViewport ? visualViewport.height : window.innerHeight);
+      document.documentElement.style.setProperty('--vh', (h * 0.01) + 'px');
     }
-    .logo {
-     
+    update();
+    window.addEventListener('resize', update, {passive:true});
+    window.addEventListener('orientationchange', update, {passive:true});
+    if (window.visualViewport) {
+      visualViewport.addEventListener('resize', update, {passive:true});
+      visualViewport.addEventListener('scroll', update, {passive:true});
+    }
+  })();
+</script>
+
+<script>
+/* ====== 🌐 API Config ====== */
+const API_URL     = 'https://script.google.com/macros/s/AKfycbw44w4f5hpmKiledO1XfIKsGgfMgCksmcU2Qsst56l68CPLvQs4GvIg0PrItIuUqkOT2g/exec';
+const GAME_ORIGIN = 'https://neoxcoin.github.io';
+const GAME_BASE   = 'https://neoxcoin.github.io/neox-game/';
+const frame       = document.getElementById('game');
+
+/* ====== 👤 Player Name (首次詢問) ====== */
+function getPlayerName(){
+  let name = localStorage.getItem('nx_player_name');
+  if(!name){
+    name = prompt('Enter your player name for the leaderboard:','Player') || 'Player';
+    name = String(name).slice(0,20);
+    localStorage.setItem('nx_player_name', name);
+  }
+  return name;
+}
+
+/* ====== 🏆 Fetch Top 3 from Google Script ====== */
+async function loadTop3(){
+  const box = document.getElementById('top3Box');
+  const list = document.getElementById('top3List');
+  const hint = document.getElementById('top3Hint');
+  try{
+    const res  = await fetch(API_URL, { cache:'no-cache' });
+    const data = await res.json();
+    list.innerHTML = '';
+    (data||[]).slice(0,3).forEach(r=>{
+      const li=document.createElement('li');
+      li.textContent = `${r.name} — ${r.score}`;
+      list.appendChild(li);
+    });
+    if(!list.children.length) list.innerHTML='<li>No scores yet</li>';
+    hint.textContent='Updated: '+new Date().toLocaleTimeString();
+    box.classList.add('show');
+  }catch(e){
+    list.innerHTML='<li>Network error</li>';
+  }
+}
+
+/* ====== 📨 Upload score to Google Script ====== */
+async function submitScore(score){
+  try{
+    await fetch(API_URL,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({ name:getPlayerName(), score:Math.floor(score||0) })
+    });
+  }catch(e){}
+}
+
+/* ====== 🔒 安全接收 postMessage（只接受來自 neoxcoin.github.io） ====== */
+window.addEventListener('message', async (event)=>{
+  if (event.origin !== GAME_ORIGIN) return;       // 安全：忽略未知來源
+  const m = event.data || {};
+  // 可選：console.log('MSG from game:', m);
+
+  // 你現有 v2/v3 內已 postMessage NX_CARRY，可在這裡做父頁 UI（例如改標題）
+  if (m.type === 'NX_CARRY' && typeof m.score === 'number') {
+    document.title = `NeoX Game — Score ${m.score}`;
+  }
+
+  // 🏁 遊戲完成（端內請發這個）
+  if (m.type === 'NX_GAME_CLEARED') {
+    const total = Math.floor(m.total ?? m.score ?? 0);
+    await submitScore(total);   // 上傳分數
+    await loadTop3();           // 取榜顯示
+  }
+});
+
+/* ====== 📤 對子頁（iframe）下發玩家名稱（可選，供子頁展示） ====== */
+function sendPlayerName(){
+  const name = getPlayerName();
+  try{ frame.contentWindow?.postMessage({ type:'NX_PLAYER_NAME', name }, GAME_ORIGIN); }catch(e){}
+}
+window.addEventListener('load', sendPlayerName);
+</script>
+</body>
+</html>
