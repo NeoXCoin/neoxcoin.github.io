@@ -1,112 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>NeoX Metaverse – Test (Auto Fallback)</title>
-<link rel="icon" href="https://neoxcoin.github.io/XNXC.png"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buy NeoX Coin (NXC)</title>
 <style>
-  :root{ --neo:#00d9ff }
-  html,body{
-    margin:0; min-height:100%;
-    background:linear-gradient(135deg,#0a0a2a,#1f005c);
-    color:#fff; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif;
+  body {
+    margin:0;
+    background:#05081A;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    font-family:-apple-system,Roboto,"PingFang TC",sans-serif;
   }
-  /* 頂部小Logo（不擋畫面） */
-  .logo{ position:fixed; z-index:3; top:12px; left:12px; width:48px; opacity:.9 }
-
-  /* 主視覺區 */
-  .stage{ max-width:920px; margin:64px auto 28px; padding:0 16px; }
-  .card{
-    position:relative; border-radius:14px; overflow:hidden; background:#000;
-    box-shadow:0 8px 28px rgba(0,0,0,.55);
+  iframe {
+    width:90%;
+    max-width:420px;
+    height:640px;
+    border:0;
+    border-radius:16px;
+    box-shadow:0 10px 40px rgba(0,0,0,.4);
   }
-  /* 影片 / iframe 高度：桌面固定 500px；手機比例 58vw */
-  #neoMount iframe, #neoMount video{ width:100%; height:500px; border:0; display:block }
-  @media (max-width:640px){
-    #neoMount iframe, #neoMount video{ height:58vw; max-height:560px }
-  }
-
-  /* 上層柔和遮罩，令影片更立體 */
-  .neo-mask{ position:absolute; inset:0; pointer-events:none;
-             background:linear-gradient(to top, rgba(0,0,0,.6), rgba(0,0,0,.12)); }
-
-  /* 進入提示（2.5s 後淡出） */
-  .neo-hint{
-    position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
-    font-size:13px; color:var(--neo); padding:6px 12px; border-radius:999px;
-    background:rgba(0,0,0,.34); border:1px solid rgba(0,217,255,.35);
-    animation:neoFloat 2s infinite; opacity:.95; transition:opacity .5s ease;
-  }
-  @keyframes neoFloat { 0%,100%{transform:translate(-50%,0)} 50%{transform:translate(-50%,-6px)} }
-
-  /* Footer（很淡，不干擾） */
-  .foot{ text-align:center; color:rgba(255,255,255,.6); font-size:12px; margin:10px 0 22px }
-  .foot a{ color:#9ab; text-decoration:none } .foot a:hover{ text-decoration:underline }
 </style>
 </head>
 <body>
-
-<a href="index.html" aria-label="Back to Home">
-  <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX"/>
-</a>
-
-<div class="stage">
-  <!-- 主要容器（由 JS 注入 iframe 或影片） -->
-  <div id="neoMount" class="card" style="position:relative; overflow:hidden; border-radius:14px;"></div>
-</div>
-
-<div class="foot">© 2025 NeoX. All rights reserved.</div>
-
-<script>
-(function(){
-  const slug   = 'neoxdynamic';
-  const base   = `https://oncyber.io/${slug}`;
-  const bust   = 'v=' + new Date().toISOString().slice(0,10).replace(/-/g,''); // yyyymmdd
-  const mp4    = 'https://neoxcoin.github.io/NeoXDynamicVisions%20.mp4';
-  const poster = 'https://neoxcoin.github.io/XNXC.png';
-  const mount  = document.getElementById('neoMount');
-
-  // 在 IG / Threads 內建瀏覽器 → 直接用影片入口（避免 3D 與 cookie 限制）
-  const ua = navigator.userAgent || '';
-  const inApp = /Instagram|Threads/i.test(ua);
-
-  function showVideo(){
-    mount.innerHTML = `
-      <video autoplay muted loop playsinline preload="auto" poster="${poster}"></video>
-      <div class="neo-mask"></div>
-      <div id="neoHint" class="neo-hint">🚀 輕觸進入 NeoX 元宇宙展覽</div>
-    `;
-    const v = mount.querySelector('video');
-    // 安全處理空白
-    v.src = mp4.replace(/\\s/g, '%20');
-    mount.style.cursor = 'pointer';
-    mount.onclick = () => window.open(\`${base}?\${bust}\`, '_blank', 'noopener');
-
-    // 提示 2.5 秒後自動淡出
-    setTimeout(()=>{ const h = document.getElementById('neoHint'); if(h) h.style.opacity = '0'; }, 2500);
-  }
-
-  function showIframe(){
-    mount.style.cursor = 'default';
-    mount.innerHTML = `
-      <iframe
-        src="${base}?${bust}"
-        allow="autoplay; fullscreen; xr-spatial-tracking; gyroscope; accelerometer"
-        allowfullscreen
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-      <div class="neo-mask"></div>
-    `;
-    // 若 8 秒內沒有 onload（可能被阻擋/出錯），自動切換到影片入口
-    let loaded = false;
-    const f = mount.querySelector('iframe');
-    f.addEventListener('load', ()=>{ loaded = true; });
-    setTimeout(()=>{ if(!loaded) showVideo(); }, 8000);
-  }
-
-  inApp ? showVideo() : showIframe();
-})();
-</script>
+<iframe
+  src="https://pay.thirdweb.com/?clientId=625af68c&chainId=8453&toTokenAddress=0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B&mode=buyOrSwap"
+  allow="clipboard-read; clipboard-write; web-share">
+</iframe>
 </body>
 </html>
