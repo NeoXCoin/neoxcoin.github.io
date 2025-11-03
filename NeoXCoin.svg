@@ -1,153 +1,157 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-     viewBox="0 0 512 512"
-     width="512" height="512">
-
+     viewBox="0 0 512 512">
   <defs>
-    <!-- 背景冷藍光圈 -->
-    <radialGradient id="bgGlow" cx="50%" cy="38%" r="55%">
-      <stop offset="0%"   stop-color="#1b7dff" stop-opacity="0.95"/>
-      <stop offset="45%"  stop-color="#0f4e9f" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#020711" stop-opacity="0"/>
+    <!-- 背景藍色光圈 -->
+    <radialGradient id="bgGlow" cx="50%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#2dd0ff" stop-opacity="1"/>
+      <stop offset="35%" stop-color="#1e9dff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#00101f" stop-opacity="0"/>
     </radialGradient>
 
-    <!-- X 內部填色：中間亮、上下深 -->
+    <!-- X 內部藍色漸變（底部深少少） -->
     <linearGradient id="xFill" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#4fd3ff"/>
-      <stop offset="45%"  stop-color="#1aa4ff"/>
-      <stop offset="100%" stop-color="#0050b5"/>
+      <stop offset="0%"   stop-color="#66d8ff"/>
+      <stop offset="40%"  stop-color="#1aa4ff"/>
+      <stop offset="100%" stop-color="#003c8f"/>
     </linearGradient>
 
-    <!-- X 上半邊高光（用喺 stroke 上） -->
-    <linearGradient id="xEdgeTop" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#e9ffff" stop-opacity="1"/>
-      <stop offset="50%"  stop-color="#b9ecff" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#6cc7ff" stop-opacity="0.3"/>
+    <!-- X 外圈冷白光 -->
+    <linearGradient id="xEdge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+      <stop offset="40%"  stop-color="#e8f5ff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#b9dcff" stop-opacity="0.8"/>
     </linearGradient>
 
-    <!-- X 下半邊暗邊（第二重 stroke） -->
-    <linearGradient id="xEdgeBottom" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#2a6bb0" stop-opacity="0.2"/>
-      <stop offset="50%"  stop-color="#004c98" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#00142e" stop-opacity="1"/>
-    </linearGradient>
-
-    <!-- X 外圍冷光濾鏡 -->
+    <!-- X 外發光 -->
     <filter id="xGlow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur"/>
       <feColorMatrix in="blur" type="matrix"
         values="0 0 0 0 0.4
                 0 0 0 0 0.8
                 0 0 0 0 1
-                0 0 0 0.9 0" result="blueGlow"/>
+                0 0 0 0.7 0" result="blueGlow"/>
       <feMerge>
         <feMergeNode in="blueGlow"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
 
-    <!-- X 內部高光（中心一條亮帶） -->
-    <linearGradient id="xInnerHighlight" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="rgba(255,255,255,0.8)"/>
-      <stop offset="40%"  stop-color="rgba(255,255,255,0.25)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    <!-- 底部金屬 bar 漸變 -->
+    <linearGradient id="barMetal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#f4f4f4"/>
+      <stop offset="40%"  stop-color="#c7c7c7"/>
+      <stop offset="70%"  stop-color="#7a7a7a"/>
+      <stop offset="100%" stop-color="#3a3a3a"/>
     </linearGradient>
 
-    <!-- NXC 金屬填色 -->
-    <linearGradient id="textFill" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#f0f0f0"/>
-      <stop offset="35%"  stop-color="#b6b6b6"/>
-      <stop offset="65%"  stop-color="#5d5d5d"/>
-      <stop offset="100%" stop-color="#111112"/>
-    </linearGradient>
-
-    <!-- NXC 陰影 -->
-    <filter id="textShadow" x="-40%" y="-40%" width="180%" height="180%">
-      <feOffset dx="0" dy="4" in="SourceAlpha" result="off"/>
-      <feGaussianBlur in="off" stdDeviation="4" result="blur"/>
+    <!-- bar 阴影 -->
+    <filter id="barShadow" x="-20%" y="-40%" width="140%" height="200%">
+      <feOffset dx="0" dy="5" in="SourceAlpha" result="off"/>
+      <feGaussianBlur in="off" stdDeviation="6" result="blur"/>
       <feColorMatrix in="blur" type="matrix"
         values="0 0 0 0 0
                 0 0 0 0 0
                 0 0 0 0 0
-                0 0 0 0.7 0" result="shadow"/>
+                0 0 0 0.55 0" result="shadow"/>
       <feMerge>
         <feMergeNode in="shadow"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+
+    <!-- NXC 金屬字漸變（似 PNG 嗰種深色金屬） -->
+    <linearGradient id="textMetal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#f4f4f4"/>
+      <stop offset="30%"  stop-color="#d0d0d0"/>
+      <stop offset="55%"  stop-color="#8a8a8a"/>
+      <stop offset="80%"  stop-color="#3a3b3f"/>
+      <stop offset="100%" stop-color="#090a0c"/>
+    </linearGradient>
+
+    <!-- NXC 立體 + 投影（高光 + 下陰影） -->
+    <filter id="textBevel" x="-30%" y="-30%" width="160%" height="180%">
+      <!-- 向下少少陰影 -->
+      <feOffset in="SourceAlpha" dx="0" dy="2" result="shadowOff"/>
+      <feGaussianBlur in="shadowOff" stdDeviation="2.5" result="shadowBlur"/>
+      <feColorMatrix in="shadowBlur" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.6 0" result="shadow"/>
+      <!-- 上面高光 -->
+      <feOffset in="SourceAlpha" dx="0" dy="-1" result="highlightOff"/>
+      <feGaussianBlur in="highlightOff" stdDeviation="1.2" result="highlightBlur"/>
+      <feColorMatrix in="highlightBlur" type="matrix"
+        values="0 0 0 0 1
+                0 0 0 0 1
+                0 0 0 0 1
+                0 0 0 0.55 0" result="highlight"/>
+
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="highlight"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
 
-  <!-- 透明背景，如果想要實色可以開下面條 rect -->
-  <!-- <rect width="100%" height="100%" fill="#02040a"/> -->
+  <!-- ===== Logo 主體開始 ===== -->
 
-  <!-- 冷藍光圈（比之前細少少，集中喺 X 背後） -->
+  <!-- 背景光圈（透明背景上只係藍光） -->
   <circle cx="256" cy="210" r="150" fill="url(#bgGlow)"/>
 
-  <!-- X 外層發光（先畫一個軟邊影子） -->
+  <!-- X 外圍白色邊框 + 發光 -->
   <g filter="url(#xGlow)">
-    <!-- X 主體 -->
-    <path id="xShape"
-      d="M156 96
-         H214
-         L256 168
-         L298 96
-         H356
-         L292 208
-         L356 320
-         H298
-         L256 248
-         L214 320
-         H156
-         L220 208 Z"
-      fill="url(#xFill)"
-      stroke="url(#xEdgeTop)"
-      stroke-width="10"
-      stroke-linejoin="round"/>
-
-    <!-- 第二重下半邊暗邊，令外框更立體 -->
+    <!-- X 內部填色 -->
+    <path id="X-core"
+      d="M 176 120
+         L 224 120
+         L 256 170
+         L 288 120
+         L 336 120
+         L 286 194
+         L 336 280
+         L 288 280
+         L 256 225
+         L 224 280
+         L 176 280
+         L 226 194
+         Z"
+      fill="url(#xFill)"/>
+    <!-- X 外邊光線 -->
     <path
-      d="M156 96
-         H214
-         L256 168
-         L298 96
-         H356
-         L292 208
-         L356 320
-         H298
-         L256 248
-         L214 320
-         H156
-         L220 208 Z"
+      d="M 176 120
+         L 224 120
+         L 256 170
+         L 288 120
+         L 336 120
+         L 286 194
+         L 336 280
+         L 288 280
+         L 256 225
+         L 224 280
+         L 176 280
+         L 226 194
+         Z"
       fill="none"
-      stroke="url(#xEdgeBottom)"
-      stroke-width="6"
+      stroke="url(#xEdge)"
+      stroke-width="7"
       stroke-linejoin="round"/>
-
-    <!-- 中央高光帶：由上而下漸淡 -->
-    <path
-      d="M156 96
-         H214
-         L256 168
-         L298 96
-         H356
-         L292 208
-         L356 320
-         H298
-         L256 248
-         L214 320
-         H156
-         L220 208 Z"
-      fill="url(#xInnerHighlight)"
-      opacity="0.55"/>
   </g>
 
-  <!-- NXC 文字（比 X 細少少，跟 PNG 比例） -->
-  <text x="256" y="382"
+  <!-- 金屬 bar 托住 NXC -->
+  <rect x="146" y="322" width="220" height="54" rx="10"
+        fill="url(#barMetal)" filter="url(#barShadow)"/>
+
+  <!-- NXC 金屬字 -->
+  <text x="256" y="360"
         text-anchor="middle"
         font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-        font-size="84"
-        letter-spacing="8"
-        fill="url(#textFill)"
-        filter="url(#textShadow)">
+        font-weight="700"
+        font-size="64"
+        letter-spacing="14"
+        fill="url(#textMetal)"
+        filter="url(#textBevel)">
     NXC
   </text>
 </svg>
