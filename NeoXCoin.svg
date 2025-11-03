@@ -14,14 +14,14 @@
       <stop offset="100%" stop-color="#BF7A12"/>
     </radialGradient>
 
-    <!-- X 底色：深藍 3D -->
+    <!-- X：科技藍 3D -->
     <linearGradient id="blueBase" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#39D5FF"/>
-      <stop offset="40%" stop-color="#008CFF"/>
-      <stop offset="100%" stop-color="#001C70"/>
+      <stop offset="0%" stop-color="#3FE2FF"/>
+      <stop offset="35%" stop-color="#0094FF"/>
+      <stop offset="100%" stop-color="#001A66"/>
     </linearGradient>
 
-    <!-- X 高光板：玻璃反光 -->
+    <!-- X 玻璃反光板 -->
     <linearGradient id="bluePanel" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
       <stop offset="30%" stop-color="#C7EDFF" stop-opacity="0.85"/>
@@ -29,10 +29,10 @@
       <stop offset="100%" stop-color="#0060C0" stop-opacity="0"/>
     </linearGradient>
 
-    <!-- 金色 N -->
+    <!-- N 金色 -->
     <linearGradient id="goldN" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFF6C9"/>
-      <stop offset="40%" stop-color="#FFD457"/>
+      <stop offset="0%" stop-color="#FFF8D5"/>
+      <stop offset="35%" stop-color="#FFD763"/>
       <stop offset="100%" stop-color="#A26112"/>
     </linearGradient>
   </defs>
@@ -42,97 +42,134 @@
   <!-- 金幣內圈 -->
   <circle cx="16" cy="16" r="12.6" fill="url(#goldInner)"/>
 
-  <!-- X：一邊粗一邊幼（底層） -->
-  <!-- 粗嗰邊喺左上 → 右下，幼嗰邊喺右上 → 左下 -->
+  <!-- X：放大版，一邊粗一邊幼（底層） -->
+  <!-- 左上→右下粗，右上→左下幼，幾乎碰到內圈 -->
   <path d="
-    M 9.0 10.0
-    L 11.8 10.0
-    L 16.0 14.4
-    L 20.2 10.0
-    L 23.0 10.0
-    L 18.2 15.2
-    L 23.0 22.0
-    L 20.3 22.0
-    L 16.0 17.4
-    L 11.7 22.0
-    L 9.0 22.0
-    L 13.8 15.2
+    M 8.2 9.2
+    L 11.3 9.2
+    L 16.0 14.3
+    L 20.7 9.2
+    L 23.8 9.2
+    L 18.1 15.4
+    L 23.8 23.0
+    L 20.8 23.0
+    L 16.0 17.7
+    L 11.2 23.0
+    L 8.2 23.0
+    L 13.9 15.4
     Z"
     fill="url(#blueBase)"
     opacity="0.98"
   />
 
-  <!-- X 立體陰影邊（右側深色） -->
+  <!-- X 右側深藍陰影，加立體感 -->
   <path d="
-    M 20.2 10.0
-    L 23.0 10.0
-    L 18.2 15.2
-    L 23.0 22.0
-    L 20.3 22.0
-    L 16.5 17.6
+    M 20.7 9.2
+    L 23.8 9.2
+    L 18.1 15.4
+    L 23.8 23.0
+    L 20.8 23.0
+    L 16.6 18.0
     Z"
-    fill="#001747"
+    fill="#00123F"
     opacity="0.6"
   />
 
-  <!-- X 反光玻璃板（偏向左上，高光明顯） -->
+  <!-- X 玻璃反光板（略細少少，留出邊位） -->
   <path d="
-    M 9.6 10.4
-    L 11.9 10.4
-    L 16.0 14.3
-    L 19.9 10.4
-    L 22.2 10.4
-    L 18.0 15.1
-    L 22.1 21.6
-    L 19.9 21.6
-    L 16.0 16.9
-    L 12.1 21.6
-    L 9.8 21.6
-    L 14.0 15.1
+    M 8.8 9.7
+    L 11.4 9.7
+    L 16.0 14.2
+    L 20.5 9.7
+    L 23.1 9.7
+    L 17.8 15.3
+    L 23.0 22.5
+    L 20.6 22.5
+    L 16.0 17.9
+    L 11.5 22.5
+    L 9.1 22.5
+    L 14.3 15.3
     Z"
     fill="url(#bluePanel)"
     opacity="0.95"
   />
 
-  <!-- X 白色細高光描邊，加返少少立體 -->
+  <!-- X 白色高光描邊 -->
   <path d="
-    M 9.6 10.4
-    L 11.9 10.4
-    L 16.0 14.3
-    L 19.9 10.4
-    L 22.2 10.4
-    L 18.0 15.1
-    L 22.1 21.6
-    L 19.9 21.6
-    L 16.0 16.9
-    L 12.1 21.6
-    L 9.8 21.6
-    L 14.0 15.1
+    M 8.8 9.7
+    L 11.4 9.7
+    L 16.0 14.2
+    L 20.5 9.7
+    L 23.1 9.7
+    L 17.8 15.3
+    L 23.0 22.5
+    L 20.6 22.5
+    L 16.0 17.9
+    L 11.5 22.5
+    L 9.1 22.5
+    L 14.3 15.3
     Z"
     fill="none"
     stroke="#FFFFFF"
-    stroke-opacity="0.45"
-    stroke-width="0.35"
+    stroke-opacity="0.5"
+    stroke-width="0.38"
     stroke-linejoin="round"
   />
 
-  <!-- N 陰影（向右下少少，突出層次） -->
+  <!-- N 陰影（向右下移少少） -->
   <path
-    d="M 11.0 21.2 L 11.0 10.7 L 13.7 10.7 L 18.0 17.1 L 18.0 10.7 L 20.9 10.7 L 20.9 21.2 L 18.2 21.2 L 13.9 14.8 L 13.9 21.2 Z"
-    fill="#4C2E0E"
+    d="M 11.6 21.3
+       L 11.6 10.8
+       L 13.9 10.8
+       L 18.2 17.4
+       L 18.2 10.8
+       L 20.6 10.8
+       L 20.6 21.3
+       L 18.3 21.3
+       L 14.0 14.7
+       L 14.0 21.3
+       Z"
+    fill="#41230A"
     opacity="0.45"
     transform="translate(0.25,0.35)"
   />
 
-  <!-- N 本體 -->
+  <!-- N 本體：用返「舊 logo」感覺，粗身、直身、金色 -->
   <path
-    d="M 11.0 21.2 L 11.0 10.7 L 13.7 10.7 L 18.0 17.1 L 18.0 10.7 L 20.9 10.7 L 20.9 21.2 L 18.2 21.2 L 13.9 14.8 L 13.9 21.2 Z"
+    d="M 11.6 21.3
+       L 11.6 10.8
+       L 13.9 10.8
+       L 18.2 17.4
+       L 18.2 10.8
+       L 20.6 10.8
+       L 20.6 21.3
+       L 18.3 21.3
+       L 14.0 14.7
+       L 14.0 21.3
+       Z"
     fill="url(#goldN)"
     stroke="#1F1306"
-    stroke-width="0.7"
+    stroke-width="0.8"
     stroke-linejoin="round"
   />
 
-  <!-- 頂部環形反光 -->
-  <ellipse cx="16" cy="11" rx="7.5" ry="2.4" fill="white" opacity="0.12"/>
+  <!-- N 上面再加少少內高光 -->
+  <path
+    d="M 12.0 11.2
+       L 13.6 11.2
+       L 18.0 17.7
+       L 18.0 11.2
+       L 20.2 11.2
+       L 20.2 20.9
+       L 18.5 20.9
+       L 13.8 14.3
+       L 13.8 20.9
+       L 12.0 20.9
+       Z"
+    fill="#FFFFFF"
+    opacity="0.18"
+  />
+
+  <!-- 金幣頂部大光位 -->
+  <ellipse cx="16" cy="10.9" rx="7.8" ry="2.5" fill="#FFFFFF" opacity="0.12"/>
 </svg>
