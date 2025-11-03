@@ -1,121 +1,73 @@
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="512" height="512" viewBox="0 0 512 512">
+     width="512" height="512" viewBox="0 0 120 120">
+
   <defs>
-    <!-- X 主體冷藍漸變 -->
-    <linearGradient id="xFill" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%"  stop-color="#8be0ff"/>
-      <stop offset="35%" stop-color="#3ab8ff"/>
-      <stop offset="70%" stop-color="#1274e0"/>
-      <stop offset="100%" stop-color="#05306d"/>
+    <!-- 主體冷藍漸變（中間亮、邊位深藍） -->
+    <linearGradient id="xMain" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#52d4ff"/>   <!-- 幾乎貼近白光嘅藍 -->
+      <stop offset="45%" stop-color="#15a6ff"/>
+      <stop offset="100%" stop-color="#0050c7"/> <!-- 深藍邊 -->
     </linearGradient>
 
-    <!-- X 外發光 -->
-    <radialGradient id="xGlow" cx="50%" cy="40%" r="70%">
-      <stop offset="0%"  stop-color="#ffffff" stop-opacity="0.9"/>
-      <stop offset="40%" stop-color="#7fe1ff" stop-opacity="0.7"/>
-      <stop offset="100%" stop-color="#00a0ff" stop-opacity="0"/>
-    </radialGradient>
-
-    <!-- X 內高光（細反光邊） -->
-    <linearGradient id="xHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"  stop-color="#ffffff" stop-opacity="0.9"/>
-      <stop offset="30%" stop-color="#d0f3ff" stop-opacity="0.4"/>
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    <!-- X 邊框陰影用嘅深藍 -->
+    <linearGradient id="xEdge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#003a7a"/>
+      <stop offset="100%" stop-color="#001c3d"/>
     </linearGradient>
 
-    <!-- X 投影 -->
-    <filter id="xShadow" x="-40%" y="-40%" width="180%" height="180%">
-      <feDropShadow dx="0" dy="12" stdDeviation="10"
-                    flood-color="#001020" flood-opacity="0.7"/>
-    </filter>
-
-    <!-- 地面橢圓陰影 -->
-    <radialGradient id="floorShadow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%"   stop-color="#000000" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-    </radialGradient>
-
-    <!-- 文字金屬灰漸變 -->
-    <linearGradient id="textFill" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%"   stop-color="#f5f5f5"/>
-      <stop offset="40%"  stop-color="#c8c8c8"/>
-      <stop offset="70%"  stop-color="#7a7a7a"/>
-      <stop offset="100%" stop-color="#3a3a3a"/>
-    </linearGradient>
-
-    <!-- 文字投影 -->
-    <filter id="textShadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="4" stdDeviation="4"
-                    flood-color="#000000" flood-opacity="0.6"/>
+    <!-- 外發光（冷白光） -->
+    <filter id="xGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0 0 0 0.75
+                0 0 0 0 0.95
+                0 0 0 0 1
+                0 0 0 0.75 0" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
     </filter>
   </defs>
 
-  <!-- 全透明背景：乜都唔畫就已經透明，所以唔要 rect -->
+  <!-- 全透明背景 -->
+  <rect x="0" y="0" width="120" height="120" fill="none"/>
 
-  <!-- X 外圓冷藍光暈 -->
-  <circle cx="256" cy="220" r="150" fill="url(#xGlow)"/>
+  <!-- X 主形狀（大約對應你 PNG 嗰隻 X） -->
+  <g filter="url(#xGlow)">
+    <!-- 深藍邊框層 -->
+    <path d="
+      M 18 18  L 36 18  L 60 42  L 84 18  L 102 18
+      L 72 48  L 102 78  L 84 78  L 60 54  L 36 78
+      L 18 78  L 48 48  Z"
+      fill="url(#xEdge)"/>
 
-  <!-- 地面橢圓陰影 -->
-  <ellipse cx="256" cy="365" rx="110" ry="35" fill="url(#floorShadow)"/>
+    <!-- 內層冷藍漸變（比邊框收細少少） -->
+    <path d="
+      M 22 20  L 37 20  L 60 43  L 83 20  L 98 20
+      L 70 48  L 98 76  L 83 76  L 60 53  L 37 76
+      L 22 76  L 50 48  Z"
+      fill="url(#xMain)"/>
 
-  <!-- 主體 X -->
-  <g filter="url(#xShadow)" transform="translate(256 220)">
-    <!-- X 主形狀 -->
-    <path d="M -90 -130
-             L -40 -130
-             L   0 -70
-             L  40 -130
-             L  90 -130
-             L  30 -40
-             L  95 130
-             L  45 130
-             L   0  60
-             L -45 130
-             L -95 130
-             L -30 -40
-             Z"
-          fill="url(#xFill)" />
-
-    <!-- X 外框深藍線 -->
-    <path d="M -90 -130
-             L -40 -130
-             L   0 -70
-             L  40 -130
-             L  90 -130
-             L  30 -40
-             L  95 130
-             L  45 130
-             L   0  60
-             L -45 130
-             L -95 130
-             L -30 -40
-             Z"
-          fill="none"
-          stroke="#02224e"
-          stroke-width="6"
-          stroke-linejoin="round"/>
-
-    <!-- 右上 → 左下 反光邊 -->
-    <path d="M 40 -130
-             L 90 -130
-             L 30 -40
-             L -30 -40
-             L -90 -130
-             L -40 -130
-             L   0 -70
-             Z"
-          fill="url(#xHighlight)" opacity="0.65"/>
+    <!-- 中間高光線（模仿 PNG 嗰條白色亮邊） -->
+    <path d="
+      M 40 20 L 60 41 L 80 20
+      M 40 76 L 60 55 L 80 76"
+      fill="none"
+      stroke="#e6f8ff"
+      stroke-width="1.4"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      opacity="0.9"/>
   </g>
 
-  <!-- NXC 文字 -->
-  <g filter="url(#textShadow)">
-    <text x="256" y="408"
-          text-anchor="middle"
-          font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-          font-size="80"
-          letter-spacing="10"
-          fill="url(#textFill)">
-      NXC
-    </text>
-  </g>
+  <!-- NXC 文字：位置大致同 PNG 一樣，可再微調 y 值 -->
+  <text x="60" y="102"
+        text-anchor="middle"
+        font-size="16"
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        fill="#3f4246"
+        letter-spacing="3">
+    NXC
+  </text>
 </svg>
