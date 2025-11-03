@@ -17,8 +17,8 @@
 
     <!-- 背景 X：科技藍漸變 -->
     <linearGradient id="XGradient" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#33a6ff"/>
-      <stop offset="50%" stop-color="#1a82f0"/>
+      <stop offset="0%" stop-color="#44b6ff"/>
+      <stop offset="50%" stop-color="#1e88f3"/>
       <stop offset="100%" stop-color="#0b4fba"/>
     </linearGradient>
 
@@ -30,45 +30,29 @@
       <stop offset="100%" stop-color="#b77919"/>
     </linearGradient>
 
-    <!-- N 前面高光 -->
+    <!-- N 高光 -->
     <linearGradient id="NHighlight" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
-      <stop offset="35%" stop-color="#ffffff" stop-opacity="0.0"/>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.0"/>
       <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
   </defs>
 
   <!-- 外圈硬幣 -->
-  <circle cx="16" cy="16" r="15"
-          fill="url(#coinGradient)" />
-
+  <circle cx="16" cy="16" r="15" fill="url(#coinGradient)" />
   <!-- 內圈 -->
-  <circle cx="16" cy="16" r="11.5"
-          fill="url(#innerGlow)" />
+  <circle cx="16" cy="16" r="11.5" fill="url(#innerGlow)" />
 
-  <!-- 背景藍色 X（放喺 N 後面） -->
-  <!-- 左斜線 -->
-  <polygon points="11 9 13.2 9 21 16.8 18.8 16.8"
-           fill="url(#XGradient)" />
-  <!-- 右斜線 -->
-  <polygon points="19 9 21 9 13.2 16.8 11.2 16.8"
-           fill="url(#XGradient)" />
-  <!-- X 底部延伸少少，令成個 X 大啲接近內圈 -->
-  <polygon points="11.2 15.2 13.4 15.2 21 23 19 23"
-           fill="url(#XGradient)" opacity="0.9"/>
-  <polygon points="18.8 15.2 21 15.2 13.4 23 11.4 23"
-           fill="url(#XGradient)" opacity="0.9"/>
+  <!-- 單一 X 背景 -->
+  <path d="M10,9 L13,9 L16,13 L19,9 L22,9 L18,14 L22,21 L19,21 L16,16 L13,21 L10,21 L14,14 Z"
+        fill="url(#XGradient)" opacity="0.95"/>
 
-  <!-- 藍色 X 少少陰影，令佢融入金幣度 -->
-  <circle cx="16" cy="16" r="11.3"
-          fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="0.3"/>
-
-  <!-- N 字陰影（令 N 好似浮起） -->
+  <!-- 陰影令 N 浮起 -->
   <path d="M11.3 22.4 V10.4 H13.9 L18.9 19.0 V10.4 H21.1 V22.4 H18.5
            L13.5 13.8 V22.4 Z"
         fill="rgba(0,0,0,0.3)"/>
 
-  <!-- 主體金色 N -->
+  <!-- 金色立體 N -->
   <path d="M10.9 21.9 V9.9 H13.5 L18.5 18.5 V9.9 H20.9 V21.9 H18.3
            L13.3 13.3 V21.9 Z"
         fill="url(#NGold)"
@@ -76,11 +60,11 @@
         stroke-width="0.6"
         stroke-linejoin="round"/>
 
-  <!-- N 左邊高光 -->
+  <!-- N 左高光 -->
   <path d="M11.1 10.0 H12.6 L17.3 18.1 L16.3 18.1 L11.5 10.0 Z"
-        fill="url(#NHighlight)" opacity="0.7"/>
+        fill="url(#NHighlight)" opacity="0.6"/>
 
-  <!-- N 右邊邊緣高光 -->
+  <!-- N 右邊反光 -->
   <path d="M19.7 10.0 H20.7 V21.6 H19.3 V13.3 Z"
         fill="#ffffff" opacity="0.18"/>
 
