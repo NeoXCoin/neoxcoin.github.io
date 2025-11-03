@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="512" height="512" viewBox="0 0 512 512"
-     xmlns="http://www.w3.org/2000/svg"
-     xmlns:xlink="http://www.w3.org/1999/xlink">
+     xmlns="http://www.w3.org/2000/svg">
 
-  <!-- === 定義漸變 & 濾鏡 === -->
   <defs>
-    <!-- 金色硬幣底色（外圈） -->
+    <!-- 金色外圈 -->
     <radialGradient id="goldOuter" cx="30%" cy="25%" r="80%">
       <stop offset="0%" stop-color="#ffe8a3"/>
       <stop offset="45%" stop-color="#f6c94a"/>
       <stop offset="100%" stop-color="#c4851b"/>
     </radialGradient>
 
-    <!-- 金色硬幣內圈 -->
+    <!-- 金色內圈 -->
     <radialGradient id="goldInner" cx="30%" cy="25%" r="80%">
       <stop offset="0%" stop-color="#fff2ba"/>
       <stop offset="40%" stop-color="#f6c94a"/>
@@ -21,14 +19,14 @@
 
     <!-- 科技藍 X 漸變 -->
     <linearGradient id="techBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#35d3ff"/>
+      <stop offset="0%" stop-color="#39d7ff"/>
       <stop offset="40%" stop-color="#0b9dff"/>
-      <stop offset="100%" stop-color="#0043b0"/>
+      <stop offset="100%" stop-color="#0040a8"/>
     </linearGradient>
 
-    <!-- X 外面嘅光暈 -->
+    <!-- X 光暈 -->
     <filter id="xGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur"/>
       <feColorMatrix in="blur" type="matrix"
         values="0 0 0 0 0.1
                 0 0 0 0 0.6
@@ -40,47 +38,33 @@
     </filter>
   </defs>
 
-  <!-- === 硬幣背景 === -->
-  <!-- 外圈 -->
+  <!-- 背景金幣 -->
   <circle cx="256" cy="256" r="220" fill="url(#goldOuter)"/>
-  <!-- 內圈 -->
   <circle cx="256" cy="256" r="185" fill="url(#goldInner)"/>
-  <!-- 細邊框令硬幣更實在 -->
-  <circle cx="256" cy="256" r="185"
-          fill="none" stroke="#d69a2a" stroke-width="4" opacity="0.5"/>
+  <circle cx="256" cy="256" r="185" fill="none" stroke="#d69a2a" stroke-width="4" opacity="0.5"/>
 
-  <!-- === 發光 X（先 glow 再本體） === -->
+  <!-- 發光 X（加粗版） -->
   <g transform="translate(256 258)">
-    <!-- Glow 版本（稍為放大少少再加 blur） -->
+    <!-- Glow -->
     <g filter="url(#xGlow)" opacity="0.85">
-      <rect x="-22" y="-150" width="44" height="300" rx="22"
-            transform="rotate(-45)" fill="url(#techBlue)" />
-      <rect x="-22" y="-150" width="44" height="300" rx="22"
-            transform="rotate(45)" fill="url(#techBlue)" />
+      <rect x="-30" y="-160" width="60" height="320" rx="28" transform="rotate(-45)" fill="url(#techBlue)" />
+      <rect x="-30" y="-160" width="60" height="320" rx="28" transform="rotate(45)" fill="url(#techBlue)" />
     </g>
-
-    <!-- 實體 X -->
-    <g>
-      <rect x="-18" y="-145" width="36" height="290" rx="18"
-            transform="rotate(-45)"
-            fill="url(#techBlue)" />
-      <rect x="-18" y="-145" width="36" height="290" rx="18"
-            transform="rotate(45)"
-            fill="url(#techBlue)" />
-    </g>
+    <!-- Main X -->
+    <rect x="-26" y="-155" width="52" height="310" rx="24" transform="rotate(-45)" fill="url(#techBlue)" />
+    <rect x="-26" y="-155" width="52" height="310" rx="24" transform="rotate(45)" fill="url(#techBlue)" />
   </g>
 
-  <!-- === 透明 N（只有黑色外框） === -->
-  <!-- 用 text 做 N：中間對齊、無填色、得黑色描邊 -->
-  <text x="256" y="268"
+  <!-- N 放大 30%，保持黑框透明中間 -->
+  <text x="256" y="270"
         text-anchor="middle"
         dominant-baseline="middle"
         font-family="serif"
         font-weight="700"
-        font-size="175"
+        font-size="225"
         fill="none"
         stroke="#111111"
-        stroke-width="9"
+        stroke-width="10"
         stroke-linejoin="round"
         stroke-linecap="round">
     N
