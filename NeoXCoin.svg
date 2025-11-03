@@ -1,101 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="32" height="32" viewBox="0 0 32 32">
   <defs>
-    <!-- 金幣主體漸層（似舊款金色） -->
-    <radialGradient id="coinFill" cx="50%" cy="35%" r="70%">
-      <stop offset="0%" stop-color="#ffe9a3"/>
-      <stop offset="40%" stop-color="#f4c44a"/>
-      <stop offset="100%" stop-color="#c6861f"/>
+    <!-- 金色硬幣漸變 -->
+    <radialGradient id="coinGradient" cx="30%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#ffe49a"/>
+      <stop offset="45%" stop-color="#f6c24b"/>
+      <stop offset="100%" stop-color="#c4861d"/>
     </radialGradient>
 
-    <!-- 內圈淺金色 -->
-    <radialGradient id="innerFill" cx="50%" cy="30%" r="70%">
-      <stop offset="0%" stop-color="#ffeeb6"/>
-      <stop offset="50%" stop-color="#f3c750"/>
-      <stop offset="100%" stop-color="#d19227"/>
+    <!-- 內圈光位 -->
+    <radialGradient id="innerGlow" cx="30%" cy="25%" r="70%">
+      <stop offset="0%" stop-color="#fff7d5" stop-opacity="0.95"/>
+      <stop offset="45%" stop-color="#f8cf62" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#e0a437" stop-opacity="0.95"/>
     </radialGradient>
 
-    <!-- X 背景用嘅科技藍漸層 -->
-    <linearGradient id="xFill" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#4fd2ff"/>
-      <stop offset="50%" stop-color="#2a8de0"/>
-      <stop offset="100%" stop-color="#0b4a9c"/>
+    <!-- N 字藍→金漸變（似你舊 logo 嗰種） -->
+    <linearGradient id="NGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1c8ef9"/>
+      <stop offset="45%" stop-color="#1174d8"/>
+      <stop offset="100%" stop-color="#f6c24b"/>
     </linearGradient>
 
-    <!-- N 藍金漸層（貼近舊款） -->
-    <linearGradient id="nFill" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#52b4ff"/>
-      <stop offset="45%" stop-color="#2c7fdc"/>
-      <stop offset="100%" stop-color="#0b437f"/>
+    <!-- N 字少少高光 -->
+    <linearGradient id="NHighlight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.0"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-
-    <!-- N 外圍金色邊 -->
-    <linearGradient id="nEdge" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#fce39a"/>
-      <stop offset="50%" stop-color="#e1ad43"/>
-      <stop offset="100%" stop-color="#a4631e"/>
-    </linearGradient>
-
-    <!-- 少少陰影令 N 更立體 -->
-    <filter id="nShadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000000" flood-opacity="0.35"/>
-    </filter>
   </defs>
 
-  <!-- 外圈金幣 -->
-  <circle cx="128" cy="128" r="118" fill="url(#coinFill)" />
+  <!-- 外圈硬幣 -->
+  <circle cx="16" cy="16" r="15"
+          fill="url(#coinGradient)" />
+
   <!-- 內圈 -->
-  <circle cx="128" cy="128" r="96" fill="url(#innerFill)" />
+  <circle cx="16" cy="16" r="11.5"
+          fill="url(#innerGlow)" />
 
-  <!-- 內圈細邊，似舊款嘅凹槽 -->
-  <circle cx="128" cy="128" r="96"
-          fill="none"
-          stroke="#f7d472"
-          stroke-width="6"
-          stroke-opacity="0.7"/>
+  <!-- N 字陰影，令感覺似 3D 浮起 -->
+  <path d="M11.1 22.3 V10.3 H13.7 L18.7 18.9 V10.3 H20.9 V22.3 H18.3
+           L13.3 13.7 V22.3 Z"
+        fill="rgba(0,0,0,0.28)"/>
 
-  <!-- 背景 X：科技藍 + 輕微透光，盡量貼近你之前鍾意嘅大 X 感覺 -->
-  <g opacity="0.95">
-    <!-- 由左上到右下 -->
-    <polygon fill="url(#xFill)"
-             points="76,60 104,60 180,196 152,196"/>
-    <!-- 由右上到左下 -->
-    <polygon fill="url(#xFill)"
-             points="180,60 152,60 76,196 104,196"/>
-  </g>
+  <!-- 主體 N -->
+  <path d="M10.7 21.8 V9.8 H13.3 L18.3 18.4 V9.8 H20.7 V21.8 H18.1
+           L13.1 13.2 V21.8 Z"
+        fill="url(#NGradient)"
+        stroke="#184366"
+        stroke-width="0.6"
+        stroke-linejoin="round"/>
 
-  <!-- N：用舊款風格，大 N 置中，有金色邊同藍色立體漸層 -->
-  <!-- 金色邊 -->
-  <path
-    d="M 92 184
-       L 92 78
-       L 112 78
-       L 148 158
-       L 148 78
-       L 168 78
-       L 168 184
-       L 148 184
-       L 112 104
-       L 112 184
-       Z"
-    fill="url(#nEdge)"
-    filter="url(#nShadow)"/>
+  <!-- N 左邊高光少少 -->
+  <path d="M10.9 9.9 H12.3 L17.1 18.1 L16.1 18.1 L11.3 9.9 Z"
+        fill="url(#NHighlight)" opacity="0.6"/>
 
-  <!-- 藍色內芯 -->
-  <path
-    d="M 98 178
-       L 98 84
-       L 110 84
-       L 146 164
-       L 146 84
-       L 162 84
-       L 162 178
-       L 150 178
-       L 114 98
-       L 114 178
-       Z"
-    fill="url(#nFill)"
-    stroke="#1c2330"
-    stroke-width="3"
-    stroke-linejoin="round"/>
+  <!-- N 右邊高光少少 -->
+  <path d="M19.5 9.9 H20.5 V21.5 H19.1 V13.3 Z"
+        fill="#ffffff" opacity="0.15"/>
 
 </svg>
