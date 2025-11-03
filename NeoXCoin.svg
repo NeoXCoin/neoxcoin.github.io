@@ -1,51 +1,58 @@
 <svg xmlns="http://www.w3.org/2000/svg"
      width="32" height="32" viewBox="0 0 32 32">
   <defs>
-    <!-- 外圈金幣漸變 -->
-    <radialGradient id="coinGradientCool" cx="30%" cy="20%" r="80%">
-      <stop offset="0%" stop-color="#ffe8b0"/>
-      <stop offset="45%" stop-color="#f6c24b"/>
-      <stop offset="100%" stop-color="#c4861d"/>
+    <!-- 外圈金幣漸變（暖少少） -->
+    <radialGradient id="coinGradientWarm" cx="30%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#fff0bd"/>
+      <stop offset="45%" stop-color="#f7c858"/>
+      <stop offset="100%" stop-color="#b97516"/>
     </radialGradient>
 
-    <!-- 內圈光位 -->
-    <radialGradient id="innerGlowCool" cx="30%" cy="25%" r="70%">
-      <stop offset="0%" stop-color="#fff9dd" stop-opacity="0.98"/>
-      <stop offset="45%" stop-color="#f8cf62" stop-opacity="0.92"/>
-      <stop offset="100%" stop-color="#e0a437" stop-opacity="0.96"/>
+    <!-- 內圈光位：偏暖 -->
+    <radialGradient id="innerGlowWarm" cx="30%" cy="25%" r="70%">
+      <stop offset="0%" stop-color="#fff8d6" stop-opacity="0.98"/>
+      <stop offset="45%" stop-color="#f8d36e" stop-opacity="0.94"/>
+      <stop offset="100%" stop-color="#dea03a" stop-opacity="0.98"/>
     </radialGradient>
 
-    <!-- X 的電光藍漸變 -->
-    <linearGradient id="XGradientCool" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#4fd4ff"/>
-      <stop offset="40%" stop-color="#22a5ff"/>
-      <stop offset="100%" stop-color="#0b4fba"/>
+    <!-- X：藍色但混少少青綠，配金色 -->
+    <linearGradient id="XGradientWarm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5fd8ff"/>
+      <stop offset="45%" stop-color="#2aa6ff"/>
+      <stop offset="100%" stop-color="#0c63c7"/>
     </linearGradient>
 
-    <!-- X 外圍冷色 Glow -->
-    <filter id="xGlowCool" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="0.9" result="blur"/>
+    <!-- X 外圈暖光 Glow（帶少少金色感覺） -->
+    <filter id="xGlowWarm" x="-20%" y="-20%" width="140%" height="140%">
+      <!-- 先做藍色 blur -->
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.9" result="blurBlue"/>
+      <!-- 再加一層淡金色光暈 -->
+      <feColorMatrix in="blurBlue" type="matrix"
+        values="1 0 0 0 0.05
+                0.85 1 0 0 0.05
+                0 0.7 1 0 0
+                0 0 0 1 0" result="warmGlow"/>
       <feMerge>
-        <feMergeNode in="blur"/>
+        <feMergeNode in="warmGlow"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
   </defs>
 
   <!-- 外圈硬幣 -->
-  <circle cx="16" cy="16" r="15" fill="url(#coinGradientCool)" />
+  <circle cx="16" cy="16" r="15" fill="url(#coinGradientWarm)" />
   <!-- 內圈 -->
-  <circle cx="16" cy="16" r="11.5" fill="url(#innerGlowCool)" />
+  <circle cx="16" cy="16" r="11.5" fill="url(#innerGlowWarm)" />
 
-  <!-- 大粒 X（冷光版） -->
-  <g filter="url(#xGlowCool)">
+  <!-- 大粒 X（暖光版） -->
+  <g filter="url(#xGlowWarm)">
     <path d="M8,8 L12.1,8 L16,13 L19.9,8 L24,8 L19,14.5 
              L24,24 L19.9,24 L16,18 L12.1,24 L8,24 
              L13,14.5 Z"
-          fill="url(#XGradientCool)" />
+          fill="url(#XGradientWarm)" />
   </g>
 
-  <!-- 透明 N：黑色主描邊 -->
+  <!-- 透明 N：同一個描邊設計 -->
   <path d="M10.9 21.9 V9.9 H13.5 L18.5 18.5 V9.9 H20.9 V21.9 H18.3
            L13.3 13.3 V21.9 Z"
         fill="none"
@@ -53,7 +60,7 @@
         stroke-width="0.9"
         stroke-linejoin="round"/>
 
-  <!-- N 外側白色柔光 -->
+  <!-- N 外側白光 -->
   <path d="M10.9 21.9 V9.9 H13.5 L18.5 18.5 V9.9 H20.9 V21.9 H18.3
            L13.3 13.3 V21.9 Z"
         fill="none"
