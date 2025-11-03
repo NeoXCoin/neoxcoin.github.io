@@ -5,22 +5,22 @@
   <defs>
     <!-- 金色外圈 -->
     <radialGradient id="goldOuter" cx="30%" cy="25%" r="80%">
-      <stop offset="0%" stop-color="#ffe8a3"/>
-      <stop offset="45%" stop-color="#f6c94a"/>
+      <stop offset="0%"   stop-color="#ffe8a3"/>
+      <stop offset="45%"  stop-color="#f6c94a"/>
       <stop offset="100%" stop-color="#c4851b"/>
     </radialGradient>
 
     <!-- 金色內圈 -->
     <radialGradient id="goldInner" cx="30%" cy="25%" r="80%">
-      <stop offset="0%" stop-color="#fff2ba"/>
-      <stop offset="40%" stop-color="#f6c94a"/>
+      <stop offset="0%"   stop-color="#fff2ba"/>
+      <stop offset="40%"  stop-color="#f6c94a"/>
       <stop offset="100%" stop-color="#e09a2b"/>
     </radialGradient>
 
     <!-- 科技藍 X 漸變 -->
     <linearGradient id="techBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#39d7ff"/>
-      <stop offset="40%" stop-color="#0b9dff"/>
+      <stop offset="0%"   stop-color="#39d7ff"/>
+      <stop offset="40%"  stop-color="#0b9dff"/>
       <stop offset="100%" stop-color="#0040a8"/>
     </linearGradient>
 
@@ -41,30 +41,35 @@
   <!-- 背景金幣 -->
   <circle cx="256" cy="256" r="220" fill="url(#goldOuter)"/>
   <circle cx="256" cy="256" r="185" fill="url(#goldInner)"/>
-  <circle cx="256" cy="256" r="185" fill="none" stroke="#d69a2a" stroke-width="4" opacity="0.5"/>
+  <circle cx="256" cy="256" r="185"
+          fill="none" stroke="#d69a2a" stroke-width="4" opacity="0.5"/>
 
-  <!-- 發光 X（加粗版） -->
+  <!-- 發光 X（再粗一級，好似舊款嗰種實在感） -->
   <g transform="translate(256 258)">
-    <!-- Glow -->
-    <g filter="url(#xGlow)" opacity="0.85">
-      <rect x="-30" y="-160" width="60" height="320" rx="28" transform="rotate(-45)" fill="url(#techBlue)" />
-      <rect x="-30" y="-160" width="60" height="320" rx="28" transform="rotate(45)" fill="url(#techBlue)" />
+    <!-- Glow，闊身版 -->
+    <g filter="url(#xGlow)" opacity="0.9">
+      <rect x="-38" y="-168" width="76" height="336" rx="34"
+            transform="rotate(-45)" fill="url(#techBlue)" />
+      <rect x="-38" y="-168" width="76" height="336" rx="34"
+            transform="rotate(45)" fill="url(#techBlue)" />
     </g>
-    <!-- Main X -->
-    <rect x="-26" y="-155" width="52" height="310" rx="24" transform="rotate(-45)" fill="url(#techBlue)" />
-    <rect x="-26" y="-155" width="52" height="310" rx="24" transform="rotate(45)" fill="url(#techBlue)" />
+    <!-- 主體 X -->
+    <rect x="-33" y="-162" width="66" height="324" rx="30"
+          transform="rotate(-45)" fill="url(#techBlue)" />
+    <rect x="-33" y="-162" width="66" height="324" rx="30"
+          transform="rotate(45)" fill="url(#techBlue)" />
   </g>
 
-  <!-- N 放大 30%，保持黑框透明中間 -->
-  <text x="256" y="270"
+  <!-- N：放大大約 30%，保持透明 + 黑色框 -->
+  <text x="256" y="272"
         text-anchor="middle"
         dominant-baseline="middle"
         font-family="serif"
         font-weight="700"
-        font-size="225"
+        font-size="270"      <!-- 由之前細 size 明顯放大 -->
         fill="none"
         stroke="#111111"
-        stroke-width="10"
+        stroke-width="11"
         stroke-linejoin="round"
         stroke-linecap="round">
     N
