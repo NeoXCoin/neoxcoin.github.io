@@ -15,16 +15,16 @@
 
     <!-- 科技藍漸層 -->
     <linearGradient id="techBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0FF3FF"/>
-      <stop offset="45%" stop-color="#008CFF"/>
-      <stop offset="100%" stop-color="#002CBA"/>
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="40%" stop-color="#0078FF"/>
+      <stop offset="100%" stop-color="#0030B8"/>
     </linearGradient>
 
-    <!-- N 的金色漸層 -->
+    <!-- 厚身金色漸層 -->
     <linearGradient id="goldN" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFF3B3"/>
-      <stop offset="50%" stop-color="#FFD24D"/>
-      <stop offset="100%" stop-color="#B0730E"/>
+      <stop offset="0%" stop-color="#FFF5C8"/>
+      <stop offset="40%" stop-color="#FFD75A"/>
+      <stop offset="100%" stop-color="#A86810"/>
     </linearGradient>
   </defs>
 
@@ -36,35 +36,35 @@
   <path
     d="M6 8 L9 8 L16 15 L23 8 L26 8 L19 15 L26 22 L23 22 L16 15 L9 22 L6 22 L13 15 Z"
     fill="url(#techBlue)"
-    opacity="0.95"
+    opacity="0.96"
   />
 
-  <!-- X 外圍光暈 -->
+  <!-- X 光暈 -->
   <path
     d="M6 8 L9 8 L16 15 L23 8 L26 8 L19 15 L26 22 L23 22 L16 15 L9 22 L6 22 L13 15 Z"
     fill="none"
     stroke="white"
-    stroke-opacity="0.2"
-    stroke-width="0.4"
+    stroke-opacity="0.25"
+    stroke-width="0.45"
   />
 
   <!-- N 陰影 -->
   <path
-    d="M11 21 L11 10 L13.5 10 L18 17 L18 10 L20.3 10 L20.3 21 L17.8 21 L13.3 14 L13.3 21 Z"
-    fill="#5C3A10"
-    opacity="0.4"
-    transform="translate(0.3,0.4)"
+    d="M10.6 21 L10.6 10 L13.5 10 L18.2 17 L18.2 10 L20.6 10 L20.6 21 L17.7 21 L13 14 L13 21 Z"
+    fill="#5B3E14"
+    opacity="0.45"
+    transform="translate(0.35,0.35)"
   />
 
-  <!-- N 本體 -->
+  <!-- 厚身 N 主體 -->
   <path
-    d="M11 21 L11 10 L13.5 10 L18 17 L18 10 L20.3 10 L20.3 21 L17.8 21 L13.3 14 L13.3 21 Z"
+    d="M10.6 21 L10.6 10 L13.5 10 L18.2 17 L18.2 10 L20.6 10 L20.6 21 L17.7 21 L13 14 L13 21 Z"
     fill="url(#goldN)"
-    stroke="#2E1E0A"
-    stroke-width="0.4"
+    stroke="#3A2A10"
+    stroke-width="0.6"
     stroke-linejoin="round"
   />
 
-  <!-- 高光 -->
+  <!-- 上方反光 -->
   <ellipse cx="16" cy="11" rx="8" ry="3" fill="white" opacity="0.12"/>
 </svg>
