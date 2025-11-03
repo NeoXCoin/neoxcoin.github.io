@@ -1,6 +1,6 @@
 <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- 金色漸層 -->
+    <!-- 金幣漸層 -->
     <radialGradient id="goldOuter" cx="30%" cy="20%" r="80%">
       <stop offset="0%" stop-color="#FFE389"/>
       <stop offset="45%" stop-color="#FFCC33"/>
@@ -13,14 +13,14 @@
       <stop offset="100%" stop-color="#C68416"/>
     </radialGradient>
 
-    <!-- 科技藍漸層 -->
-    <linearGradient id="techBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00E5FF"/>
-      <stop offset="40%" stop-color="#0078FF"/>
-      <stop offset="100%" stop-color="#0030B8"/>
+    <!-- 科技藍漸層 (透視光) -->
+    <linearGradient id="techBlueDepth" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4DF6FF"/>
+      <stop offset="40%" stop-color="#0098FF"/>
+      <stop offset="100%" stop-color="#002CA6"/>
     </linearGradient>
 
-    <!-- 厚身金色漸層 -->
+    <!-- 金色漸層 -->
     <linearGradient id="goldN" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" stop-color="#FFF5C8"/>
       <stop offset="40%" stop-color="#FFD75A"/>
@@ -28,24 +28,48 @@
     </linearGradient>
   </defs>
 
-  <!-- 外圈金幣 -->
+  <!-- 金幣外圈 -->
   <circle cx="16" cy="16" r="15.5" fill="url(#goldOuter)"/>
+  <!-- 內圈 -->
   <circle cx="16" cy="16" r="12.5" fill="url(#goldInner)"/>
 
-  <!-- 背景 X -->
-  <path
-    d="M6 8 L9 8 L16 15 L23 8 L26 8 L19 15 L26 22 L23 22 L16 15 L9 22 L6 22 L13 15 Z"
-    fill="url(#techBlue)"
-    opacity="0.96"
+  <!-- X 左粗右幼設計 -->
+  <path d="
+    M7 8 
+    L10 8 
+    L16 14.5 
+    L22 8 
+    L25 8 
+    L18.5 15 
+    L25 22 
+    L22.3 22 
+    L16 16 
+    L10 22 
+    L7 22 
+    L13.5 15 Z"
+    fill="url(#techBlueDepth)"
+    opacity="0.95"
+    transform="skewX(-5)"
   />
 
-  <!-- X 光暈 -->
-  <path
-    d="M6 8 L9 8 L16 15 L23 8 L26 8 L19 15 L26 22 L23 22 L16 15 L9 22 L6 22 L13 15 Z"
+  <!-- X 白色高光 -->
+  <path d="
+    M7 8 
+    L10 8 
+    L16 14.5 
+    L22 8 
+    L25 8 
+    L18.5 15 
+    L25 22 
+    L22.3 22 
+    L16 16 
+    L10 22 
+    L7 22 
+    L13.5 15 Z"
     fill="none"
     stroke="white"
+    stroke-width="0.3"
     stroke-opacity="0.25"
-    stroke-width="0.45"
   />
 
   <!-- N 陰影 -->
@@ -53,10 +77,10 @@
     d="M10.6 21 L10.6 10 L13.5 10 L18.2 17 L18.2 10 L20.6 10 L20.6 21 L17.7 21 L13 14 L13 21 Z"
     fill="#5B3E14"
     opacity="0.45"
-    transform="translate(0.35,0.35)"
+    transform="translate(0.3,0.35)"
   />
 
-  <!-- 厚身 N 主體 -->
+  <!-- N 本體 -->
   <path
     d="M10.6 21 L10.6 10 L13.5 10 L18.2 17 L18.2 10 L20.6 10 L20.6 21 L17.7 21 L13 14 L13 21 Z"
     fill="url(#goldN)"
@@ -65,6 +89,6 @@
     stroke-linejoin="round"
   />
 
-  <!-- 上方反光 -->
-  <ellipse cx="16" cy="11" rx="8" ry="3" fill="white" opacity="0.12"/>
+  <!-- 頂部反光 -->
+  <ellipse cx="16" cy="10.8" rx="8" ry="2.8" fill="white" opacity="0.1"/>
 </svg>
