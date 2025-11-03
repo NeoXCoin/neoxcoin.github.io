@@ -21,21 +21,6 @@
       <stop offset="50%" stop-color="#1e88f3"/>
       <stop offset="100%" stop-color="#0b4fba"/>
     </linearGradient>
-
-    <!-- 金色立體 N -->
-    <linearGradient id="NGold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#fff3c4"/>
-      <stop offset="40%" stop-color="#f9cf6a"/>
-      <stop offset="80%" stop-color="#e3a635"/>
-      <stop offset="100%" stop-color="#b77919"/>
-    </linearGradient>
-
-    <!-- N 高光 -->
-    <linearGradient id="NHighlight" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
-      <stop offset="40%" stop-color="#ffffff" stop-opacity="0.0"/>
-      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
-    </linearGradient>
   </defs>
 
   <!-- 外圈硬幣 -->
@@ -49,25 +34,19 @@
            L13.2,14.5 Z"
         fill="url(#XGradient)" opacity="0.95"/>
 
-  <!-- 陰影令 N 浮起 -->
-  <path d="M11.3 22.4 V10.4 H13.9 L18.9 19.0 V10.4 H21.1 V22.4 H18.5
-           L13.5 13.8 V22.4 Z"
-        fill="rgba(0,0,0,0.3)"/>
-
-  <!-- 金色立體 N -->
+  <!-- 透明 N：只保留描邊 -->
   <path d="M10.9 21.9 V9.9 H13.5 L18.5 18.5 V9.9 H20.9 V21.9 H18.3
            L13.3 13.3 V21.9 Z"
-        fill="url(#NGold)"
-        stroke="#7a4b10"
-        stroke-width="0.6"
+        fill="none"
+        stroke="#2c2c2c"
+        stroke-width="0.8"
         stroke-linejoin="round"/>
 
-  <!-- N 左高光 -->
-  <path d="M11.1 10.0 H12.6 L17.3 18.1 L16.3 18.1 L11.5 10.0 Z"
-        fill="url(#NHighlight)" opacity="0.6"/>
-
-  <!-- N 右邊反光 -->
-  <path d="M19.7 10.0 H20.7 V21.6 H19.3 V13.3 Z"
-        fill="#ffffff" opacity="0.18"/>
-
+  <!-- N 少少外光邊，提升立體感 -->
+  <path d="M10.9 21.9 V9.9 H13.5 L18.5 18.5 V9.9 H20.9 V21.9 H18.3
+           L13.3 13.3 V21.9 Z"
+        fill="none"
+        stroke="rgba(255,255,255,0.4)"
+        stroke-width="0.3"
+        stroke-linejoin="round"/>
 </svg>
