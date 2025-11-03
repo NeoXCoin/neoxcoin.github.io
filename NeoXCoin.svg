@@ -61,11 +61,11 @@
 
     <!-- NXC 金屬字漸變（似 PNG 嗰種深色金屬） -->
     <linearGradient id="textMetal" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#f4f4f4"/>
-      <stop offset="30%"  stop-color="#d0d0d0"/>
-      <stop offset="55%"  stop-color="#8a8a8a"/>
-      <stop offset="80%"  stop-color="#3a3b3f"/>
-      <stop offset="100%" stop-color="#090a0c"/>
+      <stop offset="0%"   stop-color="#8a8c91"/>
+      <stop offset="30%"  stop-color="#5a5c60"/>
+      <stop offset="60%"  stop-color="#2e2f32"/>
+      <stop offset="85%"  stop-color="#141516"/>
+      <stop offset="100%" stop-color="#000000"/>
     </linearGradient>
 
     <!-- NXC 立體 + 投影（高光 + 下陰影） -->
