@@ -15,7 +15,7 @@
       <stop offset="100%" stop-color="#e0a437" stop-opacity="0.95"/>
     </radialGradient>
 
-    <!-- 背景 X：科技藍漸變（舊款粗身 X） -->
+    <!-- 背景 X：科技藍漸變 -->
     <linearGradient id="XGradient" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#44b6ff"/>
       <stop offset="50%" stop-color="#1e88f3"/>
@@ -23,9 +23,18 @@
     </linearGradient>
   </defs>
 
-  <!-- 外圈硬幣 -->
-  <circle cx="16" cy="16" r="15" fill="url(#coinGradient)" />
-  <!-- 內圈 -->
+  <!-- 外圈硬幣：實心 + 粗陰影邊 -->
+  <circle cx="16" cy="16" r="15"
+          fill="url(#coinGradient)"
+          stroke="#8a5a12" stroke-width="1.4"/>
+
+  <!-- 內側高光邊：似之前嗰條亮圈 -->
+  <circle cx="16" cy="16" r="13.2"
+          fill="none"
+          stroke="#ffebba" stroke-width="0.9"
+          stroke-opacity="0.9"/>
+
+  <!-- 內圈面 -->
   <circle cx="16" cy="16" r="11.5" fill="url(#innerGlow)" />
 
   <!-- 粗身藍色 X（背景） -->
@@ -34,7 +43,7 @@
            L13,14.5 Z"
         fill="url(#XGradient)" opacity="0.96"/>
 
-  <!-- 透明 N：羅馬風格，線粗啲、比例大啲 -->
+  <!-- 透明 N：用你而家嗰款羅馬風黑框 N -->
   <!-- 黑色主描邊 -->
   <path d="M10 23 
            V9.5 
@@ -52,7 +61,7 @@
         stroke-width="1.05"
         stroke-linejoin="round"/>
 
-  <!-- 外圍少少白色光邊，令 N 更突出 -->
+  <!-- N 外圍少少白色光邊 -->
   <path d="M10 23 
            V9.5 
            H13.7 
