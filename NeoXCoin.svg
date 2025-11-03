@@ -1,30 +1,31 @@
 <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- 外圈金色漸層 -->
+    <!-- 金幣外圈漸層 -->
     <radialGradient id="goldOuter" cx="30%" cy="20%" r="80%">
       <stop offset="0%" stop-color="#FFE389"/>
       <stop offset="45%" stop-color="#FFCC33"/>
       <stop offset="100%" stop-color="#D6961E"/>
     </radialGradient>
 
-    <!-- 內圈金色漸層 -->
+    <!-- 金幣內圈漸層 -->
     <radialGradient id="goldInner" cx="25%" cy="20%" r="80%">
-      <stop offset="0%" stop-color="#FFF4C7"/>
-      <stop offset="40%" stop-color="#FFD75A"/>
+      <stop offset="0%" stop-color="#FFF8D0"/>
+      <stop offset="45%" stop-color="#FFD85C"/>
       <stop offset="100%" stop-color="#C68416"/>
     </radialGradient>
 
-    <!-- X 的藍色漸層 -->
-    <linearGradient id="blueX" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2EC3FF"/>
-      <stop offset="100%" stop-color="#0056C7"/>
+    <!-- 科技藍漸層（X 用） -->
+    <linearGradient id="techBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00C8FF"/>
+      <stop offset="50%" stop-color="#0078FF"/>
+      <stop offset="100%" stop-color="#0030B8"/>
     </linearGradient>
 
-    <!-- N 的金色漸層 -->
+    <!-- 金色漸層（N 用） -->
     <linearGradient id="goldN" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#FFF2BF"/>
-      <stop offset="40%" stop-color="#FFD459"/>
-      <stop offset="100%" stop-color="#B06C10"/>
+      <stop offset="0%" stop-color="#FFF3B3"/>
+      <stop offset="50%" stop-color="#FFD24D"/>
+      <stop offset="100%" stop-color="#B0730E"/>
     </linearGradient>
   </defs>
 
@@ -33,36 +34,30 @@
   <!-- 內圈 -->
   <circle cx="16" cy="16" r="12.5" fill="url(#goldInner)"/>
 
-  <!-- 藍色 X 背景（縮細＋居中） -->
-  <g>
-    <path
-      d="M10 9 L12 9 L16 13 L20 9 L22 9 L18 13 L22 17 L20 17 L16 13 L12 17 L10 17 L14 13 Z"
-      fill="url(#blueX)"
-      opacity="0.92"
-    />
-  </g>
+  <!-- 背景 X（加大 + 居中） -->
+  <path
+    d="M8 9 L11 9 L16 14 L21 9 L24 9 L18 15 L24 21 L21 21 L16 16 L11 21 L8 21 L14 15 Z"
+    fill="url(#techBlue)"
+    opacity="0.92"
+  />
 
-  <!-- N 的陰影（向右下微移） -->
-  <g>
-    <path
-      d="M11 20 L11 10 L13.8 10 L18 16.5 L18 10 L20 10 L20 20 L17.2 20 L13 13.5 L13 20 Z"
-      fill="#7A4A12"
-      opacity="0.45"
-      transform="translate(0.35,0.55)"
-    />
-  </g>
+  <!-- 陰影層 -->
+  <path
+    d="M11 21 L11 10 L13.6 10 L18 17 L18 10 L20.3 10 L20.3 21 L17.7 21 L13.3 14 L13.3 21 Z"
+    fill="#654214"
+    opacity="0.35"
+    transform="translate(0.4,0.4)"
+  />
 
-  <!-- 前景完整 N（放大＋黑邊） -->
-  <g>
-    <path
-      d="M11 20 L11 10 L13.8 10 L18 16.5 L18 10 L20 10 L20 20 L17.2 20 L13 13.5 L13 20 Z"
-      fill="url(#goldN)"
-      stroke="#3B2B14"
-      stroke-width="0.7"
-      stroke-linejoin="round"
-    />
-  </g>
+  <!-- 主體 N（纖細版） -->
+  <path
+    d="M11 21 L11 10 L13.6 10 L18 17 L18 10 L20.3 10 L20.3 21 L17.7 21 L13.3 14 L13.3 21 Z"
+    fill="url(#goldN)"
+    stroke="#2D1F0B"
+    stroke-width="0.45"
+    stroke-linejoin="round"
+  />
 
-  <!-- 內圈高光 -->
-  <ellipse cx="16" cy="11" rx="8" ry="3.1" fill="white" opacity="0.13"/>
+  <!-- 上方反光 -->
+  <ellipse cx="16" cy="11" rx="8" ry="3" fill="white" opacity="0.12"/>
 </svg>
