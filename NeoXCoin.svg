@@ -1,78 +1,52 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="512" height="512" viewBox="0 0 512 512"
-     xmlns="http://www.w3.org/2000/svg">
-
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="32" height="32" viewBox="0 0 32 32">
   <defs>
-    <!-- 金色外圈 -->
-    <radialGradient id="goldOuter" cx="30%" cy="25%" r="80%">
-      <stop offset="0%"   stop-color="#ffe8a3"/>
-      <stop offset="45%"  stop-color="#f6c94a"/>
-      <stop offset="100%" stop-color="#c4851b"/>
+    <!-- 金色硬幣漸變 -->
+    <radialGradient id="coinGradient" cx="30%" cy="20%" r="80%">
+      <stop offset="0%" stop-color="#ffe49a"/>
+      <stop offset="45%" stop-color="#f6c24b"/>
+      <stop offset="100%" stop-color="#c4861d"/>
     </radialGradient>
 
-    <!-- 金色內圈 -->
-    <radialGradient id="goldInner" cx="30%" cy="25%" r="80%">
-      <stop offset="0%"   stop-color="#fff2ba"/>
-      <stop offset="40%"  stop-color="#f6c94a"/>
-      <stop offset="100%" stop-color="#e09a2b"/>
+    <!-- 內圈光位 -->
+    <radialGradient id="innerGlow" cx="30%" cy="25%" r="70%">
+      <stop offset="0%" stop-color="#fff7d5" stop-opacity="0.95"/>
+      <stop offset="45%" stop-color="#f8cf62" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#e0a437" stop-opacity="0.95"/>
     </radialGradient>
 
-    <!-- 科技藍 X 漸變 -->
-    <linearGradient id="techBlue" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#39d7ff"/>
-      <stop offset="40%"  stop-color="#0b9dff"/>
-      <stop offset="100%" stop-color="#0040a8"/>
+    <!-- 背景 X：科技藍漸變 -->
+    <linearGradient id="XGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#44b6ff"/>
+      <stop offset="50%" stop-color="#1e88f3"/>
+      <stop offset="100%" stop-color="#0b4fba"/>
     </linearGradient>
-
-    <!-- X 光暈 -->
-    <filter id="xGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur"/>
-      <feColorMatrix in="blur" type="matrix"
-        values="0 0 0 0 0.1
-                0 0 0 0 0.6
-                0 0 0 0 1
-                0 0 0 0.9 0" result="blueGlow"/>
-      <feMerge>
-        <feMergeNode in="blueGlow"/>
-      </feMerge>
-    </filter>
   </defs>
 
-  <!-- 背景金幣 -->
-  <circle cx="256" cy="256" r="220" fill="url(#goldOuter)"/>
-  <circle cx="256" cy="256" r="185" fill="url(#goldInner)"/>
-  <circle cx="256" cy="256" r="185"
-          fill="none" stroke="#d69a2a" stroke-width="4" opacity="0.5"/>
+  <!-- 外圈硬幣 -->
+  <circle cx="16" cy="16" r="15" fill="url(#coinGradient)" />
+  <!-- 內圈 -->
+  <circle cx="16" cy="16" r="11.5" fill="url(#innerGlow)" />
 
-  <!-- 發光 X（再粗一級，好似舊款嗰種實在感） -->
-  <g transform="translate(256 258)">
-    <!-- Glow，闊身版 -->
-    <g filter="url(#xGlow)" opacity="0.9">
-      <rect x="-38" y="-168" width="76" height="336" rx="34"
-            transform="rotate(-45)" fill="url(#techBlue)" />
-      <rect x="-38" y="-168" width="76" height="336" rx="34"
-            transform="rotate(45)" fill="url(#techBlue)" />
-    </g>
-    <!-- 主體 X -->
-    <rect x="-33" y="-162" width="66" height="324" rx="30"
-          transform="rotate(-45)" fill="url(#techBlue)" />
-    <rect x="-33" y="-162" width="66" height="324" rx="30"
-          transform="rotate(45)" fill="url(#techBlue)" />
-  </g>
+  <!-- 粗身 X（保持舊款風格） -->
+  <path d="M8,8 L12.1,8 L16,13 L19.9,8 L24,8 L19,14.5 
+           L24,24 L19.9,24 L16,18 L12.1,24 L8,24 
+           L13,14.5 Z"
+        fill="url(#XGradient)" opacity="0.96"/>
 
-  <!-- N：放大大約 30%，保持透明 + 黑色框 -->
-  <text x="256" y="272"
-        text-anchor="middle"
-        dominant-baseline="middle"
-        font-family="serif"
-        font-weight="700"
-        font-size="270"      <!-- 由之前細 size 明顯放大 -->
+  <!-- 新版 N：放大30%，透明中間 + 黑色粗邊 -->
+  <path d="M10.4 22.2 V9.7 H13.8 L19.2 18.6 V9.7 H21.6 V22.2 H18.9
+           L13.4 13.1 V22.2 Z"
         fill="none"
         stroke="#111111"
-        stroke-width="11"
-        stroke-linejoin="round"
-        stroke-linecap="round">
-    N
-  </text>
+        stroke-width="0.8"
+        stroke-linejoin="round"/>
 
+  <!-- N 外邊柔和光線 -->
+  <path d="M10.4 22.2 V9.7 H13.8 L19.2 18.6 V9.7 H21.6 V22.2 H18.9
+           L13.4 13.1 V22.2 Z"
+        fill="none"
+        stroke="rgba(255,255,255,0.35)"
+        stroke-width="0.25"
+        stroke-linejoin="round"/>
 </svg>
