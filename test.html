@@ -1,34 +1,125 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Buy NeoX Coin (NXC)</title>
-<style>
-  body {
-    margin:0;
-    background:#05081A;
-    color:#fff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    font-family:-apple-system,Roboto,"PingFang TC",sans-serif;
-  }
-  iframe {
-    width:90%;
-    max-width:420px;
-    height:640px;
-    border:0;
-    border-radius:16px;
-    box-shadow:0 10px 40px rgba(0,0,0,.4);
-  }
-</style>
-</head>
-<body>
-<iframe
-  src="https://pay.thirdweb.com/?clientId=625af68c&chainId=8453&toTokenAddress=0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B&mode=buyOrSwap"
-  allow="clipboard-read; clipboard-write; web-share">
-</iframe>
-</body>
-</html>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="512" height="512" viewBox="0 0 512 512">
+
+  <defs>
+    <!-- 背景圓形光暈 -->
+    <radialGradient id="bgGlow" cx="50%" cy="32%" r="60%">
+      <stop offset="0%" stop-color="#1e9bff" stop-opacity="0.9" />
+      <stop offset="45%" stop-color="#0b58a8" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#02050a" stop-opacity="0.0" />
+    </radialGradient>
+
+    <!-- X 內部藍色漸變 -->
+    <linearGradient id="xFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5fd3ff" />
+      <stop offset="45%" stop-color="#1ca4ff" />
+      <stop offset="100%" stop-color="#0051b8" />
+    </linearGradient>
+
+    <!-- X 外圍描邊 -->
+    <linearGradient id="xStroke" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8fbff" />
+      <stop offset="100%" stop-color="#8ad9ff" />
+    </linearGradient>
+
+    <!-- X 外光 -->
+    <filter id="xGlow" x="90" y="60" width="332" height="332" filterUnits="userSpaceOnUse">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0 0 0 0.6
+                0 0 0 0 0.9
+                0 0 0 0 1
+                0 0 0 0.8 0" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- 底托銀色漸變 -->
+    <linearGradient id="barFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="45%" stop-color="#d9d9d9" />
+      <stop offset="100%" stop-color="#9a9a9a" />
+    </linearGradient>
+
+    <!-- 底托陰影 -->
+    <filter id="barShadow" x="160" y="314" width="192" height="80" filterUnits="userSpaceOnUse">
+      <feOffset dy="4" in="SourceAlpha" result="off" />
+      <feGaussianBlur in="off" stdDeviation="5" result="blur2"/>
+      <feColorMatrix in="blur2" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.6 0" result="shadow"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- NXC 文字漸變（上亮下深） -->
+    <linearGradient id="nxcFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#d9d9d9" />
+      <stop offset="35%" stop-color="#8c8c8c" />
+      <stop offset="100%" stop-color="#2b2b2b" />
+    </linearGradient>
+
+    <!-- NXC 細陰影 -->
+    <filter id="nxcShadow" x="180" y="324" width="152" height="60" filterUnits="userSpaceOnUse">
+      <feOffset dy="2" in="SourceAlpha" result="off2"/>
+      <feGaussianBlur in="off2" stdDeviation="2" result="sblur"/>
+      <feColorMatrix in="sblur" type="matrix"
+        values="0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0 0
+                0 0 0 0.8 0" result="sshadow"/>
+      <feMerge>
+        <feMergeNode in="sshadow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 背景圓形光暈 -->
+  <circle cx="256" cy="210" r="170" fill="url(#bgGlow)" />
+
+  <!-- 發光 X -->
+  <g filter="url(#xGlow)">
+    <path d="
+      M 176 120
+      L 228 120
+      L 256 162
+      L 284 120
+      L 336 120
+      L 290 192
+      L 336 272
+      L 284 272
+      L 256 230
+      L 228 272
+      L 176 272
+      L 222 192
+      Z"
+      fill="url(#xFill)"
+      stroke="url(#xStroke)"
+      stroke-width="8"
+      stroke-linejoin="round"/>
+  </g>
+
+  <!-- 銀色底托 -->
+  <rect x="176" y="314" width="160" height="58" rx="14"
+        fill="url(#barFill)"
+        opacity="0.9"
+        filter="url(#barShadow)"/>
+
+  <!-- NXC 文字 -->
+  <text x="256" y="352"
+        text-anchor="middle"
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+        font-size="36"
+        font-weight="700"
+        fill="url(#nxcFill)"
+        filter="url(#nxcShadow)">
+    NXC
+  </text>
+</svg>
