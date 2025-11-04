@@ -14,11 +14,18 @@
       <stop offset="100%" stop-color="#000000" stop-opacity="0.25"/>
     </linearGradient>
 
-    <!-- N / X 藍色漸層 -->
-    <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
+    <!-- N 藍色漸層 -->
+    <linearGradient id="blueGradN" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#4fc3ff"/>
       <stop offset="50%" stop-color="#1b71ff"/>
       <stop offset="100%" stop-color="#003d8f"/>
+    </linearGradient>
+
+    <!-- X 更深藍漸層 -->
+    <linearGradient id="blueGradX" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3ba9ff"/>
+      <stop offset="40%" stop-color="#0050ff"/>
+      <stop offset="100%" stop-color="#002e7d"/>
     </linearGradient>
   </defs>
 
@@ -38,7 +45,7 @@
         font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Montserrat', sans-serif"
         font-size="220"
         font-weight="700"
-        fill="url(#blueGrad)">
+        fill="url(#blueGradN)">
     N
   </text>
 
@@ -50,6 +57,6 @@
         font-weight="700"
         letter-spacing="6">
     <tspan fill="url(#goldGrad)">NEO</tspan>
-    <tspan fill="url(#blueGrad)">X</tspan>
+    <tspan fill="url(#blueGradX)">X</tspan>
   </text>
 </svg>
