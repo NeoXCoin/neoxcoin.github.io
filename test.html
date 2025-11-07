@@ -1,39 +1,46 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- ▼ SEO 優化 Meta -->
-  <title>NeoX Coin (NXC) – Web3 藝術、代幣與元宇宙體驗</title>
-  <meta name="description" content="探索 NeoX Coin (NXC) —— 基於 Base Mainnet 的 Web3 生態系統，結合 NFT、互動遊戲與元宇宙展覽，開啟去中心化創意新時代。" />
-  <meta name="keywords" content="NeoX, NeoX Coin, NXC, NFT, Web3, 元宇宙, 加密貨幣, Base Mainnet, NeoX 遊戲, NeoX NFT, NeoX Timekeeper Edition, NeoX Van Gogh Visions, NeoX Abstract Realms" />
+  <!-- ▼ SEO Optimized Head -->
+  <title>NeoX Coin (NXC) – Web3 NFTs, Token & Metaverse</title>
+  <meta name="description" content="Explore NeoX (NXC) – the decentralized Web3 ecosystem on Base Mainnet. Discover NFTs, the official NeoX Coin, interactive games, and metaverse experiences." />
+  <meta name="keywords" content="NeoX, NeoX Coin, NXC, NFT, Web3 art, Base Mainnet, Crypto, NeoX Game, NeoX Timekeeper Edition, NeoX Van Gogh Visions, NeoX Abstract Realms, Metaverse, Token" />
   <meta name="author" content="NeoX Official" />
 
-  <!-- Canonical & 多語言版本 -->
-  <link rel="canonical" href="https://neoxcoin.github.io/index-zh.html" />
+  <!-- Canonical & Multi-language -->
+  <link rel="canonical" href="https://neoxcoin.github.io/" />
   <link rel="alternate" href="https://neoxcoin.github.io/" hreflang="en" />
   <link rel="alternate" href="https://neoxcoin.github.io/index-zh.html" hreflang="zh-Hant" />
   <link rel="alternate" href="https://neoxcoin.github.io/index-global.html" hreflang="x-default" />
 
-  <!-- Open Graph 分享卡 -->
-  <meta property="og:title" content="NeoX Coin (NXC) – Web3 藝術、代幣與元宇宙體驗" />
-  <meta property="og:description" content="體驗 NeoX – 結合 NFT、遊戲與元宇宙的 Web3 創意生態。擁有自由，擁有未來，擁有 NeoX。" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="NeoX Coin (NXC) – Web3 NFTs, Token & Metaverse" />
+  <meta property="og:description" content="Experience NeoX – Web3 art, NFTs, and gaming on Base Mainnet. Join the future of decentralized creativity." />
   <meta property="og:image" content="https://neoxcoin.github.io/XNXC.png" />
-  <meta property="og:url" content="https://neoxcoin.github.io/index-zh.html" />
+  <meta property="og:url" content="https://neoxcoin.github.io/" />
   <meta property="og:type" content="website" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NeoX Coin (NXC) – Web3 藝術、代幣與元宇宙體驗" />
-  <meta name="twitter:description" content="探索 NeoX Coin — Web3 藝術、NFT 與元宇宙的全新結合。開啟去中心化創意新時代。" />
+  <meta name="twitter:title" content="NeoX Coin (NXC) – Web3 NFTs, Token & Metaverse" />
+  <meta name="twitter:description" content="Discover NeoX Coin, NFTs, and the Web3 Metaverse on Base Mainnet." />
   <meta name="twitter:image" content="https://neoxcoin.github.io/XNXC.png" />
 
-  <!-- Favicon / App Icons -->
-  <link rel="icon" href="https://neoxcoin.github.io/favicon.ico" type="image/x-icon">
-  <link rel="apple-touch-icon" href="https://neoxcoin.github.io/apple-touch-icon.png">
+  <!-- Google Verification -->
+  <meta name="google-site-verification" content="googlea69ad61f2464c50e.html" />
 
-  <!-- Schema.org 結構化資料 -->
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,6 +54,8 @@
     ]
   }
   </script>
+
+  <!-- 🔽 CSS -->
   <style>
     body {
       margin: 0;
@@ -68,7 +77,6 @@
       z-index: 999;
     }
 
-    /* ---- 語言切換 ---- */
     .language-switch {
       position: absolute;
       top: 20px;
@@ -81,7 +89,6 @@
       text-decoration: none;
       margin: 0 8px;
     }
-    .language-switch a:hover { text-decoration: underline; }
 
     .container {
       display: flex;
@@ -102,11 +109,11 @@
       width: 144px;
       margin: 30px auto;
     }
-
+    
     .headline {
-      margin: 22px 0 30px 0;
-      line-height: 1.6;
-      text-align: center;
+      margin: 22px 0 30px 0;   
+      line-height: 1.6;        
+      text-align: center;      
     }
 
     .headline span {
@@ -117,7 +124,6 @@
       font-size: 15px;
     }
 
-    /* 動畫縮短時間 */
     .headline span:nth-child(1) { animation-delay: 0.5s; }
     .headline span:nth-child(2) { animation-delay: 1.5s; }
     .headline span:nth-child(3) { animation-delay: 2.5s; }
@@ -137,15 +143,16 @@
     }
 
     .nav-bar a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: #ffffff;
+      text-decoration: none;
+      color: white;
       font-weight: bold;
       font-size: 16px;
-      text-decoration: none;
     }
-    .nav-bar a:hover { text-decoration: underline; }
+
+    .emoji {
+      font-size: 18px;
+      line-height: 1;
+    }
 
     .btn-row {
       display: flex;
@@ -208,22 +215,16 @@
       gap: 8px;
       position: relative;
     }
+
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
-    }
-
-    .emoji-icon {
-      width: 2.0em;
-      height: 2.0em;
-      object-fit: contain;
-      pointer-events: none;
     }
     
     .btn[data-tooltip]:hover::after {
       content: attr(data-tooltip);
       position: absolute;
-      top: -38px; /* 改到上面，避免出視窗 */
+      top: -38px;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(0,0,0,0.8);
@@ -235,14 +236,17 @@
       z-index: 1000;
     }
 
+    .emoji-icon {
+      width: 2.0em;
+      height: 2.0em;
+      object-fit: contain;
+      pointer-events: none;
+    }
+
     .footer {
       margin-top: 50px;
       font-size: 13px;
       opacity: 0.6;
-    }
-
-    .footer-links {
-      margin-bottom: 8px;
     }
 
     .footer a {
@@ -250,58 +254,70 @@
       text-decoration: none;
       margin: 0 6px;
     }
-    .footer a:hover { text-decoration: underline; }
 
+    .footer-links {
+      margin-bottom: 8px;
+    }
+    
     @media (max-width: 600px) {
-      .nav-bar { flex-direction: column; align-items: center; gap: 12px; }
-      .btn-row { flex-direction: column; align-items: center; }
-      .coin { width: 144px; max-width: 100%; }
+      .nav-bar {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .btn-row {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .coin {
+        width: 144px;
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Logo → 返回中文版首頁 -->
-  <a href="index-zh.html">
-    <img class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo" />
+  <!-- Logo -->
+  <a href="index.html">
+    <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
   </a>
 
-  <!-- 語言切換 -->
+  <!-- Language Switch -->
   <div class="language-switch">
     <a href="index.html">EN</a> | <a href="index-zh.html">繁</a> | <a href="index-global.html">🌍</a>
   </div>
 
-  <!-- 主內容 -->
   <div class="container">
-    <div class="tagline">Web3 革命，由 NeoX 引領</div>
-    <img class="coin" src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin"/>
+    <div class="tagline">Web3 Revolution, Led by NeoX</div>
+    <img class="coin" src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin" />
 
     <div class="nav-bar">
-      <a href="what-is-neox-zh.html">關於 NeoX</a>
-      <a href="how-to-buy-zh.html">購買方法</a>
-      <a href="game-zh.html">🎮 NeoX 遊戲</a>
-      <a href="metaverse-zh.html">🔥 NeoX 元宇宙展覽</a>
-      <a href="nft-projects-zh.html">👉🏻 探索 NeoX NFT 項目</a>
+      <a href="what-is-neox.html">What is NeoX?</a>
+      <a href="how-to-buy.html">How to Buy?</a>
+      <a href="game.html"><span class="emoji">🎮</span> NeoX Game</a>
+      <a href="metaverse.html"><span class="emoji">🔥</span> NeoX Metaverse Exhibition</a>
+      <a href="nft-projects.html"><span class="emoji">👉🏻</span> NeoX NFT Projects</a>
     </div>
 
     <div class="headline">
-      <span>未來已來 — 擁有推動 Web3 自由的貨幣</span>
-      <span>塑造未來，由 NeoX 開始 — 新世代數位貨幣</span>
-      <span>加入 Web3 革命 — NeoX 將控制權放回你手中</span>
-      <span>擁有自由，擁有未來，擁有 NeoX</span>
+      <span>The future is coming – Own the currency that empowers Web freedom.</span>
+      <span>Shape the future with NeoX – the next evolution in digital currency.</span>
+      <span>Be part of the Web3 revolution – NeoX puts control back in your hands.</span>
+      <span>Own your freedom. Own the future. Own NeoX.</span>
     </div>
 
     <div class="btn-row">
-      <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">🛒 購買 NXC</a>
-      <a class="btn" 
-         href="https://metamask.app.link/dapp/neoxcoin.github.io/"
-         data-tooltip="⚠️ 將跳轉至 MetaMask。若信任此連結，請點擊「繼續」">🦊 使用 MetaMask 購買</a>
-      <a class="btn" href="add-to-metamask-zh.html">
-        <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NXC Icon">
-        加入至 MetaMask
+      <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">🛒 Buy NXC</a>
+      <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/" data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link">🦊 Buy via MetaMask</a>
+      <a class="btn" href="add-to-metamask.html">
+        <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
+        Add to MetaMask
       </a>
     </div>
     
-        <!-- 市場數據：GeckoTerminal -->
+        <!-- Market data: GeckoTerminal -->
     <div class="market-link">
       <a
         class="market-btn"
@@ -309,19 +325,19 @@
         target="_blank"
         rel="noopener noreferrer"
       >
-        📊 在 GeckoTerminal 查看 NXC
+        📊 View NXC on GeckoTerminal
       </a>
     </div>
 
     <!-- Footer -->
     <div class="footer">
       <div class="footer-links">
-        <a href="faq-zh.html">常見問題</a> |
-        <a href="about-zh.html">關於我們</a> |
-        <a href="troubleshooting-zh.html">疑難排解</a>
+        <a href="faq.html">FAQ</a> |
+        <a href="about.html">About</a> |
+        <a href="troubleshooting.html">Troubleshooting</a>
       </div>
       © 2025 NeoX. All rights reserved. |
-      <a href="disclaimer-zh.html">免責聲明</a>
+      <a href="disclaimer-en.html">Disclaimer</a>
     </div>
   </div>
 </body>
