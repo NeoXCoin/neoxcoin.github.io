@@ -97,6 +97,40 @@
     .emoji { display:inline-block; transform:translateY(1px); }
 
     .btn-row { display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-top:30px; }
+        .market-link {
+      margin-top: 14px;
+    }
+
+    .market-btn {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      text-decoration: none;
+      color: #ffd76a;
+      border: 1px solid rgba(255, 215, 106, 0.45);
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
+      transition: all 0.2s ease;
+    }
+
+    .market-btn:hover {
+      background: linear-gradient(90deg, #1c1c3c, #3a0088);
+      color: #fff;
+      border-color: #ffd700;
+      box-shadow: 0 0 14px rgba(255, 215, 106, 0.6);
+    }
+
+    @media (max-width: 600px) {
+      .market-link {
+        margin-top: 10px;
+      }
+      .market-btn {
+        font-size: 13px;
+        padding: 7px 16px;
+      }
+    }
     .btn {
       background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
       border: 3px solid #e0e0e0;
@@ -157,6 +191,18 @@
       <a class="btn" href="add-to-metamask-global.html">
         <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin Icon" />
         Add to MetaMask
+      </a>
+    </div>
+    
+        <!-- Market data: GeckoTerminal -->
+    <div class="market-link">
+      <a
+        class="market-btn"
+        href="https://geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        📊 View NXC on GeckoTerminal
       </a>
     </div>
 
