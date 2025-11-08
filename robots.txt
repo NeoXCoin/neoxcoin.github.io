@@ -1,12 +1,12 @@
 User-agent: *
 Allow: /
 
-# Avoid duplicate parameterized or hash URLs
-Disallow: /*?*
-Disallow: /*#
+# Optional: Block temporary or dev folders (if exist)
+Disallow: /tmp/
+Disallow: /drafts/
 
-# Sitemap
+# Sitemap reference
 Sitemap: https://neoxcoin.github.io/sitemap.xml
 
-# Optional: limit crawl frequency for smaller bots
-Crawl-delay: 5
+# Crawl-delay (optional for non-Google bots)
+Crawl-delay: 10
