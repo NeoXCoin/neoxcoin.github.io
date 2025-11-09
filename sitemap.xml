@@ -1,32 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- English pages -->
   <url>
     <loc>https://neoxcoin.github.io/</loc>
     <lastmod>2025-11-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <url>
+    <loc>https://neoxcoin.github.io/index-global.html</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <url>
     <loc>https://neoxcoin.github.io/what-is-neox.html</loc>
     <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://neoxcoin.github.io/how-to-buy.html</loc>
     <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://neoxcoin.github.io/token-info.html</loc>
     <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://neoxcoin.github.io/whitepaper.html</loc>
     <lastmod>2025-11-09</lastmod>
@@ -34,45 +43,13 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- Traditional Chinese pages -->
-  <url>
-    <loc>https://neoxcoin.github.io/index-zh.html</loc>
-    <lastmod>2025-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://neoxcoin.github.io/how-to-buy-zh.html</loc>
-    <lastmod>2025-11-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://neoxcoin.github.io/token-info-zh.html</loc>
-    <lastmod>2025-11-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://neoxcoin.github.io/whitepaper-zh.html</loc>
-    <lastmod>2025-11-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Global pages -->
-  <url>
-    <loc>https://neoxcoin.github.io/index-global.html</loc>
-    <lastmod>2025-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
   <url>
     <loc>https://neoxcoin.github.io/token-info-global.html</loc>
     <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://neoxcoin.github.io/whitepaper-global.html</loc>
     <lastmod>2025-11-09</lastmod>
@@ -80,16 +57,18 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- NFT Projects page -->
   <url>
     <loc>https://neoxcoin.github.io/nft-projects-global.html</loc>
     <lastmod>2025-11-09</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://gateway.lighthouse.storage/ipfs/bafkreicjpx5lcjyvcibhhk7zmzdj4tw55eaf7hua4l7yvosz4cdokxkfie</loc>
+    <lastmod>2025-11-09</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <image:image>
-      <image:loc>https://gateway.lighthouse.storage/ipfs/bafkreicjpx5lcjyvcibhhk7zmzdj4tw55eaf7hua4l7yvosz4cdokxkfie</image:loc>
-      <image:caption>NeoX Van Gogh Visions NFT Collection</image:caption>
-    </image:image>
   </url>
 
 </urlset>
