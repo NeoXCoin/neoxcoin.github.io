@@ -103,9 +103,46 @@
     .coin-anim {
       animation: fadeInGlow 2s ease-out;
     }
+
+    /* 🌐 Google Translate Bar */
+    .gt-wrap {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 300;
+      font-size: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
+    }
+
+    .gt-inner {
+      background: rgba(0,0,0,0.55);
+      border-radius: 999px;
+      padding: 4px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(6px);
+    }
+
+    .gt-inner span {
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+
+    #google_translate_element {
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
+
+  <!-- 🌐 Google Translate (top-right) -->
+  <div class="gt-wrap">
+    <div class="gt-inner">
+      <span>🌐 Language</span>
+      <div id="google_translate_element"></div>
+    </div>
+  </div>
 
   <!-- 🔹 Top Left Home Logo (Global Home) -->
   <a href="https://neoxcoin.github.io/index-global.html" 
@@ -163,7 +200,7 @@
       <ul class="list">
         <li><strong>Official Website:</strong> <a href="https://neoxcoin.github.io" target="_blank">https://neoxcoin.github.io</a></li>
         <li><strong>Global Homepage:</strong> <a href="https://neoxcoin.github.io/index-global.html" target="_blank">https://neoxcoin.github.io/index-global.html</a></li>
-        <li><strong>Whitepaper (EN):</strong> <a href="https://neoxcoin.github.io/whitepaper-global.html" target="_blank">Global Whitepaper</a></li>
+        <li><strong>Whitepaper (Global):</strong> <a href="https://neoxcoin.github.io/whitepaper-global.html" target="_blank">Global Whitepaper</a></li>
         <li><strong>Whitepaper (ZH-TW):</strong> <a href="https://neoxcoin.github.io/whitepaper-zh.html" target="_blank">Whitepaper (Traditional Chinese)</a></li>
         <li><strong>Official X (Twitter):</strong> <a href="https://x.com/xdenniswong" target="_blank">https://x.com/xdenniswong</a></li>
         <li><strong>Official Facebook:</strong> <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank">Facebook – NeoX</a></li>
@@ -201,6 +238,18 @@
       </p>
     </div>
   </div>
+
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
