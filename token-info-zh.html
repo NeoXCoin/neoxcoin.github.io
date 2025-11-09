@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeoX Coin (NXC) – 官方代幣資料</title>
+  <meta name="description" content="NeoX Coin (NXC) 官方代幣資料頁 – 介紹 NeoX 在 Base 主網上的合約地址、官方連結與專案簡介。">
+  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" type="image/png" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
+      background: #050814;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 32px 20px 60px;
+    }
+
+    h1, h2, h3 {
+      margin: 0 0 12px;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    a {
+      color: #4fd1ff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .tagline {
+      opacity: 0.9;
+      margin-bottom: 24px;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 18px;
+    }
+
+    .box strong {
+      font-weight: 600;
+    }
+
+    .list {
+      padding-left: 18px;
+    }
+
+    code {
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.35);
+      padding: 2px 6px;
+      border-radius: 4px;
+      word-break: break-all;
+    }
+
+    .small {
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* 🔹 動畫：主 Logo 由上滑入 */
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 🔹 動畫：金幣 fade in + 呼吸式發光 */
+    @keyframes fadeInGlow {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+        box-shadow: 0 0 0 rgba(255,215,0,0);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(0);
+        box-shadow: 0 0 26px rgba(255,215,0,0.55);
+      }
+      100% {
+        opacity: 1;
+        box-shadow: 0 0 16px rgba(255,215,0,0.35);
+      }
+    }
+
+    .logo-main {
+      animation: fadeInDown 1.4s ease-out;
+    }
+
+    .coin-anim {
+      animation: fadeInGlow 2s ease-out;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔹 左上角 Home Logo -->
+  <a href="https://neoxcoin.github.io/index-zh.html" 
+     style="position:fixed; top:18px; left:28px; z-index:100; text-decoration:none;">
+    <img src="https://neoxcoin.github.io/XNXC.png" 
+         alt="NeoX Home" 
+         style="width:44px; height:auto; border-radius:8px; transition:transform 0.25s ease;"
+         onmouseover="this.style.transform='scale(1.12)'" 
+         onmouseout="this.style.transform='scale(1)'" />
+  </a>
+
+  <!-- 🔹 頂部 Logo -->
+  <div style="text-align:center; margin-top:80px;">
+    <img src="https://neoxcoin.github.io/XNXC.png" 
+         alt="NeoX Coin Logo" 
+         class="logo-main"
+         style="width:120px; height:auto; border-radius:12px; box-shadow:0 0 12px rgba(0,0,0,0.3);">
+  </div>
+
+  <!-- 🔹 中間旋轉金幣動畫 -->
+  <div style="text-align:center; margin:40px 0;">
+    <img 
+      src="https://neoxcoin.github.io/NeoXCoin360.gif" 
+      alt="NeoX Coin 360 Animation" 
+      class="coin-anim"
+      style="width:160px; height:auto; border-radius:50%; box-shadow:0 0 20px rgba(255,215,0,0.35);">
+  </div>
+
+  <div class="wrap">
+    <h1>NeoX Coin (NXC) – 官方代幣資料</h1>
+    <p class="tagline">
+      NeoX Coin (NXC) 是 NeoX 生態系統的核心代幣，串連 NFT、Web3 藝術與遊戲體驗，建立於 Base 主網的沉浸式虛擬世界之上。
+    </p>
+
+    <div class="box">
+      <h2>代幣總覽</h2>
+      <p><strong>代幣名稱：</strong> NeoX Coin</p>
+      <p><strong>代號：</strong> NXC</p>
+      <p><strong>網路：</strong> Base Mainnet（Base 主網）</p>
+      <p><strong>合約地址：</strong><br>
+        <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
+      </p>
+      <p><strong>區塊鏈瀏覽器（BaseScan）：</strong><br>
+        <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">
+          https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B
+        </a>
+      </p>
+      <p class="small">
+        * NeoX Coin (NXC) 以公平啟動的社群代幣形式在 Base 主網發行，沒有預售或私募。
+      </p>
+    </div>
+
+    <div class="box">
+      <h2>官方連結</h2>
+      <ul class="list">
+        <li><strong>官方網站：</strong> 
+          <a href="https://neoxcoin.github.io" target="_blank">https://neoxcoin.github.io</a>
+        </li>
+        <li><strong>白皮書（英文版）：</strong> 
+          <a href="https://neoxcoin.github.io/whitepaper.html" target="_blank">https://neoxcoin.github.io/whitepaper.html</a>
+        </li>
+        <li><strong>白皮書（繁體中文）：</strong> 
+          <a href="https://neoxcoin.github.io/whitepaper-zh.html" target="_blank">https://neoxcoin.github.io/whitepaper-zh.html</a>
+        </li>
+        <li><strong>官方 X（Twitter）：</strong> 
+          <a href="https://x.com/xdenniswong" target="_blank">https://x.com/xdenniswong</a>
+        </li>
+        <li><strong>官方 Facebook：</strong> 
+          <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank">Facebook – NeoX</a>
+        </li>
+        <li><strong>官方 GitHub：</strong> 
+          <a href="https://github.com/NeoXCoin" target="_blank">https://github.com/NeoXCoin</a>
+        </li>
+        <li><strong>官方 OpenSea（項目錢包 & NFT）：</strong><br>
+          <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">
+            https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2
+          </a>
+        </li>
+        <li><strong>聯絡電郵：</strong> 
+          <a href="mailto:neoxcoin@outlook.com">neoxcoin@outlook.com</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="box">
+      <h2>專案簡介</h2>
+      <p>
+        NeoX Coin (NXC) 是 NeoX 元宇宙生態的核心代幣，連接一系列圍繞 NeoX 品牌打造的 NFT 系列、數碼藝術作品、
+        輕量遊戲以及虛擬展覽空間。透過 NXC，NeoX 希望讓更多人以輕鬆、好玩的方式，體驗 Web3 與數碼收藏。
+      </p>
+      <p>
+        NeoX 生態旗下多個 NFT 與藝術項目（例如 NeoX Timekeeper Edition、Van Gogh Visions、Abstract Realms 等），
+        皆與同一個官方項目錢包地址相關聯：
+        <code>0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2</code>。
+      </p>
+    </div>
+
+    <div class="box">
+      <h2>代幣分配與銷售說明</h2>
+      <ul class="list">
+        <li><strong>預售 / 私募：</strong> 無。NXC 以公平啟動的社群代幣形式發行。</li>
+        <li><strong>公開銷售：</strong>  
+          並無進行傳統意義上的 ICO / IEO。NXC 可透過鏈上 DEX 流動性或社群活動逐步流通。
+        </li>
+        <li><strong>銷毀 / 鎖倉事件：</strong>  
+          如未來有任何代幣銷毀、鎖倉、釋放等安排，將於官方網站及 X（Twitter）帳號上公告。
+        </li>
+      </ul>
+      <p class="small">
+        如需進一步查證或平台上架用資料，建議同時參考：本頁（官方代幣資料）、英文版 Token Info、以及 NeoX 白皮書。
+      </p>
+    </div>
+  </div>
+
+</body>
+</html>
