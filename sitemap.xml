@@ -64,11 +64,4 @@
     <priority>0.8</priority>
   </url>
 
-  <url>
-    <loc>https://gateway.lighthouse.storage/ipfs/bafkreicjpx5lcjyvcibhhk7zmzdj4tw55eaf7hua4l7yvosz4cdokxkfie</loc>
-    <lastmod>2025-11-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
 </urlset>
