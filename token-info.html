@@ -72,6 +72,44 @@
       font-size: 0.85rem;
       opacity: 0.8;
     }
+
+    /* 🔹 動畫：主 Logo 由上滑入 */
+    @keyframes fadeInDown {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 🔹 動畫：金幣 fade in + 呼吸式發光 */
+    @keyframes fadeInGlow {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+        box-shadow: 0 0 0 rgba(255,215,0,0);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(0);
+        box-shadow: 0 0 26px rgba(255,215,0,0.55);
+      }
+      100% {
+        opacity: 1;
+        box-shadow: 0 0 16px rgba(255,215,0,0.35);
+      }
+    }
+
+    .logo-main {
+      animation: fadeInDown 1.4s ease-out;
+    }
+
+    .coin-anim {
+      animation: fadeInGlow 2s ease-out;
+    }
   </style>
 </head>
 <body>
@@ -90,6 +128,7 @@
   <div style="text-align:center; margin-top:80px;">
     <img src="https://neoxcoin.github.io/XNXC.png" 
          alt="NeoX Coin Logo" 
+         class="logo-main"
          style="width:120px; height:auto; border-radius:12px; box-shadow:0 0 12px rgba(0,0,0,0.3);">
   </div>
 
@@ -98,7 +137,8 @@
     <img 
       src="https://neoxcoin.github.io/NeoXCoin360.gif" 
       alt="NeoX Coin 360 Animation" 
-      style="width:160px; height:auto; border-radius:50%; box-shadow:0 0 20px rgba(255,215,0,0.35); animation:fadeIn 2s ease;">
+      class="coin-anim"
+      style="width:160px; height:auto; border-radius:50%; box-shadow:0 0 20px rgba(255,215,0,0.35);">
   </div>
 
   <div class="wrap">
