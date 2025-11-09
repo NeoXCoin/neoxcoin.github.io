@@ -138,9 +138,46 @@
     .footer-links a {
       margin: 0 8px;
     }
+
+    /* 🌐 Google Translate Bar */
+    .gt-wrap {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 300;
+      font-size: 12px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
+    }
+
+    .gt-inner {
+      background: rgba(0,0,0,0.55);
+      border-radius: 999px;
+      padding: 4px 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      backdrop-filter: blur(6px);
+    }
+
+    .gt-inner span {
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+
+    #google_translate_element {
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
+
+  <!-- 🌐 Google Translate (top-right) -->
+  <div class="gt-wrap">
+    <div class="gt-inner">
+      <span>🌐 Language</span>
+      <div id="google_translate_element"></div>
+    </div>
+  </div>
 
   <!-- 🔹 Top Left Home Logo (Global Home) -->
   <a href="https://neoxcoin.github.io/index-global.html" 
@@ -347,6 +384,18 @@
       <a href="mailto:neoxcoin@outlook.com">Contact</a>
     </div>
   </div>
+
+  <!-- 🌐 Google Translate Script (full language list) -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'af,ar,bg,ca,cs,da,de,el,en,es,et,fa,fi,fr,gu,he,hi,hr,hu,id,it,ja,ko,lt,lv,ms,nl,no,pl,pt,ro,ru,sk,sl,sq,sr,sv,sw,ta,th,tr,uk,ur,vi,zh-CN,zh-TW',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
 </html>
