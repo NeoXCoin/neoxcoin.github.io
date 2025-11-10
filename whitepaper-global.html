@@ -6,6 +6,7 @@
   <title>NeoX Coin (NXC) – Whitepaper | Language Selection</title>
   <meta name="description" content="Select your preferred language to read the NeoX Coin (NXC) whitepaper – available in English and Traditional Chinese.">
   <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" type="image/png" />
+
   <style>
     body {
       margin: 0;
@@ -80,9 +81,18 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* 加載提示 */
+    #loading {
+      opacity: 0.8;
+      font-size: 0.9rem;
+      margin-top: 10px;
+      animation: fadeIn 2s ease-in-out infinite alternate;
+    }
   </style>
 </head>
 <body>
+
   <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Coin Logo">
   <h1>NeoX Coin (NXC) – Whitepaper</h1>
   <p>Select your preferred language / 請選擇語言：</p>
@@ -92,9 +102,26 @@
     <a href="https://neoxcoin.github.io/whitepaper-zh.html">繁體中文</a>
   </div>
 
+  <p id="loading">Detecting your language... / 正在偵測語言中...</p>
+
   <footer>
     <a href="https://neoxcoin.github.io">NeoX Official Website</a> ·
     <a href="mailto:neoxcoin@outlook.com">Contact</a>
   </footer>
+
+  <script>
+    // 延遲 2 秒執行，以防誤跳轉
+    setTimeout(() => {
+      const userLang = navigator.language || navigator.userLanguage;
+      const lang = userLang.toLowerCase();
+
+      if (lang.includes('zh')) {
+        window.location.href = "https://neoxcoin.github.io/whitepaper-zh.html";
+      } else {
+        window.location.href = "https://neoxcoin.github.io/whitepaper.html";
+      }
+    }, 2000);
+  </script>
+
 </body>
 </html>
