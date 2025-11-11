@@ -1,343 +1,431 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeoX Coin (NXC) – 白皮書 | NeoX 元宇宙</title>
+  <meta name="description" content="NeoX Coin (NXC) 白皮書 – 介紹 NeoX 元宇宙在 Base 主網上的願景、生態系統、代幣設計，以及 NFT、遊戲與元宇宙中的應用場景。">
+  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" type="image/png" />
 
-  <!-- ▼ SEO Optimized Head -->
-  <title>NeoX Coin (NXC) – Web3 NFTs, Token & Metaverse</title>
-  <meta name="description" content="Explore NeoX (NXC) – the decentralized Web3 ecosystem on Base Mainnet. Discover NFTs, the official NeoX Coin, interactive games, and metaverse experiences." />
-  <meta name="keywords" content="NeoX, NeoX Coin, NXC, NFT, Web3 art, Base Mainnet, Crypto, NeoX Game, NeoX Timekeeper Edition, NeoX Van Gogh Visions, NeoX Abstract Realms, Metaverse, Token" />
-  <meta name="author" content="NeoX Official" />
-
-  <!-- Canonical & Multi-language -->
-  <link rel="canonical" href="https://neoxcoin.github.io/" />
-  <link rel="alternate" href="https://neoxcoin.github.io/" hreflang="en" />
-  <link rel="alternate" href="https://neoxcoin.github.io/index-zh.html" hreflang="zh-Hant" />
-  <link rel="alternate" href="https://neoxcoin.github.io/index-global.html" hreflang="x-default" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="NeoX Coin (NXC) – Web3 NFTs, Token & Metaverse" />
-  <meta property="og:description" content="Experience NeoX – Web3 art, NFTs, and gaming on Base Mainnet. Join the future of decentralized creativity." />
-  <meta property="og:image" content="https://neoxcoin.github.io/XNXC.png" />
-  <meta property="og:url" content="https://neoxcoin.github.io/" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NeoX Coin (NXC) – Web3 NFTs, Token & Metaverse" />
-  <meta name="twitter:description" content="Discover NeoX Coin, NFTs, and the Web3 Metaverse on Base Mainnet." />
-  <meta name="twitter:image" content="https://neoxcoin.github.io/XNXC.png" />
-
-  <!-- Google Verification -->
-  <meta name="google-site-verification" content="googlea69ad61f2464c50e.html" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-  <!-- Web App Manifest -->
-  <link rel="manifest" href="site.webmanifest">
-
-  <!-- Schema.org -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "NeoX Coin (NXC)",
-    "url": "https://neoxcoin.github.io/",
-    "logo": "https://neoxcoin.github.io/XNXC.png",
-    "sameAs": [
-      "https://www.instagram.com/neox__official",
-      "https://opensea.io/collection/neox-timekeeper-edition"
-    ]
-  }
-  </script>
-
-  <!-- 🔽 CSS -->
   <style>
     body {
       margin: 0;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url('https://neoxcoin.github.io/NeoXbackG.JPG');
-      background-size: cover;
-      background-position: center;
-      font-family: Arial, sans-serif;
-      color: white;
-      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
+      background: #050814;
+      color: #f5f5f5;
+      line-height: 1.7;
     }
 
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
-      opacity: 0.85;
-      z-index: 999;
+    .wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 30px 20px 80px;
     }
 
-    .language-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 16px;
-      z-index: 9999;
+    h1, h2, h3 {
+      font-weight: 600;
+      margin-bottom: 10px;
     }
-    .language-switch a {
-      color: white;
+
+    h1 {
+      font-size: 2.1rem;
+      margin-top: 20px;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      margin-top: 28px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin-top: 18px;
+    }
+
+    p {
+      margin: 8px 0 14px;
+    }
+
+    a {
+      color: #4fd1ff;
       text-decoration: none;
-      margin: 0 8px;
     }
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
+    a:hover {
+      text-decoration: underline;
     }
 
     .tagline {
-      font-size: 18px;
-      margin-top: 100px;
       opacity: 0.9;
+      margin-bottom: 6px;
     }
 
-    .coin {
-      width: 144px;
-      margin: 30px auto;
-    }
-    
-    .headline {
-      margin: 22px 0 30px 0;   
-      line-height: 1.6;        
-      text-align: center;      
+    .muted {
+      opacity: 0.8;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
     }
 
-    .headline span {
-      display: block;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1s ease-out forwards;
-      font-size: 15px;
-    }
-
-    .headline span:nth-child(1) { animation-delay: 0.5s; }
-    .headline span:nth-child(2) { animation-delay: 1.5s; }
-    .headline span:nth-child(3) { animation-delay: 2.5s; }
-    .headline span:nth-child(4) { animation-delay: 3.5s; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .nav-bar {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-bar a {
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    .emoji {
-      font-size: 18px;
-      line-height: 1;
-    }
-
-    .btn-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-      margin-top: 30px;
-    }
-    
-        .market-link {
-      margin-top: 14px;
-    }
-
-    .market-btn {
-      display: inline-block;
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      text-decoration: none;
-      color: #ffd76a;
-      border: 1px solid rgba(255, 215, 106, 0.45);
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
-      transition: all 0.3s ease;
-    }
-
-    .market-btn:hover {
-      background: linear-gradient(90deg, #1c1c3c, #3a0088);
-      color: #fff;
-      border-color: #ffd700;
-      box-shadow: 0 0 14px rgba(255, 215, 106, 0.6);
-      transform: translateY(-2px);
-    }
-
-    @media (max-width: 600px) {
-      .market-link {
-        margin-top: 10px;
-      }
-      .market-btn {
-        font-size: 13px;
-        padding: 7px 16px;
-      }
-    }
-
-    .btn {
-      background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
-      border: 3px solid #e0e0e0;
-      color: black;
-      padding: 12px 24px;
+    .box {
+      background: rgba(255,255,255,0.04);
       border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      min-width: 180px;
-      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      position: relative;
+      padding: 18px;
+      margin-top: 18px;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
-    }
-    
-    .btn[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      top: -38px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.8);
-      color: #fff;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      white-space: nowrap;
-      z-index: 1000;
+    .list {
+      padding-left: 22px;
+      margin-top: 6px;
     }
 
-    .emoji-icon {
-      width: 2.0em;
-      height: 2.0em;
-      object-fit: contain;
-      pointer-events: none;
+    code {
+      background: rgba(0,0,0,0.35);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: SFMono-Regular, Consolas, monospace;
+      word-break: break-all;
     }
 
-    .footer {
-      margin-top: 50px;
-      font-size: 13px;
-      opacity: 0.6;
+    .small {
+      font-size: 0.85rem;
+      opacity: 0.78;
     }
 
-    .footer a {
-      color: #ccc;
-      text-decoration: none;
-      margin: 0 6px;
+    hr {
+      border: 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      margin: 24px 0 20px;
     }
 
     .footer-links {
-      margin-bottom: 8px;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.85;
+      margin-top: 32px;
     }
-    
-    @media (max-width: 600px) {
-      .nav-bar {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
+
+    .footer-links a {
+      margin: 0 8px;
+    }
+
+    /* 動畫 */
+    .logo-main { animation: fadeInDown 1.2s ease-out; }
+    .coin-anim { animation: fadeInGlow 2s ease-out; }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInGlow {
+      0% { opacity: 0; transform: translateY(10px); box-shadow: 0 0 0 rgba(255,215,0,0); }
+      60% { opacity: 1; box-shadow: 0 0 26px rgba(255,215,0,0.55); }
+      100% { opacity: 1; box-shadow: 0 0 16px rgba(255,215,0,0.35); }
+    }
+
+    /* 🔹 列印 / 匯出 PDF 專用樣式：固定 4 頁 + 每頁頁碼 */
+    @media print {
+      @page {
+        size: A4;
+        margin: 20mm 18mm 18mm 18mm;
       }
 
-      .btn-row {
-        flex-direction: column;
-        align-items: center;
+      body {
+        background: #ffffff;
+        color: #000000;
       }
 
-      .coin {
-        width: 144px;
-        max-width: 100%;
+      /* 每頁底部頁碼 */
+      .print-footer {
+        position: fixed;
+        bottom: 8mm;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 10pt;
+        color: #555;
+      }
+
+      /* ✅ 寫死「共 4 頁」 */
+      .print-footer::before {
+        content: "第 " counter(page) " 頁 / 共 4 頁";
+      }
+
+      .print-body {
+        margin-top: 0;
+      }
+
+      /* ✅ 強制分頁：在哪個 div 前面插入，就在哪裏另起一頁 */
+      .page-break {
+        page-break-after: always;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Logo -->
-  <a href="index.html">
-    <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
-  </a>
 
-  <!-- Language Switch -->
-  <div class="language-switch">
-    <a href="index.html">EN</a> | <a href="index-zh.html">繁</a> | <a href="index-global.html">🌍</a>
-  </div>
+  <!-- 底部固定頁碼（只在列印 / PDF 出現） -->
+  <div class="print-footer"></div>
 
-  <div class="container">
-    <div class="tagline">Web3 Revolution, Led by NeoX</div>
-    <img class="coin" src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin" />
+  <!-- 列印主體 -->
+  <div class="print-body">
 
-    <div class="nav-bar">
-      <a href="what-is-neox.html">What is NeoX?</a>
-      <a href="how-to-buy.html">How to Buy?</a>
-      <a href="game.html"><span class="emoji">🎮</span> NeoX Game</a>
-      <a href="metaverse.html"><span class="emoji">🔥</span> NeoX Metaverse Exhibition</a>
-      <a href="nft-projects.html"><span class="emoji">👉🏻</span> NeoX NFT Projects</a>
+    <!-- 左上角 Logo：返回中文版首頁 -->
+    <a href="https://neoxcoin.github.io/index-zh.html"
+       style="position:fixed; top:18px; left:28px; z-index:100;">
+      <img src="https://neoxcoin.github.io/XNXC.png"
+           alt="NeoX 首頁"
+           style="width:44px; height:auto; border-radius:8px; transition:transform 0.25s ease;"
+           onmouseover="this.style.transform='scale(1.12)'"
+           onmouseout="this.style.transform='scale(1)'" />
+    </a>
+
+    <!-- 中央 NeoX Logo -->
+    <div style="text-align:center; margin-top:80px;">
+      <img src="https://neoxcoin.github.io/XNXC.png"
+           alt="NeoX Coin Logo"
+           class="logo-main"
+           style="width:120px; height:auto; border-radius:12px; box-shadow:0 0 12px rgba(0,0,0,0.3);">
     </div>
 
-    <div class="headline">
-      <span>The future is coming – Own the currency that empowers Web freedom.</span>
-      <span>Shape the future with NeoX – the next evolution in digital currency.</span>
-      <span>Be part of the Web3 revolution – NeoX puts control back in your hands.</span>
-      <span>Own your freedom. Own the future. Own NeoX.</span>
+    <!-- 360 金幣動畫 -->
+    <div style="text-align:center; margin:34px 0 10px;">
+      <img src="https://neoxcoin.github.io/NeoXCoin360.gif"
+           alt="NeoX Coin 360° 動畫"
+           class="coin-anim"
+           style="width:160px; height:auto; border-radius:50%; box-shadow:0 0 20px rgba(255,215,0,0.35);">
     </div>
 
-    <div class="btn-row">
-      <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">🛒 Buy NXC</a>
-      <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/" data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link">🦊 Buy via MetaMask</a>
-      <a class="btn" href="add-to-metamask.html">
-        <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
-        Add to MetaMask
-      </a>
-    </div>
-    
-        <!-- Market data: GeckoTerminal -->
-    <div class="market-link">
-      <a
-        class="market-btn"
-        href="https://geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        📊 View NXC on GeckoTerminal
-      </a>
-    </div>
+    <div class="wrap">
+      <h1>NeoX Coin (NXC) – 白皮書</h1>
+      <p class="tagline">
+        NeoX Coin (NXC) 是建構於 Base 主網上的社群驅動代幣，為 NeoX 生態中的 NFT、數位藝術、輕量遊戲與元宇宙展覽提供動力。
+      </p>
+      <p class="muted">
+        官方白皮書 · 版本 1.0 · 最後更新：2025 年 11 月 10 日
+      </p>
 
-    <!-- Footer -->
-    <div class="footer">
-      <div class="footer-links">
-        <a href="faq.html">FAQ</a> |
-        <a href="about.html">About</a> |
-        <a href="troubleshooting.html">Troubleshooting</a>
+      <hr>
+
+      <h2>1. 簡介</h2>
+      <p>
+        NeoX Coin (NXC) 建立於 Base Mainnet（Base 主網）之上，定位為一枚實用型代幣，而非單純投機工具。
+        它的目標，是成為 NeoX 生態的共同語言，連結數位藝術、NFT 收藏、輕量遊戲與虛擬展覽空間。
+      </p>
+      <p>
+        本白皮書以簡潔易懂的方式，介紹 NeoX 的願景、技術基礎、代幣設計，以及 NXC 在整個生態系中的實際與潛在應用。
+      </p>
+
+      <h2>2. 願景與理念</h2>
+      <p>
+        NeoX 誕生於一個簡單想法：
+        <br>「Web3 不一定只關於價格波動，它亦可以充滿藝術感、故事性與遊戲性。」
+      </p>
+      <p>基於這個想法，NeoX 的核心理念包括：</p>
+      <ul class="list">
+        <li><strong>藝術優先：</strong>
+          先做好內容與美學，再談其餘。NFT 在 NeoX 世界裡是一個故事、一種氛圍，而不只是單一資產。
+        </li>
+        <li><strong>公平啟動：</strong>
+          無預售、無私募，希望減少「內部優勢」，讓社群有較平均的參與起點。
+        </li>
+        <li><strong>多形態體驗：</strong>
+          NeoX 不只是一個系列，而是一個世界觀，可包含插畫、動畫、音樂、遊戲與虛擬展覽。
+        </li>
+        <li><strong>低手續費、易接觸：</strong>
+          透過 Base 主網較低的交易成本，配合多語介面，讓不同地區用戶更容易踏入 Web3。
+        </li>
+      </ul>
+
+      <!-- ✅ 第一個強制分頁：1–2 章做第 1 頁 -->
+      <div class="page-break"></div>
+
+      <h2>3. 技術基礎</h2>
+      <p>
+        NeoX Coin (NXC) 是一枚遵從 ERC-20 標準的代幣，部署於 <strong>Base Mainnet</strong>，並透過 thirdweb 工具進行合約部署及管理。
+      </p>
+      <ul class="list">
+        <li><strong>區塊鏈：</strong> Base Mainnet（以太坊第二層網路）</li>
+        <li><strong>代幣標準：</strong> ERC-20</li>
+        <li><strong>合約地址：</strong> <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code></li>
+        <li><strong>區塊鏈瀏覽器：</strong>
+          <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">
+            於 BaseScan 查看 NXC
+          </a>
+        </li>
+      </ul>
+      <p>
+        thirdweb 提供一套被廣泛使用的智能合約框架，有助降低部署風險與技術門檻，同時維持必要的安全與標準化。
+      </p>
+
+      <h2>4. 代幣設計</h2>
+      <p>
+        NXC 的設計方向是「簡單透明」，不採用複雜的 rebase、分紅或反射機制。
+        它的主要角色，是作為 NeoX 生態中的通用代幣與參與憑證。
+      </p>
+      <ul class="list">
+        <li><strong>預售 / 私募：</strong> 無；NXC 以社群公平啟動形式發行。</li>
+        <li><strong>發行供應：</strong> 於部署時設定，目前沒有在發行後額外增發的計畫。</li>
+        <li><strong>合約管理權限：</strong> 限於 thirdweb 提供的標準安全與參數設定，不以中心化控制為設計重點。</li>
+      </ul>
+      <p class="small">
+        技術層面最終以鏈上合約（BaseScan 所示內容）為準。
+      </p>
+
+      <!-- ✅ 第二個強制分頁：3–4 章做第 2 頁 -->
+      <div class="page-break"></div>
+
+      <h2>5. NXC 在 NeoX 生態中的應用</h2>
+      <p>
+        NXC 被視為 NeoX 元宇宙的「能源核心」，未來可用於多種場景。以下為規劃方向（實際實作將分階段推出）：
+      </p>
+      <ul class="list">
+        <li><strong>NFT 生態：</strong><br>
+          於特別鑄造、限量系列、收藏家回饋或空投活動中，NXC 有機會作為支付媒介、折扣條件或持有憑證。
+        </li>
+        <li><strong>遊戲化體驗：</strong><br>
+          在 NeoX 主題的小遊戲（例如 <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a> 概念）中，
+          NXC 可用於解鎖外觀、活動模式或排行榜獎勵。
+        </li>
+        <li><strong>虛擬展覽與場景互動：</strong><br>
+          在 NeoX 的虛擬展館或 3D 展覽空間（例如
+          <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX OnCyber 展館</a>），
+          未來有機會使用 NXC 解鎖特別展區、互動裝置或限定體驗。
+        </li>
+        <li><strong>社群活動：</strong><br>
+          NXC 可用作創作比賽、社群任務、抽獎活動或合作企劃的獎勵與參與條件。
+        </li>
+      </ul>
+      <p class="small">
+        以上用途為規劃方向，實際上線時間與形式將因應技術與法規情況調整，一切以官方公告為準。
+      </p>
+
+      <h2>6. 生態組成</h2>
+      <p>NeoX 生態目前已經包含多種元素，並會持續擴展：</p>
+      <ul class="list">
+        <li><strong>NFT 系列：</strong><br>
+          包括 NeoX Timekeeper Edition、NeoX Van Gogh Visions、NeoX Abstract Realms 等，
+          於 OpenSea 可透過官方專案錢包瀏覽：
+          <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">
+            NeoX 專案錢包 NFT
+          </a>。
+        </li>
+        <li><strong>互動式網頁與小遊戲：</strong><br>
+          例如 <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a>，
+          讓訪客以「玩住」方式認識 NeoX Coin 與其世界觀。
+        </li>
+        <li><strong>元宇宙展覽空間：</strong><br>
+          透過 <a href="https://oncyber.io/neoxdynamic" target="_blank">OnCyber 虛擬展館</a> 展示 NeoX 相關作品，
+          讓收藏家與訪客以更沉浸方式探索 NeoX 藝術。
+        </li>
+        <li><strong>官方專案錢包：</strong><br>
+          與 NeoX NFT 與生態資產相關之主要錢包地址為：
+          <code>0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2</code>。
+        </li>
+      </ul>
+
+      <!-- ✅ 第三個強制分頁：5–6 章做第 3 頁 -->
+      <div class="page-break"></div>
+
+      <h2>7. 發展路線圖（概要）</h2>
+      <p>NeoX 的路線圖保留一定創作彈性，以下為高層次階段規劃：</p>
+      <ul class="list">
+        <li><strong>第一階段：基礎與品牌建立</strong><br>
+          在 Base 主網部署 NXC，推出首批 NFT 系列，建立官方網站與視覺識別。
+        </li>
+        <li><strong>第二階段：體驗與互動擴展</strong><br>
+          開發更多 NeoX 主題互動內容與小遊戲，優化網站動線與視覺效果。
+        </li>
+        <li><strong>第三階段：實用功能深化</strong><br>
+          逐步測試將 NXC 導入 NFT 鑄造、獎勵機制或活動參與憑證等場景。
+        </li>
+        <li><strong>第四階段：社群與合作</strong><br>
+          與藝術家、設計師及其他 Web3 項目合作，拓展 NeoX 生態的內容與觸及。
+        </li>
+      </ul>
+
+      <h2>8. 風險與免責聲明</h2>
+      <p>
+        參與任何與區塊鏈及加密資產相關的活動，均存在一定風險。NXC 並非傳統金融產品，亦不保證收益。
+        代幣價格可能大幅波動，亦有可能流通性不足。
+      </p>
+      <ul class="list">
+        <li>用戶應自行進行研究（DYOR），並為自己的決策負責。</li>
+        <li>即使採用標準化合約框架，智能合約仍可能存在潛在技術風險。</li>
+        <li>各地區對加密資產的監管規定可能不同，而且會隨時間改變。</li>
+      </ul>
+      <p class="small">
+        本白皮書內容僅作資訊參考，並不構成任何形式的財務、法律或稅務建議。<br>
+        用戶在作出任何相關決定前，應先了解當地法規與自身風險承受能力。
+      </p>
+
+      <h2>9. 官方連結與聯絡方式</h2>
+      <div class="box">
+        <ul class="list">
+          <li><strong>官方網站：</strong>
+            <a href="https://neoxcoin.github.io" target="_blank">https://neoxcoin.github.io</a>
+          </li>
+          <li><strong>中文版首頁：</strong>
+            <a href="https://neoxcoin.github.io/index-zh.html" target="_blank">https://neoxcoin.github.io/index-zh.html</a>
+          </li>
+          <li><strong>官方代幣資料（中文）：</strong>
+            <a href="https://neoxcoin.github.io/token-info-zh.html" target="_blank">https://neoxcoin.github.io/token-info-zh.html</a>
+          </li>
+          <li><strong>Global Token Info（英文）：</strong>
+            <a href="https://neoxcoin.github.io/token-info.html" target="_blank">https://neoxcoin.github.io/token-info.html</a>
+          </li>
+          <li><strong>BaseScan 代幣頁：</strong>
+            <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">
+              於 BaseScan 查看 NXC
+            </a>
+          </li>
+          <li><strong>GeckoTerminal 已驗證池：</strong>
+            <a href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c" target="_blank">
+              NXC / WETH 池（GeckoTerminal ✅）
+            </a>
+          </li>
+          <li><strong>NeoX Game：</strong>
+            <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a>
+          </li>
+          <li><strong>OnCyber 展館：</strong>
+            <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX OnCyber 展覽空間</a>
+          </li>
+          <li><strong>OpenSea（專案錢包 & NFT）：</strong>
+            <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">
+              https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2
+            </a>
+          </li>
+          <li><strong>X（Twitter）：</strong>
+            <a href="https://x.com/xdenniswong" target="_blank">@xdenniswong</a>
+          </li>
+          <li><strong>Instagram：</strong>
+            <a href="https://instagram.com/neox__official" target="_blank">@neox__official</a>
+          </li>
+          <li><strong>TikTok：</strong>
+            <a href="https://www.tiktok.com/@neox.world" target="_blank">@neox.world</a>
+          </li>
+          <li><strong>YouTube：</strong>
+            <a href="https://www.youtube.com/@neox_officials" target="_blank">@neox_officials</a>
+          </li>
+          <li><strong>GitHub：</strong>
+            <a href="https://github.com/NeoXCoin" target="_blank">NeoXCoin Repository</a>
+          </li>
+          <li><strong>聯絡電郵：</strong>
+            <a href="mailto:neoxcoin@outlook.com">neoxcoin@outlook.com</a>
+          </li>
+        </ul>
+        <p class="small">
+          如需進行區塊鏈瀏覽器、行情平台或交易所之項目認證與上架申請，建議同時提供：
+          本白皮書、官方代幣資料頁，以及 BaseScan 代幣頁與 GeckoTerminal 已驗證池連結作為參考。
+        </p>
       </div>
-      © 2025 NeoX. All rights reserved. |
-      <a href="disclaimer-en.html">Disclaimer</a>
+
+      <div class="footer-links">
+        <a href="https://neoxcoin.github.io/index-zh.html">首頁</a> ·
+        <a href="https://neoxcoin.github.io/token-info-zh.html" target="_blank">官方代幣資料</a> ·
+        <a href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c" target="_blank">GeckoTerminal</a> ·
+        <a href="mailto:neoxcoin@outlook.com">聯絡我們</a>
+      </div>
     </div>
   </div>
 </body>
