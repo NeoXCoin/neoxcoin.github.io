@@ -2,52 +2,28 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX Coin (NXC) – 白皮書 | NeoX 元宇宙</title>
+  <title>NeoX Coin (NXC) – 白皮書（列印版）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="NeoX Coin (NXC) 白皮書 – 介紹 NeoX 元宇宙在 Base 主網上的願景、生態系統、代幣設計，以及 NFT、遊戲與元宇宙中的應用場景。">
-  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" type="image/png" />
 
   <style>
+    /* ===== 全局樣式：白底黑字，適合列印 ===== */
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
-      background: #050814;
-      color: #f5f5f5;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "PingFang TC", "Noto Sans", Arial, sans-serif;
+      background: #ffffff;
+      color: #111111;
       line-height: 1.7;
     }
 
-    .wrap {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 30px 20px 80px;
-    }
-
-    h1, h2, h3 {
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      font-size: 2.1rem;
-      margin-top: 20px;
-    }
-
-    h2 {
-      font-size: 1.35rem;
-      margin-top: 28px;
-    }
-
-    h3 {
-      font-size: 1.05rem;
-      margin-top: 18px;
-    }
-
-    p {
-      margin: 8px 0 14px;
-    }
-
     a {
-      color: #4fd1ff;
+      color: #0044cc;
       text-decoration: none;
     }
 
@@ -55,378 +31,385 @@
       text-decoration: underline;
     }
 
+    h1, h2, h3 {
+      font-weight: 600;
+      margin: 0 0 10px;
+    }
+
+    h1 {
+      font-size: 1.9rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+      margin-top: 22px;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin-top: 16px;
+    }
+
+    p {
+      margin: 6px 0 12px;
+      font-size: 0.98rem;
+    }
+
+    ul {
+      margin: 4px 0 10px;
+      padding-left: 22px;
+      font-size: 0.98rem;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    code {
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+        "Courier New", monospace;
+      font-size: 0.9rem;
+      background: #f2f2f2;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+
     .tagline {
       opacity: 0.9;
-      margin-bottom: 6px;
+      margin-top: 8px;
+      margin-bottom: 4px;
     }
 
     .muted {
       opacity: 0.8;
-      font-size: 0.95rem;
-      margin-bottom: 20px;
-    }
-
-    .box {
-      background: rgba(255,255,255,0.04);
-      border-radius: 12px;
-      padding: 18px;
-      margin-top: 18px;
-    }
-
-    .list {
-      padding-left: 22px;
-      margin-top: 6px;
-    }
-
-    code {
-      background: rgba(0,0,0,0.35);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: SFMono-Regular, Consolas, monospace;
-      word-break: break-all;
+      font-size: 0.92rem;
+      margin-bottom: 18px;
     }
 
     .small {
-      font-size: 0.85rem;
-      opacity: 0.78;
+      font-size: 0.83rem;
+      opacity: 0.8;
     }
 
     hr {
       border: 0;
-      border-top: 1px solid rgba(255,255,255,0.12);
-      margin: 24px 0 20px;
+      border-top: 1px solid #dddddd;
+      margin: 18px 0 16px;
     }
 
-    .footer-links {
+    /* ===== 分頁容器 ===== */
+    .page {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 60px 70px;
+      background: #ffffff;
+    }
+
+    /* 列印時強制分頁 */
+    .page-break {
+      page-break-after: always;
+    }
+
+    /* 每頁右上角小 Logo */
+    .page-logo {
+      position: absolute;
+      top: 24px;
+      right: 40px;
+      width: 72px;
+      height: auto;
+    }
+
+    /* 第一頁大 Logo + 金幣 */
+    .cover-center {
       text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.85;
-      margin-top: 32px;
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
 
-    .footer-links a {
-      margin: 0 8px;
+    .cover-logo-main {
+      width: 110px;
+      height: auto;
     }
 
-    /* 動畫 */
-    .logo-main { animation: fadeInDown 1.2s ease-out; }
-    .coin-anim { animation: fadeInGlow 2s ease-out; }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .cover-coin {
+      width: 120px;
+      height: auto;
+      margin-top: 12px;
     }
 
-    @keyframes fadeInGlow {
-      0% { opacity: 0; transform: translateY(10px); box-shadow: 0 0 0 rgba(255,215,0,0); }
-      60% { opacity: 1; box-shadow: 0 0 26px rgba(255,215,0,0.55); }
-      100% { opacity: 1; box-shadow: 0 0 16px rgba(255,215,0,0.35); }
+    /* 頁碼 footer */
+    .page-footer {
+      position: absolute;
+      bottom: 20px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #666666;
     }
 
-    /* 🔹 列印 / 匯出 PDF 專用樣式：固定 4 頁 + 每頁頁碼 */
+    .section-title-number {
+      font-weight: 600;
+      margin-right: 4px;
+    }
+
+    .box {
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-top: 10px;
+    }
+
+    /* 列印優化 */
     @media print {
-      @page {
-        size: A4;
-        margin: 20mm 18mm 18mm 18mm;
-      }
-
       body {
         background: #ffffff;
+      }
+      .page {
+        box-shadow: none;
+      }
+      a {
         color: #000000;
-      }
-
-      /* 每頁底部頁碼 */
-      .print-footer {
-        position: fixed;
-        bottom: 8mm;
-        left: 0;
-        right: 0;
-        text-align: center;
-        font-size: 10pt;
-        color: #555;
-      }
-
-      /* ✅ 寫死「共 4 頁」 */
-      .print-footer::before {
-        content: "第 " counter(page) " 頁 / 共 4 頁";
-      }
-
-      .print-body {
-        margin-top: 0;
-      }
-
-      /* ✅ 強制分頁：在哪個 div 前面插入，就在哪裏另起一頁 */
-      .page-break {
-        page-break-after: always;
+        text-decoration: underline;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 底部固定頁碼（只在列印 / PDF 出現） -->
-  <div class="print-footer"></div>
+  <!-- ===== 第 1 頁 ===== -->
+  <div class="page page-break">
+    <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" class="page-logo">
 
-  <!-- 列印主體 -->
-  <div class="print-body">
-
-    <!-- 左上角 Logo：返回中文版首頁 -->
-    <a href="https://neoxcoin.github.io/index-zh.html"
-       style="position:fixed; top:18px; left:28px; z-index:100;">
-      <img src="https://neoxcoin.github.io/XNXC.png"
-           alt="NeoX 首頁"
-           style="width:44px; height:auto; border-radius:8px; transition:transform 0.25s ease;"
-           onmouseover="this.style.transform='scale(1.12)'"
-           onmouseout="this.style.transform='scale(1)'" />
-    </a>
-
-    <!-- 中央 NeoX Logo -->
-    <div style="text-align:center; margin-top:80px;">
-      <img src="https://neoxcoin.github.io/XNXC.png"
-           alt="NeoX Coin Logo"
-           class="logo-main"
-           style="width:120px; height:auto; border-radius:12px; box-shadow:0 0 12px rgba(0,0,0,0.3);">
+    <div class="cover-center">
+      <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Coin Logo" class="cover-logo-main"><br>
+      <img src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin" class="cover-coin">
     </div>
 
-    <!-- 360 金幣動畫 -->
-    <div style="text-align:center; margin:34px 0 10px;">
-      <img src="https://neoxcoin.github.io/NeoXCoin360.gif"
-           alt="NeoX Coin 360° 動畫"
-           class="coin-anim"
-           style="width:160px; height:auto; border-radius:50%; box-shadow:0 0 20px rgba(255,215,0,0.35);">
-    </div>
+    <h1>NeoX Coin (NXC) – 白皮書</h1>
+    <p class="tagline">
+      NeoX Coin (NXC) 是建構於 Base 主網上的社群驅動代幣，為 NeoX 生態中的 NFT、數位藝術、輕量遊戲與元宇宙展覽提供動力。
+    </p>
+    <p class="muted">
+      官方白皮書 · 版本 1.0 · 最後更新：2025 年 11 月 10 日
+    </p>
 
-    <div class="wrap">
-      <h1>NeoX Coin (NXC) – 白皮書</h1>
-      <p class="tagline">
-        NeoX Coin (NXC) 是建構於 Base 主網上的社群驅動代幣，為 NeoX 生態中的 NFT、數位藝術、輕量遊戲與元宇宙展覽提供動力。
-      </p>
-      <p class="muted">
-        官方白皮書 · 版本 1.0 · 最後更新：2025 年 11 月 10 日
-      </p>
+    <hr>
 
-      <hr>
+    <h2><span class="section-title-number">1.</span>簡介</h2>
+    <p>
+      NeoX Coin (NXC) 建立於 Base Mainnet（Base 主網）之上，定位為一枚實用型代幣，而非單純投機工具。
+      它的目標，是成為 NeoX 生態的共同語言，連結數位藝術、NFT 收藏、輕量遊戲與虛擬展覽空間。
+    </p>
+    <p>
+      本白皮書以簡潔易懂的方式，介紹 NeoX 的願景、技術基礎、代幣設計，以及 NXC 在整個生態系中的實際與潛在應用。
+    </p>
 
-      <h2>1. 簡介</h2>
-      <p>
-        NeoX Coin (NXC) 建立於 Base Mainnet（Base 主網）之上，定位為一枚實用型代幣，而非單純投機工具。
-        它的目標，是成為 NeoX 生態的共同語言，連結數位藝術、NFT 收藏、輕量遊戲與虛擬展覽空間。
-      </p>
-      <p>
-        本白皮書以簡潔易懂的方式，介紹 NeoX 的願景、技術基礎、代幣設計，以及 NXC 在整個生態系中的實際與潛在應用。
-      </p>
+    <h2><span class="section-title-number">2.</span>願景與理念</h2>
+    <p>
+      NeoX 誕生於一個簡單想法：<br>
+      「Web3 不一定只關於價格波動，它亦可以充滿藝術感、故事性與遊戲性。」
+    </p>
+    <p>基於這個想法，NeoX 的核心理念包括：</p>
+    <ul>
+      <li><strong>藝術優先：</strong> 先做好內容與美學，再談其餘。NFT 在 NeoX 世界裡是一個故事、一種氛圍，而不只是單一資產。</li>
+      <li><strong>公平啟動：</strong> 無預售、無私募，希望減少「內部優勢」，讓社群有較平均的參與起點。</li>
+      <li><strong>多形態體驗：</strong> NeoX 不只是一個系列，而是一個世界觀，可包含插畫、動畫、音樂、遊戲與虛擬展覽。</li>
+      <li><strong>低手續費、易接觸：</strong> 透過 Base 主網較低的交易成本，配合多語介面，讓不同地區用戶更容易踏入 Web3。</li>
+    </ul>
 
-      <h2>2. 願景與理念</h2>
-      <p>
-        NeoX 誕生於一個簡單想法：
-        <br>「Web3 不一定只關於價格波動，它亦可以充滿藝術感、故事性與遊戲性。」
-      </p>
-      <p>基於這個想法，NeoX 的核心理念包括：</p>
-      <ul class="list">
-        <li><strong>藝術優先：</strong>
-          先做好內容與美學，再談其餘。NFT 在 NeoX 世界裡是一個故事、一種氛圍，而不只是單一資產。
+    <div class="page-footer">第 1 頁 / 共 4 頁</div>
+  </div>
+
+  <!-- ===== 第 2 頁 ===== -->
+  <div class="page page-break">
+    <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" class="page-logo">
+
+    <h2><span class="section-title-number">3.</span>技術基礎</h2>
+    <p>
+      NeoX Coin (NXC) 是一枚遵從 ERC-20 標準的代幣，部署於 <strong>Base Mainnet</strong>，並透過 thirdweb 工具進行合約部署及管理。
+    </p>
+    <ul>
+      <li><strong>區塊鏈：</strong> Base Mainnet（以太坊第二層網路）</li>
+      <li><strong>代幣標準：</strong> ERC-20</li>
+      <li><strong>合約地址：</strong> <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code></li>
+      <li><strong>區塊鏈瀏覽器：</strong>
+        <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">
+          於 BaseScan 查看 NXC
+        </a>
+      </li>
+    </ul>
+    <p>
+      thirdweb 提供一套被廣泛使用的智能合約框架，有助降低部署風險與技術門檻，同時維持必要的安全與標準化。
+    </p>
+
+    <h2><span class="section-title-number">4.</span>代幣設計</h2>
+    <p>
+      NXC 的設計方向是「簡單透明」，不採用複雜的 rebase、分紅或反射機制。
+      它的主要角色，是作為 NeoX 生態中的通用代幣與參與憑證。
+    </p>
+    <ul>
+      <li><strong>預售 / 私募：</strong> 無；NXC 以社群公平啟動形式發行。</li>
+      <li><strong>發行供應：</strong> 於部署時設定，目前沒有在發行後額外增發的計畫。</li>
+      <li><strong>合約管理權限：</strong> 限於 thirdweb 提供的標準安全與參數設定，不以中心化控制為設計重點。</li>
+    </ul>
+    <p class="small">
+      技術層面最終以鏈上合約（BaseScan 所示內容）為準。
+    </p>
+
+    <h2><span class="section-title-number">5.</span>NXC 在 NeoX 生態中的應用</h2>
+    <p>
+      NXC 被視為 NeoX 元宇宙的「能源核心」，未來可用於多種場景。以下為規劃方向（實際實作將分階段推出）：
+    </p>
+    <ul>
+      <li><strong>NFT 生態：</strong> 於特別鑄造、限量系列、收藏家回饋或空投活動中，NXC 有機會作為支付媒介、折扣條件或持有憑證。</li>
+      <li><strong>遊戲化體驗：</strong>
+        在 NeoX 主題的小遊戲（例如
+        <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a> 概念）中，
+        NXC 可用於解鎖外觀、活動模式或排行榜獎勵。
+      </li>
+      <li><strong>虛擬展覽與場景互動：</strong>
+        在 NeoX 的虛擬展館或 3D 展覽空間（例如
+        <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX OnCyber 展館</a>），
+        未來有機會使用 NXC 解鎖特別展區、互動裝置或限定體驗。
+      </li>
+      <li><strong>社群活動：</strong>
+        NXC 可用作創作比賽、社群任務、抽獎活動或合作企劃的獎勵與參與條件。
+      </li>
+    </ul>
+    <p class="small">
+      以上用途為規劃方向，實際上線時間與形式將因應技術與法規情況調整，一切以官方公告為準。
+    </p>
+
+    <div class="page-footer">第 2 頁 / 共 4 頁</div>
+  </div>
+
+  <!-- ===== 第 3 頁 ===== -->
+  <div class="page page-break">
+    <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" class="page-logo">
+
+    <h2><span class="section-title-number">6.</span>生態組成</h2>
+    <p>NeoX 生態目前已經包含多種元素，並會持續擴展：</p>
+    <ul>
+      <li><strong>NFT 系列：</strong>
+        包括 NeoX Timekeeper Edition、NeoX Van Gogh Visions、NeoX Abstract Realms 等，
+        於 OpenSea 可透過官方專案錢包瀏覽：
+        <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">
+          NeoX 專案錢包 NFT
+        </a>。
+      </li>
+      <li><strong>互動式網頁與小遊戲：</strong>
+        例如 <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a>，
+        讓訪客以「玩住」方式認識 NeoX Coin 與其世界觀。
+      </li>
+      <li><strong>元宇宙展覽空間：</strong>
+        透過 <a href="https://oncyber.io/neoxdynamic" target="_blank">OnCyber 虛擬展館</a> 展示 NeoX 相關作品，
+        讓收藏家與訪客以更沉浸方式探索 NeoX 藝術。
+      </li>
+      <li><strong>官方專案錢包：</strong>
+        與 NeoX NFT 與生態資產相關之主要錢包地址為：
+        <code>0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2</code>。
+      </li>
+    </ul>
+
+    <h2><span class="section-title-number">7.</span>發展路線圖（概要）</h2>
+    <p>NeoX 的路線圖保留一定創作彈性，以下為高層次階段規劃：</p>
+    <ul>
+      <li><strong>第一階段：基礎與品牌建立</strong> – 在 Base 主網部署 NXC，推出首批 NFT 系列，建立官方網站與視覺識別。</li>
+      <li><strong>第二階段：體驗與互動擴展</strong> – 開發更多 NeoX 主題互動內容與小遊戲，優化網站動線與視覺效果。</li>
+      <li><strong>第三階段：實用功能深化</strong> – 逐步測試將 NXC 導入 NFT 鑄造、獎勵機制或活動參與憑證等場景。</li>
+      <li><strong>第四階段：社群與合作</strong> – 與藝術家、設計師及其他 Web3 項目合作，拓展 NeoX 生態的內容與觸及。</li>
+    </ul>
+
+    <h2><span class="section-title-number">8.</span>風險與免責聲明</h2>
+    <p>
+      參與任何與區塊鏈及加密資產相關的活動，均存在一定風險。NXC 並非傳統金融產品，亦不保證收益。
+      代幣價格可能大幅波動，亦有可能流通性不足。
+    </p>
+    <ul>
+      <li>用戶應自行進行研究（DYOR），並為自己的決策負責。</li>
+      <li>即使採用標準化合約框架，智能合約仍可能存在潛在技術風險。</li>
+      <li>各地區對加密資產的監管規定可能不同，而且會隨時間改變。</li>
+    </ul>
+    <p class="small">
+      本白皮書內容僅作資訊參考，並不構成任何形式的財務、法律或稅務建議。<br>
+      用戶在作出任何相關決定前，應先了解當地法規與自身風險承受能力。
+    </p>
+
+    <div class="page-footer">第 3 頁 / 共 4 頁</div>
+  </div>
+
+  <!-- ===== 第 4 頁 ===== -->
+  <div class="page">
+    <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" class="page-logo">
+
+    <h2><span class="section-title-number">9.</span>官方連結與聯絡方式</h2>
+
+    <div class="box">
+      <ul>
+        <li><strong>官方網站：</strong>
+          <a href="https://neoxcoin.github.io" target="_blank">https://neoxcoin.github.io</a>
         </li>
-        <li><strong>公平啟動：</strong>
-          無預售、無私募，希望減少「內部優勢」，讓社群有較平均的參與起點。
+        <li><strong>中文版首頁：</strong>
+          <a href="https://neoxcoin.github.io/index-zh.html" target="_blank">https://neoxcoin.github.io/index-zh.html</a>
         </li>
-        <li><strong>多形態體驗：</strong>
-          NeoX 不只是一個系列，而是一個世界觀，可包含插畫、動畫、音樂、遊戲與虛擬展覽。
+        <li><strong>官方代幣資料（中文）：</strong>
+          <a href="https://neoxcoin.github.io/token-info-zh.html" target="_blank">https://neoxcoin.github.io/token-info-zh.html</a>
         </li>
-        <li><strong>低手續費、易接觸：</strong>
-          透過 Base 主網較低的交易成本，配合多語介面，讓不同地區用戶更容易踏入 Web3。
+        <li><strong>Global Token Info（英文）：</strong>
+          <a href="https://neoxcoin.github.io/token-info.html" target="_blank">https://neoxcoin.github.io/token-info.html</a>
         </li>
-      </ul>
-
-      <!-- ✅ 第一個強制分頁：1–2 章做第 1 頁 -->
-      <div class="page-break"></div>
-
-      <h2>3. 技術基礎</h2>
-      <p>
-        NeoX Coin (NXC) 是一枚遵從 ERC-20 標準的代幣，部署於 <strong>Base Mainnet</strong>，並透過 thirdweb 工具進行合約部署及管理。
-      </p>
-      <ul class="list">
-        <li><strong>區塊鏈：</strong> Base Mainnet（以太坊第二層網路）</li>
-        <li><strong>代幣標準：</strong> ERC-20</li>
-        <li><strong>合約地址：</strong> <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code></li>
-        <li><strong>區塊鏈瀏覽器：</strong>
+        <li><strong>BaseScan 代幣頁：</strong>
           <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">
             於 BaseScan 查看 NXC
           </a>
         </li>
-      </ul>
-      <p>
-        thirdweb 提供一套被廣泛使用的智能合約框架，有助降低部署風險與技術門檻，同時維持必要的安全與標準化。
-      </p>
-
-      <h2>4. 代幣設計</h2>
-      <p>
-        NXC 的設計方向是「簡單透明」，不採用複雜的 rebase、分紅或反射機制。
-        它的主要角色，是作為 NeoX 生態中的通用代幣與參與憑證。
-      </p>
-      <ul class="list">
-        <li><strong>預售 / 私募：</strong> 無；NXC 以社群公平啟動形式發行。</li>
-        <li><strong>發行供應：</strong> 於部署時設定，目前沒有在發行後額外增發的計畫。</li>
-        <li><strong>合約管理權限：</strong> 限於 thirdweb 提供的標準安全與參數設定，不以中心化控制為設計重點。</li>
-      </ul>
-      <p class="small">
-        技術層面最終以鏈上合約（BaseScan 所示內容）為準。
-      </p>
-
-      <!-- ✅ 第二個強制分頁：3–4 章做第 2 頁 -->
-      <div class="page-break"></div>
-
-      <h2>5. NXC 在 NeoX 生態中的應用</h2>
-      <p>
-        NXC 被視為 NeoX 元宇宙的「能源核心」，未來可用於多種場景。以下為規劃方向（實際實作將分階段推出）：
-      </p>
-      <ul class="list">
-        <li><strong>NFT 生態：</strong><br>
-          於特別鑄造、限量系列、收藏家回饋或空投活動中，NXC 有機會作為支付媒介、折扣條件或持有憑證。
+        <li><strong>GeckoTerminal 已驗證池：</strong>
+          <a href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c" target="_blank">
+            NXC / WETH 池（GeckoTerminal ✅）
+          </a>
         </li>
-        <li><strong>遊戲化體驗：</strong><br>
-          在 NeoX 主題的小遊戲（例如 <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a> 概念）中，
-          NXC 可用於解鎖外觀、活動模式或排行榜獎勵。
+        <li><strong>NeoX Game：</strong>
+          <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a>
         </li>
-        <li><strong>虛擬展覽與場景互動：</strong><br>
-          在 NeoX 的虛擬展館或 3D 展覽空間（例如
-          <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX OnCyber 展館</a>），
-          未來有機會使用 NXC 解鎖特別展區、互動裝置或限定體驗。
+        <li><strong>OnCyber 展館：</strong>
+          <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX OnCyber 展覽空間</a>
         </li>
-        <li><strong>社群活動：</strong><br>
-          NXC 可用作創作比賽、社群任務、抽獎活動或合作企劃的獎勵與參與條件。
-        </li>
-      </ul>
-      <p class="small">
-        以上用途為規劃方向，實際上線時間與形式將因應技術與法規情況調整，一切以官方公告為準。
-      </p>
-
-      <h2>6. 生態組成</h2>
-      <p>NeoX 生態目前已經包含多種元素，並會持續擴展：</p>
-      <ul class="list">
-        <li><strong>NFT 系列：</strong><br>
-          包括 NeoX Timekeeper Edition、NeoX Van Gogh Visions、NeoX Abstract Realms 等，
-          於 OpenSea 可透過官方專案錢包瀏覽：
+        <li><strong>OpenSea（專案錢包 & NFT）：</strong>
           <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">
-            NeoX 專案錢包 NFT
-          </a>。
+            https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2
+          </a>
         </li>
-        <li><strong>互動式網頁與小遊戲：</strong><br>
-          例如 <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a>，
-          讓訪客以「玩住」方式認識 NeoX Coin 與其世界觀。
+        <li><strong>X（Twitter）：</strong>
+          <a href="https://x.com/xdenniswong" target="_blank">@xdenniswong</a>
         </li>
-        <li><strong>元宇宙展覽空間：</strong><br>
-          透過 <a href="https://oncyber.io/neoxdynamic" target="_blank">OnCyber 虛擬展館</a> 展示 NeoX 相關作品，
-          讓收藏家與訪客以更沉浸方式探索 NeoX 藝術。
+        <li><strong>Instagram：</strong>
+          <a href="https://instagram.com/neox__official" target="_blank">@neox__official</a>
         </li>
-        <li><strong>官方專案錢包：</strong><br>
-          與 NeoX NFT 與生態資產相關之主要錢包地址為：
-          <code>0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2</code>。
+        <li><strong>TikTok：</strong>
+          <a href="https://www.tiktok.com/@neox.world" target="_blank">@neox.world</a>
         </li>
-      </ul>
-
-      <!-- ✅ 第三個強制分頁：5–6 章做第 3 頁 -->
-      <div class="page-break"></div>
-
-      <h2>7. 發展路線圖（概要）</h2>
-      <p>NeoX 的路線圖保留一定創作彈性，以下為高層次階段規劃：</p>
-      <ul class="list">
-        <li><strong>第一階段：基礎與品牌建立</strong><br>
-          在 Base 主網部署 NXC，推出首批 NFT 系列，建立官方網站與視覺識別。
+        <li><strong>YouTube：</strong>
+          <a href="https://www.youtube.com/@neox_officials" target="_blank">@neox_officials</a>
         </li>
-        <li><strong>第二階段：體驗與互動擴展</strong><br>
-          開發更多 NeoX 主題互動內容與小遊戲，優化網站動線與視覺效果。
+        <li><strong>GitHub：</strong>
+          <a href="https://github.com/NeoXCoin" target="_blank">NeoXCoin Repository</a>
         </li>
-        <li><strong>第三階段：實用功能深化</strong><br>
-          逐步測試將 NXC 導入 NFT 鑄造、獎勵機制或活動參與憑證等場景。
-        </li>
-        <li><strong>第四階段：社群與合作</strong><br>
-          與藝術家、設計師及其他 Web3 項目合作，拓展 NeoX 生態的內容與觸及。
+        <li><strong>聯絡電郵：</strong>
+          <a href="mailto:neoxcoin@outlook.com">neoxcoin@outlook.com</a>
         </li>
       </ul>
 
-      <h2>8. 風險與免責聲明</h2>
-      <p>
-        參與任何與區塊鏈及加密資產相關的活動，均存在一定風險。NXC 並非傳統金融產品，亦不保證收益。
-        代幣價格可能大幅波動，亦有可能流通性不足。
-      </p>
-      <ul class="list">
-        <li>用戶應自行進行研究（DYOR），並為自己的決策負責。</li>
-        <li>即使採用標準化合約框架，智能合約仍可能存在潛在技術風險。</li>
-        <li>各地區對加密資產的監管規定可能不同，而且會隨時間改變。</li>
-      </ul>
       <p class="small">
-        本白皮書內容僅作資訊參考，並不構成任何形式的財務、法律或稅務建議。<br>
-        用戶在作出任何相關決定前，應先了解當地法規與自身風險承受能力。
+        如需進行區塊鏈瀏覽器、行情平台或交易所之項目認證與上架申請，建議同時提供：本白皮書、官方代幣資料頁，
+        以及 BaseScan 代幣頁與 GeckoTerminal 已驗證池連結作為參考。
       </p>
-
-      <h2>9. 官方連結與聯絡方式</h2>
-      <div class="box">
-        <ul class="list">
-          <li><strong>官方網站：</strong>
-            <a href="https://neoxcoin.github.io" target="_blank">https://neoxcoin.github.io</a>
-          </li>
-          <li><strong>中文版首頁：</strong>
-            <a href="https://neoxcoin.github.io/index-zh.html" target="_blank">https://neoxcoin.github.io/index-zh.html</a>
-          </li>
-          <li><strong>官方代幣資料（中文）：</strong>
-            <a href="https://neoxcoin.github.io/token-info-zh.html" target="_blank">https://neoxcoin.github.io/token-info-zh.html</a>
-          </li>
-          <li><strong>Global Token Info（英文）：</strong>
-            <a href="https://neoxcoin.github.io/token-info.html" target="_blank">https://neoxcoin.github.io/token-info.html</a>
-          </li>
-          <li><strong>BaseScan 代幣頁：</strong>
-            <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">
-              於 BaseScan 查看 NXC
-            </a>
-          </li>
-          <li><strong>GeckoTerminal 已驗證池：</strong>
-            <a href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c" target="_blank">
-              NXC / WETH 池（GeckoTerminal ✅）
-            </a>
-          </li>
-          <li><strong>NeoX Game：</strong>
-            <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a>
-          </li>
-          <li><strong>OnCyber 展館：</strong>
-            <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX OnCyber 展覽空間</a>
-          </li>
-          <li><strong>OpenSea（專案錢包 & NFT）：</strong>
-            <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">
-              https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2
-            </a>
-          </li>
-          <li><strong>X（Twitter）：</strong>
-            <a href="https://x.com/xdenniswong" target="_blank">@xdenniswong</a>
-          </li>
-          <li><strong>Instagram：</strong>
-            <a href="https://instagram.com/neox__official" target="_blank">@neox__official</a>
-          </li>
-          <li><strong>TikTok：</strong>
-            <a href="https://www.tiktok.com/@neox.world" target="_blank">@neox.world</a>
-          </li>
-          <li><strong>YouTube：</strong>
-            <a href="https://www.youtube.com/@neox_officials" target="_blank">@neox_officials</a>
-          </li>
-          <li><strong>GitHub：</strong>
-            <a href="https://github.com/NeoXCoin" target="_blank">NeoXCoin Repository</a>
-          </li>
-          <li><strong>聯絡電郵：</strong>
-            <a href="mailto:neoxcoin@outlook.com">neoxcoin@outlook.com</a>
-          </li>
-        </ul>
-        <p class="small">
-          如需進行區塊鏈瀏覽器、行情平台或交易所之項目認證與上架申請，建議同時提供：
-          本白皮書、官方代幣資料頁，以及 BaseScan 代幣頁與 GeckoTerminal 已驗證池連結作為參考。
-        </p>
-      </div>
-
-      <div class="footer-links">
-        <a href="https://neoxcoin.github.io/index-zh.html">首頁</a> ·
-        <a href="https://neoxcoin.github.io/token-info-zh.html" target="_blank">官方代幣資料</a> ·
-        <a href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c" target="_blank">GeckoTerminal</a> ·
-        <a href="mailto:neoxcoin@outlook.com">聯絡我們</a>
-      </div>
     </div>
+
+    <div class="page-footer">第 4 頁 / 共 4 頁</div>
   </div>
+
 </body>
 </html>
