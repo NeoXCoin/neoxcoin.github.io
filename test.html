@@ -8,478 +8,156 @@
   <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" type="image/png" />
 
   <style>
-    /* 基本排版：白底黑字，偏細字方便塞入 4 頁 */
-    html, body {
-      margin: 0;
-      padding: 0;
-    }
-
+    html, body { margin:0; padding:0; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC",
-                   "Noto Sans", Arial, sans-serif;
-      background: #ffffff;
-      color: #111111;
-      font-size: 0.9rem;
-      line-height: 1.5;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif;
+      background:#fff; color:#111;
+      font-size:0.9rem; line-height:1.5;
     }
-
-    .page {
-      page-break-after: always;
-    }
-    .page:last-of-type {
-      page-break-after: auto;
-    }
-
-    .wrap {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 32px 40px 56px;
-    }
-
-    .cover {
-      padding-top: 28px;
-    }
-
-    h1, h2, h3 {
-      font-weight: 600;
-      margin: 0 0 10px;
-    }
-
-    h1 {
-      font-size: 1.9rem;
-      margin-top: 18px;
-    }
-
-    h2 {
-      font-size: 1.25rem;
-      margin-top: 22px;
-    }
-
-    h3 {
-      font-size: 1.02rem;
-      margin-top: 16px;
-    }
-
-    p {
-      margin: 6px 0 10px;
-    }
-
-    a {
-      color: #1166cc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    ul {
-      margin: 4px 0 10px;
-      padding-left: 20px;
-    }
-
-    li {
-      margin: 2px 0 4px;
-    }
-
-    .tagline {
-      margin-top: 10px;
-      opacity: 0.9;
-    }
-
-    .muted {
-      font-size: 0.86rem;
-      opacity: 0.8;
-      margin-bottom: 12px;
-    }
-
-    .small {
-      font-size: 0.82rem;
-      opacity: 0.78;
-    }
-
-    hr {
-      border: 0;
-      border-top: 1px solid #e0e0e0;
-      margin: 18px 0 16px;
-    }
-
-    code {
-      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 0.86rem;
-      background: #f4f4f4;
-      padding: 1px 4px;
-      border-radius: 3px;
-      word-break: break-all;
-    }
-
-    .box {
-      background: #f7f7f7;
-      border-radius: 10px;
-      padding: 14px 16px;
-      margin-top: 14px;
-    }
-
-    .box ul {
-      margin-top: 4px;
-    }
-
-    /* 封面 Logo & 金幣區域（只出現於第 1 頁） */
-    .cover-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 24px;
-    }
-
-    .cover-logo-left img {
-      width: 70px;
-      height: auto;
-    }
-
-    .cover-coin {
-      text-align: center;
-      margin-bottom: 12px;
-    }
-
-    .cover-coin img {
-      width: 120px;
-      height: auto;
-    }
-
-    /* 每頁底部頁碼 */
-    .page-footer {
-      margin-top: 26px;
-      text-align: center;
-      font-size: 0.78rem;
-      color: #777777;
-      border-top: 1px solid #e3e3e3;
-      padding-top: 6px;
-    }
-
-    /* section 小標題與行距微調，令內容更貼合版面 */
-    .tight p,
-    .tight ul {
-      margin-bottom: 6px;
-    }
+    .page{page-break-after:always;} .page:last-of-type{page-break-after:auto;}
+    .wrap{max-width:900px;margin:0 auto;padding:32px 40px 56px;}
+    .cover{padding-top:28px;}
+    h1,h2,h3{font-weight:600;margin:0 0 10px;}
+    h1{font-size:1.9rem;margin-top:18px;}
+    h2{font-size:1.25rem;margin-top:22px;}
+    h3{font-size:1.02rem;margin-top:16px;}
+    p{margin:6px 0 10px;}
+    a{color:#1166cc;text-decoration:none;}a:hover{text-decoration:underline;}
+    ul{margin:4px 0 10px;padding-left:20px;}li{margin:2px 0 4px;}
+    .tagline{margin-top:10px;opacity:0.9;}
+    .muted{font-size:0.86rem;opacity:0.8;margin-bottom:12px;}
+    .small{font-size:0.82rem;opacity:0.78;}
+    hr{border:0;border-top:1px solid #e0e0e0;margin:18px 0 16px;}
+    code{font-family:Consolas,monospace;font-size:0.86rem;background:#f4f4f4;padding:1px 4px;border-radius:3px;word-break:break-all;}
+    .box{background:#f7f7f7;border-radius:10px;padding:14px 16px;margin-top:14px;}
+    .box ul{margin-top:4px;}
+    .cover-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;}
+    .cover-logo-left img{width:70px;height:auto;}
+    .cover-coin{text-align:center;margin-bottom:12px;}
+    .cover-coin img{width:120px;height:auto;}
+    .page-footer{text-align:center;font-size:0.78rem;color:#777;border-top:1px solid #e3e3e3;padding-top:6px;margin-top:26px;}
   </style>
 </head>
 <body>
 
-  <!-- Page 1 / 4 -->
+  <!-- Page 1 -->
   <div class="page">
     <div class="wrap cover">
-
-      <!-- 左上角 NXC Logo -->
       <div class="cover-top">
         <div class="cover-logo-left">
           <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Coin (NXC) Logo">
         </div>
-        <!-- 右邊暫時留白，方便將來要加東西 -->
         <div></div>
       </div>
 
-      <!-- 中間金幣（如果檔名不同可以自己改 src） -->
+      <!-- ✅ Updated Gold Coin -->
       <div class="cover-coin">
         <img src="https://neoxcoin.github.io/NeoXCoin.png" alt="NeoX Coin Gold">
       </div>
 
       <h1>NeoX Coin (NXC) – Whitepaper</h1>
-      <p class="tagline">
-        NeoX Coin (NXC) is a community-driven utility token on Base Mainnet that powers the NeoX
-        ecosystem of NFTs, digital art, casual gaming, and metaverse-style exhibition spaces.
-      </p>
-      <p class="muted">
-        Version 1.2 · Last updated: 11 November 2025
-      </p>
+      <p class="tagline">NeoX Coin (NXC) is a community-driven utility token on Base Mainnet powering the NeoX ecosystem of NFTs, digital art, casual gaming, and metaverse exhibitions.</p>
+      <p class="muted">Version 1.2 · Last updated: 11 November 2025</p>
 
       <hr>
 
       <h2>1. Abstract</h2>
-      <p>
-        NeoX Coin (NXC) is an ERC-20 token deployed on Base Mainnet and designed as the core
-        utility token for the NeoX ecosystem. Instead of focusing purely on speculation, NeoX
-        emphasizes creativity, visual identity, and playful Web3 experiences that connect NFTs,
-        interactive content, and virtual exhibitions.
-      </p>
-      <p>
-        This whitepaper introduces the motivation behind NeoX, the technical foundation of NXC,
-        the token design, and how NXC is intended to be used within the broader NeoX metaverse.
-      </p>
+      <p>NeoX Coin (NXC) is an ERC-20 token deployed on Base Mainnet and designed as the core utility token for the NeoX ecosystem. Instead of focusing purely on speculation, NeoX emphasizes creativity and playful Web3 experiences that connect NFTs, interactive content, and virtual exhibitions.</p>
 
       <h2>2. Vision & Motivation</h2>
-      <p>
-        NeoX was born from a simple idea:
-        <br><strong>“Web3 does not have to be only about price charts – it can also be about art,
-        stories, and playful experiences.”</strong>
-      </p>
-      <p>From this, four core principles guide NeoX:</p>
+      <p><strong>“Web3 doesn’t have to be only about price charts – it can also be about art, stories, and experiences.”</strong></p>
       <ul>
-        <li><strong>Art-first:</strong>  
-          Focus on content and aesthetics before speculation. In the NeoX universe, NFTs are
-          part of a story and a mood, not just isolated assets.
-        </li>
-        <li><strong>Fair launch:</strong>  
-          No presale and no private sale. The goal is to reduce insider advantages and keep the
-          starting point more balanced for the community.
-        </li>
-        <li><strong>Multi-format experiences:</strong>  
-          NeoX is not just a single collection, but a broader world that can include illustration,
-          animation, music, games, and virtual exhibitions under one brand.
-        </li>
-        <li><strong>Low fees & accessibility:</strong>  
-          By building on Base Mainnet, NeoX benefits from lower transaction costs, combined with
-          multi-language interfaces to welcome users from different regions into Web3.
-        </li>
+        <li><strong>Art-first:</strong> NFTs represent stories and aesthetics, not just assets.</li>
+        <li><strong>Fair launch:</strong> No presale or private sale. Equal access for the community.</li>
+        <li><strong>Multi-format experiences:</strong> Includes illustration, animation, music, games, and exhibitions.</li>
+        <li><strong>Low fees & accessibility:</strong> Built on Base Mainnet for low gas and global access.</li>
       </ul>
 
       <div class="page-footer">Page 1 of 4</div>
     </div>
   </div>
 
-  <!-- Page 2 / 4 -->
-  <div class="page">
-    <div class="wrap tight">
+  <!-- Page 2 -->
+  <div class="page"><div class="wrap">
+    <h2>3. Technology Stack</h2>
+    <ul>
+      <li><strong>Blockchain:</strong> Base Mainnet (Ethereum Layer 2)</li>
+      <li><strong>Token Standard:</strong> ERC-20</li>
+      <li><strong>Contract:</strong> <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code></li>
+      <li><strong>Explorer:</strong> <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">View on BaseScan</a></li>
+    </ul>
+    <p>NeoX uses thirdweb’s standardized smart-contract framework to reduce deployment risk while ensuring simplicity and security.</p>
 
-      <h2>3. Technology Stack</h2>
-      <p>
-        NeoX Coin (NXC) is an ERC-20 token deployed on <strong>Base Mainnet</strong> using
-        standardized smart-contract implementations and deployment tooling provided by thirdweb.
-      </p>
+    <h2>4. Token Design</h2>
+    <ul>
+      <li><strong>No rebasing, reflection, or complex mechanics.</strong></li>
+      <li><strong>No presale/private sale:</strong> Fair launch model.</li>
+      <li><strong>Fixed supply:</strong> Set at deployment; no further minting planned.</li>
+      <li><strong>Admin control:</strong> Limited to thirdweb’s standard safety parameters.</li>
+    </ul>
+
+    <div class="page-footer">Page 2 of 4</div>
+  </div></div>
+
+  <!-- Page 3 -->
+  <div class="page"><div class="wrap">
+    <h2>5. NXC Utility</h2>
+    <ul>
+      <li><strong>NFT ecosystem:</strong> For mints, limited drops, collector rewards, and passes.</li>
+      <li><strong>Games:</strong> Used in <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a> for unlocking skins and rewards.</li>
+      <li><strong>Exhibitions:</strong> Unlock experiences in the <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX OnCyber gallery</a>.</li>
+      <li><strong>Community:</strong> Rewards, quests, and collaborations.</li>
+    </ul>
+
+    <h2>6. Ecosystem Components</h2>
+    <ul>
+      <li><strong>NFT Collections:</strong> <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">NeoX Timekeeper Edition</a>, Van Gogh Visions, Abstract Realms.</li>
+      <li><strong>Mini-games:</strong> Web-based experiences expanding NeoX’s art world.</li>
+      <li><strong>Virtual exhibitions:</strong> Immersive 3D experiences powered by OnCyber.</li>
+      <li><strong>Official wallet:</strong> <code>0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2</code></li>
+    </ul>
+
+    <h2>7. Roadmap</h2>
+    <ul>
+      <li>Phase 1 – Foundation & Branding</li>
+      <li>Phase 2 – Experiences & Interaction</li>
+      <li>Phase 3 – Deeper Utility</li>
+      <li>Phase 4 – Community & Collaboration</li>
+    </ul>
+
+    <div class="page-footer">Page 3 of 4</div>
+  </div></div>
+
+  <!-- Page 4 -->
+  <div class="page"><div class="wrap">
+    <h2>8. Risks & Disclaimer</h2>
+    <ul>
+      <li>NXC is not a financial product and offers no guaranteed profit.</li>
+      <li>Smart contracts may still contain technical vulnerabilities.</li>
+      <li>Regulatory frameworks differ by region and may change over time.</li>
+    </ul>
+
+    <p class="small">This document is not financial or legal advice. Please DYOR and understand your local laws before participating.</p>
+
+    <h2>9. Official Links & Contact</h2>
+    <div class="box">
       <ul>
-        <li><strong>Blockchain:</strong> Base Mainnet (Ethereum Layer 2)</li>
-        <li><strong>Token Standard:</strong> ERC-20</li>
-        <li><strong>Contract Address:</strong>
-          <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
-        </li>
-        <li><strong>Explorer (BaseScan):</strong>
-          <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">
-            View NXC on BaseScan
-          </a>
-        </li>
+        <li><strong>Official Website:</strong> <a href="https://neoxcoin.github.io">neoxcoin.github.io</a></li>
+        <li><strong>Chinese Homepage:</strong> <a href="https://neoxcoin.github.io/index-zh.html">index-zh.html</a></li>
+        <li><strong>BaseScan:</strong> <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">View NXC</a></li>
+        <li><strong>GeckoTerminal Pool:</strong> <a href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c">NXC/WETH ✅</a></li>
+        <li><strong>NeoX Game:</strong> <a href="https://neoxcoin.github.io/neox-game">Catch the Coins</a></li>
+        <li><strong>OnCyber:</strong> <a href="https://oncyber.io/neoxdynamic">Exhibition Space</a></li>
+        <li><strong>OpenSea Wallet:</strong> <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2">NeoX Project Wallet</a></li>
+        <li><strong>Twitter:</strong> <a href="https://x.com/xdenniswong">@xdenniswong</a></li>
+        <li><strong>Instagram:</strong> <a href="https://instagram.com/neox__official">@neox__official</a></li>
+        <li><strong>YouTube:</strong> <a href="https://www.youtube.com/@neox_officials">@neox_officials</a></li>
+        <li><strong>Email:</strong> <a href="mailto:neoxcoin@outlook.com">neoxcoin@outlook.com</a></li>
       </ul>
-      <p>
-        By leveraging thirdweb’s widely used smart-contract framework, NeoX reduces technical
-        risk and complexity while retaining standard security and configuration options.
-      </p>
-
-      <h2>4. Token Design</h2>
-      <p>
-        NXC is designed as a straightforward, transparent token:
-      </p>
-      <ul>
-        <li><strong>No rebasing, reflection, or complex mechanics.</strong></li>
-        <li><strong>No presale or private sale –</strong> NXC follows a community-first launch approach.</li>
-        <li><strong>Fixed supply:</strong> The token supply is set at deployment; no additional
-          minting is currently intended.
-        </li>
-        <li><strong>Admin controls:</strong> Limited to standard configuration and security
-          parameters available in thirdweb contracts.
-        </li>
-      </ul>
-      <p class="small">
-        For the most accurate technical details, the on-chain contract on BaseScan should be
-        treated as the ultimate source of truth.
-      </p>
-
-      <div class="page-footer">Page 2 of 4</div>
     </div>
-  </div>
 
-  <!-- Page 3 / 4 -->
-  <div class="page">
-    <div class="wrap tight">
-
-      <h2>5. NXC Utility in the NeoX Ecosystem</h2>
-      <p>
-        NXC is envisioned as the “energy core” of the NeoX metaverse, with potential use-cases
-        that may be introduced gradually over time:
-      </p>
-      <ul>
-        <li><strong>NFT ecosystem:</strong>  
-          NXC may be used in the future for special mints, limited drops, collector rewards, or
-          access passes across NeoX series such as NeoX Timekeeper Edition, NeoX Van Gogh Visions,
-          and NeoX Abstract Realms.
-        </li>
-        <li><strong>Gamified experiences:</strong>  
-          NeoX-themed browser games, such as the
-          <a href="https://neoxcoin.github.io/neox-game" target="_blank">“NeoX Catch the Coins”</a>
-          concept, may integrate NXC for cosmetic items, event modes, or score-based rewards.
-        </li>
-        <li><strong>Metaverse & exhibitions:</strong>  
-          In virtual galleries and 3D exhibition spaces (for example the
-          <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX OnCyber Exhibition Space</a>),
-          NXC could be used to unlock special rooms, interactive installations, or limited
-          experiences.
-        </li>
-        <li><strong>Community events:</strong>  
-          NXC can serve as a reward or participation credential in creative contests, community
-          challenges, raffles, or collaboration campaigns.
-        </li>
-      </ul>
-      <p class="small">
-        All utilities described above are directional. Actual integrations may vary based on
-        technical feasibility and regulatory considerations, and will be announced via official
-        channels.
-      </p>
-
-      <h2>6. Ecosystem Components</h2>
-      <p>
-        The NeoX ecosystem already consists of several creative components and will continue to
-        evolve:
-      </p>
-      <ul>
-        <li><strong>NFT collections:</strong>  
-          Curated series such as NeoX Timekeeper Edition, NeoX Van Gogh Visions, and NeoX Abstract
-          Realms, available through the official project wallet on OpenSea:
-          <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">
-            NeoX Project Wallet NFTs
-          </a>.
-        </li>
-        <li><strong>Interactive web experiences & mini-games:</strong>  
-          For example,
-          <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a>,
-          which lets visitors “play their way” into understanding NeoX Coin and its universe.
-        </li>
-        <li><strong>Metaverse-style exhibition spaces:</strong>  
-          Virtual galleries such as the
-          <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX OnCyber Exhibition Space</a>
-          enable more immersive exploration of NeoX artwork.
-        </li>
-        <li><strong>Official project wallet:</strong>  
-          The primary wallet associated with NeoX NFTs and ecosystem assets is:
-          <code>0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2</code>.
-        </li>
-      </ul>
-
-      <h2>7. High-Level Roadmap</h2>
-      <p>
-        The NeoX roadmap intentionally keeps creative flexibility. A simplified outline:
-      </p>
-      <ul>
-        <li><strong>Phase 1 – Foundation & brand:</strong>  
-          Deploy NXC on Base, launch the first NFT series, and establish the official website and
-          visual identity.
-        </li>
-        <li><strong>Phase 2 – Experiences & interaction:</strong>  
-          Expand NeoX-themed interactive content and games, and refine the overall web experience.
-        </li>
-        <li><strong>Phase 3 – Utility expansion:</strong>  
-          Gradually test and introduce scenarios where NXC is used for minting, rewards, or gated
-          access to selected experiences.
-        </li>
-        <li><strong>Phase 4 – Community & collaborations:</strong>  
-          Collaborate with artists, designers, and Web3 projects that align with NeoX’s art-first
-          philosophy.
-        </li>
-      </ul>
-
-      <div class="page-footer">Page 3 of 4</div>
-    </div>
-  </div>
-
-  <!-- Page 4 / 4 -->
-  <div class="page">
-    <div class="wrap tight">
-
-      <h2>8. Risks & Disclaimer</h2>
-      <p>
-        Participation in any blockchain or digital-asset project involves risk. NXC is not a
-        traditional financial product and does not guarantee profit. The token price may fluctuate
-        significantly and liquidity may be limited.
-      </p>
-      <ul>
-        <li>
-          Users should conduct their own research (DYOR) and take responsibility for their
-          decisions.
-        </li>
-        <li>
-          Even when using standardized contract frameworks, smart contracts can contain technical
-          vulnerabilities or unforeseen behavior.
-        </li>
-        <li>
-          Regulatory treatment of digital assets varies across jurisdictions and may change over
-          time, potentially affecting how NXC can be used.
-        </li>
-      </ul>
-      <p class="small">
-        Nothing in this document should be considered financial, legal, or tax advice. Users should
-        understand local regulations and assess their own risk tolerance before making any
-        related decisions.
-      </p>
-
-      <h2>9. Official Links & Contact</h2>
-      <div class="box">
-        <p class="small" style="margin-bottom:4px;">
-          Below are the primary official resources related to NeoX:
-        </p>
-        <ul>
-          <li><strong>Official Website:</strong>
-            <a href="https://neoxcoin.github.io" target="_blank">https://neoxcoin.github.io</a>
-          </li>
-          <li><strong>Chinese Homepage:</strong>
-            <a href="https://neoxcoin.github.io/index-zh.html" target="_blank">index-zh.html</a>
-          </li>
-          <li><strong>Token Info (ZH):</strong>
-            <a href="https://neoxcoin.github.io/token-info-zh.html" target="_blank">
-              token-info-zh.html
-            </a>
-          </li>
-          <li><strong>Global Token Info (EN):</strong>
-            <a href="https://neoxcoin.github.io/token-info.html" target="_blank">
-              token-info.html
-            </a>
-          </li>
-          <li><strong>BaseScan Token Page:</strong>
-            <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">
-              View NXC on BaseScan
-            </a>
-          </li>
-          <li><strong>GeckoTerminal Verified Pool:</strong>
-            <a href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c" target="_blank">
-              NXC / WETH Pool (GeckoTerminal ✅)
-            </a>
-          </li>
-          <li><strong>NeoX Game:</strong>
-            <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a>
-          </li>
-          <li><strong>OnCyber Gallery:</strong>
-            <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX OnCyber Exhibition Space</a>
-          </li>
-          <li><strong>OpenSea (Project Wallet & NFTs):</strong>
-            <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">
-              Project Wallet on OpenSea
-            </a>
-          </li>
-          <li><strong>X (Twitter):</strong>
-            <a href="https://x.com/xdenniswong" target="_blank">@xdenniswong</a>
-          </li>
-          <li><strong>Instagram:</strong>
-            <a href="https://instagram.com/neox__official" target="_blank">@neox__official</a>
-          </li>
-          <li><strong>TikTok:</strong>
-            <a href="https://www.tiktok.com/@neox.world" target="_blank">@neox.world</a>
-          </li>
-          <li><strong>YouTube:</strong>
-            <a href="https://www.youtube.com/@neox_officials" target="_blank">@neox_officials</a>
-          </li>
-          <li><strong>GitHub:</strong>
-            <a href="https://github.com/NeoXCoin" target="_blank">NeoXCoin Repository</a>
-          </li>
-          <li><strong>Contact Email:</strong>
-            <a href="mailto:neoxcoin@outlook.com">neoxcoin@outlook.com</a>
-          </li>
-        </ul>
-        <p class="small">
-          For listing, verification, or due-diligence purposes on explorers, data platforms, or
-          exchanges, it is recommended to reference this English whitepaper together with the
-          official Token Info pages, the BaseScan token page, and the verified GeckoTerminal pool
-          link.
-        </p>
-      </div>
-
-      <div class="page-footer">Page 4 of 4</div>
-    </div>
-  </div>
+    <div class="page-footer">Page 4 of 4</div>
+  </div></div>
 
 </body>
 </html>
