@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- ▼ SEO -->
   <title>NeoX Coin (NXC) – Explore Web3 NFTs, Token & Metaverse</title>
-
-  <!-- Canonical & hreflang -->
-  <link rel="canonical" href="https://neoxcoin.github.io/index-global.html" />
-  <link rel="alternate" href="https://neoxcoin.github.io/index-global.html" hreflang="en" />
-  <link rel="alternate" href="https://neoxcoin.github.io/index-zh.html" hreflang="zh-Hant" />
-  <link rel="alternate" href="https://neoxcoin.github.io/" hreflang="x-default" />
-
-  <!-- Basic SEO -->
   <meta name="description" content="Discover NeoX Coin (NXC) – the decentralized Web3 ecosystem on Base Mainnet. Explore NFTs, interactive games, and the NeoX Metaverse Exhibition." />
   <meta name="keywords" content="NeoX, NeoX Coin, NXC, NFT, Web3, Base Mainnet, Crypto, Metaverse, NeoX Game, NeoX NFTs, NeoX Timekeeper Edition, Van Gogh Visions, Abstract Realms" />
   <meta name="author" content="NeoX Official" />
+  <!-- 明確索引規則（含 AI Overview 友善參數） -->
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+
+  <!-- Canonical & hreflang（一致化：x-default 指向 Global 版） -->
+  <link rel="canonical" href="https://neoxcoin.github.io/index-global.html" />
+  <link rel="alternate" href="https://neoxcoin.github.io/" hreflang="en" />
+  <link rel="alternate" href="https://neoxcoin.github.io/index-zh.html" hreflang="zh-Hant" />
+  <link rel="alternate" href="https://neoxcoin.github.io/index-global.html" hreflang="x-default" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="NeoX Coin (NXC) – Explore Web3 NFTs, Token & Metaverse" />
@@ -31,19 +33,38 @@
   <meta name="twitter:description" content="Experience NeoX – Web3 NFTs, metaverse, and the next step of decentralized creativity." />
   <meta name="twitter:image" content="https://neoxcoin.github.io/XNXC.png" />
 
-  <!-- Organization schema -->
+  <!-- Structured Data (JSON-LD, 使用 @graph：Website + Organization + WebPage) -->
   <script type="application/ld+json">
   {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"NeoX Coin (NXC)",
-    "url":"https://neoxcoin.github.io/",
-    "logo":"https://neoxcoin.github.io/XNXC.png",
-    "sameAs":[
-      "https://www.instagram.com/neox__official",
-      "https://opensea.io/collection/neox-timekeeper-edition"
-    ],
-    "description":"NeoX Coin (NXC) is a decentralized Web3 ecosystem combining NFTs, art, gaming, and metaverse experiences on Base Mainnet."
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://neoxcoin.github.io/#website",
+        "name": "NeoX Coin (NXC)",
+        "url": "https://neoxcoin.github.io/",
+        "description": "Official NeoX Coin (NXC) website – Web3 NFTs, ERC-20 token on Base Mainnet, and metaverse experiences.",
+        "publisher": { "@type": "Organization", "name": "NeoX" }
+      },
+      {
+        "@type": "Organization",
+        "name": "NeoX",
+        "url": "https://neoxcoin.github.io/",
+        "logo": "https://neoxcoin.github.io/XNXC.png",
+        "sameAs": [
+          "https://www.instagram.com/neox__official",
+          "https://opensea.io/collection/neox-timekeeper-edition"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://neoxcoin.github.io/index-global.html#webpage",
+        "name": "NeoX Coin (NXC) – Explore Web3 NFTs, Token & Metaverse",
+        "url": "https://neoxcoin.github.io/index-global.html",
+        "inLanguage": "en",
+        "isPartOf": { "@id": "https://neoxcoin.github.io/#website" }
+      }
+    ]
   }
   </script>
 
@@ -54,7 +75,7 @@
   <!-- Perf: preload hero bg -->
   <link rel="preload" as="image" href="https://neoxcoin.github.io/NeoXbackG.JPG" />
 
-  <!-- Google Translate -->
+  <!-- Google Translate（保留 Global 版專用的翻譯列） -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
