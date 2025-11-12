@@ -1,53 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- 背景透明 -->
+  <circle cx="256" cy="256" r="250" fill="url(#goldGradient)" stroke="#d8a500" stroke-width="6"/>
+  
+  <!-- 金色漸層 -->
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#ffe59a"/>
-      <stop offset="0.4" stop-color="#f9c75b"/>
-      <stop offset="1" stop-color="#b77619"/>
+    <linearGradient id="goldGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD34E"/>
+      <stop offset="100%" stop-color="#D89B00"/>
     </linearGradient>
-
-    <linearGradient id="r" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
-      <stop offset="0.4" stop-color="#ffffff" stop-opacity="0"/>
-      <stop offset="1" stop-color="#000000" stop-opacity="0.25"/>
-    </linearGradient>
-
-    <linearGradient id="bN" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#4fc3ff"/>
-      <stop offset="0.5" stop-color="#1b71ff"/>
-      <stop offset="1" stop-color="#003d8f"/>
-    </linearGradient>
-
-    <linearGradient id="bX" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#3ba9ff"/>
-      <stop offset="0.4" stop-color="#0050ff"/>
-      <stop offset="1" stop-color="#002e7d"/>
+    <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2196F3"/>
+      <stop offset="100%" stop-color="#0052CC"/>
     </linearGradient>
   </defs>
 
-  <rect width="512" height="512" fill="none"/>
-
-  <circle cx="256" cy="256" r="240" fill="url(#g)"/>
-
-  <circle cx="256" cy="256" r="210" fill="url(#g)"/>
-  <circle cx="256" cy="256" r="210" fill="none" stroke="url(#r)" stroke-width="18"/>
-
-  <text x="256" y="300"
-        text-anchor="middle"
-        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-        font-size="266"
-        font-weight="700"
-        fill="url(#bN)">
-    N
-  </text>
-
-  <text x="256" y="395"
-        text-anchor="middle"
-        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
-        font-size="70"
-        font-weight="700"
-        letter-spacing="4">
-    <tspan fill="url(#g)">NEO</tspan>
-    <tspan fill="url(#bX)" font-size="77" dx="-6">X</tspan>
-  </text>
+  <!-- N -->
+  <text x="50%" y="45%" text-anchor="middle" font-size="210" font-family="Arial Black, sans-serif" font-weight="900" fill="url(#blueGradient)" dy="0.35em">N</text>
+  
+  <!-- NEO -->
+  <text x="44%" y="72%" text-anchor="middle" font-size="60" font-family="Arial Black, sans-serif" fill="url(#goldGradient)" letter-spacing="3">NEO</text>
+  
+  <!-- X -->
+  <text x="61%" y="72%" text-anchor="middle" font-size="60" font-family="Arial Black, sans-serif" fill="url(#blueGradient)" letter-spacing="3">X</text>
 </svg>
