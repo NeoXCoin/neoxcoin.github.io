@@ -85,8 +85,8 @@
 
   <!-- ✅ 大 N：向上移 26px，並以底部為錨點向上拉高 22% -->
   <g transform="translate(0,-26)">
-   <!-- ✅ 大 N：放大 1.2 倍，再垂直拉高 1.18 倍（中心對齊） -->
-    <g transform="translate(256,256) scale(1.2,1.42) translate(-256,-256)">
+   <!-- ✅ 最終版 N：放大 1.2 倍、垂直拉高 1.5 倍、再上移 6px -->
+    <g transform="translate(256,250) scale(1.2,1.5) translate(-256,-256)">
       <path d="M176 190 L224 190 L288 280 L288 190 L336 190 L336 330 L288 330 L224 240 L224 330 L176 330 Z"
             fill="url(#blueGrad)" filter="url(#softShadow)"/>
     </g>
