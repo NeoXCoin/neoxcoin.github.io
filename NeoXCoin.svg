@@ -83,10 +83,13 @@
   <circle cx="256" cy="256" r="190" fill="url(#goldRadial)"/>
   <ellipse cx="206" cy="146" rx="120" ry="88" fill="url(#spec)" />
 
-  <!-- ✅ 大寫 N：向上拉高 1.18 倍（貼近原 PNG 比例） -->
-  <g transform="translate(0,4) scale(1,1.18)">
+  <!-- ✅ 大 N：向上移 26px，並以底部為錨點向上拉高 22% -->
+  <g transform="translate(0,-26)">
+    <!-- 以 y=330 作為底邊錨點拉高：先把座標搬到底邊→放大→搬回來 -->
+  <g transform="translate(0,330) scale(1,1.22) translate(0,-330)">
     <path d="M176 190 L224 190 L288 280 L288 190 L336 190 L336 330 L288 330 L224 240 L224 330 L176 330 Z"
           fill="url(#blueGrad)" filter="url(#softShadow)"/>
+    </g>
   </g>
 
   <!-- 「NEO」金色 + 「X」藍色（向下移到 y=392；陰影更淡） -->
