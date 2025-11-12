@@ -9,7 +9,7 @@
   <meta name="description" content="探索 NeoX Coin (NXC) —— 基於 Base Mainnet 的 Web3 生態系統，結合 NFT、互動遊戲與元宇宙展覽，開啟去中心化創意新時代。" />
   <meta name="keywords" content="NeoX, NeoX Coin, NXC, NFT, Web3, 元宇宙, 加密貨幣, Base Mainnet, NeoX 遊戲, NeoX NFT, NeoX Timekeeper Edition, NeoX Van Gogh Visions, NeoX Abstract Realms" />
   <meta name="author" content="NeoX Official" />
-
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
   <!-- Canonical & 多語言版本 -->
   <link rel="canonical" href="https://neoxcoin.github.io/index-zh.html" />
   <link rel="alternate" href="https://neoxcoin.github.io/" hreflang="en" />
@@ -37,13 +37,34 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "NeoX Coin (NXC)",
-    "url": "https://neoxcoin.github.io/",
-    "logo": "https://neoxcoin.github.io/XNXC.png",
-    "sameAs": [
-      "https://www.instagram.com/neox__official",
-      "https://opensea.io/collection/neox-timekeeper-edition"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://neoxcoin.github.io/#website",
+        "name": "NeoX Coin (NXC)",
+        "url": "https://neoxcoin.github.io/",
+        "description": "NeoX Coin (NXC) – Web3 藝術、代幣與元宇宙體驗。",
+        "publisher": { "@type": "Organization", "name": "NeoX" },
+        "inLanguage": "zh-Hant"
+      },
+      {
+        "@type": "Organization",
+        "name": "NeoX",
+        "url": "https://neoxcoin.github.io/",
+        "logo": "https://neoxcoin.github.io/XNXC.png",
+        "sameAs": [
+          "https://www.instagram.com/neox__official",
+          "https://opensea.io/collection/neox-timekeeper-edition"
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://neoxcoin.github.io/index-zh.html#webpage",
+        "url": "https://neoxcoin.github.io/index-zh.html",
+        "name": "NeoX Coin (NXC) – Web3 藝術、代幣與元宇宙體驗",
+        "isPartOf": { "@id": "https://neoxcoin.github.io/#website" },
+        "inLanguage": "zh-Hant"
+      }
     ]
   }
   </script>
@@ -96,6 +117,12 @@
       font-size: 18px;
       margin-top: 100px;
       opacity: 0.9;
+    }
+    
+    .subtagline {
+      font-size: 16px;
+      opacity: 0.85;
+      margin-top: 6px;
     }
 
     .coin {
