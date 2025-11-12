@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="NeoX Coin (fixed spacing)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="NeoX Coin (N larger)">
   <defs>
-    <!-- 金色本體（內部） -->
+    <!-- 金色主體漸層 -->
     <radialGradient id="goldRadial" cx="35%" cy="30%" r="85%">
       <stop offset="0%"  stop-color="#ffd65a"/>
       <stop offset="35%" stop-color="#f3bf38"/>
@@ -8,50 +8,44 @@
       <stop offset="100%" stop-color="#b87f08"/>
     </radialGradient>
 
-    <!-- 外圈高光 -->
     <linearGradient id="rimLight" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"  stop-color="#ffe490"/>
       <stop offset="40%" stop-color="#ffd35a"/>
       <stop offset="100%" stop-color="#e2a90e"/>
     </linearGradient>
 
-    <!-- 內圈凹陷邊 -->
     <linearGradient id="innerRim" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"  stop-color="#f7d067"/>
       <stop offset="45%" stop-color="#d2990d"/>
       <stop offset="100%" stop-color="#a97306"/>
     </linearGradient>
 
-    <!-- 藍色漸層（字） -->
     <linearGradient id="blueGrad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   stop-color="#36a8ff"/>
       <stop offset="55%"  stop-color="#1278e5"/>
       <stop offset="100%" stop-color="#0d5ec9"/>
     </linearGradient>
 
-    <!-- 金色漸層（字） -->
     <linearGradient id="goldText" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"   stop-color="#ffe79e"/>
       <stop offset="40%"  stop-color="#f6c84d"/>
       <stop offset="100%" stop-color="#d79e19"/>
     </linearGradient>
 
-    <!-- 柔和陰影 -->
     <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
       <feOffset dy="4" in="SourceAlpha" result="off"/>
       <feGaussianBlur in="off" stdDeviation="5" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" 
+      <feColorMatrix in="blur" type="matrix"
         values="0 0 0 0 0
                 0 0 0 0 0
                 0 0 0 0 0
-                0 0 0 .28 0" result="shadow"/>
+                0 0 0 .3 0" result="shadow"/>
       <feMerge>
         <feMergeNode in="shadow"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
 
-    <!-- 內陰影（做出凹陷感） -->
     <filter id="innerShadow" x="-50%" y="-50%" width="200%" height="200%">
       <feOffset dy="3" />
       <feGaussianBlur stdDeviation="4" result="g"/>
@@ -64,7 +58,6 @@
       <feComposite in2="SourceGraphic" operator="over"/>
     </filter>
 
-    <!-- 高光亮斑 -->
     <radialGradient id="spec" cx="32%" cy="22%" r="30%">
       <stop offset="0%" stop-color="#fff" stop-opacity=".55"/>
       <stop offset="60%" stop-color="#fff" stop-opacity=".08"/>
@@ -79,21 +72,20 @@
     <circle cx="256" cy="256" r="198" fill="none" stroke="url(#innerRim)" stroke-width="20" filter="url(#innerShadow)"/>
   </g>
 
-  <!-- 金幣面主體 -->
+  <!-- 主體 -->
   <circle cx="256" cy="256" r="190" fill="url(#goldRadial)"/>
   <ellipse cx="206" cy="146" rx="120" ry="88" fill="url(#spec)" />
 
-  <!-- 大寫 N（向上移 4px，避免與底部字重疊） -->
-  <g transform="translate(0,4)">
+  <!-- 大 N 放大 15% -->
+  <g transform="translate(0,-6) scale(1.15)">
     <path d="M176 190 L224 190 L288 280 L288 190 L336 190 L336 330 L288 330 L224 240 L224 330 L176 330 Z"
-          fill="url(#blueGrad)" filter="url(#softShadow)"/>
+          fill="url(#blueGrad)" filter="url(#softShadow)" transform="translate(-33,22)"/>
   </g>
 
-  <!-- 「NEO」金色 + 「X」藍色（向下移到 y=392；陰影更淡） -->
-  <g font-family="Arial Black, Helvetica, Arial, sans-serif" font-weight="900" text-anchor="middle">
+  <!-- 「NEOX」放大 10% -->
+  <g font-family="Arial Black, Helvetica, Arial, sans-serif" font-weight="900" text-anchor="middle" transform="scale(1.1) translate(22,32)">
     <text x="240" y="397" font-size="66" opacity=".16" fill="#000">NEO</text>
     <text x="328" y="397" font-size="66" opacity=".16" fill="#000">X</text>
-
     <text x="240" y="392" font-size="66" fill="url(#goldText)">NEO</text>
     <text x="328" y="392" font-size="66" fill="url(#blueGrad)">X</text>
   </g>
