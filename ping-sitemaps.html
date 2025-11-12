@@ -1,41 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Ping Search Engines – NeoX Coin Sitemap</title>
-</head>
-<body style="font-family:Arial,sans-serif;text-align:center;padding:40px;background:#0a0a2a;color:#fff;">
-<h2>NeoX Sitemap Ping Tool</h2>
-<p>Click below to notify all major search engines that the sitemap has been updated:</p>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeoX Sitemap Pinger 🚀</title>
+  <meta name="description" content="Official NeoX tool to notify Google, Bing, DuckDuckGo and others when sitemap updates. Keep search engines synced with the NeoX ecosystem." />
+  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" />
 
-<button onclick="pingAll()" style="padding:10px 20px;font-size:16px;border-radius:8px;cursor:pointer;">🚀 Ping All</button>
-
-<pre id="result" style="margin-top:20px;color:#0ff;"></pre>
-
-<script>
-async function pingAll() {
-  const sitemap = 'https://neoxcoin.github.io/sitemap.xml';
-  const engines = [
-    `https://www.google.com/ping?sitemap=${sitemap}`,
-    `https://www.bing.com/ping?sitemap=${sitemap}`,
-    `https://search.yahoo.com/ping?sitemap=${sitemap}`,
-    `https://yandex.com/ping?sitemap=${sitemap}`,
-    `https://duckduckgo.com/ping?sitemap=${sitemap}`
-  ];
-
-  document.getElementById('result').textContent = 'Sending ping requests...';
-
-  for (const url of engines) {
-    try {
-      const res = await fetch(url);
-      document.getElementById('result').textContent += `\n${url} → ${res.status} ${res.statusText}`;
-    } catch (err) {
-      document.getElementById('result').textContent += `\n${url} → Failed`;
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
+      background: linear-gradient(135deg, #0a0a2a, #1f005c);
+      color: #fff;
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-  }
 
-  document.getElementById('result').textContent += '\n\n✅ All pings completed.';
-}
-</script>
+    .logo {
+      width: 70px;
+      opacity: 0.9;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-in;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    p {
+      max-width: 420px;
+      font-size: 15px;
+      opacity: 0.85;
+      margin: 8px auto 25px;
+      line-height: 1.6;
+    }
+
+    button {
+      background: linear-gradient(90deg, #3a0088, #1c1c3c);
+      border: 1px solid rgba(255, 215, 106, 0.5);
+      color: #ffd76a;
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #ffd76a, #ffb347);
+      color: #000;
+      border-color: #fff;
+      box-shadow: 0 0 14px rgba(255, 215, 106, 0.6);
+      transform: translateY(-2px);
+    }
+
+    #result {
+      margin-top: 30px;
+      font-family: monospace;
+      font-size: 14px;
+      white-space: pre-wrap;
+      text-align: left;
+      max-width: 600px;
+      color: #8effff;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    footer {
+      font-size: 12px;
+      opacity: 0.6;
+      margin-top: 40px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" class="logo" />
+  <h1>NeoX Sitemap Ping Tool 🚀</h1>
+  <p>Click below to notify Google, Bing, DuckDuckGo and other search engines that the NeoX sitemap has been updated.</p>
+  
+  <button onclick="pingAll()">Ping All Search Engines</button>
+  <div id="result"></div>
+
+  <footer>© 2025 NeoX Official | Sitemap Pinger Utility</footer>
+
+  <script>
+    async function pingAll() {
+      const sitemap = 'https://neoxcoin.github.io/sitemap.xml';
+      const engines = [
+        { name: "Google", url: `https://www.google.com/ping?sitemap=${sitemap}` },
+        { name: "Bing", url: `https://www.bing.com/ping?sitemap=${sitemap}` },
+        { name: "Yahoo", url: `https://search.yahoo.com/ping?sitemap=${sitemap}` },
+        { name: "Yandex", url: `https://yandex.com/ping?sitemap=${sitemap}` },
+        { name: "DuckDuckGo", url: `https://duckduckgo.com/ping?sitemap=${sitemap}` }
+      ];
+
+      const resultBox = document.getElementById('result');
+      resultBox.textContent = "🔄 Sending ping requests...\n\n";
+
+      for (const e of engines) {
+        try {
+          const res = await fetch(e.url);
+          resultBox.textContent += `✅ ${e.name}: ${res.status} ${res.statusText}\n`;
+        } catch (err) {
+          resultBox.textContent += `⚠️ ${e.name}: Failed (${err.message})\n`;
+        }
+      }
+
+      resultBox.textContent += "\n🎉 All pings completed. Search engines notified successfully.";
+    }
+  </script>
 </body>
 </html>
