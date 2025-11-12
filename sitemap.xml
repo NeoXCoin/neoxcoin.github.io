@@ -1,67 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- ===== Main Pages ===== -->
   <url>
     <loc>https://neoxcoin.github.io/</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
+  <url>
+    <loc>https://neoxcoin.github.io/index-zh.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
   <url>
     <loc>https://neoxcoin.github.io/index-global.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
 
+  <!-- ===== Key Project Pages ===== -->
   <url>
     <loc>https://neoxcoin.github.io/what-is-neox.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://neoxcoin.github.io/how-to-buy.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://neoxcoin.github.io/token-info.html</loc>
-    <lastmod>2025-11-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://neoxcoin.github.io/metaverse.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
-
   <url>
-    <loc>https://neoxcoin.github.io/whitepaper.html</loc>
-    <lastmod>2025-11-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://neoxcoin.github.io/game.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
+  <!-- ===== NFT Collections ===== -->
   <url>
-    <loc>https://neoxcoin.github.io/token-info-global.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <loc>https://neoxcoin.github.io/nft-projects.html</loc>
+    <lastmod>2025-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
-    <loc>https://neoxcoin.github.io/whitepaper-global.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <loc>https://neoxcoin.github.io/nft-projects-zh.html</loc>
+    <lastmod>2025-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <url>
     <loc>https://neoxcoin.github.io/nft-projects-global.html</loc>
-    <lastmod>2025-11-09</lastmod>
+    <lastmod>2025-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- ===== Token & Whitepaper ===== -->
+  <url>
+    <loc>https://neoxcoin.github.io/token-info.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.github.io/whitepaper.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.github.io/token-info-global.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.github.io/whitepaper-global.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ===== Supporting Pages ===== -->
+  <url>
+    <loc>https://neoxcoin.github.io/faq.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.github.io/about.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.github.io/disclaimer-en.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.github.io/disclaimer-zh.html</loc>
+    <lastmod>2025-11-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
   </url>
 
 </urlset>
