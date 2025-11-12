@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Ping Search Engines – NeoX Coin Sitemap</title>
+</head>
+<body style="font-family:Arial,sans-serif;text-align:center;padding:40px;background:#0a0a2a;color:#fff;">
+<h2>NeoX Sitemap Ping Tool</h2>
+<p>Click below to notify all major search engines that the sitemap has been updated:</p>
+
+<button onclick="pingAll()" style="padding:10px 20px;font-size:16px;border-radius:8px;cursor:pointer;">🚀 Ping All</button>
+
+<pre id="result" style="margin-top:20px;color:#0ff;"></pre>
+
+<script>
+async function pingAll() {
+  const sitemap = 'https://neoxcoin.github.io/sitemap.xml';
+  const engines = [
+    `https://www.google.com/ping?sitemap=${sitemap}`,
+    `https://www.bing.com/ping?sitemap=${sitemap}`,
+    `https://search.yahoo.com/ping?sitemap=${sitemap}`,
+    `https://yandex.com/ping?sitemap=${sitemap}`,
+    `https://duckduckgo.com/ping?sitemap=${sitemap}`
+  ];
+
+  document.getElementById('result').textContent = 'Sending ping requests...';
+
+  for (const url of engines) {
+    try {
+      const res = await fetch(url);
+      document.getElementById('result').textContent += `\n${url} → ${res.status} ${res.statusText}`;
+    } catch (err) {
+      document.getElementById('result').textContent += `\n${url} → Failed`;
+    }
+  }
+
+  document.getElementById('result').textContent += '\n\n✅ All pings completed.';
+}
+</script>
+</body>
+</html>
