@@ -74,18 +74,21 @@
   <circle cx="256" cy="256" r="190" fill="url(#goldRadial)"/>
   <ellipse cx="206" cy="146" rx="120" ry="88" fill="url(#spec)" />
 
-  <!-- 大 N -->
-  <g transform="translate(256,255) scale(1.18) translate(-256,-255)">
+  <!-- ✅ 大 N：置中、放大 1.35 倍，貼近原 PNG 效果 -->
+  <g transform="translate(256,255) scale(1.35) translate(-256,-255)">
     <path d="M176 190 L224 190 L288 280 L288 190 L336 190 L336 330 L288 330 L224 240 L224 330 L176 330 Z"
-          fill="url(#blueGrad)" filter="url(#embossShadow)"/>
+          fill="url(#blueGrad)" filter="url(#softShadow)"/>
   </g>
 
-  <!-- 「NEOX」浮雕字 -->
-  <g font-family="Arial Black, Helvetica, Arial, sans-serif" font-weight="900" text-anchor="middle">
-    <text x="240" y="397" font-size="66" opacity=".16" fill="#000">NEO</text>
-    <text x="328" y="397" font-size="66" opacity=".16" fill="#000">X</text>
-
-    <text x="240" y="392" font-size="66" fill="url(#goldText)">NEO</text>
-    <text x="328" y="392" font-size="66" fill="url(#blueGrad)">X</text>
+  <!-- 「NEOX」：居中對齊大 N（以 x=256 為中心） -->
+  <g font-family="Arial Black, Helvetica, Arial, sans-serif" font-weight="900">
+    <!-- 陰影層 -->
+    <g opacity="0.22">
+      <text x="256" y="392" font-size="66" text-anchor="end" fill="#000">NEO</text>
+      <text x="256" y="392" font-size="66" text-anchor="start" fill="#000" dx="10">X</text>
+    </g>
+    <!-- 主層（以中心對齊分左右） -->
+    <text x="256" y="387" font-size="66" text-anchor="end" fill="url(#goldText)">NEO</text>
+    <text x="256" y="387" font-size="66" text-anchor="start" fill="url(#blueGrad)" dx="10">X</text>
   </g>
 </svg>
