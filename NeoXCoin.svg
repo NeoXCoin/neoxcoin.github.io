@@ -81,13 +81,11 @@
   </g>
 
   <!-- 「NEOX」浮雕字 -->
-  <g font-family="Arial Black, Helvetica, Arial, sans-serif" font-weight="900" text-anchor="middle"
-     transform="scale(1.15) translate(19,18)">
-    <!-- 陰影層 -->
-    <text x="240" y="385" font-size="64" fill="#000" opacity="0.25" filter="url(#embossShadow)">NEO</text>
-    <text x="328" y="385" font-size="64" fill="#000" opacity="0.25" filter="url(#embossShadow)">X</text>
-    <!-- 主層 -->
-    <text x="240" y="385" font-size="64" fill="url(#goldText)" filter="url(#embossLight)">NEO</text>
-    <text x="328" y="385" font-size="64" fill="url(#blueGrad)" filter="url(#embossLight)">X</text>
+  <g font-family="Arial Black, Helvetica, Arial, sans-serif" font-weight="900" text-anchor="middle">
+    <text x="240" y="397" font-size="66" opacity=".16" fill="#000">NEO</text>
+    <text x="328" y="397" font-size="66" opacity=".16" fill="#000">X</text>
+
+    <text x="240" y="392" font-size="66" fill="url(#goldText)">NEO</text>
+    <text x="328" y="392" font-size="66" fill="url(#blueGrad)">X</text>
   </g>
 </svg>
