@@ -3,108 +3,127 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>NeoX Sitemap Ping Tool 🚀</title>
+<title>NeoX Sitemap Manager (2025) 🚀</title>
 <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" />
 <style>
-  body{margin:0;background:radial-gradient(circle at top,#0a0a2a 0%,#1f005c 100%);color:#fff;text-align:center;
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif;
-    min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
-  .logo{width:70px;opacity:.9;margin-bottom:20px}
-  h1{font-size:24px;margin:8px 0}
-  p{max-width:480px;opacity:.85;margin:8px auto 18px;line-height:1.6}
-  .row{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap;margin:10px 0 6px}
-  .urlbox{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-  input[type="url"]{
-    width:min(640px,86vw);padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.25);
-    background:rgba(0,0,0,.35);color:#fff;font-size:17px; /* >=16 避免 iOS 放大 */
-    outline:none;box-shadow:0 2px 8px rgba(0,0,0,.35)
-  }
-  input[type="url"]::placeholder{color:#cbd5e1}
-  button{
-    background:linear-gradient(90deg,#ffd76a,#ffb347);border:none;color:#000;font-weight:700;border-radius:999px;
-    padding:12px 22px;font-size:16px;cursor:pointer;box-shadow:0 0 14px rgba(255,215,106,.5);transition:all .25s}
-  button:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(255,215,106,.8)}
-  #result{margin-top:18px;font-family:monospace;font-size:14px;color:#8effff;background:rgba(255,255,255,.06);
-    padding:16px;border-radius:10px;width:min(720px,92vw);text-align:left;min-height:48px}
-  .manual-links{margin-top:12px;font-size:14px}
-  .manual-links a{color:#ffd76a;text-decoration:none;margin:0 6px}
-  .manual-links a:hover{text-decoration:underline}
-  .back{margin-top:16px;font-size:14px}
+  :root { --gold:#ffd76a; --purple:#1f005c; --ink:#0a0a2a; }
+  body{margin:0;background:radial-gradient(1200px 600px at 50% -100px, #12123a 0%, var(--purple) 60%, #0b0930 100%);
+    color:#fff;text-align:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif;
+    min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:28px 16px}
+  .logo{width:68px;opacity:.92;margin-bottom:16px}
+  h1{font-size:24px;margin:6px 0 8px}
+  p.lead{opacity:.9;max-width:560px;margin:0 auto 18px;line-height:1.6}
+  .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center;margin:8px 0 14px}
+  input[type="url"]{width:min(640px,86vw);padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.25);
+    background:rgba(0,0,0,.35);color:#fff;font-size:17px;outline:none;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+  button{border:none;border-radius:999px;padding:12px 20px;font-size:15px;font-weight:700;cursor:pointer;transition:.2s}
+  .btn-gold{background:linear-gradient(90deg,var(--gold),#ffb347);color:#000;box-shadow:0 0 14px rgba(255,215,106,.5)}
+  .btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 18px rgba(255,215,106,.8)}
+  .btn-ghost{background:rgba(255,255,255,.06);color:#fff;border:1px solid rgba(255,255,255,.2)}
+  .btn-ghost:hover{background:rgba(255,255,255,.12)}
+  #note{width:min(760px,92vw);text-align:left;margin-top:10px;background:rgba(255,255,255,.06);padding:16px;border-radius:12px;
+    box-shadow:0 0 10px rgba(0,0,0,.3);font-size:14px}
+  #note .k{color:#8effff;font-family:monospace}
+  .links{margin-top:14px;font-size:14px}
+  .links a{color:var(--gold);text-decoration:none;margin:0 6px}
+  .links a:hover{text-decoration:underline}
+  .back{margin-top:20px;font-size:14px}
   .back a{color:#ccc;text-decoration:none}
   .back a:hover{color:#fff;text-decoration:underline}
+  .badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:6px 10px;border-radius:999px;
+    font-size:12px;margin:0 6px 10px}
+  .ok{color:#7dffa7;border-color:rgba(125,255,167,.35);background:rgba(125,255,167,.12)}
+  .warn{color:#ffd76a;border-color:rgba(255,215,106,.35);background:rgba(255,215,106,.12)}
 </style>
 </head>
 <body>
-  <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" class="logo" />
-  <h1>NeoX Sitemap Ping Tool 🚀</h1>
-  <p>Enter your sitemap URL (or use the default) and ping major search engines.</p>
+  <img src="https://neoxcoin.github.io/XNXC.png" class="logo" alt="NeoX" />
+  <h1>NeoX Sitemap Manager (2025) 🚀</h1>
+  <div>
+    <span class="badge ok">Google: use Search Console</span>
+    <span class="badge warn">Bing/Yahoo: use Bing Webmaster</span>
+    <span class="badge warn">DuckDuckGo: follows Bing</span>
+  </div>
+  <p class="lead">Manage how search engines discover updates to your sitemap. Google’s legacy “ping” endpoint is deprecated; use the buttons below.</p>
 
-  <!-- ✅ 可輸入的 Sitemap URL -->
-  <div class="urlbox">
-    <input id="sitemapUrl" type="url" inputmode="url" autocapitalize="off" autocomplete="on" spellcheck="false"
-           placeholder="https://example.com/sitemap.xml"
+  <div class="row">
+    <input id="sitemapUrl" type="url" inputmode="url" placeholder="https://example.com/sitemap.xml"
            value="https://neoxcoin.github.io/sitemap.xml" />
-    <button onclick="pingAll()">Ping All Search Engines</button>
-    <button onclick="resetDefault()" title="Reset to default URL">Reset</button>
+    <button class="btn-gold" onclick="openGSC()">Open Google Search Console</button>
+    <button class="btn-ghost" onclick="openBing()">Open Bing Webmaster</button>
+    <button class="btn-ghost" onclick="copyURL()">Copy URL</button>
   </div>
 
-  <div id="result"></div>
-
-  <!-- 手動連結（會跟隨輸入自動更新） -->
-  <div class="manual-links" id="manualLinks">
-    If automatic ping fails, click manually:
-    <!-- links will be injected by JS -->
+  <div id="note">
+    <div>📌 <b>Status & Tips</b></div>
+    <div style="margin-top:8px;line-height:1.6">
+      • <b>Google</b> ended <span class="k">/ping?sitemap=</span>; submit in <b>Search Console</b> → <i>URL Inspection</i> (Request Indexing) and <i>Sitemaps</i> section.<br/>
+      • <b>Bing / Yahoo</b> use <b>Bing Webmaster</b>. Add your site, then submit the sitemap once; recrawls happen automatically.<br/>
+      • Keep your sitemap’s <span class="k">&lt;lastmod&gt;</span> fresh when pages change—it helps prioritization.<br/>
+      • Your robots.txt already points to the sitemap. ✅
+    </div>
   </div>
+
+  <div class="links" id="quickLinks"></div>
 
   <div class="back">← <a href="https://neoxcoin.github.io/">Return to NeoX Main Site</a></div>
 
 <script>
-  const defaultUrl = 'https://neoxcoin.github.io/sitemap.xml';
-  const engines = (sm) => [
-    { name: "Google",     url: `https://www.google.com/ping?sitemap=${encodeURIComponent(sm)}` },
-    { name: "Bing",       url: `https://www.bing.com/ping?sitemap=${encodeURIComponent(sm)}` },
-    { name: "Yahoo",      url: `https://search.yahoo.com/ping?sitemap=${encodeURIComponent(sm)}` },
-    { name: "Yandex",     url: `https://yandex.com/ping?sitemap=${encodeURIComponent(sm)}` },
-    { name: "DuckDuckGo", url: `https://duckduckgo.com/ping?sitemap=${encodeURIComponent(sm)}` }
-  ];
-
   const $ = (id)=>document.getElementById(id);
+  const defaultUrl = 'https://neoxcoin.github.io/sitemap.xml';
 
-  function updateManualLinks() {
+  function gscLinks(sm){
+    const origin = 'https://search.google.com/search-console';
+    const inspect = `${origin}/inspect?resource_id=${encodeURIComponent(siteRoot(sm))}&url=${encodeURIComponent(siteRoot(sm))}`;
+    const sitemaps = `${origin}/sitemaps?resource_id=${encodeURIComponent(siteRoot(sm))}`;
+    return {inspect, sitemaps};
+  }
+  function bingLinks(sm){
+    const root = siteRoot(sm);
+    // Opens Bing Webmaster dashboard. After sign-in, you can add site and submit the sitemap.
+    return {
+      dashboard: `https://www.bing.com/webmasters/`,
+      addsite:   `https://www.bing.com/webmasters/about?` // generic landing; UI handles site add
+    };
+  }
+  function siteRoot(sm){
+    try{
+      const u = new URL(sm || defaultUrl);
+      return `${u.protocol}//${u.host}/`;
+    }catch{ return 'https://neoxcoin.github.io/'; }
+  }
+
+  function refreshQuickLinks(){
     const sm = ($('sitemapUrl').value || defaultUrl).trim();
-    const list = engines(sm).map(e => `<a href="${e.url}" target="_blank" rel="noopener">${e.name}</a>`).join(' | ');
-    $('manualLinks').innerHTML = `If automatic ping fails, click manually: ${list}`;
+    const g = gscLinks(sm);
+    const b = bingLinks(sm);
+    $('quickLinks').innerHTML =
+      `Quick links → 
+       <a href="${g.inspect}" target="_blank" rel="noopener">GSC: URL Inspection</a> |
+       <a href="${g.sitemaps}" target="_blank" rel="noopener">GSC: Sitemaps</a> |
+       <a href="${b.dashboard}" target="_blank" rel="noopener">Bing Webmaster</a>`;
   }
 
-  function resetDefault(){
-    $('sitemapUrl').value = defaultUrl;
-    updateManualLinks();
+  function openGSC(){
+    const {inspect} = gscLinks($('sitemapUrl').value);
+    window.open(inspect, '_blank','noopener');
   }
-
-  async function pingAll() {
+  function openBing(){
+    const {dashboard} = bingLinks($('sitemapUrl').value);
+    window.open(dashboard, '_blank','noopener');
+  }
+  async function copyURL(){
     const sm = ($('sitemapUrl').value || defaultUrl).trim();
-    if (!sm.startsWith('http')) {
-      $('result').textContent = '⚠️ Please enter a valid URL starting with http(s).';
-      return;
+    try{
+      await navigator.clipboard.writeText(sm);
+      alert('Sitemap URL copied to clipboard ✅');
+    }catch{
+      prompt('Copy sitemap URL:', sm);
     }
-    $('result').textContent = '🔄 Sending ping requests...\n\n';
-    for (const e of engines(sm)) {
-      try {
-        const res = await fetch(e.url, { mode: 'no-cors' }); // 仍可能被瀏覽器阻擋
-        $('result').textContent += `• ${e.name}: attempted (browser may block response)\n`;
-      } catch (err) {
-        $('result').textContent += `• ${e.name}: failed (${err.message})\n`;
-      }
-    }
-    $('result').textContent += '\n🎉 All pings attempted. You can also click the manual links above to confirm.';
   }
 
-  // 初始化
-  updateManualLinks();
-  // 變更時即時更新手動連結
-  $('sitemapUrl').addEventListener('input', updateManualLinks);
-  // 按 Enter 直接送出
-  $('sitemapUrl').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); pingAll(); }});
+  $('sitemapUrl').addEventListener('input', refreshQuickLinks);
+  refreshQuickLinks();
 </script>
 </body>
 </html>
