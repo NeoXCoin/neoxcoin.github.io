@@ -9,4 +9,4 @@ Disallow: /drafts/
 Sitemap: https://neoxcoin.github.io/sitemap.xml
 
 # Crawl-delay (optional for non-Google bots)
-Crawl-delay: 10
+Crawl-delay: 10 
