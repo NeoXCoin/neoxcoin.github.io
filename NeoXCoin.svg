@@ -74,8 +74,8 @@
   <circle cx="256" cy="256" r="190" fill="url(#goldRadial)"/>
   <ellipse cx="206" cy="146" rx="120" ry="88" fill="url(#spec)" />
 
-  <!-- ✅ 大 N：置中、放大 1.35 倍，並上移 22px 以避開 NEOX -->
-  <g transform="translate(256,233) scale(1.35) translate(-256,-233)">
+  <!-- ✅ 大 N：上移 30px，放大 1.35 倍，避開 NEOX -->
+  <g transform="translate(256,225) scale(1.35) translate(-256,-225)">
     <path d="M176 190 L224 190 L288 280 L288 190 L336 190 L336 330 L288 330 L224 240 L224 330 L176 330 Z"
           fill="url(#blueGrad)" filter="url(#softShadow)"/>
   </g>
