@@ -1,104 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NeoX Sitemap Pinger 🚀</title>
-  <meta name="description" content="Official NeoX tool to notify Google, Bing, DuckDuckGo and others when sitemap updates. Keep search engines synced with the NeoX ecosystem." />
-  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NeoX Sitemap Ping Tool 🚀</title>
+<link rel="icon" href="https://neoxcoin.github.io/XNXC.png" />
+<style>
+  body {
+    margin: 0;
+    background: radial-gradient(circle at top, #0a0a2a 0%, #1f005c 100%);
+    color: #fff;
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo { width: 70px; opacity: 0.9; margin-bottom: 20px; }
+  h1 { font-size: 24px; margin: 8px 0; }
+  p { max-width: 420px; opacity: 0.85; margin-bottom: 25px; line-height: 1.6; }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      color: #fff;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
+  button {
+    background: linear-gradient(90deg, #ffd76a, #ffb347);
+    border: none; color: #000;
+    font-weight: 600;
+    border-radius: 999px;
+    padding: 12px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 14px rgba(255, 215, 106, 0.5);
+    transition: all 0.3s ease;
+  }
+  button:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(255, 215, 106, 0.8); }
 
-    .logo {
-      width: 70px;
-      opacity: 0.9;
-      margin-bottom: 20px;
-      animation: fadeIn 1s ease-in;
-    }
+  #result {
+    margin-top: 30px;
+    font-family: monospace;
+    font-size: 14px;
+    color: #8effff;
+    background: rgba(255,255,255,0.05);
+    padding: 18px;
+    border-radius: 8px;
+    width: min(600px, 90%);
+    text-align: left;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
 
-    h1 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
+  .manual-links {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  .manual-links a {
+    color: #ffd76a;
+    text-decoration: none;
+    margin: 0 6px;
+  }
+  .manual-links a:hover { text-decoration: underline; }
 
-    p {
-      max-width: 420px;
-      font-size: 15px;
-      opacity: 0.85;
-      margin: 8px auto 25px;
-      line-height: 1.6;
-    }
+  .back-home {
+    margin-top: 40px;
+    font-size: 14px;
+  }
+  .back-home a {
+    color: #ccc;
+    text-decoration: none;
+  }
+  .back-home a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
 
-    button {
-      background: linear-gradient(90deg, #3a0088, #1c1c3c);
-      border: 1px solid rgba(255, 215, 106, 0.5);
-      color: #ffd76a;
-      padding: 12px 28px;
-      border-radius: 999px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-    }
-
-    button:hover {
-      background: linear-gradient(90deg, #ffd76a, #ffb347);
-      color: #000;
-      border-color: #fff;
-      box-shadow: 0 0 14px rgba(255, 215, 106, 0.6);
-      transform: translateY(-2px);
-    }
-
-    #result {
-      margin-top: 30px;
-      font-family: monospace;
-      font-size: 14px;
-      white-space: pre-wrap;
-      text-align: left;
-      max-width: 600px;
-      color: #8effff;
-      background: rgba(255, 255, 255, 0.06);
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    }
-
-    footer {
-      font-size: 12px;
-      opacity: 0.6;
-      margin-top: 40px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  footer { margin-top: 40px; font-size: 12px; opacity: 0.6; }
+</style>
 </head>
 
 <body>
   <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" class="logo" />
   <h1>NeoX Sitemap Ping Tool 🚀</h1>
-  <p>Click below to notify Google, Bing, DuckDuckGo and other search engines that the NeoX sitemap has been updated.</p>
-  
+  <p>Click below to notify major search engines that the NeoX sitemap has been updated.</p>
+
   <button onclick="pingAll()">Ping All Search Engines</button>
   <div id="result"></div>
 
-  <footer>© 2025 NeoX Official | Sitemap Pinger Utility</footer>
+  <div class="manual-links">
+    <p>If automatic ping fails, click manually:</p>
+    <a href="https://www.google.com/ping?sitemap=https://neoxcoin.github.io/sitemap.xml" target="_blank">Google</a> |
+    <a href="https://www.bing.com/ping?sitemap=https://neoxcoin.github.io/sitemap.xml" target="_blank">Bing</a> |
+    <a href="https://search.yahoo.com/ping?sitemap=https://neoxcoin.github.io/sitemap.xml" target="_blank">Yahoo</a> |
+    <a href="https://yandex.com/ping?sitemap=https://neoxcoin.github.io/sitemap.xml" target="_blank">Yandex</a> |
+    <a href="https://duckduckgo.com/ping?sitemap=https://neoxcoin.github.io/sitemap.xml" target="_blank">DuckDuckGo</a>
+  </div>
+
+  <div class="back-home">
+    ← <a href="https://neoxcoin.github.io/">Return to NeoX Main Site</a>
+  </div>
+
+  <footer>© 2025 NeoX Official ｜ Sitemap Pinger Utility</footer>
 
   <script>
     async function pingAll() {
@@ -118,12 +117,12 @@
         try {
           const res = await fetch(e.url);
           resultBox.textContent += `✅ ${e.name}: ${res.status} ${res.statusText}\n`;
-        } catch (err) {
-          resultBox.textContent += `⚠️ ${e.name}: Failed (${err.message})\n`;
+        } catch {
+          resultBox.textContent += `⚠️ ${e.name}: Failed (browser blocked)\n`;
         }
       }
 
-      resultBox.textContent += "\n🎉 All pings completed. Search engines notified successfully.";
+      resultBox.textContent += "\n🎉 All pings attempted. Manual links above can be used for confirmation.";
     }
   </script>
 </body>
