@@ -85,10 +85,10 @@
 
   <!-- ✅ 大 N：向上移 26px，並以底部為錨點向上拉高 22% -->
   <g transform="translate(0,-26)">
-    <!-- 以 y=330 作為底邊錨點拉高：先把座標搬到底邊→放大→搬回來 -->
-  <g transform="translate(0,330) scale(1,1.22) translate(0,-330)">
-    <path d="M176 190 L224 190 L288 280 L288 190 L336 190 L336 330 L288 330 L224 240 L224 330 L176 330 Z"
-          fill="url(#blueGrad)" filter="url(#softShadow)"/>
+   <!-- ✅ 大 N：放大 1.2 倍，保持中心位置（貼近原 PNG 效果） -->
+    <g transform="translate(256,256) scale(1.2) translate(-256,-256)">
+      <path d="M176 190 L224 190 L288 280 L288 190 L336 190 L336 330 L288 330 L224 240 L224 330 L176 330 Z"
+            fill="url(#blueGrad)" filter="url(#softShadow)"/>
     </g>
   </g>
 
