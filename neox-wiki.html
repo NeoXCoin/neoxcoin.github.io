@@ -184,14 +184,20 @@
     }
 
     .footer-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-top: 18px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(255,255,255,0.12);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-wrap: wrap;
+     gap: 14px;
+     margin-top: 24px;
+     padding-top: 12px;
+     border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .footer-buttons .center-block {
+     width: 100%;
+     display: flex;
+     justify-content: center;
     }
 
     .back-btn,
@@ -385,7 +391,10 @@
       </div>
 
       <div class="footer-buttons">
-        <a class="back-btn" href="index.html">← Back to Home</a>
+        <div class="center-block">
+          <a class="back-btn" href="index.html">← Back to Home</a>
+        </div>
+
         <a class="link-btn" href="neox-wiki-zh.html">View NeoX Wiki（繁體中文）</a>
       </div>
     </div>
