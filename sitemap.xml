@@ -118,5 +118,15 @@
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
+   <url>
+    <loc>https://neoxcoin.github.io/neox-wiki.html</loc>
+    <lastmod>2025-11-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.github.io/neox-wiki-zh.html</loc>
+    <lastmod>2025-11-15</lastmod>
+    <priority>0.7</priority>
+  </url>
 
 </urlset>
