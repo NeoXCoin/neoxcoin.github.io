@@ -1,176 +1,407 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO -->
-  <title>NeoX Wiki – 官方生態百科（繁體中文版）</title>
-  <meta name="description" content="NeoX 官方維基百科（繁體版）－完整介紹 NeoX 生態，包括 NXC 代幣、NFT 系列、NeoX Catch 遊戲、元宇宙展館、歷史與技術架構等。" />
-  <meta name="keywords" content="NeoX, NXC, NeoX Coin, Web3, Base Mainnet, NFT, 區塊鏈藝術, 元宇宙, NeoX Wiki, 加密貨幣" />
+  <title>NeoX Wiki – 官方生態總覽（繁體中文）</title>
+  <meta name="description" content="NeoX 官方 Wiki（繁體中文）— 全面介紹 NeoX 生態，包括 NXC 代幣、NFT 系列、NeoX Catch 遊戲、元宇宙展覽以及未來發展方向。" />
+  <meta name="keywords" content="NeoX, NXC, NeoX Coin, Web3, Base Mainnet, NeoX Wiki, NFT, 區塊鏈藝術, 元宇宙, 加密遊戲" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="NeoX Wiki – 官方生態百科（繁體）" />
-  <meta property="og:description" content="深入了解 NeoX：代幣、NFT、遊戲、元宇宙、項目發展與技術架構。" />
+  <meta property="og:title" content="NeoX Wiki – 官方生態總覽（繁體中文）" />
+  <meta property="og:description" content="瀏覽 NeoX 完整生態：NXC 代幣、NFT、遊戲、元宇宙展覽與未來規劃。" />
   <meta property="og:image" content="https://neoxcoin.github.io/XNXC.png" />
   <meta property="og:url" content="https://neoxcoin.github.io/neox-wiki-zh.html" />
   <meta property="og:type" content="website" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NeoX Wiki – 官方生態百科（繁體）" />
-  <meta name="twitter:description" content="NeoX 代幣、NFT、遊戲與元宇宙的完整百科資料。" />
+  <meta name="twitter:title" content="NeoX Wiki – 官方生態總覽（繁體中文）" />
+  <meta name="twitter:description" content="NeoX 官方參考文檔：NXC 代幣、NFT、遊戲、元宇宙與整體生態介紹。" />
   <meta name="twitter:image" content="https://neoxcoin.github.io/XNXC.png" />
 
   <style>
+    :root {
+      --card-bg: rgba(5, 10, 40, 0.86);
+      --card-border: rgba(130, 180, 255, 0.35);
+      --accent: #6ebdff;
+      --accent-strong: #1a45ff;
+      --text-soft: rgba(255,255,255,0.8);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
-      background: radial-gradient(circle at top, #0b0f33, #05061a);
-      color: white;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   "PingFang TC", "Noto Sans", Arial, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(89,115,255,0.34), transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(196,77,255,0.40), transparent 55%),
+        radial-gradient(circle at 50% 40%, #05081f, #02020b 60%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 20px;
-      line-height: 1.8;
     }
 
-    h1, h2 {
-      text-align: center;
-      margin-top: 20px;
-      margin-bottom: 20px;
+    .shell {
+      width: 100%;
+      max-width: 1040px;
+      margin: 30px auto;
+      background: radial-gradient(circle at top left,
+                  rgba(120,160,255,0.35), transparent 55%)
+                  border-box;
+      border-radius: 24px;
+      box-shadow:
+        0 26px 70px rgba(0,0,0,0.9),
+        0 0 40px rgba(90,130,255,0.4);
+      border: 1px solid rgba(140, 190, 255, 0.33);
+      overflow: hidden;
+      backdrop-filter: blur(22px);
     }
 
-    .card {
-      max-width: 900px;
-      margin: 20px auto;
-      background: rgba(255, 255, 255, 0.06);
-      border-radius: 16px;
-      padding: 30px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 25px rgba(0, 150, 255, 0.25);
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 22px 12px;
+      background: linear-gradient(
+        90deg,
+        rgba(7,16,55,0.92),
+        rgba(18,7,60,0.92)
+      );
+      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
-    ul { padding-left: 22px; }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .brand a.logo-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      padding: 3px;
+      background: radial-gradient(circle at 30% 10%,
+                 rgba(150,200,255,0.9), rgba(10,25,80,1));
+      box-shadow:
+        0 0 16px rgba(110,189,255,0.95),
+        0 0 32px rgba(80,130,255,0.8);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    .brand a.logo-link:hover {
+      transform: translateY(-1px) scale(1.04);
+      box-shadow:
+        0 0 22px rgba(150,210,255,1),
+        0 0 40px rgba(90,150,255,0.95);
+      filter: brightness(1.05);
+    }
+
+    .brand img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    .brand span {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    .lang-switch a {
+      color: var(--text-soft);
+      font-size: 14px;
+      text-decoration: none;
+      margin-left: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: 0.2s;
+    }
+    .lang-switch a.active {
+      border-color: rgba(255,255,255,0.45);
+      color: #fff;
+      background: rgba(110,189,255,0.22);
+    }
+    .lang-switch a:hover {
+      border-color: rgba(255,255,255,0.35);
+    }
+
+    .content {
+      padding: 22px 24px 26px;
+      background: radial-gradient(circle at bottom,
+                   rgba(120,70,255,0.45), transparent 60%);
+    }
+
+    h1 {
+      margin: 4px 0 14px;
+      font-size: 24px;
+      text-align: left;
+    }
+
+    .subtitle {
+      margin-bottom: 18px;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .pill {
+      font-size: 11px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.22);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(220,230,255,0.92);
+      background: radial-gradient(circle at top left,
+                   rgba(140,185,255,0.35), rgba(22,32,80,0.9));
+      box-shadow: 0 0 12px rgba(70,120,255,0.55);
+    }
+
+    .section {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      border: 1px solid var(--card-border);
+      box-shadow:
+        0 0 24px rgba(36,118,255,0.4),
+        0 18px 40px rgba(1,5,20,0.9);
+      margin-bottom: 16px;
+    }
+
+    .section h2 {
+      font-size: 18px;
+      margin: 0 0 10px;
+    }
+
+    .section p {
+      margin: 6px 0 10px;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    .section ul {
+      margin: 4px 0 6px 18px;
+      padding-left: 4px;
+      font-size: 14px;
+      color: var(--text-soft);
+    }
+
+    .mono {
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+                   "Courier New", monospace;
+      font-size: 13px;
+      background: rgba(0,0,0,0.6);
+      padding: 6px 10px;
+      border-radius: 8px;
+      display: inline-block;
+      margin-top: 4px;
+      word-break: break-all;
+    }
+
+    .footer-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 24px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 11px 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.4);
+      background: radial-gradient(circle at 20% 0%,
+                  rgba(140,200,255,0.9), rgba(40,70,250,1));
+      color: #fff;
+      font-size: 15px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow:
+        0 16px 34px rgba(0,0,0,0.9),
+        0 0 30px rgba(100,160,255,0.7);
+      transition: 0.22s;
+    }
+    .back-btn:hover {
+      transform: translateY(-1px) scale(1.03);
+      box-shadow:
+        0 20px 40px rgba(0,0,0,0.95),
+        0 0 38px rgba(150,210,255,0.9);
+    }
 
     a {
-      color: #6ebdff;
+      color: var(--accent);
       text-decoration: none;
     }
     a:hover { text-decoration: underline; }
 
-    .back {
-      display: block;
-      width: fit-content;
-      margin: 30px auto;
-      padding: 12px 28px;
-      background: #1a45ff;
-      color: #fff;
-      border-radius: 10px;
-      text-align: center;
-      font-size: 16px;
-      text-decoration: none;
-      transition: 0.25s;
-    }
-    .back:hover {
-      background: #4c6bff;
-      transform: scale(1.03);
+    @media (max-width: 720px) {
+      .shell {
+        margin: 16px auto 20px;
+      }
+      .content {
+        padding: 16px 14px 22px;
+      }
+      h1 {
+        font-size: 22px;
+      }
+      .section {
+        padding: 14px 13px 12px;
+      }
     }
   </style>
 </head>
 
 <body>
+  <div class="shell">
+    <div class="top-bar">
+      <div class="brand">
+        <!-- Logo：點擊回中文主頁 -->
+        <a href="index-zh.html" class="logo-link">
+          <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
+        </a>
+        <span>NeoX 官方 Wiki</span>
+      </div>
+      <div class="lang-switch">
+        <a href="neox-wiki.html">EN</a>
+        <a href="neox-wiki-zh.html" class="active">繁</a>
+      </div>
+    </div>
 
-  <h1>NeoX 官方生態百科（Wiki）</h1>
+    <div class="content">
+      <h1>NeoX（NXC）– 生態系統總覽</h1>
+      <div class="subtitle">
+        這裡以「Wiki 參考模式」總結 NeoX 生態，包括代幣、NFT 系列、遊戲體驗、
+        元宇宙展覽，以及未來發展方向。
+      </div>
 
-  <!-- Section 1 -->
-  <div class="card">
-    <h2>項目概述</h2>
-    <p>
-      <strong>NeoX</strong> 是一個建立於 <strong>Base Mainnet</strong> 的分散式 Web3 生態系統，
-      結合數碼藝術、區塊鏈遊戲和元宇宙創意，形成一套完整的品牌宇宙。
-      生態包含 NeoX Coin (NXC)、NFT 系列、網頁遊戲、AI 視覺作品與虛擬展館。
-    </p>
+      <div class="pill-row">
+        <div class="pill">Base Mainnet</div>
+        <div class="pill">ERC-20 Token</div>
+        <div class="pill">NFT Collections</div>
+        <div class="pill">Game</div>
+        <div class="pill">Metaverse</div>
+      </div>
+
+      <!-- Overview -->
+      <div class="section">
+        <h2>概覽（Overview）</h2>
+        <p>
+          <strong>NeoX</strong> 是建基於 <strong>Base Mainnet</strong> 的去中心化 Web3
+          生態，結合數碼藝術、區塊鏈遊戲以及元宇宙式互動體驗，並以同一品牌呈現。
+          生態當中包括 NeoX Coin（NXC）代幣、策展式 NFT 系列、HTML5 街機遊戲，
+          以及 AI 強化的多媒體項目。
+        </p>
+      </div>
+
+      <!-- History -->
+      <div class="section">
+        <h2>起源與發展歷史（History）</h2>
+        <p>
+          NeoX 最初以創意數碼藝術項目形式出現，之後逐步加入區塊鏈技術、NFT
+          和互動媒體元素。到 2025 年，NeoX Coin（NXC）在 Base Mainnet 上正式發行，
+          標誌著 NeoX 從單一藝術計劃，演變為涵蓋收藏品、遊戲及元宇宙實驗的
+          更廣泛鏈上生態。
+        </p>
+      </div>
+
+      <!-- Token -->
+      <div class="section">
+        <h2>NeoX Coin（NXC）代幣</h2>
+        <p>
+          <strong>NXC</strong> 是 NeoX 生態中的實用代幣（utility token），
+          於 Base Mainnet 上部署，用作支援 NeoX 各種體驗，以及未來元宇宙功能。
+        </p>
+        <p>
+          <strong>合約地址（Base）：</strong><br />
+          <span class="mono">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span>
+        </p>
+      </div>
+
+      <!-- NFTs -->
+      <div class="section">
+        <h2>NFT 系列（NFT Collections）</h2>
+        <p>NeoX 目前包含多個精選 NFT 系列，例如：</p>
+        <ul>
+          <li><strong>NeoX Timekeeper Edition</strong> – 以「時間與感知」為主題的 8 枚限量 NFT。</li>
+          <li><strong>NeoX Van Gogh Visions</strong> – 結合梵高畫風與 NeoX 美學的藝術創作。</li>
+          <li><strong>NeoX Abstract Realms</strong> – 側重概念與抽象表達的藝術系列。</li>
+          <li><strong>NeoCoin Genesis Edition（G1）</strong> – NeoX 早期的重要基礎藝術系列。</li>
+        </ul>
+      </div>
+
+      <!-- Game -->
+      <div class="section">
+        <h2>NeoX Catch 遊戲</h2>
+        <p>
+          NeoX Catch 是一款以瀏覽器運行的 HTML5 街機式遊戲，玩家需要接住 NeoX
+          金幣、避開障礙物，並在不同關卡中提升分數。
+        </p>
+        <p>主要特色包括：</p>
+        <ul>
+          <li>多關卡設計，配有開場動畫與結尾畫面</li>
+          <li>分數記錄與 Top 3 排行榜展示</li>
+          <li>以手機和平板為優先的響應式版面</li>
+          <li>整體視覺與 NeoX 品牌風格一致</li>
+        </ul>
+      </div>
+
+      <!-- Metaverse -->
+      <div class="section">
+        <h2>元宇宙展覽（Metaverse Exhibition）</h2>
+        <p>
+          NeoX 亦在 OnCyber 等平台維持虛擬展覽空間，展示 NFT 作品、3D 虛擬角色、
+          氣氛燈光與電影式場景。隨著新系列與實驗空間推出，展覽內容會持續更新。
+        </p>
+      </div>
+
+      <!-- Technology -->
+      <div class="section">
+        <h2>技術棧（Technology Stack）</h2>
+        <p>NeoX 使用的主要技術包括：</p>
+        <ul>
+          <li>Base Mainnet（二層）作為代幣及合約部署網絡</li>
+          <li>Thirdweb 用於智能合約部署與管理</li>
+          <li>IPFS / Lighthouse 作為去中心化檔案儲存</li>
+          <li>HTML5 ＋ Canvas 實作遊戲機制與動畫</li>
+          <li>VRM / glTF 資產，用於虛擬角色與元宇宙視覺</li>
+          <li>針對手機及 iOS 裝置優化的響應式設計</li>
+        </ul>
+      </div>
+
+      <!-- Future -->
+      <div class="section">
+        <h2>未來發展（Future Development）</h2>
+        <p>
+          未來計劃包括：擴展更多元宇宙場景、新 NFT 系列、AI 輔助微電影項目、
+          進一步升級遊戲玩法，以及加強 Web、Mobile、虛擬世界之間的跨平台整合。
+        </p>
+      </div>
+
+      <div class="footer-buttons">
+        <a class="back-btn" href="index-zh.html">← 返回主頁</a>
+      </div>
+    </div>
   </div>
-
-  <!-- Section 2 -->
-  <div class="card">
-    <h2>發展歷史</h2>
-    <p>
-      NeoX 最初源自藝術創作與數碼收藏，隨後逐步擴展至區塊鏈技術領域。
-      在 2025 年，NeoX Coin (NXC) 正式於 Base Mainnet 上線，
-      標誌著 NeoX 生態正式形成，涵蓋 NFT、遊戲、藝術、元宇宙場景等多領域。
-    </p>
-  </div>
-
-  <!-- Section 3 -->
-  <div class="card">
-    <h2>NeoX Coin（NXC）</h2>
-    <p>
-      <strong>NXC</strong> 是 NeoX 生態的核心實用性代幣，用於未來的應用場景、
-      使用者互動、獎勵機制，以及 NeoX 遊戲與平台的功能啟動。
-    </p>
-    <p><strong>合約地址（Base Mainnet）：</strong><br>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</p>
-  </div>
-
-  <!-- Section 4 -->
-  <div class="card">
-    <h2>NFT 系列</h2>
-    <p>NeoX 包含多個具代表性的藝術 NFT 系列，每個系列代表不同創作方向：</p>
-    <ul>
-      <li><strong>NeoX Timekeeper Edition</strong> — 8 張限量 NFT，主題圍繞時間與感知。</li>
-      <li><strong>NeoX Van Gogh Visions</strong> — 以梵高風格重塑的藝術系列。</li>
-      <li><strong>NeoX Abstract Realms</strong> — 高概念抽象藝術創作。</li>
-      <li><strong>NeoCoin Genesis Edition (G1)</strong> — NeoX 早期基礎藝術系列。</li>
-    </ul>
-  </div>
-
-  <!-- Section 5 -->
-  <div class="card">
-    <h2>NeoX Catch 遊戲</h2>
-    <p>
-      NeoX Catch 是一款 HTML5 網頁遊戲，玩家需收集金幣、避開障礙並通過不同關卡。
-      遊戲特色包括：
-    </p>
-    <ul>
-      <li>多關卡模式</li>
-      <li>動畫開場系統</li>
-      <li>排行榜與 Top 3 機制</li>
-      <li>手機優化操作</li>
-      <li>完全融入 NeoX 視覺風格</li>
-    </ul>
-  </div>
-
-  <!-- Section 6 -->
-  <div class="card">
-    <h2>元宇宙展覽館</h2>
-    <p>
-      NeoX 在 OnCyber 及 3D 虛擬空間內設有展區，
-      展示 NFT、3D Avatar、AI 動態影像與品牌創意內容，形成沉浸式藝術體驗。
-    </p>
-  </div>
-
-  <!-- Section 7 -->
-  <div class="card">
-    <h2>技術架構</h2>
-    <p>
-      NeoX 技術堆疊包括：
-      <br>• Base L2 主網  
-      <br>• Thirdweb 智能合約部署  
-      <br>• IPFS / Lighthouse 儲存  
-      <br>• VRM / glTF 虛擬角色  
-      <br>• HTML5 + Canvas 遊戲引擎  
-      <br>• 全平台（尤其 iOS）響應式設計  
-    </p>
-  </div>
-
-  <!-- Section 8 -->
-  <div class="card">
-    <h2>未來發展方向</h2>
-    <p>
-      NeoX 計劃擴展更多虛擬展館、推出新 NFT 系列、製作 AI 微電影、
-      增強遊戲體驗，以及打通更多跨平台整合功能。
-    </p>
-  </div>
-
-  <a class="back" href="index-zh.html">← 返回主頁</a>
-
 </body>
 </html>
