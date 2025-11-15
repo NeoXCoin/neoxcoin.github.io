@@ -2,402 +2,183 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- SEO -->
-  <title>NeoX Wiki – Official Overview of the NeoX Ecosystem</title>
-  <meta name="description" content="The official NeoX Wiki – a complete overview of the NeoX ecosystem including NXC token, NFT collections, NeoX Catch Game, metaverse exhibitions, and project history." />
-  <meta name="keywords" content="NeoX, NXC, NeoX Coin, Web3, Base Mainnet, NeoX Wiki, NFT, blockchain art, metaverse, crypto game" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="NeoX Wiki – Official Overview" />
-  <meta property="og:description" content="Explore the full NeoX ecosystem: NXC token, NFTs, gaming, metaverse, and more." />
-  <meta property="og:image" content="https://neoxcoin.github.io/XNXC.png" />
-  <meta property="og:url" content="https://neoxcoin.github.io/neox-wiki.html" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NeoX Wiki – Official Overview" />
-  <meta name="twitter:description" content="Official reference for NeoX: token, NFTs, game, metaverse, and ecosystem evolution." />
-  <meta name="twitter:image" content="https://neoxcoin.github.io/XNXC.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeoX Wiki – Official Overview</title>
+  <link rel="icon" href="XNXC.png" />
 
   <style>
-    :root {
-      --card-bg: rgba(5, 10, 40, 0.82);
-      --card-border: rgba(130, 180, 255, 0.35);
-      --accent: #6ebdff;
-      --accent-strong: #1a45ff;
-      --text-soft: rgba(255,255,255,0.78);
-    }
-
-    * { box-sizing: border-box; }
-
     body {
       margin: 0;
-      min-height: 100vh;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                   "PingFang TC", "Noto Sans", Arial, sans-serif;
-      color: #fff;
-      background:
-        radial-gradient(circle at 15% 0%, rgba(89,115,255,0.30), transparent 55%),
-        radial-gradient(circle at 85% 100%, rgba(196,77,255,0.30), transparent 55%),
-        radial-gradient(circle at 50% 40%, #05081f, #030312 60%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-    }
-
-    .shell {
-      width: 100%;
-      max-width: 1040px;
-      margin: 40px auto;
-      background: rgba(0, 0, 0, 0.32);
-      border-radius: 22px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(140, 180, 255, 0.22);
-      backdrop-filter: blur(18px);
-      overflow: hidden;
+      background: radial-gradient(circle at top, #0a0f27 0%, #060613 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans",
+                   Arial, sans-serif;
+      color: white;
+      padding-bottom: 40px;
     }
 
     .top-bar {
+      padding: 20px 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 22px 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      background: linear-gradient(
-        90deg,
-        rgba(10,20,60,0.85),
-        rgba(20,10,60,0.85)
-      );
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 15px;
-    }
-
-    .brand img {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      box-shadow: 0 0 14px rgba(110,189,255,0.7);
-    }
-
-    .brand span {
-      font-weight: 600;
-      letter-spacing: 0.03em;
-    }
-
-    .lang-switch a {
-      color: var(--text-soft);
-      font-size: 14px;
-      text-decoration: none;
-      margin-left: 8px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid transparent;
+    .logo {
+      width: 48px;
+      cursor: pointer;
+      opacity: 0.95;
       transition: 0.2s;
     }
-    .lang-switch a.active {
-      border-color: rgba(255,255,255,0.45);
-      color: #fff;
-      background: rgba(110,189,255,0.2);
-    }
-    .lang-switch a:hover {
-      border-color: rgba(255,255,255,0.35);
-    }
-
-    .content {
-      padding: 22px 24px 26px;
-    }
+    .logo:hover { opacity: 1; }
 
     h1 {
-      margin: 4px 0 14px;
-      font-size: 26px;
-      text-align: left;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 28px;
+      font-weight: 700;
     }
 
-    .subtitle {
-      margin-bottom: 18px;
-      font-size: 14px;
-      color: var(--text-soft);
+    .tag-box {
+      text-align: center;
+      margin: 10px auto 25px;
     }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 22px;
-    }
-    .pill {
-      font-size: 11px;
-      padding: 4px 9px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.2);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: rgba(220,230,255,0.9);
+    .tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.08);
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin: 5px;
+      font-size: 13px;
     }
 
     .section {
-      background: var(--card-bg);
-      border-radius: 18px;
-      padding: 18px 18px 16px;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 0 22px rgba(36,118,255,0.35);
-      margin-bottom: 16px;
+      width: min(900px, 92%);
+      margin: 20px auto;
+      background: rgba(255,255,255,0.06);
+      border-radius: 14px;
+      padding: 22px 26px;
+      line-height: 1.55;
     }
 
-    .section h2 {
-      font-size: 18px;
-      margin: 0 0 10px;
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
     }
 
-    .section p {
-      margin: 6px 0 10px;
-      font-size: 14px;
-      color: var(--text-soft);
-    }
-
-    .section ul {
-      margin: 4px 0 6px 18px;
-      padding-left: 4px;
-      font-size: 14px;
-      color: var(--text-soft);
-    }
-
-    .mono {
-      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-                   "Courier New", monospace;
-      font-size: 13px;
-      background: rgba(0,0,0,0.5);
-      padding: 6px 10px;
-      border-radius: 8px;
-      display: inline-block;
-      margin-top: 4px;
-      word-break: break-all;
-    }
-
-    .footer-buttons {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     flex-wrap: wrap;
-     gap: 14px;
-     margin-top: 24px;
-     padding-top: 12px;
-     border-top: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .footer-buttons .center-block {
-     width: 100%;
-     display: flex;
-     justify-content: center;
-    }
-
-    .back-btn,
-    .link-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 20px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.34);
-      background: linear-gradient(135deg, #1a45ff, #6c4dff);
-      color: #fff;
-      font-size: 14px;
+    .back-home {
+      display: block;
+      margin: 40px auto 0;
+      width: fit-content;
+      padding: 12px 30px;
+      background: #3b47ff;
+      border-radius: 30px;
+      color: white;
       text-decoration: none;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.65);
-      transition: 0.22s;
+      font-size: 16px;
+      font-weight: 600;
+      transition: 0.25s;
     }
-    .back-btn:hover,
-    .link-btn:hover {
-      transform: translateY(-1px) scale(1.02);
-      box-shadow: 0 14px 32px rgba(0,0,0,0.8);
-    }
-
-    .link-btn {
-      background: transparent;
-      border-color: rgba(120,170,255,0.7);
-      color: var(--accent);
-      font-size: 13px;
-      padding: 8px 14px;
-      box-shadow: none;
-    }
-    .link-btn:hover {
-      background: rgba(20,60,140,0.7);
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover { text-decoration: underline; }
-
-    @media (max-width: 720px) {
-      .shell {
-        margin: 18px auto;
-      }
-      .content {
-        padding: 16px 14px 18px;
-      }
-      h1 {
-        font-size: 22px;
-      }
-      .section {
-        padding: 14px 13px 12px;
-      }
-    }
+    .back-home:hover { opacity: 0.85; }
   </style>
 </head>
 
 <body>
-  <div class="shell">
-    <div class="top-bar">
-      <div class="brand">
-        <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
-        <span>NeoX Official Wiki</span>
-      </div>
-      <div class="lang-switch">
-        <a href="neox-wiki.html" class="active">EN</a>
-        <a href="neox-wiki-zh.html">繁</a>
-      </div>
-    </div>
 
-    <div class="content">
-      <h1>NeoX (NXC) – Ecosystem Overview</h1>
-      <div class="subtitle">
-        A reference-style summary of the NeoX project, including token, NFTs,
-        gaming experiences, metaverse exhibition, and future development.
-      </div>
-
-      <div class="pill-row">
-        <div class="pill">Base Mainnet</div>
-        <div class="pill">ERC-20 Token</div>
-        <div class="pill">NFT Collections</div>
-        <div class="pill">Game</div>
-        <div class="pill">Metaverse</div>
-      </div>
-
-      <!-- Overview -->
-      <div class="section">
-        <h2>Overview</h2>
-        <p>
-          <strong>NeoX</strong> is a decentralized Web3 ecosystem built on
-          <strong>Base Mainnet</strong>, combining digital art, blockchain gaming,
-          and metaverse-style experiences under a unified brand. The ecosystem
-          includes the NeoX Coin (NXC), curated NFT series, an HTML5 arcade game,
-          and AI-enhanced multimedia projects.
-        </p>
-      </div>
-
-      <!-- History -->
-      <div class="section">
-        <h2>History</h2>
-        <p>
-          NeoX originated as a creative digital art project and gradually expanded to
-          incorporate blockchain technology, NFTs, and interactive media.
-          In 2025, the NeoX Coin (NXC) was launched on Base Mainnet, marking NeoX’s
-          transition into a broader on-chain ecosystem spanning collectibles,
-          gaming, and metaverse experimentation.
-        </p>
-      </div>
-
-      <!-- Token -->
-      <div class="section">
-        <h2>NeoX Coin (NXC)</h2>
-        <p>
-          <strong>NXC</strong> is the utility token of the NeoX ecosystem and is
-          deployed on Base Mainnet. It is designed to support participation across
-          NeoX experiences and future metaverse features.
-        </p>
-        <p>
-          <strong>Contract Address (Base):</strong><br />
-          <span class="mono">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span>
-        </p>
-      </div>
-
-      <!-- NFTs -->
-      <div class="section">
-        <h2>NFT Collections</h2>
-        <p>NeoX features several curated NFT series, including:</p>
-        <ul>
-          <li><strong>NeoX Timekeeper Edition</strong> – 8 limited NFTs themed around time and perception.</li>
-          <li><strong>NeoX Van Gogh Visions</strong> – Artworks inspired by Van Gogh’s style blended with NeoX aesthetics.</li>
-          <li><strong>NeoX Abstract Realms</strong> – A conceptual abstract art collection.</li>
-          <li><strong>NeoCoin Genesis Edition (G1)</strong> – An early foundational art series for NeoX.</li>
-        </ul>
-        <p>
-          Selected collections are available on marketplaces such as
-          <a href="https://opensea.io" target="_blank" rel="noopener noreferrer">OpenSea</a>.
-        </p>
-      </div>
-
-      <!-- Game -->
-      <div class="section">
-        <h2>NeoX Catch Game</h2>
-        <p>
-          The NeoX Catch Game is a browser-based HTML5 arcade game where players
-          collect coins, avoid obstacles, and progress through multiple stages.
-        </p>
-        <p>Key features include:</p>
-        <ul>
-          <li>Multi-level progression with an opening sequence and end scene</li>
-          <li>Score tracking, including Top 3 leaderboard display</li>
-          <li>Mobile-first responsive layout for phones and tablets</li>
-          <li>Visual integration with the NeoX brand identity</li>
-        </ul>
-      </div>
-
-      <!-- Metaverse -->
-      <div class="section">
-        <h2>Metaverse Exhibition</h2>
-        <p>
-          NeoX maintains a virtual exhibition environment using platforms such as
-          OnCyber, featuring NFT artworks, 3D avatar integration, ambient media,
-          and cinematic scenes. The exhibition is updated as new collections and
-          experimental spaces are introduced.
-        </p>
-      </div>
-
-      <!-- Technology -->
-      <div class="section">
-        <h2>Technology Stack</h2>
-        <p>NeoX makes use of the following technologies:</p>
-        <ul>
-          <li>Base Mainnet (L2) for token and contract deployment</li>
-          <li>Thirdweb for contract deployment and management</li>
-          <li>IPFS / Lighthouse for decentralized storage</li>
-          <li>HTML5 &amp; Canvas for game implementation</li>
-          <li>VRM / glTF assets for avatars and metaverse visuals</li>
-          <li>Responsive design optimized for mobile and iOS devices</li>
-        </ul>
-      </div>
-
-      <!-- Future -->
-      <div class="section">
-        <h2>Future Development</h2>
-        <p>
-          Planned developments include extended metaverse spaces, new NFT
-          collections, AI-assisted micro-films, upgraded game mechanics, and
-          deeper cross-platform integrations across web, mobile, and virtual worlds.
-        </p>
-      </div>
-
-      <div class="footer-buttons">
-        <div class="center-block">
-          <a class="back-btn" href="index.html">← Back to Home</a>
-        </div>
-
-        <a class="link-btn" href="neox-wiki-zh.html">View NeoX Wiki（繁體中文）</a>
-      </div>
-    </div>
+  <!-- Top Bar with Clickable Logo -->
+  <div class="top-bar">
+    <a href="index.html">
+      <img src="XNXC.png" class="logo" alt="NeoX Logo" />
+    </a>
+    <div></div>
   </div>
+
+  <h1>NeoX (NXC) – Ecosystem Overview</h1>
+
+  <div class="tag-box">
+    <span class="tag">BASE MAINNET</span>
+    <span class="tag">ERC-20 TOKEN</span>
+    <span class="tag">NFT COLLECTIONS</span>
+    <span class="tag">GAME</span>
+    <span class="tag">METAVERSE</span>
+  </div>
+
+  <!-- Overview -->
+  <div class="section">
+    <div class="section-title">Overview</div>
+    NeoX is a decentralized Web3 ecosystem built on <b>Base Mainnet</b>, combining digital art,
+    blockchain gaming, and metaverse-style experiences under a unified brand. The ecosystem includes
+    the NeoX Coin (NXC), curated NFT series, an HTML5 arcade game, and AI-enhanced multimedia projects.
+  </div>
+
+  <!-- History -->
+  <div class="section">
+    <div class="section-title">History</div>
+    NeoX originated as a creative digital art project and gradually expanded to incorporate
+    blockchain technology, NFTs, and interactive media. In 2025, the NeoX Coin (NXC) was launched
+    on Base Mainnet, marking NeoX’s transition into a broader on-chain ecosystem spanning collectibles,
+    gaming, and metaverse experimentation.
+  </div>
+
+  <!-- Token -->
+  <div class="section">
+    <div class="section-title">NeoX Coin (NXC)</div>
+    NXC is the utility token of the NeoX ecosystem and is deployed on Base Mainnet.
+    It is designed to support participation across NeoX experiences and future metaverse features.
+    <br><br>
+    <b>Contract Address (Base):</b><br>
+    0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B
+  </div>
+
+  <!-- NFTs -->
+  <div class="section">
+    <div class="section-title">NFT Collections</div>
+    NeoX features several curated NFT collections including:
+    <ul>
+      <li>NeoX Genesis Series</li>
+      <li>NeoX Van Gogh Visions</li>
+      <li>NeoX Timekeeper Edition</li>
+      <li>NeoX Abstract Realms</li>
+      <li>NeoX Cosmic Visions</li>
+    </ul>
+  </div>
+
+  <!-- Game -->
+  <div class="section">
+    <div class="section-title">NeoX Arcade Game</div>
+    NeoX includes a custom-built HTML5 arcade experience featuring multi-level progression,
+    animated coin collectibles, score tracking, mobile optimization, and integrated brand visuals.
+  </div>
+
+  <!-- Metaverse -->
+  <div class="section">
+    <div class="section-title">Metaverse Exhibition</div>
+    NeoX maintains a virtual exhibition using OnCyber, showcasing NFTs, 3D avatars, cinematic scenes,
+    and ambient media environments.
+  </div>
+
+  <!-- Technology -->
+  <div class="section">
+    <div class="section-title">Technology Stack</div>
+    <ul>
+      <li>Base Mainnet (L2)</li>
+      <li>Thirdweb for contract management</li>
+      <li>IPFS / Lighthouse decentralized storage</li>
+      <li>HTML5 + Canvas game development</li>
+      <li>VRM / glTF metaverse avatar assets</li>
+      <li>Responsive design for mobile & iPad</li>
+    </ul>
+  </div>
+
+  <!-- Future -->
+  <div class="section">
+    <div class="section-title">Future Development</div>
+    Planned expansions include new metaverse zones, AI-generated micro-films, advanced game mechanics,
+    and deeper cross-platform integrations across web, mobile, and VR.
+  </div>
+
+  <!-- Back to Home -->
+  <a href="index.html" class="back-home">← Back to Home</a>
+
 </body>
 </html>
