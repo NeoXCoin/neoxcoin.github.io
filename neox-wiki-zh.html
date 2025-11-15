@@ -33,6 +33,10 @@
 
     * { box-sizing: border-box; }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -144,22 +148,47 @@
     }
 
     h1 {
-      margin: 4px 0 14px;
+      margin: 4px 0 10px;
       font-size: 24px;
       text-align: left;
     }
 
     .subtitle {
-      margin-bottom: 18px;
+      margin-bottom: 12px;
       font-size: 14px;
       color: var(--text-soft);
+    }
+
+    /* Wiki 目錄 Pills */
+    .toc-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .toc-pill {
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.30);
+      color: rgba(230,238,255,0.96);
+      background: radial-gradient(circle at top left,
+                   rgba(140,185,255,0.40), rgba(18,26,70,0.95));
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 0 12px rgba(70,120,255,0.55);
+      transition: 0.18s;
+    }
+    .toc-pill:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 16px rgba(130,200,255,0.9);
     }
 
     .pill-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
     .pill {
       font-size: 11px;
@@ -213,6 +242,11 @@
       display: inline-block;
       margin-top: 4px;
       word-break: break-all;
+    }
+
+    .inline-link {
+      margin-top: 6px;
+      font-size: 13px;
     }
 
     .footer-buttons {
@@ -295,6 +329,19 @@
         元宇宙展覽，以及未來發展方向。
       </div>
 
+      <!-- Wiki 目錄 -->
+      <div class="toc-row">
+        <a class="toc-pill" href="#overview">概覽</a>
+        <a class="toc-pill" href="#history">起源與發展</a>
+        <a class="toc-pill" href="#token">代幣 NXC</a>
+        <a class="toc-pill" href="#nfts">NFT 系列</a>
+        <a class="toc-pill" href="#game">NeoX Catch 遊戲</a>
+        <a class="toc-pill" href="#metaverse">元宇宙展覽</a>
+        <a class="toc-pill" href="#tech">技術棧</a>
+        <a class="toc-pill" href="#future">未來發展</a>
+      </div>
+
+      <!-- 類別 Tag -->
       <div class="pill-row">
         <div class="pill">Base Mainnet</div>
         <div class="pill">ERC-20 Token</div>
@@ -304,7 +351,7 @@
       </div>
 
       <!-- Overview -->
-      <div class="section">
+      <div class="section" id="overview">
         <h2>概覽（Overview）</h2>
         <p>
           <strong>NeoX</strong> 是建基於 <strong>Base Mainnet</strong> 的去中心化 Web3
@@ -315,7 +362,7 @@
       </div>
 
       <!-- History -->
-      <div class="section">
+      <div class="section" id="history">
         <h2>起源與發展歷史（History）</h2>
         <p>
           NeoX 最初以創意數碼藝術項目形式出現，之後逐步加入區塊鏈技術、NFT
@@ -326,7 +373,7 @@
       </div>
 
       <!-- Token -->
-      <div class="section">
+      <div class="section" id="token">
         <h2>NeoX Coin（NXC）代幣</h2>
         <p>
           <strong>NXC</strong> 是 NeoX 生態中的實用代幣（utility token），
@@ -336,10 +383,14 @@
           <strong>合約地址（Base）：</strong><br />
           <span class="mono">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span>
         </p>
+        <p class="inline-link">
+          🔗 想持有 NXC？可以先瀏覽
+          <a href="how-to-buy-zh.html">《如何購買 NeoX（NXC）》教學頁</a>。
+        </p>
       </div>
 
       <!-- NFTs -->
-      <div class="section">
+      <div class="section" id="nfts">
         <h2>NFT 系列（NFT Collections）</h2>
         <p>NeoX 目前包含多個精選 NFT 系列，例如：</p>
         <ul>
@@ -348,10 +399,14 @@
           <li><strong>NeoX Abstract Realms</strong> – 側重概念與抽象表達的藝術系列。</li>
           <li><strong>NeoCoin Genesis Edition（G1）</strong> – NeoX 早期的重要基礎藝術系列。</li>
         </ul>
+        <p class="inline-link">
+          🎨 想睇完整圖庫與更多系列？請前往
+          <a href="nft-projects-zh.html">《NeoX NFT 項目總覽（繁體）》</a>。
+        </p>
       </div>
 
       <!-- Game -->
-      <div class="section">
+      <div class="section" id="game">
         <h2>NeoX Catch 遊戲</h2>
         <p>
           NeoX Catch 是一款以瀏覽器運行的 HTML5 街機式遊戲，玩家需要接住 NeoX
@@ -364,19 +419,27 @@
           <li>以手機和平板為優先的響應式版面</li>
           <li>整體視覺與 NeoX 品牌風格一致</li>
         </ul>
+        <p class="inline-link">
+          🕹 想即刻試玩？可以打開
+          <a href="game-zh.html">《NeoX Catch 遊戲入口（繁體）》</a>。
+        </p>
       </div>
 
       <!-- Metaverse -->
-      <div class="section">
+      <div class="section" id="metaverse">
         <h2>元宇宙展覽（Metaverse Exhibition）</h2>
         <p>
           NeoX 亦在 OnCyber 等平台維持虛擬展覽空間，展示 NFT 作品、3D 虛擬角色、
           氣氛燈光與電影式場景。隨著新系列與實驗空間推出，展覽內容會持續更新。
         </p>
+        <p class="inline-link">
+          🌌 想進一步感受 NeoX 的沉浸式環境，可前往
+          <a href="metaverse-zh.html">《NeoX 元宇宙展覽》中文頁面</a>。
+        </p>
       </div>
 
       <!-- Technology -->
-      <div class="section">
+      <div class="section" id="tech">
         <h2>技術棧（Technology Stack）</h2>
         <p>NeoX 使用的主要技術包括：</p>
         <ul>
@@ -390,7 +453,7 @@
       </div>
 
       <!-- Future -->
-      <div class="section">
+      <div class="section" id="future">
         <h2>未來發展（Future Development）</h2>
         <p>
           未來計劃包括：擴展更多元宇宙場景、新 NFT 系列、AI 輔助微電影項目、
