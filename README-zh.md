@@ -8,6 +8,12 @@ NeoX 是一個去中心化、創新且由社群驅動的 Web3 生態系，
 
 🔗 **正式網站：** [https://neoxcoin.github.io](https://neoxcoin.github.io)
 
+📦 **官方媒體素材包（Press Kit）**  
+提供 NeoX 品牌 Logo、代幣資訊、封面圖、PNG/SVG 素材及完整圖庫，方便媒體報導、上架審核、交易所使用及合作機構引用。
+
+下載連結：  
+https://github.com/neoxcoin/neoxcoin.github.io/releases/latest
+
 ---
 
 ## 📖 簡介
