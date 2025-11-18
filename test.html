@@ -1,164 +1,127 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>NeoX Coin (NXC) – 白皮書（列印版·四頁）</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="NeoX Coin (NXC) 官方白皮書（中文版・列印版，四頁）。涵蓋願景、生態、代幣設計與 Base 主網上的實用性。">
-  <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" type="image/png" />
-
+  <title>NXC Logo Preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    html, body { margin:0; padding:0; }
-    body {
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans TC","Noto Sans",Arial,sans-serif;
-      background:#fff; color:#111;
-      font-size:0.88rem;      /* 比五頁版稍緊湊 */
-      line-height:1.5;
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #050816; /* 只係預覽背景，SVG 本身透明 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
     }
-    .page{page-break-after:always;} .page:last-of-type{page-break-after:auto;}
-    .wrap{max-width:900px;margin:0 auto;padding:32px 40px 56px;}
-    .cover{padding-top:28px;}
-    h1,h2,h3{font-weight:600;margin:0 0 10px;}
-    h1{font-size:1.9rem;margin-top:18px;}
-    h2{font-size:1.22rem;margin-top:20px;} /* 小幅減少段前 */
-    h3{font-size:1.0rem;margin-top:14px;}
-    p{margin:6px 0 8px;}
-    a{color:#1166cc;text-decoration:none;}a:hover{text-decoration:underline;}
-    ul{margin:4px 0 8px;padding-left:20px;}li{margin:2px 0 3px;}
-    .tagline{margin-top:10px;opacity:0.9;}
-    .muted{font-size:0.82rem;opacity:0.8;margin-bottom:10px;}
-    .small{font-size:0.8rem;opacity:0.78;}
-    hr{border:0;border-top:1px solid #e0e0e0;margin:14px 0 12px;}
-    code{font-family:Consolas,monospace;font-size:0.84rem;background:#f4f4f4;padding:1px 4px;border-radius:3px;word-break:break-all;}
-    .box{background:#f7f7f7;border-radius:10px;padding:12px 14px;margin-top:12px;}
-    .box ul{margin-top:4px;}
-    .cover-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px;}
-    .cover-logo-left img{width:70px;height:auto;}
-    .cover-coin{text-align:center;margin-bottom:10px;}
-    .cover-coin img{width:120px;height:auto;}
-    .page-footer{text-align:center;font-size:0.78rem;color:#777;border-top:1px solid #e3e3e3;padding-top:6px;margin-top:20px;}
   </style>
 </head>
 <body>
 
-  <!-- 第 1 頁：封面 + 1-2 章 -->
-  <div class="page">
-    <div class="wrap cover">
-      <div class="cover-top">
-        <div class="cover-logo-left">
-          <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Coin (NXC) 標誌">
-        </div>
-        <div></div>
-      </div>
+  <!-- 🔵 NeoX / NXC 強光藍色 Logo（512x512，透明背景） -->
+  <svg
+    width="256"
+    height="256"
+    viewBox="0 0 512 512"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <!-- X 主體藍色漸變 -->
+      <linearGradient id="xFill" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#33CCFF" />
+        <stop offset="40%" stop-color="#1A82FF" />
+        <stop offset="100%" stop-color="#0050C8" />
+      </linearGradient>
 
-      <!-- 與英文版相同的金幣圖路徑 -->
-      <div class="cover-coin">
-        <img src="https://neoxcoin.github.io/%20NeoXCoin.png" alt="NeoX 金幣">
-      </div>
+      <!-- X 邊緣光 -->
+      <linearGradient id="xEdge" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#8BE6FF" />
+        <stop offset="50%" stop-color="#34B9FF" />
+        <stop offset="100%" stop-color="#7FD4FF" />
+      </linearGradient>
 
-      <h1>NeoX Coin (NXC) – 白皮書</h1>
-      <p class="tagline">NeoX Coin（NXC）是部署於 Base 主網的社群驅動實用型代幣，為 NeoX 生態中的 NFT、數位藝術、輕量小遊戲與元宇宙展覽空間提供動力。</p>
-      <p class="muted">版本 1.2 · 最後更新：2025 年 11 月 11 日</p>
+      <!-- 強光 Glow 效果 -->
+      <filter id="xGlow" x="-40%" y="-40%" width="180%" height="180%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur" />
+        <feColorMatrix
+          in="blur"
+          type="matrix"
+          values="
+            0 0 0 0 0.20
+            0 0 0 0 0.65
+            0 0 0 0 1
+            0 0 0 0.9 0"
+          result="glow"
+        />
+        <feMerge>
+          <feMergeNode in="glow" />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
 
-      <hr>
+      <!-- NXC 金屬銀漸變 -->
+      <linearGradient id="metalFill" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%"   stop-color="#9FA5AE" />
+        <stop offset="25%"  stop-color="#ECEFF3" />
+        <stop offset="50%"  stop-color="#A8AFBA" />
+        <stop offset="75%"  stop-color="#F5F7FA" />
+        <stop offset="100%" stop-color="#7D838E" />
+      </linearGradient>
 
-      <h2>1. 簡介（Abstract）</h2>
-      <p>NeoX Coin（NXC）是一枚建立於 Base Mainnet 的 ERC-20 代幣，旨在成為 NeoX 生態的核心實用代幣。NeoX 不僅著眼於投機，而是強調創意與輕鬆有趣的 Web3 體驗，連結 NFT、互動內容與虛擬展覽。</p>
+      <!-- 金屬陰影 -->
+      <filter id="textShadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.55" />
+      </filter>
+    </defs>
 
-      <h2>2. 願景與動機（Vision & Motivation）</h2>
-      <p><strong>「Web3 不必只看價格走勢——它也可以是關於藝術、故事與體驗。」</strong></p>
-      <ul>
-        <li><strong>藝術優先：</strong>在 NeoX 世界裡，NFT 代表故事與美學，而不僅是資產。</li>
-        <li><strong>公平啟動：</strong>無預售／無私募，讓社群有更平均的參與起點。</li>
-        <li><strong>多形態體驗：</strong>涵蓋插畫、動畫、音樂、遊戲與展覽等多媒體形式。</li>
-        <li><strong>低手續費與可及性：</strong>基於 Base 主網的低 Gas 與全球可接觸性。</li>
-      </ul>
+    <!-- 🔷 X Glow 背光 -->
+    <g filter="url(#xGlow)">
+      <!-- 左斜劃 -->
+      <rect
+        x="186" y="80"
+        width="60" height="260"
+        rx="26" ry="26"
+        fill="url(#xFill)"
+        stroke="url(#xEdge)"
+        stroke-width="4"
+        transform="rotate(45 216 210)"
+      />
+      <!-- 右斜劃 -->
+      <rect
+        x="266" y="80"
+        width="60" height="260"
+        rx="26" ry="26"
+        fill="url(#xFill)"
+        stroke="url(#xEdge)"
+        stroke-width="4"
+        transform="rotate(-45 296 210)"
+      />
+    </g>
 
-      <div class="page-footer">第 1 頁，共 4 頁</div>
-    </div>
-  </div>
+    <!-- 🔶 X 中央高光（令中間更加亮，接近你原圖效果） -->
+    <radialGradient id="xCenterGlow" cx="50%" cy="32%" r="35%">
+      <stop offset="0%" stop-color="#6FE2FF" stop-opacity="1" />
+      <stop offset="40%" stop-color="#2FAEFF" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0050C8" stop-opacity="0" />
+    </radialGradient>
+    <circle cx="256" cy="180" r="120" fill="url(#xCenterGlow)" />
 
-  <!-- 第 2 頁：3、4、5 章合併 -->
-  <div class="page"><div class="wrap">
-    <h2>3. 技術基礎（Technology Stack）</h2>
-    <ul>
-      <li><strong>區塊鏈：</strong>Base Mainnet（以太坊第二層）</li>
-      <li><strong>代幣標準：</strong>ERC-20</li>
-      <li><strong>合約地址：</strong> <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code></li>
-      <li><strong>區塊鏈瀏覽器：</strong> <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">於 BaseScan 查看</a></li>
-    </ul>
-    <p>NeoX 採用 thirdweb 的標準化智能合約框架，以降低部署風險並兼顧簡潔與安全性。</p>
-
-    <h2>4. 代幣設計（Token Design）</h2>
-    <ul>
-      <li><strong>無 rebase、反射或其他複雜機制。</strong></li>
-      <li><strong>無預售／私募：</strong>以公平啟動模式發行。</li>
-      <li><strong>供應固定：</strong>於部署時設定，目前無額外增發計畫。</li>
-      <li><strong>管理權限：</strong>僅限 thirdweb 之標準安全參數範圍。</li>
-    </ul>
-
-    <h2>5. NXC 之用途（Utility）</h2>
-    <ul>
-      <li><strong>NFT 生態：</strong>用於特別鑄造、限量發行、收藏家回饋與通行憑證等。</li>
-      <li><strong>小遊戲：</strong>用於 <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a> 解鎖外觀與獎勵。</li>
-      <li><strong>展覽體驗：</strong>於 <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX OnCyber 展館</a> 解鎖沉浸式互動。</li>
-      <li><strong>社群活動：</strong>用於獎勵、任務與合作活動。</li>
-    </ul>
-
-    <div class="page-footer">第 2 頁，共 4 頁</div>
-  </div></div>
-
-  <!-- 第 3 頁：6、7 章 -->
-  <div class="page"><div class="wrap">
-    <h2>6. 生態組成（Ecosystem Components）</h2>
-    <ul>
-      <li><strong>NFT 系列：</strong>如 <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">NeoX Timekeeper Edition</a>、Van Gogh Visions、Abstract Realms。</li>
-      <li><strong>網頁小遊戲：</strong>以互動體驗擴展 NeoX 的藝術世界觀。</li>
-      <li><strong>虛擬展覽：</strong>以 OnCyber 提供沉浸式 3D 觀展體驗。</li>
-      <li><strong>官方錢包：</strong> <code>0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2</code></li>
-    </ul>
-
-    <h2>7. 發展路線圖（Roadmap）</h2>
-    <ul>
-      <li>階段 1 — 基礎與品牌建立</li>
-      <li>階段 2 — 體驗與互動擴展</li>
-      <li>階段 3 — 實用功能深化</li>
-      <li>階段 4 — 社群與合作拓展</li>
-    </ul>
-
-    <div class="page-footer">第 3 頁，共 4 頁</div>
-  </div></div>
-
-  <!-- 第 4 頁：8、9 章 -->
-  <div class="page"><div class="wrap">
-    <h2>8. 風險與免責（Risks & Disclaimer）</h2>
-    <ul>
-      <li>NXC 並非金融商品，亦不提供任何收益保證。</li>
-      <li>智能合約仍可能存在技術性風險與脆弱點。</li>
-      <li>各地監管框架不同，且可能隨時間變動。</li>
-    </ul>
-
-    <p class="small">本文檔不構成任何財務或法律建議。請自行研究（DYOR）並遵守所在地法律法規。</p>
-
-    <h2>9. 官方連結與聯絡</h2>
-    <div class="box">
-      <ul>
-        <li><strong>官方網站：</strong> <a href="https://neoxcoin.github.io">neoxcoin.github.io</a></li>
-        <li><strong>中文版首頁：</strong> <a href="https://neoxcoin.github.io/index-zh.html">index-zh.html</a></li>
-        <li><strong>BaseScan：</strong> <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">查看 NXC</a></li>
-        <li><strong>GeckoTerminal 池：</strong> <a href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c">NXC/WETH ✅</a></li>
-        <li><strong>NeoX Game：</strong> <a href="https://neoxcoin.github.io/neox-game">Catch the Coins</a></li>
-        <li><strong>OnCyber：</strong> <a href="https://oncyber.io/neoxdynamic">展覽空間</a></li>
-        <li><strong>OpenSea 錢包：</strong> <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2">NeoX 專案錢包</a></li>
-        <li><strong>Twitter：</strong> <a href="https://x.com/neox__official">@neox__official</a></li>
-        <li><strong>Instagram：</strong> <a href="https://instagram.com/neox__official">@neox__official</a></li>
-        <li><strong>YouTube：</strong> <a href="https://www.youtube.com/@neox_officials">@neox_officials</a></li>
-        <li><strong>Email：</strong> <a href="mailto:neoxcoin@outlook.com">neoxcoin@outlook.com</a></li>
-      </ul>
-    </div>
-
-    <div class="page-footer">第 4 頁，共 4 頁</div>
-  </div></div>
+    <!-- 🪙 NXC 金屬字 -->
+    <text
+      x="256"
+      y="365"
+      text-anchor="middle"
+      font-size="86"
+      font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+      fill="url(#metalFill)"
+      filter="url(#textShadow)"
+      letter-spacing="8"
+    >
+      NXC
+    </text>
+  </svg>
 
 </body>
 </html>
