@@ -8,6 +8,13 @@ that blends **art, gaming, and blockchain** to shape the future of digital exper
 
 🔗 **Live Site:** [https://neoxcoin.github.io](https://neoxcoin.github.io)
 
+📦 **Press Kit (Official Release):**  
+https://github.com/neoxcoin/neoxcoin.github.io/releases
+
+
+## Overview
+NeoX Coin (NXC) is a utility-driven token built on Base Mainnet designed to power...
+
 ---
 
 ## 📖 Overview
