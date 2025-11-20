@@ -1,57 +1,318 @@
+/* 全局背景 + 排版 */
 body {
-    background-color: #0d1117; /* 深藍黑色背景 */
-    color: #00ff66; /* 霓虹綠文字 */
-    font-family: 'Courier New', Courier, monospace;
-    margin: 0;
-    padding: 20px;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at top, #1d2956 0, #020617 55%, #000 100%);
+  color: #e5fffa;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "PingFang TC", "Noto Sans", Arial, sans-serif;
 }
 
-#game-container {
-    max-width: 800px;
-    margin: 0 auto;
-    border: 2px solid #00ff66;
-    padding: 20px;
-    box-shadow: 0 0 15px #00ff66;
+/* 外殼卡片 */
+#game-shell {
+  width: min(1100px, 98vw);
+  max-height: 94vh;
+  padding: 18px 18px 20px;
+  border-radius: 18px;
+  border: 1px solid rgba(56, 189, 248, 0.55);
+  box-shadow:
+    0 0 40px rgba(56, 189, 248, 0.4),
+    0 0 120px rgba(14, 165, 233, 0.28);
+  background: radial-gradient(circle at top left, #020617 0, #020617 36%, #020617 60%)
+    padding-box,
+    linear-gradient(135deg, #0ea5e9, #22c55e, #e11d48) border-box;
+  display: flex;
+  flex-direction: column;
 }
 
-h1 {
-    color: #ff004c; /* 霓虹紅標題 */
-    text-align: center;
-    text-shadow: 0 0 5px #ff004c;
+/* 頂部標題列 */
+#game-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  padding: 4px 6px 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.4);
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: radial-gradient(circle at 30% 20%, #bef264, #22c55e, #22d3ee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  color: #020617;
+  box-shadow: 0 0 14px rgba(74, 222, 128, 0.85);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #f9fafb;
+  text-shadow: 0 0 8px rgba(248, 250, 252, 0.35);
+}
+
+.brand-sub {
+  font-size: 13px;
+  color: #7dd3fc;
+}
+
+.tagline {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* 主體 layout */
+#game-main {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(0, 1.4fr);
+  gap: 18px;
+  padding: 10px 2px 0;
+  height: calc(100% - 64px);
+}
+
+/* 左側面板 */
+#left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 狀態板 */
 #status-panel {
-    border: 1px dashed #00ff66;
-    padding: 10px;
-    margin-bottom: 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(94, 234, 212, 0.4);
+  background: radial-gradient(circle at top, #020617 0, #020617 80%);
+  padding: 12px 14px 10px;
+  font-size: 13px;
 }
 
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 3px 0;
+  color: #e5e7eb;
+}
+
+.status-row span:first-child {
+  color: #9ca3af;
+}
+
+/* Hull bar */
+.status-bar-row {
+  margin-top: 6px;
+}
+
+.hp-bar {
+  flex: 1;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  overflow: hidden;
+  box-shadow: inset 0 0 4px rgba(15, 23, 42, 0.9);
+}
+
+#damage-bar-fill {
+  height: 100%;
+  width: 3%;
+  background: linear-gradient(90deg, #22c55e, #eab308, #ef4444);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+  transition: width 0.35s ease, box-shadow 0.2s ease;
+}
+
+/* 飛船卡片（純 CSS 圖形） */
+#ship-card {
+  position: relative;
+  border-radius: 16px;
+  padding: 14px 12px 10px;
+  background: radial-gradient(circle at top, #0b1120 0, #020617 68%);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  overflow: hidden;
+}
+
+.ship-glow {
+  position: absolute;
+  inset: -40%;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(56, 189, 248, 0.16), transparent 55%),
+    radial-gradient(circle at 70% 80%, rgba(34, 197, 94, 0.16), transparent 55%);
+  pointer-events: none;
+}
+
+.ship-body {
+  position: relative;
+  margin: 10px auto 6px;
+  width: 118px;
+  height: 80px;
+  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.9));
+}
+
+.ship-core {
+  position: absolute;
+  inset: 18px 26px;
+  border-radius: 40% 40% 50% 50%;
+  background: linear-gradient(145deg, #0ea5e9, #38bdf8, #a5f3fc);
+}
+
+.ship-wing {
+  position: absolute;
+  top: 26px;
+  width: 44px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 20% 20%, #22c55e, #0f766e);
+  opacity: 0.85;
+}
+
+.wing-left {
+  left: 0;
+  transform: rotate(-18deg);
+}
+
+.wing-right {
+  right: 0;
+  transform: rotate(18deg);
+}
+
+.ship-caption {
+  position: relative;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #cbd5f5;
+  text-align: center;
+}
+
+/* 左側修理按鈕 */
+#info-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+#info-actions button {
+  background: linear-gradient(135deg, #22c55e, #a3e635);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #020617;
+  cursor: pointer;
+  box-shadow: 0 0 14px rgba(34, 197, 94, 0.75);
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    filter 0.12s ease;
+}
+
+#info-actions button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 0 18px rgba(190, 242, 100, 0.9);
+}
+
+/* 右邊：Log + 動作按鈕 */
+#right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Log 面板 */
 #log-panel {
-    background-color: #1a1f26;
-    min-height: 150px;
-    padding: 15px;
-    margin-bottom: 20px;
-    overflow-y: auto;
-    border: 1px solid #00ff66;
+  flex: 1;
+  min-height: 180px;
+  max-height: 380px;
+  padding: 12px 14px;
+  background: rgba(15, 23, 42, 0.92);
+  border-radius: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  overflow-y: auto;
+  font-size: 13px;
 }
 
 .event-message {
-    margin: 5px 0;
+  margin: 6px 0;
+  line-height: 1.5;
 }
 
-button {
-    background-color: #00ff66;
-    color: #0d1117;
-    border: none;
-    padding: 10px 15px;
-    margin: 5px;
-    cursor: pointer;
-    font-family: inherit;
-    transition: background-color 0.3s;
+/* 動作按鈕列 */
+#action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-button:hover {
-    background-color: #ff004c;
-    color: #fff;
-    box-shadow: 0 0 5px #ff004c;
+#action-buttons button {
+  flex: 1;
+  min-width: 180px;
+  border-radius: 999px;
+  border: 1px solid rgba(56, 189, 248, 0.7);
+  background: radial-gradient(circle at top, #0f172a 0, #020617 80%);
+  padding: 9px 12px;
+  font-size: 13px;
+  color: #e5f2ff;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.45);
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    border-color 0.12s ease, background 0.12s ease;
+}
+
+#action-buttons button:hover {
+  transform: translateY(-1px);
+  border-color: #f97316;
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.78);
+  background: radial-gradient(circle at top, #1e1b4b 0, #020617 80%);
+}
+
+/* 滾動條美化（可有可無） */
+#log-panel::-webkit-scrollbar {
+  width: 6px;
+}
+#log-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+#log-panel::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.7);
+  border-radius: 999px;
+}
+
+/* RWD：窄屏用直向 stack */
+@media (max-width: 780px) {
+  #game-shell {
+    max-height: none;
+    height: auto;
+    margin: 10px 0;
+  }
+
+  #game-main {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  #right-panel {
+    min-height: 260px;
+  }
 }
