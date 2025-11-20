@@ -1,0 +1,57 @@
+body {
+    background-color: #0d1117; /* 深藍黑色背景 */
+    color: #00ff66; /* 霓虹綠文字 */
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 20px;
+}
+
+#game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    border: 2px solid #00ff66;
+    padding: 20px;
+    box-shadow: 0 0 15px #00ff66;
+}
+
+h1 {
+    color: #ff004c; /* 霓虹紅標題 */
+    text-align: center;
+    text-shadow: 0 0 5px #ff004c;
+}
+
+#status-panel {
+    border: 1px dashed #00ff66;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+#log-panel {
+    background-color: #1a1f26;
+    min-height: 150px;
+    padding: 15px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    border: 1px solid #00ff66;
+}
+
+.event-message {
+    margin: 5px 0;
+}
+
+button {
+    background-color: #00ff66;
+    color: #0d1117;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #ff004c;
+    color: #fff;
+    box-shadow: 0 0 5px #ff004c;
+}
