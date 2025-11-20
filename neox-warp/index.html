@@ -1,34 +1,91 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>躍遷殘骸：邊緣碎帶</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoX: Edge of the Rift – 躍遷殘骸：邊緣碎帶</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game-container">
-        <h1>躍遷殘骸：邊緣碎帶</h1>
+  <div id="game-shell">
+    <!-- 頂部標題列 -->
+    <header id="game-header">
+      <div class="brand">
+        <div class="brand-mark">NX</div>
+        <div class="brand-text">
+          <div class="brand-title">NeoX: Edge of the Rift</div>
+          <div class="brand-sub">《躍遷殘骸：邊緣碎帶》</div>
+        </div>
+      </div>
+      <div class="tagline">
+        Text-based Space Survival · 隨機事件 · 資源管理
+      </div>
+    </header>
 
+    <!-- 主要版面：左邊狀態 + 飛船卡片、右邊事件 log -->
+    <main id="game-main">
+      <section id="left-panel">
+        <!-- 狀態板 -->
         <div id="status-panel">
-            <p><strong>當前星系：</strong> <span id="sector">1</span> / 5</p>
-            <p><strong>燃料庫存：</strong> <span id="fuel">15</span> 單位</p>
-            <p><strong>廢料庫存：</strong> <span id="scrap">100</span> 單位</p>
-            <p><strong>飛船損耗：</strong> <span id="damage">3</span> %</p>
-        </div>
-        
-        <div id="log-panel">
-            <p class="event-message">你已緊急躍遷至「邊緣碎帶」。燃料和資源告急。艦長，請選擇下一個跳躍點。</p>
+          <div class="status-row">
+            <span>當前星系</span>
+            <span><strong id="sector">1</strong> / 5</span>
+          </div>
+          <div class="status-row">
+            <span>燃料庫存</span>
+            <span><strong id="fuel">15</strong> 單位</span>
+          </div>
+          <div class="status-row">
+            <span>廢料庫存</span>
+            <span><strong id="scrap">100</strong> 單位</span>
+          </div>
+          <div class="status-row">
+            <span>飛船損耗</span>
+            <span><strong id="damage">3</strong> %</span>
+          </div>
+
+          <div class="status-row status-bar-row">
+            <span>Hull 狀態</span>
+            <div class="hp-bar">
+              <div id="damage-bar-fill"></div>
+            </div>
+          </div>
         </div>
 
-        <div id="action-buttons">
+        <!-- 飛船卡片（圖像區域，可之後再換成真圖片） -->
+        <div id="ship-card">
+          <div class="ship-glow"></div>
+          <div class="ship-body">
+            <div class="ship-core"></div>
+            <div class="ship-wing wing-left"></div>
+            <div class="ship-wing wing-right"></div>
+          </div>
+          <div class="ship-caption">
+            NX-07「殘骸巡航者」<br>
+            目前停留於邊緣碎帶 · 狀態不穩定
+          </div>
         </div>
 
+        <!-- 固定操作按鈕 -->
         <div id="info-actions">
-            <button onclick="upgradeShip()">修理船體 (50 廢料, 1 納米晶)</button>
+          <button onclick="upgradeShip()">修理船體 (50 廢料, 1 納米晶)</button>
         </div>
-    </div>
+      </section>
 
-    <script src="script.js"></script>
+      <!-- 右邊：事件 log + 選項按鈕 -->
+      <section id="right-panel">
+        <div id="log-panel">
+          <p class="event-message">
+            你已緊急躍遷至「邊緣碎帶」。燃料和資源告急。<br>
+            船體受損，導航系統不穩定。艦長，請選擇下一個跳躍點……
+          </p>
+        </div>
+
+        <div id="action-buttons"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
