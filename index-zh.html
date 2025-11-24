@@ -28,6 +28,8 @@
   <meta property="og:image" content="https://neoxcoin.io/XNXC.png" />
   <meta property="og:url" content="https://neoxcoin.io/index-zh.html" />
   <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:locale:alternate" content="en_US" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -69,11 +71,15 @@
     ]
   }
   </script>
+
+  <!-- Perf: preload hero bg -->
+  <link rel="preload" as="image" href="https://neoxcoin.io/NeoXbackG.JPG" />
+
   <style>
     body {
       margin: 0;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url('https://neoxcoin.github.io/NeoXbackG.JPG');
+      background-image: url('https://neoxcoin.io/NeoXbackG.JPG');
       background-size: cover;
       background-position: center;
       font-family: Arial, sans-serif;
@@ -145,7 +151,6 @@
       font-size: 15px;
     }
 
-    /* 動畫縮短時間 */
     .headline span:nth-child(1) { animation-delay: 0.5s; }
     .headline span:nth-child(2) { animation-delay: 1.5s; }
     .headline span:nth-child(3) { animation-delay: 2.5s; }
@@ -153,7 +158,7 @@
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     .nav-bar {
@@ -182,42 +187,6 @@
       justify-content: center;
       margin-top: 30px;
     }
-    
-        .market-link {
-      margin-top: 14px;
-    }
-
-    .market-btn {
-      display: inline-block;
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      text-decoration: none;
-      color: #ffd76a;
-      border: 1px solid rgba(255, 215, 106, 0.45);
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
-      transition: all 0.3s ease;
-    }
-
-    .market-btn:hover {
-      background: linear-gradient(90deg, #1c1c3c, #3a0088);
-      color: #fff;
-      border-color: #ffd700;
-      box-shadow: 0 0 14px rgba(255, 215, 106, 0.6);
-      transform: translateY(-2px);
-    }
-
-    @media (max-width: 600px) {
-      .market-link {
-        margin-top: 10px;
-      }
-      .market-btn {
-        font-size: 13px;
-        padding: 7px 16px;
-      }
-    }
 
     .btn {
       background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
@@ -242,8 +211,8 @@
     }
 
     .emoji-icon {
-      width: 2.0em;
-      height: 2.0em;
+      width: 2em;
+      height: 2em;
       object-fit: contain;
       pointer-events: none;
     }
@@ -251,7 +220,7 @@
     .btn[data-tooltip]:hover::after {
       content: attr(data-tooltip);
       position: absolute;
-      top: -38px; /* 改到上面，避免出視窗 */
+      top: -38px;
       left: 50%;
       transform: translateX(-50%);
       background: rgba(0,0,0,0.8);
@@ -263,8 +232,48 @@
       z-index: 1000;
     }
 
+    /* 市場按鈕 */
+    .market-link {
+      margin-top: 14px;
+    }
+    .market-btn {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      text-decoration: none;
+      color: #ffd76a;
+      border: 1px solid rgba(255, 215, 106, 0.45);
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(4px);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
+      transition: all 0.3s ease;
+    }
+    .market-btn:hover {
+      background: linear-gradient(90deg, #1c1c3c, #3a0088);
+      color: #fff;
+      border-color: #ffd700;
+      box-shadow: 0 0 14px rgba(255, 215, 106, 0.6);
+      transform: translateY(-2px);
+    }
+
+    /* Social icons strip: between Gecko button & footer */
+    .social-icons {
+      margin: 40px 0 16px;
+      text-align: center;
+    }
+    .social-icons img {
+      width: 28px;
+      margin: 0 14px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .social-icons img:hover {
+      transform: scale(1.15);
+      opacity: 0.85;
+    }
+
     .footer {
-      margin-top: 50px;
+      margin-top: 10px;
       font-size: 13px;
       opacity: 0.6;
     }
@@ -280,29 +289,50 @@
     }
     .footer a:hover { text-decoration: underline; }
 
+    .tw-icon {
+      width: 22px;
+      height: 22px;
+      margin-right: 8px;
+      border-radius: 6px;
+    }
+    .market-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
     @media (max-width: 600px) {
-      .nav-bar { flex-direction: column; align-items: center; gap: 12px; }
-      .btn-row { flex-direction: column; align-items: center; }
-      .coin { width: 144px; max-width: 100%; }
-    }
-    .tw-icon{
-      width:22px;
-      height:22px;
-      margin-right:8px;
-      border-radius:6px;
-    }
-    .market-icon{
-      width:24px;
-      height:24px;
-      margin-right:8px;
-      vertical-align:middle;
+      .nav-bar {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .btn-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .coin {
+        width: 144px;
+        max-width: 100%;
+      }
+      .market-link {
+        margin-top: 10px;
+      }
+      .market-btn {
+        font-size: 13px;
+        padding: 7px 16px;
+      }
+      .social-icons {
+        margin: 32px 0 12px;
+      }
     }
   </style>
 </head>
 <body>
   <!-- Logo → 返回中文版首頁 -->
   <a href="index-zh.html">
-    <img class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo" />
+    <img class="logo" src="https://neoxcoin.io/apple-touch-icon.png" alt="NeoX Logo" />
   </a>
 
   <!-- 語言切換 -->
@@ -314,7 +344,7 @@
   <div class="container">
     <h1 class="tagline">Web3 革命，由 NeoX 引領</h1>
     <p class="subtagline">去中心化創意生態：NFT、遊戲與元宇宙</p>
-    <img class="coin" src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin"/>
+    <img class="coin" src="https://neoxcoin.io/NeoXCoin360.gif" alt="NeoX Coin" />
     
     <div class="nav-bar">
       <a href="what-is-neox-zh.html">關於 NeoX</a>
@@ -342,17 +372,46 @@
              alt="thirdweb logo">
         購買 NXC
       </a>
-      <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/" data-tooltip="⚠️ 將跳轉至 MetaMask。若信任此連結，請點擊『繼續』">🦊 使用 MetaMask 購買</a>
-      <a class="btn" href="add-to-metamask-zh.html"><img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NXC Icon">加入至 MetaMask</a>
+      <a class="btn"
+         href="https://metamask.app.link/dapp/neoxcoin.github.io/"
+         data-tooltip="⚠️ 將跳轉至 MetaMask。若信任此連結，請點擊『繼續』">
+        🦊 使用 MetaMask 購買
+      </a>
+      <a class="btn" href="add-to-metamask-zh.html">
+        <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NXC Icon">
+        加入至 MetaMask
+      </a>
     </div>
     
-        <!-- 市場數據：GeckoTerminal -->
+    <!-- 市場數據：GeckoTerminal -->
     <div class="market-link">
-      <a class="market-btn" href="https://geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c" target="_blank" rel="noopener noreferrer">
+      <a class="market-btn"
+         href="https://geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c"
+         target="_blank"
+         rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/gecko_icon.PNG"
              class="market-icon"
              alt="GeckoTerminal logo">
         在 GeckoTerminal 查看 NXC
+      </a>
+    </div>
+
+    <!-- Social icons row: between Gecko button & footer -->
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank" rel="noopener noreferrer">
+        <img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook">
+      </a>
+      <a href="https://x.com/neox__official" target="_blank" rel="noopener noreferrer">
+        <img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X (Twitter)">
+      </a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank" rel="noopener noreferrer">
+        <img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram">
+      </a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank" rel="noopener noreferrer">
+        <img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok">
+      </a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank" rel="noopener noreferrer">
+        <img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube">
       </a>
     </div>
 
