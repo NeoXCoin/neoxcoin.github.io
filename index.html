@@ -288,6 +288,28 @@
       margin-right: 8px;
       vertical-align: middle;
     }
+    
+    /* Fix: remove blue underline / dot under icons */
+    .social-icons a {
+      display: inline-block;
+      text-decoration: none !important;
+      border-bottom: none !important;
+      color: inherit !important;
+    }
+
+    .social-icons {
+      margin: 40px 0 16px;
+      text-align: center;
+    }
+    .social-icons img {
+      width: 28px;
+      margin: 0 14px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .social-icons img:hover {
+      transform: scale(1.15);
+      opacity: 0.85;
+    }
 
     /* Footer */
     .footer {
@@ -395,6 +417,49 @@
              class="market-icon"
              alt="GeckoTerminal Logo">
         View NXC on GeckoTerminal
+      </a>
+    </div>
+    
+    <!-- Social icons row: between Gecko button & footer -->
+    <div class="social-icons">
+      <a
+        href="https://www.facebook.com/profile.php?id=61579442687473"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" />
+      </a>
+
+      <a
+        href="https://x.com/neox__official"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X (Twitter)" />
+      </a>
+
+      <a
+        href="https://www.instagram.com/neox__official/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" />
+      </a>
+
+      <a
+        href="https://www.tiktok.com/@neox.world"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" />
+      </a>
+
+      <a
+        href="https://www.youtube.com/@NeoX_officials"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" />
       </a>
     </div>
 
