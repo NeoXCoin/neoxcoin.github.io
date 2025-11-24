@@ -5,14 +5,14 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
   <!-- ▼ SEO -->
   <title>NeoX Coin (NXC) – Web3 藝術、代幣與元宇宙體驗</title>
   <meta name="description" content="探索 NeoX Coin (NXC) —— 基於 Base Mainnet 的 Web3 生態系統，結合 NFT、互動遊戲與元宇宙展覽，開啟去中心化創意新時代。" />
-  <meta name="keywords" content="NeoX, NeoX Coin, NXC, NFT, Web3, 元宇宙, 加密貨幣, Base Mainnet, NeoX 遊戲, NeoX NFT, Timekeeper Edition, Van Gogh Visions, Abstract Realms" />
+  <meta name="keywords" content="NeoX, NeoX Coin, NXC, NFT, Web3, 元宇宙, 加密貨幣, Base Mainnet, NeoX 遊戲, NeoX NFT, NeoX Timekeeper Edition, NeoX Van Gogh, NeoX Abstract Realms" />
   <meta name="author" content="NeoX Official" />
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
 
@@ -29,7 +29,6 @@
   <meta property="og:url" content="https://neoxcoin.io/index-zh.html" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="zh_TW" />
-  <meta property="og:locale:alternate" content="en_US" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -72,9 +71,6 @@
   }
   </script>
 
-  <!-- Perf: preload hero bg -->
-  <link rel="preload" as="image" href="https://neoxcoin.io/NeoXbackG.JPG" />
-
   <style>
     body {
       margin: 0;
@@ -96,7 +92,7 @@
       z-index: 999;
     }
 
-    /* ---- 語言切換 ---- */
+    /* 語言切換 */
     .language-switch {
       position: absolute;
       top: 20px;
@@ -105,7 +101,7 @@
       z-index: 9999;
     }
     .language-switch a {
-      color: white;
+      color: #fff;
       text-decoration: none;
       margin: 0 8px;
     }
@@ -121,11 +117,12 @@
     }
 
     .tagline {
-      font-size: 18px;
-      margin-top: 100px;
-      opacity: 0.9;
+      font-size: 20px;
+      margin-top: 90px;
+      opacity: 0.95;
+      font-weight: 600;
     }
-    
+
     .subtagline {
       font-size: 16px;
       opacity: 0.85;
@@ -138,7 +135,7 @@
     }
 
     .headline {
-      margin: 22px 0 30px 0;
+      margin: 22px 0 30px;
       line-height: 1.6;
       text-align: center;
     }
@@ -191,15 +188,15 @@
     .btn {
       background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
       border: 3px solid #e0e0e0;
-      color: black;
+      color: #000;
       padding: 12px 24px;
       border-radius: 12px;
       font-size: 16px;
       cursor: pointer;
       text-decoration: none;
       min-width: 180px;
-      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-      display: inline-flex;
+      box-shadow: 0 4px 8px rgba(255,255,255,.2);
+      display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
@@ -207,23 +204,24 @@
     }
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
+      box-shadow: 0 6px 12px rgba(255,255,255,.3);
     }
 
     .emoji-icon {
       width: 2em;
       height: 2em;
       object-fit: contain;
+      vertical-align: -3px;
       pointer-events: none;
     }
-    
+
     .btn[data-tooltip]:hover::after {
       content: attr(data-tooltip);
       position: absolute;
       top: -38px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(0,0,0,0.8);
+      background: rgba(0,0,0,.8);
       color: #fff;
       padding: 6px 10px;
       border-radius: 6px;
@@ -232,10 +230,10 @@
       z-index: 1000;
     }
 
-    /* 市場按鈕 */
     .market-link {
-      margin-top: 14px;
+      margin-top: 18px;
     }
+
     .market-btn {
       display: inline-block;
       padding: 8px 18px;
@@ -247,8 +245,9 @@
       background: rgba(0, 0, 0, 0.35);
       backdrop-filter: blur(4px);
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
+
     .market-btn:hover {
       background: linear-gradient(90deg, #1c1c3c, #3a0088);
       color: #fff;
@@ -257,7 +256,14 @@
       transform: translateY(-2px);
     }
 
-    /* Social icons strip: between Gecko button & footer */
+    .market-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    /* Social icons strip */
     .social-icons {
       margin: 40px 0 16px;
       text-align: center;
@@ -275,13 +281,11 @@
     .footer {
       margin-top: 10px;
       font-size: 13px;
-      opacity: 0.6;
+      opacity: .6;
     }
-
     .footer-links {
       margin-bottom: 8px;
     }
-
     .footer a {
       color: #ccc;
       text-decoration: none;
@@ -289,39 +293,26 @@
     }
     .footer a:hover { text-decoration: underline; }
 
-    .tw-icon {
-      width: 22px;
-      height: 22px;
-      margin-right: 8px;
-      border-radius: 6px;
-    }
-    .market-icon {
-      width: 24px;
-      height: 24px;
-      margin-right: 8px;
-      vertical-align: middle;
+    .tw-icon{
+      width:22px;
+      height:22px;
+      margin-right:8px;
+      border-radius:6px;
     }
 
-    @media (max-width: 600px) {
-      .nav-bar {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
+    @media (max-width:600px){
+      .nav-bar{
+        flex-direction:column;
+        align-items:center;
+        gap:12px;
       }
-      .btn-row {
-        flex-direction: column;
-        align-items: center;
+      .btn-row{
+        flex-direction:column;
+        align-items:center;
       }
-      .coin {
-        width: 144px;
-        max-width: 100%;
-      }
-      .market-link {
-        margin-top: 10px;
-      }
-      .market-btn {
-        font-size: 13px;
-        padding: 7px 16px;
+      .coin{
+        width:144px;
+        max-width:100%;
       }
       .social-icons {
         margin: 32px 0 12px;
@@ -337,15 +328,17 @@
 
   <!-- 語言切換 -->
   <div class="language-switch">
-    <a href="index.html">EN</a> | <a href="index-zh.html">繁</a> | <a href="index-global.html">🌍</a>
+    <a href="index.html">EN</a> |
+    <a href="index-zh.html">繁</a> |
+    <a href="index-global.html">🌍</a>
   </div>
 
-  <!-- 主內容 -->
   <div class="container">
     <h1 class="tagline">Web3 革命，由 NeoX 引領</h1>
     <p class="subtagline">去中心化創意生態：NFT、遊戲與元宇宙</p>
-    <img class="coin" src="https://neoxcoin.io/NeoXCoin360.gif" alt="NeoX Coin" />
-    
+
+    <img class="coin" src="https://neoxcoin.io/NeoXCoin360.gif" alt="NeoX Coin"/>
+
     <div class="nav-bar">
       <a href="what-is-neox-zh.html">關於 NeoX</a>
       <a href="how-to-buy-zh.html">購買方法</a>
@@ -382,13 +375,12 @@
         加入至 MetaMask
       </a>
     </div>
-    
+
     <!-- 市場數據：GeckoTerminal -->
     <div class="market-link">
       <a class="market-btn"
          href="https://geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c"
-         target="_blank"
-         rel="noopener noreferrer">
+         target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/gecko_icon.PNG"
              class="market-icon"
              alt="GeckoTerminal logo">
@@ -396,7 +388,7 @@
       </a>
     </div>
 
-    <!-- Social icons row: between Gecko button & footer -->
+    <!-- Social icons row -->
     <div class="social-icons">
       <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook">
@@ -422,7 +414,7 @@
         <a href="about-zh.html">關於我們</a> |
         <a href="https://neoxcoin.github.io/token-info-zh.html" target="_blank">代幣資料</a> |
         <a href="whitepaper-zh.html" target="_blank">白皮書</a> |
-        <a href="neox-wiki-zh.html" style="color:#80caff; text-decoration:none;">官方 Wiki</a> | 
+        <a href="neox-wiki-zh.html" style="color:#80caff; text-decoration:none;">官方 Wiki</a> |
         <a href="press-kit-zh.html" target="_blank" style="color:#80caff; text-decoration:none;">媒體素材（Press Kit）</a> |
         <a href="troubleshooting-zh.html">疑難排解</a>
       </div>
