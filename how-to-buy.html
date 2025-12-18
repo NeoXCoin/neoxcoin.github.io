@@ -5,11 +5,11 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>How to Buy NeoX</title>
-  
+
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <link rel="canonical" href="https://neoxcoin.github.io/how-to-buy.html" />
   <link rel="alternate" href="https://neoxcoin.github.io/how-to-buy.html" hreflang="en" />
@@ -23,9 +23,11 @@
    {"@type":"WebPage","@id":"https://neoxcoin.github.io/how-to-buy.html#webpage","url":"https://neoxcoin.github.io/how-to-buy.html",
     "name":"How to Buy NXC – Guide","inLanguage":"en","isPartOf":{"@id":"https://neoxcoin.github.io/#website"}}]}
   </script>
+
   <style>
-  body {
+    body {
       margin: 0;
+      padding: 80px 20px 40px;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
       background-image: url("https://neoxcoin.github.io/NeoXbackG.JPG");
       background-size: cover;
@@ -33,10 +35,6 @@
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
-    }
-
-    body {
-      padding: 80px 20px 40px;
     }
 
     .logo {
@@ -60,11 +58,21 @@
       margin: 0 8px;
     }
 
-  h1 {
+    h1 {
       font-size: 32px;
-      margin-top: 50px; /* 原本可能係 20px 左右，改大啲 */
-      margin-bottom: 20px;
+      margin-top: 50px;
+      margin-bottom: 12px;
       text-align: center;
+    }
+
+    .tagline { margin-top: 50px; }
+
+    .subtagline{
+      font-size: 18px;
+      opacity: 0.85;
+      margin: 0 auto 22px;
+      max-width: 720px;
+      line-height: 1.6;
     }
 
     p {
@@ -72,18 +80,6 @@
       line-height: 1.8;
       max-width: 720px;
       margin: 0 auto 20px;
-    }
-
-    .tip {
-      font-size: 15px;
-      background-color: rgba(255, 255, 255, 0.08);
-      border-left: 4px solid #00d9ff;
-      padding: 12px;
-      margin: 30px auto;
-      max-width: 720px;
-      color: #ddd;
-      text-align: left;
-      border-radius: 8px;
     }
 
     a {
@@ -148,6 +144,41 @@
       color: white;
     }
 
+    .tip {
+      font-size: 15px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-left: 4px solid #00d9ff;
+      padding: 12px;
+      margin: 28px auto;
+      max-width: 720px;
+      color: #ddd;
+      text-align: left;
+      border-radius: 8px;
+    }
+
+    /* New: Wallet Display Notice */
+    .notice{
+      border: 1px solid rgba(0,217,255,0.65);
+      background: rgba(0,0,0,0.45);
+      padding: 14px;
+      border-radius: 10px;
+      margin: 18px auto 26px;
+      max-width: 720px;
+      text-align: left;
+    }
+    .notice h3{
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: #7ea0ff;
+    }
+    .notice p{
+      margin: 8px 0;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #e6e6e6;
+      max-width: 100%;
+    }
+
     .footer {
       margin-top: 60px;
       font-size: 13px;
@@ -155,21 +186,14 @@
     }
 
     @media (max-width: 600px) {
-      body {
-        padding-top: 100px;
-      }
-
-      .button-back {
-        margin-bottom: 40px;
-      }
-
-      .tip {
-        text-align: left;
-        font-size: 14px;
-      }
+      body { padding-top: 100px; }
+      .button-back { margin-bottom: 40px; }
+      .tip { text-align: left; font-size: 14px; }
+      .subtagline{ font-size: 16px; }
     }
   </style>
 </head>
+
 <body>
   <!-- Logo -->
   <a href="index.html">
@@ -183,37 +207,51 @@
 
   <!-- Main Title -->
   <h1 class="tagline">How to Buy NXC</h1>
-
   <p class="subtagline">Step-by-step guide via Thirdweb & MetaMask</p>
 
-  <p>1️⃣ Install and open 🦊<strong>MetaMask Wallet</strong><br/>
-     👉 <a href="https://metamask.io/download/" target="_blank">Download from official site</a></p>
+  <!-- Wallet Display Notice -->
+  <div class="notice">
+    <h3>🔐 Wallet Display Notice</h3>
+    <p><strong>NeoX Coin (NXC)</strong> is currently in an early-stage of development. At this stage, NXC may not appear by default in some wallets (including Trust Wallet).</p>
+    <p>You can safely add NXC manually to MetaMask or Trust Wallet using the <strong>official contract address</strong> shown below.</p>
+  </div>
 
-  <p>2️⃣ Add <strong>Base Mainnet</strong> to your wallet<br/>
-     👉 Use <a href="https://chainlist.org/?search=base" target="_blank">Chainlist.org to add with one click</a></p>
+  <p>
+    1️⃣ Install and open 🦊 <strong>MetaMask Wallet</strong><br/>
+    👉 <a href="https://metamask.io/download/" target="_blank" rel="noopener">Download from official site</a>
+  </p>
 
-  <p>3️⃣ Bridge ETH to <strong>Base Network</strong><br/>
-     👉 First send ETH to your MetaMask on <em>Ethereum Mainnet</em><br/>
-     👉 Then use the <a href="https://bridge.base.org" target="_blank">official Base Bridge</a> to convert ETH → Base ETH<br/>
-     ⚠️ You need ETH on Base to pay gas fees and buy NXC.</p>
+  <p>
+    2️⃣ Add <strong>Base Mainnet</strong> to your wallet<br/>
+    👉 Use <a href="https://chainlist.org/?search=base" target="_blank" rel="noopener">Chainlist.org to add with one click</a>
+  </p>
+
+  <p>
+    3️⃣ Bridge ETH to <strong>Base Network</strong><br/>
+    👉 First send ETH to your MetaMask on <em>Ethereum Mainnet</em><br/>
+    👉 Then use the <a href="https://bridge.base.org" target="_blank" rel="noopener">official Base Bridge</a> to convert ETH → Base ETH<br/>
+    ⚠️ You need ETH on Base to pay gas fees and buy NXC.
+  </p>
 
   <p>4️⃣ Click the button below to buy NeoX Coin on the official platform</p>
 
   <!-- Buy Button -->
-  <a class="btn-buy" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">🚀 Buy NXC Now</a>
+  <a class="btn-buy" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank" rel="noopener">🚀 Buy NXC Now</a>
 
   <!-- Contract Info Tip -->
   <div class="tip">
-    💡 <strong>Tip:</strong><br/>
-    If you can't see NXC in 🦊MetaMask after purchase, you can add it manually:<br/>
-    ➤ <strong>Contract Address:</strong><br/>
-    <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code><br/>
-    ➤ <strong>Token Symbol:</strong> NXC<br/>
-    ➤ <strong>Decimals:</strong> 18
+    💡 <strong>Manual Token Import (MetaMask / Trust Wallet)</strong><br/>
+    If NXC does not appear automatically, you can safely add it using the official details below:
+    <div style="margin-top:10px; line-height:1.8;">
+      ➤ <strong>Contract Address:</strong><br/>
+      <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code><br/>
+      ➤ <strong>Token Symbol:</strong> NXC<br/>
+      ➤ <strong>Decimals:</strong> 18
+    </div>
   </div>
 
   <div style="text-align: center;">
-     <a class="btn btn-blue" href="index.html">← Back to Home</a>
+    <a class="btn btn-blue" href="index.html">← Back to Home</a>
   </div>
 
   <!-- Footer -->
