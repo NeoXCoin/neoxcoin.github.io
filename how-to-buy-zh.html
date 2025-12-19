@@ -1,249 +1,245 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <!-- Favicon (ICO + SVG + Apple Icon) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>如何購買 NeoX Coin（NXC）</title>
+
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>如何購買 NeoX</title>
-  
+
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+
+  <!-- Canonical for ZH -->
   <link rel="canonical" href="https://neoxcoin.github.io/how-to-buy-zh.html" />
-  <link rel="alternate" href="https://neoxcoin.github.io/how-to-buy.html" hreflang="en" />
-  <link rel="alternate" href="https://neoxcoin.github.io/how-to-buy-zh.html" hreflang="zh-Hant" />
-  <link rel="alternate" href="https://neoxcoin.github.io/how-to-buy-global.html" hreflang="x-default" />
 
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[
-   {"@type":"WebSite","@id":"https://neoxcoin.github.io/#website","name":"NeoX Coin (NXC)","url":"https://neoxcoin.github.io/"},
-   {"@type":"Organization","name":"NeoX","url":"https://neoxcoin.github.io/","logo":"https://neoxcoin.github.io/XNXC.png"},
-    {"@type":"WebPage","@id":"https://neoxcoin.github.io/how-to-buy-zh.html#webpage","url":"https://neoxcoin.github.io/how-to-buy-zh.html",
-    "name":"如何購買 NXC – 教學","inLanguage":"zh-Hant","isPartOf":{"@id":"https://neoxcoin.github.io/#website"}}]}
-  </script>
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="en" href="https://neoxcoin.github.io/how-to-buy.html" />
+  <link rel="alternate" hreflang="zh-Hant" href="https://neoxcoin.github.io/how-to-buy-zh.html" />
+  <link rel="alternate" hreflang="x-default" href="https://neoxcoin.github.io/how-to-buy-global.html" />
+
   <style>
-    body {
-      margin: 0;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url("https://neoxcoin.github.io/NeoXbackG.JPG");
-      background-size: cover;
-      background-position: center;
-      font-family: Arial, sans-serif;
-      color: white;
-      text-align: center;
+    body{
+      margin:0;
+      padding:90px 20px 40px;
+      font-family: Arial, "PingFang TC", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      color:#fff;
+      background:
+        linear-gradient(135deg, rgba(8,10,40,.9), rgba(40,0,80,.9)),
+        url("https://neoxcoin.github.io/NeoXbackG.JPG") center/cover no-repeat;
+      text-align:center;
     }
 
-    body {
-      padding: 80px 20px 40px;
+    .logo{
+      position:absolute; top:20px; left:20px;
+      width:60px; opacity:.85;
     }
 
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
-      opacity: 0.85;
+    .language-switch{
+      position:absolute; top:20px; right:20px;
+      font-size:14px;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(0,217,255,.35);
+      border-radius:10px;
+      padding:6px 10px;
+      box-shadow:0 0 14px rgba(0,217,255,.18);
+    }
+    .language-switch a{
+      color:#fff; text-decoration:none; margin:0 6px;
+    }
+    .language-switch a:hover{ color:#00d9ff; }
+
+    h1{ margin:40px 0 8px; font-size:32px; }
+    .subtitle{ opacity:.85; margin-bottom:26px; }
+
+    .card{
+      max-width:760px;
+      margin:0 auto 30px;
+      background:rgba(0,0,0,.45);
+      border:1px solid rgba(0,217,255,.5);
+      border-radius:14px;
+      padding:24px;
+      text-align:left;
+      box-shadow:0 0 22px rgba(0,217,255,.25);
     }
 
-    .language-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 14px;
+    .card h3{
+      margin:0 0 16px;
+      font-size:18px;
+      color:#8fb6ff;
+      text-align:center;
     }
 
-    .language-switch a {
-      color: white;
-      text-decoration: none;
-      margin: 0 8px;
+    .step{
+      display:flex;
+      gap:14px;
+      padding:14px 0;
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .step:first-child{ border-top:none; }
+
+    .num{
+      width:28px; height:28px;
+      border-radius:50%;
+      background:#00d9ff;
+      color:#000;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:bold;
+      flex-shrink:0;
     }
 
-    h1 {
-      font-size: 32px;
-      margin-top: 50px;
-      margin-bottom: 20px;
-      text-align: center;
+    .step p{
+      margin:0;
+      font-size:15.5px;
+      line-height:1.75;
     }
 
-    p {
-      font-size: 18px;
-      line-height: 1.8;
-      max-width: 720px;
-      margin: 0 auto 20px;
+    a{ color:#00d9ff; text-decoration:none; }
+
+    .btn-buy{
+      display:inline-block;
+      margin:26px auto 6px;
+      padding:14px 30px;
+      background:#00bfff;
+      color:#fff;
+      font-size:16px;
+      border-radius:10px;
+      text-decoration:none;
+      box-shadow:0 0 16px rgba(0,217,255,.6);
+    }
+    .btn-buy:hover{ background:#0099cc; }
+
+    .guide img{
+      width:100%;
+      border-radius:12px;
+      margin:12px 0 20px;
+      box-shadow:0 0 18px rgba(0,217,255,.35);
     }
 
-    .tip {
-      font-size: 15px;
-      background-color: rgba(255, 255, 255, 0.08);
-      border-left: 4px solid #00d9ff;
-      padding: 12px;
-      margin: 30px auto;
-      max-width: 720px;
-      color: #ddd;
-      text-align: left;
-      border-radius: 8px;
+    .mono{
+      font-family:monospace;
+      word-break:break-all;
+      background:rgba(255,255,255,.08);
+      padding:10px;
+      border-radius:8px;
+      margin-top:8px;
+      font-size:14px;
     }
 
-    a {
-      color: #00d9ff;
-      text-decoration: none;
+    .back{
+      margin-top:30px;
+    }
+    .back a{
+      color:#fff;
+      text-decoration:none;
+      padding:10px 20px;
+      border:1px solid #3399ff;
+      border-radius:10px;
     }
 
-    .btn-buy, .button-back {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background-color 0.3s ease;
+    footer{
+      margin-top:50px;
+      font-size:13px;
+      opacity:.6;
     }
 
-    .btn-buy {
-      background-color: #00bfff;
-      color: white;
-    }
-
-    .btn-buy:hover {
-      background-color: #0099cc;
-    }
-
-    .btn-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .btn {
-      background: #0a0a0a;
-      border: 2px solid #00d9ff;
-      color: #00d9ff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      min-width: 180px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px rgba(0,217,255,0.5);
-    }
-
-    .btn:hover {
-      background: #00d9ff;
-      color: #000;
-      box-shadow: 0 0 20px rgba(0,217,255,0.8);
-      transform: translateY(-3px);
-    }
-
-    .btn-blue {
-      background: #0d6efd;
-      border: 2px solid #3399ff;
-      color: white;
-    }
-
-    .footer {
-      margin-top: 60px;
-      font-size: 13px;
-      opacity: 0.6;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding-top: 100px;
-      }
-
-      .button-back {
-        margin-bottom: 40px;
-      }
-
-      .tip {
-        text-align: left;
-        font-size: 14px;
-      }
-      
-      .steps {
-        max-width: 720px;
-        margin: 30px auto;
-        text-align: left;
-        font-size: 18px;
-        line-height: 1.8;
-      }
-
-      .step {
-        display: flex;
-        align-items: flex-start;
-        margin-bottom: 20px;
-      }
-
-      .step .icon {
-        width: 40px;       /* 固定寬度，確保 1️⃣ 2️⃣ 3️⃣ 4️⃣ 對齊 */
-        flex-shrink: 0;
-        font-size: 22px;
-      }
-
-      .step .text {
-        flex: 1;
-      }
+    @media (max-width: 600px){
+      body{ padding-top:110px; }
+      .language-switch{ top:18px; right:12px; }
+      .logo{ left:12px; }
     }
   </style>
 </head>
+
 <body>
-  <!-- Logo -->
-  <a href="index-zh.html">
-    <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo" />
-  </a>
 
-  <!-- Language Switch -->
-  <div class="language-switch">
-    <a href="how-to-buy.html">EN</a> | <a href="how-to-buy-zh.html">繁</a>
+<a href="index.html">
+  <img src="https://neoxcoin.github.io/XNXC.png" class="logo" alt="NeoX Logo">
+</a>
+
+<!-- Language Switch -->
+<div class="language-switch">
+  <a href="how-to-buy.html">EN</a> | <a href="how-to-buy-zh.html">繁</a> | <a href="how-to-buy-global.html">Global</a>
+</div>
+
+<h1>如何購買 NeoX Coin（NXC）</h1>
+<div class="subtitle">使用 Thirdweb + MetaMask 的一步一步教學</div>
+
+<div class="card">
+  <h3>購買步驟（How to Buy）</h3>
+
+  <div class="step">
+    <div class="num">1</div>
+    <p>
+      安裝並打開 <strong>🦊 MetaMask 錢包</strong><br/>
+      <a href="https://metamask.io/download/" target="_blank" rel="noopener">前往官方網站下載</a>
+    </p>
   </div>
 
-  <!-- Main Title -->
-  <h1 class="tagline">如何購買 NXC</h1>
-
-  <p class="subtagline">透過 Thirdweb 與 MetaMask 的步驟指引</p>
-
-  <p>1️⃣ 安裝並開啟 🦊<strong>MetaMask 錢包</strong><br/>
-     👉 <a href="https://metamask.io/download/" target="_blank">前往官方網站下載</a></p>
-
-  <p>2️⃣ 把 <strong>Base 主網</strong> 加入到你的錢包<br/>
-     👉 使用 <a href="https://chainlist.org/?search=base" target="_blank">Chainlist.org 一鍵加入 Base</a></p>
-
-  <p>3️⃣ 將 ETH 橋接到 <strong>Base 網絡</strong><br/>
-     👉 先把 ETH 轉入你在 <em>Ethereum 主網</em> 的 MetaMask<br/>
-     👉 然後使用 <a href="https://bridge.base.org" target="_blank">官方 Base Bridge</a> 把 ETH 轉換為 Base ETH<br/>
-     ⚠️ 購買 NXC 及支付 Gas 費需要持有 <strong>Base 網絡上的 ETH</strong>。</p>
-
-  <p>4️⃣ 點擊下方按鈕，在官方平台購買 NeoX Coin</p>
-
-  <!-- Buy Button -->
-  <a class="btn-buy" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">🚀 點我購買 NXC</a>
-
-  <!-- Contract Info Tip -->
-  <div class="tip">
-    💡 <strong>提示：</strong><br/>
-    若完成購買後在 🦊MetaMask 錢包中看不到 NXC，可手動加入代幣：<br/>
-    ➤ <strong>合約地址：</strong><br/>
-    <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code><br/>
-    ➤ <strong>代幣符號：</strong> NXC<br/>
-    ➤ <strong>小數位：</strong> 18
+  <div class="step">
+    <div class="num">2</div>
+    <p>
+      將 <strong>Base Mainnet</strong> 加入錢包網絡<br/>
+      使用 <a href="https://chainlist.org/?search=base" target="_blank" rel="noopener">Chainlist.org</a> 一鍵加入
+    </p>
   </div>
 
-  <!-- Back Button -->
-  <div class="btn-row">
-    <a class="btn btn-blue" href="index-zh.html">← 返回主頁</a>
+  <div class="step">
+    <div class="num">3</div>
+    <p>
+      將 ETH 橋接到 <strong>Base 網絡</strong><br/>
+      先在 Ethereum Mainnet 準備 ETH → 再使用
+      <a href="https://bridge.base.org" target="_blank" rel="noopener">官方 Base Bridge</a><br/>
+      在 Base 上需要 ETH 來支付 Gas 及購買 NXC
+    </p>
   </div>
 
-  <!-- Footer -->
-  <div class="footer">
-      © 2025 NeoX. All rights reserved. ｜ <a href="disclaimer-zh.html" style="color: rgba(255, 255, 255, 0.6);">免責聲明</a>
+  <div class="step">
+    <div class="num">4</div>
+    <p>
+      透過官方平台購買 <strong>🪙 NeoX Coin（NXC）</strong>
+    </p>
   </div>
+
+  <div style="text-align:center;">
+    <a class="btn-buy"
+       href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B"
+       target="_blank" rel="noopener">
+      立即購買 NXC
+    </a>
+  </div>
+</div>
+
+<div class="card guide">
+  <h3>圖像教學（Screenshots）</h3>
+
+  <p><strong>步驟 A — 在 Base 上 Swap：ETH → NXC（Thirdweb）</strong></p>
+  <img src="assets/how-to-buy/buy-nxc-thirdweb-swap.png" alt="使用 Thirdweb 將 ETH 兌換成 NXC（Base）">
+
+  <p><strong>步驟 B — 在 MetaMask（Base）看到 NeoX Coin（NXC）</strong></p>
+  <img src="assets/how-to-buy/wallet-metamask-nxc-base.png" alt="MetaMask（Base）顯示 NeoX Coin（NXC）">
+</div>
+
+<div class="card">
+  <h3>手動加入代幣（Manual Token Import）</h3>
+  <p>如果錢包未自動顯示 NXC，你可以手動加入：</p>
+  <div class="mono">
+    合約地址：0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B<br/>
+    幣種代號：NXC<br/>
+    小數位：18
+  </div>
+</div>
+
+<div class="back">
+  <a href="index.html">← 返回首頁</a>
+</div>
+
+<footer>
+  © 2025 NeoX. All rights reserved. ｜ <a href="disclaimer-zh.html" style="color:inherit;">免責聲明</a>
+</footer>
+
 </body>
 </html>
