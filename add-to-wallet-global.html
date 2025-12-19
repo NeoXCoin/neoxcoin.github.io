@@ -34,6 +34,21 @@
     p.lead{
       color:#cfd7ff; margin:0 auto 18px; max-width:720px; line-height:1.5;
     }
+    
+    .title{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+    }
+
+    .title-emoji{
+      width:42px;
+      height:42px;
+      vertical-align:middle;
+      margin-top:-2px;
+      filter: drop-shadow(0 0 8px rgba(120,160,255,.55));
+    }
 
     .btn-row{
       display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
@@ -138,7 +153,12 @@
   <!-- Google Translate -->
   <div id="google_translate_element"></div>
 
-  <h1>Add NXC Token to Wallet</h1>
+  <h1 class="title">
+    <img src="https://neoxcoin.github.io/neox-emoji-128.png"
+         alt="NeoX Coin"
+         class="title-emoji" />
+    Add NXC Token to Wallet
+  </h1>
   <p class="lead">
     This page allows you to add the NeoX Token (NXC) to your wallet.<br>
     <b>Auto-add is supported for MetaMask only.</b> Other wallets can add NXC manually using the details below.
@@ -147,7 +167,7 @@
   <div class="btn-row">
     <!-- Auto add -->
     <button id="autoBtn" class="btn" onclick="queueAddToken()">
-      🦊 Add NXC Token (Auto MetaMask only)
+      Add NXC Token (Auto)
     </button>
 
     <!-- Safe open -->
