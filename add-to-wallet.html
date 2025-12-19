@@ -35,6 +35,20 @@
 
     h1{ font-size:34px; margin:0 0 6px; }
     p.lead{ color:#cfd7ff; margin:0 0 18px; line-height:1.6; }
+    
+    .title{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+    }
+
+    .title-emoji{
+      width:34px;
+      height:34px;
+      vertical-align:middle;
+      filter: drop-shadow(0 0 6px rgba(120,160,255,.45));
+    }
 
     .btn{
       background:#0d6efd; border:none; color:#fff;
@@ -164,7 +178,12 @@
     <a href="add-to-wallet.html">EN</a> | <a href="add-to-wallet-zh.html">繁</a>
   </div>
 
-  <h1>Add NXC Token to Wallet</h1>
+  <h1 class="title">
+    <img src="https://neoxcoin.github.io/neox-emoji-128.png"
+         alt="NeoX Coin"
+         class="title-emoji" />
+    Add NXC Token to Wallet
+  </h1>
   <p class="lead">
     MetaMask supports <b>Auto-add</b> on this page.<br/>
     Trust Wallet users can add NXC <b>manually</b> using the details below.
