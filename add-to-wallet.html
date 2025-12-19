@@ -4,136 +4,257 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Add NXC Token to Wallet</title>
+
   <style>
     body{
-      margin: 0; min-height: 100vh; background:#0a0a2a; color:#fff; font-family:Arial, sans-serif; text-align:center;
+      margin:0; min-height:100vh;
+      background:linear-gradient(135deg,#0a0a2a,#1f005c);
+      background-image:url('https://neoxcoin.io/NeoXbackG.JPG');
+      background-size:cover; background-position:center;
+      color:#fff; font-family:Arial,sans-serif; text-align:center;
       padding:88px 20px 40px; position:relative;
     }
-    /* header */
+
     .logo{
-      width:60px; position:absolute; top:20px; left:20px; opacity:.0.85;
+      width:60px; position:absolute; top:20px; left:20px;
+      opacity:0.85; z-index:10;
+      transition:transform .2s ease;
     }
     .logo:hover{ transform:translateY(-1px); }
+
     .lang{
-      position:absolute; top:26px; right:20px; font-weight:bold; font-size:14px;
+      position:absolute; top:26px; right:20px;
+      font-weight:bold; font-size:14px; z-index:10;
     }
     .lang a{ color:#fff; text-decoration:none; opacity:.85; margin:0 8px; }
     .lang a:hover{ opacity:1; text-decoration:underline; }
 
-    h1{ font-size:32px; margin:0 0 6px; }
-    p.lead{ color:#cfd7ff; margin:0 0 26px; }
+    h1{ font-size:34px; margin:0 0 6px; }
+    p.lead{ color:#cfd7ff; margin:0 0 18px; line-height:1.6; }
 
     .btn{
-      background:#0d6efd; border:none; color:#fff; padding:14px 24px; border-radius:10px;
-      font-size:16px; margin:10px; cursor:pointer; display:inline-block; text-decoration:none;
+      background:#0d6efd; border:none; color:#fff;
+      padding:14px 24px; border-radius:10px;
+      font-size:16px; margin:10px; cursor:pointer;
+      display:inline-block; text-decoration:none;
       box-shadow:0 6px 18px rgba(13,110,253,.25);
+      transition:filter .2s ease, transform .2s ease;
     }
-    .btn:hover{ filter:brightness(1.06); }
+    .btn:hover{ filter:brightness(1.06); transform:translateY(-1px); }
     .btn.secondary{ background:#1f2a44; box-shadow:0 6px 18px rgba(255,255,255,.08); }
-    .btn[disabled]{ opacity:.6; cursor:not-allowed; }
+    .btn[disabled]{ opacity:.6; cursor:not-allowed; transform:none; }
 
-    .hint{ font-size:13px; color:#9fb0ff; margin-top:14px; }
-    .back{ margin-top:28px; color:#ccc; text-decoration:none; display:inline-block; }
-    .back:hover{ text-decoration:underline; }
+    .hint{ font-size:13px; color:#9fb0ff; margin-top:12px; min-height:18px; }
+
+    .panel{
+      max-width:720px;
+      margin:26px auto 0;
+      text-align:left;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:14px;
+      padding:16px 16px 10px;
+      backdrop-filter: blur(6px);
+    }
+    .panel h2{
+      font-size:16px; margin:0 0 10px; color:#fff;
+    }
+    .row{
+      display:flex; gap:10px; align-items:center;
+      margin:10px 0;
+      flex-wrap:wrap;
+    }
+    .label{ width:130px; color:#cfd7ff; font-size:13px; }
+    code{
+      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size:12px; color:#fff;
+      background:rgba(255,255,255,.08);
+      padding:8px 10px; border-radius:10px;
+      display:inline-block;
+      max-width:100%;
+      overflow:auto;
+    }
+    .copy{
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:12px;
+      transition:background .2s ease;
+    }
+    .copy:hover{ background:rgba(255,255,255,.12); }
+
+    .note{
+      font-size:12px;
+      color:rgba(255,255,255,.75);
+      margin-top:10px;
+      line-height:1.6;
+    }
+
+    .back{
+      margin-top:26px; color:#ddd; text-decoration:none; display:inline-block;
+      opacity:.9;
+    }
+    .back:hover{ text-decoration:underline; opacity:1; }
 
     .footer{
       margin-top:56px; font-size:13px; color:rgba(255,255,255,.55);
     }
     .footer a{ color:#aaa; text-decoration:none; }
+    .footer a:hover{ text-decoration:underline; }
+
     @media (max-width:600px){
       body{ padding-top:96px; }
-      h1{ font-size:26px; }
+      h1{ font-size:28px; }
+      .label{ width:100%; }
     }
   </style>
 </head>
+
 <body>
   <!-- Logo → Home -->
-  <a href="index.html"><img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/></a>
+  <a href="index.html">
+    <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
+  </a>
 
   <!-- Language -->
-  <div class="lang"><a href="add-to-wallet.html">EN</a> | <a href="add-to-metamask-zh.html">繁</a></div>
+  <div class="lang">
+    <a href="add-to-wallet.html">EN</a> | <a href="add-to-wallet-zh.html">繁</a>
+  </div>
 
   <h1>Add NXC Token to Wallet</h1>
   <p class="lead">
-    Add NeoX Coin (NXC) to your wallet.<br>
-    Auto-add supports MetaMask. Trust Wallet users can add manually.
+    MetaMask supports <b>Auto-add</b> on this page.<br/>
+    Trust Wallet users can add NXC <b>manually</b> using the details below.
   </p>
 
-  <!-- Auto add (will handoff to MetaMask after 3s) -->
+  <!-- Auto add (MetaMask) -->
   <button id="autoBtn" class="btn" onclick="queueAddToken()">Add NXC Token (Auto)</button>
 
-  <!-- Safe open (no auto add, just opens the app / in-app browser) -->
-  <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet.html">Open in MetaMask App</a>
+  <!-- Open in MetaMask -->
+  <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet.html">
+    Open in MetaMask App
+  </a>
 
   <div id="status" class="hint"></div>
 
-  <br><br>
+  <!-- Manual info panel (Trust Wallet / others) -->
+  <div class="panel">
+    <h2>Manual add (Trust Wallet / other wallets)</h2>
+
+    <div class="row">
+      <div class="label">Network</div>
+      <code>Base</code>
+    </div>
+
+    <div class="row">
+      <div class="label">Contract</div>
+      <code id="addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
+      <button class="copy" onclick="copyText('addr')">Copy</button>
+    </div>
+
+    <div class="row">
+      <div class="label">Symbol</div>
+      <code id="sym">NXC</code>
+      <button class="copy" onclick="copyText('sym')">Copy</button>
+    </div>
+
+    <div class="row">
+      <div class="label">Decimals</div>
+      <code id="dec">18</code>
+      <button class="copy" onclick="copyText('dec')">Copy</button>
+    </div>
+
+    <div class="note">
+      If you added the token but the logo doesn’t show yet, that’s normal — some wallets display logos only after listing/verification.
+    </div>
+  </div>
+
   <a class="back" href="index.html">← Back to Home</a>
 
   <div class="footer">
-    © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-en.html">Disclaimer</a>
+    © 2025 NeoX. All rights reserved. | <a href="disclaimer-en.html">Disclaimer</a>
   </div>
 
-<script>
-  // ---- Config ----
-  const TOKEN = {
-    address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', // Base chain
-    symbol: 'NXC',
-    decimals: 18,
-    image: 'https://neoxcoin.github.io/neox-emoji-128.png'
-  };
+  <script>
+    // ---- Config ----
+    const TOKEN = {
+      address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B',
+      symbol: 'NXC',
+      decimals: 18,
+      image: 'https://neoxcoin.github.io/neox-emoji-128.png'
+    };
 
-  const statusEl = document.getElementById('status');
-  const autoBtn  = document.getElementById('autoBtn');
+    const statusEl = document.getElementById('status');
+    const autoBtn  = document.getElementById('autoBtn');
 
-  function inMetaMaskInApp(){
-    // MetaMask Mobile in-app browser UA 會包含 "MetaMaskMobile"
-    return /MetaMaskMobile/i.test(navigator.userAgent);
-  }
-
-  function queueAddToken(){
-    if (!confirm('Proceed to add NXC to MetaMask?')) return;
-
-    if (typeof window.ethereum === 'undefined' && !inMetaMaskInApp()){
-      // 引導用戶先進入 App 內建瀏覽器再操作
-      window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet.html';
-      return;
+    function inMetaMaskInApp(){
+      return /MetaMaskMobile/i.test(navigator.userAgent);
     }
 
-    autoBtn.disabled = true;
-    let secs = 3;
-    statusEl.textContent = `Preparing… ${secs}s`;
-    const t = setInterval(()=>{
-      secs--; statusEl.textContent = `Preparing… ${secs}s`;
-      if (secs<=0){ clearInterval(t); addToken(); }
-    }, 1000);
-  }
+    function queueAddToken(){
+      if (!confirm('Proceed to add NXC to MetaMask?')) return;
 
-  async function addToken(){
-    try{
-      if (!window.ethereum){ throw new Error('MetaMask not detected'); }
-      const ok = await window.ethereum.request({
-        method: 'wallet_watchAsset',
-        params: { type: 'ERC20', options: TOKEN }
-      });
-      if (ok){
-        statusEl.textContent = 'NXC added successfully.';
-      }else{
-        statusEl.textContent = 'User cancelled in MetaMask.';
+      if (typeof window.ethereum === 'undefined' && !inMetaMaskInApp()){
+        window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet.html';
+        return;
       }
-    }catch(e){
-      console.error(e);
-      statusEl.textContent = 'MetaMask error. You can use “Open in MetaMask App”.';
-    }finally{
-      autoBtn.disabled = false;
-      // 提示：手機瀏覽器上，MetaMask 仍可能接管並切到 App，這是官方行為
+
+      autoBtn.disabled = true;
+      let secs = 2;
+      statusEl.textContent = `Preparing… ${secs}s`;
+
+      const t = setInterval(()=>{
+        secs--;
+        statusEl.textContent = `Preparing… ${secs}s`;
+        if (secs <= 0){
+          clearInterval(t);
+          addToken();
+        }
+      }, 1000);
     }
-  }
-</script>
+
+    async function addToken(){
+      try{
+        if (!window.ethereum) throw new Error('MetaMask not detected');
+
+        const ok = await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: { type: 'ERC20', options: TOKEN }
+        });
+
+        statusEl.textContent = ok ? 'NXC added successfully.' : 'User cancelled in MetaMask.';
+      }catch(e){
+        console.error(e);
+        statusEl.textContent = 'MetaMask not available. Use “Open in MetaMask App” or add manually (Trust Wallet).';
+      }finally{
+        autoBtn.disabled = false;
+      }
+    }
+
+    async function copyText(id){
+      const el = document.getElementById(id);
+      const text = el ? el.textContent.trim() : '';
+      try{
+        await navigator.clipboard.writeText(text);
+        statusEl.textContent = 'Copied.';
+        setTimeout(()=>{ statusEl.textContent = ''; }, 1200);
+      }catch(e){
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+        statusEl.textContent = 'Copied.';
+        setTimeout(()=>{ statusEl.textContent = ''; }, 1200);
+      }
+    }
+  </script>
 </body>
 </html>
