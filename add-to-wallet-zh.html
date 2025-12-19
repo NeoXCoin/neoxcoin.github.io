@@ -35,6 +35,21 @@
 
     h1{ font-size:34px; margin:0 0 6px; }
     p.lead{ color:#cfd7ff; margin:0 0 18px; line-height:1.6; }
+    
+    .title{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+    }
+
+    .title-emoji{
+      width:42px;
+      height:42px;
+      vertical-align:middle;
+      margin-top:-2px;
+      filter: drop-shadow(0 0 8px rgba(120,160,255,.55));
+    }
 
     .btn{
       background:#0d6efd; border:none; color:#fff;
@@ -159,7 +174,12 @@
     <a href="add-to-wallet.html">EN</a> | <a href="add-to-wallet-zh.html">繁</a>
   </div>
 
-  <h1>將 NXC 加入錢包</h1>
+  <h1 class="title">
+    <img src="https://neoxcoin.github.io/neox-emoji-128.png"
+         alt="NeoX Coin"
+         class="title-emoji" />
+    將 NXC 加入錢包
+  </h1>
   <p class="lead">
     此頁支援 MetaMask 的 <b>自動加入</b> 功能。<br/>
     Trust Wallet（或其他錢包）可使用下方資料 <b>手動加入</b> NXC。
