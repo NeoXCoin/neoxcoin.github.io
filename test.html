@@ -8,28 +8,20 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>How to Buy NeoX (NXC) - Global</title>
+  <title>How to Buy NeoX</title>
 
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-
-  <!-- Canonical + hreflang -->
-  <link rel="canonical" href="https://neoxcoin.github.io/how-to-buy-global.html" />
+  <link rel="canonical" href="https://neoxcoin.github.io/how-to-buy.html" />
   <link rel="alternate" href="https://neoxcoin.github.io/how-to-buy.html" hreflang="en" />
   <link rel="alternate" href="https://neoxcoin.github.io/how-to-buy-zh.html" hreflang="zh-Hant" />
   <link rel="alternate" href="https://neoxcoin.github.io/how-to-buy-global.html" hreflang="x-default" />
 
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
-    {"@type":"WebSite","@id":"https://neoxcoin.github.io/#website","name":"NeoX Coin (NXC)","url":"https://neoxcoin.github.io/"},
-    {"@type":"Organization","name":"NeoX","url":"https://neoxcoin.github.io/","logo":"https://neoxcoin.github.io/XNXC.png"},
-    {"@type":"WebPage",
-     "@id":"https://neoxcoin.github.io/how-to-buy-global.html#webpage",
-     "url":"https://neoxcoin.github.io/how-to-buy-global.html",
-     "name":"How to Buy NXC – Guide (Global)",
-     "inLanguage":"en",
-     "isPartOf":{"@id":"https://neoxcoin.github.io/#website"}
-    }
-  ]}
+   {"@type":"WebSite","@id":"https://neoxcoin.github.io/#website","name":"NeoX Coin (NXC)","url":"https://neoxcoin.github.io/"},
+   {"@type":"Organization","name":"NeoX","url":"https://neoxcoin.github.io/","logo":"https://neoxcoin.github.io/XNXC.png"},
+   {"@type":"WebPage","@id":"https://neoxcoin.github.io/how-to-buy.html#webpage","url":"https://neoxcoin.github.io/how-to-buy.html",
+    "name":"How to Buy NXC – Guide","inLanguage":"en","isPartOf":{"@id":"https://neoxcoin.github.io/#website"}}]}
   </script>
 
   <style>
@@ -43,8 +35,6 @@
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
-      position: relative;
-      min-height: 100vh;
     }
 
     .logo {
@@ -53,15 +43,19 @@
       left: 20px;
       width: 60px;
       opacity: 0.85;
-      z-index: 9999;
     }
 
-    /* Google Translate */
-    #google_translate_element{
+    .language-switch {
       position: absolute;
       top: 20px;
       right: 20px;
-      z-index: 9999;
+      font-size: 14px;
+    }
+
+    .language-switch a {
+      color: white;
+      text-decoration: none;
+      margin: 0 8px;
     }
 
     h1 {
@@ -107,7 +101,10 @@
       background-color: #00bfff;
       color: white;
     }
-    .btn-buy:hover { background-color: #0099cc; }
+
+    .btn-buy:hover {
+      background-color: #0099cc;
+    }
 
     .btn-row {
       display: flex;
@@ -159,7 +156,7 @@
       border-radius: 8px;
     }
 
-    /* Wallet Display Notice */
+    /* New: Wallet Display Notice */
     .notice{
       border: 1px solid rgba(0,217,255,0.65);
       background: rgba(0,0,0,0.45);
@@ -173,6 +170,9 @@
       margin: 0 0 8px;
       font-size: 16px;
       color: #7ea0ff;
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
     .notice p{
       margin: 8px 0;
@@ -180,6 +180,27 @@
       line-height: 1.7;
       color: #e6e6e6;
       max-width: 100%;
+    }
+
+    .footer {
+      margin-top: 60px;
+      font-size: 13px;
+      opacity: 0.6;
+    }
+
+    /* NeoX emoji (统一图标) */
+    .neox-emoji{
+      width:22px;
+      height:22px;
+      vertical-align:-4px;
+      margin:0 6px 0 0;
+      filter: drop-shadow(0 0 10px rgba(120,160,255,.55));
+    }
+    .neox-emoji.sm{
+      width:18px;
+      height:18px;
+      vertical-align:-3px;
+      margin-right:6px;
     }
 
     /* Visual Guide Screenshots */
@@ -192,6 +213,9 @@
       margin:0 0 10px;
       font-size:16px;
       color:#7ea0ff;
+      display:flex;
+      align-items:center;
+      gap:10px;
     }
     .guide p{
       font-size:15px;
@@ -207,30 +231,25 @@
       box-shadow:0 0 18px rgba(0,217,255,.35);
     }
 
-    .footer {
-      margin-top: 60px;
-      font-size: 13px;
-      opacity: 0.6;
-    }
-
     @media (max-width: 600px) {
-      body { padding-top: 110px; }
+      body { padding-top: 100px; }
       .button-back { margin-bottom: 40px; }
       .tip { text-align: left; font-size: 14px; }
       .subtagline{ font-size: 16px; }
-      #google_translate_element{ top: 18px; right: 14px; }
     }
   </style>
 </head>
 
 <body>
   <!-- Logo -->
-  <a href="index-global.html">
+  <a href="index.html">
     <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
   </a>
 
-  <!-- Google Translate -->
-  <div id="google_translate_element"></div>
+  <!-- Language Switch -->
+  <div class="language-switch">
+    <a href="how-to-buy.html">EN</a> | <a href="how-to-buy-zh.html">繁</a>
+  </div>
 
   <!-- Main Title -->
   <h1 class="tagline">How to Buy NXC</h1>
@@ -238,38 +257,52 @@
 
   <!-- Wallet Display Notice -->
   <div class="notice">
-    <h3>🔐 Wallet Display Notice</h3>
+    <h3>
+      <img class="neox-emoji sm" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
+      Wallet Display Notice
+    </h3>
     <p><strong>NeoX Coin (NXC)</strong> is currently in an early-stage of development. At this stage, NXC may not appear by default in some wallets (including Trust Wallet).</p>
     <p>You can safely add NXC manually to MetaMask or Trust Wallet using the <strong>official contract address</strong> shown below.</p>
   </div>
 
   <p>
-    1️⃣ Install and open 🦊 <strong>MetaMask Wallet</strong><br/>
-    👉 <a href="https://metamask.io/download/" target="_blank" rel="noopener">Download from official site</a>
+    1️⃣ Install and open
+    <img class="neox-emoji sm" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
+    <strong>MetaMask Wallet</strong><br/>
+    <img class="neox-emoji sm" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
+    <a href="https://metamask.io/download/" target="_blank" rel="noopener">Download from official site</a>
   </p>
 
   <p>
     2️⃣ Add <strong>Base Mainnet</strong> to your wallet<br/>
-    👉 Use <a href="https://chainlist.org/?search=base" target="_blank" rel="noopener">Chainlist.org to add with one click</a>
+    <img class="neox-emoji sm" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
+    Use <a href="https://chainlist.org/?search=base" target="_blank" rel="noopener">Chainlist.org to add with one click</a>
   </p>
 
   <p>
     3️⃣ Bridge ETH to <strong>Base Network</strong><br/>
-    👉 First send ETH to your MetaMask on <em>Ethereum Mainnet</em><br/>
-    👉 Then use the <a href="https://bridge.base.org" target="_blank" rel="noopener">official Base Bridge</a> to convert ETH → Base ETH<br/>
-    ⚠️ You need ETH on Base to pay gas fees and buy NXC.
+    <img class="neox-emoji sm" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
+    First send ETH to your MetaMask on <em>Ethereum Mainnet</em><br/>
+    <img class="neox-emoji sm" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
+    Then use the <a href="https://bridge.base.org" target="_blank" rel="noopener">official Base Bridge</a> to convert ETH → Base ETH<br/>
+    <img class="neox-emoji sm" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
+    You need ETH on Base to pay gas fees and buy NXC.
   </p>
 
   <p>4️⃣ Click the button below to buy NeoX Coin on the official platform</p>
 
   <!-- Buy Button -->
-  <a class="btn-buy"
-     href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B"
-     target="_blank" rel="noopener">🚀 Buy NXC Now</a>
+  <a class="btn-buy" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank" rel="noopener">
+    <img class="neox-emoji sm" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
+    Buy NXC Now
+  </a>
 
   <!-- Visual Guide -->
   <div class="guide tip">
-    <h3>🧭 Visual Guide (Screenshots)</h3>
+    <h3>
+      <img class="neox-emoji sm" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
+      Visual Guide (Screenshots)
+    </h3>
 
     <p><strong>Step A — Swap ETH → NXC on Base (Thirdweb)</strong></p>
     <img src="assets/how-to-buy/buy-nxc-thirdweb-swap.png"
@@ -286,7 +319,8 @@
 
   <!-- Contract Info Tip -->
   <div class="tip">
-    💡 <strong>Manual Token Import (MetaMask / Trust Wallet)</strong><br/>
+    <img class="neox-emoji sm" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" />
+    <strong>Manual Token Import (MetaMask / Trust Wallet)</strong><br/>
     If NXC does not appear automatically, you can safely add it using the official details below:
     <div style="margin-top:10px; line-height:1.8;">
       ➤ <strong>Contract Address:</strong><br/>
@@ -297,24 +331,12 @@
   </div>
 
   <div style="text-align: center;">
-    <a class="btn btn-blue" href="index-global.html">← Back to Home</a>
+    <a class="btn btn-blue" href="index.html">← Back to Home</a>
   </div>
 
   <!-- Footer -->
   <div class="footer">
-    © 2025 NeoX. All rights reserved. ｜ <a href="disclaimer-global.html" style="color: inherit; text-decoration: none;">Disclaimer</a>
+    © 2025 NeoX. All rights reserved. ｜ <a href="disclaimer-en.html" style="color: inherit; text-decoration: none;">Disclaimer</a>
   </div>
-
-  <!-- Google Translate Script -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi,ar,tr,fa,uk,pl',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
