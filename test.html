@@ -34,7 +34,7 @@
     .lang a:hover{ opacity:1; text-decoration:underline; }
 
     h1{ font-size:34px; margin:0 0 6px; }
-    p.lead{ color:#cfd7ff; margin:0 0 10px; line-height:1.6; }
+    p.lead{ color:#cfd7ff; margin:0 0 18px; line-height:1.6; }
 
     .btn{
       background:#0d6efd; border:none; color:#fff;
@@ -48,60 +48,83 @@
     .btn.secondary{ background:#1f2a44; box-shadow:0 6px 18px rgba(255,255,255,.08); }
     .btn[disabled]{ opacity:.6; cursor:not-allowed; transform:none; }
 
-    .hint{
-      font-size:13px; color:#9fb0ff;
-      margin:12px auto 0;
-      min-height:18px;
-      line-height:1.5;
-      max-width:760px;
-    }
+    .hint{ font-size:13px; color:#9fb0ff; margin-top:12px; min-height:18px; }
 
+    /* ===== Manual add (Global-style) ===== */
     .panel{
-      max-width:720px;
+      max-width: 920px;
       margin:26px auto 0;
       text-align:left;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:14px;
-      padding:16px 16px 10px;
-      backdrop-filter: blur(6px);
+      background:rgba(0,0,0,.30);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:18px;
+      padding:18px 18px 14px;
+      box-shadow:0 18px 50px rgba(0,0,0,.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
     .panel h2{
-      font-size:16px; margin:0 0 10px; color:#fff;
+      font-size:16px;
+      margin:0 0 14px;
+      color:#fff;
+      font-weight:700;
+      letter-spacing:.2px;
     }
-    .row{
-      display:flex; gap:10px; align-items:center;
-      margin:10px 0;
-      flex-wrap:wrap;
-    }
-    .label{ width:130px; color:#cfd7ff; font-size:13px; }
 
-    code{
-      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size:12px; color:#fff;
+    .mrow{
+      display:grid;
+      grid-template-columns:130px 1fr 84px;
+      gap:12px;
+      align-items:center;
+      padding:10px 0;
+    }
+    .mrow + .mrow{
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+
+    .mlabel{
+      width:auto;
+      color:#cfd7ff;
+      font-size:13px;
+    }
+
+    .mvalue{
       background:rgba(255,255,255,.08);
-      padding:8px 10px; border-radius:10px;
-      display:inline-block;
-      max-width:100%;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      padding:10px 12px;
+      color:#fff;
+      font-size:14px;
+      line-height:1.25;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    /* Contract is long; keep it usable on mobile */
+    .mvalue.long{
+      white-space:nowrap;
       overflow:auto;
+      -webkit-overflow-scrolling:touch;
     }
 
     .copy{
       border:1px solid rgba(255,255,255,.18);
       background:rgba(255,255,255,.06);
       color:#fff;
-      padding:8px 12px;
-      border-radius:10px;
+      padding:10px 12px;
+      border-radius:12px;
       cursor:pointer;
-      font-size:12px;
-      transition:background .2s ease;
+      font-size:13px;
+      transition:background .2s ease, transform .05s ease;
     }
     .copy:hover{ background:rgba(255,255,255,.12); }
+    .copy:active{ transform:scale(.98); }
 
     .note{
       font-size:12px;
       color:rgba(255,255,255,.75);
-      margin-top:10px;
+      margin-top:12px;
       line-height:1.6;
     }
 
@@ -120,7 +143,12 @@
     @media (max-width:600px){
       body{ padding-top:96px; }
       h1{ font-size:28px; }
-      .label{ width:100%; }
+
+      .mrow{
+        grid-template-columns:92px 1fr 76px;
+      }
+      .mvalue{ font-size:13px; }
+      .copy{ font-size:12px; padding:10px 10px; }
     }
   </style>
 </head>
@@ -142,51 +170,41 @@
     Trust Wallet users can add NXC <b>manually</b> using the details below.
   </p>
 
-  <!-- NEW: clear reminder -->
-  <div class="hint" id="topHint">
-    ✅ Auto-add works best in the wallet app’s <b>built-in browser</b> (MetaMask / Trust Wallet Browser).<br>
-    If you opened this in Safari/Chrome, tap <b>Open in MetaMask App</b> or use <b>Manual add</b> below.
-  </div>
-
-  <!-- Auto add -->
-  <button id="autoBtn" class="btn" onclick="queueAddToken()">Auto-add (Wallet Browser)</button>
+  <!-- Auto add (MetaMask) -->
+  <button id="autoBtn" class="btn" onclick="queueAddToken()">Add NXC Token (Auto)</button>
 
   <!-- Open in MetaMask -->
   <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet.html">
-    Open in MetaMask App (Recommended)
+    Open in MetaMask App
   </a>
 
   <div id="status" class="hint"></div>
 
   <!-- Manual info panel (Trust Wallet / others) -->
   <div class="panel">
-    <h2>Manual add (Trust Wallet / other wallets)</h2>
+    <h2>Manual add (Trust Wallet, Coinbase Wallet &amp; other wallets)</h2>
 
-    <div class="note" style="margin:0 0 10px;">
-      Tip: In Trust Wallet, choose <b>Network: Base</b> first — switching networks may clear the contract field,
-      so paste the contract again if needed.
+    <div class="mrow">
+      <div class="mlabel">Network</div>
+      <div class="mvalue" id="net">Base</div>
+      <button class="copy" onclick="copyText('net')">Copy</button>
     </div>
 
-    <div class="row">
-      <div class="label">Network</div>
-      <code>Base</code>
-    </div>
-
-    <div class="row">
-      <div class="label">Contract</div>
-      <code id="addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
+    <div class="mrow">
+      <div class="mlabel">Contract</div>
+      <div class="mvalue long" id="addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</div>
       <button class="copy" onclick="copyText('addr')">Copy</button>
     </div>
 
-    <div class="row">
-      <div class="label">Symbol</div>
-      <code id="sym">NXC</code>
+    <div class="mrow">
+      <div class="mlabel">Symbol</div>
+      <div class="mvalue" id="sym">NXC</div>
       <button class="copy" onclick="copyText('sym')">Copy</button>
     </div>
 
-    <div class="row">
-      <div class="label">Decimals</div>
-      <code id="dec">18</code>
+    <div class="mrow">
+      <div class="mlabel">Decimals</div>
+      <div class="mvalue" id="dec">18</div>
       <button class="copy" onclick="copyText('dec')">Copy</button>
     </div>
 
@@ -205,7 +223,7 @@
   <script>
     // ---- Config ----
     const TOKEN = {
-      address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', // Base
+      address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B',
       symbol: 'NXC',
       decimals: 18,
       image: 'https://neoxcoin.github.io/neox-emoji-128.png'
@@ -217,19 +235,11 @@
     function inMetaMaskInApp(){
       return /MetaMaskMobile/i.test(navigator.userAgent);
     }
-    function inTrustWallet(){
-      // Trust Wallet in-app browser UA often contains "Trust" / "TrustWallet"
-      return /Trust|TrustWallet/i.test(navigator.userAgent);
-    }
-    function inWalletBrowser(){
-      return inMetaMaskInApp() || inTrustWallet();
-    }
 
     function queueAddToken(){
-      if (!confirm('Add NXC token to your wallet now?')) return;
+      if (!confirm('Proceed to add NXC to MetaMask?')) return;
 
-      // If not in a wallet browser, guide to MetaMask deep link (works for MetaMask users)
-      if (typeof window.ethereum === 'undefined' && !inWalletBrowser()){
+      if (typeof window.ethereum === 'undefined' && !inMetaMaskInApp()){
         window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet.html';
         return;
       }
@@ -250,20 +260,17 @@
 
     async function addToken(){
       try{
-        if (!window.ethereum) throw new Error('Wallet provider not detected');
+        if (!window.ethereum) throw new Error('MetaMask not detected');
 
         const ok = await window.ethereum.request({
           method: 'wallet_watchAsset',
           params: { type: 'ERC20', options: TOKEN }
         });
 
-        statusEl.textContent = ok
-          ? 'Request sent. If your wallet shows an import screen, confirm to add NXC.'
-          : 'Cancelled.';
+        statusEl.textContent = ok ? 'NXC added successfully.' : 'User cancelled in MetaMask.';
       }catch(e){
         console.error(e);
-        statusEl.textContent =
-          'Auto-add not available here. Please use the wallet app’s built-in browser, or add manually below (Base network).';
+        statusEl.textContent = 'MetaMask not available. Use “Open in MetaMask App” or add manually (Trust Wallet).';
       }finally{
         autoBtn.disabled = false;
       }
