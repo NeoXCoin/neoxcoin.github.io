@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -7,7 +7,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Add NXC Token to Wallet</title>
+  <title>加入 NXC 代幣到錢包</title>
 
   <style>
     body{
@@ -118,72 +118,66 @@
 </head>
 
 <body>
-  <!-- Logo → Home -->
-  <a href="index.html">
+  <a href="index-zh.html">
     <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
   </a>
 
-  <!-- Language -->
   <div class="lang">
     <a href="add-to-wallet.html">EN</a> | <a href="add-to-wallet-zh.html">繁</a>
   </div>
 
-  <h1>Add NXC Token to Wallet</h1>
+  <h1>加入 NXC 代幣到錢包</h1>
   <p class="lead">
-    MetaMask supports <b>Auto-add</b> on this page.<br/>
-    Trust Wallet users can add NXC <b>manually</b> using the details below.
+    本頁 <b>自動加入</b> 功能支援 MetaMask。<br/>
+    Trust Wallet 用戶可用下方資料 <b>手動加入</b> NXC。
   </p>
 
-  <!-- Auto add (MetaMask) -->
-  <button id="autoBtn" class="btn" onclick="queueAddToken()">Add NXC Token (Auto)</button>
+  <button id="autoBtn" class="btn" onclick="queueAddToken()">加入 NXC（自動）</button>
 
-  <!-- Open in MetaMask -->
-  <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet.html">
-    Open in MetaMask App
+  <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet-zh.html">
+    在 MetaMask App 開啟
   </a>
 
   <div id="status" class="hint"></div>
 
-  <!-- Manual info panel (Trust Wallet / others) -->
   <div class="panel">
-    <h2>Manual add (Trust Wallet / other wallets)</h2>
+    <h2>手動加入（Trust Wallet／其他錢包）</h2>
 
     <div class="row">
-      <div class="label">Network</div>
+      <div class="label">網絡</div>
       <code>Base</code>
     </div>
 
     <div class="row">
-      <div class="label">Contract</div>
+      <div class="label">合約地址</div>
       <code id="addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
-      <button class="copy" onclick="copyText('addr')">Copy</button>
+      <button class="copy" onclick="copyText('addr')">複製</button>
     </div>
 
     <div class="row">
-      <div class="label">Symbol</div>
+      <div class="label">代幣符號</div>
       <code id="sym">NXC</code>
-      <button class="copy" onclick="copyText('sym')">Copy</button>
+      <button class="copy" onclick="copyText('sym')">複製</button>
     </div>
 
     <div class="row">
-      <div class="label">Decimals</div>
+      <div class="label">小數位</div>
       <code id="dec">18</code>
-      <button class="copy" onclick="copyText('dec')">Copy</button>
+      <button class="copy" onclick="copyText('dec')">複製</button>
     </div>
 
     <div class="note">
-      If you added the token but the logo doesn’t show yet, that’s normal — some wallets display logos only after listing/verification.
+      如果已加入代幣但未顯示 Logo，屬正常情況：部分錢包需要等待上架／驗證後先會顯示圖示。
     </div>
   </div>
 
-  <a class="back" href="index.html">← Back to Home</a>
+  <a class="back" href="index-zh.html">← 返回主頁</a>
 
   <div class="footer">
-    © 2025 NeoX. All rights reserved. | <a href="disclaimer-en.html">Disclaimer</a>
+    © 2025 NeoX. All rights reserved. | <a href="disclaimer-zh.html">免責聲明</a>
   </div>
 
   <script>
-    // ---- Config ----
     const TOKEN = {
       address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B',
       symbol: 'NXC',
@@ -199,20 +193,20 @@
     }
 
     function queueAddToken(){
-      if (!confirm('Proceed to add NXC to MetaMask?')) return;
+      if (!confirm('確定要把 NXC 加入到 MetaMask 嗎？')) return;
 
       if (typeof window.ethereum === 'undefined' && !inMetaMaskInApp()){
-        window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet.html';
+        window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet-zh.html';
         return;
       }
 
       autoBtn.disabled = true;
       let secs = 2;
-      statusEl.textContent = `Preparing… ${secs}s`;
+      statusEl.textContent = `準備中… ${secs}s`;
 
       const t = setInterval(()=>{
         secs--;
-        statusEl.textContent = `Preparing… ${secs}s`;
+        statusEl.textContent = `準備中… ${secs}s`;
         if (secs <= 0){
           clearInterval(t);
           addToken();
@@ -222,17 +216,17 @@
 
     async function addToken(){
       try{
-        if (!window.ethereum) throw new Error('MetaMask not detected');
+        if (!window.ethereum) throw new Error('未偵測到 MetaMask');
 
         const ok = await window.ethereum.request({
           method: 'wallet_watchAsset',
           params: { type: 'ERC20', options: TOKEN }
         });
 
-        statusEl.textContent = ok ? 'NXC added successfully.' : 'User cancelled in MetaMask.';
+        statusEl.textContent = ok ? '已成功加入 NXC。' : '你已取消操作。';
       }catch(e){
         console.error(e);
-        statusEl.textContent = 'MetaMask not available. Use “Open in MetaMask App” or add manually (Trust Wallet).';
+        statusEl.textContent = 'MetaMask 未可用。可用「在 MetaMask App 開啟」，或用下方資料手動加入（Trust Wallet）。';
       }finally{
         autoBtn.disabled = false;
       }
@@ -243,15 +237,14 @@
       const text = el ? el.textContent.trim() : '';
       try{
         await navigator.clipboard.writeText(text);
-        statusEl.textContent = 'Copied.';
+        statusEl.textContent = '已複製。';
         setTimeout(()=>{ statusEl.textContent = ''; }, 1200);
       }catch(e){
-        // fallback
         const ta = document.createElement('textarea');
         ta.value = text; document.body.appendChild(ta);
         ta.select(); document.execCommand('copy');
         document.body.removeChild(ta);
-        statusEl.textContent = 'Copied.';
+        statusEl.textContent = '已複製。';
         setTimeout(()=>{ statusEl.textContent = ''; }, 1200);
       }
     }
