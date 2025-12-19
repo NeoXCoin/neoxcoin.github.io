@@ -23,6 +23,7 @@
     .logo{
       width:60px; position:absolute; top:20px; left:20px;
       opacity:.85; z-index:9999;
+      transition:transform .2s ease;
     }
     .logo:hover{ transform:translateY(-1px); }
 
@@ -32,16 +33,16 @@
 
     h1{ font-size:34px; margin:0 0 6px; letter-spacing:.2px; }
     p.lead{
-      color:#cfd7ff; margin:0 auto 18px; max-width:720px; line-height:1.5;
+      color:#cfd7ff; margin:0 auto 18px; max-width:760px; line-height:1.55;
     }
-    
+
     .title{
       display:flex;
       align-items:center;
       justify-content:center;
       gap:14px;
+      flex-wrap:wrap;
     }
-
     .title-emoji{
       width:42px;
       height:42px;
@@ -60,74 +61,98 @@
       padding:14px 22px; border-radius:12px;
       font-size:16px; cursor:pointer; display:inline-block; text-decoration:none;
       box-shadow:0 10px 26px rgba(13,110,253,.22);
-      min-width:210px;
+      min-width:230px;
+      transition:filter .2s ease, transform .06s ease;
     }
-    .btn:hover{ filter:brightness(1.06); }
-
+    .btn:hover{ filter:brightness(1.06); transform:translateY(-1px); }
     .btn.secondary{
       background:rgba(31,42,68,.85);
       box-shadow:0 10px 26px rgba(0,0,0,.22);
       backdrop-filter:blur(6px);
     }
-
-    .btn[disabled]{ opacity:.6; cursor:not-allowed; }
+    .btn[disabled]{ opacity:.6; cursor:not-allowed; transform:none; }
 
     .hint{ font-size:13px; color:#9fb0ff; margin-top:12px; min-height:18px; }
 
-    /* Manual box */
+    /* Manual box (Global-style) */
     .box{
-      width:min(820px, 100%);
+      width:min(920px, 100%);
       margin:26px auto 0;
       background:rgba(0,0,0,.30);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:14px;
-      padding:18px 16px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:18px;
+      padding:18px 18px 14px;
       backdrop-filter:blur(8px);
-      box-shadow:0 14px 40px rgba(0,0,0,.28);
+      -webkit-backdrop-filter:blur(8px);
+      box-shadow:0 18px 50px rgba(0,0,0,.35);
       text-align:left;
     }
     .box h2{
-      margin:0 0 12px;
-      font-size:18px;
-      color:#ffffff;
+      margin:0 0 14px;
+      font-size:16px;
+      font-weight:700;
+      color:#fff;
+      letter-spacing:.2px;
     }
-    .grid{
+
+    .mrow{
       display:grid;
-      grid-template-columns:140px 1fr auto;
-      gap:10px 12px;
+      grid-template-columns:140px 1fr 84px;
+      gap:12px;
       align-items:center;
-      font-size:14px;
+      padding:10px 0;
     }
-    .label{ color:#cfd7ff; opacity:.95; }
-    .value{
-      padding:9px 10px;
+    .mrow + .mrow{
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+
+    .mlabel{ color:#cfd7ff; font-size:13px; }
+
+    .mvalue{
+      padding:10px 12px;
       background:rgba(255,255,255,.08);
       border:1px solid rgba(255,255,255,.12);
-      border-radius:10px;
-      word-break:break-all;
-      text-align:left;
+      border-radius:12px;
+      color:#fff;
+      font-size:14px;
+      line-height:1.25;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
+    /* Contract: horizontal scroll on mobile */
+    .mvalue.long{
+      white-space:nowrap;
+      overflow:auto;
+      text-overflow:clip;
+      -webkit-overflow-scrolling:touch;
+    }
+
     .copy{
       background:rgba(255,255,255,.10);
       border:1px solid rgba(255,255,255,.16);
       color:#fff;
-      padding:8px 12px;
-      border-radius:10px;
+      padding:10px 12px;
+      border-radius:12px;
       cursor:pointer;
+      font-size:13px;
+      transition:filter .2s ease, transform .06s ease, background .2s ease;
     }
-    .copy:hover{ filter:brightness(1.05); }
+    .copy:hover{ filter:brightness(1.06); background:rgba(255,255,255,.12); }
+    .copy:active{ transform:scale(.98); }
 
     .note{
       margin-top:12px;
       font-size:12.5px;
       color:rgba(255,255,255,.70);
-      line-height:1.5;
+      line-height:1.55;
     }
 
     .back{
       margin-top:26px; color:#ddd; text-decoration:none; display:inline-block;
+      opacity:.9;
     }
-    .back:hover{ text-decoration:underline; }
+    .back:hover{ text-decoration:underline; opacity:1; }
 
     .footer{
       margin-top:56px; font-size:13px; color:rgba(255,255,255,.55);
@@ -139,13 +164,15 @@
       body{ padding-top:96px; }
       h1{ font-size:28px; }
       .btn{ min-width:240px; }
-      .grid{ grid-template-columns:110px 1fr auto; }
+      .mrow{ grid-template-columns:110px 1fr 76px; }
+      .mvalue{ font-size:13px; }
+      .copy{ font-size:12px; padding:10px 10px; }
     }
   </style>
 </head>
 
 <body>
-  <!-- Logo → Home -->
+  <!-- Logo → Home (Global) -->
   <a href="index-global.html">
     <img class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo"/>
   </a>
@@ -159,18 +186,17 @@
          class="title-emoji" />
     Add NXC Token to Wallet
   </h1>
+
   <p class="lead">
     This page allows you to add the NeoX Token (NXC) to your wallet.<br>
     <b>Auto-add is supported for MetaMask only.</b> Other wallets can add NXC manually using the details below.
   </p>
 
   <div class="btn-row">
-    <!-- Auto add -->
     <button id="autoBtn" class="btn" onclick="queueAddToken()">
       Add NXC Token (Auto)
     </button>
 
-    <!-- Safe open -->
     <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet-global.html">
       Open in MetaMask App (In-App Browser)
     </a>
@@ -178,26 +204,32 @@
 
   <div id="status" class="hint"></div>
 
-  <!-- Manual add details -->
+  <!-- Manual add -->
   <div class="box">
-    <h2>Manual add (Trust Wallet, Coinbase Wallet & other wallets)</h2>
+    <h2>Manual add (Trust Wallet, Coinbase Wallet &amp; other wallets)</h2>
 
-    <div class="grid">
-      <div class="label">Network</div>
-      <div class="value" id="vNetwork">Base</div>
-      <button class="copy" onclick="copyText('Base')">Copy</button>
+    <div class="mrow">
+      <div class="mlabel">Network</div>
+      <div class="mvalue" id="vNetwork">Base</div>
+      <button class="copy" onclick="copyById('vNetwork')">Copy</button>
+    </div>
 
-      <div class="label">Contract</div>
-      <div class="value" id="vContract">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</div>
-      <button class="copy" onclick="copyText(document.getElementById('vContract').textContent)">Copy</button>
+    <div class="mrow">
+      <div class="mlabel">Contract</div>
+      <div class="mvalue long" id="vContract">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</div>
+      <button class="copy" onclick="copyById('vContract')">Copy</button>
+    </div>
 
-      <div class="label">Symbol</div>
-      <div class="value" id="vSymbol">NXC</div>
-      <button class="copy" onclick="copyText('NXC')">Copy</button>
+    <div class="mrow">
+      <div class="mlabel">Symbol</div>
+      <div class="mvalue" id="vSymbol">NXC</div>
+      <button class="copy" onclick="copyById('vSymbol')">Copy</button>
+    </div>
 
-      <div class="label">Decimals</div>
-      <div class="value" id="vDecimals">18</div>
-      <button class="copy" onclick="copyText('18')">Copy</button>
+    <div class="mrow">
+      <div class="mlabel">Decimals</div>
+      <div class="mvalue" id="vDecimals">18</div>
+      <button class="copy" onclick="copyById('vDecimals')">Copy</button>
     </div>
 
     <div class="note">
@@ -213,8 +245,8 @@
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
-  <!-- Google Translate Script -->
-  <script type="text/javascript">
+  <!-- Google Translate -->
+  <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
@@ -223,7 +255,7 @@
       }, 'google_translate_element');
     }
   </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <script>
     // ---- Config ----
@@ -245,7 +277,6 @@
       if (!confirm('Proceed to add NXC to MetaMask?')) return;
 
       if (typeof window.ethereum === 'undefined' && !inMetaMaskInApp()){
-        // guide user into MetaMask in-app browser
         window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet-global.html';
         return;
       }
@@ -253,8 +284,10 @@
       autoBtn.disabled = true;
       let secs = 2;
       statusEl.textContent = `Preparing… ${secs}s`;
+
       const t = setInterval(()=>{
-        secs--; statusEl.textContent = `Preparing… ${secs}s`;
+        secs--;
+        statusEl.textContent = `Preparing… ${secs}s`;
         if (secs<=0){ clearInterval(t); addToken(); }
       }, 1000);
     }
@@ -262,10 +295,12 @@
     async function addToken(){
       try{
         if (!window.ethereum) throw new Error('MetaMask not detected');
+
         const ok = await window.ethereum.request({
           method: 'wallet_watchAsset',
           params: { type: 'ERC20', options: TOKEN }
         });
+
         statusEl.textContent = ok ? 'NXC added successfully.' : 'User cancelled in MetaMask.';
       }catch(e){
         console.error(e);
@@ -275,13 +310,18 @@
       }
     }
 
+    function copyById(id){
+      const el = document.getElementById(id);
+      const text = el ? el.textContent.trim() : '';
+      copyText(text);
+    }
+
     async function copyText(text){
       try{
         await navigator.clipboard.writeText(text);
         statusEl.textContent = 'Copied.';
         setTimeout(()=> statusEl.textContent = '', 1200);
       }catch(e){
-        // fallback
         const ta = document.createElement('textarea');
         ta.value = text; document.body.appendChild(ta);
         ta.select(); document.execCommand('copy');
