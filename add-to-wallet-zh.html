@@ -7,7 +7,7 @@
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>加入 NXC 代幣到錢包</title>
+  <title>將 NXC 加入錢包</title>
 
   <style>
     body{
@@ -50,50 +50,79 @@
 
     .hint{ font-size:13px; color:#9fb0ff; margin-top:12px; min-height:18px; }
 
+    /* ===== Manual add (Global-style) ===== */
     .panel{
-      max-width:720px;
+      max-width: 920px;
       margin:26px auto 0;
       text-align:left;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:14px;
-      padding:16px 16px 10px;
-      backdrop-filter: blur(6px);
+      background:rgba(0,0,0,.30);
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:18px;
+      padding:18px 18px 14px;
+      box-shadow:0 18px 50px rgba(0,0,0,.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
     .panel h2{
-      font-size:16px; margin:0 0 10px; color:#fff;
+      font-size:16px;
+      margin:0 0 14px;
+      color:#fff;
+      font-weight:700;
+      letter-spacing:.2px;
     }
-    .row{
-      display:flex; gap:10px; align-items:center;
-      margin:10px 0;
-      flex-wrap:wrap;
+
+    .mrow{
+      display:grid;
+      grid-template-columns:130px 1fr 84px;
+      gap:12px;
+      align-items:center;
+      padding:10px 0;
     }
-    .label{ width:130px; color:#cfd7ff; font-size:13px; }
-    code{
-      font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size:12px; color:#fff;
+    .mrow + .mrow{
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+
+    .mlabel{
+      color:#cfd7ff;
+      font-size:13px;
+    }
+
+    .mvalue{
       background:rgba(255,255,255,.08);
-      padding:8px 10px; border-radius:10px;
-      display:inline-block;
-      max-width:100%;
-      overflow:auto;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:12px;
+      padding:10px 12px;
+      color:#fff;
+      font-size:14px;
+      line-height:1.25;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
+
+    .mvalue.long{
+      white-space:nowrap;
+      overflow:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+
     .copy{
       border:1px solid rgba(255,255,255,.18);
       background:rgba(255,255,255,.06);
       color:#fff;
-      padding:8px 12px;
-      border-radius:10px;
+      padding:10px 12px;
+      border-radius:12px;
       cursor:pointer;
-      font-size:12px;
-      transition:background .2s ease;
+      font-size:13px;
+      transition:background .2s ease, transform .05s ease;
     }
     .copy:hover{ background:rgba(255,255,255,.12); }
+    .copy:active{ transform:scale(.98); }
 
     .note{
       font-size:12px;
       color:rgba(255,255,255,.75);
-      margin-top:10px;
+      margin-top:12px;
       line-height:1.6;
     }
 
@@ -112,72 +141,82 @@
     @media (max-width:600px){
       body{ padding-top:96px; }
       h1{ font-size:28px; }
-      .label{ width:100%; }
+      .mrow{ grid-template-columns:92px 1fr 76px; }
+      .mvalue{ font-size:13px; }
+      .copy{ font-size:12px; padding:10px 10px; }
     }
   </style>
 </head>
 
 <body>
-  <a href="index-zh.html">
+  <!-- Logo → Home -->
+  <a href="index.html">
     <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
   </a>
 
+  <!-- Language -->
   <div class="lang">
     <a href="add-to-wallet.html">EN</a> | <a href="add-to-wallet-zh.html">繁</a>
   </div>
 
-  <h1>加入 NXC 代幣到錢包</h1>
+  <h1>將 NXC 加入錢包</h1>
   <p class="lead">
-    本頁 <b>自動加入</b> 功能支援 MetaMask。<br/>
-    Trust Wallet 用戶可用下方資料 <b>手動加入</b> NXC。
+    此頁支援 MetaMask 的 <b>自動加入</b> 功能。<br/>
+    Trust Wallet（或其他錢包）可使用下方資料 <b>手動加入</b> NXC。
   </p>
 
-  <button id="autoBtn" class="btn" onclick="queueAddToken()">加入 NXC（自動）</button>
+  <!-- Auto add (MetaMask) -->
+  <button id="autoBtn" class="btn" onclick="queueAddToken()">自動加入 NXC（MetaMask）</button>
 
-  <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet-zh.html">
-    在 MetaMask App 開啟
+  <!-- Open in MetaMask -->
+  <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet.html">
+    於 MetaMask App 開啟（內置瀏覽器）
   </a>
 
   <div id="status" class="hint"></div>
 
+  <!-- Manual info panel -->
   <div class="panel">
-    <h2>手動加入（Trust Wallet／其他錢包）</h2>
+    <h2>手動加入（Trust Wallet、Coinbase Wallet 及其他錢包）</h2>
 
-    <div class="row">
-      <div class="label">網絡</div>
-      <code>Base</code>
+    <div class="mrow">
+      <div class="mlabel">網絡</div>
+      <div class="mvalue" id="net">Base</div>
+      <button class="copy" onclick="copyText('net')">複製</button>
     </div>
 
-    <div class="row">
-      <div class="label">合約地址</div>
-      <code id="addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
+    <div class="mrow">
+      <div class="mlabel">合約地址</div>
+      <div class="mvalue long" id="addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</div>
       <button class="copy" onclick="copyText('addr')">複製</button>
     </div>
 
-    <div class="row">
-      <div class="label">代幣符號</div>
-      <code id="sym">NXC</code>
+    <div class="mrow">
+      <div class="mlabel">代幣符號</div>
+      <div class="mvalue" id="sym">NXC</div>
       <button class="copy" onclick="copyText('sym')">複製</button>
     </div>
 
-    <div class="row">
-      <div class="label">小數位</div>
-      <code id="dec">18</code>
+    <div class="mrow">
+      <div class="mlabel">小數位</div>
+      <div class="mvalue" id="dec">18</div>
       <button class="copy" onclick="copyText('dec')">複製</button>
     </div>
 
     <div class="note">
-      如果已加入代幣但未顯示 Logo，屬正常情況：部分錢包需要等待上架／驗證後先會顯示圖示。
+      若已成功加入代幣但暫時未顯示 Logo，屬正常情況。
+      部分錢包需完成官方收錄或驗證後才會顯示圖示。
     </div>
   </div>
 
-  <a class="back" href="index-zh.html">← 返回主頁</a>
+  <a class="back" href="index.html">← 返回主頁</a>
 
   <div class="footer">
-    © 2025 NeoX. All rights reserved. | <a href="disclaimer-zh.html">免責聲明</a>
+    © 2025 NeoX. 版權所有。 | <a href="disclaimer-zh.html">免責聲明</a>
   </div>
 
   <script>
+    // ---- Config ----
     const TOKEN = {
       address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B',
       symbol: 'NXC',
@@ -193,10 +232,11 @@
     }
 
     function queueAddToken(){
-      if (!confirm('確定要把 NXC 加入到 MetaMask 嗎？')) return;
+      if (!confirm('是否繼續將 NXC 加入 MetaMask？')) return;
 
       if (typeof window.ethereum === 'undefined' && !inMetaMaskInApp()){
-        window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet-zh.html';
+        // 建議：繁中頁都導去英文 DApp 版本（確保 MetaMask 可識別）
+        window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet.html';
         return;
       }
 
@@ -216,17 +256,17 @@
 
     async function addToken(){
       try{
-        if (!window.ethereum) throw new Error('未偵測到 MetaMask');
+        if (!window.ethereum) throw new Error('MetaMask not detected');
 
         const ok = await window.ethereum.request({
           method: 'wallet_watchAsset',
           params: { type: 'ERC20', options: TOKEN }
         });
 
-        statusEl.textContent = ok ? '已成功加入 NXC。' : '你已取消操作。';
+        statusEl.textContent = ok ? '已成功加入 NXC。' : '你已在 MetaMask 取消操作。';
       }catch(e){
         console.error(e);
-        statusEl.textContent = 'MetaMask 未可用。可用「在 MetaMask App 開啟」，或用下方資料手動加入（Trust Wallet）。';
+        statusEl.textContent = '未偵測到 MetaMask。請用「於 MetaMask App 開啟」或改用手動加入（Trust Wallet）。';
       }finally{
         autoBtn.disabled = false;
       }
