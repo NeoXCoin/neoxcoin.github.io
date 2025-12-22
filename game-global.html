@@ -55,11 +55,39 @@
       z-index: 9999;
     }
 
-    #google_translate_element {
-      position: absolute;
-      top: 20px;
-      right: 20px;
+    .translate-wrap{
+      position:absolute;
+      top:20px;
+      right:20px;
+      font-size:14px;
+      text-align:right;
       z-index: 9999;
+    }
+
+    #google_translate_element{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:10px;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(0,217,255,.35);
+      box-shadow:0 0 14px rgba(0,217,255,.18);
+    }
+
+    #google_translate_element .goog-te-gadget{
+      font-size:14px !important;
+      color:#fff !important;
+      line-height:1.2;
+    }
+    #google_translate_element .goog-te-gadget span{
+      color:#fff !important;
+    }
+    #google_translate_element select{
+      background:rgba(0,0,0,.15) !important;
+      color:#fff !important;
+      border:1px solid rgba(255,255,255,.25) !important;
+      border-radius:8px !important;
+      padding:6px 8px !important;
+      outline:none !important;
     }
 
     header {
@@ -196,8 +224,10 @@
     <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo">
   </a>
 
-  <!-- 右上 Google Translate Bar -->
-  <div id="google_translate_element"></div>
+  <!-- ✅ Google Translate (black pill, top-right) -->
+  <div class="translate-wrap">
+    <div id="google_translate_element"></div>
+  </div>
 
   <header>
     <h1 class="tagline">NeoX Game (Global)</h1>
@@ -284,16 +314,17 @@
   })();
   </script>
 
-  <!-- Google Translate Script -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
+  <!-- Google Translate (Mainstream languages only + NO SIMPLE layout) -->
+  <script>
+    function googleTranslateElementInit(){
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi,ar,tr,fa,uk,pl',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
+        autoDisplay: false,
+        multilanguagePage: true
       }, 'google_translate_element');
     }
   </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 </body>
 </html>
