@@ -35,6 +35,31 @@
       margin: 0;
       padding: 0;
     }
+    
+    /* ✅ 防止 Google Translate 推落頁面 / 出白色頂部 bar */
+    body{
+      top: 0 !important;
+      position: static !important;
+      margin-top: 0 !important;
+    }
+
+    /* ✅ 徹底隱藏 Google Translate 頂部白色 Banner */
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-banner-frame{
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      width: 0 !important;
+    }
+
+    iframe.goog-te-banner-frame{
+      display: none !important;
+    }
+
+    /* ✅ 有時 Google 會包一層 skiptranslate，直接隱藏避免留白 */
+    body > .skiptranslate{
+      display: none !important;
+    }
 
     body {
       margin: 0;
