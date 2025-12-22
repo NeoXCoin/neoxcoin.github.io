@@ -86,8 +86,34 @@
       text-align: center;
     }
     .logo{position:absolute;top:20px;left:20px;width:60px;opacity:.85;z-index:999}
-    .language-switch{position:absolute;top:20px;right:20px;font-size:16px;z-index:9999}
-    .language-switch a{color:#fff;text-decoration:none;margin:0 8px}
+    .language-switch{
+      position:fixed;
+      top:16px;
+      right:16px;
+      z-index:9999;
+
+      display:flex;
+      align-items:center;
+      gap:8px;
+
+      padding:8px 12px;
+      border-radius:14px;
+      background:rgba(10,10,40,.55);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(0,200,255,.3);
+      box-shadow:0 0 14px rgba(0,200,255,.2);
+    }
+
+    .language-switch a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+    }
+
+    .lang-sep{
+      color:rgba(255,255,255,.35);
+    }
     .container{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px}
     .tagline{font-size:18px;margin-top:100px;opacity:.9}
     .subtagline {font-size: 15px;opacity: 0.8;margin-top: 6px;font-weight: 400;}
@@ -193,7 +219,16 @@
 
   <!-- Language Switch -->
   <div class="language-switch">
-    <a href="index.html">EN</a> | <a href="index-zh.html">繁</a> | <a href="index-global.html">🌍</a>
+    <a href="index.html">EN</a>
+    <span class="lang-sep">|</span>
+    <a href="index-zh.html">繁</a>
+    <span class="lang-sep">|</span>
+    <a href="index-global.html">
+      Global
+      <img src="https://neoxcoin.github.io/neox-emoji-128.png"
+           style="width:16px;height:16px;vertical-align:middle;margin-left:4px;"
+           alt="NeoX">
+    </a>
   </div>
 
   <div class="container">
