@@ -189,14 +189,9 @@
     }
 
     @media (max-width: 600px){
-      body{ padding-top:110px; }
       .translate-wrap{ top:18px; right:12px; }
       .logo{ left:12px; }
     }
-    
-    /* Hide Google Translate top banner */
-    .goog-te-banner-frame.skiptranslate { display: none !important; }
-    body { top: 0 !important; }
   </style>
 </head>
 
@@ -290,16 +285,14 @@
 <!-- Google Translate loader -->
 <script>
   function googleTranslateElementInit(){
-    new google.translate.TranslateElement(
-      {
-        pageLanguage: 'en',
-        autoDisplay: false
-      },
-      'google_translate_element'
-    );
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
+      autoDisplay: false,
+      multilanguagePage: true
+    }, 'google_translate_element');
   }
 </script>
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 </body>
 </html>
