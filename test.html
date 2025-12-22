@@ -5,11 +5,11 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
+    
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>What is NeoX? - NeoX</title>
-
+  
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <link rel="canonical" href="https://neoxcoin.github.io/what-is-neox-global.html" />
   <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox.html" hreflang="en" />
@@ -29,49 +29,47 @@
     ]
   }
   </script>
-
   <style>
-    /* =========================================================
-       ✅ Google Translate: STOP pushing content + hide banner
-       ========================================================= */
-    html, body{
-      top: 0 !important;
-      margin-top: 0 !important;
-      padding-top: 0 !important;
-    }
-
-    .goog-te-banner-frame.skiptranslate,
-    .goog-te-banner-frame{
-      display: none !important;
-      visibility: hidden !important;
-      height: 0 !important;
-      width: 0 !important;
-    }
-
-    iframe.goog-te-banner-frame{
-      display: none !important;
-      visibility: hidden !important;
-      height: 0 !important;
-      width: 0 !important;
-    }
-
-    /* =========================================================
-       === Global / Body ===
-       ========================================================= */
+    /* === Global / Body === */
     body {
       margin: 0;
+      /* 確保背景設定正確 */
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
       background-image: url('https://neoxcoin.io/NeoXbackG.JPG');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed; /* iPad 如果覺得卡/怪，可改 scroll */
+      background-attachment: fixed; /* ✅ 鎖定背景，防止走位 */
       font-family: Arial, sans-serif;
       color: #ffffff;
       text-align: center;
+      
+      /* ✅ 強制覆蓋 Google Translate 的位移設定 */
+      top: 0 !important;
+      position: static !important; 
+      margin-top: 0 !important;
       min-height: 100vh;
-      position: static !important; /* 保留都OK */
     }
 
+    /* ✅ 徹底隱藏 Google Translate 頂部白色 Banner */
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-banner-frame {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      width: 0 !important;
+    }
+    
+    /* 防止 Google 產生的 iframe 佔據空間 */
+    iframe.goog-te-banner-frame {
+      display: none !important;
+    }
+
+    /* 確保 body 內容永遠貼頂 */
+    body > .skiptranslate {
+      display: none !important;
+    }
+
+    
     .bg-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -92,60 +90,13 @@
       z-index: 9999;
     }
 
-    /* =========================================================
-       ✅ Translate UI (top-right) — black style
-       ========================================================= */
-    #google_translate_element{
+    #google_translate_element {
       position: absolute;
       top: 20px;
       right: 20px;
       z-index: 9999;
-
-      padding: 8px 12px;
-      border-radius: 14px;
-      background: rgba(0,0,0,.55);
-      border: 1px solid rgba(0,217,255,.28);
-      box-shadow: 0 0 14px rgba(0,217,255,.18);
-      backdrop-filter: blur(6px);
-      display: inline-block;
     }
 
-    /* Force all text white */
-    #google_translate_element,
-    #google_translate_element *{
-      color: #fff !important;
-      font-family: Arial, sans-serif !important;
-    }
-
-    /* Style the select */
-    #google_translate_element select{
-      background: rgba(0,0,0,.25) !important;
-      color: #fff !important;
-      border: 1px solid rgba(255,255,255,.25) !important;
-      border-radius: 10px !important;
-      padding: 7px 10px !important;
-      outline: none !important;
-      -webkit-appearance: none;
-      appearance: none;
-    }
-
-    /* Hide “Powered by Google Translate” + other gadget clutter */
-    .goog-logo-link,
-    .goog-te-gadget span,
-    .goog-te-gadget a{
-      display: none !important;
-    }
-
-    .goog-te-gadget{
-      font-size: 0 !important; /* remove leftover spacing */
-    }
-
-    .goog-te-gadget select{
-      font-size: 14px !important;
-      cursor: pointer;
-    }
-
-    /* ========================================================= */
     .container {
       max-width: 900px;
       margin: 120px auto 0;
@@ -229,39 +180,43 @@
     }
   </style>
 </head>
-
 <body>
   <div class="bg-overlay"></div>
-
   <!-- Logo -->
   <a href="index-global.html">
     <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo">
   </a>
 
   <!-- Google Translate -->
-  <div id="google_translate_element"></div>
+  <div id="gt_wrap" class="gt-wrap">
+    <div class="gt-label" id="gt_label">
+      Select Language <span class="gt-caret">▾</span>
+    </div>
+    <div id="google_translate_element"></div>
+  </div>
 
   <!-- Main Content -->
   <div class="container">
     <h1 class="tagline">What is NeoX? (Global)</h1>
     <p class="subtagline">Decentralized creativity for everyone</p>
-
-    <p><strong>🔗 Built for the Future</strong><br/>
-    NeoX bridges the traditional world and the future of decentralization. By integrating smart contracts, cross-chain support, and NFT infrastructure, NeoX empowers both users and developers to thrive in the decentralized economy.</p>
-
-    <p><strong>⚙️ Core Features</strong></p>
-    <ul style="text-align:left; max-width:700px; margin:20px auto;">
-      <li>ERC-20 based NXC Token for secure and fast transactions</li>
-      <li>Cross-platform compatibility with major wallets like MetaMask</li>
-      <li>Supports NFT issuance and on-chain governance</li>
-      <li>Open-source project with a community-driven roadmap</li>
-    </ul>
+      
+      <p><strong>🔗 Built for the Future</strong><br/>
+      NeoX bridges the traditional world and the future of decentralization. By integrating smart contracts, cross-chain support, and NFT infrastructure, NeoX empowers both users and developers to thrive in the decentralized economy.</p>
+      
+      <p><strong>⚙️ Core Features</strong></p>
+      <ul style="text-align:left; max-width:700px; margin:20px auto;">
+        <li>ERC-20 based NXC Token for secure and fast transactions</li>
+        <li>Cross-platform compatibility with major wallets like MetaMask</li>
+        <li>Supports NFT issuance and on-chain governance</li>
+        <li>Open-source project with a community-driven roadmap</li>
+      </ul>
+    </div>
+    
   </div>
 
   <div style="text-align:center; margin-top:30px;">
-    <a class="btn btn-blue" href="index-global.html">← Back to Home</a>
-  </div>
-
+     <a class="btn btn-blue" href="index-global.html">← Back to Home</a>
+    </div>
   <!-- Footer -->
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
@@ -269,7 +224,7 @@
   </div>
 
   <!-- Google Translate Script -->
-  <script>
+  <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
@@ -278,6 +233,6 @@
       }, 'google_translate_element');
     }
   </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
