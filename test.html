@@ -120,6 +120,32 @@
       z-index: 9999;
     }
     
+    /* --- Force SIMPLE widget (the white bar) to dark --- */
+    .goog-te-gadget-simple{
+      background: rgba(0,0,0,.25) !important;
+      border: 1px solid rgba(255,255,255,.25) !important;
+      border-radius: 10px !important;
+      padding: 6px 10px !important;
+      box-shadow: none !important;
+    }
+
+    /* The inside text */
+    .goog-te-gadget-simple .goog-te-menu-value{
+      color: #fff !important;
+    }
+
+    /* Remove underline + keep everything white */
+    .goog-te-gadget-simple .goog-te-menu-value span{
+      color:#fff !important;
+      text-decoration:none !important;
+      border:0 !important;
+    }
+
+    /* The little arrow can be too dark; make it bright */
+    .goog-te-gadget-simple .goog-te-menu-value span:last-child{
+      color:#fff !important;
+    }
+    
     /* Black styled translate box (keep auto-push working) */
     #google_translate_element{
       padding:6px 10px;
