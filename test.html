@@ -81,23 +81,22 @@
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false,
-        multilanguagePage: true
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi,ar,tr,fa,uk,pl',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
       }, 'google_translate_element');
     }
   </script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
   <style>
-    /* ===== Reserve space when Google top translation bar appears ===== */
-    :root{ --gt-bar: 0px; }
+    :root{
+      /* 俾上面白色 Google 翻譯 bar 用：會由 JS 自動更新 */
+      --gt-banner: 0px;
+    }
 
-    body{
+    /* === Global / Body === */
+    body {
       margin: 0;
-      padding-top: var(--gt-bar);
-      transition: padding-top .18s ease;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
       background-image: url('https://neoxcoin.io/NeoXbackG.JPG');
       background-size: cover;
@@ -106,7 +105,6 @@
       color: #ffffff;
       text-align: center;
     }
-    html{ scroll-padding-top: 60px; }
 
     /* Logo (top-left) */
     .logo {
@@ -118,42 +116,72 @@
       z-index: 999;
     }
 
-    /* Google Translate container (top-right) */
-    #google_translate_element{
-      position:absolute;
-      top:20px;
-      right:20px;
-      z-index:9999;
+    /* ===== Google Translate: Black UI + avoid top banner ===== */
+    .gt-wrap{
+      position: fixed;
+      top: calc(20px + var(--gt-banner));
+      right: 20px;
+      z-index: 9999;
 
-      /* Black styled translate box */
-      padding:6px 10px;
-      border-radius:12px;
-      background:rgba(0,0,0,.55);
-      border:1px solid rgba(0,217,255,.28);
-      box-shadow:0 0 14px rgba(0,217,255,.18);
+      padding: 6px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.55);
+      border: 1px solid rgba(0,217,255,.28);
+      box-shadow: 0 0 14px rgba(0,217,255,.18);
       backdrop-filter: blur(6px);
-      display:inline-block;
     }
 
-    /* Google translate internal styles */
-    .goog-te-gadget{ color:#fff !important; font-family: Arial, sans-serif !important; }
-    .goog-te-gadget span,
-    .goog-te-gadget a{ color:#fff !important; text-decoration:none !important; }
+    .gt-label{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
 
-    .goog-te-gadget select{
-      background:rgba(0,0,0,.25);
-      color:#fff;
-      border:1px solid rgba(255,255,255,.25);
-      border-radius:10px;
-      padding:7px 10px;
-      outline:none;
-      appearance:auto;
-      -webkit-appearance: menulist;
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 1;
+      user-select: none;
+
+      /* 重要：讓點擊落去透明 select */
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .gt-caret{ opacity: .9; }
+
+    /* Google widget 自己嗰堆字/連結全部隱藏（包括 Powered by...） */
+    #google_translate_element .goog-te-gadget{
+      font-size: 0 !important;
+      color: transparent !important;
+      white-space: nowrap;
+    }
+    #google_translate_element .goog-te-gadget span,
+    #google_translate_element .goog-te-gadget a{
+      display: none !important;
     }
 
-    /* (Optional) Hide tiny "Google Translate" icon if it appears beside gadget text */
-    /* Note: select usually still shows a small colored icon on some browsers; not always removable */
-    .goog-te-gadget img{ display:none !important; }
+    /* 移除 G logo（有時係圖片，有時係背景） */
+    #google_translate_element img{ display:none !important; }
+    #google_translate_element .goog-te-gadget-icon{ display:none !important; }
+
+    /* 最關鍵：把 select 透明覆蓋整個黑框（iPad 安全），仍可點 */
+    #google_translate_element select.goog-te-combo{
+      position: absolute !important;
+      inset: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+
+      opacity: 0.01 !important;      /* 幾乎透明但可點 */
+      background: transparent !important;
+      color: transparent !important;
+      border: none !important;
+
+      appearance: auto !important;
+      -webkit-appearance: menulist !important;
+      cursor: pointer;
+    }
 
     /* Main layout container */
     .container {
@@ -315,42 +343,49 @@
       vertical-align: middle;
     }
 
-    /* Social icons strip */
+    /* Social icons strip: between Gecko button & footer */
     .social-icons {
       margin: 40px 0 16px;
       text-align: center;
     }
+
     .social-icons a {
       display: inline-block;
       text-decoration: none !important;
       border-bottom: none !important;
       color: inherit !important;
     }
+
     .social-icons img {
       width: 28px;
       margin: 0 14px;
       display: inline-block;
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
+
     .social-icons img:hover {
       transform: scale(1.15);
       opacity: 0.85;
     }
 
-    /* Footer */
+    /* Footer links */
     .footer {
       margin-top: 10px;
       font-size: 13px;
       opacity: 0.6;
     }
+
     .footer-links { margin-bottom: 8px; }
+
     .footer a {
       color: #cccccc;
       text-decoration: none;
       margin: 0 6px;
     }
+
     .footer a:hover { text-decoration: underline; }
 
+    /* Small icon used in Buy NXC button (thirdweb) */
     .tw-icon {
       width: 22px;
       height: 22px;
@@ -358,12 +393,24 @@
       border-radius: 6px;
     }
 
-    /* Mobile tweaks */
+    /* === Mobile tweaks === */
     @media (max-width: 600px) {
-      .nav-bar { flex-direction: column; align-items: center; gap: 12px; }
-      .btn-row { flex-direction: column; align-items: center; }
-      .coin { width: 144px; max-width: 100%; }
-      .social-icons { margin: 32px 0 12px; }
+      .nav-bar {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      .btn-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .coin {
+        width: 144px;
+        max-width: 100%;
+      }
+      .social-icons {
+        margin: 32px 0 12px;
+      }
     }
   </style>
 </head>
@@ -374,9 +421,9 @@
     <img class="logo" src="https://neoxcoin.io/apple-touch-icon.png" alt="NeoX Logo" />
   </a>
 
-  <!-- Google Translate box -->
-  <div id="gt_wrap" class="gt-wrap">
-    <div class="gt-label" id="gt_label">
+  <!-- Google Translate: custom black bar wrapper -->
+  <div id="gt_wrap" class="gt-wrap" aria-label="Language selector">
+    <div class="gt-label">
       Select Language <span class="gt-caret">▾</span>
     </div>
     <div id="google_translate_element"></div>
@@ -419,21 +466,24 @@
         Buy NXC
       </a>
 
-      <a class="btn"
-         href="https://metamask.app.link/dapp/neoxcoin.github.io/"
-         data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link">
+      <a
+        class="btn"
+        href="https://metamask.app.link/dapp/neoxcoin.github.io/"
+        data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link"
+      >
         🦊 Swap via MetaMask
       </a>
 
       <a class="btn"
          href="add-to-wallet-global.html"
-         data-tooltip="MetaMask: Auto-add supported. Trust Wallet: add manually.">
+         data-tooltip="MetaMask: Auto-add supported. Trust Wallet: add manually."
+      >
         <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin">
         Add to wallet
       </a>
     </div>
 
-    <!-- Market data -->
+    <!-- Market data: GeckoTerminal -->
     <div class="market-link">
       <a class="market-btn"
          href="https://geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c"
@@ -443,7 +493,7 @@
       </a>
     </div>
 
-    <!-- Social icons -->
+    <!-- Social icons row -->
     <div class="social-icons">
       <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" />
@@ -478,29 +528,29 @@
     </div>
   </div>
 
-  <!-- ===== Auto-avoid Google translate top bar ===== -->
+  <!-- Keep GT widget below Google top banner (white bar) -->
   <script>
-  (function () {
-    function isTranslated(){
-      return document.cookie.indexOf('googtrans=') !== -1;
-    }
-    function setBarHeight(px){
-      document.documentElement.style.setProperty('--gt-bar', px + 'px');
-    }
-    function adjust(){
-      // iPad Safari: Google bar commonly ~48-60px
-      if (isTranslated()) setBarHeight(56);
-      else setBarHeight(0);
+  (function(){
+    function updateGtBannerOffset(){
+      const frame = document.querySelector('.goog-te-banner-frame');
+      const h = frame ? (frame.offsetHeight || 0) : 0;
+      document.documentElement.style.setProperty('--gt-banner', h + 'px');
     }
 
-    window.addEventListener('load', adjust);
+    // Google 會延遲注入，做幾次保險
+    window.addEventListener('load', () => {
+      updateGtBannerOffset();
+      setTimeout(updateGtBannerOffset, 600);
+      setTimeout(updateGtBannerOffset, 1200);
+      setTimeout(updateGtBannerOffset, 2000);
+    });
 
-    // Poll because Google changes cookie/DOM asynchronously after selecting language
-    setInterval(adjust, 600);
+    // 偵測 DOM 變化（bar 出現/消失都更新）
+    const mo = new MutationObserver(updateGtBannerOffset);
+    mo.observe(document.documentElement, { childList:true, subtree:true });
 
-    // Also observe body changes (Google sometimes modifies body style/class)
-    const obs = new MutationObserver(adjust);
-    obs.observe(document.body, { attributes:true, attributeFilter:['style','class'] });
+    // 亦加個輕量輪詢，避免 iOS Safari miss mutation
+    setInterval(updateGtBannerOffset, 1500);
   })();
   </script>
 </body>
