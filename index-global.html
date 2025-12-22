@@ -76,13 +76,16 @@
   <!-- Perf: preload hero bg -->
   <link rel="preload" as="image" href="https://neoxcoin.io/NeoXbackG.JPG" />
 
-  <!-- Google Translate (Mainstream languages only) -->
+  <!-- Google Translate -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
         pageLanguage: 'en',
         autoDisplay: false,
+
+        /* ✅ 主流語言（你可自行增減） */
         includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,hi,it,vi,th,tr,id',
+
         layout: google.translate.TranslateElement.InlineLayout.SIMPLE
       }, 'google_translate_element');
     }
@@ -113,7 +116,7 @@
       z-index: 999;
     }
 
-    /* Google Translate (top-right) — Black bar style */
+    /* ✅ Google Translate (top-right) — black bar like how-to-buy-global */
     #google_translate_element {
       position: absolute;
       top: 20px;
@@ -121,25 +124,23 @@
       z-index: 9999;
 
       display: inline-block;
-      padding: 8px 12px;
+      padding: 6px 10px;
       border-radius: 12px;
       background: rgba(0,0,0,.38);
       border: 1px solid rgba(0,217,255,.35);
       box-shadow: 0 0 14px rgba(0,217,255,.18);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
     }
 
-    /* Keep widget visible (DON'T font-size:0) */
+    /* Keep it stable on iOS Safari (DON'T hide gadget completely) */
     .goog-te-gadget {
       color: #fff !important;
       font-size: 12px !important;
-      line-height: 1.1 !important;
+      line-height: 1.2 !important;
       white-space: nowrap;
     }
     .goog-te-gadget span { color:#fff !important; }
 
-    .goog-te-gadget select {
+    .goog-te-gadget select{
       background: rgba(0,0,0,.18) !important;
       color: #fff !important;
       border: 1px solid rgba(255,255,255,.22) !important;
@@ -147,15 +148,6 @@
       padding: 6px 8px !important;
       outline: none !important;
     }
-
-    /* Hide Google "top white banner" as much as possible */
-    .goog-te-banner-frame.skiptranslate,
-    .goog-te-banner-frame,
-    #goog-gt-tt,
-    .goog-te-balloon-frame {
-      display: none !important;
-    }
-    body { top: 0 !important; }
 
     /* Main layout container */
     .container {
@@ -319,26 +311,23 @@
       vertical-align: middle;
     }
 
-    /* Social icons strip: between Gecko button & footer */
+    /* Social icons strip */
     .social-icons {
       margin: 40px 0 16px;
       text-align: center;
     }
-
     .social-icons a {
       display: inline-block;
       text-decoration: none !important;
       border-bottom: none !important;
       color: inherit !important;
     }
-
     .social-icons img {
       width: 28px;
       margin: 0 14px;
       display: inline-block;
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
-
     .social-icons img:hover {
       transform: scale(1.15);
       opacity: 0.85;
@@ -350,28 +339,31 @@
       font-size: 13px;
       opacity: 0.6;
     }
-
     .footer-links {
       margin-bottom: 8px;
     }
-
     .footer a {
       color: #cccccc;
       text-decoration: none;
       margin: 0 6px;
     }
+    .footer a:hover { text-decoration: underline; }
 
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Small icon used in Buy NXC button (thirdweb) */
     .tw-icon {
       width: 22px;
       height: 22px;
       margin-right: 8px;
       border-radius: 6px;
     }
+
+    /* ✅ Try to hide Google top banner (NOT 100% on iOS, but helps) */
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-banner-frame,
+    #goog-gt-tt,
+    .goog-te-balloon-frame {
+      display: none !important;
+    }
+    body { top: 0 !important; }
 
     /* === Mobile tweaks === */
     @media (max-width: 600px) {
@@ -380,39 +372,28 @@
         align-items: center;
         gap: 12px;
       }
-
       .btn-row {
         flex-direction: column;
         align-items: center;
       }
-
       .coin {
         width: 144px;
         max-width: 100%;
       }
-
       .social-icons {
         margin: 32px 0 12px;
-      }
-
-      #google_translate_element{
-        top: 18px;
-        right: 12px;
-      }
-      .logo{
-        left: 12px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- Logo: link to site root (x-default) -->
+  <!-- Logo -->
   <a href="/">
     <img class="logo" src="https://neoxcoin.io/apple-touch-icon.png" alt="NeoX Logo" />
   </a>
 
-  <!-- Google Translate container -->
+  <!-- Google Translate -->
   <div id="google_translate_element"></div>
 
   <div class="container">
@@ -445,69 +426,49 @@
       <span>Own your freedom. Own the future. Own NeoX.</span>
     </div>
 
-    <!-- Call-to-action buttons -->
+    <!-- Buttons -->
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">
-        <img
-          src="https://thirdweb.com/favicon-32x32.png"
-          class="tw-icon"
-          alt="thirdweb logo"
-        />
+        <img src="https://thirdweb.com/favicon-32x32.png" class="tw-icon" alt="thirdweb logo" />
         Buy NXC
       </a>
 
-      <a
-        class="btn"
-        href="https://metamask.app.link/dapp/neoxcoin.github.io/"
-        data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link"
-      >
+      <a class="btn" href="https://metamask.app.link/dapp/neoxcoin.github.io/"
+         data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link">
         🦊 Swap via MetaMask
       </a>
 
-      <a class="btn"
-         href="add-to-wallet-global.html"
-         data-tooltip="MetaMask: Auto-add supported. Trust Wallet: add manually."
-      >
+      <a class="btn" href="add-to-wallet-global.html"
+         data-tooltip="MetaMask: Auto-add supported. Trust Wallet: add manually.">
         <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin">
         Add to wallet
       </a>
     </div>
 
-    <!-- Market data: GeckoTerminal -->
+    <!-- GeckoTerminal -->
     <div class="market-link">
-      <a
-        class="market-btn"
-        href="https://geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src="https://neoxcoin.github.io/gecko_icon.PNG"
-          class="market-icon"
-          alt="GeckoTerminal Logo"
-        />
+      <a class="market-btn"
+         href="https://geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c"
+         target="_blank" rel="noopener noreferrer">
+        <img src="https://neoxcoin.github.io/gecko_icon.PNG" class="market-icon" alt="GeckoTerminal Logo" />
         View NXC on GeckoTerminal
       </a>
     </div>
 
-    <!-- Social icons row: between Gecko button & footer -->
+    <!-- Social icons -->
     <div class="social-icons">
       <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" />
       </a>
-
       <a href="https://x.com/neox__official" target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X (Twitter)" />
       </a>
-
       <a href="https://www.instagram.com/neox__official/" target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" />
       </a>
-
       <a href="https://www.tiktok.com/@neox.world" target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" />
       </a>
-
       <a href="https://www.youtube.com/@NeoX_officials" target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" />
       </a>
@@ -530,28 +491,19 @@
     </div>
   </div>
 
-  <!-- Fallback: if Google banner still appears on iPad, push content down to avoid cover -->
+  <!-- ✅ If banner still appears, auto-push content down (best effort for iOS Safari) -->
   <script>
-    (function(){
-      let tries = 0;
-      const timer = setInterval(() => {
-        tries++;
-
-        // banner iframe sometimes appears in Safari
-        const banner =
-          document.querySelector('iframe.goog-te-banner-frame') ||
-          document.querySelector('.goog-te-banner-frame');
-
-        if (banner) {
-          // Push down a bit so it won't cover your top UI
-          document.body.style.paddingTop = '120px';
-        } else {
-          document.body.style.paddingTop = '';
-        }
-
-        if (tries > 120) clearInterval(timer); // ~30s
-      }, 250);
-    })();
+  (function(){
+    let tries = 0;
+    const tick = setInterval(() => {
+      tries++;
+      const iframe = document.querySelector('iframe.goog-te-banner-frame');
+      const isShowing = !!iframe && iframe.style.display !== 'none';
+      document.body.style.paddingTop = isShowing ? '140px' : '';
+      if (tries > 80) clearInterval(tick);
+    }, 250);
+  })();
   </script>
+
 </body>
 </html>
