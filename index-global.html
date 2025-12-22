@@ -94,18 +94,41 @@
     /* === Global / Body === */
     body {
       margin: 0;
+      /* 確保背景設定正確 */
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
       background-image: url('https://neoxcoin.io/NeoXbackG.JPG');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed; /* ✅ 鎖定背景，防止走位 */
       font-family: Arial, sans-serif;
       color: #ffffff;
       text-align: center;
+      
+      /* ✅ 強制覆蓋 Google Translate 的位移設定 */
+      top: 0 !important;
+      position: static !important; 
+      margin-top: 0 !important;
+      min-height: 100vh;
     }
 
-    /* ✅ Hide Google Translate top white banner (GLOBAL) */
-    .goog-te-banner-frame.skiptranslate { display: none !important; }
-    body { top: 0 !important; }
+    /* ✅ 徹底隱藏 Google Translate 頂部白色 Banner */
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-banner-frame {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      width: 0 !important;
+    }
+    
+    /* 防止 Google 產生的 iframe 佔據空間 */
+    iframe.goog-te-banner-frame {
+      display: none !important;
+    }
+
+    /* 確保 body 內容永遠貼頂 */
+    body > .skiptranslate {
+      display: none !important;
+    }
 
     /* Logo (top-left) */
     .logo {
