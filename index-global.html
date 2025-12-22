@@ -76,13 +76,12 @@
   <!-- Perf: preload hero bg -->
   <link rel="preload" as="image" href="https://neoxcoin.io/NeoXbackG.JPG" />
 
-  <!-- Google Translate -->
+  <!-- Google Translate (Mainstream languages only + NO SIMPLE layout) -->
   <script>
     function googleTranslateElementInit(){
       new google.translate.TranslateElement({
         pageLanguage: 'en',
         includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
         autoDisplay: false,
         multilanguagePage: true
       }, 'google_translate_element');
@@ -104,6 +103,10 @@
       text-align: center;
     }
 
+    /* ✅ Hide Google Translate top white banner (GLOBAL) */
+    .goog-te-banner-frame.skiptranslate { display: none !important; }
+    body { top: 0 !important; }
+
     /* Logo (top-left) */
     .logo {
       position: absolute;
@@ -114,14 +117,17 @@
       z-index: 999;
     }
 
-    /* Top-right: Google Translate container */
+    /* Top-right: Google Translate container (same style as how-to-buy-global) */
     .translate-wrap{
-      position:absolute; top:20px; right:20px;
+      position:absolute;
+      top:20px;
+      right:20px;
       font-size:14px;
       text-align:right;
+      z-index: 9999;
     }
 
-    /* Make Google Translate dropdown fit the theme */
+    /* Black pill */
     #google_translate_element{
       display:inline-block;
       padding:6px 10px;
@@ -130,16 +136,23 @@
       border:1px solid rgba(0,217,255,.35);
       box-shadow:0 0 14px rgba(0,217,255,.18);
     }
-    /* hide "Powered by Google" icon spacing issues a bit */
-    .goog-te-gadget{ color:#fff !important; }
-    .goog-te-gadget span{ color:#fff !important; }
-    .goog-te-gadget select{
-      background:rgba(0,0,0,.15);
-      color:#fff;
-      border:1px solid rgba(255,255,255,.25);
-      border-radius:8px;
-      padding:6px 8px;
-      outline:none;
+
+    /* Force Google widget text/select to match dark theme */
+    #google_translate_element .goog-te-gadget{
+      font-size:14px !important;
+      color:#fff !important;
+      line-height:1.2;
+    }
+    #google_translate_element .goog-te-gadget span{
+      color:#fff !important;
+    }
+    #google_translate_element select{
+      background:rgba(0,0,0,.15) !important;
+      color:#fff !important;
+      border:1px solid rgba(255,255,255,.25) !important;
+      border-radius:8px !important;
+      padding:6px 8px !important;
+      outline:none !important;
     }
 
     /* Main layout container */
@@ -272,9 +285,7 @@
     }
 
     /* GeckoTerminal pill button */
-    .market-link {
-      margin-top: 18px;
-    }
+    .market-link { margin-top: 18px; }
 
     .market-btn {
       display: inline-block;
@@ -304,27 +315,23 @@
       vertical-align: middle;
     }
 
-    /* Social icons strip: between Gecko button & footer */
+    /* Social icons strip */
     .social-icons {
       margin: 40px 0 16px;
       text-align: center;
     }
-
-    /* 🔧 Fix: remove blue underline / dot under icons */
     .social-icons a {
       display: inline-block;
       text-decoration: none !important;
       border-bottom: none !important;
       color: inherit !important;
     }
-
     .social-icons img {
       width: 28px;
       margin: 0 14px;
       display: inline-block;
       transition: transform 0.2s ease, opacity 0.2s ease;
     }
-
     .social-icons img:hover {
       transform: scale(1.15);
       opacity: 0.85;
@@ -336,22 +343,14 @@
       font-size: 13px;
       opacity: 0.6;
     }
-
-    .footer-links {
-      margin-bottom: 8px;
-    }
-
+    .footer-links { margin-bottom: 8px; }
     .footer a {
       color: #cccccc;
       text-decoration: none;
       margin: 0 6px;
     }
+    .footer a:hover { text-decoration: underline; }
 
-    .footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Small icon used in Buy NXC button (thirdweb) */
     .tw-icon {
       width: 22px;
       height: 22px;
@@ -366,24 +365,19 @@
         align-items: center;
         gap: 12px;
       }
-
       .btn-row {
         flex-direction: column;
         align-items: center;
       }
-
       .coin {
         width: 144px;
         max-width: 100%;
       }
-
       .social-icons {
         margin: 32px 0 12px;
       }
-      
-      /* Hide Google Translate top banner */
-      .goog-te-banner-frame.skiptranslate { display: none !important; }
-      body { top: 0 !important; }
+      .translate-wrap { top:18px; right:12px; }
+      .logo { left:12px; }
     }
   </style>
 </head>
@@ -394,11 +388,10 @@
     <img class="logo" src="https://neoxcoin.io/apple-touch-icon.png" alt="NeoX Logo" />
   </a>
 
-  <!-- Google Translate container -->
+  <!-- ✅ Google Translate (black pill, top-right) -->
   <div class="translate-wrap">
     <div id="google_translate_element"></div>
   </div>
-
 
   <div class="container">
     <h1 class="tagline">Web3 Revolution, Led by NeoX</h1>
@@ -433,26 +426,19 @@
     <!-- Call-to-action buttons -->
     <div class="btn-row">
       <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">
-        <img
-          src="https://thirdweb.com/favicon-32x32.png"
-          class="tw-icon"
-          alt="thirdweb logo"
-        />
+        <img src="https://thirdweb.com/favicon-32x32.png" class="tw-icon" alt="thirdweb logo" />
         Buy NXC
       </a>
 
-      <a
-        class="btn"
-        href="https://metamask.app.link/dapp/neoxcoin.github.io/"
-        data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link"
-      >
+      <a class="btn"
+         href="https://metamask.app.link/dapp/neoxcoin.github.io/"
+         data-tooltip="⚠️ Redirects to MetaMask. Tap Continue if you trust this link">
         🦊 Swap via MetaMask
       </a>
 
       <a class="btn"
          href="add-to-wallet-global.html"
-         data-tooltip="MetaMask: Auto-add supported. Trust Wallet: add manually."
-      >
+         data-tooltip="MetaMask: Auto-add supported. Trust Wallet: add manually.">
         <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin">
         Add to wallet
       </a>
@@ -460,60 +446,29 @@
 
     <!-- Market data: GeckoTerminal -->
     <div class="market-link">
-      <a
-        class="market-btn"
-        href="https://geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src="https://neoxcoin.github.io/gecko_icon.PNG"
-          class="market-icon"
-          alt="GeckoTerminal Logo"
-        />
+      <a class="market-btn"
+         href="https://geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c"
+         target="_blank" rel="noopener noreferrer">
+        <img src="https://neoxcoin.github.io/gecko_icon.PNG" class="market-icon" alt="GeckoTerminal Logo" />
         View NXC on GeckoTerminal
       </a>
     </div>
 
-    <!-- Social icons row: between Gecko button & footer -->
+    <!-- Social icons row -->
     <div class="social-icons">
-      <a
-        href="https://www.facebook.com/profile.php?id=61579442687473"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" />
       </a>
-
-      <a
-        href="https://x.com/neox__official"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://x.com/neox__official" target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X (Twitter)" />
       </a>
-
-      <a
-        href="https://www.instagram.com/neox__official/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://www.instagram.com/neox__official/" target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" />
       </a>
-
-      <a
-        href="https://www.tiktok.com/@neox.world"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://www.tiktok.com/@neox.world" target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" />
       </a>
-
-      <a
-        href="https://www.youtube.com/@NeoX_officials"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank" rel="noopener noreferrer">
         <img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" />
       </a>
     </div>
@@ -529,7 +484,6 @@
         <a href="press-kit-global.html" target="_blank" style="color:#80caff; text-decoration:none;">Press Kit</a> |
         <a href="troubleshooting-global.html">Troubleshooting</a>
       </div>
-
       © 2025 NeoX. All rights reserved. |
       <a href="disclaimer-global.html">Disclaimer</a>
     </div>
