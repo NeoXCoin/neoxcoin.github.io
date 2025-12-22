@@ -90,11 +90,71 @@
       z-index: 9999;
     }
 
-    #google_translate_element {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
+    /* ====== Google Translate: 黑色框 + 可用 dropdown + powered line（無彩色logo） ====== */
+    #google_translate_element{
+      position:absolute;
+       top:20px;
+       right:20px;
+       z-index:9999;
+
+       padding:10px 12px;
+       border-radius:14px;
+       background:rgba(0,0,0,.55);
+       border:1px solid rgba(0,217,255,.28);
+       box-shadow:0 0 14px rgba(0,217,255,.18);
+       backdrop-filter: blur(6px);
+       display:inline-block;
+     }
+
+     /* 文字顏色 */
+     #google_translate_element,
+     #google_translate_element *{
+      color:#fff !important;
+       font-family: Arial, sans-serif !important;
+     }
+
+     /* dropdown */
+     #google_translate_element select.goog-te-combo{
+       background:rgba(0,0,0,.25) !important;
+       color:#fff !important;
+       border:1px solid rgba(255,255,255,.25) !important;
+       border-radius:10px !important;
+       padding:8px 12px !important;
+       outline:none !important;
+       font-size:14px !important;
+       cursor:pointer;
+     }
+
+     /* ✅ 隱藏 Google 原本彩色 logo/link，但我哋會用純文字補返 */
+     #google_translate_element .goog-logo-link{
+       display:none !important;
+     }
+
+     /* ✅ 用純文字補返 “Powered by Google Translate” */
+     #google_translate_element::after{
+      content:"Powered by Google Translate";
+      display:block;
+      margin-top:6px;
+      font-size:12px;
+      opacity:.75;
+      text-align:left;
+    }
+
+    /* ========= 仍然隱藏頂部白色 Google Banner ========= */
+    .goog-te-banner-frame.skiptranslate,
+     .goog-te-banner-frame,
+     iframe.goog-te-banner-frame{
+      display:none !important;
+      visibility:hidden !important;
+      height:0 !important;
+      width:0 !important;
+    }
+
+    /* 防止 Google 加 top/margin-top 推低頁面（唔會影響 dropdown） */
+    html, body{
+      top:0 !important;
+      margin-top:0 !important;
+      padding-top:0 !important;
     }
 
     .container {
