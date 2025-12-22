@@ -92,20 +92,34 @@
       z-index: 999;
     }
 
-    /* 語言切換 */
-    .language-switch {
-      position: absolute;
+    .language-switch{
+      position: absolute;   /* ✅ 不浮動 */
       top: 20px;
       right: 20px;
-      font-size: 16px;
-      z-index: 9999;
+      z-index: 10;
+
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 8px 12px;
+      border-radius: 14px;
+      background: rgba(10,10,40,.55);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0,200,255,.3);
+      box-shadow: 0 0 14px rgba(0,200,255,.2);
     }
-    .language-switch a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 8px;
+
+    .language-switch a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
     }
-    .language-switch a:hover { text-decoration: underline; }
+
+    .lang-sep{
+      color:rgba(255,255,255,.35);
+    }
 
     .container {
       display: flex;
@@ -335,9 +349,11 @@
 
   <!-- 語言切換 -->
   <div class="language-switch">
-    <a href="index.html">EN</a> |
-    <a href="index-zh.html">繁</a> |
-    <a href="index-global.html">🌍</a>
+    <a href="index.html">EN</a>
+    <span class="lang-sep">|</span>
+    <a href="index-zh.html">繁</a>
+    <span class="lang-sep">|</span>
+    <a href="index-global.html">Global</a>
   </div>
 
   <div class="container">
