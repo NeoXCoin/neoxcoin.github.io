@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Charset & Viewport -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <!-- Favicon (ICO + SVG + Apple Icon) -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
   <title>What is NeoX? - NeoX</title>
-  
+
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
   <link rel="canonical" href="https://neoxcoin.github.io/what-is-neox-global.html" />
   <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox.html" hreflang="en" />
   <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox-zh.html" hreflang="zh-Hant" />
   <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox-global.html" hreflang="x-default" />
 
+  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -29,205 +32,245 @@
     ]
   }
   </script>
+
+  <!-- Google Translate (same config as index-global.html) -->
+  <script>
+    function googleTranslateElementInit(){
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
+        autoDisplay: false,
+        multilanguagePage: true
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+
   <style>
-    /* === Global / Body === */
-    body {
-      margin: 0;
-      /* 確保背景設定正確 */
+    /* === Global / Body (same anti-push fix as index-global) === */
+    body{
+      margin:0;
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
       background-image: url('https://neoxcoin.io/NeoXbackG.JPG');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed; /* ✅ 鎖定背景，防止走位 */
+      background-attachment: fixed;
       font-family: Arial, sans-serif;
-      color: #ffffff;
-      text-align: center;
-      
-      /* ✅ 強制覆蓋 Google Translate 的位移設定 */
-      top: 0 !important;
-      position: static !important; 
-      margin-top: 0 !important;
-      min-height: 100vh;
+      color:#fff;
+      text-align:center;
+
+      top:0 !important;
+      position: static !important;
+      margin-top:0 !important;
+      min-height:100vh;
+
+      /* ✅ give space so absolute top items won't overlap content */
+      padding: 40px 20px;
     }
 
-    /* ✅ 徹底隱藏 Google Translate 頂部白色 Banner */
+    /* ✅ Hide Google Translate top white banner */
     .goog-te-banner-frame.skiptranslate,
-    .goog-te-banner-frame {
-      display: none !important;
-      visibility: hidden !important;
-      height: 0 !important;
-      width: 0 !important;
+    .goog-te-banner-frame{
+      display:none !important;
+      visibility:hidden !important;
+      height:0 !important;
+      width:0 !important;
     }
-    
-    /* 防止 Google 產生的 iframe 佔據空間 */
-    iframe.goog-te-banner-frame {
-      display: none !important;
-    }
+    iframe.goog-te-banner-frame{ display:none !important; }
+    body > .skiptranslate{ display:none !important; }
 
-    /* 確保 body 內容永遠貼頂 */
-    body > .skiptranslate {
-      display: none !important;
-    }
-
-    
-    .bg-overlay {
+    /* background overlay */
+    .bg-overlay{
       position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
       background-size: cover;
       opacity: 0.55;
       z-index: -1;
     }
 
-    .logo {
-      width: 60px;
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      opacity: 0.85;
-      z-index: 9999;
+    /* logo */
+    .logo{
+      width:60px;
+      position:absolute;
+      top:20px;
+      left:20px;
+      opacity:.85;
+      z-index:9999;
     }
 
-    #google_translate_element {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
+    /* ✅ Top-right translate bar (same as index-global) */
+    .translate-wrap{
+      position:absolute;
+      top:20px;
+      right:20px;
+      font-size:14px;
+      text-align:right;
+      z-index:9999;
+    }
+    #google_translate_element{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:10px;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(0,217,255,.35);
+      box-shadow:0 0 14px rgba(0,217,255,.18);
+    }
+    #google_translate_element .goog-te-gadget{
+      font-size:14px !important;
+      color:#fff !important;
+      line-height:1.2;
+    }
+    #google_translate_element .goog-te-gadget span{
+      color:#fff !important;
+    }
+    #google_translate_element select{
+      background:rgba(0,0,0,.15) !important;
+      color:#fff !important;
+      border:1px solid rgba(255,255,255,.25) !important;
+      border-radius:8px !important;
+      padding:6px 8px !important;
+      outline:none !important;
     }
 
-    .container {
+    /* content container */
+    .container{
       max-width: 900px;
       margin: 120px auto 0;
-      padding: 20px;
-      text-align: center;
-      background-color: rgba(0, 0, 0, 0.55);
-      border-radius: 10px;
+      padding: 22px 22px;
+      background: rgba(0,0,0,0.55);
+      border-radius: 12px;
     }
 
-    .headline {
+    .tagline{
       font-size: 28px;
       font-weight: bold;
-      margin-bottom: 20px;
+      margin: 0 0 6px;
+    }
+    .subtagline{
+      margin: 0 0 18px;
+      opacity: .85;
     }
 
-    .text {
+    .text{
       font-size: 16px;
       line-height: 1.8;
     }
 
-    .footer {
-      text-align: center;
-      margin: 40px 0 20px;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
+    ul{
+      text-align:left;
+      max-width:700px;
+      margin: 18px auto 0;
+      line-height: 1.8;
     }
 
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 8px;
+    .btn-row{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:15px;
+      margin-top:22px;
     }
 
-    .btn-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 20px;
+    .btn{
+      background:#0a0a0a;
+      border:2px solid #00d9ff;
+      color:#00d9ff;
+      padding:12px 24px;
+      border-radius:12px;
+      font-size:16px;
+      cursor:pointer;
+      text-decoration:none;
+      min-width:180px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition: all .25s ease;
+      box-shadow:0 0 8px rgba(0,217,255,.5);
     }
-
-    .btn {
-      background: #0a0a0a;
-      border: 2px solid #00d9ff;
-      color: #00d9ff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      min-width: 180px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px rgba(0,217,255,0.5);
+    .btn:hover{
+      background:#00d9ff;
+      color:#000;
+      box-shadow:0 0 20px rgba(0,217,255,.8);
+      transform: translateY(-3px);
     }
-
-    .btn:hover {
-      background: #00d9ff;
-      color: #000;
-      box-shadow: 0 0 20px rgba(0,217,255,0.8);
+    .btn-blue{
+      background:#0d6efd;
+      border:2px solid #3399ff;
+      color:#fff;
+      box-shadow:none;
+    }
+    .btn-blue:hover{
+      background:#2a7bff;
+      color:#fff;
       transform: translateY(-3px);
     }
 
-    .btn-blue {
-      background: #0d6efd;
-      border: 2px solid #3399ff;
-      color: white;
+    .footer{
+      text-align:center;
+      margin: 34px 0 18px;
+      font-size:13px;
+      color: rgba(255,255,255,.5);
     }
+    .footer a{
+      color:#aaa;
+      text-decoration:none;
+      margin-left:8px;
+    }
+    .footer a:hover{ text-decoration:underline; }
 
-    @media (max-width: 768px) {
-      .container {
-        margin: 100px 20px;
-        padding: 30px;
+    @media (max-width: 768px){
+      .container{
+        margin: 110px 14px 0;
+        padding: 20px;
       }
-
-      h1 {
-        font-size: 26px;
-      }
+      .tagline{ font-size: 24px; }
+      .translate-wrap{ top:18px; right:12px; }
+      .logo{ left:12px; }
     }
   </style>
 </head>
+
 <body>
   <div class="bg-overlay"></div>
+
   <!-- Logo -->
   <a href="index-global.html">
-    <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo">
+    <img class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo">
   </a>
 
-  <!-- Google Translate -->
-  <div class="translate" id="google_translate_element"></div>
+  <!-- ✅ Google Translate (same bar as index-global) -->
+  <div class="translate-wrap">
+    <div id="google_translate_element"></div>
+  </div>
 
   <!-- Main Content -->
   <div class="container">
     <h1 class="tagline">What is NeoX? (Global)</h1>
     <p class="subtagline">Decentralized creativity for everyone</p>
-      
+
+    <div class="text">
       <p><strong>🔗 Built for the Future</strong><br/>
       NeoX bridges the traditional world and the future of decentralization. By integrating smart contracts, cross-chain support, and NFT infrastructure, NeoX empowers both users and developers to thrive in the decentralized economy.</p>
-      
+
       <p><strong>⚙️ Core Features</strong></p>
-      <ul style="text-align:left; max-width:700px; margin:20px auto;">
+      <ul>
         <li>ERC-20 based NXC Token for secure and fast transactions</li>
         <li>Cross-platform compatibility with major wallets like MetaMask</li>
         <li>Supports NFT issuance and on-chain governance</li>
         <li>Open-source project with a community-driven roadmap</li>
       </ul>
     </div>
-    
+
+    <div class="btn-row">
+      <a class="btn btn-blue" href="index-global.html">← Back to Home</a>
+    </div>
   </div>
 
-  <div style="text-align:center; margin-top:30px;">
-     <a class="btn btn-blue" href="index-global.html">← Back to Home</a>
-    </div>
   <!-- Footer -->
   <div class="footer">
     © 2025 NeoX. All rights reserved. |
     <a href="disclaimer-global.html">Disclaimer</a>
   </div>
-
-  <!-- Google Translate Script -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi,ar,tr,fa,uk,pl',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
