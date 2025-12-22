@@ -79,18 +79,16 @@
   <!-- Google Translate -->
   <script>
     function googleTranslateElementInit(){
-      new google.translate.TranslateElement(
-        {
-          pageLanguage: 'en',
-          includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          autoDisplay: false
-        },
-        'google_translate_element'
-      );
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false,
+        multilanguagePage: true
+      }, 'google_translate_element');
     }
   </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
   <!-- Styles -->
   <style>
@@ -382,6 +380,10 @@
       .social-icons {
         margin: 32px 0 12px;
       }
+      
+      /* Hide Google Translate top banner */
+      .goog-te-banner-frame.skiptranslate { display: none !important; }
+      body { top: 0 !important; }
     }
   </style>
 </head>
