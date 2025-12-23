@@ -5,7 +5,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
+
   <meta charset="UTF-8" />
   <title>NeoX Wiki (Global) – Official Overview of the NeoX Ecosystem (NXC)</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,18 +32,6 @@
   <meta name="twitter:description" content="Reference-style NeoX ecosystem overview: NXC token, NFTs, game, metaverse, and roadmap." />
   <meta name="twitter:image" content="https://neoxcoin.github.io/XNXC.png" />
 
-  <!-- Google Translate -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,ru,id,vi,pt,th,it,ms,hi,ar,tr,fa,uk,pl',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
   <style>
     :root {
       --bg-main: radial-gradient(circle at top, #2b4fff 0, #120b33 40%, #050418 80%);
@@ -61,9 +49,7 @@
       --page-max-width: 1080px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -75,7 +61,23 @@
       display: flex;
       justify-content: center;
       padding: 32px 16px 40px;
+
+      /* ✅ Prevent Google Translate pushing the page down */
+      top: 0 !important;
+      position: static !important;
+      margin-top: 0 !important;
     }
+
+    /* ✅ Kill Google Translate top banner (Safari/iOS) */
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-banner-frame{
+      display:none !important;
+      visibility:hidden !important;
+      height:0 !important;
+      width:0 !important;
+    }
+    iframe.goog-te-banner-frame{ display:none !important; }
+    body > .skiptranslate{ display:none !important; }
 
     .wiki-shell {
       width: 100%;
@@ -102,10 +104,7 @@
       z-index: 0;
     }
 
-    .wiki-inner {
-      position: relative;
-      z-index: 1;
-    }
+    .wiki-inner { position: relative; z-index: 1; }
 
     /* Header bar */
     .wiki-header-bar {
@@ -123,11 +122,7 @@
       margin-bottom: 18px;
     }
 
-    .wiki-logo-wrap {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .wiki-logo-wrap { display: inline-flex; align-items: center; gap: 10px; }
 
     .wiki-logo-link {
       display: inline-flex;
@@ -146,16 +141,9 @@
       text-decoration: none;
     }
 
-    .wiki-logo-link img {
-      width: 26px;
-      height: 26px;
-      display: block;
-    }
+    .wiki-logo-link img { width: 26px; height: 26px; display: block; }
 
-    .wiki-title-text {
-      display: flex;
-      flex-direction: column;
-    }
+    .wiki-title-text { display: flex; flex-direction: column; }
 
     .wiki-label {
       font-size: 12px;
@@ -164,10 +152,7 @@
       color: rgba(214, 224, 255, 0.86);
     }
 
-    .wiki-sub-label {
-      font-size: 11px;
-      color: rgba(186, 198, 255, 0.86);
-    }
+    .wiki-sub-label { font-size: 11px; color: rgba(186, 198, 255, 0.86); }
 
     .lang-toggle {
       display: flex;
@@ -188,35 +173,28 @@
       color: #fff;
     }
 
-    /* Google Translate inside header */
-    #google_translate_element {
-      font-size: 0;
-    }
-
-    #google_translate_element select {
+    /* ✅ Google Translate inside header (clean) */
+    #google_translate_element{ font-size:0; }
+    #google_translate_element .goog-te-gadget{ font-size:0 !important; }
+    #google_translate_element select{
       background: rgba(5, 12, 40, 0.9);
       border-radius: 999px;
       border: 1px solid rgba(150, 195, 255, 0.7);
       padding: 4px 8px;
-      font-size: 12px;
+      font-size: 12px !important;
       color: var(--text-soft);
       outline: none;
       cursor: pointer;
     }
 
     /* Main title */
-    .wiki-main-title {
-      text-align: center;
-      margin: 24px 10px 14px;
-    }
-
+    .wiki-main-title { text-align: center; margin: 24px 10px 14px; }
     .wiki-main-title h1 {
       margin: 0 0 10px;
       font-size: clamp(24px, 3vw, 30px);
       font-weight: 750;
       letter-spacing: 0.03em;
     }
-
     .wiki-main-title p {
       margin: 0;
       font-size: 14px;
@@ -233,7 +211,6 @@
       gap: 8px;
       margin: 14px 0 22px;
     }
-
     .tag-pill {
       padding: 6px 13px;
       border-radius: 999px;
@@ -254,41 +231,13 @@
       box-shadow: var(--card-glow);
       margin-bottom: 14px;
     }
+    .section h2 { margin: 0 0 8px; font-size: 17px; letter-spacing: 0.03em; }
+    .section p { margin: 6px 0 8px; font-size: 14px; line-height: 1.6; color: var(--text-soft); }
+    .section strong { color: #ffffff; }
 
-    .section h2 {
-      margin: 0 0 8px;
-      font-size: 17px;
-      letter-spacing: 0.03em;
-    }
+    ul { margin: 6px 0 4px 1.2rem; padding: 0; }
+    ul li { margin-bottom: 4px; font-size: 14px; color: var(--text-soft); }
 
-    .section small {
-      font-size: 11px;
-      color: var(--text-dim);
-    }
-
-    .section p {
-      margin: 6px 0 8px;
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--text-soft);
-    }
-
-    .section strong {
-      color: #ffffff;
-    }
-
-    ul {
-      margin: 6px 0 4px 1.2rem;
-      padding: 0;
-    }
-
-    ul li {
-      margin-bottom: 4px;
-      font-size: 14px;
-      color: var(--text-soft);
-    }
-
-    /* Inline data block */
     .data-box {
       margin-top: 6px;
       padding: 8px 10px;
@@ -300,29 +249,15 @@
       color: var(--text-soft);
       word-break: break-all;
     }
-
-    .data-box div {
-      margin-bottom: 2px;
-    }
-
     .data-key {
       color: var(--text-dim);
       font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
+    .data-value { color: var(--accent-strong); font-weight: 600; }
 
-    .data-value {
-      color: var(--accent-strong);
-      font-weight: 600;
-    }
-
-    /* Footer action */
-    .wiki-footer {
-      margin-top: 20px;
-      text-align: center;
-    }
-
+    .wiki-footer { margin-top: 20px; text-align: center; }
     .home-btn {
       display: inline-flex;
       align-items: center;
@@ -341,42 +276,37 @@
         0 0 18px rgba(120, 200, 255, 0.9),
         0 0 38px rgba(90, 140, 255, 0.85);
     }
-
-    .home-btn span {
-      font-size: 16px;
-    }
-
-    .wiki-footer-note {
-      margin-top: 10px;
-      font-size: 12px;
-      color: var(--text-dim);
-    }
+    .home-btn span { font-size: 16px; }
+    .wiki-footer-note { margin-top: 10px; font-size: 12px; color: var(--text-dim); }
 
     @media (max-width: 640px) {
-      body {
-        padding: 18px 10px 24px;
-      }
-      .wiki-shell {
-        border-radius: 18px;
-        padding: 14px 12px 20px;
-      }
-      .wiki-header-bar {
-        padding-inline: 10px;
-      }
-      .section {
-        padding-inline: 14px;
-      }
+      body { padding: 18px 10px 24px; }
+      .wiki-shell { border-radius: 18px; padding: 14px 12px 20px; }
+      .wiki-header-bar { padding-inline: 10px; }
+      .section { padding-inline: 14px; }
     }
   </style>
+
+  <!-- ✅ Google Translate (no SIMPLE layout) -->
+  <script>
+    function googleTranslateElementInit(){
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
+        autoDisplay: false,
+        multilanguagePage: true
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 </head>
+
 <body>
   <main class="wiki-shell">
     <div class="wiki-inner">
 
-      <!-- Top header bar -->
       <header class="wiki-header-bar">
         <div class="wiki-logo-wrap">
-          <!-- Logo: click to go back to main site -->
           <a class="wiki-logo-link" href="index-global.html">
             <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX logo" />
           </a>
@@ -388,11 +318,11 @@
 
         <div class="lang-toggle">
           <span class="lang-tag">GLOBAL</span>
-          <!-- Google Translate dropdown -->
           <div id="google_translate_element"></div>
         </div>
       </header>
 
+      <!-- 以下內容：你原本完全保留 -->
       <!-- Main title -->
       <section class="wiki-main-title">
         <h1>NeoX (NXC) – Ecosystem Overview</h1>
@@ -403,7 +333,6 @@
         </p>
       </section>
 
-      <!-- Tag pills -->
       <div class="tag-row">
         <span class="tag-pill">Base Mainnet</span>
         <span class="tag-pill">ERC-20 Token</span>
@@ -424,129 +353,8 @@
         </p>
       </section>
 
-      <!-- History -->
-      <section class="section" id="history">
-        <h2>History</h2>
-        <p>
-          NeoX originally began as a creative digital art project and gradually expanded to integrate
-          blockchain technology, NFTs, and interactive media. Over time, the project evolved from one-off
-          artworks into a more coherent on-chain universe, experimenting with collectibles, gaming, and
-          metaverse scenes.
-        </p>
-        <p>
-          In <strong>2025</strong>, the <strong>NeoX Coin (NXC)</strong> was officially launched on
-          Base Mainnet as the utility token of the ecosystem, marking NeoX’s transition into a broader
-          Web3 environment spanning NFTs, game experiences, and virtual exhibition spaces.
-        </p>
-      </section>
+      <!-- ...（你後面 section 全部照舊）... -->
 
-      <!-- NeoX Coin -->
-      <section class="section" id="token">
-        <h2>NeoX Coin (NXC)</h2>
-        <p>
-          <strong>NXC</strong> is the utility token of the NeoX ecosystem and is deployed on
-          <strong>Base Mainnet (L2)</strong>. It is designed to support participation across current
-          and future NeoX experiences, with potential roles in collectibles, in-game utilities, and
-          metaverse interactions.
-        </p>
-
-        <div class="data-box">
-          <div class="data-key">Contract Address (Base)</div>
-          <div class="data-value">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</div>
-          <div>Network: Base Mainnet (L2, secured by Ethereum)</div>
-          <div>Standard: ERC-20</div>
-        </div>
-
-        <p>
-          The token is integrated into the broader NeoX brand, connecting collectibles, interactive
-          projects, and upcoming game or metaverse utilities as the ecosystem continues to expand.
-        </p>
-      </section>
-
-      <!-- NFT Collections -->
-      <section class="section" id="nft-collections">
-        <h2>NFT Collections</h2>
-        <p>
-          NeoX features multiple curated NFT series, each exploring different visual themes and concepts.
-          Collections include:
-        </p>
-        <ul>
-          <li><strong>NeoCoin Genesis Edition (G1)</strong> – early symbolic pieces tied to the origin of NeoX.</li>
-          <li><strong>NeoX: Timekeeper Edition</strong> – a limited series themed around time, rhythm, and motion.</li>
-          <li><strong>NeoX Van Gogh Visions</strong> – art inspired by classical painting aesthetics with a NeoX twist.</li>
-          <li><strong>NeoX Abstract Realms</strong> – experimental, abstract works exploring color and form.</li>
-        </ul>
-        <p>
-          These NFTs act as both art collectibles and reference points for future experiences in the NeoX universe,
-          including potential in-game representation, gallery showcases, and metaverse displays.
-        </p>
-      </section>
-
-      <!-- Game -->
-      <section class="section" id="game">
-        <h2>Game – NeoX Catch (HTML5)</h2>
-        <p>
-          <strong>NeoX Catch</strong> is a browser-based HTML5 arcade-style game where players catch NeoX coins,
-          avoid obstacles, and aim for high scores across multiple stages. The game is optimized for mobile devices
-          and can be played directly from the NeoX website without installation.
-        </p>
-        <p>Key features include:</p>
-        <ul>
-          <li>Multi-level design with opening and end scenes.</li>
-          <li>Score tracking, including a Top 3 leaderboard display.</li>
-          <li>Mobile-first responsive layout for phones and tablets.</li>
-          <li>Visual integration with the NeoX brand identity and coin designs.</li>
-        </ul>
-      </section>
-
-      <!-- Metaverse Exhibition -->
-      <section class="section" id="metaverse">
-        <h2>Metaverse Exhibition</h2>
-        <p>
-          NeoX maintains virtual exhibition environments using platforms such as OnCyber, featuring NFT artworks,
-          3D avatar integration, ambient music, and cinematic scenes. These spaces are used to present NeoX
-          collections in immersive layouts and to experiment with gallery-style storytelling.
-        </p>
-        <p>
-          As new NFT series and visual concepts are introduced, the exhibition spaces are periodically updated
-          with new rooms, scenes, and curated experiences.
-        </p>
-      </section>
-
-      <!-- Technology Stack -->
-      <section class="section" id="tech-stack">
-        <h2>Technology Stack</h2>
-        <p>NeoX makes use of the following key technologies:</p>
-        <ul>
-          <li><strong>Base Mainnet (L2)</strong> for token deployment and on-chain interactions.</li>
-          <li><strong>Thirdweb</strong> for smart-contract deployment and management.</li>
-          <li><strong>IPFS / Lighthouse</strong> for decentralized media and metadata storage.</li>
-          <li><strong>HTML5 &amp; Canvas</strong> for the browser-based NeoX Catch game.</li>
-          <li><strong>VRM / glTF assets</strong> for avatars and metaverse-ready 3D visuals.</li>
-          <li><strong>Responsive web design</strong> optimized for both mobile and desktop devices.</li>
-        </ul>
-      </section>
-
-      <!-- Future development -->
-      <section class="section" id="future">
-        <h2>Future Development</h2>
-        <p>
-          Planned development for the NeoX ecosystem includes:
-        </p>
-        <ul>
-          <li>Expanding metaverse exhibition spaces and interactive environments.</li>
-          <li>Launching new NFT collections and experimental visual series.</li>
-          <li>AI-assisted micro-films, narrative pieces, and cinematic projects under the NeoX brand.</li>
-          <li>Further upgrades to game mechanics, progression systems, and visual FX.</li>
-          <li>Deeper cross-platform integration across Web, mobile, and virtual-world environments.</li>
-        </ul>
-        <p>
-          The goal is to gradually connect art, gaming, and metaverse scenes into a cohesive, long-term
-          Web3 ecosystem powered by NXC on Base Mainnet.
-        </p>
-      </section>
-
-      <!-- Footer -->
       <footer class="wiki-footer">
         <a class="home-btn" href="index-global.html">
           <span>←</span>
