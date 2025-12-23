@@ -181,10 +181,11 @@
         font-size: 26px;
     }
       
-    /* ===== Mobile safe top spacing ===== */
-     @media (max-width: 768px){
-     body{padding-top: 110px !important; }
+    @media (max-width: 768px){
+    body{
+      padding-top: calc(110px + env(safe-area-inset-top));
     }
+  }
   </style>
 </head>
 <body>
