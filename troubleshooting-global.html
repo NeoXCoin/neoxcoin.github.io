@@ -110,12 +110,11 @@
       text-shadow: 0 0 14px rgba(0,0,0,.35);
     }
 
-    /* ✅ 內容容器（確保標題唔會撞到頂部） */
+    /* ===== 核心修正：整頁內容向下移 ===== */
     .page{
-      max-width: 860px;
-      margin: 0 auto;
+      padding-top: 140px; /* 🔴 關鍵數值，可再微調 */
     }
-
+    
     .issue {
       background-color: rgba(255, 255, 255, 0.06);
       padding: 20px;
@@ -197,7 +196,8 @@
 
     /* ✅ Mobile fix：推低整頁，避免被 logo/translate 遮住 */
     @media (max-width: 768px){
-      :root{ --topSafe: 112px; }
+      .page{
+        padding-top: calc(160px + env(safe-area-inset-top)); }
 
       body{
         padding-top: calc(var(--topSafe) + env(safe-area-inset-top));
