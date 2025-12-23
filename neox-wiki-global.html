@@ -35,12 +35,10 @@
   <style>
     :root {
       --bg-main: radial-gradient(circle at top, #2b4fff 0, #120b33 40%, #050418 80%);
-      --card-bg: rgba(10, 16, 45, 0.96);
       --card-border: rgba(120, 170, 255, 0.45);
       --card-glow: 0 0 25px rgba(80, 140, 255, 0.55);
       --pill-bg: rgba(20, 40, 90, 0.95);
       --pill-border: rgba(120, 170, 255, 0.7);
-      --accent: #4ea9ff;
       --accent-strong: #5fd2ff;
       --text-main: #f5f6ff;
       --text-soft: #c3c8ff;
@@ -62,7 +60,7 @@
       justify-content: center;
       padding: 32px 16px 40px;
 
-      /* ✅ Prevent Google Translate pushing the page down */
+      /* ✅ Prevent Google Translate pushing the page down (Safari/iOS) */
       top: 0 !important;
       position: static !important;
       margin-top: 0 !important;
@@ -287,7 +285,7 @@
     }
   </style>
 
-  <!-- ✅ Google Translate (no SIMPLE layout) -->
+  <!-- ✅ Google Translate (NO SIMPLE layout) -->
   <script>
     function googleTranslateElementInit(){
       new google.translate.TranslateElement({
@@ -305,6 +303,7 @@
   <main class="wiki-shell">
     <div class="wiki-inner">
 
+      <!-- Top header bar -->
       <header class="wiki-header-bar">
         <div class="wiki-logo-wrap">
           <a class="wiki-logo-link" href="index-global.html">
@@ -322,7 +321,6 @@
         </div>
       </header>
 
-      <!-- 以下內容：你原本完全保留 -->
       <!-- Main title -->
       <section class="wiki-main-title">
         <h1>NeoX (NXC) – Ecosystem Overview</h1>
@@ -333,6 +331,7 @@
         </p>
       </section>
 
+      <!-- Tag pills -->
       <div class="tag-row">
         <span class="tag-pill">Base Mainnet</span>
         <span class="tag-pill">ERC-20 Token</span>
@@ -353,8 +352,127 @@
         </p>
       </section>
 
-      <!-- ...（你後面 section 全部照舊）... -->
+      <!-- History -->
+      <section class="section" id="history">
+        <h2>History</h2>
+        <p>
+          NeoX originally began as a creative digital art project and gradually expanded to integrate
+          blockchain technology, NFTs, and interactive media. Over time, the project evolved from one-off
+          artworks into a more coherent on-chain universe, experimenting with collectibles, gaming, and
+          metaverse scenes.
+        </p>
+        <p>
+          In <strong>2025</strong>, the <strong>NeoX Coin (NXC)</strong> was officially launched on
+          Base Mainnet as the utility token of the ecosystem, marking NeoX’s transition into a broader
+          Web3 environment spanning NFTs, game experiences, and virtual exhibition spaces.
+        </p>
+      </section>
 
+      <!-- NeoX Coin -->
+      <section class="section" id="token">
+        <h2>NeoX Coin (NXC)</h2>
+        <p>
+          <strong>NXC</strong> is the utility token of the NeoX ecosystem and is deployed on
+          <strong>Base Mainnet (L2)</strong>. It is designed to support participation across current
+          and future NeoX experiences, with potential roles in collectibles, in-game utilities, and
+          metaverse interactions.
+        </p>
+
+        <div class="data-box">
+          <div class="data-key">Contract Address (Base)</div>
+          <div class="data-value">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</div>
+          <div>Network: Base Mainnet (L2, secured by Ethereum)</div>
+          <div>Standard: ERC-20</div>
+        </div>
+
+        <p>
+          The token is integrated into the broader NeoX brand, connecting collectibles, interactive
+          projects, and upcoming game or metaverse utilities as the ecosystem continues to expand.
+        </p>
+      </section>
+
+      <!-- NFT Collections -->
+      <section class="section" id="nft-collections">
+        <h2>NFT Collections</h2>
+        <p>
+          NeoX features multiple curated NFT series, each exploring different visual themes and concepts.
+          Collections include:
+        </p>
+        <ul>
+          <li><strong>NeoCoin Genesis Edition (G1)</strong> – early symbolic pieces tied to the origin of NeoX.</li>
+          <li><strong>NeoX: Timekeeper Edition</strong> – a limited series themed around time, rhythm, and motion.</li>
+          <li><strong>NeoX Van Gogh Visions</strong> – art inspired by classical painting aesthetics with a NeoX twist.</li>
+          <li><strong>NeoX Abstract Realms</strong> – experimental, abstract works exploring color and form.</li>
+        </ul>
+        <p>
+          These NFTs act as both art collectibles and reference points for future experiences in the NeoX universe,
+          including potential in-game representation, gallery showcases, and metaverse displays.
+        </p>
+      </section>
+
+      <!-- Game -->
+      <section class="section" id="game">
+        <h2>Game – NeoX Catch (HTML5)</h2>
+        <p>
+          <strong>NeoX Catch</strong> is a browser-based HTML5 arcade-style game where players catch NeoX coins,
+          avoid obstacles, and aim for high scores across multiple stages. The game is optimized for mobile devices
+          and can be played directly from the NeoX website without installation.
+        </p>
+        <p>Key features include:</p>
+        <ul>
+          <li>Multi-level design with opening and end scenes.</li>
+          <li>Score tracking, including a Top 3 leaderboard display.</li>
+          <li>Mobile-first responsive layout for phones and tablets.</li>
+          <li>Visual integration with the NeoX brand identity and coin designs.</li>
+        </ul>
+      </section>
+
+      <!-- Metaverse Exhibition -->
+      <section class="section" id="metaverse">
+        <h2>Metaverse Exhibition</h2>
+        <p>
+          NeoX maintains virtual exhibition environments using platforms such as OnCyber, featuring NFT artworks,
+          3D avatar integration, ambient music, and cinematic scenes. These spaces are used to present NeoX
+          collections in immersive layouts and to experiment with gallery-style storytelling.
+        </p>
+        <p>
+          As new NFT series and visual concepts are introduced, the exhibition spaces are periodically updated
+          with new rooms, scenes, and curated experiences.
+        </p>
+      </section>
+
+      <!-- Technology Stack -->
+      <section class="section" id="tech-stack">
+        <h2>Technology Stack</h2>
+        <p>NeoX makes use of the following key technologies:</p>
+        <ul>
+          <li><strong>Base Mainnet (L2)</strong> for token deployment and on-chain interactions.</li>
+          <li><strong>Thirdweb</strong> for smart-contract deployment and management.</li>
+          <li><strong>IPFS / Lighthouse</strong> for decentralized media and metadata storage.</li>
+          <li><strong>HTML5 &amp; Canvas</strong> for the browser-based NeoX Catch game.</li>
+          <li><strong>VRM / glTF assets</strong> for avatars and metaverse-ready 3D visuals.</li>
+          <li><strong>Responsive web design</strong> optimized for both mobile and desktop devices.</li>
+        </ul>
+      </section>
+
+      <!-- Future development -->
+      <section class="section" id="future">
+        <h2>Future Development</h2>
+        <p>Planned development for the NeoX ecosystem includes:</p>
+        <ul>
+          <li>Expanding metaverse exhibition spaces and interactive environments.</li>
+          <li>Launching new NFT collections and experimental visual series.</li>
+          <li>AI-assisted micro-films, narrative pieces, and cinematic projects under the NeoX brand.</li>
+          <li>Further upgrades to game mechanics, progression systems, and visual FX.</li>
+          <li>Deeper cross-platform integration across Web, mobile, and virtual-world environments.</li>
+        </ul>
+        <p>
+          The goal is to gradually connect art, gaming, and metaverse scenes into a cohesive, long-term
+          Web3 ecosystem powered by NXC on Base Mainnet.
+        </p>
+      </section>
+
+      <!-- Footer -->
       <footer class="wiki-footer">
         <a class="home-btn" href="index-global.html">
           <span>←</span>
