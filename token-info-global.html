@@ -18,11 +18,72 @@
       color: #f5f5f5;
       line-height: 1.7;
     }
+    
+    /* ✅ 強制封鎖 Google Translate 頂部白色 Banner（Safari / iOS 必要） */
+    body {
+      top: 0 !important;
+      position: static !important;
+      margin-top: 0 !important;
+    }
 
-    .wrap {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 30px 20px 80px;
+    /* 完全隱藏 Google Translate iframe banner */
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-banner-frame {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      width: 0 !important;
+    }
+
+    iframe.goog-te-banner-frame {
+      display: none !important;
+    }
+
+    /* 有時 Google 會包一層 skiptranslate */
+    body > .skiptranslate {
+      display: none !important;
+    }
+    
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+    }
+
+    .translate-wrap{
+      position:absolute;
+      top:20px;
+      right:20px;
+      font-size:14px;
+      text-align:right;
+      z-index: 9999;
+    }
+
+    #google_translate_element{
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:10px;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(0,217,255,.35);
+      box-shadow:0 0 14px rgba(0,217,255,.18);
+    }
+
+    #google_translate_element .goog-te-gadget{
+      font-size:14px !important;
+      color:#fff !important;
+      line-height:1.2;
+    }
+    #google_translate_element .goog-te-gadget span{
+      color:#fff !important;
+    }
+    #google_translate_element select{
+      background:rgba(0,0,0,.15) !important;
+      color:#fff !important;
+      border:1px solid rgba(255,255,255,.25) !important;
+      border-radius:8px !important;
+      padding:6px 8px !important;
+      outline:none !important;
     }
 
     h1, h2 {
@@ -134,14 +195,10 @@
     }
   </style>
 </head>
-<body>
 
-  <!-- 🌐 Google Translate (top-right) -->
-  <div class="gt-wrap">
-    <div class="gt-inner">
-      <span>🌐 Language</span>
-      <div id="google_translate_element"></div>
-    </div>
+  <!-- ✅ Google Translate (top-right) -->
+  <div class="translate-wrap">
+    <div id="google_translate_element"></div>
   </div>
 
   <!-- 🔹 Top Left Logo (Home) -->
@@ -227,16 +284,17 @@
   </div>
 
   <!-- 🌐 Google Translate Script -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
+  <script>
+    function googleTranslateElementInit(){
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'af,ar,bg,ca,cs,da,de,el,en,es,et,fa,fi,fr,gu,he,hi,hr,hu,id,it,ja,ko,lt,lv,ms,nl,no,pl,pt,ro,ru,sk,sl,sq,sr,sv,sw,ta,th,tr,uk,ur,vi,zh-CN,zh-TW',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
+        autoDisplay: false,
+        multilanguagePage: true
       }, 'google_translate_element');
     }
   </script>
-  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
 </body>
 </html>
