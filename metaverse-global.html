@@ -15,6 +15,11 @@
   <link rel="alternate" href="https://neoxcoin.io/metaverse-zh.html" hreflang="zh-Hant" />
   <link rel="alternate" href="https://neoxcoin.io/metaverse-global.html" hreflang="x-default" />
   <style>
+      :root{
+      --safe-top: max(14px, env(safe-area-inset-top));
+      --top-ui: calc(var(--safe-top) + 70px); /* iPad Safari 頂部UI預留 */
+    }
+    
     body {
       margin: 0;
       min-height: 100vh;
@@ -22,7 +27,7 @@
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
-      padding: 40px 20px;
+      padding: calc(var(--top-ui) + 10px) 20px 40px;
     }
     
     /* ✅ 防止 Google Translate 推落頁面 / 出白色頂部 bar */
@@ -202,9 +207,8 @@
     .close:hover { color: #fff; }
     
     @media (max-width: 600px){
-    body{ padding-top:110px; }
-    .translate-wrap{ top:18px; right:12px; }
-    .logo{ left:12px; }
+      .translate-wrap{ right:12px; }
+      .logo{ left:12px; }
     }
   </style>
   
