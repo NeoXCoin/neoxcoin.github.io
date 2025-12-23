@@ -20,23 +20,30 @@
   <link rel="alternate" hreflang="x-default" href="https://neoxcoin.github.io/how-to-buy-global.html" />
 
   <style>
+    :root{
+      --safe-top: max(16px, env(safe-area-inset-top));
+      --top-ui: calc(var(--safe-top) + 64px); /* 預留 iPad Safari 頂部UI */
+    }
     /* === Global / Body === */
-    body {
+    body{
       margin: 0;
-      /* 確保背景設定正確 */
       background: linear-gradient(135deg, #0a0a2a, #1f005c);
       background-image: url('https://neoxcoin.io/NeoXbackG.JPG');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed; /* ✅ 鎖定背景，防止走位 */
+      background-attachment: fixed;
       font-family: Arial, sans-serif;
       color: #ffffff;
       text-align: center;
-      
-      /* ✅ 強制覆蓋 Google Translate 的位移設定 */
+
+      /* ✅ 關鍵：全裝置預留頂部空間（避免被Safari bar遮住） */
+      padding: calc(var(--top-ui) + 10px) 20px 40px;
+
+      /* ✅ 你原本用嚟壓 Google Translate banner 的設定 */
       top: 0 !important;
-      position: static !important; 
+      position: static !important;
       margin-top: 0 !important;
+
       min-height: 100vh;
     }
 
@@ -92,7 +99,7 @@
       outline:none;
     }
 
-    h1{ margin:40px 0 8px; font-size:32px; }
+    h1{ margin: 0 0 8px; font-size:32px; }
     .subtitle{ opacity:.85; margin-bottom:26px; }
 
     .card{
@@ -189,9 +196,9 @@
     }
 
      @media (max-width: 600px){
-      body{ padding-top:110px; }
-      .translate-wrap{ top:18px; right:12px; }
-      .logo{ left:12px; }
+       .translate-wrap{ right:12px; }
+       .logo{ left:12px; }
+       h1{ font-size: 26px; }
     }
     
   </style>
