@@ -129,13 +129,48 @@
     .nav-bar a{text-decoration:none;color:#fff;font-weight:bold;font-size:16px}
     .emoji{font-size:18px;line-height:1}
     .btn-row{display:flex;flex-wrap:wrap;gap:15px;justify-content:center;margin-top:30px}
-    .market-link{margin-top:14px}
-    .market-btn{display:inline-block;padding:8px 18px;border-radius:999px;font-size:14px;text-decoration:none;color:#ffd76a;border:1px solid rgba(255,215,106,.45);background:rgba(0,0,0,.35);backdrop-filter:blur(4px);box-shadow:0 3px 8px rgba(0,0,0,.45);transition:all .3s ease}
-    /* ✅ unify Gecko button width with main buttons */
+    .market-link{ margin-top:14px; }
+
     .market-btn{
-      width: min(72vw, 260px);
+      width: min(68vw, 240px);          /* ✅ 再窄少少 */
+      box-sizing: border-box;
+
       display: inline-flex;
+      align-items: center;              /* ✅ iOS 文字垂直置中 */
       justify-content: center;
+      gap: 8px;
+
+      padding: 9px 16px;                /* ✅ 高度舒服 */
+      font-size: 14px;
+      line-height: 1.4;                 /* 🔥 關鍵：解決「字體扁向上」 */
+      font-weight: 500;
+
+      border-radius: 999px;
+      text-decoration: none;
+      white-space: nowrap;
+
+      color: #ffd76a;
+      border: 1px solid rgba(255,215,106,.45);
+      background: rgba(0,0,0,.35);
+
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+
+      box-shadow: 0 3px 8px rgba(0,0,0,.45);
+      transition: all .3s ease;
+    }
+
+    .market-btn:hover{
+      background: linear-gradient(90deg,#1c1c3c,#3a0088);
+      color:#fff;
+      border-color:#ffd700;
+      box-shadow:0 0 14px rgba(255,215,106,.6);
+      transform: translateY(-2px);
+    }
+
+    /* 手機再收一級（統一三版本） */
+    @media (max-width:600px){
+      .market-btn{ width: min(78vw, 300px); font-size:13px; padding:9px 16px; }
     }
     .market-btn:hover{background:linear-gradient(90deg,#1c1c3c,#3a0088);color:#fff;border-color:#ffd700;box-shadow:0 0 14px rgba(255,215,106,.6);transform:translateY(-2px)}
     @media (max-width:600px){.market-link{margin-top:10px}.market-btn{font-size:13px;padding:7px 16px}}
