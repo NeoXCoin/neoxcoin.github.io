@@ -57,21 +57,22 @@
       display: none !important;
     }
 
-    .logo {
-      width: 60px;
+    .logo{
       position: absolute;
-      top: 20px;
-      left: 20px;
-      opacity: 0.85;
+      top: var(--safe-top);
+      left: 14px;
+      width: 60px;
+      opacity: .9;
+      z-index: 10000;
     }
 
     .translate-wrap{
-      position:absolute;
-      top:20px;
-      right:20px;
-      font-size:14px;
-      text-align:right;
-      z-index: 9999;
+      position: absolute;
+      top: var(--safe-top);
+      right: 14px;
+      font-size: 14px;
+      text-align: right;
+      z-index: 10000;
     }
 
     #google_translate_element{
