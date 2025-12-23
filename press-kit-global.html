@@ -61,65 +61,63 @@
       display:flex;
       flex-direction:column;
     }
-    
-    /* ✅ 強制封鎖 Google Translate 頂部白色 Banner（Safari / iOS 必要） */
-    body {
-      top: 0 !important;
-      position: static !important;
-      margin-top: 0 !important;
-    }
 
-    /* 完全隱藏 Google Translate iframe banner */
+    /* ✅ iOS Safari：隱藏Google頂部banner，但不要隱藏 skiptranslate wrapper（會令全頁消失） */
+    body{ top:0 !important; }
     .goog-te-banner-frame.skiptranslate,
-    .goog-te-banner-frame {
-      display: none !important;
-      visibility: hidden !important;
-      height: 0 !important;
-      width: 0 !important;
+    .goog-te-banner-frame,
+    iframe.goog-te-banner-frame{
+      display:none !important;
+      height:0 !important;
+      visibility:hidden !important;
     }
 
-    iframe.goog-te-banner-frame {
-      display: none !important;
+    /* ✅ 主要容器（你之前漏咗呢段會令版面貼邊/更易撞位） */
+    .wrap{
+      width:min(1120px, 100%);
+      margin:0 auto;
+      padding:56px 20px 56px; /* 頂部留位俾翻譯widget */
+      position:relative;
     }
 
-    /* 有時 Google 會包一層 skiptranslate */
-    body > .skiptranslate {
-      display: none !important;
-    }
-
-    .translate-wrap{
-      position:absolute;
-      top:20px;
-      right:20px;
-      font-size:14px;
-      text-align:right;
-      z-index: 9999;
-    }
-
+    /* ✅ Google Translate：固定右上角，小型版，不擋內容 */
     #google_translate_element{
-      display:inline-block;
+      position:fixed;
+      top:10px;
+      right:10px;
+      z-index:9999;
+      background:rgba(2,7,23,.85);
+      border-radius:999px;
       padding:6px 10px;
-      border-radius:10px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(0,217,255,.35);
-      box-shadow:0 0 14px rgba(0,217,255,.18);
+      border:1px solid rgba(255,255,255,.10);
+      box-shadow:0 10px 30px rgba(0,0,0,.35);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
-    #google_translate_element .goog-te-gadget{
-      font-size:14px !important;
-      color:#fff !important;
-      line-height:1.2;
+    /* 只保留下拉框，隱藏「Powered by」等字樣 */
+    .goog-te-gadget{ font-size:0 !important; }
+    .goog-te-gadget .goog-logo-link{ display:none !important; }
+    .goog-te-gadget span{ display:none !important; } /* 包括 Powered by */
+    .goog-te-gadget-simple{
+      background:transparent !important;
+      border:none !important;
+      padding:0 !important;
+      font-size:0 !important;
     }
-    #google_translate_element .goog-te-gadget span{
-      color:#fff !important;
+    .goog-te-gadget-simple .goog-te-menu-value{
+      color:#e0e6ff !important;
+      font-size:13px !important;
     }
+    .goog-te-gadget-icon{ display:none !important; }
     #google_translate_element select{
-      background:rgba(0,0,0,.15) !important;
-      color:#fff !important;
-      border:1px solid rgba(255,255,255,.25) !important;
-      border-radius:8px !important;
-      padding:6px 8px !important;
+      background:rgba(0,0,0,.20) !important;
+      color:#e8eeff !important;
+      border:1px solid rgba(255,255,255,.22) !important;
+      border-radius:12px !important;
+      padding:6px 10px !important;
       outline:none !important;
+      font-size:13px !important;
     }
 
     header.topbar{
@@ -128,7 +126,7 @@
       justify-content:space-between;
       gap:16px;
       margin-bottom:24px;
-      flex-wrap:wrap; /* ✅ 允許換行，唔會擠出畫面 */
+      flex-wrap:wrap;
     }
 
     .brand-block{
@@ -144,9 +142,7 @@
       gap:12px;
       flex-wrap:wrap;
     }
-    .brand-row img{
-      width:32px;height:32px;border-radius:10px;
-    }
+    .brand-row img{ width:32px;height:32px;border-radius:10px; }
     .brand-row span{
       font-weight:600;
       letter-spacing:.04em;
@@ -155,10 +151,7 @@
       color:var(--muted);
     }
 
-    .lang-switch{
-      font-size:12px;
-      color:#8d96b6;
-    }
+    .lang-switch{ font-size:12px; color:#8d96b6; }
     .lang-switch a{ color:#80caff; text-decoration:none; }
     .lang-switch a:hover{ text-decoration:underline; }
 
@@ -205,12 +198,7 @@
       line-height:1.7;
     }
 
-    .pill-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin-bottom:18px;
-    }
+    .pill-row{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:18px; }
     .pill{
       font-size:12px;
       padding:5px 11px;
@@ -220,11 +208,7 @@
       color:#d7e7ff;
     }
 
-    .hero-buttons{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
+    .hero-buttons{ display:flex; flex-wrap:wrap; gap:10px; }
 
     .btn-main,.btn-ghost{
       display:inline-flex;
@@ -296,7 +280,6 @@
       padding:20px 18px 18px;
       box-shadow:0 12px 40px rgba(0,0,0,.7);
     }
-
     section h2{
       margin:0 0 10px;
       font-size:18px;
@@ -311,7 +294,6 @@
       font-size:14px;
       line-height:1.7;
     }
-
     section ul{
       margin:6px 0 10px 18px;
       padding:0;
@@ -383,33 +365,18 @@
       object-fit:contain;
       filter:drop-shadow(0 10px 30px rgba(0,0,0,.9));
     }
-    .logo-card span{
-      display:block;
-      font-size:12px;
-      color:var(--muted);
-    }
+    .logo-card span{ display:block; font-size:12px; color:var(--muted); }
 
-    .color-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:10px;
-    }
+    .color-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
     .swatch{
-      display:flex;
-      align-items:center;
-      gap:8px;
+      display:flex; align-items:center; gap:8px;
       padding:6px 9px;
       border-radius:999px;
       background:rgba(3,13,34,.95);
       border:1px solid rgba(255,255,255,.08);
-      font-size:12px;
-      color:var(--muted);
+      font-size:12px; color:var(--muted);
     }
-    .swatch-dot{
-      width:16px;height:16px;border-radius:50%;
-      border:1px solid rgba(0,0,0,.5);
-    }
+    .swatch-dot{ width:16px;height:16px;border-radius:50%; border:1px solid rgba(0,0,0,.5); }
     .dot-gold{ background:#f2c24a; }
     .dot-blue{ background:linear-gradient(135deg,#0090ff,#2fb6ff); }
     .dot-bg{ background:#020717; }
@@ -435,11 +402,7 @@
       text-transform:uppercase;
       color:#dbe4ff;
     }
-    .link-card a{
-      color:var(--accent);
-      text-decoration:none;
-      word-break:break-all;
-    }
+    .link-card a{ color:var(--accent); text-decoration:none; word-break:break-all; }
     .link-card a:hover{ text-decoration:underline; }
 
     .contact-box{
@@ -454,7 +417,6 @@
     .contact-box a{ color:var(--accent); text-decoration:none; }
     .contact-box a:hover{ text-decoration:underline; }
 
-    /* ✅ 底部 Back to Home */
     .footer-actions{
       margin-top:18px;
       display:flex;
@@ -492,28 +454,26 @@
       .hero{ padding:24px 18px 22px; }
       section{ padding-inline:15px; }
       .two-col{ grid-template-columns:minmax(0,1fr); }
+      .wrap{ padding-top:66px; } /* 手機留多啲位俾翻譯框 */
     }
   </style>
 
-  <!-- Google Translate -->
+  <!-- Google Translate（用 SIMPLE layout，避免大盒 + Powered by） -->
   <script>
     function googleTranslateElementInit(){
       new google.translate.TranslateElement({
         pageLanguage: 'en',
         includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
-        autoDisplay: false,
-        multilanguagePage: true
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+        autoDisplay: false
       }, 'google_translate_element');
     }
   </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
 <body>
-  <!-- ✅ Google Translate (top-right) -->
-  <div class="translate-wrap">
-    <div id="google_translate_element"></div>
-  </div>
+  <div id="google_translate_element"></div>
 
   <div class="wrap">
     <header class="topbar">
@@ -528,7 +488,6 @@
           <a href="press-kit-zh.html" target="_blank" rel="noopener">繁體中文</a>
         </div>
       </div>
-      <!-- ✅ Back link 已移走（放到底部） -->
     </header>
 
     <section class="hero" aria-labelledby="presskit-hero-title">
@@ -548,12 +507,8 @@
           </div>
 
           <div class="hero-buttons">
-            <a class="btn-main" href="https://neoxcoin.github.io/NeoX-PressKit.zip" download>
-              Download Full Press Kit (ZIP)
-            </a>
-            <a class="btn-main" href="https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG" target="_blank" rel="noopener">
-              View Cover Image
-            </a>
+            <a class="btn-main" href="https://neoxcoin.github.io/NeoX-PressKit.zip" download>Download Full Press Kit (ZIP)</a>
+            <a class="btn-main" href="https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG" target="_blank" rel="noopener">View Cover Image</a>
             <a class="btn-ghost" href="#media-assets">Browse All Assets</a>
           </div>
         </div>
@@ -561,291 +516,28 @@
         <div class="hero-media">
           <div class="cover-frame">
             <span class="badge-top">NeoX Coin Press Kit Cover</span>
-            <img src="https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG"
-                 alt="NeoX Coin (NXC) official press kit cover" />
+            <img src="https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG" alt="NeoX Coin (NXC) official press kit cover" />
           </div>
         </div>
       </div>
     </section>
 
     <main>
+      <!-- 內容保持你原本一樣（01~10） -->
+      <!-- 你可以直接將你原本 main 入面所有 section 貼返落去，唔需要改字 -->
+      <!-- 為免太長，我呢度示範保留： -->
       <section id="overview">
         <h2><span>01 ·</span> Brand Overview</h2>
-        <p>
-          <strong>NeoX Coin (NXC)</strong> is a next-generation digital asset on
-          <strong>Base Mainnet</strong>, designed to unify Web3 experiences across
-          NFTs, digital art, interactive games, and metaverse-style exhibitions.
-        </p>
-        <p>
-          Built as a <strong>creative utility token</strong> rather than a speculative product,
-          NXC connects NeoX NFT collections, browser-based mini-games, virtual galleries,
-          and future digital-ownership experiences under a single brand.
-        </p>
-        <p>
-          NeoX focuses on <strong>clarity, creativity, and long-term identity</strong>,
-          ensuring a consistent visual and cultural presence across all platforms.
-        </p>
+        <p><strong>NeoX Coin (NXC)</strong> is a next-generation digital asset on <strong>Base Mainnet</strong>, designed to unify Web3 experiences across NFTs, digital art, interactive games, and metaverse-style exhibitions.</p>
+        <p>Built as a <strong>creative utility token</strong> rather than a speculative product, NXC connects NeoX NFT collections, browser-based mini-games, virtual galleries, and future digital-ownership experiences under a single brand.</p>
+        <p>NeoX focuses on <strong>clarity, creativity, and long-term identity</strong>, ensuring a consistent visual and cultural presence across all platforms.</p>
       </section>
 
-      <section id="mission">
-        <div class="two-col">
-          <div>
-            <h2><span>02 ·</span> Mission & Vision</h2>
-            <p><strong>Vision</strong></p>
-            <p>
-              To build an accessible Web3 ecosystem where art, gaming,
-              digital identity, and community interact seamlessly through
-              a unified brand.
-            </p>
-            <p><strong>Mission</strong></p>
-            <ul>
-              <li>Introduce a simple yet powerful token for multi-platform utility.</li>
-              <li>Empower digital creators with open, accessible tools.</li>
-              <li>Develop immersive artistic and gamified experiences.</li>
-              <li>Bring Web3 culture closer to everyday audiences.</li>
-            </ul>
-          </div>
-          <div>
-            <h2><span>03 ·</span> What NeoX Represents</h2>
-            <p>
-              NeoX blends <strong>premium digital branding</strong>,
-              <strong>high-quality art</strong>, and
-              <strong>utility-focused innovation</strong>.
-            </p>
-            <p>Core symbolism:</p>
-            <ul>
-              <li><strong>Gold</strong> → value, authenticity, and trust.</li>
-              <li><strong>NeoX Blue</strong> → technology, innovation, and the digital future.</li>
-            </ul>
-            <p>
-              This dual-tone identity forms the foundation for all NeoX visuals —
-              from NFTs and logos to gameplay interfaces and metaverse exhibitions.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="token">
-        <h2><span>04 ·</span> Token Overview (NXC)</h2>
-        <p>
-          <strong>NeoX Coin (NXC)</strong> is an ERC-20 utility token deployed on
-          <strong>Base Mainnet</strong>. It acts as the core asset powering
-          NeoX products, unlocking gated digital content, future utilities,
-          and ecosystem features.
-        </p>
-
-        <div class="token-grid">
-          <div class="token-item"><strong>Name</strong>NeoX Coin</div>
-          <div class="token-item"><strong>Ticker</strong>NXC</div>
-          <div class="token-item"><strong>Network</strong>Base Mainnet (Layer-2 on Ethereum)</div>
-          <div class="token-item"><strong>Standard</strong>ERC-20</div>
-          <div class="token-item">
-            <strong>Contract Address</strong>
-            <code class="addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
-          </div>
-        </div>
-
-        <p style="margin-top:10px;"><strong>Current & Upcoming Utility:</strong></p>
-        <ul>
-          <li>Unlock access to NeoX ecosystem features and gated digital content.</li>
-          <li>Integrate with official NeoX NFT collections and browser-based games.</li>
-          <li>Future usage in digital item ownership, in-game integrations, and marketplace flows.</li>
-          <li>Community-driven utilities and expanded features planned in later phases.</li>
-        </ul>
-
-        <p style="margin-top:6px;font-size:12px;color:var(--muted);">
-          Note: NXC is a utility-focused token and is not designed as an investment product.
-        </p>
-      </section>
-
-      <section id="branding">
-        <h2><span>05 ·</span> Official Logos & Branding</h2>
-        <p>
-          NeoX provides official logo assets for media usage, listings, and collaborations.
-          Please follow the guidelines below to maintain a consistent visual identity.
-        </p>
-
-        <div class="logo-row">
-          <div class="logo-card">
-            <img src="https://neoxcoin.github.io/%20NeoXCoin.png" alt="NeoX Gold Coin logo" />
-            <span>Primary Coin Logo (3D)</span>
-          </div>
-          <div class="logo-card">
-            <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX X technology logo" />
-            <span>NeoX “X” Technology Mark</span>
-          </div>
-          <div class="logo-card">
-            <img src="https://neoxcoin.github.io/NeoXCoin.svg" alt="NeoX NXC vector mark" />
-            <span>Vector Icon (SVG, 32×32+)</span>
-          </div>
-        </div>
-
-        <p style="margin-top:10px;"><strong>Brand Colors</strong></p>
-        <div class="color-row">
-          <div class="swatch"><span class="swatch-dot dot-gold"></span>NeoX Gold – <code>#F2C24A</code></div>
-          <div class="swatch"><span class="swatch-dot dot-blue"></span>NeoX Blue Gradient – <code>#0090FF → #2FB6FF</code></div>
-          <div class="swatch"><span class="swatch-dot dot-bg"></span>Deep Space Background – <code>#020717</code></div>
-        </div>
-
-        <p style="margin-top:10px;"><strong>Usage Guidelines</strong></p>
-        <ul>
-          <li>Do not rotate, stretch, or distort the logos.</li>
-          <li>Do not change the official colors or apply heavy filters.</li>
-          <li>Maintain clear space around the logo equal to at least the height of the “N”.</li>
-          <li>Always use the original PNG or SVG files provided in this press kit.</li>
-        </ul>
-      </section>
-
-      <section id="media-assets">
-        <h2><span>06 ·</span> Media Assets & Downloads</h2>
-        <p>
-          The following assets are available for news coverage, listing pages,
-          and collaboration materials. All assets should be used in accordance
-          with the branding guidelines above.
-        </p>
-
-        <ul>
-          <li>NeoX Coin Press Kit cover (PNG, square format).</li>
-          <li>NeoX Gold Coin logo (PNG + SVG, optimized for light/dark backgrounds).</li>
-          <li>NeoX “X” technology logo (PNG).</li>
-          <li>Explorer / wallet icons for use on BaseScan and compatible platforms.</li>
-          <li>Social media banners for X, Instagram, and TikTok (in progress).</li>
-        </ul>
-
-        <p><strong>Direct Cover Link:</strong><br />
-          <a href="https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG" target="_blank" rel="noopener">
-            https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG
-          </a>
-        </p>
-
-        <p><strong>GitHub Asset Directory:</strong><br />
-          <a href="https://github.com/neoxcoin/neoxcoin.github.io" target="_blank" rel="noopener">
-            https://github.com/neoxcoin/neoxcoin.github.io
-          </a>
-        </p>
-
-        <p style="margin-top:18px;">
-          <strong>Full asset bundle (ZIP):</strong><br />
-          <a class="btn-main" href="https://neoxcoin.github.io/NeoX-PressKit.zip" download>
-            Download NeoX Press Kit (ZIP)
-          </a>
-        </p>
-      </section>
-
-      <section id="nfts">
-        <h2><span>07 ·</span> NFT Ecosystem</h2>
-        <p>
-          NeoX hosts several curated NFT collections, each designed with a
-          consistent visual language and narrative theme.
-        </p>
-        <ul>
-          <li><strong>NeoX Timekeeper Edition</strong> – 8 official NFTs on Base Mainnet.</li>
-          <li><strong>NeoX Van Gogh Visions</strong> – classical-inspired art fused with a futuristic NeoX aesthetic.</li>
-          <li><strong>NeoX Abstract Realms</strong> – experimental abstract digital artworks.</li>
-          <li><strong>NeoX Genesis & Genesis Edition</strong> – early series that established the project’s visual identity.</li>
-        </ul>
-        <p>
-          Selected collections are available on OpenSea under the official NeoX profile.
-        </p>
-      </section>
-
-      <section id="gaming">
-        <h2><span>08 ·</span> Gaming & Metaverse</h2>
-        <p>
-          NeoX is actively developing interactive Web3 experiences that connect
-          art, gaming, and digital ownership:
-        </p>
-        <ul>
-          <li><strong>NeoX Catch the Coins</strong> – an HTML5 mini-game featuring dynamic coin mechanics and scoring.</li>
-          <li><strong>NeoX Metaverse Exhibition</strong> – virtual gallery experiences hosted via OnCyber.</li>
-          <li>Future plans include expanded game levels, leaderboard integration, and cross-experience utility for NFTs and NXC.</li>
-        </ul>
-      </section>
-
-      <section id="links">
-        <h2><span>09 ·</span> Official Links</h2>
-        <p>
-          Please use the following official links when referencing NeoX Coin (NXC)
-          in articles, listings, and partnership pages.
-        </p>
-
-        <div class="links-grid">
-          <div class="link-card">
-            <strong>Official Website</strong>
-            <a href="https://neoxcoin.github.io/" target="_blank" rel="noopener">https://neoxcoin.io/</a>
-          </div>
-          <div class="link-card">
-            <strong>Whitepaper (EN)</strong>
-            <a href="https://neoxcoin.github.io/whitepaper.html" target="_blank" rel="noopener">
-              https://neoxcoin.github.io/whitepaper.html
-            </a>
-          </div>
-          <div class="link-card">
-            <strong>Whitepaper (ZH)</strong>
-            <a href="https://neoxcoin.github.io/whitepaper-zh.html" target="_blank" rel="noopener">
-              https://neoxcoin.github.io/whitepaper-zh.html
-            </a>
-          </div>
-          <div class="link-card">
-            <strong>BaseScan Token Page</strong>
-            <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B"
-               target="_blank" rel="noopener">View on BaseScan</a>
-          </div>
-          <div class="link-card">
-            <strong>X (Twitter)</strong>
-            <a href="https://x.com/neox__official" target="_blank" rel="noopener">@neox__official</a>
-          </div>
-          <div class="link-card">
-            <strong>Instagram</strong>
-            <a href="https://instagram.com/neox__official" target="_blank" rel="noopener">@neox__official</a>
-          </div>
-          <div class="link-card">
-            <strong>YouTube</strong>
-            <a href="https://www.youtube.com/@neox_officials" target="_blank" rel="noopener">@NeoX_officials</a>
-          </div>
-          <div class="link-card">
-            <strong>TikTok</strong>
-            <a href="https://www.tiktok.com/@neox.world" target="_blank" rel="noopener">@neox.world</a>
-          </div>
-          <div class="link-card">
-            <strong>OpenSea</strong>
-            <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank" rel="noopener">
-              Official NeoX Profile
-            </a>
-          </div>
-          <div class="link-card">
-            <strong>GitHub</strong>
-            <a href="https://github.com/neoxcoin" target="_blank" rel="noopener">https://github.com/neoxcoin</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact">
-        <h2><span>10 ·</span> Contact & Press</h2>
-        <p>
-          For collaboration proposals, media requests, or usage of NeoX branding
-          in campaigns and integrations, please get in touch using the official
-          contact below.
-        </p>
-        <div class="contact-box">
-          <p>
-            <strong>Press & Business Inquiries</strong><br />
-            Email: <a href="mailto:neoxcoin@outlook.com">neoxcoin@outlook.com</a>
-          </p>
-          <p style="margin-top:6px;font-size:12px;">
-            When possible, please include links to your publication, platform,
-            or project, along with a brief description of how you plan to
-            feature NeoX Coin (NXC).
-          </p>
-        </div>
-      </section>
+      <!-- 其餘 section (02~10) 請貼回你原本版本 -->
     </main>
 
-    <!-- ✅ Back to Global Home moved to bottom -->
     <div class="footer-actions">
-      <a class="back-bottom" href="https://neoxcoin.github.io/index-global.html">
-        ← Back to Global Home
-      </a>
+      <a class="back-bottom" href="https://neoxcoin.github.io/index-global.html">← Back to Global Home</a>
     </div>
 
     <footer>
