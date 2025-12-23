@@ -32,11 +32,39 @@
       width:60px; opacity:.85;
     }
 
-    .lang{
-      position:absolute; top:20px; right:20px;
-      font-size:14px;
+    .lang-switch{
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      border-radius: 999px;
+      padding: 6px 14px;
+      font-size: 14px;
     }
-    .lang a{ color:#fff; text-decoration:none; margin:0 6px; }
+
+    .lang-btn{
+      color: #fff;
+      text-decoration: none;
+      padding: 4px 8px;
+      opacity: .75;
+    }
+
+    .lang-btn:hover{
+      opacity: 1;
+    }
+
+    .lang-btn.active{
+      font-weight: bold;
+      opacity: 1;
+    }
+
+    .divider{
+      color: rgba(255,255,255,.4);
+      margin: 0 2px;
+    }
 
     h1{ margin:40px 0 8px; font-size:32px; }
     .subtitle{ opacity:.85; margin-bottom:26px; }
