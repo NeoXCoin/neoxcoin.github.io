@@ -54,18 +54,19 @@
       z-index: -1;
     }
 
-    .lang-switch {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 14px;
+    .language-switch{
+      position:absolute; top:20px; right:20px;
+      font-size:14px;
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(0,217,255,.35);
+      border-radius:10px;
+      padding:6px 10px;
+      box-shadow:0 0 14px rgba(0,217,255,.18);
     }
-
-    .lang-switch a {
-      color: #ffffff;
-      text-decoration: none;
-      margin: 0 8px;
+    .language-switch a{
+      color:#fff; text-decoration:none; margin:0 6px;
     }
+    .language-switch a:hover{ color:#00d9ff; }
 
     .logo {
       width: 60px;
@@ -171,7 +172,7 @@
   <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
   </a>
   
-  <div class="lang-switch">
+  <div class="language-switch">
     <a href="what-is-neox.html">EN</a> | <a href="what-is-neox-zh.html">繁</a>
   </div>
 
