@@ -216,6 +216,22 @@
       gap: 8px;
       position: relative;
     }
+    
+    /* ✅ FINAL mobile unified button width */
+    .btn{
+      width: min(78vw, 300px) !important;
+      min-width: 0 !important;
+      box-sizing: border-box;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* 細手機再收一級（SE / 舊 Android） */
+    @media (max-width: 360px){
+      .btn{
+        width: min(76vw, 280px) !important;
+      }
+    }
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 12px rgba(255,255,255,.3);
