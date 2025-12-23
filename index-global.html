@@ -277,6 +277,27 @@
       position: relative;
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
+    
+    /* ===== Mobile button width lock (方案 B) ===== */
+    .btn{
+      width: min(92vw, 360px);   /* 手機一致，桌面好睇 */
+      min-width: 0;             /* ⭐ 解決翻譯變長變短 */
+      box-sizing: border-box;
+    }
+
+    /* 文字自動省略 */
+    .btn-text{
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* icon 永遠唔縮 */
+    .btn img,
+    .btn .emoji-icon{
+      flex-shrink: 0;
+    }
 
     .btn:hover {
       transform: translateY(-3px);
