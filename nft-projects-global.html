@@ -15,6 +15,11 @@
   <link rel="alternate" href="https://neoxcoin.io/nft-projects-zh.html" hreflang="zh-Hant" />
   <link rel="alternate" href="https://neoxcoin.io/nft-projects-global.html" hreflang="x-default" />
   <style>
+      :root{
+      --safe-top: max(14px, env(safe-area-inset-top));
+      --top-ui: calc(var(--safe-top) + 70px); /* iPad Safari 頂部UI預留 */
+    }
+    
     body {
       margin: 0;
       background: #0a0a2a;
@@ -24,7 +29,7 @@
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
-      padding: 40px 20px;
+      padding: calc(var(--top-ui) + 10px) 20px 40px;
     }
     
     /* ✅ 強制封鎖 Google Translate 頂部白色 Banner（Safari / iOS 必要） */
@@ -180,8 +185,7 @@
     }
     
     @media (max-width: 600px){
-      body{ padding-top:110px; }
-      .translate-wrap{ top:18px; right:12px; }
+      .translate-wrap{ right:12px; }
       .logo{ left:12px; }
     }
   </style>
