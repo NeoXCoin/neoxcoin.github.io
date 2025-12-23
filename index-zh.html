@@ -338,6 +338,20 @@
       .social-icons {
         margin: 32px 0 12px;
       }
+        /* ✅ Mobile button fix (iPhone/Safari) */
+      .btn{
+        height:56px;              /* 鎖死高度，避免某粒掣變高 */
+        padding:0 18px;           /* 只留左右 padding，唔會推高 */
+        white-space:nowrap;       /* 禁止換行（最關鍵） */
+        line-height:1;            /* 防 iOS 自動加大行距 */
+      }
+
+      .emoji-icon,
+      .tw-icon{
+        width:22px;
+        height:22px;
+        flex-shrink:0;
+      }
     }
   </style>
 </head>
