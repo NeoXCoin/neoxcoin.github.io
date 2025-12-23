@@ -278,19 +278,19 @@
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
     
-    /* ✅ Unified button width (EN / ZH / Global) */
+    /* ✅ FINAL mobile unified button width */
     .btn{
-      width: min(82vw, 320px) !important;  /* 手機收窄：唔再貼邊 */
+      width: min(78vw, 300px) !important;
       min-width: 0 !important;
       box-sizing: border-box;
       margin-left: auto;
       margin-right: auto;
     }
 
-    /* 手機再細（iPhone SE /細屏） */
-    @media (max-width: 380px){
+    /* 細手機再收一級（SE / 舊 Android） */
+    @media (max-width: 360px){
       .btn{
-        width: min(84vw, 300px) !important;
+        width: min(76vw, 280px) !important;
       }
     }
 
@@ -352,6 +352,13 @@
       backdrop-filter: blur(4px);
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
       transition: all 0.2s ease;
+    }
+    
+    /* ✅ unify Gecko button width with main buttons */
+    .market-btn{
+      width: min(78vw, 300px);
+      display: inline-flex;
+      justify-content: center;
     }
 
     .market-btn:hover {
