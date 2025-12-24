@@ -490,6 +490,28 @@
       .two-col{ grid-template-columns:minmax(0,1fr); }
       .wrap{ padding-top:64px; } /* 手機頂部多啲空間 */
     }
+    
+    /* 📱 Small mobile devices (細手機) */
+    @media (max-width: 420px){
+      .translate-wrap{
+        top:10px;
+        right:10px;
+        font-size:11px;
+      }
+
+      #google_translate_element{
+        padding:4px 6px;
+        border-radius:8px;
+      }
+
+      .goog-te-gadget select{
+        font-size:10px;        /* ✅ 字細啲 */
+        padding:3px 6px;       /* ✅ 高度收細 */
+        max-width:120px;       /* ✅ 闊度收細 */
+        text-align:center;
+        text-align-last:center;
+      }
+}
   </style>
 
   <!-- Google Translate -->
