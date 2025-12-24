@@ -90,10 +90,13 @@
       border:1px solid rgba(255,255,255,.25);
       border-radius:8px;
 
-      padding:4px 6px;     /* ✅ 由 6px 8px → 4px 6px */
-      font-size:11px;      /* ✅ 再細一級 */
-      max-width:150px;     /* ✅ 限制闊度（關鍵） */
+      padding:4px 6px;
+      font-size:11px;
+      max-width:150px;
 
+      text-align:center;        /* ✅ 關鍵：文字水平置中 */
+      text-align-last:center;   /* ✅ Safari / Chrome select 必要 */
+  
       outline:none;
     }
 
