@@ -62,56 +62,23 @@
       flex-direction:column;
     }
 
-    /* =========================
-       ✅ Google Translate (iOS/Safari)
-       只隱藏頂部白色 banner，不要刪 skiptranslate 容器
-       ========================= */
-    html{ margin-top:0 !important; }
-    body{ top:0 !important; }
-
-    .goog-te-banner-frame,
-    .goog-te-banner-frame.skiptranslate{
-      display:none !important;
-      visibility:hidden !important;
-      height:0 !important;
-      width:0 !important;
+    /* ✅ 徹底隱藏 Google Translate 頂部白色 Banner */
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-banner-frame {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      width: 0 !important;
     }
-    #goog-gt-tt, .goog-te-balloon-frame{ display:none !important; }
-    .goog-text-highlight{ background:transparent !important; box-shadow:none !important; }
-
-    /* ✅ Translate bar：固定右上角，不會擋內容 */
-    .translate-wrap{
-      position:absolute;
-      top:20px;
-      right:20px;
-      z-index:9999;
-      padding:6px 10px;
-      border-radius:999px;
-      background:rgba(2,7,23,.75);
-      border:1px solid rgba(255,255,255,.10);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+    
+    /* 防止 Google 產生的 iframe 佔據空間 */
+    iframe.goog-te-banner-frame {
+      display: none !important;
     }
 
-    /* Google widget 簡化外觀 */
-    .goog-te-gadget{ font-size:12px !important; color:#e0e6ff !important; }
-    .goog-te-gadget-simple{
-      background:transparent !important;
-      border:none !important;
-      padding:0 !important;
-      margin:0 !important;
-    }
-    .goog-te-gadget-simple span{ color:#e0e6ff !important; }
-    .goog-te-gadget-icon{ display:none !important; }
-    .goog-te-gadget-simple a{ color:#e0e6ff !important; text-decoration:none !important; }
-
-    /* =========================
-       Layout
-       ========================= */
-    .wrap{
-      width:min(1120px,100%);
-      margin:0 auto;
-      padding:52px 20px 56px; /* 預留空間俾右上角 translate */
+    /* 確保 body 內容永遠貼頂 */
+    body > .skiptranslate {
+      display: none !important;
     }
 
     header.topbar{
