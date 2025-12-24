@@ -64,8 +64,8 @@
     
     /* Top-right: Google Translate container */
     .translate-wrap{
-      position:absolute; top:14px; right:14px;
-      font-size:12px;
+      position:absolute; top:12px; right:12px;
+      font-size:11px;
       text-align:right;
     }
     
@@ -80,13 +80,20 @@
     }
     /* hide "Powered by Google" icon spacing issues a bit */
     .goog-te-gadget{ color:#fff !important; }
-    .goog-te-gadget span{ color:#fff !important; }
+    .goog-te-gadget span{
+      color:#fff !important;
+      font-size:10px !important;   /* ✅ 再細 */
+    }
     .goog-te-gadget select{
       background:rgba(0,0,0,.15);
       color:#fff;
       border:1px solid rgba(255,255,255,.25);
       border-radius:8px;
-      padding:6px 8px;
+
+      padding:4px 6px;     /* ✅ 由 6px 8px → 4px 6px */
+      font-size:11px;      /* ✅ 再細一級 */
+      max-width:150px;     /* ✅ 限制闊度（關鍵） */
+
       outline:none;
     }
 
