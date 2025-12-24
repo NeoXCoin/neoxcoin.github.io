@@ -492,41 +492,44 @@
     }
     
     @media (max-width: 420px){
-
-    /* ✅ 1) 成個翻譯 widget（包括 Powered by）再縮細少少 */
-    .translate-wrap{
-      transform: scale(0.86);
-      transform-origin: top right;
+  
+      .translate-wrap{
+        top:8px;
+        right:8px;
+        left:auto;
+        font-size:10px; /* 唔用 scale，直接縮字 */
     }
-
-    /* ✅ 2) 強制 Powered by 字再細 + 行距收緊 */
-    .goog-te-gadget,
-    .goog-te-gadget span,
-    .goog-logo-link{
-      font-size: 8px !important;
-      line-height: 1.05 !important;
+  
+    #google_translate_element{
+      padding:4px 8px !important;     /* 真縮細個框 */
+      border-radius:12px !important;  /* 圓角更順 */
     }
-
-    /* ✅ 3) 令 Powered by 排版更齊整（唔會斜、唔會散） */
+  
+    /* 令內部排版唔好「扭」去左上角 */
     .goog-te-gadget{
-      display: flex !important;
-      flex-direction: column !important;
-      align-items: flex-end !important;   /* 靠右對齊，配合 top-right */
-      gap: 2px !important;
+      margin:0 !important;
+      line-height:1.05 !important;
     }
-
+  
+    .goog-te-gadget .goog-te-combo{
+      margin:0 !important;            /* ✅ Google 預設 margin 會搞到 9 點位怪 */
+    }
+  
+    /* Powered by 行：細啲 + 唔亂換行 */
     .goog-te-gadget span,
     .goog-logo-link{
-      display: block !important;
-      text-align: right !important;
-      opacity: 0.75;
+      font-size:8px !important;
+      line-height:1.05 !important;
+      white-space:nowrap !important;
     }
-
-    /* ✅ 4) dropdown 再窄啲（避免細機睇落好大） */
+  
+    /* 下拉框再窄啲 */
     .goog-te-gadget select{
-      max-width: 92px !important;
-      font-size: 9px !important;
-      padding: 2px 6px !important;
+      font-size:9px !important;
+      padding:2px 6px !important;
+      max-width:100px !important;
+      text-align:center;
+      text-align-last:center;
     }
   }
   </style>
