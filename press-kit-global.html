@@ -486,36 +486,49 @@
     @media (max-width:800px){
       .hero-inner{ grid-template-columns:minmax(0,1fr); }
       .hero{ padding:24px 18px 22px; }
-      section{ padding-inline:15px; }
+       section{ padding-inline:15px; }
       .two-col{ grid-template-columns:minmax(0,1fr); }
       .wrap{ padding-top:64px; } /* 手機頂部多啲空間 */
     }
     
-    /* 📱 Small mobile devices */
     @media (max-width: 420px){
-      .translate-wrap{
-        top:8px;
-        right:8px;
-        left:auto;
-        font-size:10px;
-        transform: scale(0.92);
-        transform-origin: top right;
-      }
 
-      #google_translate_element{
-        padding:4px 6px;
-        border-radius:8px;
-      }
-
-      .goog-te-gadget select{
-        font-size:9px;
-        padding:2px 6px;
-        max-width:100px;
-        line-height:1.2;
-        text-align:center;
-        text-align-last:center;
-      }
+    /* ✅ 1) 成個翻譯 widget（包括 Powered by）再縮細少少 */
+    .translate-wrap{
+      transform: scale(0.86);
+      transform-origin: top right;
     }
+
+    /* ✅ 2) 強制 Powered by 字再細 + 行距收緊 */
+    .goog-te-gadget,
+    .goog-te-gadget span,
+    .goog-logo-link{
+      font-size: 8px !important;
+      line-height: 1.05 !important;
+    }
+
+    /* ✅ 3) 令 Powered by 排版更齊整（唔會斜、唔會散） */
+    .goog-te-gadget{
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-end !important;   /* 靠右對齊，配合 top-right */
+      gap: 2px !important;
+    }
+
+    .goog-te-gadget span,
+    .goog-logo-link{
+      display: block !important;
+      text-align: right !important;
+      opacity: 0.75;
+    }
+
+    /* ✅ 4) dropdown 再窄啲（避免細機睇落好大） */
+    .goog-te-gadget select{
+      max-width: 92px !important;
+      font-size: 9px !important;
+      padding: 2px 6px !important;
+    }
+  }
   </style>
 
   <!-- Google Translate -->
