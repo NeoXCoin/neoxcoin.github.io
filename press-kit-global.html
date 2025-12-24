@@ -491,12 +491,15 @@
       .wrap{ padding-top:64px; } /* 手機頂部多啲空間 */
     }
     
-    /* 📱 Small mobile devices (細手機) */
+    /* 📱 Small mobile devices */
     @media (max-width: 420px){
       .translate-wrap{
-        top:10px;
-        right:10px;
-        font-size:11px;
+        top:8px;
+        right:8px;
+        left:auto;
+        font-size:10px;
+        transform: scale(0.92);
+        transform-origin: top right;
       }
 
       #google_translate_element{
@@ -505,19 +508,14 @@
       }
 
       .goog-te-gadget select{
-        font-size:10px;        /* ✅ 字細啲 */
-        padding:3px 6px;       /* ✅ 高度收細 */
-        max-width:120px;       /* ✅ 闊度收細 */
+        font-size:9px;
+        padding:2px 6px;
+        max-width:100px;
+        line-height:1.2;
         text-align:center;
         text-align-last:center;
       }
-      
-      @media (max-width: 360px){
-      .goog-te-gadget select{
-        font-size:9px;
-        max-width:110px;
-      }
-   }
+    }
   </style>
 
   <!-- Google Translate -->
