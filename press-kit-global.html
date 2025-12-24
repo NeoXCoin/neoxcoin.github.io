@@ -487,12 +487,13 @@
     function googleTranslateElementInit(){
       new google.translate.TranslateElement({
         pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi,ms,fa,uk,pl',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
+        autoDisplay: false,
+        multilanguagePage: true
       }, 'google_translate_element');
     }
   </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 </head>
 
 <body>
