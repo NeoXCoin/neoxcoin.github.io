@@ -1,512 +1,422 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <!-- Favicon (ICO + SVG for full compatibility) -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
+    
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- ▼ SEO -->
-  <title>NeoX Coin (NXC) – Web3 藝術、代幣與元宇宙體驗</title>
-  <meta name="description" content="探索 NeoX Coin (NXC) —— 基於 Base Mainnet 的 Web3 生態系統，結合 NFT、互動遊戲與元宇宙展覽，開啟去中心化創意新時代。" />
-  <meta name="keywords" content="NeoX, NeoX Coin, NXC, NFT, Web3, 元宇宙, 加密貨幣, Base Mainnet, NeoX 遊戲, NeoX NFT, NeoX Timekeeper Edition, NeoX Van Gogh, NeoX Abstract Realms" />
-  <meta name="author" content="NeoX Official" />
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
-
-  <!-- Canonical & hreflang -->
+  <title>NeoX Coin (NXC) – 賦能 Web 自由</title>
+  <meta name="description" content="探索 NeoX (NXC) – 建立在 Base 上的次世代去中心化 Web3 生態系統。發現 NFT、實用代幣、互動遊戲和元宇宙體驗。" />
   <link rel="canonical" href="https://neoxcoin.io/index-zh.html" />
-  <link rel="alternate" href="https://neoxcoin.io/" hreflang="en" />
-  <link rel="alternate" href="https://neoxcoin.io/index-zh.html" hreflang="zh-Hant" />
-  <link rel="alternate" href="https://neoxcoin.io/index-global.html" hreflang="x-default" />
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="NeoX Coin (NXC) – Web3 藝術、代幣與元宇宙體驗" />
-  <meta property="og:description" content="體驗 NeoX – 結合 NFT、遊戲與元宇宙的 Web3 創意生態。擁有自由，擁有未來，擁有 NeoX。" />
-  <meta property="og:image" content="https://neoxcoin.io/XNXC.png" />
-  <meta property="og:url" content="https://neoxcoin.io/index-zh.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="zh_TW" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NeoX Coin (NXC) – Web3 藝術、代幣與元宇宙體驗" />
-  <meta name="twitter:description" content="探索 NeoX Coin — Web3 藝術、NFT 與元宇宙的全新結合。" />
-  <meta name="twitter:image" content="https://neoxcoin.io/XNXC.png" />
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebSite",
-        "@id": "https://neoxcoin.io/#website",
-        "name": "NeoX Coin (NXC)",
-        "url": "https://neoxcoin.io/",
-        "description": "Official NeoX Coin (NXC) website – Web3 NFTs, ERC-20 token on Base Mainnet, and metaverse experiences.",
-        "publisher": { "@type": "Organization", "name": "NeoX" }
-      },
-      {
-        "@type": "Organization",
-        "name": "NeoX",
-        "url": "https://neoxcoin.io/",
-        "logo": "https://neoxcoin.io/XNXC.png",
-        "sameAs": [
-          "https://www.instagram.com/neox__official",
-          "https://opensea.io/collection/neox-timekeeper-edition"
-        ]
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://neoxcoin.io/index-zh.html#webpage",
-        "name": "NeoX Coin (NXC) – Web3 藝術、代幣與元宇宙體驗",
-        "url": "https://neoxcoin.io/index-zh.html",
-        "inLanguage": "zh-Hant",
-        "isPartOf": { "@id": "https://neoxcoin.io/#website" }
-      }
-    ]
-  }
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg-dark: #03010a; /* 更深邃的底色 */
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --primary: #a370ff; /* 紫色主題 */
+      --secondary: #00ffcc; /* 賽博朋克綠 */
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-stack: 'Plus Jakarta Sans', sans-serif;
+    }
+
     body {
       margin: 0;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url('https://neoxcoin.io/NeoXbackG.JPG');
-      background-size: cover;
-      background-position: center;
-      font-family: Arial, sans-serif;
-      color: white;
+      /* 方案 B：深邃星空背景 */
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      background-image: 
+        radial-gradient(circle at center, #110526 0%, #03010a 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      
+      font-family: var(--font-stack);
+      color: var(--text-main);
       text-align: center;
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: -0.01em;
+      overflow-x: hidden;
     }
 
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
-      opacity: 0.85;
-      z-index: 999;
-    }
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
 
-    .language-switch{
-      position: absolute;   /* ✅ 不浮動 */
-      top: 20px;
-      right: 20px;
-      z-index: 10;
-
+    /* --- 1. Sticky Header (毛玻璃置頂) --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
       display: flex;
       align-items: center;
-      gap: 8px;
-
-      padding: 8px 12px;
-      border-radius: 14px;
-      background: rgba(10,10,40,.55);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(0,200,255,.3);
-      box-shadow: 0 0 14px rgba(0,200,255,.2);
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
     }
 
-    .language-switch a{
-      color:#fff;
-      text-decoration:none;
-      font-weight:600;
-      font-size:14px;
+    .nav-logo { height: 32px; opacity: 0.9; }
+    .nav-logo:hover { opacity: 1; }
+
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+
+    .header-right { display: flex; align-items: center; gap: 20px; }
+
+    /* 語言切換 */
+    .language-switch {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex; gap: 6px;
+    }
+    .language-switch a:hover { color: var(--text-main); }
+    .lang-sep { opacity: 0.3; }
+
+    /* 連接錢包按鈕 (修復 id 用於 JS) */
+    .btn-connect {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
     }
 
-    .lang-sep{
-      color:rgba(255,255,255,.35);
-    }
-
+    /* --- Main Container --- */
     .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 140px 20px 50px 20px; /* 為 Nav 留空間 */
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
+    }
+
+    /* --- 2. Hero Section (核心標題區) --- */
+    .hero {
+      margin-bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 動畫：慢慢滲透與隱去的大循環 (14秒) */
+    @keyframes fadeInUpLoopSlow {
+      0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+      18% { opacity: 1; transform: translateY(0); filter: blur(0); } /* 2.5s 完全滲透 */
+      86% { opacity: 1; transform: translateY(0); filter: blur(0); } /* 靜止停留 */
+      93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); } /* 隱去 */
+      100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+    }
+
+    /* 新增動畫：色彩在字體內部流動 (4秒) */
+    @keyframes textShimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .tagline {
-      font-size: 20px;
-      margin-top: 90px;
-      opacity: 0.95;
-      font-weight: 600;
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 15px;
+      
+      /* 擴展漸變色並放大背景，營造流動空間 */
+      background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
+      background-size: 200% auto;
+      
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      
+      /* 同時執行滲透循環和色彩流動兩個動畫 */
+      animation: 
+        fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite,
+        textShimmer 4s linear infinite;
     }
 
     .subtagline {
-      font-size: 16px;
-      opacity: 0.85;
-      margin-top: 6px;
+      font-size: 18px;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 40px;
+      max-width: 600px;
+      /* 延遲 0.6 秒滲透，與主標題形成交錯層次感 */
+      animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
     }
 
+    .coin-visual {
+      position: relative;
+      margin-bottom: 50px;
+    }
     .coin {
-      width: 144px;
-      margin: 30px auto;
+      width: 130px;
+      /* 淡淡的科幻光暈 */
+      filter: drop-shadow(0 0 25px rgba(163, 112, 255, 0.3));
     }
 
-    .headline {
-      margin: 22px 0 30px;
-      line-height: 1.6;
-      text-align: center;
+    /* --- 3. Ecosystem Grid (生態卡片) --- */
+    .ecosystem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      width: 100%;
+      margin-bottom: 80px;
     }
 
-    .headline span {
-      display: block;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 1s ease-out forwards;
-      font-size: 15px;
+    .eco-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: left;
+      transition: all 0.3s ease;
+      display: block; /* 讓整個卡片可點擊 */
+      color: inherit;
+    }
+    .eco-card:hover {
+      border-color: rgba(163, 112, 255, 0.3);
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.04);
     }
 
-    .headline span:nth-child(1) { animation-delay: 0.5s; }
-    .headline span:nth-child(2) { animation-delay: 1.5s; }
-    .headline span:nth-child(3) { animation-delay: 2.5s; }
-    .headline span:nth-child(4) { animation-delay: 3.5s; }
+    .eco-icon { font-size: 24px; margin-bottom: 15px; display: block; }
+    .eco-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .eco-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .nav-bar {
-      display: flex;
-      justify-content: center;
-      gap: 24px;
-      margin-top: 20px;
-      flex-wrap: wrap;
-    }
-
-    .nav-bar a {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      color: #ffffff;
-      font-weight: bold;
-      font-size: 16px;
-      text-decoration: none;
-    }
-    .nav-bar a:hover { text-decoration: underline; }
-
+    /* --- 4. 按鈕 (Call to Actions) --- */
     .btn-row {
       display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
+      gap: 20px;
       justify-content: center;
-      margin-top: 30px;
+      margin-bottom: 25px;
+      flex-wrap: wrap;
     }
 
     .btn {
-      background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
-      border: 3px solid #e0e0e0;
-      color: #000;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      box-shadow: 0 4px 8px rgba(255,255,255,.2);
-      display: flex;
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      position: relative;
-    }
-    
-    /* ✅ FINAL mobile unified button width */
-    .btn{
-      width: min(78vw, 300px) !important;
-      min-width: 0 !important;
-      box-sizing: border-box;
-      margin-left: auto;
-      margin-right: auto;
+      gap: 10px;
+      min-width: 190px;
     }
 
-    /* 細手機再收一級（SE / 舊 Android） */
-    @media (max-width: 360px){
-      .btn{
-        width: min(76vw, 280px) !important;
-      }
+    /* 主按鈕：白底黑字 */
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
     }
-    .btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(255,255,255,.3);
-    }
-
-    .emoji-icon {
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
-      vertical-align: middle;
-      pointer-events: none;
-    }
-
-    .btn[data-tooltip]:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      top: -38px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,.8);
-      color: #fff;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 12px;
-      white-space: nowrap;
-      z-index: 1000;
-    }
-
-    .market-link {
-      margin-top: 18px;
-    }
-
-    .market-btn {
-      display: inline-block;
-      padding: 8px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      text-decoration: none;
-      color: #ffd76a;
-      border: 1px solid rgba(255, 215, 106, 0.45);
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
-      transition: all 0.2s ease;
-    }
-    
-    /* ✅ unify Gecko button width with main buttons */
-    .market-btn{
-      width: min(72vw, 260px);
-      display: inline-flex;
-      align-items: center !important;
-      justify-content: center;
-    }
-
-    .market-btn:hover {
-      background: linear-gradient(90deg, #1c1c3c, #3a0088);
-      color: #fff;
-      border-color: #ffd700;
-      box-shadow: 0 0 14px rgba(255, 215, 106, 0.6);
+    .btn-primary:hover {
+      box-shadow: 0 5px 20px rgba(255, 255, 255, 0.15);
       transform: translateY(-2px);
     }
 
-    .market-icon {
-      width: 24px;
-      height: 24px;
-      margin-right: 8px;
-      vertical-align: middle;
+    /* 次要按鈕：透明底白線 */
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      background: var(--glass);
+      border-color: rgba(255,255,255,0.2);
     }
 
-    /* Fix: remove blue underline / dot under icons */
-    .social-icons a {
-      display: inline-block;
-      text-decoration: none !important;
-      border-bottom: none !important;
-      color: inherit !important;
+    .icon-small { width: 18px; height: 18px; object-fit: contain; }
+
+    /* 市場連結和 Add Wallet */
+    .market-link { margin-top: 15px; font-size: 13px; color: var(--text-muted); }
+    .market-link a { margin: 0 5px; }
+    .market-link a:hover { color: var(--primary); }
+
+    /* --- 5. Footer (頁尾) --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 50px;
+      background: rgba(0,0,0,0.1);
     }
 
-    .social-icons {
-      margin: 40px 0 16px;
-      text-align: center;
-    }
+    /* 社交圖標去色與懸停效果 */
+    .social-icons { margin-bottom: 25px; }
     .social-icons img {
-      width: 28px;
-      margin: 0 14px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
+      width: 22px;
+      margin: 0 15px;
+      opacity: 0.5;
+      filter: brightness(0) invert(1); /* 強制純白 */
+      transition: all 0.2s ease;
     }
     .social-icons img:hover {
-      transform: scale(1.15);
-      opacity: 0.85;
+      opacity: 1;
+      filter: none; /* 滑鼠指過去恢復顏色 */
+      transform: scale(1.1);
     }
 
-    .footer {
-      margin-top: 10px;
-      font-size: 13px;
-      opacity: .6;
-    }
-    .footer-links {
-      margin-bottom: 8px;
-    }
-    .footer a {
-      color: #ccc;
-      text-decoration: none;
-      margin: 0 6px;
-    }
-    .footer a:hover { text-decoration: underline; }
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-    .tw-icon{
-      width:22px;
-      height:22px;
-      margin-right:8px;
-      border-radius:6px;
-    }
-
-    @media (max-width:600px){
-      .nav-bar{
-        flex-direction:column;
-        align-items:center;
-        gap:12px;
-      }
-      .btn-row{
-        flex-direction:column;
-        align-items:center;
-      }
-      .coin{
-        width:144px;
-        max-width:100%;
-      }
-      .social-icons {
-        margin: 32px 0 12px;
-      }
-        /* ✅ Mobile button fix (iPhone/Safari) */
-      .btn{
-        height:56px;              /* 鎖死高度，避免某粒掣變高 */
-        padding:0 18px;           /* 只留左右 padding，唔會推高 */
-        white-space:nowrap;       /* 禁止換行（最關鍵） */
-        line-height:1;            /* 防 iOS 自動加大行距 */
-      }
-
-      .emoji-icon,
-      .tw-icon{
-        width:22px;
-        height:22px;
-        flex-shrink:0;
-      }
+    /* --- Responsive (響應式設計) --- */
+    @media (max-width: 900px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; } /* 手機隱藏導航連結 */
+      .tagline { font-size: 40px; }
+      .ecosystem-grid { grid-template-columns: 1fr; gap: 15px; }
     }
   </style>
 </head>
 <body>
-  <!-- Logo → 返回中文版首頁 -->
-  <a href="index-zh.html">
-    <img class="logo" src="https://neoxcoin.io/apple-touch-icon.png" alt="NeoX Logo" />
-  </a>
 
-  <!-- 語言切換 -->
-  <div class="language-switch">
-    <a href="index.html">EN</a>
-    <span class="lang-sep">|</span>
-    <a href="index-zh.html">繁</a>
-    <span class="lang-sep">|</span>
-    <a href="index-global.html">Global</a>
-  </div>
+  <header>
+    <a href="index-zh.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    
+    <div class="nav-links">
+      <a href="what-is-neox.html">什麼是 NeoX？</a>
+      <a href="how-to-buy.html">如何購買？</a>
+      <a href="game.html">NeoX 遊戲</a>
+      <a href="metaverse.html">元宇宙展覽</a>
+      <a href="nft-projects.html">NFT 項目</a>
+    </div>
+
+    <div class="header-right">
+      <div class="language-switch">
+        <a href="index.html">EN</a>
+        <span class="lang-sep">|</span>
+        <a href="index-zh.html">繁</a>
+        <span class="lang-sep">|</span>
+        <a href="index-global.html">Global</a>
+      </div>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+    </div>
+  </header>
 
   <div class="container">
-    <h1 class="tagline">Web3 革命，由 NeoX 引領</h1>
-    <p class="subtagline">去中心化創意生態：NFT、遊戲與元宇宙</p>
-
-    <img class="coin" src="https://neoxcoin.io/NeoXCoin360.gif" alt="NeoX Coin"/>
-
-    <div class="nav-bar">
-      <a href="what-is-neox-zh.html">關於 NeoX</a>
-      <a href="how-to-buy-zh.html">購買方法</a>
-      <a href="game-zh.html">🎮 NeoX 遊戲</a>
-      <a href="metaverse-zh.html">🔥 NeoX 元宇宙展覽</a>
-      <a href="nft-projects-zh.html">
-        <img src="https://neoxcoin.github.io/opensea_icon.PNG"
-             style="width:18px; height:18px; vertical-align:middle; margin-right:6px;">
-        探索 NeoX NFT 項目
-      </a>
-    </div>
-
-    <div class="headline">
-      <span>未來已來 — 擁有推動 Web3 自由的貨幣</span>
-      <span>塑造未來，由 NeoX 開始 — 新世代數位貨幣</span>
-      <span>加入 Web3 革命 — NeoX 將控制權放回你手中</span>
-      <span>擁有自由，擁有未來，擁有 NeoX</span>
-    </div>
-
-    <div class="btn-row">
-      <a class="btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">
-        <img src="https://thirdweb.com/favicon-32x32.png"
-             class="tw-icon"
-             alt="thirdweb logo">
-        購買 NXC
-      </a>
-      <a class="btn"
-         href="https://metamask.app.link/dapp/neoxcoin.github.io/"
-         data-tooltip="⚠️ 將跳轉至 MetaMask。若信任此連結，請點擊『繼續』">
-        🦊 使用 MetaMask 購買
-      </a>
-      <a class="btn"
-         href="add-to-wallet-zh.html"
-         data-tooltip="MetaMask 支援自動加入｜Trust Wallet 請手動加入">
-        <img class="emoji-icon" src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NXC Icon">
-        加入至錢包
-     </a>
-    </div>
-
-    <!-- 市場數據：GeckoTerminal -->
-    <div class="market-link">
-      <a class="market-btn"
-         href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c"
-         target="_blank" rel="noopener noreferrer">
-        <img src="https://neoxcoin.github.io/gecko_icon.PNG"
-             class="market-icon"
-             alt="GeckoTerminal logo">
-        在 GeckoTerminal 查看 NXC
-      </a>
-    </div>
-
-    <!-- Social icons row: between Gecko button & footer -->
-    <div class="social-icons">
-      <a
-        href="https://www.facebook.com/profile.php?id=61579442687473"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" />
-      </a>
-
-      <a
-        href="https://x.com/neox__official"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X (Twitter)" />
-      </a>
-
-      <a
-        href="https://www.instagram.com/neox__official/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" />
-      </a>
-
-      <a
-        href="https://www.tiktok.com/@neox.world"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" />
-      </a>
-
-      <a
-        href="https://www.youtube.com/@NeoX_officials"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" />
-      </a>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      <div class="footer-links">
-        <a href="faq-zh.html">常見問題</a> |
-        <a href="about-zh.html">關於我們</a> |
-        <a href="https://neoxcoin.github.io/token-info-zh.html" target="_blank">代幣資料</a> |
-        <a href="whitepaper-zh.html" target="_blank">白皮書</a> |
-        <a href="neox-wiki-zh.html" style="color:#80caff; text-decoration:none;">官方 Wiki</a> |
-        <a href="press-kit-zh.html" target="_blank" style="color:#80caff; text-decoration:none;">媒體素材（Press Kit）</a> |
-        <a href="troubleshooting-zh.html">疑難排解</a>
+    
+    <section class="hero">
+      <div class="coin-visual">
+        <img class="coin" src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin">
       </div>
-      © 2025 NeoX. All rights reserved. |
-      <a href="disclaimer-zh.html">免責聲明</a>
-    </div>
+      <h1 class="tagline">Empowering<br>Web Freedom</h1>
+      <p class="subtagline">去中心化數位實用的次世代演進，建立在 Base 上的遊戲與元宇宙生態系統未來。</p>
+      
+      <div class="btn-row">
+        <a class="btn btn-primary" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B">
+          <img src="https://thirdweb.com/favicon-32x32.png" class="icon-small" alt="thirdweb logo" />
+          購買 NXC
+        </a>
+        <a class="btn btn-secondary" href="how-to-buy.html">
+          如何購買？
+        </a>
+      </div>
+      <div class="market-link">
+        <a href="add-to-wallet.html">將 NXC 新增至錢包</a> | 
+        <a href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c" target="_blank">在 GeckoTerminal 查看</a>
+      </div>
+    </section>
+
+    <section class="ecosystem-grid">
+      <a href="game.html" class="eco-card">
+        <span class="eco-icon">🎮</span>
+        <h3 class="eco-title">NeoX 遊戲</h3>
+        <p class="eco-desc">由 NXC 實用代幣驅動的互動式 Web3 遊戲體驗。</p>
+      </a>
+      <a href="metaverse.html" class="eco-card">
+        <span class="eco-icon">🔥</span>
+        <h3 class="eco-title">元宇宙中心</h3>
+        <p class="eco-desc">探索去中心化數位領域和沉浸式虛擬展覽。</p>
+      </a>
+      <a href="nft-projects.html" class="eco-card">
+        <div style="background: var(--glass); display: inline-block; padding: 6px; border-radius: 8px; margin-bottom: 12px;">
+          <img src="https://neoxcoin.github.io/opensea_icon.PNG" class="icon-small" style="display:block">
+        </div>
+        <h3 class="eco-title">NFT 系列</h3>
+        <p class="eco-desc">在 Base 主網上發現獨特的數位資產和創意領域。</p>
+      </a>
+    </section>
+
   </div>
+
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+    </div>
+    <div class="footer-links">
+      <a href="about.html">關於</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">代幣資訊</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-zh.html">免責聲明</a>
+    </div>
+    <div class="copyright">© 2025 NeoX. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const connectBtn = document.getElementById('connect-btn');
+
+    // 自動檢查是否已經連結
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
+    }
+
+    // 更新按鈕外觀為縮寫錢包地址
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
+    // 點擊觸發喚醒錢包
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "Connecting...";
+          // 請求用戶授權連結
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+          console.log("Connected to wallet:", accounts[0]);
+        } catch (error) {
+          console.error("User cancelled login", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
+      } else {
+        // 如果未偵測到錢包，引導去安裝 MetaMask
+        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
+
+    // 網頁載入時自動執行檢查
+    window.addEventListener('DOMContentLoaded', checkConnection);
+  </script>
+
 </body>
 </html>
