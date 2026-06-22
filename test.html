@@ -118,25 +118,25 @@
       align-items: center;
     }
 
-    /* 修改百分比：將淡入嘅時間由 0.5 秒拉長到 2.5 秒，等佢好似煙霧咁慢慢滲入嚟 */
+    /* 將總時間拉長到 14 秒，並調整百分比，讓文字有 80% 嘅時間都完全靜止顯示 */
     @keyframes fadeInUpLoopSlow {
-      0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-      18% { opacity: 1; transform: translateY(0); filter: blur(0); }  /* 到第 2.5 秒才完全滲透浮現 */
-      86% { opacity: 1; transform: translateY(0); filter: blur(0); }  /* 依然維持約 9.5 秒嘅清晰停留時間 */
-      93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); } /* 用大約 1 秒慢慢淡淡隱去 */
-      100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+      0% { opacity: 0; transform: translateY(15px); filter: blur(4px); }
+      4% { opacity: 1; transform: translateY(0); filter: blur(0); }  /* 第 0.5 秒就完全浮現 */
+      86% { opacity: 1; transform: translateY(0); filter: blur(0); } /* 一直靜止停留到第 12 秒 */
+      92% { opacity: 0; transform: translateY(-10px); filter: blur(4px); } /* 用 1 秒慢慢淡出 */
+      100% { opacity: 0; transform: translateY(15px); filter: blur(4px); }
     }
 
     .tagline {
-     font-size: 56px;
+      font-size: 56px;
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 15px;
       background: linear-gradient(135deg, #ffffff 30%, #c299ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      /* 使用 cubic-bezier 讓進入嘅前段速度變得極慢，營造「滲透」質感 */
-      animation: fadeInUpLoopSlow 14s cubic-gradient(0.25, 1, 0.5, 1) infinite;
+      /* 總時間拉長到 14s，等佢慢慢循環 */
+      animation: fadeInUpLoopSlow 14s ease-in-out infinite;
     }
 
     .subtagline {
@@ -145,8 +145,8 @@
       font-weight: 400;
       margin-bottom: 40px;
       max-width: 600px;
-      /* 保持 14 秒總時間與滲透曲線，延遲 0.6 秒出嚟，等主標題慢慢滲完先到佢，層次感更高級 */
-      animation: fadeInUpLoopSlow 14s cubic-gradient(0.25, 1, 0.5, 1) 0.6s infinite;
+      /* 一樣用 14s 慢速循環，並保持 0.4 秒的優雅前後層次感 */
+      animation: fadeInUpLoopSlow 14s ease-in-out 0.4s infinite;
     }
     
     .coin-visual {
