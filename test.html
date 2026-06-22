@@ -8,21 +8,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>NeoX Coin (NXC) – Empowering Web Freedom</title>
-  <meta name="description" content="Explore NeoX (NXC) – the next generation decentralized Web3 ecosystem on Base. Discover NFTs, utility token, interactive games, and metaverse experiences." />
-  <link rel="canonical" href="https://neoxcoin.io/index.html" />
+  <title>NeoX Coin (NXC) – Global Portal</title>
+  <meta name="description" content="Explore NeoX (NXC) – global decentralized Web3 ecosystem on Base. Discover NFTs, gaming, and metaverse experiences with multi-language support." />
+  <link rel="canonical" href="https://neoxcoin.io/index-global.html" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
+  <script>
+    function googleTranslateElementInit(){
+      new google.translate.TranslateElement({
+        pageLanguage: 'en', 
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+        autoDisplay: false, 
+        multilanguagePage: true 
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+
   <style>
     :root {
-      --bg-dark: #03010a; /* Deep cosmic space */
+      --bg-dark: #03010a;
       --text-main: #ffffff;
       --text-muted: rgba(255, 255, 255, 0.7);
-      --primary: #a370ff; /* Royal Violet */
-      --secondary: #00ffcc; /* Cyberpunk Teal */
+      --primary: #a370ff;
+      --secondary: #00ffcc;
       --glass: rgba(255, 255, 255, 0.03);
       --border: rgba(255, 255, 255, 0.08);
       --font-stack: 'Plus Jakarta Sans', sans-serif;
@@ -42,7 +54,17 @@
       -webkit-font-smoothing: antialiased;
       letter-spacing: -0.01em;
       overflow-x: hidden;
+
+      /* Google Translate Tweak Overrides */
+      top: 0 !important;
+      position: static !important;
+      margin-top: 0 !important;
     }
+
+    /* 徹底隱藏 Google 翻譯頂部自帶的白色橫條 */
+    .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important; }
+    iframe.goog-te-banner-frame { display: none !important; }
+    body > .skiptranslate { display: none !important; }
 
     a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
 
@@ -67,26 +89,37 @@
     .nav-logo { height: 32px; opacity: 0.9; }
     .nav-logo:hover { opacity: 1; }
 
-    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
     .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
     .nav-links a:hover { color: var(--primary); }
 
-    .header-right { display: flex; align-items: center; gap: 20px; }
+    .header-right { display: flex; align-items: center; gap: 15px; }
 
-    /* Language Switcher */
-    .language-switch {
-      font-size: 13px;
-      color: var(--text-muted);
-      display: flex; gap: 6px;
+    /* Custom Black Pill Styling for Google Widget */
+    #google_translate_element {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
     }
-    .language-switch a:hover { color: var(--text-main); }
-    .lang-sep { opacity: 0.3; }
+    #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
+    #google_translate_element .goog-te-gadget span { display: none !important; } /* 隱藏 Google 提供 字眼 */
+    #google_translate_element select {
+      background: transparent !important;
+      color: #fff !important;
+      border: none !important;
+      font-size: 12px !important;
+      padding: 4px 6px !important;
+      outline: none !important;
+      cursor: pointer;
+    }
 
     /* Connect Wallet Button */
     .btn-connect {
       font-size: 13px;
       font-weight: 600;
-      padding: 8px 18px;
+      padding: 8px 16px;
       border-radius: 999px;
       background: transparent;
       color: var(--secondary);
@@ -120,9 +153,9 @@
     /* Animation: Continuous Elegant Slow Fade-in Up (14s loop) */
     @keyframes fadeInUpLoopSlow {
       0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-      18% { opacity: 1; transform: translateY(0); filter: blur(0); } /* Fully visible at 2.5s */
-      86% { opacity: 1; transform: translateY(0); filter: blur(0); } /* Still state holding */
-      93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); } /* Fading away */
+      18% { opacity: 1; transform: translateY(0); filter: blur(0); }
+      86% { opacity: 1; transform: translateY(0); filter: blur(0); }
+      93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); }
       100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
     }
 
@@ -138,15 +171,10 @@
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 15px;
-      
-      /* Liquid multi-tone aurora gradient mapped to enlarged background canvas */
       background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
       background-size: 200% auto;
-      
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      
-      /* Dual animation stacking */
       animation: 
         fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite,
         textShimmer 4s linear infinite;
@@ -158,7 +186,6 @@
       font-weight: 400;
       margin-bottom: 40px;
       max-width: 600px;
-      /* Smoothly trailing behind the headline by 0.6s */
       animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
     }
 
@@ -221,26 +248,11 @@
       min-width: 190px;
     }
 
-    /* Primary: solid aesthetic crisp white */
-    .btn-primary {
-      background: #ffffff;
-      color: #000000;
-    }
-    .btn-primary:hover {
-      box-shadow: 0 5px 20px rgba(255, 255, 255, 0.15);
-      transform: translateY(-2px);
-    }
+    .btn-primary { background: #ffffff; color: #000000; }
+    .btn-primary:hover { box-shadow: 0 5px 20px rgba(255, 255, 255, 0.15); transform: translateY(-2px); }
 
-    /* Secondary: thin wired outlined borders */
-    .btn-secondary {
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border);
-    }
-    .btn-secondary:hover {
-      background: var(--glass);
-      border-color: rgba(255,255,255,0.2);
-    }
+    .btn-secondary { background: transparent; color: var(--text-main); border: 1px solid var(--border); }
+    .btn-secondary:hover { background: var(--glass); border-color: rgba(255,255,255,0.2); }
 
     .icon-small { width: 18px; height: 18px; object-fit: contain; }
 
@@ -266,19 +278,14 @@
       filter: brightness(0) invert(1);
       transition: all 0.2s ease;
     }
-    .social-icons img:hover {
-      opacity: 1;
-      filter: none;
-      transform: scale(1.1);
-    }
+    .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
 
     .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
     .footer-links a { margin: 0 8px; }
     .footer-links a:hover { color: var(--text-main); }
     .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-    /* --- Responsive Viewport Adaptation --- */
-    @media (max-width: 900px) {
+    @media (max-width: 950px) {
       header { padding: 0 20px; }
       .nav-links { display: none; }
       .tagline { font-size: 40px; }
@@ -289,24 +296,18 @@
 <body>
 
   <header>
-    <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    <a href="index-global.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
     
     <div class="nav-links">
-      <a href="what-is-neox.html">What is NeoX?</a>
-      <a href="how-to-buy.html">How to Buy?</a>
-      <a href="game.html">NeoX Game</a>
-      <a href="metaverse.html">Metaverse Exhibition</a>
-      <a href="nft-projects.html">NFT Projects</a>
+      <a href="what-is-neox-global.html">What is NeoX?</a>
+      <a href="how-to-buy-global.html">How to Buy?</a>
+      <a href="game-global.html">🎮 NeoX Game</a>
+      <a href="metaverse-global.html">🔥 Metaverse Hub</a>
+      <a href="nft-projects-global.html">NeoX NFT Projects</a>
     </div>
 
     <div class="header-right">
-      <div class="language-switch">
-        <a href="index.html">EN</a>
-        <span class="lang-sep">|</span>
-        <a href="index-zh.html">繁</a>
-        <span class="lang-sep">|</span>
-        <a href="index-global.html">Global</a>
-      </div>
+      <div id="google_translate_element"></div>
       <button class="btn-connect" id="connect-btn">Connect Wallet</button>
     </div>
   </header>
@@ -315,7 +316,7 @@
     
     <section class="hero">
       <div class="coin-visual">
-        <img class="coin" src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin">
+        <img class="coin" src="https://neoxcoin.io/NeoXCoin360.gif" alt="NeoX Coin">
       </div>
       <h1 class="tagline">Empowering<br>Web Freedom</h1>
       <p class="subtagline">The next evolution in decentralized digital utility, building the future of gaming and metaverse ecosystems on Base.</p>
@@ -325,28 +326,28 @@
           <img src="https://thirdweb.com/favicon-32x32.png" class="icon-small" alt="thirdweb logo" />
           Buy NXC
         </a>
-        <a class="btn btn-secondary" href="how-to-buy.html">
+        <a class="btn btn-secondary" href="how-to-buy-global.html">
           How to Buy?
         </a>
       </div>
       <div class="market-link">
-        <a href="add-to-wallet.html">Add NXC to wallet</a> | 
+        <a href="add-to-wallet-global.html">Add NXC to wallet</a> | 
         <a href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c" target="_blank">View on GeckoTerminal</a>
       </div>
     </section>
 
     <section class="ecosystem-grid">
-      <a href="game.html" class="eco-card">
+      <a href="game-global.html" class="eco-card">
         <span class="eco-icon">🎮</span>
         <h3 class="eco-title">NeoX Game</h3>
         <p class="eco-desc">Interactive Web3 gaming experiences powered by the NXC utility token.</p>
       </a>
-      <a href="metaverse.html" class="eco-card">
+      <a href="metaverse-global.html" class="eco-card">
         <span class="eco-icon">🔥</span>
         <h3 class="eco-title">Metaverse Hub</h3>
         <p class="eco-desc">Explore decentralized digital realms and immersive virtual exhibitions.</p>
       </a>
-      <a href="nft-projects.html" class="eco-card">
+      <a href="nft-projects-global.html" class="eco-card">
         <div style="background: var(--glass); display: inline-block; padding: 6px; border-radius: 8px; margin-bottom: 12px;">
           <img src="https://neoxcoin.github.io/opensea_icon.PNG" class="icon-small" style="display:block">
         </div>
@@ -366,15 +367,14 @@
       <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
     </div>
     <div class="footer-links">
-      <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
+      <a href="faq-global.html">FAQ</a> | <a href="about-global.html">About</a> | <a href="https://neoxcoin.io/token-info-global.html" target="_blank">Global Token Info</a> | <a href="https://neoxcoin.io/whitepaper-global.html" target="_blank">Global Whitepaper</a> | <a href="neox-wiki-global.html">Wiki</a> | <a href="press-kit-global.html" target="_blank">Press Kit</a> | <a href="troubleshooting-global.html">Troubleshooting</a>
     </div>
-    <div class="copyright">© 2025 NeoX. All rights reserved.</div>
+    <div class="copyright">© 2026 NeoX. All rights reserved. | <a href="disclaimer-global.html">Disclaimer</a></div>
   </footer>
 
   <script>
     const connectBtn = document.getElementById('connect-btn');
 
-    // Passive active connection sniffing checks
     async function checkConnection() {
       if (typeof window.ethereum !== 'undefined') {
         const accounts = await window.ethereum.request({ method: 'eth_accounts' });
@@ -384,7 +384,6 @@
       }
     }
 
-    // Compressing addresses dynamically to fit navbar structures beautifully
     function updateButton(address) {
       const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
       connectBtn.innerText = shortAddress;
@@ -392,16 +391,14 @@
       connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
     }
 
-    // Trigger explicit request wallet context calls
     connectBtn.addEventListener('click', async () => {
       if (typeof window.ethereum !== 'undefined') {
         try {
           connectBtn.innerText = "Connecting...";
           const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
           updateButton(accounts[0]);
-          console.log("Connected to wallet:", accounts[0]);
         } catch (error) {
-          console.error("User cancelled login sequence", error);
+          console.error("Wallet login error:", error);
           connectBtn.innerText = "Connect Wallet";
         }
       } else {
