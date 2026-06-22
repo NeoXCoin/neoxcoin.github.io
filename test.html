@@ -67,7 +67,7 @@
     .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
     .nav-links a:hover { color: var(--primary); }
 
-    .header-right { display: flex; align-items: center; gap: 15px; }
+    .header-right { display: flex; align-items: center; gap: 20px; }
 
     /* 語言切換瘦身 */
     .language-switch {
@@ -87,6 +87,8 @@
       background: transparent;
       color: var(--secondary);
       border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
     }
     .btn-connect:hover {
       background: rgba(0, 255, 204, 0.05);
@@ -97,7 +99,7 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 120px 20px 50px 20px; /* 頂部為 Nav 留空間 */
+      padding: 140px 20px 50px 20px; /* 頂部為 Nav 留空間 */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -140,7 +142,7 @@
       filter: drop-shadow(0 0 25px rgba(163, 112, 255, 0.3));
     }
 
-    /* --- 3. 新增的 Ecosystem Grid --- */
+    /* --- 3. Ecosystem Grid --- */
     .ecosystem-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -156,6 +158,8 @@
       border-radius: 16px;
       text-align: left;
       transition: all 0.3s ease;
+      display: block;
+      color: inherit;
     }
     .eco-card:hover {
       border-color: rgba(163, 112, 255, 0.3);
@@ -167,7 +171,7 @@
     .eco-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
     .eco-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
 
-    /* --- 4. 鈕 (Call to Actions) --- */
+    /* --- 4. 按鈕 (Call to Actions) --- */
     .btn-row {
       display: flex;
       gap: 20px;
@@ -188,7 +192,7 @@
       min-width: 190px;
     }
 
-    /* 主按鈕：白底黑字，最高級 */
+    /* 主按鈕：白底黑字 */
     .btn-primary {
       background: #ffffff;
       color: #000000;
@@ -211,8 +215,9 @@
 
     .icon-small { width: 18px; height: 18px; object-fit: contain; }
 
-    /* 市場連結和Add Wallet縮小 */
+    /* 市場連結和Add Wallet */
     .market-link { margin-top: 15px; font-size: 13px; color: var(--text-muted); }
+    .market-link a { margin: 0 5px; }
     .market-link a:hover { color: var(--primary); }
 
     /* --- 5. Footer --- */
@@ -274,7 +279,7 @@
         <span class="lang-sep">|</span>
         <a href="index-global.html">Global</a>
       </div>
-      <button class="btn-connect">Connect Wallet</button>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
     </div>
   </header>
 
@@ -336,6 +341,49 @@
     </div>
     <div class="copyright">© 2025 NeoX. All rights reserved.</div>
   </footer>
+
+  <script>
+    const connectBtn = document.getElementById('connect-btn');
+
+    // 自動檢查是否已經連結
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
+    }
+
+    // 更新按鈕外觀為縮寫錢包地址
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
+    // 點擊觸發喚醒錢包
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "Connecting...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+          console.log("Connected to wallet:", accounts[0]);
+        } catch (error) {
+          console.error("User cancelled login", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
+      } else {
+        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
+
+    // 網頁載入時自動執行檢查
+    window.addEventListener('DOMContentLoaded', checkConnection);
+  </script>
 
 </body>
 </html>
