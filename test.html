@@ -118,15 +118,22 @@
       align-items: center;
     }
 
+    /* 新增動畫定義 */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .tagline {
       font-size: 56px;
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 15px;
-      /* 高級感漸變文字 */
       background: linear-gradient(135deg, #ffffff 30%, #c299ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      /* 加入動畫 */
+      animation: fadeInUp 1s ease-out forwards;
     }
 
     .subtagline {
@@ -135,6 +142,9 @@
       font-weight: 400;
       margin-bottom: 40px;
       max-width: 600px;
+      /* 加入延遲動畫，等標題出咗先到佢 */
+      opacity: 0;
+      animation: fadeInUp 1s ease-out 0.4s forwards;
     }
 
     .coin-visual {
