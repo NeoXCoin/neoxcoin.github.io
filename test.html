@@ -118,10 +118,12 @@
       align-items: center;
     }
 
-    /* 新增動畫定義 */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    /* 修改後的動畫定義：100% 時會回到 0% 形成完美循環 */
+    @keyframes fadeInUpLoop {
+      0% { opacity: 0; transform: translateY(15px); filter: blur(3px); }
+      7% { opacity: 1; transform: translateY(0); filter: blur(0); }
+      93% { opacity: 1; transform: translateY(0); filter: blur(0); }
+      100% { opacity: 0; transform: translateY(-10px); filter: blur(3px); }
     }
 
     .tagline {
@@ -132,8 +134,11 @@
       background: linear-gradient(135deg, #ffffff 30%, #c299ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      /* 加入動畫 */
-      animation: fadeInUp 1s ease-out forwards;
+      /* 8s = 整個循環總共 8 秒
+         infinite = 無限自動重複
+         ease-in-out = 動態更絲滑
+      */
+      animation: fadeInUpLoop 8s ease-in-out infinite;
     }
 
     .subtagline {
@@ -142,11 +147,11 @@
       font-weight: 400;
       margin-bottom: 40px;
       max-width: 600px;
-      /* 加入延遲動畫，等標題出咗先到佢 */
-      opacity: 0;
-      animation: fadeInUp 1s ease-out 0.4s forwards;
+      /* 同埋用 8s infinite 循環，
+         但加埋 0.3s 延遲，同標題形成前後層次感
+      */
+      animation: fadeInUpLoop 8s ease-in-out 0.3s infinite;
     }
-
     .coin-visual {
       position: relative;
       margin-bottom: 50px;
