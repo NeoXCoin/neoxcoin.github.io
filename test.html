@@ -31,13 +31,12 @@
 
     body {
       margin: 0;
-      /* 使用漸變底色 */
-      background: radial-gradient(circle at center, #1a0b36 0%, #070214 100%);
-      /* 疊加一層 SVG 的幾何網絡圖案，並設定透明度以免搶走主視覺 */
+      /* 深邃漸變色 */
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      /* 疊加一層極淡淡的星空圖案 */
       background-image: 
-        radial-gradient(circle at center, #1a0b36 0%, #070214 100%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M50 40c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zm0 40c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zM90 10c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zM90 90c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zM10 90c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10zM10 10c5.523 0 10-4.477 10-10s-4.477-10-10-10-10 4.477-10 10 4.477 10 10 10z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-      background-blend-mode: overlay; /* 混合模式令圖案更自然 */
+        radial-gradient(circle at center, #110526 0%, #03010a 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
       font-family: var(--font-stack);
       color: var(--text-main);
       text-align: center;
