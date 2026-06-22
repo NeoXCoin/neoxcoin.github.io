@@ -1,111 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- 🔹 Home / Landing -->
   <url>
     <loc>https://neoxcoin.io/</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>1.0</priority>
   </url>
 
-  <!-- 🔹 What is NeoX -->
   <url>
     <loc>https://neoxcoin.io/what-is-neox.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://neoxcoin.io/what-is-neox-zh.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.9</priority>
   </url>
 
-  <!-- 🔹 How to Buy -->
   <url>
     <loc>https://neoxcoin.io/how-to-buy.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://neoxcoin.io/how-to-buy-zh.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.9</priority>
   </url>
 
-  <!-- 🔹 多語言首頁 -->
   <url>
     <loc>https://neoxcoin.io/index-zh.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://neoxcoin.io/index-global.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.8</priority>
   </url>
 
-  <!-- 🔹 NeoX Game -->
   <url>
     <loc>https://neoxcoin.io/neox-game/</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.8</priority>
   </url>
 
-  <!-- 🔹 NFT Projects -->
   <url>
-    <loc>https://neoxcoin.io/nft-project.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <loc>https://neoxcoin.io/nft-projects.html</loc>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://neoxcoin.io/nft-projects-zh.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://neoxcoin.io/nft-projects-global.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.8</priority>
   </url>
 
-  <!-- 🔹 Whitepaper（列印版）-->
   <url>
     <loc>https://neoxcoin.io/whitepaper-en-print.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://neoxcoin.io/whitepaper-zh-print.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.7</priority>
   </url>
 
-  <!-- 🔹 NeoX Wiki -->
   <url>
     <loc>https://neoxcoin.io/neox-wiki.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://neoxcoin.io/neox-wiki-zh.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.7</priority>
   </url>
 
-  <!-- 🔹 Metaverse Exhibition（如果檔名不同，你可以改 URL）-->
   <url>
     <loc>https://neoxcoin.io/metaverse.html</loc>
-    <lastmod>2025-11-21</lastmod>
+    <lastmod>2026-06-22</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <!-- 🔹 其他重要頁面：之後有新 page 就照樣複製一個 <url> 區塊 -->
-  <!--
-  <url>
-    <loc>https://neoxcoin.io/你的新頁面.html</loc>
-    <lastmod>2025-11-21</lastmod>
-    <priority>0.6</priority>
-  </url>
-  -->
 
 </urlset>
