@@ -1,281 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Buy NeoX Coin (NXC)</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body { background-color: #030712; }
-        .glow-btn { position: relative; transition: all 0.3s ease; }
-        .glow-btn::after {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 0.75rem; background: linear-gradient(45deg, #3b82f6, #1d4ed8);
-            z-index: -1; filter: blur(12px); opacity: 0.6;
-            animation: pulseGlow 2.5s infinite alternate;
-        }
-        @keyframes pulseGlow {
-            0% { filter: blur(8px); opacity: 0.5; }
-            100% { filter: blur(16px); opacity: 0.8; }
-        }
-        /* 用於隱藏非當前語言的內容 */
-        .lang-hidden { display: none !important; }
-    </style>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How to Buy NeoX Coin (NXC)</title>
+  <meta name="description" content="Simple step-by-step guide to buy NeoX Coin (NXC) on Base Network using MetaMask or other Web3 wallets." />
+  <link rel="canonical" href="https://neoxcoin.github.io/how-to-buy.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #03010a;
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --primary: #a370ff;
+      --secondary: #00ffcc;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-stack: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      /* 統一星空背景 */
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      background-image: 
+        radial-gradient(circle at center, #110526 0%, #03010a 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      
+      font-family: var(--font-stack);
+      color: var(--text-main);
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+    /* --- 1. Sticky Header (Glassmorphism) --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
+    }
+
+    .nav-logo { height: 32px; opacity: 0.9; }
+    .nav-logo:hover { opacity: 1; }
+
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+
+    .header-right { display: flex; align-items: center; gap: 20px; }
+    
+    .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; }
+    .language-switch a:hover { color: var(--text-main); }
+    .lang-sep { opacity: 0.3; }
+
+    .btn-connect {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+    }
+
+    /* --- Main Container --- */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 140px 20px 80px 20px;
+      text-align: left;
+    }
+
+    /* --- Page Title --- */
+    .page-title {
+      font-size: 42px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 10px;
+      background: linear-gradient(120deg, #ffffff, #c299ff, #00ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    /* --- Step Cards Layout --- */
+    .steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .step-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 35px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    .step-card:hover {
+      border-color: rgba(163, 112, 255, 0.3);
+      box-shadow: 0 10px 30px rgba(163, 112, 255, 0.05);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .step-number {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .step-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 15px 0;
+      color: #ffffff;
+    }
+
+    .step-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .step-desc code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: var(--secondary);
+      font-size: 14px;
+    }
+
+    /* Highlight Link Button inside card */
+    .inline-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      color: #000;
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .inline-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+    }
+
+    /* --- Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 80px;
+      background: rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+      width: 22px;
+      margin: 0 15px;
+      opacity: 0.5;
+      filter: brightness(0) invert(1);
+      transition: all 0.2s ease;
+    }
+    .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
+
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 900px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-title { font-size: 32px; }
+      .step-card { padding: 25px; }
+    }
+  </style>
 </head>
-<body class="text-gray-100 font-sans min-h-screen flex flex-col justify-between">
+<body>
 
-    <header class="max-w-6xl w-full mx-auto px-6 py-4 flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-            <div class="flex flex-col">
-                <span class="text-2xl font-black tracking-wider text-blue-500 font-mono">X</span>
-                <span class="text-[10px] text-gray-400 font-semibold tracking-widest -mt-2 uppercase">NeoX</span>
-            </div>
-            <div class="h-6 w-[1px] bg-slate-800 mx-2"></div>
-            <span class="text-xs bg-blue-950 text-blue-400 px-2 py-0.5 rounded font-mono border border-blue-900/50">NXC</span>
-        </div>
+  <header>
+    <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    
+    <div class="nav-links">
+      <a href="what-is-neox.html">What is NeoX?</a>
+      <a href="how-to-buy.html">How to Buy?</a>
+      <a href="game.html">NeoX Game</a>
+      <a href="metaverse.html">Metaverse Exhibition</a>
+      <a href="nft-projects.html">NFT Projects</a>
+    </div>
+
+    <div class="header-right">
+      <div class="language-switch">
+        <a href="how-to-buy.html">EN</a>
+        <span class="lang-sep">|</span>
+        <a href="how-to-buy-zh.html">繁</a>
+        <span class="lang-sep">|</span>
+        <a href="how-to-buy-global.html">Global</a>
+      </div>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1 class="page-title">How to Buy NeoX Coin</h1>
+    <p class="page-subtitle">Follow this simple 3-step guide to acquire NXC on the Base network.</p>
+    
+    <div class="steps-container">
+      
+      <div class="step-card">
+        <span class="step-number">Step 01</span>
+        <h3 class="step-title">Create a Web3 Wallet</h3>
+        <p class="step-desc">Download and set up a secure crypto wallet such as MetaMask, Coinbase Wallet, or Trust Wallet. Make sure to securely back up your seed phrase and add the <strong>Base Network</strong> to your wallet networks.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-number">Step 02</span>
+        <h3 class="step-title">Deposit Ethereum (ETH) on Base</h3>
+        <p class="step-desc">Purchase Ethereum (ETH) from your preferred central exchange (like Coinbase, Binance, or Kraken) and withdraw it directly to your Web3 wallet address using the <strong>Base Network</strong>. Alternatively, you can bridge ETH from Ethereum mainnet to Base.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-number">Step 03</span>
+        <h3 class="step-title">Swap ETH for NXC via Thirdweb</h3>
+        <p class="step-desc">Connect your wallet directly to our verified token pool. Input the official NeoX Coin contract address if prompted: <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>, enter the amount of ETH you want to swap, and confirm the transaction.</p>
         
-        <div class="flex items-center space-x-3 text-sm">
-            <button id="btn-en" onclick="switchLang('en')" class="text-blue-400 font-bold transition">EN</button>
-            <span class="text-slate-700">|</span>
-            <button id="btn-zh" onclick="switchLang('zh')" class="text-gray-400 hover:text-gray-200 transition">繁</button>
-            <span class="text-slate-700">|</span>
-            <span class="text-gray-500 cursor-not-allowed">Global</span>
-        </div>
-    </header>
+        <a class="inline-btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">
+          Go to Thirdweb Swap ↗
+        </a>
+      </div>
 
-    <main class="max-w-3xl w-full mx-auto px-4 py-8 flex-grow">
-        
-        <div class="text-center mb-12 lang-group lang-en">
-            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-                How to Buy NeoX Coin (NXC)
-            </h1>
-            <p class="text-gray-400 mt-3 text-sm md:text-base">
-                Get your NXC tokens in less than 5 minutes via Thirdweb & MetaMask.
-            </p>
-        </div>
+    </div>
+  </div>
 
-        <div class="text-center mb-12 lang-group lang-zh lang-hidden">
-            <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-                如何購買 NeoX Coin (NXC)
-            </h1>
-            <p class="text-gray-400 mt-3 text-sm md:text-base">
-                只需 5 分鐘，透過 Thirdweb 與 MetaMask 錢包輕鬆獲取您的 NXC 代幣。
-            </p>
-        </div>
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+    </div>
+    <div class="footer-links">
+      <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
+    </div>
+    <div class="copyright">© 2026 NeoX. All rights reserved.</div>
+  </footer>
 
-        <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 md:p-8 backdrop-blur-md shadow-xl">
-            
-            <h2 class="text-center text-blue-400 mb-8 tracking-wide uppercase text-xs font-bold">
-                <span class="lang-group lang-en">Onboarding Steps</span>
-                <span class="lang-group lang-zh lang-hidden">購買流程指引</span>
-            </h2>
-            
-            <div class="relative pl-6 border-l-2 border-slate-800 space-y-10">
-                
-                <div class="relative">
-                    <div class="absolute -left-[35px] top-0 bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ring-4 ring-slate-950">1</div>
-                    
-                    <div class="lang-group lang-en">
-                        <h3 class="text-lg font-semibold text-white flex items-center">Install and open 🦊 MetaMask Wallet</h3>
-                        <p class="text-gray-400 text-sm mt-1">Download the official wallet extension or mobile app to manage your assets.</p>
-                        <a href="https://metamask.io/download/" target="_blank" class="inline-flex items-center text-xs text-blue-400 hover:text-blue-300 font-medium mt-2 transition">Download from official site <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i></a>
-                    </div>
-                    
-                    <div class="lang-group lang-zh lang-hidden">
-                        <h3 class="text-lg font-semibold text-white flex items-center">安裝並開啟 🦊 MetaMask 錢包</h3>
-                        <p class="text-gray-400 text-sm mt-1">下載官方瀏覽器擴充功能或手機 App 以管理您的加密資產。</p>
-                        <a href="https://metamask.io/download/" target="_blank" class="inline-flex items-center text-xs text-blue-400 hover:text-blue-300 font-medium mt-2 transition">前往官方網站下載 <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i></a>
-                    </div>
-                </div>
+  <script>
+    const connectBtn = document.getElementById('connect-btn');
 
-                <div class="relative">
-                    <div class="absolute -left-[35px] top-0 bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ring-4 ring-slate-950">2</div>
-                    
-                    <div class="lang-group lang-en">
-                        <h3 class="text-lg font-semibold text-white">Add Base Mainnet to your wallet</h3>
-                        <p class="text-gray-400 text-sm mt-1">Connect and search "Base" to configure the low-fee Layer 2 network with one click.</p>
-                        <a href="https://chainlist.org/?search=base" target="_blank" class="inline-flex items-center text-xs text-blue-400 hover:text-blue-300 font-medium mt-2 transition">Use Chainlist.org to add network <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i></a>
-                    </div>
-                    
-                    <div class="lang-group lang-zh lang-hidden">
-                        <h3 class="text-lg font-semibold text-white">將 Base 主網新增至您的錢包</h3>
-                        <p class="text-gray-400 text-sm mt-1">前往 Chainlist 網站搜尋 "Base"，即可一鍵將低手續費的 Layer 2 網路新增至錢包。</p>
-                        <a href="https://chainlist.org/?search=base" target="_blank" class="inline-flex items-center text-xs text-blue-400 hover:text-blue-300 font-medium mt-2 transition">使用 Chainlist.org 一鍵新增網路 <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i></a>
-                    </div>
-                </div>
-
-                <div class="relative">
-                    <div class="absolute -left-[35px] top-0 bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ring-4 ring-slate-950">3</div>
-                    
-                    <div class="lang-group lang-en">
-                        <h3 class="text-lg font-semibold text-white">Fund your wallet with ETH on Base</h3>
-                        <p class="text-gray-400 text-sm mt-1">Base Network requires ETH to cover transaction gas fees and purchase NXC tokens.</p>
-                        <div class="mt-3 bg-slate-950/50 p-3 rounded-lg border border-slate-800/80 text-xs text-gray-400 space-y-2">
-                            <p><strong class="text-blue-400">Option A (Recommended):</strong> Securely withdraw ETH directly via the <span class="text-white font-medium">Base Network</span> from popular exchanges like Coinbase or Binance.</p>
-                            <p><strong class="text-blue-400">Option B:</strong> Bridge your Layer-1 ETH from Ethereum Mainnet using the <a href="https://bridge.base.org/" target="_blank" class="text-white underline hover:text-blue-300 font-medium">Official Base Bridge</a>.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="lang-group lang-zh lang-hidden">
-                        <h3 class="text-lg font-semibold text-white">準備 Base 網路上的 ETH</h3>
-                        <p class="text-gray-400 text-sm mt-1">Base 網路需要少量的 ETH 來支付礦工費（Gas 費）及兌換 NXC 代幣。</p>
-                        <div class="mt-3 bg-slate-950/50 p-3 rounded-lg border border-slate-800/80 text-xs text-gray-400 space-y-2">
-                            <p><strong class="text-blue-400">方法 A (最省錢推薦):</strong> 直接從交易所（如 Binance 或 Coinbase）提現 ETH 時，網路選擇 <span class="text-white font-medium">Base 網路</span> 轉入您的錢包。</p>
-                            <p><strong class="text-blue-400">方法 B:</strong> 使用 <a href="https://bridge.base.org/" target="_blank" class="text-white underline hover:text-blue-300 font-medium">官方 Base 跨鏈橋</a>，將以太坊主網的 ETH 跨鏈至 Base 網路。</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="relative">
-                    <div class="absolute -left-[35px] top-0 bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ring-4 ring-slate-950">4</div>
-                    
-                    <div class="lang-group lang-en">
-                        <h3 class="text-lg font-semibold text-white">Swap ETH for 🪙 NeoX Coin (NXC)</h3>
-                        <p class="text-gray-400 text-sm mt-1">Click the button below to load our official secure check-out widget powered by Thirdweb.</p>
-                    </div>
-                    
-                    <div class="lang-group lang-zh lang-hidden">
-                        <h3 class="text-lg font-semibold text-white">將 ETH 兌換為 🪙 NeoX Coin (NXC)</h3>
-                        <p class="text-gray-400 text-sm mt-1">點擊下方按鈕，即可加載經 Thirdweb 安全認證的官方兌換組件進行購買。</p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="mt-12 text-center">
-                <a href="#" class="glow-btn inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-12 rounded-xl transition shadow-lg text-lg tracking-wide transform hover:-translate-y-0.5">
-                    <span class="lang-group lang-en">Buy NXC Now</span>
-                    <span class="lang-group lang-zh lang-hidden">立即購買 NXC</span>
-                </a>
-            </div>
-
-        </div>
-
-        <div class="mt-8 bg-slate-900/40 border border-slate-800/60 rounded-xl p-5 text-sm">
-            <h3 class="text-sm font-semibold text-gray-300 mb-3 flex items-center">
-                <i class="fa-solid fa-circle-info text-blue-500 mr-2"></i> 
-                <span class="lang-group lang-en">Manual Token Import</span>
-                <span class="lang-group lang-zh lang-hidden">手動匯入代幣資訊</span>
-            </h3>
-            <p class="text-gray-400 text-xs mb-4">
-                <span class="lang-group lang-en">If NXC does not appear automatically in your MetaMask wallet after swapping, please utilize the automated tool or verified contract details below:</span>
-                <span class="lang-group lang-zh lang-hidden">若購買後錢包未自動顯示 NXC，請使用下方的一鍵加入功能或手動輸入合約資料：</span>
-            </p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-                <div class="md:col-span-3 bg-slate-950 p-2.5 rounded border border-slate-800 flex justify-between items-center">
-                    <div>
-                        <span class="text-gray-500 block text-[10px] uppercase font-mono tracking-wider">Contract Address (Base)</span>
-                        <span id="contractAddress" class="text-gray-300 font-mono break-all">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span>
-                    </div>
-                    <button onclick="copyContract()" class="ml-2 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-gray-300 hover:text-white rounded transition flex items-center space-x-1 shrink-0">
-                        <i id="copyIcon" class="fa-regular fa-copy"></i>
-                        <span id="copyText">Copy</span>
-                    </button>
-                </div>
-                <div class="bg-slate-950 p-2.5 rounded border border-slate-800">
-                    <span class="text-gray-500 block text-[10px] uppercase font-mono tracking-wider">Token Symbol</span>
-                    <span class="text-gray-300 font-semibold font-mono">NXC</span>
-                </div>
-                <div class="bg-slate-950 p-2.5 rounded border border-slate-800">
-                    <span class="text-gray-500 block text-[10px] uppercase font-mono tracking-wider">Decimals</span>
-                    <span class="text-gray-300 font-mono">18</span>
-                </div>
-                <div class="bg-blue-950/20 p-1 rounded border border-blue-800/40 border-dashed flex items-center justify-center">
-                    <button onclick="addTokenToMetaMask()" class="text-xs text-blue-400 hover:text-blue-300 font-semibold py-1.5 px-3 flex items-center space-x-1 w-full justify-center group">
-                        <i class="fa-solid fa-plus-circle text-blue-500 group-hover:scale-110 transition-transform"></i>
-                        <span class="lang-group lang-en">Add to MetaMask</span>
-                        <span class="lang-group lang-zh lang-hidden">加到 MetaMask</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="text-center mt-8">
-            <a href="#" class="text-xs text-gray-500 hover:text-gray-400 transition inline-flex items-center">
-                <i class="fa-solid fa-arrow-left mr-1.5 text-[10px]"></i> 
-                <span class="lang-group lang-en">Back to Home</span>
-                <span class="lang-group lang-zh lang-hidden">返回首頁</span>
-            </a>
-        </div>
-
-    </main>
-
-    <footer class="max-w-6xl w-full mx-auto px-6 py-6 border-t border-slate-950 text-center text-xs text-gray-600 flex flex-col md:flex-row justify-between items-center gap-2">
-        <div>© 2026 NeoX. All rights reserved.</div>
-        <div class="flex space-x-4">
-            <a href="#" class="hover:underline">Disclaimer</a>
-        </div>
-    </footer>
-
-    <script>
-        // 1. 多語言無縫切換邏輯
-        function switchLang(lang) {
-            // 隱藏全部語言群組
-            document.querySelectorAll('.lang-group').forEach(el => el.classList.add('lang-hidden'));
-            // 只顯示被選取的語言
-            document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.remove('lang-hidden'));
-            
-            // 改變右上角按鈕的視覺高亮狀態
-            const btnEn = document.getElementById('btn-en');
-            const btnZh = document.getElementById('btn-zh');
-            if (lang === 'en') {
-                btnEn.className = "text-blue-400 font-bold transition";
-                btnZh.className = "text-gray-400 hover:text-gray-200 transition";
-            } else {
-                btnZh.className = "text-blue-400 font-bold transition";
-                btnEn.className = "text-gray-400 hover:text-gray-200 transition";
-            }
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
         }
+      }
+    }
 
-        // 2. 一鍵複製合約地址
-        function copyContract() {
-            const addressText = document.getElementById("contractAddress").innerText;
-            navigator.clipboard.writeText(addressText).then(() => {
-                const copyIcon = document.getElementById("copyIcon");
-                const copyText = document.getElementById("copyText");
-                
-                copyIcon.className = "fa-solid fa-check text-green-400";
-                copyText.innerText = "Copied!";
-                copyText.classList.add("text-green-400");
-                
-                setTimeout(() => {
-                    copyIcon.className = "fa-regular fa-copy";
-                    copyText.innerText = "Copy";
-                    copyText.classList.remove("text-green-400");
-                }, 2000);
-            }).catch(err => console.error(err));
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "Connecting...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+        } catch (error) {
+          console.error("Wallet login error:", error);
+          connectBtn.innerText = "Connect Wallet";
         }
+      } else {
+        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
 
-        // 3. 一鍵呼喚 MetaMask 自動加幣
-        async function addTokenToMetaMask() {
-            const tokenAddress = '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B';
-            const tokenSymbol = 'NXC';
-            const tokenDecimals = 18;
-            const tokenImage = 'https://neoxcoin.io/assets/logo.png'; 
+    window.addEventListener('DOMContentLoaded', checkConnection);
+  </script>
 
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    await window.ethereum.request({
-                        method: 'wallet_watchAsset',
-                        params: {
-                            type: 'ERC20',
-                            options: {
-                                address: tokenAddress,
-                                symbol: tokenSymbol,
-                                decimals: tokenDecimals,
-                                image: tokenImage,
-                            },
-                        },
-                    });
-                } catch (error) {
-                    console.error(error);
-                }
-            } else {
-                alert('Please install MetaMask extension first.');
-            }
-        }
-    </script>
 </body>
 </html>
