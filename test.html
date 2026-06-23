@@ -37,6 +37,9 @@
         }
         a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
         
+        /* 語言隱藏樣式 */
+        .lang-hidden { display: none !important; }
+
         /* --- 1. Sticky Header --- */
         header {
             position: fixed; top: 0; left: 0; width: 100%; height: 70px;
@@ -133,7 +136,7 @@
 <body>
 
     <header>
-        <a href="index-zh.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+        <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
         <div class="nav-links">
             <a href="what-is-neox.html">What is NeoX?</a>
             <a href="how-to-buy.html">How to Buy?</a>
@@ -146,6 +149,7 @@
                 <button id="lang-en-btn" onclick="toggleLanguage('en')">EN</button>
                 <span class="lang-sep">|</span>
                 <button id="lang-zh-btn" class="active" onclick="toggleLanguage('zh')">繁</button>
+                <span class="lang-sep">|</span>
             </div>
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
@@ -153,8 +157,8 @@
 
     <div class="container">
         <h1 class="page-title">
-            <span class="lang-item lang-en lang-hidden">How to Buy NeoX Coin</span>
-            <span class="lang-item lang-zh">如何購買 NeoX Coin</span>
+            <span class="lang-item lang-en">How to Buy NeoX Coin</span>
+            <span class="lang-item lang-zh lang-hidden">如何購買 NeoX Coin</span>
         </h1>
         <p class="page-subtitle">
             <span class="lang-item lang-en">Follow this simple 3-step guide to acquire NXC on the Base network.</span>
@@ -329,10 +333,7 @@
                 window.open('https://metamask.io/download/', '_blank');
             }
         });
-        window.addEventListener('DOMContentLoaded', () => {
-            checkConnection(); // 保持原本的連線檢查
-            toggleLanguage('zh'); // 確保網頁載入後，強制將內容與按鈕狀態設為中文
-        });
+        window.addEventListener('DOMContentLoaded', checkConnection);
     </script>
 </body>
 </html>
