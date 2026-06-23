@@ -54,10 +54,12 @@
         .nav-links a:hover { color: var(--primary); }
         .header-right { display: flex; align-items: center; gap: 20px; }
         
-        .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; }
-        .language-switch button { background: none; border: none; color: rgba(255,255,255,0.5); cursor: pointer; font-family: var(--font-stack); font-size: 13px; font-weight: 500; padding: 0; transition: color 0.2s; }
+        .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; align-items: center; }
+        .language-switch button { background: none; border: none; color: rgba(255, 255, 255, 0.5); cursor: pointer; font-family: var(--font-stack); font-size: 13px; font-weight: 500; padding: 0; transition: color 0.2s; }
         .language-switch button.active { color: var(--text-main); font-weight: 700; }
         .language-switch button:hover { color: var(--primary); }
+        .language-switch a.global-link { color: rgba(255, 255, 255, 0.4); font-weight: 500; text-decoration: none; transition: color 0.2s; }
+        .language-switch a.global-link:hover { color: var(--primary); }
         .lang-sep { opacity: 0.3; }
         
         .btn-connect {
@@ -148,7 +150,7 @@
                 <span class="lang-sep">|</span>
                 <button id="lang-zh-btn" onclick="toggleLanguage('zh')">繁</button>
                 <span class="lang-sep">|</span>
-                <a href="global.html" id="lang-global-link" style="color: rgba(255,255,255,0.4); font-weight: 500; font-size: 13px; align-self: center;">Global</a>
+                <a href="global.html" class="global-link" id="lang-global-btn">Global</a>
             </div>
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
@@ -202,7 +204,7 @@
                     <a class="inline-btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">前往 Thirdweb 兌換 ↗</a>
                 </div>
 
-                <img class="step-guide-img" src="assets/how-to-buy/buy-nxc-thirdweb-swap.png" alt="Swap Guide Screenshot" onerror="this.style.display='none';">
+                <img class="step-guide-img" src="assets/how-to-buy/buy-nxc-thirdweb-swap.png" alt="Swap Guide Screenshot">
 
                 <div class="token-import-box">
                     <span class="step-number" style="color: var(--primary);">Token Import Tool</span>
@@ -225,7 +227,7 @@
                     </button>
                 </div>
 
-                <img class="step-guide-img" src="assets/how-to-buy/wallet-metamask-nxc-base.png" alt="MetaMask Guide Screenshot" style="max-w: 380px; margin-top: 15px;" onerror="this.style.display='none';">
+                <img class="step-guide-img" src="assets/how-to-buy/wallet-metamask-nxc-base.png" alt="MetaMask Guide Screenshot" style="max-w: 380px; margin-top: 15px;">
             </div>
         </div>
 
