@@ -37,10 +37,10 @@
         }
         a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
         
-        /* 語言顯示/隱藏控制 */
+        /* 語言隱藏樣式 */
         .lang-hidden { display: none !important; }
 
-        /* --- Header --- */
+        /* --- 1. Sticky Header --- */
         header {
             position: fixed; top: 0; left: 0; width: 100%; height: 70px;
             display: flex; align-items: center; justify-content: space-between;
@@ -69,10 +69,10 @@
             background: rgba(0, 255, 204, 0.05); box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
         }
         
-        /* --- Container --- */
+        /* --- Main Container --- */
         .container { max-width: 800px; margin: 0 auto; padding: 140px 20px 80px 20px; text-align: left; }
         
-        /* --- Titles --- */
+        /* --- Page Title --- */
         .page-title {
             font-size: 42px; font-weight: 800; text-align: center; margin-bottom: 10px;
             background: linear-gradient(120deg, #ffffff, #c299ff, #00ffcc);
@@ -80,7 +80,7 @@
         }
         .page-subtitle { font-size: 16px; color: var(--text-muted); text-align: center; margin-bottom: 50px; }
         
-        /* --- Step Cards --- */
+        /* --- Step Cards Layout --- */
         .steps-container { display: flex; flex-direction: column; gap: 30px; }
         .step-card { background: var(--glass); border: 1px solid var(--border); border-radius: 16px; padding: 35px; position: relative; transition: all 0.3s ease; }
         .step-card:hover { border-color: rgba(163, 112, 255, 0.3); box-shadow: 0 10px 30px rgba(163, 112, 255, 0.05); background: rgba(255, 255, 255, 0.04); }
@@ -90,7 +90,7 @@
         .step-desc code { background: rgba(255, 255, 255, 0.08); padding: 3px 8px; border-radius: 4px; font-family: monospace; color: var(--secondary); font-size: 14px; }
         .step-desc a { color: var(--secondary); text-decoration: underline; }
         
-        /* 視覺圖片樣式 */
+        /* 圖片引導樣式 */
         .step-guide-img { width: 100%; max-width: 550px; border-radius: 10px; margin-top: 20px; border: 1px solid var(--border); box-shadow: 0 0 20px rgba(0,255,204,0.05); display: block; }
         
         .inline-btn {
@@ -100,7 +100,7 @@
         }
         .inline-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,255,255,0.2); }
         
-        /* 手動匯入區域 */
+        /* 手動匯入與一鍵加代幣工具 */
         .token-import-box { margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border); }
         .mono-box { font-family: monospace; background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border); padding: 15px; border-radius: 8px; margin-top: 10px; font-size: 14px; line-height: 1.8; position: relative; }
         .copy-btn { position: absolute; right: 15px; top: 15px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-main); padding: 4px 10px; border-radius: 4px; font-size: 12px; cursor: pointer; font-family: var(--font-stack); }
@@ -143,7 +143,7 @@
                 <span class="lang-sep">|</span>
                 <button id="lang-zh-btn" onclick="toggleLanguage('zh')">繁</button>
                 <span class="lang-sep">|</span>
-                <span class="lang-sep" style="opacity: 0.3; cursor: pointer;" onclick="alert('Global mode with automated translation coming soon!')">Global</span>
+                <span class="lang-sep" style="opacity: 0.3;">Global</span>
             </div>
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
@@ -162,10 +162,12 @@
         <div class="steps-container">
             <div class="step-card">
                 <span class="step-number">Step 01</span>
+                
                 <div class="lang-item lang-en">
                     <h3 class="step-title">Create a Web3 Wallet</h3>
                     <p class="step-desc">Download and set up a secure crypto wallet such as MetaMask, Coinbase Wallet, or Trust Wallet. Make sure to securely back up your seed phrase and add the <strong>Base Network</strong> to your wallet networks.</p>
                 </div>
+                
                 <div class="lang-item lang-zh lang-hidden">
                     <h3 class="step-title">創建 Web3 加密錢包</h3>
                     <p class="step-desc">下載並設定一個安全的加密貨幣錢包（如 MetaMask、Coinbase Wallet 或 Trust Wallet）。請務必安全地備份您的助記詞，並在錢包網絡中新增 <strong>Base Network</strong>。</p>
@@ -174,10 +176,12 @@
 
             <div class="step-card">
                 <span class="step-number">Step 02</span>
+                
                 <div class="lang-item lang-en">
                     <h3 class="step-title">Deposit Ethereum (ETH) on Base</h3>
                     <p class="step-desc">Purchase Ethereum (ETH) from your preferred central exchange (like Coinbase, Binance, or Kraken) and withdraw it directly to your Web3 wallet address using the <strong>Base Network</strong>. Alternatively, you can bridge ETH from Ethereum mainnet to Base.</p>
                 </div>
+                
                 <div class="lang-item lang-zh lang-hidden">
                     <h3 class="step-title">充值或準備 Base 網絡的 ETH</h3>
                     <p class="step-desc">從您信任的中心化交易所（如 Binance、Coinbase 或 Kraken）購買以太坊（ETH），提現時網絡選擇 <strong>Base Network</strong> 並直接轉入您的錢包地址。或者，您亦可以使用官方跨鏈橋將以太坊主網的 ETH 跨鏈至 Base。</p>
@@ -186,18 +190,20 @@
 
             <div class="step-card">
                 <span class="step-number">Step 03</span>
+                
                 <div class="lang-item lang-en">
                     <h3 class="step-title">Swap ETH for NXC via Thirdweb</h3>
                     <p class="step-desc">Connect your wallet directly to our verified token pool. Input the official NeoX Coin contract address if prompted: <code id="nxc-contract">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>, enter the amount of ETH you want to swap, and confirm the transaction.</p>
                     <a class="inline-btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">Go to Thirdweb Swap ↗</a>
                 </div>
+                
                 <div class="lang-item lang-zh lang-hidden">
                     <h3 class="step-title">經 Thirdweb 將 ETH 兌換為 NXC</h3>
                     <p class="step-desc">將您的錢包直接連接到我們已驗證的代幣池。如果系統提示，請輸入官方唯一的 NeoX Coin 合約地址：<code id="nxc-contract-zh">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>，輸入您想兌換的 ETH 數量，然後確認交易。</p>
                     <a class="inline-btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">前往 Thirdweb 兌換 ↗</a>
                 </div>
 
-                <img class="step-guide-img" src="assets/how-to-buy/buy-nxc-thirdweb-swap.png" alt="Swap Guide Screenshot">
+                <img class="step-guide-img" src="assets/how-to-buy/buy-nxc-thirdweb-swap.png" alt="Swap Guide Screenshot" onerror="this.style.display='none';">
 
                 <div class="token-import-box">
                     <span class="step-number" style="color: var(--primary);">Token Import Tool</span>
@@ -220,7 +226,7 @@
                     </button>
                 </div>
 
-                <img class="step-guide-img" src="assets/how-to-buy/wallet-metamask-nxc-base.png" alt="MetaMask Guide Screenshot" style="max-w: 380px; margin-top: 15px;">
+                <img class="step-guide-img" src="assets/how-to-buy/wallet-metamask-nxc-base.png" alt="MetaMask Guide Screenshot" style="max-w: 380px; margin-top: 15px;" onerror="this.style.display='none';">
             </div>
         </div>
     </div>
@@ -240,7 +246,7 @@
     </footer>
 
     <script>
-        // 1. 全自動多語言無縫切換
+        // 1. 全自動雙語無縫切換控制腳本
         function toggleLanguage(lang) {
             document.querySelectorAll('.lang-item').forEach(el => el.classList.add('lang-hidden'));
             document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.remove('lang-hidden'));
@@ -256,7 +262,7 @@
             }
         }
 
-        // 2. 一鍵複製智能合約地址
+        // 2. 一鍵複製合約地址功能
         function copyContractAddress() {
             const contract = "0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B";
             navigator.clipboard.writeText(contract).then(() => {
@@ -266,7 +272,7 @@
             });
         }
 
-        // 3. Web3 自動加幣至錢包功能
+        // 3. Web3 快捷加幣腳本
         async function addNxcToMetaMask() {
             if (typeof window.ethereum !== 'undefined') {
                 try {
@@ -290,7 +296,7 @@
             }
         }
 
-        // 4. 原生錢包連接監聽腳本
+        // 4. 原生原封不動的錢包連接腳本（維持你原本的邏輯）
         const connectBtn = document.getElementById('connect-btn');
         async function checkConnection() {
             if (typeof window.ethereum !== 'undefined') {
