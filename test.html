@@ -24,57 +24,37 @@
     }
     /* --- 1. Sticky Header (Glassmorphism) --- */
     header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 50px;
-      background: rgba(7, 2, 20, 0.6);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      box-sizing: border-box;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Logo 在左，語言在右 */
+        padding: 0 20px;
+        background: rgba(0, 0, 0, 0.5); /* 半透明深色背景 */
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        box-sizing: border-box;
     }
 
-    /* 修改 Logo 樣式 */
+    /* 調整 Logo 為靜態定位，不再需要 absolute */
     .logo {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        width: 40px; /* 縮小尺寸 */
+        width: 40px;
         height: auto;
-        opacity: 0.7; /* 稍微透明，更有質感 */
+        opacity: 0.7;
         transition: opacity 0.2s;
-        z-index: 1001; /* 確保在最上層 */
     }
 
-    .logo:hover {
-        opacity: 1; /* 滑鼠移過時變亮 */
+    /* 語言選擇器也改為靜態定位 */
+    .language-switch {
+        font-size: 14px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 6px 12px;
     }
-    
-    .header-right { display: flex; align-items: center; gap: 20px; }
-
-    .language-switch{
-      position:absolute; top:20px; right:20px;
-      font-size:14px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(0,217,255,.35);
-      border-radius:10px;
-      padding:6px 10px;
-      box-shadow:0 0 14px rgba(0,217,255,.18);
-    }
-    .language-switch a{
-      color:#fff; text-decoration:none; margin:0 6px;
-    }
-    .language-switch a:hover{ color:#00d9ff; }
-
-    h1{ font-size:34px; margin:0 0 6px; }
-    p.lead{ color:#cfd7ff; margin:0 0 18px; line-height:1.6; }
-    
     .title{
       display:flex;
       align-items:center;
