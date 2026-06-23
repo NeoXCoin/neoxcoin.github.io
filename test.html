@@ -12,6 +12,7 @@
   <style>
     body {
         margin: 0;
+        padding-top: 80px;
         min-height: 100vh;
         /* 改為簡單的深色背景，移除背景圖片 */
         background-color: #050505; 
@@ -20,7 +21,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
     }
     /* --- 1. Sticky Header (Glassmorphism) --- */
     header {
@@ -49,12 +49,13 @@
 
     /* 語言選擇器也改為靜態定位 */
     .language-switch {
-        font-size: 14px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 10px;
-        padding: 6px 12px;
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex; gap: 6px;
     }
+    .language-switch a:hover { color: var(--text-main); }
+    .lang-sep { opacity: 0.3; }
+    
     .title{
       display:flex;
       align-items:center;
@@ -176,23 +177,21 @@
 
 <body>
     <header>
+      <header>
         <a href="index.html">
             <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
         </a>
-        
+    
         <div class="language-switch">
             <a href="add-to-wallet.html">EN</a> | 
             <a href="add-to-wallet-zh.html">繁</a> | 
             <a href="add-to-wallet-global.html">Global</a>
         </div>
     </header>
-
-  <h1 class="title">
-    <img src="https://neoxcoin.github.io/neox-emoji-128.png"
-         alt="NeoX Coin"
-         class="title-emoji" />
-    Add NXC Token to Wallet
-  </h1>
+    <h1 class="title">
+        <img src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" class="title-emoji" /> 
+        Add NXC Token to Wallet
+    </h1>
   <p class="lead">
     MetaMask supports <b>Auto-add</b> on this page.<br/>
     Trust Wallet users can add NXC <b>manually</b> using the details below.
