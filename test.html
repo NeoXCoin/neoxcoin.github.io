@@ -53,8 +53,23 @@
       color: #ffffff;
       display: flex; gap: 6px;
     }
-    .language-switch a:hover { color: var(--text-main); }
-    .lang-sep { opacity: 0.3; }
+
+    .language-switch a {
+        color: #ffffff;
+        text-decoration: none; /* 移除底線（如果需要的話） */
+        transition: opacity 0.2s;
+    }
+    
+    .language-switch a:hover {
+        color: #ffffff;
+        opacity: 0.7;
+    }
+
+    /* 如果中間的分隔線 「|」 也要變白 */
+    .lang-sep {
+        color: #ffffff;
+        opacity: 0.3;
+    }
     
     .title{
       display:flex;
