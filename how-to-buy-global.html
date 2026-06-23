@@ -37,11 +37,29 @@
         }
         a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
         
-        /* 隱藏 Google 翻譯預設的頂部突兀橫條與內建小部件，保持 UI 乾淨 */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        /* --- 🌟 引入首頁一模一樣的 Google Translate 樣式微調 🌟 --- */
         body { top: 0px !important; }
-        #google_translate_element { display: none !important; }
-        .skiptranslate { font-family: var(--font-stack) !important; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        .goog-logo-link { display: none !important; }
+        .trans-section { font-size: 13px; font-family: var(--font-stack); }
+        /* 讓翻譯下拉選單完美融合你的深色玻璃主題 */
+        .goog-te-gadget { color: transparent !important; font-size: 0 !important; }
+        .goog-te-gadget .goog-te-combo {
+            background: rgba(255, 255, 255, 0.05) !important;
+            color: var(--text-main) !important;
+            border: 1px solid var(--border) !important;
+            padding: 6px 12px !important;
+            border-radius: 20px !important;
+            font-family: var(--font-stack) !important;
+            font-size: 13px !important;
+            outline: none !important;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .goog-te-gadget .goog-te-combo:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
 
         /* --- Sticky Header --- */
         header {
@@ -57,10 +75,9 @@
         .nav-links a:hover { color: var(--primary); }
         .header-right { display: flex; align-items: center; gap: 20px; }
         
-        .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; align-items: center; }
+        .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 12px; align-items: center; }
         .language-switch a { color: rgba(255, 255, 255, 0.5); font-weight: 500; text-decoration: none; transition: color 0.2s; }
         .language-switch a:hover { color: var(--primary); }
-        .language-switch button.global-active { background: none; border: none; color: var(--secondary); font-family: var(--font-stack); font-size: 13px; font-weight: 700; cursor: pointer; padding: 0; text-shadow: 0 0 10px rgba(0,255,204,0.3); }
         .lang-sep { opacity: 0.3; }
         
         .btn-connect {
@@ -136,8 +153,6 @@
 </head>
 <body>
 
-    <div id="google_translate_element"></div>
-
     <header>
         <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
         <div class="nav-links">
@@ -153,7 +168,7 @@
                 <span class="lang-sep">|</span>
                 <a href="how-to-buy.html">繁</a>
                 <span class="lang-sep">|</span>
-                <button class="global-active" onclick="openGoogleTranslateMenu()">Global</button>
+                <div id="google_translate_element" style="display: inline-block; vertical-align: middle;"></div>
             </div>
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
@@ -230,19 +245,10 @@
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
+                // 採用與首頁一樣的簡單直板佈局，自動渲染原生下拉菜單
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                 autoDisplay: false
             }, 'google_translate_element');
-        }
-
-        function openGoogleTranslateMenu() {
-            // 模擬點擊內置的隱藏 Google 語言選單，優雅呼喚出原生翻譯浮窗
-            const translateWidget = document.querySelector('.goog-te-gadget-simple');
-            if (translateWidget) {
-                translateWidget.click();
-            } else {
-                alert("Translation engine is warming up, please click Global again in a second.");
-            }
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
