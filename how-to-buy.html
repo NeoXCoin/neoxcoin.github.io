@@ -6,9 +6,9 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>How to Buy NeoX Coin (NXC) - Global</title>
+    <title>How to Buy NeoX Coin (NXC)</title>
     <meta name="description" content="Simple step-by-step guide to buy NeoX Coin (NXC) on Base Network using MetaMask or other Web3 wallets." />
-    <link rel="canonical" href="https://neoxcoin.github.io/how-to-buy-global.html" />
+    <link rel="canonical" href="https://neoxcoin.github.io/how-to-buy.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -37,13 +37,10 @@
         }
         a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
         
-        /* 隱藏 Google 翻譯預設的頂部突兀橫條與內建小部件，保持 UI 乾淨 */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; }
-        #google_translate_element { display: none !important; }
-        .skiptranslate { font-family: var(--font-stack) !important; }
+        /* 語言隱藏樣式 */
+        .lang-hidden { display: none !important; }
 
-        /* --- Sticky Header --- */
+        /* --- 1. Sticky Header --- */
         header {
             position: fixed; top: 0; left: 0; width: 100%; height: 70px;
             display: flex; align-items: center; justify-content: space-between;
@@ -58,9 +55,11 @@
         .header-right { display: flex; align-items: center; gap: 20px; }
         
         .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; align-items: center; }
-        .language-switch a { color: rgba(255, 255, 255, 0.5); font-weight: 500; text-decoration: none; transition: color 0.2s; }
-        .language-switch a:hover { color: var(--primary); }
-        .language-switch button.global-active { background: none; border: none; color: var(--secondary); font-family: var(--font-stack); font-size: 13px; font-weight: 700; cursor: pointer; padding: 0; text-shadow: 0 0 10px rgba(0,255,204,0.3); }
+        .language-switch button { background: none; border: none; color: rgba(255, 255, 255, 0.5); cursor: pointer; font-family: var(--font-stack); font-size: 13px; font-weight: 500; padding: 0; transition: color 0.2s; }
+        .language-switch button.active { color: var(--text-main); font-weight: 700; }
+        .language-switch button:hover { color: var(--primary); }
+        .language-switch a.global-link { color: rgba(255, 255, 255, 0.4); font-weight: 500; text-decoration: none; transition: color 0.2s; }
+        .language-switch a.global-link:hover { color: var(--primary); }
         .lang-sep { opacity: 0.3; }
         
         .btn-connect {
@@ -136,8 +135,6 @@
 </head>
 <body>
 
-    <div id="google_translate_element"></div>
-
     <header>
         <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
         <div class="nav-links">
@@ -149,46 +146,76 @@
         </div>
         <div class="header-right">
             <div class="language-switch">
-                <a href="how-to-buy.html">EN</a>
+                <button id="lang-en-btn" class="active" onclick="toggleLanguage('en')">EN</button>
                 <span class="lang-sep">|</span>
-                <a href="how-to-buy.html">繁</a>
+                <button id="lang-zh-btn" onclick="toggleLanguage('zh')">繁</button>
                 <span class="lang-sep">|</span>
-                <button class="global-active" onclick="openGoogleTranslateMenu()">Global</button>
+                <a href="how-to-buy-global.html" class="global-link" id="lang-global-btn">Global</a>
             </div>
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
     </header>
 
     <div class="container">
-        <h1 class="page-title">How to Buy NeoX Coin</h1>
-        <p class="page-subtitle">Follow this simple 3-step guide to acquire NXC on the Base network.</p>
+        <h1 class="page-title">
+            <span class="lang-item lang-en">How to Buy NeoX Coin</span>
+            <span class="lang-item lang-zh lang-hidden">如何購買 NeoX Coin</span>
+        </h1>
+        <p class="page-subtitle">
+            <span class="lang-item lang-en">Follow this simple 3-step guide to acquire NXC on the Base network.</span>
+            <span class="lang-item lang-zh lang-hidden">只需跟隨以下簡單 3 個步驟，即可在 Base 網絡上輕鬆獲取您的 NXC。</span>
+        </p>
 
         <div class="steps-container">
             <div class="step-card">
                 <span class="step-number">Step 01</span>
-                <h3 class="step-title">Create a Web3 Wallet</h3>
-                <p class="step-desc">Download and set up a secure crypto wallet such as MetaMask, Coinbase Wallet, or Trust Wallet. Make sure to securely back up your seed phrase and add the <strong>Base Network</strong> to your wallet networks.</p>
+                <div class="lang-item lang-en">
+                    <h3 class="step-title">Create a Web3 Wallet</h3>
+                    <p class="step-desc">Download and set up a secure crypto wallet such as MetaMask, Coinbase Wallet, or Trust Wallet. Make sure to securely back up your seed phrase and add the <strong>Base Network</strong> to your wallet networks.</p>
+                </div>
+                <div class="lang-item lang-zh lang-hidden">
+                    <h3 class="step-title">創建 Web3 加密錢包</h3>
+                    <p class="step-desc">下載並設定一個安全的加密貨幣錢包（如 MetaMask、Coinbase Wallet 或 Trust Wallet）。請務必安全地備份您的助記詞，並在錢包網絡中新增 <strong>Base Network</strong>。</p>
+                </div>
             </div>
 
             <div class="step-card">
                 <span class="step-number">Step 02</span>
-                <h3 class="step-title">Deposit Ethereum (ETH) on Base</h3>
-                <p class="step-desc">Purchase Ethereum (ETH) from your preferred central exchange (like Coinbase, Binance, or Kraken) and withdraw it directly to your Web3 wallet address using the <strong>Base Network</strong>. Alternatively, you can bridge ETH from Ethereum mainnet to Base.</p>
+                <div class="lang-item lang-en">
+                    <h3 class="step-title">Deposit Ethereum (ETH) on Base</h3>
+                    <p class="step-desc">Purchase Ethereum (ETH) from your preferred central exchange (like Coinbase, Binance, or Kraken) and withdraw it directly to your Web3 wallet address using the <strong>Base Network</strong>. Alternatively, you can bridge ETH from Ethereum mainnet to Base.</p>
+                </div>
+                <div class="lang-item lang-zh lang-hidden">
+                    <h3 class="step-title">充值或準備 Base 網絡的 ETH</h3>
+                    <p class="step-desc">從您信任的中心化交易所（如 Binance、Coinbase 或 Kraken）購買以太坊（ETH），提現時網絡選擇 <strong>Base Network</strong> 並直接轉入您的錢包地址。或者，您亦可以使用官方跨鏈橋將以太坊主網的 ETH 跨鏈至 Base。</p>
+                </div>
             </div>
 
             <div class="step-card">
                 <span class="step-number">Step 03</span>
-                <h3 class="step-title">Swap ETH for NXC via Thirdweb</h3>
-                <p class="step-desc">Connect your wallet directly to our verified token pool. Input the official NeoX Coin contract address if prompted: <code class="notranslate">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>, enter the amount of ETH you want to swap, and confirm the transaction.</p>
-                <a class="inline-btn text-black font-semibold" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">Go to Thirdweb Swap ↗</a>
+                <div class="lang-item lang-en">
+                    <h3 class="step-title">Swap ETH for NXC via Thirdweb</h3>
+                    <p class="step-desc">Connect your wallet directly to our verified token pool. Input the official NeoX Coin contract address if prompted: <code id="nxc-contract">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>, enter the amount of ETH you want to swap, and confirm the transaction.</p>
+                    <a class="inline-btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">Go to Thirdweb Swap ↗</a>
+                </div>
+                <div class="lang-item lang-zh lang-hidden">
+                    <h3 class="step-title">經 Thirdweb 將 ETH 兌換為 NXC</h3>
+                    <p class="step-desc">將您的錢包直接連接到我們已驗證的代幣池。如果系統提示，請輸入官方唯一的 NeoX Coin 合約地址：<code id="nxc-contract-zh">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>，輸入您想兌換的 ETH 數量，然後確認交易。</p>
+                    <a class="inline-btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">前往 Thirdweb 兌換 ↗</a>
+                </div>
 
                 <img class="step-guide-img" src="assets/how-to-buy/buy-nxc-thirdweb-swap.png" alt="Swap Guide Screenshot">
 
                 <div class="token-import-box">
                     <span class="step-number" style="color: var(--primary);">Token Import Tool</span>
-                    <p class="step-desc" style="font-size: 14px;">If NXC does not appear automatically in your wallet after the swap, you can import it manually or use our automation shortcut below:</p>
+                    <div class="lang-item lang-en">
+                        <p class="step-desc" style="font-size: 14px;">If NXC does not appear automatically in your wallet after the swap, you can import it manually or use our automation shortcut below:</p>
+                    </div>
+                    <div class="lang-item lang-zh lang-hidden">
+                        <p class="step-desc" style="font-size: 14px;">如果兌換後錢包內未自動顯示 NXC，您可以手動複製資料匯入，或點擊下方快捷鍵自動新增：</p>
+                    </div>
                     
-                    <div class="mono-box notranslate">
+                    <div class="mono-box">
                         <button class="copy-btn" onclick="copyContractAddress()">Copy</button>
                         Contract: 0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B<br/>
                         Symbol: NXC<br/>
@@ -207,7 +234,8 @@
         <div class="back-home-container">
             <a href="index.html" class="btn-back-home">
                 <i class="fa-solid fa-arrow-left"></i>
-                <span>Back to Home</span>
+                <span class="lang-item lang-en">Back to Home</span>
+                <span class="lang-item lang-zh lang-hidden">返回首頁</span>
             </a>
         </div>
     </div>
@@ -226,29 +254,24 @@
         <div class="copyright">© 2026 NeoX. All rights reserved.</div>
     </footer>
 
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-
-        function openGoogleTranslateMenu() {
-            // 模擬點擊內置的隱藏 Google 語言選單，優雅呼喚出原生翻譯浮窗
-            const translateWidget = document.querySelector('.goog-te-gadget-simple');
-            if (translateWidget) {
-                translateWidget.click();
+    <script>
+        // 1. 全自動雙語無縫切換控制腳本
+        function toggleLanguage(lang) {
+            document.querySelectorAll('.lang-item').forEach(el => el.classList.add('lang-hidden'));
+            document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.remove('lang-hidden'));
+            
+            const btnEn = document.getElementById('lang-en-btn');
+            const btnZh = document.getElementById('lang-zh-btn');
+            if(lang === 'en') {
+                btnEn.classList.add('active');
+                btnZh.classList.remove('active');
             } else {
-                alert("Translation engine is warming up, please click Global again in a second.");
+                btnZh.classList.add('active');
+                btnEn.classList.remove('active');
             }
         }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <script>
-        // 一鍵複製功能
+        // 2. 一鍵複製合約地址功能
         function copyContractAddress() {
             const contract = "0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B";
             navigator.clipboard.writeText(contract).then(() => {
@@ -258,7 +281,7 @@
             });
         }
 
-        // MetaMask Web3 自動加幣
+        // 3. Web3 快捷加幣腳本
         async function addNxcToMetaMask() {
             if (typeof window.ethereum !== 'undefined') {
                 try {
@@ -282,7 +305,7 @@
             }
         }
 
-        // 原生錢包連接按鈕邏輯
+        // 4. 原生錢包連接腳本
         const connectBtn = document.getElementById('connect-btn');
         async function checkConnection() {
             if (typeof window.ethereum !== 'undefined') {
