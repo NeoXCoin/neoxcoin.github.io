@@ -14,6 +14,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <script>
+        function googleTranslateElementInit(){
+          new google.translate.TranslateElement({
+            pageLanguage: 'en', 
+            includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+            autoDisplay: false, 
+            multilanguagePage: true 
+          }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+
     <style>
         :root {
             --bg-dark: #03010a;
@@ -37,12 +49,10 @@
         }
         a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
         
-        /* --- 🌟 引入首頁一模一樣的 Google Translate 樣式微調 🌟 --- */
+        /* --- 🌟 Google Translate 下拉選單玻璃擬真美化 🌟 --- */
         body { top: 0px !important; }
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         .goog-logo-link { display: none !important; }
-        .trans-section { font-size: 13px; font-family: var(--font-stack); }
-        /* 讓翻譯下拉選單完美融合你的深色玻璃主題 */
         .goog-te-gadget { color: transparent !important; font-size: 0 !important; }
         .goog-te-gadget .goog-te-combo {
             background: rgba(255, 255, 255, 0.05) !important;
@@ -241,30 +251,14 @@
         <div class="copyright">© 2026 NeoX. All rights reserved.</div>
     </footer>
 
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                // 採用與首頁一樣的簡單直板佈局，自動渲染原生下拉菜單
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <script>
-        // 一鍵複製功能
         function copyContractAddress() {
             const contract = "0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B";
             navigator.clipboard.writeText(contract).then(() => {
                 alert("Contract address copied successfully!");
-            }).catch(err => {
-                console.error("Failed to copy text: ", err);
-            });
+            }).catch(err => { console.error(err); });
         }
 
-        // MetaMask Web3 自動加幣
         async function addNxcToMetaMask() {
             if (typeof window.ethereum !== 'undefined') {
                 try {
@@ -280,15 +274,12 @@
                             },
                         },
                     });
-                } catch (error) {
-                    console.error("Error adding token:", error);
-                }
+                } catch (error) { console.error(error); }
             } else {
                 alert("Please connect or unlock your MetaMask wallet extension first.");
             }
         }
 
-        // 原生錢包連接按鈕邏輯
         const connectBtn = document.getElementById('connect-btn');
         async function checkConnection() {
             if (typeof window.ethereum !== 'undefined') {
@@ -308,12 +299,8 @@
                     connectBtn.innerText = "Connecting...";
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     updateButton(accounts[0]);
-                } catch (error) {
-                    console.error("Wallet login error:", error);
-                    connectBtn.innerText = "Connect Wallet";
-                }
+                } catch (error) { connectBtn.innerText = "Connect Wallet"; }
             } else {
-                alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
                 window.open('https://metamask.io/download/', '_blank');
             }
         });
