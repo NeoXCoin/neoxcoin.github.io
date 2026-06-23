@@ -46,18 +46,14 @@
             text-align: center;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
-            /* 鎖死頂部位移 */
-            top: 0 !important;
-            position: static !important;
-            margin-top: 0 !important;
         }
+        a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
         
-        /* 強制封殺 Google 翻譯條 */
-        .goog-te-banner-frame.skiptranslate, #goog-gt-tt, .goog-te-balloon-frame { display: none !important; }
+        /* --- 🌟 Google Translate 下拉選單玻璃擬真美化 🌟 --- */
+        body { top: 0px !important; }
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
         .goog-logo-link { display: none !important; }
         .goog-te-gadget { color: transparent !important; font-size: 0 !important; }
-        
-        /* 美化選單 */
         .goog-te-gadget .goog-te-combo {
             background: rgba(255, 255, 255, 0.05) !important;
             color: var(--text-main) !important;
@@ -66,41 +62,123 @@
             border-radius: 20px !important;
             font-family: var(--font-stack) !important;
             font-size: 13px !important;
+            outline: none !important;
             cursor: pointer;
+            transition: all 0.2s;
+        }
+        .goog-te-gadget .goog-te-combo:hover {
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1) !important;
         }
 
-        header { position: fixed; top: 0; left: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 50px; background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000; }
-        .nav-logo { height: 32px; }
-        .nav-links { display: flex; gap: 30px; }
+        /* --- Sticky Header --- */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 50px; background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border); z-index: 1000; box-sizing: border-box;
+        }
+        .nav-logo { height: 32px; opacity: 0.9; }
+        .nav-logo:hover { opacity: 1; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
         .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
-        .btn-connect { font-size: 13px; padding: 8px 18px; border-radius: 999px; background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3); cursor: pointer; }
+        .nav-links a:hover { color: var(--primary); }
+        .header-right { display: flex; align-items: center; gap: 20px; }
         
+        .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 12px; align-items: center; }
+        .language-switch a { color: rgba(255, 255, 255, 0.5); font-weight: 500; text-decoration: none; transition: color 0.2s; }
+        .language-switch a:hover { color: var(--primary); }
+        .lang-sep { opacity: 0.3; }
+        
+        .btn-connect {
+            font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px;
+            background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3);
+            cursor: pointer; transition: all 0.2s;
+        }
+        .btn-connect:hover {
+            background: rgba(0, 255, 204, 0.05); box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+        }
+        
+        /* --- Main Container --- */
         .container { max-width: 800px; margin: 0 auto; padding: 140px 20px 40px 20px; text-align: left; }
-        .page-title { font-size: 42px; font-weight: 800; text-align: center; background: linear-gradient(120deg, #ffffff, #c299ff, #00ffcc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .step-card { background: var(--glass); border: 1px solid var(--border); border-radius: 16px; padding: 35px; margin-bottom: 30px; }
-        .step-number { font-size: 12px; font-weight: 700; color: var(--secondary); text-transform: uppercase; margin-bottom: 8px; display: block; }
-        .step-title { font-size: 22px; color: #ffffff; margin-bottom: 15px; }
-        .step-desc { font-size: 15px; color: var(--text-muted); line-height: 1.6; }
-        .step-guide-img { width: 100%; max-width: 550px; border-radius: 10px; margin-top: 20px; border: 1px solid var(--border); }
-        .mono-box { font-family: monospace; background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border); padding: 15px; border-radius: 8px; margin-top: 10px; position: relative; }
-        .copy-btn { position: absolute; right: 15px; top: 15px; background: rgba(255,255,255,0.1); border: none; color: white; border-radius: 4px; cursor: pointer; }
-        .btn-add-meta { margin-top: 15px; background: transparent; border: 1px solid var(--primary); color: var(--primary); padding: 8px 16px; border-radius: 6px; cursor: pointer; }
-        .btn-back-home { display: inline-block; margin-top: 30px; color: var(--text-muted); font-size: 14px; }
+        
+        /* --- Page Title --- */
+        .page-title {
+            font-size: 42px; font-weight: 800; text-align: center; margin-bottom: 10px;
+            background: linear-gradient(120deg, #ffffff, #c299ff, #00ffcc);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .page-subtitle { font-size: 16px; color: var(--text-muted); text-align: center; margin-bottom: 50px; }
+        
+        /* --- Step Cards Layout --- */
+        .steps-container { display: flex; flex-direction: column; gap: 30px; }
+        .step-card { background: var(--glass); border: 1px solid var(--border); border-radius: 16px; padding: 35px; position: relative; transition: all 0.3s ease; }
+        .step-card:hover { border-color: rgba(163, 112, 255, 0.3); box-shadow: 0 10px 30px rgba(163, 112, 255, 0.05); background: rgba(255, 255, 255, 0.04); }
+        .step-number { font-size: 12px; font-weight: 700; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; display: block; }
+        .step-title { font-size: 22px; font-weight: 700; margin: 0 0 15px 0; color: #ffffff; }
+        .step-desc { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin: 0; }
+        .step-desc code { background: rgba(255, 255, 255, 0.08); padding: 3px 8px; border-radius: 4px; font-family: monospace; color: var(--secondary); font-size: 14px; }
+        .step-desc a { color: var(--secondary); text-decoration: underline; }
+        
+        /* 圖片引導樣式 */
+        .step-guide-img { width: 100%; max-width: 550px; border-radius: 10px; margin-top: 20px; border: 1px solid var(--border); box-shadow: 0 0 20px rgba(0,255,204,0.05); display: block; }
+        
+        .inline-btn {
+            display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
+            color: #000; background: #fff; padding: 10px 20px; border-radius: 6px;
+            font-size: 14px; font-weight: 600; transition: all 0.2s;
+        }
+        .inline-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,255,255,0.2); }
+        
+        /* 手動匯入與一鍵加代幣工具 */
+        .token-import-box { margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border); }
+        .mono-box { font-family: monospace; background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border); padding: 15px; border-radius: 8px; margin-top: 10px; font-size: 14px; line-height: 1.8; position: relative; }
+        .copy-btn { position: absolute; right: 15px; top: 15px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-main); padding: 4px 10px; border-radius: 4px; font-size: 12px; cursor: pointer; font-family: var(--font-stack); }
+        .copy-btn:hover { background: rgba(255,255,255,0.1); color: var(--primary); }
+        .btn-add-meta { background: transparent; border: 1px solid rgba(163, 112, 255, 0.4); color: var(--primary); font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 6px; cursor: pointer; margin-top: 12px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; }
+        .btn-add-meta:hover { background: rgba(163, 112, 255, 0.05); box-shadow: 0 0 10px rgba(163, 112, 255, 0.1); }
+
+        /* --- Back to Home 按鈕樣式 --- */
+        .back-home-container { text-align: center; margin-top: 50px; margin-bottom: 20px; }
+        .btn-back-home { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--text-muted); padding: 10px 24px; border-radius: 999px; border: 1px solid var(--border); background: rgba(255,255,255,0.01); transition: all 0.2s ease; }
+        .btn-back-home:hover { color: var(--text-main); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); transform: translateX(-2px); }
+
+        /* --- Footer --- */
+        footer { width: 100%; border-top: 1px solid var(--border); padding: 40px 0; background: rgba(0,0,0,0.1); text-align: center; }
+        .social-icons { margin-bottom: 25px; }
+        .social-icons img { width: 22px; margin: 0 15px; opacity: 0.5; filter: brightness(0) invert(1); transition: all 0.2s ease; }
+        .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
+        .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+        .footer-links a { margin: 0 8px; }
+        .footer-links a:hover { color: var(--text-main); }
+        .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+        
+        @media (max-width: 900px) {
+            header { padding: 0 20px; }
+            .nav-links { display: none; }
+            .page-title { font-size: 32px; }
+            .step-card { padding: 25px; }
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png"></a>
+        <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
         <div class="nav-links">
             <a href="what-is-neox.html">What is NeoX?</a>
             <a href="how-to-buy.html">How to Buy?</a>
+            <a href="game.html">NeoX Game</a>
+            <a href="metaverse.html">Metaverse Exhibition</a>
+            <a href="nft-projects.html">NFT Projects</a>
         </div>
         <div class="header-right">
-            <div style="display: flex; gap: 10px; align-items: center;">
-                <a href="how-to-buy.html" style="color:white; font-size:13px;">EN</a>
-                <span style="opacity:0.3; color:white;">|</span>
-                <div id="google_translate_element"></div>
+            <div class="language-switch">
+                <a href="how-to-buy.html">EN</a>
+                <span class="lang-sep">|</span>
+                <a href="how-to-buy.html">繁</a>
+                <span class="lang-sep">|</span>
+                <div id="google_translate_element" style="display: inline-block; vertical-align: middle;"></div>
             </div>
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
@@ -108,44 +186,125 @@
 
     <div class="container">
         <h1 class="page-title">How to Buy NeoX Coin</h1>
-        <p class="page-subtitle">Follow this simple guide to acquire NXC.</p>
+        <p class="page-subtitle">Follow this simple 3-step guide to acquire NXC on the Base network.</p>
 
-        <div class="step-card">
-            <span class="step-number">Step 01</span>
-            <h3 class="step-title">Create a Web3 Wallet</h3>
-            <p class="step-desc">Download and set up a secure crypto wallet such as MetaMask. Add the <strong>Base Network</strong>.</p>
-        </div>
-
-        <div class="step-card">
-            <span class="step-number">Step 02</span>
-            <h3 class="step-title">Deposit Ethereum (ETH)</h3>
-            <p class="step-desc">Transfer ETH to your wallet on the <strong>Base Network</strong>.</p>
-        </div>
-
-        <div class="step-card">
-            <span class="step-number">Step 03</span>
-            <h3 class="step-title">Swap ETH for NXC</h3>
-            <p class="step-desc">Connect your wallet to Thirdweb to swap ETH for NXC.</p>
-            <div class="mono-box notranslate">
-                <button class="copy-btn" onclick="navigator.clipboard.writeText('0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B')">Copy</button>
-                0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B
+        <div class="steps-container">
+            <div class="step-card">
+                <span class="step-number">Step 01</span>
+                <h3 class="step-title">Create a Web3 Wallet</h3>
+                <p class="step-desc">Download and set up a secure crypto wallet such as MetaMask, Coinbase Wallet, or Trust Wallet. Make sure to securely back up your seed phrase and add the <strong>Base Network</strong> to your wallet networks.</p>
             </div>
-            <button class="btn-add-meta" onclick="addNxcToMetaMask()">Add NXC to MetaMask</button>
+
+            <div class="step-card">
+                <span class="step-number">Step 02</span>
+                <h3 class="step-title">Deposit Ethereum (ETH) on Base</h3>
+                <p class="step-desc">Purchase Ethereum (ETH) from your preferred central exchange (like Coinbase, Binance, or Kraken) and withdraw it directly to your Web3 wallet address using the <strong>Base Network</strong>. Alternatively, you can bridge ETH from Ethereum mainnet to Base.</p>
+            </div>
+
+            <div class="step-card">
+                <span class="step-number">Step 03</span>
+                <h3 class="step-title">Swap ETH for NXC via Thirdweb</h3>
+                <p class="step-desc">Connect your wallet directly to our verified token pool. Input the official NeoX Coin contract address if prompted: <code class="notranslate">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>, enter the amount of ETH you want to swap, and confirm the transaction.</p>
+                <a class="inline-btn text-black font-semibold" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">Go to Thirdweb Swap ↗</a>
+
+                <img class="step-guide-img" src="assets/how-to-buy/buy-nxc-thirdweb-swap.png" alt="Swap Guide Screenshot">
+
+                <div class="token-import-box">
+                    <span class="step-number" style="color: var(--primary);">Token Import Tool</span>
+                    <p class="step-desc" style="font-size: 14px;">If NXC does not appear automatically in your wallet after the swap, you can import it manually or use our automation shortcut below:</p>
+                    
+                    <div class="mono-box notranslate">
+                        <button class="copy-btn" onclick="copyContractAddress()">Copy</button>
+                        Contract: 0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B<br/>
+                        Symbol: NXC<br/>
+                        Decimals: 18
+                    </div>
+
+                    <button class="btn-add-meta" onclick="addNxcToMetaMask()">
+                        <i class="fa-solid fa-plus-circle"></i> Add NXC to MetaMask
+                    </button>
+                </div>
+
+                <img class="step-guide-img" src="assets/how-to-buy/wallet-metamask-nxc-base.png" alt="MetaMask Guide Screenshot" style="max-w: 380px; margin-top: 15px;">
+            </div>
         </div>
 
-        <div style="text-align:center;">
-            <a href="index.html" class="btn-back-home"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+        <div class="back-home-container">
+            <a href="index.html" class="btn-back-home">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back to Home</span>
+            </a>
         </div>
     </div>
 
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+            <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+            <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+        </div>
+        <div class="footer-links">
+            <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
+        </div>
+        <div class="copyright">© 2026 NeoX. All rights reserved.</div>
+    </footer>
+
     <script>
-        async function addNxcToMetaMask() {
-            window.ethereum.request({ method: 'wallet_watchAsset', params: { type: 'ERC20', options: { address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', symbol: 'NXC', decimals: 18 } } });
+        function copyContractAddress() {
+            const contract = "0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B";
+            navigator.clipboard.writeText(contract).then(() => {
+                alert("Contract address copied successfully!");
+            }).catch(err => { console.error(err); });
         }
-        document.getElementById('connect-btn').addEventListener('click', async () => {
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            document.getElementById('connect-btn').innerText = accounts[0].substring(0,6) + "...";
+
+        async function addNxcToMetaMask() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    await window.ethereum.request({
+                        method: 'wallet_watchAsset',
+                        params: {
+                            type: 'ERC20',
+                            options: {
+                                address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B',
+                                symbol: 'NXC',
+                                decimals: 18,
+                                image: 'https://neoxcoin.github.io/XNXC.png', 
+                            },
+                        },
+                    });
+                } catch (error) { console.error(error); }
+            } else {
+                alert("Please connect or unlock your MetaMask wallet extension first.");
+            }
+        }
+
+        const connectBtn = document.getElementById('connect-btn');
+        async function checkConnection() {
+            if (typeof window.ethereum !== 'undefined') {
+                const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                if (accounts.length > 0) { updateButton(accounts[0]); }
+            }
+        }
+        function updateButton(address) {
+            const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+            connectBtn.innerText = shortAddress;
+            connectBtn.style.color = "#00ffcc";
+            connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+        }
+        connectBtn.addEventListener('click', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    connectBtn.innerText = "Connecting...";
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    updateButton(accounts[0]);
+                } catch (error) { connectBtn.innerText = "Connect Wallet"; }
+            } else {
+                window.open('https://metamask.io/download/', '_blank');
+            }
         });
+        window.addEventListener('DOMContentLoaded', checkConnection);
     </script>
 </body>
 </html>
