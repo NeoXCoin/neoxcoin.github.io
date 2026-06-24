@@ -17,6 +17,7 @@
         }
         body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: #fff; text-align: center; padding-top: 100px; padding-bottom: 50px; }
         
+        /* Header */
         header { position: fixed; top: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 50px; background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); box-sizing: border-box; z-index: 1000; }
         .nav-logo { height: 32px; }
         .header-right { display: flex; align-items: center; gap: 20px; }
@@ -24,23 +25,27 @@
         .lang-switch a { color: rgba(255,255,255,0.7); text-decoration: none; }
         .btn-connect { padding: 8px 18px; border-radius: 999px; background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3); cursor: pointer; font-family: inherit; font-weight: 600; }
 
+        /* Container */
         .container { max-width: 500px; margin: 0 auto; background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 20px; backdrop-filter: blur(15px); }
         .title-box { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 25px; }
         .title-logo { width: 45px; height: 45px; }
         h1 { font-size: 28px; margin: 0; background: linear-gradient(120deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .btn-main { display: block; width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 12px; border: 1px solid rgba(163, 112, 255, 0.5); background: linear-gradient(135deg, var(--primary), #6366f1); color: white; font-weight: 700; cursor: pointer; font-size: 15px; transition: 0.3s;
-         animation: btnShimmer 3s linear infinite; }
-        .btn-main:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(163, 112, 255, 0.4);}
-
-        /* 新增動畫效果 */
-        @keyframes btnShimmer {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+        
+        .btn-main { display: block; width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 12px; border: none; background: linear-gradient(135deg, var(--primary), #6366f1); color: white; font-weight: 700; cursor: pointer; font-size: 15px; }
+        
         .panel { text-align: left; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-top: 20px; }
-        .mrow { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
-        .copy-btn { background: none; border: 1px solid var(--secondary); color: var(--secondary); padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 11px; margin-left: 10px; }
+        .mrow { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+        .copy-btn { background: none; border: 1px solid var(--secondary); color: var(--secondary); padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 11px; }
+        
         .back-link { display: block; margin-top: 30px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; }
+
+        .mobile-only { display: none; }
+        .desktop-only { display: inline; }
+
+        @media (max-width: 500px) {
+            .mobile-only { display: inline; }
+            .desktop-only { display: none; }
+    
     </style>
 </head>
 <body>
@@ -63,19 +68,18 @@
         
         <button class="btn-main" onclick="addNxc()">自動加入 MetaMask</button>
         
-        <p style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 20px;">
+        <p style="font-size: 14px; color: rgba(255,255,255,0.6);">
             MetaMask 支援自動加入。其他錢包請使用下方資料手動輸入：
         </p>
 
         <div class="panel">
             <div class="mrow"><span>網絡：</span> <span>Base</span></div>
             <div class="mrow">
-                <span>合約地址：</span>
-                <div>
-                    <span id="addr" style="font-family: monospace; font-size: 13px;">0x9C17...2B40B</span>
-                    <button class="copy-btn" onclick="copyAddr()">複製</button>
-                </div>
-            </div>
+               <span>合約地址：</span>
+               <div style="display: flex; align-items: center; gap: 5px;">
+                   <span id="addr" style="font-family: monospace; font-size: 13px;">0x9C17...2B40B</span>
+                   <button class="copy-btn" onclick="copyAddr()">複製</button>
+               </div>
             <div class="mrow"><span>代幣符號：</span> <span>NXC</span></div>
             <div class="mrow"><span>小數位：</span> <span>18</span></div>
         </div>
@@ -86,16 +90,14 @@
     <script>
         document.getElementById('connect-btn').addEventListener('click', async () => {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            document.getElementById('connect-btn').innerText = accounts[0].substring(0,6) + "..." + accounts[0].substring(accounts[0].length - 4);
+            document.getElementById('connect-btn').innerText = accounts[0].substring(0,6) + "...";
         });
 
         async function addNxc() {
-            try {
-                await window.ethereum.request({ 
-                    method: 'wallet_watchAsset', 
-                    params: { type: 'ERC20', options: { address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', symbol: 'NXC', decimals: 18, image: 'https://neoxcoin.github.io/XNXC.png' } } 
-                });
-            } catch(e) { alert("請在 MetaMask 瀏覽器中開啟"); }
+            await window.ethereum.request({ 
+                method: 'wallet_watchAsset', 
+                params: { type: 'ERC20', options: { address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', symbol: 'NXC', decimals: 18, image: 'https://neoxcoin.github.io/XNXC.png' } } 
+            });
         }
 
         function copyAddr() {
