@@ -35,6 +35,32 @@
 
     a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
 
+    /* --- 1. Sticky Header (Glassmorphism) --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
+    } 
+
+    /* 將原本的 h1 樣式修改或添加以下內容 */
+    h1.tagline {
+        margin-top: 100px; /* 根據您的 header 高度調整，建議大於 header 的 70px */
+        font-size: 32px;
+        margin-bottom: 10px;
+        color: #00d9ff;
+    }
+
     .logo {
       position: absolute;
       top: 20px;
