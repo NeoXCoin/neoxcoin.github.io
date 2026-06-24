@@ -3,97 +3,118 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Add NXC to Wallet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Explore the NeoX NFT collections, including NeoX Cosmic Visions, Genesis Series, Van Gogh Visions, Abstract Realms, and Colorful Shan Shui." />
+    <title>NFT Collections - NeoX</title>
+    
     <style>
         :root {
-            --bg-dark: #03010a;
-            --text-main: #ffffff;
-            --primary: #a370ff;
-            --secondary: #00ffcc;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
+            --safe-top: max(14px, env(safe-area-inset-top));
         }
-        body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: #fff; text-align: center; padding-top: 100px; padding-bottom: 50px; }
-        
-        /* Header */
-        header { position: fixed; top: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 50px; background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); box-sizing: border-box; z-index: 1000; }
-        .nav-logo { height: 32px; }
-        .header-right { display: flex; align-items: center; gap: 20px; }
-        .lang-switch { font-size: 13px; color: rgba(255,255,255,0.7); }
-        .lang-switch a { color: rgba(255,255,255,0.7); text-decoration: none; }
-        .btn-connect { padding: 8px 18px; border-radius: 999px; background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3); cursor: pointer; font-family: inherit; font-weight: 600; }
 
-        /* Container */
-        .container { max-width: 500px; margin: 0 auto; background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 20px; backdrop-filter: blur(15px); }
-        .title-box { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 25px; }
-        .title-logo { width: 45px; height: 45px; }
-        h1 { font-size: 28px; margin: 0; background: linear-gradient(120deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        .btn-main { display: block; width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 12px; border: none; background: linear-gradient(135deg, var(--primary), #6366f1); color: white; font-weight: 700; cursor: pointer; font-size: 15px; }
-        
-        .panel { text-align: left; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-top: 20px; }
-        .mrow { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
-        .copy-btn { background: none; border: 1px solid var(--secondary); color: var(--secondary); padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 11px; }
-        
-        .back-link { display: block; margin-top: 30px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; }
+        body {
+            margin: 0;
+            background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+            background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+            font-family: sans-serif;
+            color: #ffffff; /* 統一改為白色 */
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: #ffffff; transition: all 0.2s ease; }
+
+        /* Sticky Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            background: rgba(7, 2, 20, 0.9); /* 加深背景 */
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid #333;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        /* 確保內容不被 Header 擋住 */
+        .content-wrapper { margin-top: 100px; }
+
+        h1.tagline {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .nft-series {
+            max-width: 880px;
+            margin: 0 auto 40px;
+            background: rgba(255, 255, 255, 0.06);
+            padding: 30px 24px;
+            border-radius: 16px;
+            text-align: left;
+            color: #ffffff;
+        }
+
+        .nft-series h3 { color: #ffffff; margin-top: 0; }
+        .nft-series video, .nft-series img { max-width: 240px; margin: 16px auto; display: block; border-radius: 8px; }
+
+        .btn {
+            background: #0a0a0a;
+            border: 2px solid #00d9ff;
+            color: #00d9ff;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .footer { margin-top: 60px; padding-bottom: 40px; font-size: 13px; color: rgba(255, 255, 255, 0.6); }
+
+        /* Google Translate 樣式 */
+        .translate-wrap { position: absolute; top: var(--safe-top); right: 14px; z-index: 10000; }
+        .logo { position: absolute; top: var(--safe-top); left: 14px; width: 60px; z-index: 10000; }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png"></a>
-        <div class="header-right">
-            <div class="lang-switch">
-                <a href="test.html" style="color:#fff">EN</a> | <a href="test-zh.html">繁</a> | <a href="test-global.html">Global</a>
-            </div>
-            <button class="btn-connect" id="connect-btn">Connect Wallet</button>
-        </div>
+        <a href="index-global.html"><img src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo" style="width: 40px;" /></a>
+        <div id="google_translate_element"></div>
     </header>
 
-    <div class="container">
-        <div class="title-box">
-            <img src="https://neoxcoin.github.io/XNXC.png" class="title-logo">
-            <h1>Add NXC Token</h1>
-        </div>
-        
-        <button class="btn-main" onclick="addNxc()">Add NXC to MetaMask</button>
-        
-        <p style="font-size: 14px; color: rgba(255,255,255,0.6);">
-            MetaMask supports auto-add. For other wallets, use the details below:
-        </p>
+    <div class="content-wrapper">
+        <h1 class="tagline">NeoX NFT Projects (Global)</h1>
+        <p class="subtagline">Explore collections on OpenSea</p>
 
-        <div class="panel">
-            <div class="mrow"><span>Network:</span> <span>Base</span></div>
-            <div class="mrow">
-                <span>Contract:</span> 
-                <span id="addr" style="font-family: monospace;">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span> 
-                <button class="copy-btn" onclick="copyAddr()">Copy</button>
-            </div>
-            <div class="mrow"><span>Symbol:</span> <span>NXC</span></div>
-            <div class="mrow"><span>Decimals:</span> <span>18</span></div>
+        <div class="nft-series">
+            <h3>NeoX Colorful Shan Shui</h3>
+            <p>Reimagining traditional landscape painting through vibrant abstract colors.</p>
+            <a href="https://opensea.io/collection/neox-colorful-shan-shui" target="_blank" style="color:#00d9ff;">View on OpenSea</a>
         </div>
 
-        <a href="index.html" class="back-link">← Back to Home</a>
+        <div class="nft-series">
+            <h3>NeoX Cosmic Visions</h3>
+            <p>Abstract cosmic art illustrating luminous waves and the harmony of the universe.</p>
+            <a href="https://opensea.io/collection/neox-cosmic-visions" target="_blank" style="color:#00d9ff;">View on OpenSea</a>
+        </div>
+        
+        <a class="btn" href="index-global.html">← Back to Home</a>
     </div>
 
+    <div class="footer">
+        © 2025 NeoX. All rights reserved. | <a href="disclaimer-global.html">Disclaimer</a>
+    </div>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
     <script>
-        document.getElementById('connect-btn').addEventListener('click', async () => {
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            document.getElementById('connect-btn').innerText = accounts[0].substring(0,6) + "...";
-        });
-
-        async function addNxc() {
-            await window.ethereum.request({ 
-                method: 'wallet_watchAsset', 
-                params: { type: 'ERC20', options: { address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B', symbol: 'NXC', decimals: 18, image: 'https://neoxcoin.github.io/XNXC.png' } } 
-            });
-        }
-
-        function copyAddr() {
-            navigator.clipboard.writeText("0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B");
-            alert("Address copied!");
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
         }
     </script>
 </body>
