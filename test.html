@@ -1,51 +1,311 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>新增 NXC 到錢包</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-dark: #03010a;
-            --primary: #a370ff;
-            --secondary: #00ffcc;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-        }
-        body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: #fff; text-align: center; padding-top: 100px; }
-        header { position: fixed; top: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 50px; background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); box-sizing: border-box; z-index: 1000; }
-        .logo { height: 32px; }
-        .btn-connect { padding: 8px 20px; border-radius: 20px; background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3); cursor: pointer; font-family: inherit; font-weight: 600; }
-        
-        .container { max-width: 500px; margin: 0 auto; background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 20px; backdrop-filter: blur(15px); }
-        h1 { font-size: 28px; margin-bottom: 20px; }
-        .add-btn { display: block; width: 100%; padding: 15px; margin: 20px 0; border-radius: 12px; border: none; background: linear-gradient(135deg, #a370ff, #6366f1); color: white; font-weight: 700; cursor: pointer; font-size: 16px; transition: 0.3s; }
-        .add-btn:hover { transform: scale(1.02); }
-        
-        .panel { margin-top: 30px; text-align: left; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; border: 1px solid var(--border); }
-        .mrow { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
-        .copy-btn { background: none; border: 1px solid var(--secondary); color: var(--secondary); padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 11px; }
-    </style>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add NXC Token to Wallet</title>
+
+  <style>
+    body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: #fff; text-align: center; padding-top: 100px; }
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+    /* --- 1. Sticky Header (Glassmorphism) --- */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Logo 在左，語言在右 */
+        padding: 0 50px;
+        background: rgba(7, 2, 20, 0.6); /* 半透明深色背景 */
+        backdrop-filter: blur(15px);
+        z-index: 1000;
+        box-sizing: border-box;
+    }
+
+    /* 調整 Logo 為靜態定位，不再需要 absolute */
+    .logo {
+        width: 40px;
+        height: auto;
+        opacity: 0.7;
+        transition: opacity 0.2s;
+    }
+
+    /* 語言選擇器也改為靜態定位 */
+    .language-switch {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex; gap: 6px;
+    }
+    .language-switch a:hover { color: var(--text-main); }
+    .lang-sep { opacity: 0.3; }
+    
+    .title{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+    }
+
+    .title-emoji{
+      width:42px;
+      height:42px;
+      vertical-align:middle;
+      margin-top:-2px;
+      filter: drop-shadow(0 0 6px rgba(120,160,255,.45));
+    }
+
+    .btn{
+      background:#0d6efd; border:none; color:#fff;
+      padding:14px 24px; border-radius:10px;
+      font-size:16px; margin:10px; cursor:pointer;
+      display:inline-block; text-decoration:none;
+      box-shadow:0 6px 18px rgba(13,110,253,.25);
+      transition:filter .2s ease, transform .2s ease;
+    }
+    .btn:hover{ filter:brightness(1.06); transform:translateY(-1px); }
+    .btn.secondary{ background:#1f2a44; box-shadow:0 6px 18px rgba(255,255,255,.08); }
+    .btn[disabled]{ opacity:.6; cursor:not-allowed; transform:none; }
+
+    .hint{ font-size:13px; color:#9fb0ff; margin-top:12px; min-height:18px; }
+
+    /* ===== Manual add (Global-style) ===== */
+    .panel {
+        max-width: 600px;
+        background: rgba(255, 255, 255, 0.03); /* 極淡的透明背景 */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 30px;
+    }
+    .panel h2{
+      font-size:16px;
+      margin:0 0 14px;
+      color:#fff;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+
+    .mrow{
+      display:grid;
+      grid-template-columns:130px 1fr 84px;
+      gap:12px;
+      align-items:center;
+      padding:10px 0;
+    }
+    .mrow + .mrow{
+      border-top:1px solid rgba(255,255,255,.10);
+    }
+
+    .mlabel{
+      width:auto;
+      color:#cfd7ff;
+      font-size:13px;
+    }
+
+    .mvalue {
+       background: #111; /* 深色輸入框背景 */
+       border: 1px solid #333;
+    }
+
+    /* Contract is long; keep it usable on mobile */
+    .mvalue.long{
+      white-space:nowrap;
+      overflow:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+
+    .copy{
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06);
+      color:#fff;
+      padding:10px 12px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:13px;
+      transition:background .2s ease, transform .05s ease;
+    }
+    .copy:hover{ background:rgba(255,255,255,.12); }
+    .copy:active{ transform:scale(.98); }
+
+    .note{
+      font-size:12px;
+      color:rgba(255,255,255,.75);
+      margin-top:12px;
+      line-height:1.6;
+    }
+
+    .back{
+      margin-top:26px; color:#ddd; text-decoration:none; display:inline-block;
+      opacity:.9;
+    }
+    .back:hover{ text-decoration:underline; opacity:1; }
+
+    .footer{
+      margin-top:56px; font-size:13px; color:rgba(255,255,255,.55);
+    }
+    .footer a{ color:#aaa; text-decoration:none; }
+    .footer a:hover{ text-decoration:underline; }
+
+   
+     @media (max-width: 900px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .tagline { font-size: 40px; }
+      .ecosystem-grid { grid-template-columns: 1fr; gap: 15px; }
+    }
+  </style>
 </head>
+
 <body>
     <header>
         <a href="index.html"><img class="logo" src="https://neoxcoin.github.io/XNXC.png"></a>
         <button class="btn-connect" id="connect-btn">Connect Wallet</button>
-    </header>
-
-    <div class="container">
-        <h1>Add NXC Token</h1>
-        <button class="add-btn" onclick="addNxc()">Add NXC to MetaMask</button>
-        
-        <div class="panel">
-            <div class="mrow"><span>Contract:</span> <span id="addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span> <button class="copy-btn" onclick="copyAddr()">Copy</button></div>
-            <div class="mrow"><span>Symbol:</span> <span>NXC</span></div>
+    
+        <div class="language-switch">
+            <a href="add-to-wallet.html">EN</a> | 
+            <a href="add-to-wallet-zh.html">繁</a> | 
+            <a href="add-to-wallet-global.html">Global</a>
         </div>
+    </header>
+    <h1 class="title">
+        <img src="https://neoxcoin.github.io/neox-emoji-128.png" alt="NeoX Coin" class="title-emoji" /> 
+        Add NXC Token to Wallet
+    </h1>
+  <p class="lead">
+    MetaMask supports <b>Auto-add</b> on this page.<br/>
+    Trust Wallet users can add NXC <b>manually</b> using the details below.
+  </p>
+
+  <!-- Auto add (MetaMask) -->
+  <button id="autoBtn" class="btn" onclick="queueAddToken()">Add NXC Token (Auto)</button>
+
+  <!-- Open in MetaMask -->
+  <a class="btn secondary" href="https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet.html">
+    Open in MetaMask App
+  </a>
+
+  <div id="status" class="hint"></div>
+
+  <!-- Manual info panel (Trust Wallet / others) -->
+  <div class="panel">
+    <h2>Manual add (Trust Wallet, Coinbase Wallet &amp; other wallets)</h2>
+
+    <div class="mrow">
+      <div class="mlabel">Network</div>
+      <div class="mvalue" id="net">Base</div>
+      <button class="copy" onclick="copyText('net')">Copy</button>
     </div>
 
-    <script>
+    <div class="mrow">
+      <div class="mlabel">Contract</div>
+      <div class="mvalue long" id="addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</div>
+      <button class="copy" onclick="copyText('addr')">Copy</button>
+    </div>
+
+    <div class="mrow">
+      <div class="mlabel">Symbol</div>
+      <div class="mvalue" id="sym">NXC</div>
+      <button class="copy" onclick="copyText('sym')">Copy</button>
+    </div>
+
+    <div class="mrow">
+      <div class="mlabel">Decimals</div>
+      <div class="mvalue" id="dec">18</div>
+      <button class="copy" onclick="copyText('dec')">Copy</button>
+    </div>
+
+    <div class="note">
+      If the token is added but the logo does not appear yet, this is normal.
+      Some wallets display logos only after official listing or verification.
+    </div>
+  </div>
+
+  <a class="back" href="index.html">← Back to Home</a>
+
+  <div class="footer">
+    © 2025 NeoX. All rights reserved. | <a href="disclaimer-en.html">Disclaimer</a>
+  </div>
+
+  <script>
+    // ---- Config ----
+    const TOKEN = {
+      address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B',
+      symbol: 'NXC',
+      decimals: 18,
+      image: 'https://neoxcoin.github.io/neox-emoji-128.png'
+    };
+
+    const statusEl = document.getElementById('status');
+    const autoBtn  = document.getElementById('autoBtn');
+
+    function inMetaMaskInApp(){
+      return /MetaMaskMobile/i.test(navigator.userAgent);
+    }
+
+    function queueAddToken(){
+      if (!confirm('Proceed to add NXC to MetaMask?')) return;
+
+      if (typeof window.ethereum === 'undefined' && !inMetaMaskInApp()){
+        window.location.href = 'https://metamask.app.link/dapp/neoxcoin.github.io/add-to-wallet.html';
+        return;
+      }
+
+      autoBtn.disabled = true;
+      let secs = 2;
+      statusEl.textContent = `Preparing… ${secs}s`;
+
+      const t = setInterval(()=>{
+        secs--;
+        statusEl.textContent = `Preparing… ${secs}s`;
+        if (secs <= 0){
+          clearInterval(t);
+          addToken();
+        }
+      }, 1000);
+    }
+
+    async function addToken(){
+      try{
+        if (!window.ethereum) throw new Error('MetaMask not detected');
+
+        const ok = await window.ethereum.request({
+          method: 'wallet_watchAsset',
+          params: { type: 'ERC20', options: TOKEN }
+        });
+
+        statusEl.textContent = ok ? 'NXC added successfully.' : 'User cancelled in MetaMask.';
+      }catch(e){
+        console.error(e);
+        statusEl.textContent = 'MetaMask not available. Use “Open in MetaMask App” or add manually (Trust Wallet).';
+      }finally{
+        autoBtn.disabled = false;
+      }
+    }
+
+    async function copyText(id){
+      const el = document.getElementById(id);
+      const text = el ? el.textContent.trim() : '';
+      try{
+        await navigator.clipboard.writeText(text);
+        statusEl.textContent = 'Copied.';
+        setTimeout(()=>{ statusEl.textContent = ''; }, 1200);
+      }catch(e){
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta);
+        ta.select(); document.execCommand('copy');
+        document.body.removeChild(ta);
+        statusEl.textContent = 'Copied.';
+        setTimeout(()=>{ statusEl.textContent = ''; }, 1200);
+      }
+
+        <script>
         // 1. 連接錢包
         document.getElementById('connect-btn').addEventListener('click', async () => {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
