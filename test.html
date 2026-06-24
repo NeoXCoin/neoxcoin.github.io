@@ -10,7 +10,19 @@
   <title>Add NXC Token to Wallet</title>
 
   <style>
-    body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: #fff; text-align: center; padding-top: 100px; }
+    body {
+        margin: 0;
+        padding-top: 80px;
+        min-height: 100vh;
+        /* 改為簡單的深色背景，移除背景圖片 */
+        background-color: #050505; 
+        color: #ffffff;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
 
     /* --- 1. Sticky Header (Glassmorphism) --- */
@@ -46,6 +58,23 @@
     }
     .language-switch a:hover { color: var(--text-main); }
     .lang-sep { opacity: 0.3; }
+
+    /* Connect Wallet Button */
+    .btn-connect {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+    }
     
     .title{
       display:flex;
@@ -165,8 +194,9 @@
 
 <body>
     <header>
-        <a href="index.html"><img class="logo" src="https://neoxcoin.github.io/XNXC.png"></a>
-        <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+        <a href="index.html">
+            <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
+        </a>
     
         <div class="language-switch">
             <a href="add-to-wallet.html">EN</a> | 
@@ -305,8 +335,7 @@
         setTimeout(()=>{ statusEl.textContent = ''; }, 1200);
       }
 
-        <script>
-        // 1. 連接錢包
+      // 1. 連接錢包
         document.getElementById('connect-btn').addEventListener('click', async () => {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             document.getElementById('connect-btn').innerText = accounts[0].substring(0,6) + "...";
@@ -335,6 +364,7 @@
             navigator.clipboard.writeText("0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B");
             alert("地址已複製！");
         }
-    </script>
+    }
+  </script>
 </body>
 </html>
