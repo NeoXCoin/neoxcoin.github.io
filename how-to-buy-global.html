@@ -73,10 +73,11 @@
         .nav-links a:hover { color: var(--primary); }
         .header-right { display: flex; align-items: center; gap: 20px; }
         
-        .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 12px; align-items: center; }
-        .language-switch a { color: rgba(255, 255, 255, 0.5); font-weight: 500; text-decoration: none; transition: color 0.2s; }
-        .language-switch a:hover { color: var(--primary); }
-        .lang-sep { opacity: 0.3; }
+        /* 翻譯選單藥丸樣式 */
+        #google_translate_element { display: inline-block; padding: 2px 6px; border-radius: 20px; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); }
+        #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
+        #google_translate_element .goog-te-gadget span { display: none !important; }
+        #google_translate_element select { background: transparent !important; color: #fff !important; border: none !important; font-size: 12px !important; padding: 4px 6px !important; outline: none !important; cursor: pointer; }
         
         .btn-connect {
             font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px;
