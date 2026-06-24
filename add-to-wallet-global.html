@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Add NXC to Wallet - Global</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <script>
-      function googleTranslateElementInit(){
-        new google.translate.TranslateElement({
-          pageLanguage: 'en', 
-          includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
-          autoDisplay: false, 
-          multilanguagePage: true 
-        }, 'google_translate_element');
-      }
-    </script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
     
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
+                autoDisplay: false,
+                multilanguagePage: true
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <style>
         :root {
             --bg-dark: #03010a;
@@ -29,33 +29,15 @@
         }
         body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: #fff; text-align: center; padding-top: 100px; padding-bottom: 50px; }
         
-        /* Header 修正：確保手機兩側對齊 */
         header { position: fixed; top: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 50px; background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); box-sizing: border-box; z-index: 1000; }
         .nav-logo { height: 32px; }
         
-        /* 右側區域 */
         .header-right { display: flex; align-items: center; gap: 15px; }
         
-        /* Custom Black Pill Styling for Google Widget */
-        #google_translate_element {
-          display: inline-block;
-          padding: 2px 6px;
-          border-radius: 20px;
-          background: rgba(0, 0, 0, 0.4);
-          border: 1px solid var(--border);
-        }
-        #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
-        #google_translate_element .goog-te-gadget span { display: none !important; } /* 隱藏 Google 提供 字眼 */
-        #google_translate_element select {
-          background: transparent !important;
-          color: #fff !important;
-          border: none !important;
-          font-size: 12px !important;
-          padding: 4px 6px !important;
-          outline: none !important;
-          cursor: pointer;
-        }
-
+        /* 針對 Google Translate 嘅隱藏與調整 */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0 !important; }
+        
         .btn-connect { padding: 8px 18px; border-radius: 999px; background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3); cursor: pointer; font-family: inherit; font-weight: 600; }
 
         .container { max-width: 500px; margin: 0 auto; background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 20px; backdrop-filter: blur(15px); }
@@ -63,7 +45,7 @@
         .title-logo { width: 45px; height: 45px; }
         h1 { font-size: 28px; margin: 0; background: linear-gradient(120deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* 動態變色按鈕 */
+        /* 極光按鈕 */
         .btn-main { display: block; width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 12px; border: 1px solid rgba(163, 112, 255, 0.5); background: linear-gradient(120deg, #a370ff 0%, #00ffcc 50%, #a370ff 100%); background-size: 200% auto; color: white; font-weight: 700; cursor: pointer; font-size: 15px; animation: btnShimmer 3s linear infinite; }
         @keyframes btnShimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         
@@ -74,7 +56,6 @@
 
         @media (max-width: 600px) {
             header { padding: 0 15px; }
-            .goog-te-gadget-simple { padding: 3px 6px !important; }
         }
     </style>
 </head>
@@ -115,13 +96,6 @@
 
         <a href="index-global.html" class="back-link">← Back to Home</a>
     </div>
-
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', autoDisplay: false}, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         document.getElementById('connect-btn').addEventListener('click', async () => {
