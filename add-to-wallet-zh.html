@@ -25,6 +25,19 @@
         .lang-switch a { color: rgba(255,255,255,0.7); text-decoration: none; }
         .btn-connect { padding: 8px 18px; border-radius: 999px; background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3); cursor: pointer; font-family: inherit; font-weight: 600; }
 
+        @media (max-width: 600px) {
+            header { 
+               padding: 0 20px; /* 手機左右邊距縮小，騰出空間 */
+           }
+    
+           .header-right { 
+               gap: 10px; /* 手機上語言選單和按鈕的間距減小 */
+           }
+
+    .lang-switch { 
+        font-size: 11px; /* 手機上字體稍微調小，避免擠爆 */
+    }
+
         /* Container */
         .container { max-width: 500px; margin: 0 auto; background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 20px; backdrop-filter: blur(15px); }
         .title-box { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 25px; }
