@@ -182,7 +182,33 @@
     .footer a{ color:#aaa; text-decoration:none; }
     .footer a:hover{ text-decoration:underline; }
 
-   
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 20px; /* 語言選單同按鈕之間嘅距離 */
+    }
+
+    .language-switch {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.7);
+        display: flex;
+        gap: 6px;
+    }
+
+    .language-switch a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+    }
+
+    .language-switch a:hover {
+        color: #ffffff;
+    }
+
+    /* 確保手機版唔會太擠 */
+    @media (max-width: 600px) {
+        .language-switch { display: none; } /* 手機版如果太窄，可以選擇隱藏選單 */
+    }
+
      @media (max-width: 900px) {
       header { padding: 0 20px; }
       .nav-links { display: none; }
@@ -194,14 +220,15 @@
 
 <body>
     <header>
-        <a href="index.html">
-            <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
-        </a>
+        <a href="index.html"><img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/></a>
     
-        <div class="language-switch">
-            <a href="add-to-wallet.html">EN</a> | 
-            <a href="add-to-wallet-zh.html">繁</a> | 
-            <a href="add-to-wallet-global.html">Global</a>
+        <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+            <div class="language-switch">
+                <a href="add-to-wallet.html">EN</a> | 
+                <a href="add-to-wallet-zh.html">繁</a> | 
+                <a href="add-to-wallet-global.html">Global</a>
+            </div>
+            <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
     </header>
     <h1 class="title">
