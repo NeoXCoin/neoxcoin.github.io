@@ -7,16 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <script>
-        function googleTranslateElementInit() {
+        function googleTranslateElementInit(){
             new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
-                autoDisplay: false,
-                multilanguagePage: true
+                pageLanguage: 'en', 
+                includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+                autoDisplay: false, 
+                multilanguagePage: true 
             }, 'google_translate_element');
         }
     </script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
     <style>
         :root {
@@ -27,17 +27,24 @@
             --glass: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.08);
         }
-        body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: #fff; text-align: center; padding-top: 100px; padding-bottom: 50px; }
+        body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: #fff; text-align: center; padding-top: 100px; padding-bottom: 50px; 
+               /* 強制覆蓋 Google 的 top 設定 */
+               top: 0 !important; position: static !important; margin-top: 0 !important; }
         
+        /* 徹底隱藏 Google 翻譯的橫條 */
+        .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important; }
+        body > .skiptranslate { display: none !important; }
+
         header { position: fixed; top: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 50px; background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); box-sizing: border-box; z-index: 1000; }
         .nav-logo { height: 32px; }
-        
         .header-right { display: flex; align-items: center; gap: 15px; }
-        
-        /* 針對 Google Translate 嘅隱藏與調整 */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0 !important; }
-        
+
+        /* 翻譯選單藥丸樣式 */
+        #google_translate_element { display: inline-block; padding: 2px 6px; border-radius: 20px; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border); }
+        #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
+        #google_translate_element .goog-te-gadget span { display: none !important; }
+        #google_translate_element select { background: transparent !important; color: #fff !important; border: none !important; font-size: 12px !important; padding: 4px 6px !important; outline: none !important; cursor: pointer; }
+
         .btn-connect { padding: 8px 18px; border-radius: 999px; background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3); cursor: pointer; font-family: inherit; font-weight: 600; }
 
         .container { max-width: 500px; margin: 0 auto; background: var(--glass); border: 1px solid var(--border); padding: 40px; border-radius: 20px; backdrop-filter: blur(15px); }
@@ -54,9 +61,7 @@
         .copy-btn { background: none; border: 1px solid var(--secondary); color: var(--secondary); padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 11px; margin-left: 10px; }
         .back-link { display: block; margin-top: 30px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; }
 
-        @media (max-width: 600px) {
-            header { padding: 0 15px; }
-        }
+        @media (max-width: 600px) { header { padding: 0 15px; } }
     </style>
 </head>
 <body>
