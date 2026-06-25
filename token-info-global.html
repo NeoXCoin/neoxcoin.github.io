@@ -42,12 +42,37 @@
 
     body {
       margin: 0;
+      /* 統一星空背景畫布 */
       background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
-      background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      background-image: 
+        radial-gradient(circle at center, #110526 0%, #03010a 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      
       font-family: var(--font-stack);
       color: var(--text-main);
       text-align: center;
+      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+    /* --- 1. Header (Glassmorphism Navbar) --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
     }
 
     /* Google Translate Pill Styling */
@@ -56,77 +81,329 @@
     #google_translate_element .goog-te-gadget span { display: none !important; } 
     #google_translate_element select { background: transparent !important; color: #fff !important; border: none !important; font-size: 12px !important; padding: 4px 6px !important; outline: none !important; cursor: pointer; }
 
+    /* --- 1. Header (Glassmorphism Navbar) --- */
     header {
-      position: fixed; top: 0; left: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 50px;
-      background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000; box-sizing: border-box;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
     }
 
     .nav-logo { height: 32px; opacity: 0.9; }
-    .nav-links { display: flex; gap: 20px; align-items: center; }
-    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
-    
-    .header-right { display: flex; align-items: center; gap: 15px; }
+    .nav-logo:hover { opacity: 1; }
 
-    .container { max-width: 900px; margin: 0 auto; padding: 140px 20px 80px 20px; }
-    .page-title { font-size: 52px; font-weight: 800; margin-bottom: 40px; background: linear-gradient(120deg, #ffffff, #a370ff, #00ffcc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+
+    .header-right { display: flex; align-items: center; gap: 20px; }
     
-    .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 50px; text-align: left; }
-    .info-card { background: var(--glass); border: 1px solid var(--border); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); }
-    .card-label { font-size: 13px; font-weight: 600; color: var(--primary); margin-bottom: 8px; }
-    .card-value { font-size: 20px; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 10px; }
-    
-    .address-box { grid-column: span 2; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border); padding: 25px; border-radius: 16px; text-align: center; }
-    .contract-code { display: block; font-family: monospace; font-size: 16px; color: var(--secondary); word-break: break-all; margin: 15px 0; padding: 10px; background: rgba(0, 255, 204, 0.05); border-radius: 8px; }
-    .btn-explorer { display: inline-block; font-size: 14px; font-weight: 600; color: var(--text-main); padding: 8px 20px; border: 1px solid var(--border); border-radius: 8px; }
+    .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; }
+    .language-switch a:hover { color: var(--text-main); }
+    .lang-sep { opacity: 0.3; }
+
+    .btn-connect {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+    }
+
+    /* --- Main Container --- */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 140px 20px 80px 20px;
+    }
+
+    /* --- 2. Animations --- */
+    @keyframes fadeInUpLoopSlow {
+      0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+      18% { opacity: 1; transform: translateY(0); filter: blur(0); }
+      86% { opacity: 1; transform: translateY(0); filter: blur(0); }
+      93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); }
+      100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+    }
+
+    @keyframes textShimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .page-title {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: 
+        fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite,
+        textShimmer 4s linear infinite;
+    }
+
+    /* --- 3. Token Info Cards --- */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      margin-top: 50px;
+      text-align: left;
+    }
+
+    .info-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+    .info-card:hover {
+      border-color: rgba(163, 112, 255, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .card-label {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .card-value {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* 合約地址專屬樣式：確保手機版唔會跳框 */
+    .address-box {
+      grid-column: span 2;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+      padding: 25px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .contract-code {
+      display: block;
+      font-family: monospace;
+      font-size: 16px;
+      color: var(--secondary);
+      word-break: break-all; /* 關鍵修正：長代碼自動斷行 */
+      margin: 15px 0;
+      line-height: 1.5;
+      padding: 10px;
+      background: rgba(0, 255, 204, 0.05);
+      border-radius: 8px;
+    }
+
+    .btn-explorer {
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      padding: 8px 20px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-top: 10px;
+    }
+    .btn-explorer:hover {
+      background: var(--glass);
+      border-color: var(--primary);
+    }
+
+    /* --- 4. Coin Animation --- */
+    .visual-section {
+      margin: 40px 0;
+    }
+    .coin-gif {
+      width: 120px;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 15px rgba(163, 112, 255, 0.4));
+    }
+
+    /* --- Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 80px;
+      background: rgba(0,0,0,0.1);
+    }
+
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+      width: 22px;
+      margin: 0 15px;
+      opacity: 0.5;
+      filter: brightness(0) invert(1);
+      transition: all 0.2s ease;
+    }
+    .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
+
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 768px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-title { font-size: 36px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .address-box { grid-column: span 1; }
+    }
   </style>
 </head>
 <body>
 
   <header>
-    <a href="index-global.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    
     <div class="nav-links">
-      <a href="what-is-neox-global.html">What is NeoX?</a>
-      <a href="game-global.html">Game</a>
-      <a href="nft-projects-global.html">NFTs</a>
+      <a href="what-is-neox.html">What is NeoX?</a>
+      <a href="how-to-buy.html">How to Buy?</a>
+      <a href="game.html">NeoX Game</a>
+      <a href="metaverse.html">Metaverse Exhibition</a>
+      <a href="nft-projects.html">NFT Projects</a>
     </div>
+
     <div class="header-right">
-      <div id="google_translate_element"></div>
-      <button id="connect-btn" style="background:transparent; color:#00ffcc; border:1px solid rgba(0,255,204,0.3); padding:8px 16px; border-radius:20px; cursor:pointer;">Connect</button>
+      <div class="language-switch">
+        <a href="token-info.html">EN</a>
+        <span class="lang-sep">|</span>
+        <a href="token-info-zh.html">繁</a>
+      </div>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
     </div>
   </header>
 
   <div class="container">
+    
+    <div class="visual-section">
+      <img class="coin-gif" src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NXC 360">
+    </div>
+
     <h1 class="page-title">Token Information</h1>
     
     <div class="info-grid">
+      
       <div class="info-card">
         <div class="card-label">Token Name</div>
-        <div class="card-value">
-            <img src="https://neoxcoin.github.io/XNXC.png" style="width: 24px; border-radius: 4px;"> NeoX Coin
+        <div class="card-value" style="display: flex; align-items: center; gap: 10px;">
+          <img src="https://neoxcoin.github.io/XNXC.png" alt="Logo" style="width: 24px; height: 24px; border-radius: 4px;">
+          NeoX Coin
         </div>
       </div>
+
       <div class="info-card">
-        <div class="card-label">Symbol</div>
+        <div class="card-label">Ticker Symbol</div>
         <div class="card-value">NXC</div>
       </div>
+
+      <div class="info-card">
+        <div class="card-label">Blockchain Network</div>
+        <div class="card-value">Base Mainnet</div>
+      </div>
+
+      <div class="info-card">
+        <div class="card-label">Total Supply</div>
+        <div class="card-value">1,000,000,000 NXC</div>
+      </div>
+
       <div class="address-box info-card">
         <div class="card-label">Smart Contract Address</div>
         <code class="contract-code">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
         <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank" class="btn-explorer">View on BaseScan →</a>
       </div>
+
     </div>
+
+    <div style="margin-top: 60px;">
+      <a href="index.html" style="font-size: 15px; color: var(--text-muted); border-bottom: 1px solid var(--border);">← Back to Home</a>
+    </div>
+
   </div>
+
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+    </div>
+    <div class="footer-links">
+      <a href="about-global.html">About</a> | <a href="faq-global.html">FAQ</a> | <a href="token-info-global.html">Token Info</a> | <a href="neox-wiki-global.html">Wiki</a> | <a href="disclaimer-global.html">Disclaimer</a>
+    </div>
+    <div class="copyright">© 2026 NeoX. All rights reserved.</div>
+  </footer>
 
   <script>
     const connectBtn = document.getElementById('connect-btn');
+
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
+    }
+
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
     connectBtn.addEventListener('click', async () => {
       if (typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        connectBtn.innerText = accounts[0].substring(0, 6) + "...";
+        try {
+          connectBtn.innerText = "Connecting...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+        } catch (error) {
+          console.error("Wallet login error:", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
       } else {
+        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
         window.open('https://metamask.io/download/', '_blank');
       }
     });
+
+    window.addEventListener('DOMContentLoaded', checkConnection);
   </script>
+
 </body>
 </html>
