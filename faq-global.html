@@ -195,7 +195,7 @@
       border-bottom-color: var(--secondary);
     }
 
-    /* Return Action Button */
+    /* --- 修正後的 Back to Home 按鈕（與其他頁面完全一致） --- */
     .btn-row {
       display: flex;
       justify-content: center;
@@ -206,15 +206,15 @@
       border-radius: 8px;
       font-size: 15px;
       font-weight: 600;
-      background: #0d6efd;
-      color: #ffffff;
-      border: 1px solid #3399ff;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
     .btn-back:hover {
-      background: #0b5ed7;
-      box-shadow: 0 0 15px rgba(13, 110, 253, 0.5);
+      background: var(--glass);
+      border-color: rgba(255, 255, 255, 0.2);
       transform: translateY(-2px);
     }
 
