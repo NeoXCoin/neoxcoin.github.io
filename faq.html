@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -7,182 +7,322 @@
     
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FAQ - NeoX</title>
+  <title>FAQ - NeoX Coin</title>
+  <meta name="description" content="Frequently Asked Questions about NeoX Coin (NXC) – Verification, transparency, safety, and ecosystem protocols." />
+  <link rel="canonical" href="https://neoxcoin.github.io/faq.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+    :root {
+      --bg-dark: #03010a;
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --primary: #a370ff;
+      --secondary: #00ffcc;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-stack: 'Plus Jakarta Sans', sans-serif;
     }
 
     body {
       margin: 0;
-      min-height: 100vh;
-      background: #0a0a2a;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url("https://neoxcoin.io/NeoXbackG.JPG");
-      background-size: cover;
-      background-position: center;
-      color: white;
+      /* 統一高冷星空畫布 */
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      background-image: 
+        radial-gradient(circle at center, #110526 0%, #03010a 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      
+      font-family: var(--font-stack);
+      color: var(--text-main);
       text-align: center;
-      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+    /* --- 1. Sticky Header (Glassmorphism Navbar) --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
     }
 
-    .language-switch{
-      position:absolute; top:20px; right:20px;
-      font-size:14px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(0,217,255,.35);
-      border-radius:10px;
-      padding:6px 10px;
-      box-shadow:0 0 14px rgba(0,217,255,.18);
-    }
-    .language-switch a{
-      color:#fff; text-decoration:none; margin:0 6px;
-    }
-    .language-switch a:hover{ color:#00d9ff; }
+    .nav-logo { height: 32px; opacity: 0.9; }
+    .nav-logo:hover { opacity: 1; }
 
-    .container {
-      max-width: 900px;
-      margin: 120px auto 0;
-      padding: 20px;
-      text-align: left;
-      background-color: rgba(0, 0, 0, 0.35);
-      border-radius: 10px;
-    }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
 
-    .headline {
-      font-size: 28px;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 30px;
-    }
+    .header-right { display: flex; align-items: center; gap: 20px; }
+    
+    .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; }
+    .language-switch a:hover { color: var(--text-main); }
+    .lang-sep { opacity: 0.3; }
 
-    .faq-item {
-      margin-bottom: 25px;
-    }
-
-    .faq-item strong {
-      color: #00aaff;
-    }
-
-    .footer {
-      text-align: center;
-      margin: 40px 0 20px;
+    .btn-connect {
       font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
     }
 
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 8px;
+    /* --- Main Container --- */
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 140px 20px 50px 20px;
+      text-align: left;
     }
 
+    /* --- Page Headline --- */
+    .page-title {
+      font-size: 44px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 50px;
+      background: linear-gradient(120deg, #ffffff, #c299ff, #00ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* --- FAQ Accordion Cards --- */
+    .faq-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .faq-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 30px;
+      transition: all 0.3s ease;
+    }
+    .faq-card:hover {
+      border-color: rgba(163, 112, 255, 0.25);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .faq-question {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      margin: 0 0 12px 0;
+      display: flex;
+      gap: 10px;
+    }
+    .faq-question span {
+      color: var(--secondary);
+    }
+
+    .faq-answer {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0;
+    }
+    .faq-answer a {
+      color: var(--primary);
+      border-bottom: 1px dashed rgba(163, 112, 255, 0.5);
+    }
+    .faq-answer a:hover {
+      color: var(--secondary);
+      border-bottom-color: var(--secondary);
+    }
+
+    /* Return Dashboard Action Button */
     .btn-row {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 20px;
+      margin-top: 50px;
+    }
+    .btn-back {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+    .btn-back:hover {
+      background: var(--glass);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
     }
 
-    .btn {
-      background: #0a0a0a;
-      border: 2px solid #00d9ff;
-      color: #00d9ff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      min-width: 180px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px rgba(0,217,255,0.5);
+    /* --- Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 60px;
+      background: rgba(0,0,0,0.1);
+      text-align: center;
     }
 
-    .btn:hover {
-      background: #00d9ff;
-      color: #000;
-      box-shadow: 0 0 20px rgba(0,217,255,0.8);
-      transform: translateY(-3px);
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+      width: 22px;
+      margin: 0 15px;
+      opacity: 0.5;
+      filter: brightness(0) invert(1);
+      transition: all 0.2s ease;
     }
+    .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
 
-    .btn-blue {
-      background: #0d6efd;
-      border: 2px solid #3399ff;
-      color: white;
-    }
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-    @media screen and (max-width: 600px) {
-      .container {
-        margin: 100px 20px 0;
-      }
+    @media (max-width: 900px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-title { font-size: 34px; }
+      .faq-card { padding: 22px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Logo -->
-  <a href="/">
-    <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo">
-  </a>
+  <header>
+    <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    
+    <div class="nav-links">
+      <a href="what-is-neox.html">What is NeoX?</a>
+      <a href="how-to-buy.html">How to Buy?</a>
+      <a href="game.html">NeoX Game</a>
+      <a href="metaverse.html">Metaverse Exhibition</a>
+      <a href="nft-projects.html">NFT Projects</a>
+    </div>
 
-  <!-- Language Switch -->
-  <div class="language-switch">
-    <a href="faq.html">EN</a> | <a href="faq-zh.html">繁</a> | <a href="faq-global.html">Global</a>
-  </div>
+    <div class="header-right">
+      <div class="language-switch">
+        <a href="faq.html">EN</a>
+        <span class="lang-sep">|</span>
+        <a href="faq-zh.html">繁</a>
+        <span class="lang-sep">|</span>
+        <a href="faq-global.html">Global</a>
+      </div>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+    </div>
+  </header>
 
-  <!-- Main FAQ Content -->
   <div class="container">
-    <div class="headline">Frequently Asked Questions</div>
+    <h1 class="page-title">Frequently Asked Questions</h1>
+    
+    <div class="faq-wrapper">
+      
+      <div class="faq-card">
+        <h3 class="faq-question"><span>Q:</span> Is NeoX a scam?</h3>
+        <p class="faq-answer">Absolutely not. NeoX is a completely transparent and educational Web3 asset project. All smart contracts are open-source and publicly verifiable, with creative metadata hosted permanently on decentralized storage networks (IPFS). We do not solicit investments or guarantee speculative returns — NeoX is an experimental utility ecosystem driven by the community.</p>
+      </div>
 
-    <div class="faq-item">
-      <strong>Q: Is NeoX a scam?</strong><br/>
-      A: Absolutely not. NeoX is a transparent and educational Web3 project. All smart contracts are open-source and verifiable, and our assets are hosted on trusted platforms like GitHub and IPFS. We do not promise unrealistic returns or solicit investments — NeoX is a public, community-driven Web3 experiment.
+      <div class="faq-card">
+        <h3 class="faq-question"><span>Q:</span> What is the ultimate purpose of NeoX?</h3>
+        <p class="faq-answer">NeoX (NXC) is engineered as a foundational decentralized ecosystem connecting interactive gaming, metaverse exhibition hubs, and innovative token utility on Coinbase's Layer 2 network (Base), facilitating liquid value transfer across digital borders.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3 class="faq-question"><span>Q:</span> Why should I trust this project infrastructure?</h3>
+        <p class="faq-answer">Our contract configurations, distributed source files, and asset repositories are completely public via GitHub. We consistently maintain 100% data visibility and encourage every user to practice DYOR (Do Your Own Research) prior to exploring any Web3 applications.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3 class="faq-question"><span>Q:</span> How do I safely purchase or test NeoX tokens?</h3>
+        <p class="faq-answer">You can easily acquire or swap NXC by navigating directly to our audited <a href="how-to-buy.html">How to Buy</a> instruction protocol, which natively supports seamless MetaMask integration and secure L2 decentralized network routers.</p>
+      </div>
+
+      <div class="faq-card">
+        <h3 class="faq-question"><span>Q:</span> Is this the officially verified platform?</h3>
+        <p class="faq-answer">Yes, this current web domain is the officially hosted landing gate for NeoX. For community visual insights and milestone releases, please follow our audited social handle directly at <a href="https://www.instagram.com/neox__official" target="_blank">@neox__official</a>.</p>
+      </div>
+
     </div>
 
-    <div class="faq-item">
-      <strong>Q: What is the purpose of NeoX?</strong><br/>
-      A: NeoX is a decentralized token project focused on Web3, design, and digital value exploration. It includes NFT collections, educational content, experimentation, and innovation at its core.
+    <div class="btn-row">
+      <a class="btn-back" href="index.html">← Back to Home</a>
     </div>
-
-    <div class="faq-item">
-      <strong>Q: Why should I trust this project?</strong><br/>
-      A: All smart contracts, metadata, and IPFS assets are publicly accessible. GitHub repositories and social channels provide transparency. We encourage all users to DYOR (Do Your Own Research) before engaging.
-    </div>
-
-    <div class="faq-item">
-      <strong>Q: How do I buy or test NeoX tokens?</strong><br/>
-      A: Visit our “How to Buy” page for step-by-step guidance. We support both testnet options and MetaMask integration.
-    </div>
-
-    <div class="faq-item">
-      <strong>Q: Is this the official platform?</strong><br/>
-      A: Yes. This is the official site of NeoX. You can also follow our official Instagram at <a href="https://www.instagram.com/neox__official" target="_blank">@neox__official</a>.
-    </div>
-  
   </div>
-  <!-- Back to Home -->
-  <div class="btn-row">
-    <a class="btn btn-blue" href="index.html">← Back to Home</a>
-  </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-en.html">Disclaimer</a>
-  </div>
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+    </div>
+    <div class="footer-links">
+      <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
+    </div>
+    <div class="copyright">© 2026 NeoX. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const connectBtn = document.getElementById('connect-btn');
+
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
+    }
+
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "Connecting...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+        } catch (error) {
+          console.error("Wallet validation rejected:", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
+      } else {
+        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', checkConnection);
+  </script>
+
 </body>
 </html>
