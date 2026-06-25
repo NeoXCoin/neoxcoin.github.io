@@ -10,7 +10,8 @@
 
   <title>Token Info - NeoX Coin (NXC)</title>
   <meta name="description" content="Official global tokenomics and smart contract information for NeoX Coin (NXC) on Base Mainnet." />
-  
+  <link rel="canonical" href="https://neoxcoin.github.io/token-info-global.html" />
+
   <script>
     function googleTranslateElementInit(){
       new google.translate.TranslateElement({
@@ -22,6 +23,10 @@
     }
   </script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -92,10 +97,13 @@
 
   <div class="container">
     <h1 class="page-title">Token Information</h1>
+    
     <div class="info-grid">
       <div class="info-card">
         <div class="card-label">Token Name</div>
-        <div class="card-value"><img src="https://neoxcoin.github.io/XNXC.png" style="width: 24px; border-radius: 4px;"> NeoX Coin</div>
+        <div class="card-value">
+            <img src="https://neoxcoin.github.io/XNXC.png" style="width: 24px; border-radius: 4px;"> NeoX Coin
+        </div>
       </div>
       <div class="info-card">
         <div class="card-label">Symbol</div>
@@ -108,5 +116,17 @@
       </div>
     </div>
   </div>
+
+  <script>
+    const connectBtn = document.getElementById('connect-btn');
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        connectBtn.innerText = accounts[0].substring(0, 6) + "...";
+      } else {
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
+  </script>
 </body>
 </html>
