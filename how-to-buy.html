@@ -13,7 +13,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         :root {
             --bg-dark: #03010a;
@@ -35,96 +34,318 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
-        a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
-        
-        /* 語言隱藏樣式 */
-        .lang-hidden { display: none !important; }
-
-        /* --- 1. Sticky Header --- */
-        header {
-            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 50px; background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border); z-index: 1000; box-sizing: border-box;
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
         }
-        .nav-logo { height: 32px; opacity: 0.9; }
-        .nav-logo:hover { opacity: 1; }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
-        .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
-        .nav-links a:hover { color: var(--primary); }
-        .header-right { display: flex; align-items: center; gap: 20px; }
-        
-        .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; align-items: center; }
-        .language-switch button { background: none; border: none; color: rgba(255, 255, 255, 0.5); cursor: pointer; font-family: var(--font-stack); font-size: 13px; font-weight: 500; padding: 0; transition: color 0.2s; }
-        .language-switch button.active { color: var(--text-main); font-weight: 700; }
-        .language-switch button:hover { color: var(--primary); }
-        .language-switch a.global-link { color: rgba(255, 255, 255, 0.4); font-weight: 500; text-decoration: none; transition: color 0.2s; }
-        .language-switch a.global-link:hover { color: var(--primary); }
-        .lang-sep { opacity: 0.3; }
-        
+        .lang-hidden {
+            display: none !important;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            background: rgba(7, 2, 20, 0.6);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+        .nav-logo {
+            height: 32px;
+            opacity: 0.9;
+        }
+        .nav-logo:hover {
+            opacity: 1;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .language-switch {
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+        .language-switch button {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            font-family: var(--font-stack);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 0;
+            transition: color 0.2s;
+        }
+        .language-switch button.active {
+            color: var(--text-main);
+            font-weight: 700;
+        }
+        .language-switch button:hover {
+            color: var(--primary);
+        }
+        .language-switch a.global-link {
+            color: rgba(255, 255, 255, 0.4);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .language-switch a.global-link:hover {
+            color: var(--primary);
+        }
+        .lang-sep {
+            opacity: 0.3;
+        }
         .btn-connect {
-            font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px;
-            background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3);
-            cursor: pointer; transition: all 0.2s;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--secondary);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            cursor: pointer;
+            transition: all 0.2s;
         }
         .btn-connect:hover {
-            background: rgba(0, 255, 204, 0.05); box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+            background: rgba(0, 255, 204, 0.05);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
         }
-        
-        /* --- Main Container --- */
-        .container { max-width: 800px; margin: 0 auto; padding: 140px 20px 40px 20px; text-align: left; }
-        
-        /* --- Page Title --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 140px 20px 40px 20px;
+            text-align: left;
+        }
         .page-title {
-            font-size: 42px; font-weight: 800; text-align: center; margin-bottom: 10px;
+            font-size: 42px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 10px;
             background: linear-gradient(120deg, #ffffff, #c299ff, #00ffcc);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
-        .page-subtitle { font-size: 16px; color: var(--text-muted); text-align: center; margin-bottom: 50px; }
-        
-        /* --- Step Cards Layout --- */
-        .steps-container { display: flex; flex-direction: column; gap: 30px; }
-        .step-card { background: var(--glass); border: 1px solid var(--border); border-radius: 16px; padding: 35px; position: relative; transition: all 0.3s ease; }
-        .step-card:hover { border-color: rgba(163, 112, 255, 0.3); box-shadow: 0 10px 30px rgba(163, 112, 255, 0.05); background: rgba(255, 255, 255, 0.04); }
-        .step-number { font-size: 12px; font-weight: 700; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; display: block; }
-        .step-title { font-size: 22px; font-weight: 700; margin: 0 0 15px 0; color: #ffffff; }
-        .step-desc { font-size: 15px; color: var(--text-muted); line-height: 1.6; margin: 0; }
-        .step-desc code { background: rgba(255, 255, 255, 0.08); padding: 3px 8px; border-radius: 4px; font-family: monospace; color: var(--secondary); font-size: 14px; }
-        .step-desc a { color: var(--secondary); text-decoration: underline; }
-        
-        /* 圖片引導樣式 */
-        .step-guide-img { width: 100%; max-width: 550px; border-radius: 10px; margin-top: 20px; border: 1px solid var(--border); box-shadow: 0 0 20px rgba(0,255,204,0.05); display: block; }
-        
+        .page-subtitle {
+            font-size: 16px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        .step-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 35px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .step-card:hover {
+            border-color: rgba(163, 112, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(163, 112, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
+        }
+        .step-number {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .step-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 15px 0;
+            color: #ffffff;
+        }
+        .step-desc {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+        .step-desc code {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--secondary);
+            font-size: 14px;
+        }
+        .step-desc a {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+        .step-guide-img {
+            width: 100%;
+            max-width: 550px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 20px rgba(0,255,204,0.05);
+            display: block;
+        }
         .inline-btn {
-            display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
-            color: #000; background: #fff; padding: 10px 20px; border-radius: 6px;
-            font-size: 14px; font-weight: 600; transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            color: #000;
+            background: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.2s;
         }
-        .inline-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(255,255,255,0.2); }
-        
-        /* 手動匯入與一鍵加代幣工具 */
-        .token-import-box { margin-top: 25px; padding-top: 20px; border-top: 1px solid var(--border); }
-        .mono-box { font-family: monospace; background: rgba(0, 0, 0, 0.2); border: 1px solid var(--border); padding: 15px; border-radius: 8px; margin-top: 10px; font-size: 14px; line-height: 1.8; position: relative; }
-        .copy-btn { position: absolute; right: 15px; top: 15px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text-main); padding: 4px 10px; border-radius: 4px; font-size: 12px; cursor: pointer; font-family: var(--font-stack); }
-        .copy-btn:hover { background: rgba(255,255,255,0.1); color: var(--primary); }
-        .btn-add-meta { background: transparent; border: 1px solid rgba(163, 112, 255, 0.4); color: var(--primary); font-size: 13px; font-weight: 600; padding: 6px 14px; border-radius: 6px; cursor: pointer; margin-top: 12px; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s; }
-        .btn-add-meta:hover { background: rgba(163, 112, 255, 0.05); box-shadow: 0 0 10px rgba(163, 112, 255, 0.1); }
-
-        /* --- Back to Home 按鈕樣式 --- */
-        .back-home-container { text-align: center; margin-top: 50px; margin-bottom: 20px; }
-        .btn-back-home { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--text-muted); padding: 10px 24px; border-radius: 999px; border: 1px solid var(--border); background: rgba(255,255,255,0.01); transition: all 0.2s ease; }
-        .btn-back-home:hover { color: var(--text-main); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); transform: translateX(-2px); }
-
-        /* --- Footer --- */
-        footer { width: 100%; border-top: 1px solid var(--border); padding: 40px 0; background: rgba(0,0,0,0.1); text-align: center; }
-        .social-icons { margin-bottom: 25px; }
-        .social-icons img { width: 22px; margin: 0 15px; opacity: 0.5; filter: brightness(0) invert(1); transition: all 0.2s ease; }
-        .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
-        .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
-        .footer-links a { margin: 0 8px; }
-        .footer-links a:hover { color: var(--text-main); }
-        .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
-        
+        .inline-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+        }
+        .token-import-box {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+        .mono-box {
+            font-family: monospace;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            font-size: 14px;
+            line-height: 1.8;
+            position: relative;
+        }
+        .copy-btn {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            font-family: var(--font-stack);
+        }
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--primary);
+        }
+        .btn-add-meta {
+            background: transparent;
+            border: 1px solid rgba(163, 112, 255, 0.4);
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+        .btn-add-meta:hover {
+            background: rgba(163, 112, 255, 0.05);
+            box-shadow: 0 0 10px rgba(163, 112, 255, 0.1);
+        }
+        .back-home-container {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        .btn-back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+            padding: 10px 24px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.01);
+            transition: all 0.2s ease;
+        }
+        .btn-back-home:hover {
+            color: var(--text-main);
+            border-color: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.04);
+            transform: translateX(-2px);
+        }
+        footer {
+            width: 100%;
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            background: rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .social-icons {
+            margin-bottom: 25px;
+        }
+        .social-icons img {
+            width: 22px;
+            margin: 0 15px;
+            opacity: 0.5;
+            filter: brightness(0) invert(1);
+            transition: all 0.2s ease;
+        }
+        .social-icons img:hover {
+            opacity: 1;
+            filter: none;
+            transform: scale(1.1);
+        }
+        .footer-links {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+        .footer-links a {
+            margin: 0 8px;
+        }
+        .footer-links a:hover {
+            color: var(--text-main);
+        }
+        .copyright {
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+        }
         @media (max-width: 900px) {
             header { padding: 0 20px; }
             .nav-links { display: none; }
@@ -134,7 +355,6 @@
     </style>
 </head>
 <body>
-
     <header>
         <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
         <div class="nav-links">
@@ -195,7 +415,7 @@
                 <span class="step-number">Step 03</span>
                 <div class="lang-item lang-en">
                     <h3 class="step-title">Swap ETH for NXC via Thirdweb</h3>
-                    <p class="step-desc">Connect your wallet directly to our verified token pool. Input the official NeoX Coin contract address if prompted: <code id="nxc-contract">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>, enter the amount of ETH you want to swap, and confirm the transaction.</p>
+                    <p class="step-desc">Connect your wallet directly to our verified token pool. Input the official NeoX Coin contract address if prompted: <code id="nxc-contract-en">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>, enter the amount of ETH you want to swap, and confirm the transaction.</p>
                     <a class="inline-btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">Go to Thirdweb Swap ↗</a>
                 </div>
                 <div class="lang-item lang-zh lang-hidden">
@@ -214,10 +434,10 @@
                     <div class="lang-item lang-zh lang-hidden">
                         <p class="step-desc" style="font-size: 14px;">如果兌換後錢包內未自動顯示 NXC，您可以手動複製資料匯入，或點擊下方快捷鍵自動新增：</p>
                     </div>
-                    
+
                     <div class="mono-box">
                         <button class="copy-btn" onclick="copyContractAddress()">Copy</button>
-                        Contract: 0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B<br/>
+                        Contract: <span id="nxc-contract-box">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span><br/>
                         Symbol: NXC<br/>
                         Decimals: 18
                     </div>
@@ -227,7 +447,7 @@
                     </button>
                 </div>
 
-                <img class="step-guide-img" src="assets/how-to-buy/wallet-metamask-nxc-base.png" alt="MetaMask Guide Screenshot" style="max-w: 380px; margin-top: 15px;">
+                <img class="step-guide-img" src="assets/how-to-buy/wallet-metamask-nxc-base.png" alt="MetaMask Guide Screenshot" style="max-width: 380px; margin-top: 15px;">
             </div>
         </div>
 
@@ -255,11 +475,26 @@
     </footer>
 
     <script>
+        // === 新增：官方完整合約地址與自動縮短顯示邏輯 ===
+        const FULL_CONTRACT_ADDRESS = "0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B";
+
+        function initializeShortenedAddresses() {
+            // 縮短成前 6 碼 + ... + 後 4 碼 (0x9C17...B40B)
+            const shortened = `${FULL_CONTRACT_ADDRESS.substring(0, 6)}...${FULL_CONTRACT_ADDRESS.substring(FULL_CONTRACT_ADDRESS.length - 4)}`;
+            
+            const elEn = document.getElementById('nxc-contract-en');
+            const elZh = document.getElementById('nxc-contract-zh');
+            const elBox = document.getElementById('nxc-contract-box');
+            
+            if (elEn) elEn.innerText = shortened;
+            if (elZh) elZh.innerText = shortened;
+            if (elBox) elBox.innerText = shortened;
+        }
+
         // 1. 全自動雙語無縫切換控制腳本
         function toggleLanguage(lang) {
             document.querySelectorAll('.lang-item').forEach(el => el.classList.add('lang-hidden'));
             document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.remove('lang-hidden'));
-            
             const btnEn = document.getElementById('lang-en-btn');
             const btnZh = document.getElementById('lang-zh-btn');
             if(lang === 'en') {
@@ -271,10 +506,9 @@
             }
         }
 
-        // 2. 一鍵複製合約地址功能
+        // 2. 一鍵複製合約地址功能（確保複製出去的是 FULL_CONTRACT_ADDRESS 完整地址）
         function copyContractAddress() {
-            const contract = "0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B";
-            navigator.clipboard.writeText(contract).then(() => {
+            navigator.clipboard.writeText(FULL_CONTRACT_ADDRESS).then(() => {
                 alert("Contract address copied successfully!");
             }).catch(err => {
                 console.error("Failed to copy text: ", err);
@@ -290,10 +524,10 @@
                         params: {
                             type: 'ERC20',
                             options: {
-                                address: '0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B',
+                                address: FULL_CONTRACT_ADDRESS,
                                 symbol: 'NXC',
                                 decimals: 18,
-                                image: 'https://neoxcoin.github.io/XNXC.png', 
+                                image: 'https://neoxcoin.github.io/XNXC.png',
                             },
                         },
                     });
@@ -310,15 +544,19 @@
         async function checkConnection() {
             if (typeof window.ethereum !== 'undefined') {
                 const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-                if (accounts.length > 0) { updateButton(accounts[0]); }
+                if (accounts.length > 0) {
+                    updateButton(accounts[0]);
+                }
             }
         }
+
         function updateButton(address) {
             const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
             connectBtn.innerText = shortAddress;
             connectBtn.style.color = "#00ffcc";
             connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
         }
+
         connectBtn.addEventListener('click', async () => {
             if (typeof window.ethereum !== 'undefined') {
                 try {
@@ -334,7 +572,12 @@
                 window.open('https://metamask.io/download/', '_blank');
             }
         });
-        window.addEventListener('DOMContentLoaded', checkConnection);
+
+        // 網頁載入完成後同時初始化地址截短與錢包狀態檢查
+        window.addEventListener('DOMContentLoaded', () => {
+            initializeShortenedAddresses();
+            checkConnection();
+        });
     </script>
 </body>
 </html>
