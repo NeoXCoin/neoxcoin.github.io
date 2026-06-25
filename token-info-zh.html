@@ -1,248 +1,97 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>NeoX Coin (NXC) – 官方代幣資料</title>
+    <meta name="description" content="NeoX Coin (NXC) 官方代幣資料頁面：包含 Base 主網合約地址、區塊鏈瀏覽器連結、專案簡介與官方聯絡方式。">
     
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX Coin (NXC) – 官方代幣資料</title>
-  <meta name="description" content="NeoX Coin (NXC) 官方代幣資料頁面：包含 Base 主網合約地址、區塊鏈瀏覽器連結、專案簡介與官方聯絡方式。">
-  
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
-      background: #050814;
-      color: #f5f5f5;
-      line-height: 1.7;
-    }
+    <meta property="og:title" content="NeoX Coin (NXC) 官方代幣資料" />
+    <meta property="og:description" content="NeoX 生態核心代幣 NXC，Base 主網合約地址與專案介紹。" />
+    <meta property="og:image" content="https://neoxcoin.github.io/XNXC.png" />
     
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
-      opacity: 0.85;
-      z-index: 999;
-    }
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
-    .wrap {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 30px 20px 80px;
-    }
+    <style>
+        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif; background: #050814; color: #f5f5f5; line-height: 1.7; }
+        .logo { position: absolute; top: 20px; left: 20px; width: 60px; opacity: 0.85; z-index: 999; }
+        .wrap { max-width: 800px; margin: 0 auto; padding: 30px 20px 80px; }
+        h1, h2 { font-weight: 600; margin-bottom: 10px; }
+        h1 { font-size: 2rem; margin-top: 20px; }
+        h2 { font-size: 1.3rem; margin-top: 28px; }
+        .box { background: rgba(255,255,255,0.04); border-radius: 16px; padding: 24px; margin-top: 24px; border: 1px solid rgba(255,255,255,0.1); }
+        
+        /* 複製地址區塊 */
+        .copy-container { display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.4); padding: 12px; border-radius: 8px; margin-top: 10px; }
+        code { font-family: SFMono-Regular, Consolas, monospace; word-break: break-all; flex-grow: 1; color: #4fd1ff; }
+        .copy-btn { background: #4fd1ff; color: #050814; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.8rem; }
+        .copy-btn:hover { background: #3abde6; }
 
-    h1, h2 {
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-top: 20px;
-    }
-
-    h2 {
-      font-size: 1.3rem;
-      margin-top: 28px;
-    }
-
-    p {
-      margin: 8px 0 14px;
-    }
-
-    a {
-      color: #4fd1ff;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .box {
-      background: rgba(255,255,255,0.04);
-      border-radius: 12px;
-      padding: 18px;
-      margin-top: 18px;
-    }
-
-    code {
-      background: rgba(0,0,0,0.35);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: SFMono-Regular, Consolas, monospace;
-      word-break: break-all;
-    }
-
-    .list {
-      padding-left: 22px;
-      margin-top: 6px;
-    }
-
-    .small {
-      font-size: 0.85rem;
-      opacity: 0.78;
-    }
-
-    .footer-links {
-      text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.85;
-      margin-top: 32px;
-    }
-
-    .footer-links a {
-      margin: 0 8px;
-    }
-
-    /* 動畫 */
-    .logo-main { animation: fadeInDown 1.2s ease-out; }
-    .coin-anim { animation: fadeInGlow 2s ease-out; }
-
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInGlow {
-      0% { opacity: 0; transform: translateY(10px); box-shadow: 0 0 0 rgba(255,215,0,0); }
-      60% { opacity: 1; box-shadow: 0 0 26px rgba(255,215,0,0.55); }
-      100% { opacity: 1; box-shadow: 0 0 16px rgba(255,215,0,0.35); }
-    }
-  </style>
+        a { color: #4fd1ff; text-decoration: none; transition: 0.3s; }
+        a:hover { opacity: 0.8; text-decoration: underline; }
+        
+        .link-btn { display: inline-block; margin-top: 8px; padding: 10px 16px; background: rgba(79, 209, 255, 0.1); border-radius: 8px; border: 1px solid #4fd1ff; }
+        .footer-links { text-align: center; font-size: 0.9rem; opacity: 0.7; margin-top: 40px; }
+        
+        .coin-anim { animation: fadeInGlow 2s ease-out; }
+        @keyframes fadeInGlow {
+            0% { opacity: 0; transform: translateY(10px); box-shadow: 0 0 0 rgba(255,215,0,0); }
+            100% { opacity: 1; box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- 左上角 Logo：返回中文版首頁 -->
-  <a href="index-zh.html">
-    <img class="logo" src="https://neoxcoin.io/apple-touch-icon.png" alt="NeoX Logo" />
-  </a>
+<a href="index-zh.html"><img class="logo" src="https://neoxcoin.io/apple-touch-icon.png" alt="NeoX Logo" /></a>
 
-  <!-- 中央 NeoX Logo -->
-  <div style="text-align:center; margin-top:80px;">
-    <img src="https://neoxcoin.github.io/XNXC.png"
-         alt="NeoX Coin Logo"
-         class="logo-main"
-         style="width:120px; height:auto; border-radius:12px; box-shadow:0 0 12px rgba(0,0,0,0.3);">
-  </div>
+<div style="text-align:center; margin-top:80px;">
+    <img src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin" class="coin-anim" style="width:140px; height:auto; border-radius:50%;">
+</div>
 
-  <!-- 360 金幣動畫 -->
-  <div style="text-align:center; margin:34px 0 10px;">
-    <img src="https://neoxcoin.github.io/NeoXCoin360.gif"
-         alt="NeoX Coin 360° 動畫"
-         class="coin-anim"
-         style="width:160px; height:auto; border-radius:50%; box-shadow:0 0 20px rgba(255,215,0,0.35);">
-  </div>
-
-  <div class="wrap">
+<div class="wrap">
     <h1>NeoX Coin (NXC) – 官方代幣資料</h1>
-    <p>NeoX Coin (NXC) 是 NeoX 生態系統的核心代幣，連結 NFT、Web3 藝術與遊戲體驗，打造建基於 Base 主網的沉浸式虛擬世界。</p>
+    <p>NeoX Coin (NXC) 是 NeoX 生態系統的核心代幣，建基於 Base 主網。</p>
 
     <div class="box">
-      <h2>代幣總覽</h2>
-      <p><strong>代幣名稱：</strong> NeoX Coin</p>
-      <p><strong>代號：</strong> NXC</p>
-      <p><strong>網路：</strong> Base Mainnet（Base 主網）</p>
-      <p><strong>合約地址：</strong><br>
-        <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
-      </p>
-      <p><strong>區塊鏈瀏覽器（BaseScan）：</strong><br>
-        <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">
-          在 BaseScan 查看 NXC
-        </a>
-      </p>
-      <p class="small">＊NeoX Coin (NXC) 以公平啟動社群代幣形式在 Base 主網發行，沒有預售或私人配售。</p>
+        <h2>合約地址</h2>
+        <div class="copy-container">
+            <code id="contract-addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
+            <button class="copy-btn" onclick="copyAddr()">複製</button>
+        </div>
+        <p style="margin-top:15px;">
+            <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">在 BaseScan 查看詳情 →</a>
+        </p>
     </div>
 
     <div class="box">
-      <h2>專案簡介</h2>
-      <p>
-        NeoX Coin (NXC) 作為 NeoX 元宇宙生態的核心代幣，串連多個圍繞 NeoX 品牌打造的 NFT 系列、數位藝術作品、
-        輕量遊戲以及虛擬展覽空間。NeoX 希望讓更多人以輕鬆、有趣而且具美感的方式，體驗 Web3 與數位收藏。
-      </p>
-      <p>
-        所有官方 NeoX NFT 與藝術項目（例如 NeoX Timekeeper Edition、Van Gogh Visions、Abstract Realms 等），
-        皆與同一個專案主要錢包地址相連：
-        <code>0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2</code>。
-      </p>
+        <h2>專案簡介</h2>
+        <p>NeoX Coin (NXC) 串連了 NeoX 生態中的 NFT 系列與數位藝術。沒有預售或私人配售，公平啟動。</p>
     </div>
 
     <div class="box">
-      <h2>代幣分配與銷售說明</h2>
-      <p><strong>預售 / 私募：</strong> 無；NXC 以公平啟動社群代幣形式發行。</p>
-      <p><strong>公開銷售：</strong> 沒有傳統的 ICO / IEO。NXC 主要透過鏈上 DEX 流動性與社群自然流通。</p>
-      <p><strong>銷毀 / 鎖倉事件：</strong> 如未來有任何代幣銷毀、鎖倉、解鎖等安排，將於官方網站及 X（Twitter）帳號上正式公告。</p>
-      <p class="small">
-        平台上架或第三方查證時，建議同時參考本頁（官方代幣資料）、Global Token Info 以及 NeoX 白皮書。
-      </p>
+        <h2>官方連結</h2>
+        <ul style="list-style: none; padding: 0;">
+            <li><a class="link-btn" href="https://neoxcoin.io">官方網站</a></li>
+            <li><a class="link-btn" href="https://x.com/xdenniswong">官方 X (Twitter)</a></li>
+        </ul>
     </div>
 
-    <!-- 官方連結與聯絡 -->
-    <div class="box">
-      <h2>官方連結與聯絡</h2>
-
-      <ul class="links">
-        <li>
-          <strong> 官方網站：</strong><br>
-          <a class="link-btn" href="https://neoxcoin.io" target="_blank" rel="noopener">前往 NeoXCoin.io →</a>
-        </li>
-
-        <li>
-          <strong> 中文版首頁：</strong><br>
-          <a class="link-btn" href="https://neoxcoin.io/index-zh.html" target="_blank" rel="noopener">前往 中文首頁 →</a>
-        </li>
-
-        <li>
-          <strong> Global Token Info：</strong><br>
-          <a class="link-btn" href="https://neoxcoin.io/token-info-global.html" target="_blank" rel="noopener">查看 Global Token Info →</a>
-        </li>
-
-        <li>
-          <strong> 白皮書（繁體中文）：</strong><br>
-          <a class="link-btn" href="https://neoxcoin.io/whitepaper-zh.html" target="_blank" rel="noopener">查看 白皮書（繁中）→</a>
-        </li>
-
-        <li>
-          <strong> 白皮書（Global 英文版）：</strong><br>
-          <a class="link-btn" href="https://neoxcoin.io/whitepaper-global.html" target="_blank" rel="noopener">查看 白皮書（Global）→</a>
-        </li>
-
-        <li>
-          <strong>𝕏 官方 X（Twitter）：</strong><br>
-          <a class="link-btn" href="https://x.com/xdenniswong" target="_blank" rel="noopener">前往 X 官方帳號 →</a>
-        </li>
-
-        <li>
-          <strong> 官方 GitHub：</strong><br>
-          <a class="link-btn" href="https://github.com/NeoXCoin" target="_blank" rel="noopener">前往 NeoXCoin on GitHub →</a>
-        </li>
-
-        <li>
-          <strong> 官方 OpenSea（專案錢包 &amp; NFT）：</strong><br>
-          <a class="link-btn" href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank" rel="noopener">查看 NeoX NFTs on OpenSea →</a>
-        </li>
-
-        <li>
-          <strong> 聯絡電郵：</strong><br>
-          <a class="link-btn" href="mailto:neoxcoin@outlook.com">neoxcoin@outlook.com</a>
-        </li>
-      </ul>
-
-      <p class="note">
-        如需交易所、區塊鏈瀏覽器或數據平台上架與認證，建議同時參考本頁（官方資料）、Global Token Info 及 NeoX 白皮書。
-      </p>
-    </div>
-
-    <!-- Footer 導覽 -->
     <div class="footer-links">
-      <a href="https://neoxcoin.github.io/index-zh.html">首頁</a> ·
-      <a href="https://neoxcoin.github.io/whitepaper-zh.html" target="_blank">白皮書</a> ·
-      <a href="mailto:neoxcoin@outlook.com">聯絡我們</a>
+        © 2026 NeoXCoin | <a href="mailto:neoxcoin@outlook.com">聯絡我們</a>
     </div>
-  </div>
+</div>
+
+<script>
+    function copyAddr() {
+        const addr = document.getElementById("contract-addr").innerText;
+        navigator.clipboard.writeText(addr).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            btn.innerText = '已複製!';
+            setTimeout(() => btn.innerText = '複製', 2000);
+        });
+    }
+</script>
 
 </body>
 </html>
