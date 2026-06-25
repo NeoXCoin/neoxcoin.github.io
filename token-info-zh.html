@@ -1,97 +1,158 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>NeoX Coin (NXC) – 官方代幣資料</title>
-    <meta name="description" content="NeoX Coin (NXC) 官方代幣資料頁面：包含 Base 主網合約地址、區塊鏈瀏覽器連結、專案簡介與官方聯絡方式。">
-    
-    <meta property="og:title" content="NeoX Coin (NXC) 官方代幣資料" />
-    <meta property="og:description" content="NeoX 生態核心代幣 NXC，Base 主網合約地址與專案介紹。" />
-    <meta property="og:image" content="https://neoxcoin.github.io/XNXC.png" />
-    
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
+    <title>代幣資訊 - NeoX Coin (NXC)</title>
+    <meta name="description" content="NeoX Coin (NXC) 於 Base 主網的官方代幣經濟與智能合約資訊。" />
+    <link rel="canonical" href="https://neoxcoin.github.io/token-info-zh.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif; background: #050814; color: #f5f5f5; line-height: 1.7; }
-        .logo { position: absolute; top: 20px; left: 20px; width: 60px; opacity: 0.85; z-index: 999; }
-        .wrap { max-width: 800px; margin: 0 auto; padding: 30px 20px 80px; }
-        h1, h2 { font-weight: 600; margin-bottom: 10px; }
-        h1 { font-size: 2rem; margin-top: 20px; }
-        h2 { font-size: 1.3rem; margin-top: 28px; }
-        .box { background: rgba(255,255,255,0.04); border-radius: 16px; padding: 24px; margin-top: 24px; border: 1px solid rgba(255,255,255,0.1); }
-        
-        /* 複製地址區塊 */
-        .copy-container { display: flex; align-items: center; gap: 10px; background: rgba(0,0,0,0.4); padding: 12px; border-radius: 8px; margin-top: 10px; }
-        code { font-family: SFMono-Regular, Consolas, monospace; word-break: break-all; flex-grow: 1; color: #4fd1ff; }
-        .copy-btn { background: #4fd1ff; color: #050814; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 0.8rem; }
-        .copy-btn:hover { background: #3abde6; }
-
-        a { color: #4fd1ff; text-decoration: none; transition: 0.3s; }
-        a:hover { opacity: 0.8; text-decoration: underline; }
-        
-        .link-btn { display: inline-block; margin-top: 8px; padding: 10px 16px; background: rgba(79, 209, 255, 0.1); border-radius: 8px; border: 1px solid #4fd1ff; }
-        .footer-links { text-align: center; font-size: 0.9rem; opacity: 0.7; margin-top: 40px; }
-        
-        .coin-anim { animation: fadeInGlow 2s ease-out; }
-        @keyframes fadeInGlow {
-            0% { opacity: 0; transform: translateY(10px); box-shadow: 0 0 0 rgba(255,215,0,0); }
-            100% { opacity: 1; box-shadow: 0 0 20px rgba(255,215,0,0.3); }
-        }
+        :root {--bg-dark: #03010a; --text-main: #ffffff; --text-muted: rgba(255, 255, 255, 0.7); --primary: #a370ff; --secondary: #00ffcc; --glass: rgba(255, 255, 255, 0.03); --border: rgba(255, 255, 255, 0.08); --font-stack: 'Plus Jakarta Sans', sans-serif; }
+        body {margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E"); font-family: var(--font-stack); color: var(--text-main); text-align: center; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+        header {position: fixed; top: 0; left: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 50px; background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000; box-sizing: border-box; }
+        .nav-logo { height: 32px; opacity: 0.9; }
+        .nav-logo:hover { opacity: 1; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+        .nav-links a:hover { color: var(--primary); }
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; }
+        .language-switch a:hover { color: var(--text-main); }
+        .lang-sep { opacity: 0.3; }
+        .btn-connect {font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px; background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3); cursor: pointer; transition: all 0.2s; }
+        .btn-connect:hover {background: rgba(0, 255, 204, 0.05); box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); }
+        .container {max-width: 900px; margin: 0 auto; padding: 140px 20px 80px 20px; }
+        @keyframes fadeInUpLoopSlow {0% { opacity: 0; transform: translateY(25px); filter: blur(8px); } 18% { opacity: 1; transform: translateY(0); filter: blur(0); } 86% { opacity: 1; transform: translateY(0); filter: blur(0); } 93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); } 100% { opacity: 0; transform: translateY(25px); filter: blur(8px); } }
+        @keyframes textShimmer {0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .page-title {font-size: 52px; font-weight: 800; line-height: 1.1; margin-bottom: 20px; background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite, textShimmer 4s linear infinite; }
+        .info-grid {display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 50px; text-align: left; }
+        .info-card {background: var(--glass); border: 1px solid var(--border); padding: 30px; border-radius: 20px; backdrop-filter: blur(10px); transition: all 0.3s ease; }
+        .info-card:hover {border-color: rgba(163, 112, 255, 0.3); background: rgba(255, 255, 255, 0.05); transform: translateY(-2px); }
+        .card-label {font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--primary); margin-bottom: 8px; }
+        .card-value {font-size: 20px; font-weight: 700; color: #fff; }
+        .address-box {grid-column: span 2; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--border); padding: 25px; border-radius: 16px; text-align: center; }
+        .contract-code {display: block; font-family: monospace; font-size: 16px; color: var(--secondary); word-break: break-all; margin: 15px 0; line-height: 1.5; padding: 10px; background: rgba(0, 255, 204, 0.05); border-radius: 8px; }
+        .btn-explorer {display: inline-block; font-size: 14px; font-weight: 600; color: var(--text-main); padding: 8px 20px; border: 1px solid var(--border); border-radius: 8px; margin-top: 10px; }
+        .btn-explorer:hover {background: var(--glass); border-color: var(--primary); }
+        .visual-section {margin: 40px 0; }
+        .coin-gif {width: 120px; border-radius: 50%; filter: drop-shadow(0 0 15px rgba(163, 112, 255, 0.4)); }
+        footer {width: 100%; border-top: 1px solid var(--border); padding: 40px 0; margin-top: 80px; background: rgba(0,0,0,0.1); }
+        .social-icons { margin-bottom: 25px; }
+        .social-icons img {width: 22px; margin: 0 15px; opacity: 0.5; filter: brightness(0) invert(1); transition: all 0.2s ease; }
+        .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
+        .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+        .footer-links a { margin: 0 8px; }
+        .footer-links a:hover { color: var(--text-main); }
+        .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+        @media (max-width: 768px) {header { padding: 0 20px; } .nav-links { display: none; } .page-title { font-size: 36px; } .info-grid { grid-template-columns: 1fr; } .address-box { grid-column: span 1; } }
     </style>
 </head>
 <body>
-
-<a href="index-zh.html"><img class="logo" src="https://neoxcoin.io/apple-touch-icon.png" alt="NeoX Logo" /></a>
-
-<div style="text-align:center; margin-top:80px;">
-    <img src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin" class="coin-anim" style="width:140px; height:auto; border-radius:50%;">
-</div>
-
-<div class="wrap">
-    <h1>NeoX Coin (NXC) – 官方代幣資料</h1>
-    <p>NeoX Coin (NXC) 是 NeoX 生態系統的核心代幣，建基於 Base 主網。</p>
-
-    <div class="box">
-        <h2>合約地址</h2>
-        <div class="copy-container">
-            <code id="contract-addr">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
-            <button class="copy-btn" onclick="copyAddr()">複製</button>
+    <header>
+        <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+        <div class="nav-links">
+            <a href="what-is-neox.html">NeoX 是什麼?</a>
+            <a href="how-to-buy.html">如何購買?</a>
+            <a href="game.html">NeoX 遊戲</a>
+            <a href="metaverse.html">元宇宙展覽</a>
+            <a href="nft-projects.html">NFT 專案</a>
         </div>
-        <p style="margin-top:15px;">
-            <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">在 BaseScan 查看詳情 →</a>
-        </p>
+        <div class="header-right">
+            <div class="language-switch">
+                <a href="token-info.html">EN</a>
+                <span class="lang-sep">|</span>
+                <a href="token-info-zh.html">繁</a>
+            </div>
+            <button class="btn-connect" id="connect-btn">連接錢包</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="visual-section">
+            <img class="coin-gif" src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NXC 360">
+        </div>
+        <h1 class="page-title">代幣資訊</h1>
+        <div class="info-grid">
+            <div class="info-card">
+                <div class="card-label">代幣名稱</div>
+                <div class="card-value" style="display: flex; align-items: center; gap: 10px;">
+                    <img src="https://neoxcoin.github.io/XNXC.png" alt="Logo" style="width: 24px; height: 24px; border-radius: 4px;"> NeoX Coin
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="card-label">代幣代碼</div>
+                <div class="card-value">NXC</div>
+            </div>
+            <div class="info-card">
+                <div class="card-label">區塊鏈網絡</div>
+                <div class="card-value">Base Mainnet</div>
+            </div>
+            <div class="info-card">
+                <div class="card-label">總供應量</div>
+                <div class="card-value">1,000,000,000 NXC</div>
+            </div>
+            <div class="address-box info-card">
+                <div class="card-label">智能合約地址</div>
+                <code class="contract-code">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
+                <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank" class="btn-explorer">於 BaseScan 查看 →</a>
+            </div>
+        </div>
+        <div style="margin-top: 60px;">
+            <a href="index.html" style="font-size: 15px; color: var(--text-muted); border-bottom: 1px solid var(--border);">← 返回首頁</a>
+        </div>
     </div>
 
-    <div class="box">
-        <h2>專案簡介</h2>
-        <p>NeoX Coin (NXC) 串連了 NeoX 生態中的 NFT 系列與數位藝術。沒有預售或私人配售，公平啟動。</p>
-    </div>
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+            <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+            <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+        </div>
+        <div class="footer-links">
+            <a href="about.html">關於我們</a> | <a href="faq.html">常見問題</a> | <a href="token-info.html">代幣資訊</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">免責聲明</a>
+        </div>
+        <div class="copyright">© 2026 NeoX. 保留所有權利。</div>
+    </footer>
 
-    <div class="box">
-        <h2>官方連結</h2>
-        <ul style="list-style: none; padding: 0;">
-            <li><a class="link-btn" href="https://neoxcoin.io">官方網站</a></li>
-            <li><a class="link-btn" href="https://x.com/xdenniswong">官方 X (Twitter)</a></li>
-        </ul>
-    </div>
-
-    <div class="footer-links">
-        © 2026 NeoXCoin | <a href="mailto:neoxcoin@outlook.com">聯絡我們</a>
-    </div>
-</div>
-
-<script>
-    function copyAddr() {
-        const addr = document.getElementById("contract-addr").innerText;
-        navigator.clipboard.writeText(addr).then(() => {
-            const btn = document.querySelector('.copy-btn');
-            btn.innerText = '已複製!';
-            setTimeout(() => btn.innerText = '複製', 2000);
+    <script>
+        const connectBtn = document.getElementById('connect-btn');
+        async function checkConnection() {
+            if (typeof window.ethereum !== 'undefined') {
+                const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                if (accounts.length > 0) { updateButton(accounts[0]); }
+            }
+        }
+        function updateButton(address) {
+            const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+            connectBtn.innerText = shortAddress;
+            connectBtn.style.color = "#00ffcc";
+            connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+        }
+        connectBtn.addEventListener('click', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    connectBtn.innerText = "連接中...";
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    updateButton(accounts[0]);
+                } catch (error) {
+                    console.error("錢包登入錯誤:", error);
+                    connectBtn.innerText = "連接錢包";
+                }
+            } else {
+                alert("未偵測到 Web3 錢包，正在前往 MetaMask 下載頁面...");
+                window.open('https://metamask.io/download/', '_blank');
+            }
         });
-    }
-</script>
-
+        window.addEventListener('DOMContentLoaded', checkConnection);
+    </script>
 </body>
 </html>
