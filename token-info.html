@@ -4,245 +4,113 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>NeoX Coin (NXC) – Official Token Information</title>
   <meta name="description" content="Official token information for NeoX Coin (NXC) on Base Mainnet. Includes contract address, explorer links, and ecosystem overview.">
   
   <style>
+    :root {
+      --bg-dark: #03010a;
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --primary: #a370ff;
+      --secondary: #00ffcc;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
-      background: #050814;
-      color: #f5f5f5;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      color: var(--text-main);
       line-height: 1.7;
-    }
-    /* Top-left logo */
-    .logo{
-      width:60px;
-      position:absolute;
-      top:20px;
-      left:20px;
-      opacity:.85;
-      z-index:9999;
+      padding-top: 80px;
     }
 
-    .wrap {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 30px 20px 80px;
+    .logo { width: 60px; position: absolute; top: 20px; left: 20px; opacity: .85; z-index: 9999; }
+    .wrap { max-width: 850px; margin: 0 auto; padding: 20px; }
+    
+    .box { 
+      background: var(--glass); 
+      border: 1px solid var(--border); 
+      border-radius: 20px; 
+      padding: 30px; 
+      margin-top: 25px; 
+      backdrop-filter: blur(10px);
     }
 
-    h1, h2 {
-      font-weight: 600;
-      margin-bottom: 10px;
+    h1 { font-size: 2.5rem; text-align: center; background: linear-gradient(120deg, #fff, #a370ff, #00ffcc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    h2 { font-size: 1.5rem; color: var(--secondary); margin-top: 0; }
+    
+    code { 
+      background: rgba(0,0,0,0.4); 
+      padding: 6px 10px; 
+      border-radius: 6px; 
+      font-family: monospace; 
+      word-break: break-all; 
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--secondary);
     }
 
-    h1 {
-      font-size: 2rem;
-      margin-top: 20px;
-    }
+    .small { font-size: 0.9rem; opacity: 0.7; margin-top: 15px; }
+    a { color: var(--primary); text-decoration: none; border-bottom: 1px solid rgba(163,112,255,0.3); }
+    a:hover { color: var(--secondary); border-color: var(--secondary); }
 
-    h2 {
-      font-size: 1.3rem;
-      margin-top: 28px;
-    }
-
-    p {
-      margin: 8px 0 14px;
-    }
-
-    a {
-      color: #4fd1ff;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .box {
-      background: rgba(255,255,255,0.04);
-      border-radius: 12px;
-      padding: 18px;
-      margin-top: 18px;
-    }
-
-    code {
-      background: rgba(0,0,0,0.35);
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-family: SFMono-Regular, Consolas, monospace;
-      word-break: break-all;
-    }
-
-    .list {
-      padding-left: 22px;
-      margin-top: 6px;
-    }
-
-    .small {
-      font-size: 0.85rem;
-      opacity: 0.78;
-    }
-
-    .footer-links {
-      text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.85;
-      margin-top: 32px;
-    }
-
-    .footer-links a {
-      margin: 0 8px;
-    }
-
-    /* Animations */
     .logo-main { animation: fadeInDown 1.2s ease-out; }
     .coin-anim { animation: fadeInGlow 2s ease-out; }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeInGlow { 0% { opacity: 0; } 100% { opacity: 1; } }
 
-    @keyframes fadeInGlow {
-      0% { opacity: 0; transform: translateY(10px); box-shadow: 0 0 0 rgba(255,215,0,0); }
-      60% { opacity: 1; box-shadow: 0 0 26px rgba(255,215,0,0.55); }
-      100% { opacity: 1; box-shadow: 0 0 16px rgba(255,215,0,0.35); }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      .box { padding: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- 🔹 Top Left Logo (Home) -->
-  <a href="index.html">
-    <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Global Home" />
-  </a>
+  <a href="index.html"> <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Home" /> </a>
 
-  <!-- 🔹 Center Logo -->
-  <div style="text-align:center; margin-top:80px;">
-    <img src="https://neoxcoin.github.io/XNXC.png"
-         alt="NeoX Coin Logo"
-         class="logo-main"
-         style="width:120px; height:auto; border-radius:12px; box-shadow:0 0 12px rgba(0,0,0,0.3);">
+  <div style="text-align:center;">
+    <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Coin Logo" class="logo-main" style="width:100px; border-radius:12px;">
   </div>
-
-  <!-- 🔹 360 Coin Animation -->
-  <div style="text-align:center; margin:34px 0 10px;">
-    <img src="https://neoxcoin.github.io/NeoXCoin360.gif"
-         alt="NeoX Coin 360 Animation"
-         class="coin-anim"
-         style="width:160px; height:auto; border-radius:50%; box-shadow:0 0 20px rgba(255,215,0,0.35);">
+  
+  <div style="text-align:center; margin:20px 0;">
+    <img src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin Animation" class="coin-anim" style="width:140px; border-radius:50%;">
   </div>
 
   <div class="wrap">
-    <h1>NeoX Coin (NXC) – Official Token Information</h1>
-    <p>NeoX Coin (NXC) is the core token of the NeoX ecosystem – connecting NFTs, Web3 art, and gaming experiences across immersive virtual worlds on Base Mainnet.</p>
+    <h1>NeoX Coin (NXC) Official Info</h1>
 
     <div class="box">
       <h2>Token Overview</h2>
-      <p><strong>Token Name:</strong> NeoX Coin</p>
-      <p><strong>Symbol:</strong> NXC</p>
+      <p><strong>Name:</strong> NeoX Coin | <strong>Symbol:</strong> NXC</p>
       <p><strong>Network:</strong> Base Mainnet</p>
-      <p><strong>Contract Address:</strong><br>
-      <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code></p>
-      <p><strong>Blockchain Explorer (BaseScan):</strong><br>
-      <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">View NXC on BaseScan</a></p>
-      <p class="small">* NeoX Coin (NXC) launched as a fair community token on Base Mainnet with no presale or private sale.</p>
+      <p><strong>Contract Address:</strong><br> <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code></p>
+      <p><a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">View on BaseScan →</a></p>
     </div>
 
     <div class="box">
       <h2>Project Description</h2>
-      <p>NeoX Coin (NXC) powers the NeoX ecosystem – a creative Web3 platform combining NFTs, blockchain art, and gamified experiences. Built on Base Mainnet, NeoX focuses on fair community access, digital ownership, and immersive virtual worlds that are accessible to a global audience.</p>
-      <p>All official NeoX NFT collections and digital art series (such as NeoX Timekeeper Edition, Van Gogh Visions, Abstract Realms, and others) are linked to the primary project wallet:<br>
-      <code>0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2</code>.</p>
+      <p>NeoX Coin (NXC) is the native utility asset powering the NeoX ecosystem on Base. Focused on fair community access, digital art ownership, and gamified Web3 experiences.</p>
+      <p>Primary Project Wallet: <br><code>0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2</code></p>
     </div>
 
     <div class="box">
-      <h2>Token Distribution & Sales</h2>
-      <p><strong>Presale / Private Sale:</strong> None – fair community launch.</p>
-      <p><strong>Public Sale:</strong> No ICO/IEO. NXC is available through on-chain DEX liquidity and organic community distribution.</p>
-      <p><strong>Burn / Vesting Events:</strong> Any future events will be clearly announced through the official website and X (Twitter) account.</p>
-      <p class="small">For listing or verification inquiries (e.g. explorers, aggregators, or global platforms), please reference this page together with the official whitepaper.</p>
+      <h2>Distribution</h2>
+      <p><strong>Launch:</strong> Fair community launch (No Presale / No Private Sale).</p>
+      <p><strong>Liquidity:</strong> Organic on-chain distribution.</p>
+      <p class="small">* Always verify contract addresses via official whitepapers before interacting.</p>
     </div>
 
-    <!-- 🔹 Official Links & Contact -->
-    <div class="box">
-      <h2>Official Links &amp; Contact</h2>
-
-      <ul class="list">
-        <li>
-          <strong> Official Website:</strong><br>
-          <a href="https://neoxcoin.io" target="_blank" rel="noopener">
-            neoxcoin.io →
-          </a>
-        </li>
-
-        <li>
-          <strong> Global Homepage:</strong><br>
-          <a href="https://neoxcoin.io/index-global.html" target="_blank" rel="noopener">
-            Visit Global Homepage →
-          </a>
-        </li>
-
-        <li>
-          <strong> Global Whitepaper:</strong><br>
-          <a href="https://neoxcoin.io/whitepaper-global.html" target="_blank" rel="noopener">
-            View Whitepaper (PDF) →
-          </a>
-        </li>
-
-        <li>
-          <strong> BaseScan Token Page:</strong><br>
-          <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B"
-             target="_blank" rel="noopener">
-            View NXC on BaseScan →
-          </a>
-        </li>
-
-        <li>
-          <strong> OpenSea (Official NFT Wallet):</strong><br>
-          <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2"
-             target="_blank" rel="noopener">
-            View NeoX NFTs on OpenSea →
-          </a>
-        </li>
-
-        <li>
-          <strong> X (Twitter):</strong><br>
-          <a href="https://x.com/neox__official" target="_blank" rel="noopener">
-            @neox__official →
-          </a>
-        </li>
-
-        <li>
-          <strong> GitHub:</strong><br>
-          <a href="https://github.com/NeoXCoin" target="_blank" rel="noopener">
-            NeoXCoin on GitHub →
-          </a>
-        </li>
-
-        <li>
-          <strong>✉️ Contact Email:</strong><br>
-          <a href="mailto:neoxcoin@outlook.com">
-            neoxcoin@outlook.com
-          </a>
-        </li>
-      </ul>
-      <p class="small">
-        For listings, explorer references, or verification requests, please include both this token page and the official whitepaper.
-      </p>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="index.html" style="border:1px solid var(--border); padding:10px 20px; border-radius:8px;">← Back to Home</a>
     </div>
-
-    <!-- 🔹 Footer -->
-    <div class="footer-links">
-      <a href="https://neoxcoin.github.io/index.html">Home</a> ·
-      <a href="https://neoxcoin.github.io/whitepaper.html" target="_blank">Whitepaper</a> ·
-      <a href="mailto:neoxcoin@outlook.com">Contact</a>
-    </div>
-
   </div>
 </body>
 </html>
