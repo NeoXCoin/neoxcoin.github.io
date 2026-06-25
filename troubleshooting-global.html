@@ -4,291 +4,389 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
+    
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
-  <meta name="description" content="Troubleshooting common MetaMask and NXC issues on the NeoX platform. Fix mobile browser issues, network errors, and token visibility problems." />
-  <title>Troubleshooting - NeoX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Troubleshooting - NeoX Global Portal</title>
+  <meta name="description" content="Official troubleshooting guide for MetaMask, NXC node connections, and DApp wallet interaction issues on the NeoX network with multi-language support." />
+  <link rel="canonical" href="https://neoxcoin.github.io/troubleshooting-global.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    function googleTranslateElementInit(){
+      new google.translate.TranslateElement({
+        pageLanguage: 'en', 
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+        autoDisplay: false, 
+        multilanguagePage: true 
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
   <style>
-    :root{
-      --topSafe: 96px; /* 預留頂部空間（logo + translate） */
+    :root {
+      --bg-dark: #03010a;
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.65);
+      --primary: #a370ff;
+      --secondary: #00ffcc;
+      --warning: #ff5555;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-stack: 'Plus Jakarta Sans', sans-serif;
     }
-
-    html, body { height: 100%; }
 
     body {
       margin: 0;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url('https://neoxcoin.github.io/NeoXbackG.JPG');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      font-family: Arial, sans-serif;
-      color: white;
+      /* Deep Starfield Canvas Background */
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      background-image: 
+        radial-gradient(circle at center, #110526 0%, #03010a 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      
+      font-family: var(--font-stack);
+      color: var(--text-main);
       text-align: center;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
 
-      /* ✅ 桌面預設 */
-      padding: 40px 20px;
-    }
-
-    /* ✅ 強制封鎖 Google Translate 頂部白色 Banner（Safari / iOS 必要） */
-    body {
+      /* Google Translate Override Tweak */
       top: 0 !important;
       position: static !important;
       margin-top: 0 !important;
     }
 
-    /* 完全隱藏 Google Translate iframe banner */
-    .goog-te-banner-frame.skiptranslate,
-    .goog-te-banner-frame {
-      display: none !important;
-      visibility: hidden !important;
-      height: 0 !important;
-      width: 0 !important;
+    /* Hide Google Translate White Top Bar */
+    .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important; }
+    iframe.goog-te-banner-frame { display: none !important; }
+    body > .skiptranslate { display: none !important; }
+
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+    /* --- 1. Sticky Header (Glassmorphism Navbar) --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
     }
 
-    iframe.goog-te-banner-frame {
-      display: none !important;
+    .nav-logo { height: 32px; opacity: 0.9; }
+    .nav-logo:hover { opacity: 1; }
+
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+
+    .header-right { display: flex; align-items: center; gap: 15px; }
+
+    /* Custom Black Pill Styling for Google Widget */
+    #google_translate_element {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
+    }
+    #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
+    #google_translate_element .goog-te-gadget span { display: none !important; } 
+    #google_translate_element select {
+      background: transparent !important;
+      color: #fff !important;
+      border: none !important;
+      font-size: 12px !important;
+      padding: 4px 6px !important;
+      outline: none !important;
+      cursor: pointer;
     }
 
-    /* 有時 Google 會包一層 skiptranslate */
-    body > .skiptranslate {
-      display: none !important;
+    /* Connect Wallet Button */
+    .btn-connect {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
     }
 
-    /* Logo */
-    .logo {
-      width: 56px;
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      opacity: 0.9;
-      z-index: 9999;
+    /* --- Main Container --- */
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 140px 20px 60px 20px;
+      text-align: left;
     }
 
-    .translate-wrap{
-      position:absolute;
-      top:20px;
-      right:20px;
-      font-size:14px;
-      text-align:right;
-      z-index: 9999;
-    }
-
-    #google_translate_element{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:10px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(0,217,255,.35);
-      box-shadow:0 0 14px rgba(0,217,255,.18);
-    }
-
-    #google_translate_element .goog-te-gadget{
-      font-size:14px !important;
-      color:#fff !important;
-      line-height:1.2;
-    }
-    #google_translate_element .goog-te-gadget span{
-      color:#fff !important;
-    }
-    #google_translate_element select{
-      background:rgba(0,0,0,.15) !important;
-      color:#fff !important;
-      border:1px solid rgba(255,255,255,.25) !important;
-      border-radius:8px !important;
-      padding:6px 8px !important;
-      outline:none !important;
-    }
-
-    /* Headline */
-    h1 {
-      font-size: 32px;
-      margin: 0 0 18px;
-      text-shadow: 0 0 14px rgba(0,0,0,.35);
-    }
-
-    /* ===== 核心修正：整頁內容向下移 ===== */
-    .page{
-      padding-top: 140px; /* 🔴 關鍵數值，可再微調 */
+    /* --- Page Headline --- */
+    .page-title {
+      font-size: 44px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 15px;
+      background: linear-gradient(120deg, #ffffff, #a370ff, #00ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     
-    .issue {
-      background-color: rgba(255, 255, 255, 0.06);
-      padding: 20px;
-      margin: 16px auto;
-      border-radius: 12px;
-      text-align: left;
-      backdrop-filter: blur(4px);
-      box-shadow: 0 0 18px rgba(0,0,0,.22);
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 50px;
     }
 
-    .issue h3 {
-      color: #00d9ff;
-      margin: 0 0 8px;
+    /* --- Troubleshooting Cards --- */
+    .trouble-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
     }
 
-    .issue p { margin: 8px 0; }
+    .trouble-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 35px;
+      position: relative;
+    }
+    
+    .trouble-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .trouble-card h3::before {
+      content: "•";
+      color: var(--secondary);
+      font-size: 24px;
+    }
 
-    .issue ul {
-      margin-top: 8px;
+    .trouble-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin: 0 0 16px 0;
+    }
+    
+    .trouble-card ul, .trouble-card ol {
+      margin: 0 0 20px 0;
       padding-left: 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    
+    .trouble-card li { margin-bottom: 8px; }
+    
+    .trouble-card code {
+      background: rgba(0, 0, 0, 0.35);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: var(--secondary);
+      font-size: 14px;
     }
 
-    code {
-      background: rgba(0,0,0,.35);
-      padding: 2px 6px;
-      border-radius: 6px;
-      word-break: break-all;
-    }
+    .highlight-green { color: var(--secondary); font-weight: 600; }
+    .highlight-link { color: var(--primary); text-decoration: underline; }
+    .highlight-link:hover { color: var(--secondary); }
 
+    /* 全站統一的極簡毛玻璃按鈕（已修正） */
     .btn-row {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 18px;
+      margin-top: 50px;
     }
-
-    .btn {
-      background: #0a0a0a;
-      border: 2px solid #00d9ff;
-      color: #00d9ff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 16px;
+    .btn-back {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
       cursor: pointer;
-      text-decoration: none;
-      min-width: 180px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px rgba(0,217,255,0.5);
+      transition: all 0.2s ease;
+    }
+    .btn-back:hover {
+      background: var(--glass);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
     }
 
-    .btn:hover {
-      background: #00d9ff;
-      color: #000;
-      box-shadow: 0 0 20px rgba(0,217,255,0.8);
-      transform: translateY(-3px);
+    /* --- Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 80px;
+      background: rgba(0,0,0,0.1);
+      text-align: center;
     }
 
-    .btn-blue {
-      background: #0d6efd;
-      border: 2px solid #3399ff;
-      color: white;
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+      width: 22px;
+      margin: 0 15px;
+      opacity: 0.5;
+      filter: brightness(0) invert(1);
+      transition: all 0.2s ease;
     }
+    .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
 
-    .footer {
-      margin-top: 44px;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.55);
-    }
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 8px;
-    }
-
-    /* ✅ Mobile fix：推低整頁，避免被 logo/translate 遮住 */
-    @media (max-width: 768px){
-      .page{
-        padding-top: calc(160px + env(safe-area-inset-top)); }
-
-      body{
-        padding-top: calc(var(--topSafe) + env(safe-area-inset-top));
-        padding-left: 14px;
-        padding-right: 14px;
-        padding-bottom: 36px;
-        background-attachment: scroll; /* iOS 會更順 */
-      }
-
-      .logo{ top: 14px; left: 14px; width: 52px; }
-      .translate-wrap{ top: 14px; right: 12px; }
-
-      h1{ font-size: 26px; }
-
-      .issue{
-        padding: 16px;
-        margin: 14px auto;
-      }
+    @media (max-width: 950px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-title { font-size: 34px; }
+      .trouble-card { padding: 25px; }
     }
   </style>
 </head>
-
 <body>
-  <!-- Logo -->
-  <a href="index-global.html" aria-label="Back to Home">
-    <img class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo" />
-  </a>
 
-  <!-- Google Translate (top-right) -->
-  <div class="translate-wrap">
-    <div id="google_translate_element"></div>
-  </div>
-
-  <div class="page">
-    <h1>🔧 Troubleshooting Guide</h1>
-
-    <div class="issue">
-      <h3>1. “Buy via 🦊MetaMask” doesn’t open directly on iPhone?</h3>
-      <p>This is due to Safari limitations — iOS may redirect instead of launching 🦊MetaMask directly.</p>
-      <p><strong>Solution:</strong> Open the 🦊MetaMask App → Tap the menu (≡) → “Browser” → Visit:
-        <code>https://neoxcoin.github.io</code>
-      </p>
+  <header>
+    <a href="index-global.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    
+    <div class="nav-links">
+      <a href="what-is-neox-global.html">What is NeoX?</a>
+      <a href="how-to-buy-global.html">How to Buy?</a>
+      <a href="game-global.html">🎮 NeoX Game</a>
+      <a href="metaverse-global.html">🔥 Metaverse Hub</a>
+      <a href="nft-projects-global.html">NeoX NFT Projects</a>
     </div>
 
-    <div class="issue">
-      <h3>2. Getting a “Network Not Supported” error?</h3>
-      <p>This occurs when your 🦊MetaMask is connected to the wrong network.</p>
-      <p><strong>Solution:</strong> Switch to <strong>Base Mainnet</strong>.
-        Or add Base via:
-        <a href="https://chainlist.org/chain/8453" target="_blank" rel="noopener">Chainlist (Base)</a>.
-      </p>
+    <div class="header-right">
+      <div id="google_translate_element"></div>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
     </div>
+  </header>
 
-    <div class="issue">
-      <h3>3. “🦊Add to MetaMask” button doesn’t work?</h3>
-      <p>This works best on MetaMask desktop extension or inside 🦊MetaMask’s mobile browser.</p>
-      <p><strong>Tip:</strong> You can manually add the token:</p>
-      <ul>
-        <li><strong>Token Contract:</strong> <code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code></li>
-        <li><strong>Symbol:</strong> <code>NXC</code></li>
-        <li><strong>Decimals:</strong> <code>18</code></li>
-      </ul>
-    </div>
+  <div class="container">
+    <h1 class="page-title">Troubleshooting Guide</h1>
+    <p class="page-subtitle">Quick technical resolutions for common DApp node connectivity, mobile limitations, and token visibility issues.</p>
+    
+    <div class="trouble-wrapper">
+      
+      <div class="trouble-card">
+        <h3>1. “Buy via 🦊MetaMask” doesn’t open directly on iPhone?</h3>
+        <p>This is due to default mobile browser limitations (such as iOS Safari) — the system policies may prevent standard web layouts from launching the external 🦊MetaMask app automatically.</p>
+        <p><strong>Solution:</strong> Open your mobile 🦊MetaMask App directly → Tap the menu icon (≡) or side drawer → Select the integrated <span class="highlight-green">"Browser"</span> feature → Enter the portal link: <code>https://neoxcoin.github.io</code> to execute flawless smart contract interactions.</p>
+      </div>
 
-    <div class="issue">
-      <h3>4. Can’t see your NXC after purchase?</h3>
-      <p>Your transaction may still be pending, or the token isn't added to your wallet yet.</p>
-      <p><strong>Solution:</strong> Refresh MetaMask. If needed, add NXC manually using the token info above.</p>
+      <div class="trouble-card">
+        <h3>2. Getting a “Network Not Supported” error?</h3>
+        <p>This occurs when your active Web3 wallet extension or node configuration is mapped to an unsupported ledger layer.</p>
+        <p><strong>Solution:</strong> Manually toggle your active wallet architecture to <span class="highlight-green">Base Mainnet</span>. Alternatively, you can use automated toolkits like Chainlist to bind the parameters natively: <a class="highlight-link" href="https://chainlist.org/chain/8453" target="_blank" rel="noopener">Add Base Mainnet via Chainlist</a>.</p>
+      </div>
+
+      <div class="trouble-card">
+        <h3>3. “🦊Add to MetaMask” button doesn’t work?</h3>
+        <p>This custom injection sequence operates optimally on official MetaMask desktop extensions or directly inside 🦊MetaMask’s built-in mobile browser shell. Standard mobile system apps systematically block script alerts.</p>
+        <p><strong>Tip:</strong> You can completely bypass this limitation by navigating to "Import Tokens" inside your asset management panel and manually pasting our verified specifications:</p>
+        <ul>
+          <li><strong>Token Contract Address:</strong> <code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code></li>
+          <li><strong>Token Symbol:</strong> <code>NXC</code></li>
+          <li><strong>Decimals of Precision:</strong> <code>18</code></li>
+        </ul>
+      </div>
+
+      <div class="trouble-card">
+        <h3>4. Can’t see your NXC after a successful purchase?</h3>
+        <p>Your cross-border transaction log may still be pending validation in the public L2 mempool registry, or the custom token structure hasn't been mapped onto your active asset tracker tab yet.</p>
+        <p><strong>Solution:</strong> Simply refresh or restart your MetaMask utility instance. If balance updates remain latent, reference the exact smart contract configurations listed in "Step 3" above to import your holdings securely.</p>
+      </div>
+
     </div>
 
     <div class="btn-row">
-      <a class="btn btn-blue" href="index-global.html">← Back to Home</a>
-    </div>
-
-    <div class="footer">
-      © 2025 NeoX. All rights reserved. |
-      <a href="disclaimer-global.html">Disclaimer</a>
+      <a class="btn-back" href="index-global.html">← Back to Home</a>
     </div>
   </div>
 
-  <!-- Google Translate Script -->
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+    </div>
+    <div class="footer-links">
+      <a href="faq-global.html">FAQ</a> | <a href="about-global.html">About</a> | <a href="https://neoxcoin.io/token-info-global.html" target="_blank">Global Token Info</a> | <a href="https://neoxcoin.io/whitepaper-global.html" target="_blank">Global Whitepaper</a> | <a href="neox-wiki-global.html">Wiki</a> | <a href="press-kit-global.html" target="_blank">Press Kit</a> | <a href="troubleshooting-global.html">Troubleshooting</a>
+    </div>
+    <div class="copyright">© 2026 NeoX. All rights reserved. | <a href="disclaimer-global.html">Disclaimer</a></div>
+  </footer>
+
   <script>
-    function googleTranslateElementInit(){
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
-        autoDisplay: false,
-        multilanguagePage: true
-      }, 'google_translate_element');
+    const connectBtn = document.getElementById('connect-btn');
+
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
     }
+
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "Connecting...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+        } catch (error) {
+          console.error("Wallet validation rejected:", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
+      } else {
+        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', checkConnection);
   </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
-</body>
+
 </body>
 </html>
