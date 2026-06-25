@@ -1,276 +1,376 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Charset & Viewport -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <!-- Favicon (ICO + SVG + Apple Icon) -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-  <title>What is NeoX? - NeoX</title>
-
-  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1" />
+  <title>What is NeoX? – Global Portal</title>
+  <meta name="description" content="Discover NeoX (NXC) – a decentralized Web3 utility token ecosystem built on Base network for gaming, NFTs, and metaverse expansion." />
   <link rel="canonical" href="https://neoxcoin.github.io/what-is-neox-global.html" />
-  <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox.html" hreflang="en" />
-  <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox-zh.html" hreflang="zh-Hant" />
-  <link rel="alternate" href="https://neoxcoin.github.io/what-is-neox-global.html" hreflang="x-default" />
 
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {"@type":"WebSite","@id":"https://neoxcoin.github.io/#website","name":"NeoX Coin (NXC)","url":"https://neoxcoin.github.io/"},
-      {"@type":"Organization","name":"NeoX","url":"https://neoxcoin.github.io/","logo":"https://neoxcoin.github.io/XNXC.png",
-       "sameAs":["https://www.instagram.com/neox__official","https://opensea.io/collection/neox-timekeeper-edition"]},
-      {"@type":"WebPage","@id":"https://neoxcoin.github.io/what-is-neox-global.html#webpage",
-       "url":"https://neoxcoin.github.io/what-is-neox-global.html","name":"What is NeoX? – Global",
-       "inLanguage":"en","isPartOf":{"@id":"https://neoxcoin.github.io/#website"}}
-    ]
-  }
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Google Translate (same config as index-global.html) -->
   <script>
     function googleTranslateElementInit(){
       new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
-        autoDisplay: false,
-        multilanguagePage: true
+        pageLanguage: 'en', 
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+        autoDisplay: false, 
+        multilanguagePage: true 
       }, 'google_translate_element');
     }
   </script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
   <style>
-    /* === Global / Body (same anti-push fix as index-global) === */
-    body{
-      margin:0;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url('https://neoxcoin.io/NeoXbackG.JPG');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      font-family: Arial, sans-serif;
-      color:#fff;
-      text-align:center;
+    :root {
+      --bg-dark: #03010a;
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --primary: #a370ff;
+      --secondary: #00ffcc;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-stack: 'Plus Jakarta Sans', sans-serif;
+    }
 
-      top:0 !important;
+    body {
+      margin: 0;
+      /* Deep Starfield Canvas Background */
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      background-image: 
+        radial-gradient(circle at center, #110526 0%, #03010a 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      
+      font-family: var(--font-stack);
+      color: var(--text-main);
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+
+      /* Google Translate Override Tweak */
+      top: 0 !important;
       position: static !important;
-      margin-top:0 !important;
-      min-height:100vh;
-
-      /* ✅ give space so absolute top items won't overlap content */
-      padding: 40px 20px;
+      margin-top: 0 !important;
     }
 
-    /* ✅ Hide Google Translate top white banner */
-    .goog-te-banner-frame.skiptranslate,
-    .goog-te-banner-frame{
-      display:none !important;
-      visibility:hidden !important;
-      height:0 !important;
-      width:0 !important;
-    }
-    iframe.goog-te-banner-frame{ display:none !important; }
-    body > .skiptranslate{ display:none !important; }
+    /* Hide Google Translate White Top Bar */
+    .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important; }
+    iframe.goog-te-banner-frame { display: none !important; }
+    body > .skiptranslate { display: none !important; }
 
-    /* background overlay */
-    .bg-overlay{
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+    /* --- 1. Header (Glassmorphism Navbar) --- */
+    header {
       position: fixed;
-      inset: 0;
-      background: url("https://gateway.lighthouse.storage/ipfs/bafybeickuhclzyscu56vp3j4ukkrhplhpp2rgs7g6lybxkg3fsmvurki44") no-repeat center center;
-      background-size: cover;
-      opacity: 0.55;
-      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
     }
 
-    /* logo */
-    .logo{
-      width:60px;
-      position:absolute;
-      top:20px;
-      left:20px;
-      opacity:.85;
-      z-index:9999;
+    .nav-logo { height: 32px; opacity: 0.9; }
+    .nav-logo:hover { opacity: 1; }
+
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+
+    .header-right { display: flex; align-items: center; gap: 15px; }
+
+    /* Custom Black Pill Styling for Google Widget */
+    #google_translate_element {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
+    }
+    #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
+    #google_translate_element .goog-te-gadget span { display: none !important; } 
+    #google_translate_element select {
+      background: transparent !important;
+      color: #fff !important;
+      border: none !important;
+      font-size: 12px !important;
+      padding: 4px 6px !important;
+      outline: none !important;
+      cursor: pointer;
     }
 
-    /* ✅ Top-right translate bar (same as index-global) */
-    .translate-wrap{
-      position:absolute;
-      top:20px;
-      right:20px;
-      font-size:14px;
-      text-align:right;
-      z-index:9999;
+    /* Connect Wallet Button */
+    .btn-connect {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
     }
-    #google_translate_element{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:10px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(0,217,255,.35);
-      box-shadow:0 0 14px rgba(0,217,255,.18);
-    }
-    #google_translate_element .goog-te-gadget{
-      font-size:14px !important;
-      color:#fff !important;
-      line-height:1.2;
-    }
-    #google_translate_element .goog-te-gadget span{
-      color:#fff !important;
-    }
-    #google_translate_element select{
-      background:rgba(0,0,0,.15) !important;
-      color:#fff !important;
-      border:1px solid rgba(255,255,255,.25) !important;
-      border-radius:8px !important;
-      padding:6px 8px !important;
-      outline:none !important;
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
     }
 
-    /* content container */
-    .container{
-      max-width: 900px;
-      margin: 120px auto 0;
-      padding: 22px 22px;
-      background: rgba(0,0,0,0.55);
-      border-radius: 12px;
+    /* --- Main Container --- */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 140px 20px 80px 20px;
     }
 
-    .tagline{
+    /* --- 2. Hero Section Animations --- */
+    @keyframes fadeInUpLoopSlow {
+      0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+      18% { opacity: 1; transform: translateY(0); filter: blur(0); }
+      86% { opacity: 1; transform: translateY(0); filter: blur(0); }
+      93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); }
+      100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+    }
+
+    @keyframes textShimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .page-title {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: 
+        fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite,
+        textShimmer 4s linear infinite;
+    }
+
+    .page-subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 60px auto;
+      line-height: 1.6;
+      animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
+    }
+
+    /* --- 3. Content Sections (Cards Grid) --- */
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      text-align: left;
+      margin-bottom: 50px;
+    }
+
+    .info-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 40px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+    .info-card:hover {
+      border-color: rgba(163, 112, 255, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .card-icon {
       font-size: 28px;
-      font-weight: bold;
-      margin: 0 0 6px;
-    }
-    .subtagline{
-      margin: 0 0 18px;
-      opacity: .85;
+      margin-bottom: 20px;
+      display: inline-block;
     }
 
-    .text{
-      font-size: 16px;
-      line-height: 1.8;
+    .card-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 15px 0;
+      color: #ffffff;
     }
 
-    ul{
-      text-align:left;
-      max-width:700px;
-      margin: 18px auto 0;
-      line-height: 1.8;
+    .card-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0;
     }
 
-    .btn-row{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:15px;
-      margin-top:22px;
+    /* Highlight badge inside card */
+    .highlight-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--secondary);
+      background: rgba(0, 255, 204, 0.1);
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-top: 15px;
     }
 
-    .btn{
-      background:#0a0a0a;
-      border:2px solid #00d9ff;
-      color:#00d9ff;
-      padding:12px 24px;
-      border-radius:12px;
-      font-size:16px;
-      cursor:pointer;
-      text-decoration:none;
-      min-width:180px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      transition: all .25s ease;
-      box-shadow:0 0 8px rgba(0,217,255,.5);
-    }
-    .btn:hover{
-      background:#00d9ff;
-      color:#000;
-      box-shadow:0 0 20px rgba(0,217,255,.8);
-      transform: translateY(-3px);
-    }
-    .btn-blue{
-      background:#0d6efd;
-      border:2px solid #3399ff;
-      color:#fff;
-      box-shadow:none;
-    }
-    .btn-blue:hover{
-      background:#2a7bff;
-      color:#fff;
-      transform: translateY(-3px);
+    /* --- Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 50px;
+      background: rgba(0,0,0,0.1);
     }
 
-    .footer{
-      text-align:center;
-      margin: 34px 0 18px;
-      font-size:13px;
-      color: rgba(255,255,255,.5);
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+      width: 22px;
+      margin: 0 15px;
+      opacity: 0.5;
+      filter: brightness(0) invert(1);
+      transition: all 0.2s ease;
     }
-    .footer a{
-      color:#aaa;
-      text-decoration:none;
-      margin-left:8px;
-    }
-    .footer a:hover{ text-decoration:underline; }
+    .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
 
-    @media (max-width: 768px){
-      .container{
-        margin: 110px 14px 0;
-        padding: 20px;
-      }
-      .tagline{ font-size: 24px; }
-      .translate-wrap{ top:18px; right:12px; }
-      .logo{ left:12px; }
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 950px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-title { font-size: 38px; }
+      .grid-layout { grid-template-columns: 1fr; gap: 20px; }
     }
   </style>
 </head>
-
 <body>
-  <div class="bg-overlay"></div>
 
-  <!-- Logo -->
-  <a href="index-global.html">
-    <img class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo">
-  </a>
+  <header>
+    <a href="index-global.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    
+    <div class="nav-links">
+      <a href="what-is-neox-global.html">What is NeoX?</a>
+      <a href="how-to-buy-global.html">How to Buy?</a>
+      <a href="game-global.html">🎮 NeoX Game</a>
+      <a href="metaverse-global.html">🔥 Metaverse Hub</a>
+      <a href="nft-projects-global.html">NeoX NFT Projects</a>
+    </div>
 
-  <!-- ✅ Google Translate (same bar as index-global) -->
-  <div class="translate-wrap">
-    <div id="google_translate_element"></div>
-  </div>
+    <div class="header-right">
+      <div id="google_translate_element"></div>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+    </div>
+  </header>
 
-  <!-- Main Content -->
   <div class="container">
-    <h1 class="tagline">What is NeoX? (Global)</h1>
-    <p class="subtagline">Decentralized creativity for everyone</p>
+    
+    <h1 class="page-title">What is NeoX Coin?</h1>
+    <p class="page-subtitle">NeoX (NXC) is a cutting-edge, community-driven decentralized utility asset engineered on Base Mainnet, unlocking a borderless ecosystem for interactive gaming, immersive metaverse applications, and creative digital assets.</p>
 
-    <div class="text">
-      <p><strong>🔗 Built for the Future</strong><br/>
-      NeoX bridges the traditional world and the future of decentralization. By integrating smart contracts, cross-chain support, and NFT infrastructure, NeoX empowers both users and developers to thrive in the decentralized economy.</p>
+    <div class="grid-layout">
+      
+      <div class="info-card">
+        <span class="card-icon">🚀</span>
+        <h3 class="card-title">Next-Gen Base Utility</h3>
+        <p class="card-text">By building exclusively on Coinbase's L2 network (Base), NeoX ensures ultra-low transaction gas fees and near-instant processing times, offering users a seamless Web3 interaction model without typical scalability barriers.</p>
+        <span class="highlight-badge">Base Network Mainnet</span>
+      </div>
 
-      <p><strong>⚙️ Core Features</strong></p>
-      <ul>
-        <li>ERC-20 based NXC Token for secure and fast transactions</li>
-        <li>Cross-platform compatibility with major wallets like MetaMask</li>
-        <li>Supports NFT issuance and on-chain governance</li>
-        <li>Open-source project with a community-driven roadmap</li>
-      </ul>
+      <div class="info-card">
+        <span class="card-icon">🎮</span>
+        <h3 class="card-title">Gaming Integration</h3>
+        <p class="card-text">NXC acts as the fundamental currency fueling on-chain and off-chain gaming protocols within the NeoX umbrella. Unlock achievements, buy premium Web3 gear, and participate in truly decentralized gameplay mechanics.</p>
+        <span class="highlight-badge">Play & Earn Protocol</span>
+      </div>
+
+      <div class="info-card">
+        <span class="card-icon">🔥</span>
+        <h3 class="card-title">Metaverse Hubs</h3>
+        <p class="card-text">Step into virtual landscapes, digital art exhibitions, and interactive community spaces. NeoX serves as the medium of value exchange for acquiring digital land plots, accessing exclusive virtual galleries, and custom avatars.</p>
+        <span class="highlight-badge">Immersive Environments</span>
+      </div>
+
+      <div class="info-card">
+        <span class="card-icon">💎</span>
+        <h3 class="card-title">100% Secure & Audited</h3>
+        <p class="card-text">Ecosystem transparency is our highest priority. The NXC smart contract is verified and integrated directly into trusted decentralized deployment platforms like Thirdweb, ensuring fair distribution and absolute safety for all token holders.</p>
+        <span class="highlight-badge">Verified Smart Contract</span>
+      </div>
+
     </div>
 
-    <div class="btn-row">
-      <a class="btn btn-blue" href="index-global.html">← Back to Home</a>
-    </div>
   </div>
 
-  <!-- Footer -->
-  <div class="footer">
-    © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-global.html">Disclaimer</a>
-  </div>
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+    </div>
+    <div class="footer-links">
+      <a href="faq-global.html">FAQ</a> | <a href="about-global.html">About</a> | <a href="https://neoxcoin.io/token-info-global.html" target="_blank">Global Token Info</a> | <a href="https://neoxcoin.io/whitepaper-global.html" target="_blank">Global Whitepaper</a> | <a href="neox-wiki-global.html">Wiki</a> | <a href="press-kit-global.html" target="_blank">Press Kit</a> | <a href="troubleshooting-global.html">Troubleshooting</a>
+    </div>
+    <div class="copyright">© 2026 NeoX. All rights reserved. | <a href="disclaimer-global.html">Disclaimer</a></div>
+  </footer>
+
+  <script>
+    const connectBtn = document.getElementById('connect-btn');
+
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
+    }
+
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "Connecting...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+        } catch (error) {
+          console.error("Wallet login error:", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
+      } else {
+        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', checkConnection);
+  </script>
+
 </body>
 </html>
