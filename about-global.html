@@ -7,238 +7,335 @@
     
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>About NeoX – Global</title>
+  <title>About NeoX – Global Portal</title>
+  <meta name="description" content="Learn about NeoX (NXC) – a global community-driven movement to redefine digital ownership, trust, and value in the Web3 era with multi-language support." />
+  <link rel="canonical" href="https://neoxcoin.github.io/about-global.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    function googleTranslateElementInit(){
+      new google.translate.TranslateElement({
+        pageLanguage: 'en', 
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+        autoDisplay: false, 
+        multilanguagePage: true 
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+    :root {
+      --bg-dark: #03010a;
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --primary: #a370ff;
+      --secondary: #00ffcc;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-stack: 'Plus Jakarta Sans', sans-serif;
     }
 
     body {
       margin: 0;
-      min-height: 100vh;
-      background: #0a0a2a;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url("https://neoxcoin.github.io/NeoXbackG.JPG");
-      background-size: cover;
-      background-position: center;
-      color: white;
+      /* Deep Starfield Canvas Background */
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      background-image: 
+        radial-gradient(circle at center, #110526 0%, #03010a 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      
+      font-family: var(--font-stack);
+      color: var(--text-main);
       text-align: center;
-      padding: 40px 20px;
-    }
-    
-    /* ✅ 強制封鎖 Google Translate 頂部白色 Banner（Safari / iOS 必要） */
-    body {
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+
+      /* Google Translate Override Tweak */
       top: 0 !important;
       position: static !important;
       margin-top: 0 !important;
     }
 
-    /* 完全隱藏 Google Translate iframe banner */
-    .goog-te-banner-frame.skiptranslate,
-    .goog-te-banner-frame {
-      display: none !important;
-      visibility: hidden !important;
-      height: 0 !important;
-      width: 0 !important;
+    /* Hide Google Translate White Top Bar */
+    .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important; }
+    iframe.goog-te-banner-frame { display: none !important; }
+    body > .skiptranslate { display: none !important; }
+
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+    /* --- 1. Sticky Header (Glassmorphism Navbar) --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
     }
 
-    iframe.goog-te-banner-frame {
-      display: none !important;
+    .nav-logo { height: 32px; opacity: 0.9; }
+    .nav-logo:hover { opacity: 1; }
+
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+
+    .header-right { display: flex; align-items: center; gap: 15px; }
+
+    /* Custom Black Pill Styling for Google Widget */
+    #google_translate_element {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
+    }
+    #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
+    #google_translate_element .goog-te-gadget span { display: none !important; } 
+    #google_translate_element select {
+      background: transparent !important;
+      color: #fff !important;
+      border: none !important;
+      font-size: 12px !important;
+      padding: 4px 6px !important;
+      outline: none !important;
+      cursor: pointer;
     }
 
-    /* 有時 Google 會包一層 skiptranslate */
-    body > .skiptranslate {
-      display: none !important;
+    /* Connect Wallet Button */
+    .btn-connect {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
     }
 
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
-      z-index: 999;
-    }
-
-    .translate-wrap{
-      position:absolute;
-      top:20px;
-      right:20px;
-      font-size:14px;
-      text-align:right;
-      z-index: 9999;
-    }
-
-    #google_translate_element{
-      display:inline-block;
-      padding:6px 10px;
-      border-radius:10px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(0,217,255,.35);
-      box-shadow:0 0 14px rgba(0,217,255,.18);
-    }
-
-    #google_translate_element .goog-te-gadget{
-      font-size:14px !important;
-      color:#fff !important;
-      line-height:1.2;
-    }
-    #google_translate_element .goog-te-gadget span{
-      color:#fff !important;
-    }
-    #google_translate_element select{
-      background:rgba(0,0,0,.15) !important;
-      color:#fff !important;
-      border:1px solid rgba(255,255,255,.25) !important;
-      border-radius:8px !important;
-      padding:6px 8px !important;
-      outline:none !important;
-    }
-
+    /* --- Main Container --- */
     .container {
-      max-width: 900px;
-      margin: 120px auto 20px;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.35);
-      border-radius: 10px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 140px 20px 50px 20px;
+      text-align: left;
+    }
+
+    /* --- Hero Presentation --- */
+    .page-title {
+      font-size: 46px;
+      font-weight: 800;
       text-align: center;
+      margin-bottom: 40px;
+      background: linear-gradient(120deg, #ffffff, #c299ff, #00ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .headline {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 20px;
+    .about-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 30px;
     }
 
-    .text {
+    .about-card p {
       font-size: 16px;
       line-height: 1.8;
+      color: var(--text-muted);
+      margin: 0 0 20px 0;
     }
+    .about-card p:last-child { margin-bottom: 0; }
+    .about-card strong { color: #fff; }
 
-    .readme {
-      margin-top: 40px;
-      background-color: rgba(255, 255, 255, 0.15);
-      padding: 20px;
-      border-radius: 10px;
-      text-align: left;
+    /* --- Tech Spec Box --- */
+    .tech-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 25px;
       font-size: 14px;
       line-height: 1.7;
+      color: rgba(255,255,255,0.8);
     }
-
-    .footer {
-      text-align: center;
-      margin: 40px 0 20px;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
+    .tech-box strong { color: var(--secondary); display: block; margin-bottom: 15px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em;}
+    .tech-box code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #c299ff;
+      font-family: monospace;
     }
+    .tech-list { list-style: none; padding: 0; margin: 0; }
+    .tech-list li { margin-bottom: 8px; }
+    .tech-list li:last-child { margin-bottom: 0; }
 
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 8px;
-    }
-
+    /* Back Home Button Row */
     .btn-row {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 20px;
+      margin-top: 40px;
+    }
+    .btn-back {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+    .btn-back:hover {
+      background: var(--glass);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
     }
 
-    .btn {
-      background: #0a0a0a;
-      border: 2px solid #00d9ff;
-      color: #00d9ff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      min-width: 180px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px rgba(0,217,255,0.5);
+    /* --- Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 60px;
+      background: rgba(0,0,0,0.1);
+      text-align: center;
     }
 
-    .btn:hover {
-      background: #00d9ff;
-      color: #000;
-      box-shadow: 0 0 20px rgba(0,217,255,0.8);
-      transform: translateY(-3px);
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+      width: 22px;
+      margin: 0 15px;
+      opacity: 0.5;
+      filter: brightness(0) invert(1);
+      transition: all 0.2s ease;
     }
+    .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
 
-    .btn-blue {
-      background: #0d6efd;
-      border: 2px solid #3399ff;
-      color: white;
-    }
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-    @media (max-width: 600px) {
-      .nav-bar {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-      }
+    @media (max-width: 950px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-title { font-size: 34px; }
+      .about-card { padding: 25px; }
     }
   </style>
 </head>
 <body>
-  <!-- Logo -->
-  <a href="index-global.html">
-      <img class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo">
-  </a>
 
-  <!-- ✅ Google Translate (top-right) -->
-  <div class="translate-wrap">
-    <div id="google_translate_element"></div>
-  </div>
+  <header>
+    <a href="index-global.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    
+    <div class="nav-links">
+      <a href="what-is-neox-global.html">What is NeoX?</a>
+      <a href="how-to-buy-global.html">How to Buy?</a>
+      <a href="game-global.html">🎮 NeoX Game</a>
+      <a href="metaverse-global.html">🔥 Metaverse Hub</a>
+      <a href="nft-projects-global.html">NeoX NFT Projects</a>
+    </div>
 
-  <!-- Main Content -->
+    <div class="header-right">
+      <div id="google_translate_element"></div>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+    </div>
+  </header>
+
   <div class="container">
-    <div class="headline">About NeoX</div>
-    <div class="text">
+    <h1 class="page-title">About NeoX</h1>
+    
+    <div class="about-card">
       <p><strong>NeoX</strong> is more than a cryptocurrency project — it’s a movement to redefine digital ownership, trust, and value in the Web3 era.</p>
       <p>We are building a multi-phase evolution that starts with collectible NFT editions and leads to a utility-based token ecosystem. Each NeoX generation represents innovation and vision — combining futuristic design, blockchain technology, and community-driven goals.</p>
       <p>Whether you're a collector, a builder, or an enthusiast, NeoX is designed to be your gateway into a secure, creative, and decentralized financial future.</p>
     </div>
 
-    <!-- README Section -->
-    <div class="readme">
-      <strong>GitHub README Overview:</strong><br/><br/>
-      - Project Repository: <code>https://github.com/neoxcoin</code><br/>
-      - Technologies Used: Solidity, Thirdweb, IPFS, HTML/CSS<br/>
-      - Key Files: <code>README.md</code>, <code>NeoXCoin.sol</code>, <code>index-global.html</code><br/>
-      - Setup Guide: See <code>README.md</code> for smart contract deployment & site integration<br/>
+    <div class="tech-box">
+      <strong>GitHub README Global Overview</strong>
+      <ul class="tech-list">
+        <li>• <strong>Project Repository:</strong> <code>https://github.com/neoxcoin</code></li>
+        <li>• <strong>Technologies Used:</strong> Solidity, Thirdweb, IPFS, HTML/CSS Architecture</li>
+        <li>• <strong>Key Portal Files:</strong> <code>README.md</code>, <code>NeoXCoin.sol</code>, <code>index-global.html</code></li>
+        <li>• <strong>Setup Guide:</strong> See <code>README.md</code> for smart contract deployment & cross-border site integration metrics.</li>
+      </ul>
     </div>
 
+    <div class="btn-row">
+      <a class="btn-back" href="index-global.html">← Back to Home</a>
     </div>
-    <!-- Back to Home -->
-    <div style="text-align: center;">
-     <a class="btn btn-blue" href="index-global.html">← Back to Home</a>
-    </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-global.html">Disclaimer</a>
   </div>
 
-  <!-- Google Translate Script -->
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+    </div>
+    <div class="footer-links">
+      <a href="faq-global.html">FAQ</a> | <a href="about-global.html">About</a> | <a href="https://neoxcoin.io/token-info-global.html" target="_blank">Global Token Info</a> | <a href="https://neoxcoin.io/whitepaper-global.html" target="_blank">Global Whitepaper</a> | <a href="neox-wiki-global.html">Wiki</a> | <a href="press-kit-global.html" target="_blank">Press Kit</a> | <a href="troubleshooting-global.html">Troubleshooting</a>
+    </div>
+    <div class="copyright">© 2026 NeoX. All rights reserved. | <a href="disclaimer-global.html">Disclaimer</a></div>
+  </footer>
+
   <script>
-    function googleTranslateElementInit(){
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi',
-        autoDisplay: false,
-        multilanguagePage: true
-      }, 'google_translate_element');
+    const connectBtn = document.getElementById('connect-btn');
+
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
     }
+
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "Connecting...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+        } catch (error) {
+          console.error("Wallet login error:", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
+      } else {
+        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', checkConnection);
   </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+
 </body>
 </html>
