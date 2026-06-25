@@ -7,176 +7,353 @@
     
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="針對 NeoX 平台上 🦊MetaMask 及 NXC 常見問題進行排解，包括手機瀏覽器限制、網絡錯誤、無法顯示代幣等狀況。" />
   <title>故障排解 - NeoX</title>
+  <meta name="description" content="針對 NeoX 平台上 🦊MetaMask 及 NXC 常見問題進行排解，包括手機瀏覽器限制、網絡錯誤、無法顯示代幣等狀況。" />
+  <link rel="canonical" href="https://neoxcoin.github.io/troubleshooting-zh.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --bg-dark: #03010a;
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.65);
+      --primary: #a370ff;
+      --secondary: #00ffcc;
+      --warning: #ff5555;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-stack: 'Plus Jakarta Sans', sans-serif;
+    }
+
     body {
       margin: 0;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url('https://neoxcoin.github.io/NeoXbackG.JPG');
-      background-size: cover;
-      background-position: center;
-      font-family: Arial, sans-serif;
-      color: white;
+      /* 統一高冷星空畫布 */
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      background-image: 
+        radial-gradient(circle at center, #110526 0%, #03010a 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      
+      font-family: var(--font-stack);
+      color: var(--text-main);
       text-align: center;
-      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .logo {
-      width: 60px;
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      opacity: 0.85;
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+    /* --- 1. Sticky Header (Glassmorphism Navbar) --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
     }
 
-    .language-switch{
-      position:absolute; top:20px; right:20px;
-      font-size:14px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(0,217,255,.35);
-      border-radius:10px;
-      padding:6px 10px;
-      box-shadow:0 0 14px rgba(0,217,255,.18);
-    }
-    .language-switch a{
-      color:#fff; text-decoration:none; margin:0 6px;
-    }
-    .language-switch a:hover{ color:#00d9ff; }
+    .nav-logo { height: 32px; opacity: 0.9; }
+    .nav-logo:hover { opacity: 1; }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255, 255, 255, 0.7); }
+    .nav-links a:hover { color: var(--primary); }
+
+    .header-right { display: flex; align-items: center; gap: 20px; }
+    
+    .language-switch { font-size: 13px; color: rgba(255, 255, 255, 0.7); display: flex; gap: 6px; }
+    .language-switch a:hover { color: var(--text-main); }
+    .lang-sep { opacity: 0.3; }
+
+    .btn-connect {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
     }
 
-    .issue {
-      background-color: rgba(255, 255, 255, 0.06);
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 700px;
-      border-radius: 10px;
+    /* --- Main Container --- */
+    .container {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 140px 20px 60px 20px;
       text-align: left;
     }
 
-    .issue h3 {
-      color: #00d9ff;
-      margin-bottom: 8px;
+    /* --- Page Headline --- */
+    .page-title {
+      font-size: 44px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 15px;
+      background: linear-gradient(120deg, #ffffff, #a370ff, #00ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 50px;
     }
 
-    .issue ul {
-      margin-top: 8px;
+    /* --- Troubleshooting Cards --- */
+    .trouble-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .trouble-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 35px;
+      position: relative;
+    }
+    
+    .trouble-card h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .trouble-card h3::before {
+      content: "•";
+      color: var(--secondary);
+      font-size: 24px;
+    }
+
+    .trouble-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin: 0 0 16px 0;
+    }
+    
+    .trouble-card ul, .trouble-card ol {
+      margin: 0 0 20px 0;
       padding-left: 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    
+    .trouble-card li { margin-bottom: 8px; }
+    
+    .trouble-card code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: monospace;
+      color: var(--secondary);
+      font-size: 14px;
     }
 
+    .highlight-green { color: var(--secondary); font-weight: 600; }
+    .highlight-link { color: var(--primary); text-decoration: underline; }
+    .highlight-link:hover { color: var(--secondary); }
+
+    /* 全站統一的極簡毛玻璃按鈕 */
     .btn-row {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 20px;
+      margin-top: 50px;
     }
-
-    .btn {
-      background: #0a0a0a;
-      border: 2px solid #00d9ff;
-      color: #00d9ff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 16px;
+    .btn-back {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
       cursor: pointer;
-      text-decoration: none;
-      min-width: 180px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px rgba(0,217,255,0.5);
+      transition: all 0.2s ease;
+    }
+    .btn-back:hover {
+      background: var(--glass);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
     }
 
-    .btn:hover {
-      background: #00d9ff;
-      color: #000;
-      box-shadow: 0 0 20px rgba(0,217,255,0.8);
-      transform: translateY(-3px);
+    /* --- Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 80px;
+      background: rgba(0,0,0,0.1);
+      text-align: center;
     }
 
-    .btn-blue {
-      background: #0d6efd;
-      border: 2px solid #3399ff;
-      color: white;
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+      width: 22px;
+      margin: 0 15px;
+      opacity: 0.5;
+      filter: brightness(0) invert(1);
+      transition: all 0.2s ease;
     }
+    .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
 
-    .footer {
-      margin-top: 60px;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
-    }
+    .footer-links { font-size: 13px; color: rgba(255, 255, 255, 0.65); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 8px;
-    }
-
-    @media (max-width: 600px) {
-      .issue {
-        padding: 16px;
-      }
-
-      h1 {
-        font-size: 26px;
-      }
+    @media (max-width: 900px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-title { font-size: 34px; }
+      .trouble-card { padding: 25px; }
     }
   </style>
 </head>
 <body>
-  <a href="index-zh.html">
-  <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo" />
-  <div class="language-switch">
-    <a href="troubleshooting.html">EN</a> | <a href="troubleshooting-zh.html">繁</a> | <a href="troubleshooting-global.html">Global</a>
+
+  <header>
+    <a href="index-zh.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    
+    <div class="nav-links">
+      <a href="what-is-neox-zh.html">什麼是 NeoX？</a>
+      <a href="how-to-buy-zh.html">如何購買？</a>
+      <a href="game-zh.html">NeoX 遊戲</a>
+      <a href="metaverse-zh.html">元宇宙展覽</a>
+      <a href="nft-projects-zh.html">NFT 項目</a>
+    </div>
+
+    <div class="header-right">
+      <div class="language-switch">
+        <a href="troubleshooting.html">EN</a>
+        <span class="lang-sep">|</span>
+        <a href="troubleshooting-zh.html">繁</a>
+        <span class="lang-sep">|</span>
+        <a href="troubleshooting-global.html">Global</a>
+      </div>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1 class="page-title">故障排解指南</h1>
+    <p class="page-subtitle">針對 DApp 連接、錢包網絡設定以及代幣顯示問題的即時技術排解方案。</p>
+    
+    <div class="trouble-wrapper">
+      
+      <div class="trouble-card">
+        <h3>1. 「透過 🦊MetaMask 購買」無法在 iPhone 直接打開？</h3>
+        <p>這是由於 iOS 系統預設瀏覽器（如 Safari）的政策限制所致，可能無法直接觸發並喚醒手機上的 🦊MetaMask 應用程式。</p>
+        <p><strong>解決方法：</strong> 請直接打開手機上的 🦊MetaMask App → 點選左上角選單（≡）或導航欄 → 選擇<span class="highlight-green">「瀏覽器」</span>功能 → 在內建 Web3 瀏覽器的網址列輸入：<code>https://neoxcoin.github.io</code> 即可正常進行 contract 互動。</p>
+      </div>
+
+      <div class="trouble-card">
+        <h3>2. 顯示「不支援的網絡」錯誤？</h3>
+        <p>這代表您的 🦊MetaMask 錢包目前連接到了錯誤的主網（例如 Ethereum 或 Arbitrum）。</p>
+        <p><strong>解決方法：</strong> 請將錢包切換至正確的網絡（<strong>Base Mainnet</strong>）。您可以點擊 🦊MetaMask 頂部的網絡名稱下拉選單進行切換，或者前往 Chainlist 平台一鍵手動新增 Base 網路：<a class="highlight-link" href="https://chainlist.org/chain/8453" target="_blank">點此自動添加 Base 網絡 (Chainlist)</a>。</p>
+      </div>
+
+      <div class="trouble-card">
+        <h3>3. 「加入至 MetaMask」按鈕沒反應？</h3>
+        <p>此功能在桌面版瀏覽器的 🦊MetaMask 擴充功能，或 MetaMask App 的內建 Web3 瀏覽器中效果最佳。一般的行動端瀏覽器（如 Safari 或 Chrome）可能會阻擋彈出視窗。</p>
+        <p><strong>手動加入小提示：</strong> 您完全可以透過 MetaMask 內的「導入代幣 (Import Tokens)」功能，複製並貼上以下官方驗證參數進行手動添加：</p>
+        <ul>
+          <li><strong>代幣合約地址：</strong> <code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code></li>
+          <li><strong>代幣代號：</strong> <code>NXC</code></li>
+          <li><strong>小數位數 (Decimals)：</strong> <code>18</code></li>
+        </ul>
+      </div>
+
+      <div class="trouble-card">
+        <h3>4. 購買完成後未看到 NXC 餘額？</h3>
+        <p>這可能是由於區塊鏈網路節點稍有延遲，導致交易仍在 mempool 排隊，或者您尚未將 NXC 代幣合約導入到錢包的資產列表中。</p>
+        <p><strong>解決方法：</strong> 請先嘗試重新整理或重啟您的 🦊MetaMask。若仍未顯示，請參照上方「步驟 3」的合約資訊，手動將代幣資產新增至錢包中即可正確顯示您的持倉餘額。</p>
+      </div>
+
+    </div>
+
+    <div class="btn-row">
+      <a class="btn-back" href="index-zh.html">← 返回主頁</a>
+    </div>
   </div>
 
-  <h1>🔧 故障排解指南</h1>
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+    </div>
+    <div class="footer-links">
+      <a href="about-zh.html">關於</a> | <a href="faq-zh.html">FAQ</a> | <a href="token-info.html">代幣資訊</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-zh.html">免責聲明</a>
+    </div>
+    <div class="copyright">© 2026 NeoX. All rights reserved.</div>
+  </footer>
 
-  <div class="issue">
-    <h3>1. 「透過 🦊MetaMask 購買」無法在 iPhone 直接打開？</h3>
-    <p>這是由於 Safari 限制所致，iOS 可能無法直接觸發 🦊MetaMask 開啟。</p>
-    <p><strong>解決方法：</strong> 打開 🦊MetaMask App → 點選左上角選單（≡）→ 選擇「瀏覽器」→ 輸入網址：<code>https://neoxcoin.github.io</code></p>
-  </div>
+  <script>
+    const connectBtn = document.getElementById('connect-btn');
 
-  <div class="issue">
-    <h3>2. 顯示「不支援的網絡」錯誤？</h3>
-    <p>這表示你的 🦊MetaMask 錢包連接到了錯誤的網絡。</p>
-    <p><strong>解決方法：</strong> 請切換至正確的網絡（<strong>Base Mainnet</strong>）。  
-      你可點擊 🦊MetaMask 上方的網絡名稱進行切換，或手動新增 Base 網絡：  
-    <a href="https://chainlist.org/chain/8453" target="_blank">點此自動添加 Base 網絡 (Chainlist)</a>。</p>
-  </div>
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
+    }
 
-  <div class="issue">
-    <h3>3. 「🦊加入至 MetaMask」按鈕沒反應？</h3>
-    <p>該按鈕在桌面瀏覽器的 🦊MetaMask 擴充功能或 MetaMask App 的內建瀏覽器中效果最佳。</p>
-    <p><strong>注意：</strong> 一般手機瀏覽器如 Safari 或 Chrome 可能阻擋彈出。</p>
-    <p><strong>小提示：</strong> 你亦可手動加入代幣：</p>
-    <ul>
-      <li><strong>代幣合約：</strong> <code>0x80AD039927cDf2341c1428b0BAFB8D3421dc122e1</code></li>
-      <li><strong>代號：</strong> <code>NXC</code></li>
-      <li><strong>小數位數：</strong> <code>18</code></li>
-    </ul>
-  </div>
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
 
-  <div class="issue">
-    <h3>4. 購買後未看到 NXC？</h3>
-    <p>可能是交易尚未完成，或尚未將該代幣加入錢包。</p>
-    <p><strong>解決方法：</strong> 嘗試刷新你的 🦊MetaMask，若仍未出現，請手動加入代幣資料。</p>
-  </div>
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "連接中...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+        } catch (error) {
+          console.error("Wallet validation rejected:", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
+      } else {
+        alert("未偵測到 Web3 錢包。正在引導至 MetaMask 下載頁面...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
 
-  <div class="btn-row">
-    <a class="btn btn-blue" href="index-zh.html">← 返回主頁</a>
-  </div>
+    window.addEventListener('DOMContentLoaded', checkConnection);
+  </script>
 
-  <div class="footer">
-    © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-zh.html">免責聲明</a>
-  </div>
 </body>
 </html>
