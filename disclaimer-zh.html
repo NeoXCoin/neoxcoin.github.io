@@ -7,123 +7,307 @@
     
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX 免責聲明</title>
+  <title>免責聲明 - NeoX</title>
+  <meta name="description" content="關於 NeoX Coin (NXC) 生態系統代幣及 Web3 去中心化互動的官方法律免責聲明與高風險警告。" />
+  <link rel="canonical" href="https://neoxcoin.github.io/disclaimer-zh.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
+    :root {
+      --bg-dark: #03010a;
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.65);
+      --primary: #a370ff;
+      --secondary: #00ffcc;
+      --warning: #ff5555;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-stack: 'Plus Jakarta Sans', sans-serif;
+    }
+
     body {
       margin: 0;
-      min-height: 100vh;
-      background: #0a0a2a;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url("https://neoxcoin.github.io/NeoXbackG.JPG");
-      background-size: cover;
-      background-position: center;
-      color: white;
+      /* 統一高冷星空畫布 */
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      background-image: 
+        radial-gradient(circle at center, #110526 0%, #03010a 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      
+      font-family: var(--font-stack);
+      color: var(--text-main);
       text-align: center;
-      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
-      opacity: 0.85;
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+    /* --- 1. Sticky Header (Glassmorphism Navbar) --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
     }
 
-    .language-switch{
-      position:absolute; top:20px; right:20px;
-      font-size:14px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(0,217,255,.35);
-      border-radius:10px;
-      padding:6px 10px;
-      box-shadow:0 0 14px rgba(0,217,255,.18);
-    }
-    .language-switch a{
-      color:#fff; text-decoration:none; margin:0 6px;
-    }
-    .language-switch a:hover{ color:#00d9ff; }
+    .nav-logo { height: 32px; opacity: 0.9; }
+    .nav-logo:hover { opacity: 1; }
 
-    h1 {
-      text-align: center;
-      margin-top: 80px;
-      font-size: 26px;
-    }
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255, 255, 255, 0.7); }
+    .nav-links a:hover { color: var(--primary); }
 
-    .content {
-      max-width: 800px;
-      margin: 30px auto;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 30px;
-      border-radius: 10px;
-    }
+    .header-right { display: flex; align-items: center; gap: 20px; }
+    
+    .language-switch { font-size: 13px; color: rgba(255, 255, 255, 0.7); display: flex; gap: 6px; }
+    .language-switch a:hover { color: var(--text-main); }
+    .lang-sep { opacity: 0.3; }
 
-    .content p {
-      font-size: 15px;
-      color: #ddd;
-    }
-
-    .back-btn {
-      display: block;
-      margin: 30px auto 10px;
-      text-align: center;
-      background: linear-gradient(145deg, #c0c0c0, #9e9e9e);
-      color: black;
-      padding: 12px 26px;
-      border-radius: 12px;
-      font-size: 16px;
-      text-decoration: none;
-      width: fit-content;
-      border: 3px solid #e0e0e0;
-      box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .back-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 12px rgba(255, 255, 255, 0.3);
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 40px;
+    .btn-connect {
       font-size: 13px;
-      opacity: 0.6;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+    }
+
+    /* --- Main Container --- */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 140px 20px 60px 20px;
+      text-align: left;
+    }
+
+    /* --- Page Headline --- */
+    .page-title {
+      font-size: 44px;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 40px;
+      background: linear-gradient(120deg, #ffffff, #ff7777, #a370ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* --- Legal Content Cards --- */
+    .legal-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .disclaimer-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 35px;
+      line-height: 1.8;
+    }
+    
+    /* 核心風險警告卡片邊框 */
+    .risk-alert {
+      border-color: rgba(255, 85, 85, 0.25);
+      background: rgba(255, 85, 85, 0.01);
+    }
+
+    .disclaimer-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      margin: 0 0 20px 0;
+    }
+    .disclaimer-card p:last-child { margin-bottom: 0; }
+    
+    .disclaimer-card strong {
+      color: #ffffff;
+    }
+    
+    .disclaimer-card .warning-text {
+      color: var(--warning);
+      font-weight: 600;
+    }
+
+    /* 全站統一毛玻璃按鈕 */
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      margin-top: 45px;
+    }
+    .btn-back {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-back:hover {
+      background: var(--glass);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* --- Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 60px;
+      background: rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+      width: 22px;
+      margin: 0 15px;
+      opacity: 0.5;
+      filter: brightness(0) invert(1);
+      transition: all 0.2s ease;
+    }
+    .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
+
+    .footer-links { font-size: 13px; color: rgba(255, 255, 255, 0.65); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 900px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-title { font-size: 34px; }
+      .disclaimer-card { padding: 25px; }
     }
   </style>
 </head>
 <body>
-  <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo" />
 
-  <div class="language-switch">
-    <a href="disclaimer-en.html">EN</a> | <a href="disclaimer-zh.html">繁</a> | <a href="disclaimer-global.html">Global</a>
+  <header>
+    <a href="index-zh.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    
+    <div class="nav-links">
+      <a href="what-is-neox-zh.html">什麼是 NeoX？</a>
+      <a href="how-to-buy-zh.html">如何購買？</a>
+      <a href="game-zh.html">NeoX 遊戲</a>
+      <a href="metaverse-zh.html">元宇宙展覽</a>
+      <a href="nft-項目-zh.html">NFT 項目</a>
+    </div>
+
+    <div class="header-right">
+      <div class="language-switch">
+        <a href="disclaimer-en.html">EN</a>
+        <span class="lang-sep">|</span>
+        <a href="disclaimer-zh.html">繁</a>
+        <span class="lang-sep">|</span>
+        <a href="disclaimer-global.html">Global</a>
+      </div>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1 class="page-title">法律免責聲明</h1>
+    
+    <div class="legal-wrapper">
+      
+      <div class="disclaimer-card">
+        <p>本官方網站上所提供的所有資訊<strong>僅供一般參考及教育用途</strong>，絕對不構成任何性質的財務、投資、法律、交易或專業建議。</p>
+        <p>NeoX 是一個完全開放、由社群驅動的去中心化加密貨幣資產項目。原生生態系統代幣（NXC）已正式在公開帳本上發布並面向大眾，其運行架構皆本著透明、自主的原則進行管理。</p>
+      </div>
+
+      <div class="disclaimer-card risk-alert">
+        <p><span class="warning-text">高風險警示：</span> 參與 Web3 協議、去中心化智能合約以及購買高波動性的加密貨幣涉及<strong>重大的財務損失風險</strong>。市場可能因宏觀流動性變化或不可預測的技術漏洞，而在極短時間內導致資產嚴重貶值。</p>
+        <p>我們強烈敦促並預期所有用戶在執行任何智能合約簽名、兌換或轉賬操作之前，必須親自進行全面且透徹的背景研究（<span class="warning-text">Do Your Own Research - DYOR</span>），並諮詢具備認證資格的法律或財務專業人士。</p>
+      </div>
+
+      <div class="disclaimer-card">
+        <p>我們按「現狀（as-is）」及「現有（as-available）」的基礎提供本網站的所有資產、網頁模組、元數據和文件，不作任何形式的明示或暗示擔保，亦不保證其絕對準確性、運行可靠性、持續可用性或毫無瑕疵。</p>
+        <p>NeoX 項目、其部署節點提供者、貢獻者及開發生態系統組織者，對於因直接或間接使用本入口網站、去中心化軟體組件或智能合約互動而導致的任何永久性資產損害、直接代幣損失或連帶系統問題，<strong>均不承擔任何法律責任</strong>。</p>
+        <p>若您繼續瀏覽、觀看或與本網站進行任何互動，即代表您已明確知悉、驗證、理解並同意接受本法律免責聲明框架中所列出的所有限制條款。</p>
+      </div>
+
+    </div>
+
+    <div class="btn-row">
+      <a class="btn-back" href="index-zh.html">← 返回主頁</a>
+    </div>
   </div>
 
-  <h1>免責聲明</h1>
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+    </div>
+    <div class="footer-links">
+      <a href="about-zh.html">關於</a> | <a href="faq-zh.html">FAQ</a> | <a href="token-info.html">代幣資訊</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-zh.html">免責聲明</a>
+    </div>
+    <div class="copyright">© 2026 NeoX. 保留所有權利。</div>
+  </footer>
 
-  <div class="content">
-    <p>
-      本網站所提供的資訊僅供一般參考用途，並不構成任何形式的財務、投資、法律或專業建議。此內容不應視為投資建議。
-    </p>
-    <p>
-      NeoX 是一個由社群驅動的項目，其代幣（NXC）已經正式推出，可用於教育及其他用途。
-    </p>
-    <p>
-      我們不對本網站內容的完整性、準確性、可靠性或可用性作出任何明示或暗示的保證。您對該等資訊的依賴，完全由您自行承擔風險。
-    </p>
-    <p>
-      加密貨幣與 Web3 項目具有高風險，請在作出任何決策前，自行進行研究（DYOR）並諮詢合格的專業人士。NeoX 及其開發團隊對因使用本網站或任何相關數位資產而導致的任何損失或損害，概不負責。
-    </p>
-    <p>
-      使用本網站或與其互動，即表示您已閱讀、理解並同意此免責聲明的內容。
-    </p>
+  <script>
+    const connectBtn = document.getElementById('connect-btn');
 
-    <a class="back-btn" href="index-zh.html">← 返回主頁</a>
-  </div>
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
+    }
 
-  <div class="footer">
-    © 2025 NeoX. All rights reserved.
-  </div>
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "連接中...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+        } catch (error) {
+          console.error("錢包連接拒絕:", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
+      } else {
+        alert("未偵測到 Web3 錢包。正在引導至 MetaMask 下載頁面...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', checkConnection);
+  </script>
+
 </body>
 </html>
