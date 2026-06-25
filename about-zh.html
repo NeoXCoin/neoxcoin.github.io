@@ -7,171 +7,302 @@
     
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>關於 NeoX</title>
+  <title>關於 NeoX – 賦能 Web 自由</title>
+  <meta name="description" content="了解 NeoX (NXC) – 一場在 Web3 時代重新定義數位所有權、信任與價值的社群共建運動。" />
+  <link rel="canonical" href="https://neoxcoin.github.io/about-zh.html" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+    :root {
+      --bg-dark: #03010a;
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --primary: #a370ff;
+      --secondary: #00ffcc;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-stack: 'Plus Jakarta Sans', sans-serif;
     }
 
     body {
       margin: 0;
-      min-height: 100vh;
-      background: #0a0a2a;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0a0a2a, #1f005c);
-      background-image: url("https://neoxcoin.github.io/NeoXbackG.JPG");
-      background-size: cover;
-      background-position: center;
-      color: white;
+      /* 統一星空畫布 */
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      background-image: 
+        radial-gradient(circle at center, #110526 0%, #03010a 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      
+      font-family: var(--font-stack);
+      color: var(--text-main);
       text-align: center;
-      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+    /* --- 1. Sticky Header (Glassmorphism Navbar) --- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 50px;
+      background: rgba(7, 2, 20, 0.6);
+      backdrop-filter: blur(15px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      box-sizing: border-box;
     }
 
-    .language-switch{
-      position:absolute; top:20px; right:20px;
-      font-size:14px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(0,217,255,.35);
-      border-radius:10px;
-      padding:6px 10px;
-      box-shadow:0 0 14px rgba(0,217,255,.18);
-    }
-    .language-switch a{
-      color:#fff; text-decoration:none; margin:0 6px;
-    }
-    .language-switch a:hover{ color:#00d9ff; }
+    .nav-logo { height: 32px; opacity: 0.9; }
+    .nav-logo:hover { opacity: 1; }
 
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+
+    .header-right { display: flex; align-items: center; gap: 20px; }
+    
+    .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; }
+    .language-switch a:hover { color: var(--text-main); }
+    .lang-sep { opacity: 0.3; }
+
+    .btn-connect {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+    }
+
+    /* --- Main Container --- */
     .container {
-      max-width: 900px;
-      margin: 120px auto 20px;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.35);
-      border-radius: 10px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 140px 20px 50px 20px;
+      text-align: left;
+    }
+
+    /* --- Hero Presentation --- */
+    .page-title {
+      font-size: 46px;
+      font-weight: 800;
       text-align: center;
+      margin-bottom: 40px;
+      background: linear-gradient(120deg, #ffffff, #c299ff, #00ffcc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    .headline {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 20px;
+    .about-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 30px;
     }
 
-    .text {
+    .about-card p {
       font-size: 16px;
       line-height: 1.8;
+      color: var(--text-muted);
+      margin: 0 0 20px 0;
     }
+    .about-card p:last-child { margin-bottom: 0; }
+    .about-card strong { color: #fff; }
 
-    .readme {
-      margin-top: 40px;
-      background-color: rgba(255, 255, 255, 0.15);
-      padding: 20px;
-      border-radius: 10px;
-      text-align: left;
+    /* --- Tech Spec Box --- */
+    .tech-box {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 25px;
       font-size: 14px;
       line-height: 1.7;
+      color: rgba(255,255,255,0.8);
     }
-
-    .footer {
-      text-align: center;
-      margin-top: 60px;
-      margin-bottom: 40px;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
+    .tech-box strong { color: var(--secondary); display: block; margin-bottom: 15px; font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em;}
+    .tech-box code {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #c299ff;
+      font-family: monospace;
     }
+    .tech-list { list-style: none; padding: 0; margin: 0; }
+    .tech-list li { margin-bottom: 8px; }
+    .tech-list li:last-child { margin-bottom: 0; }
 
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 8px;
-    }
-
-    .btn {
-      background: #0a0a0a;
-      border: 2px solid #00d9ff;
-      color: #00d9ff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      min-width: 180px;
-      display: inline-flex;
-      align-items: center;
+    /* Back Home Button Row */
+    .btn-row {
+      display: flex;
       justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px rgba(0,217,255,0.5);
+      margin-top: 40px;
+    }
+    .btn-back {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+    .btn-back:hover {
+      background: var(--glass);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
     }
 
-    .btn:hover {
-      background: #00d9ff;
-      color: #000;
-      box-shadow: 0 0 20px rgba(0,217,255,0.8);
-      transform: translateY(-3px);
+    /* --- Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 60px;
+      background: rgba(0,0,0,0.1);
+      text-align: center;
     }
 
-    .btn-blue {
-      background: #0d6efd;
-      border: 2px solid #3399ff;
-      color: white;
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+      width: 22px;
+      margin: 0 15px;
+      opacity: 0.5;
+      filter: brightness(0) invert(1);
+      transition: all 0.2s ease;
     }
+    .social-icons img:hover { opacity: 1; filter: none; transform: scale(1.1); }
 
-    @media (max-width: 600px) {
-      .nav-bar {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-      }
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+    @media (max-width: 900px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-title { font-size: 34px; }
+      .about-card { padding: 25px; }
     }
   </style>
 </head>
 <body>
-  <!-- Logo -->
-  <a href="index-zh.html">
-    <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX 標誌">
-  </a>
 
-  <!-- Language Switch -->
-  <div class="language-switch">
-    <a href="about.html">EN</a> | <a href="about-zh.html">繁</a> | <a href="about-global.html">Global</a>
-  </div>
+  <header>
+    <a href="index-zh.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    
+    <div class="nav-links">
+      <a href="what-is-neox-zh.html">什麼是 NeoX？</a>
+      <a href="how-to-buy-zh.html">如何購買？</a>
+      <a href="game-zh.html">NeoX 遊戲</a>
+      <a href="metaverse-zh.html">元宇宙展覽</a>
+      <a href="nft-projects-zh.html">NFT 項目</a>
+    </div>
 
-  <!-- Main Content -->
+    <div class="header-right">
+      <div class="language-switch">
+        <a href="about.html">EN</a>
+        <span class="lang-sep">|</span>
+        <a href="about-zh.html">繁</a>
+        <span class="lang-sep">|</span>
+        <a href="about-global.html">Global</a>
+      </div>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+    </div>
+  </header>
+
   <div class="container">
-    <div class="headline">關於 NeoX</div>
-    <div class="text">
+    <h1 class="page-title">關於 NeoX</h1>
+    
+    <div class="about-card">
       <p><strong>NeoX</strong> 不僅僅是一個加密貨幣項目，更是一場重新定義數位所有權、信任與價值的 Web3 運動。</p>
       <p>我們正在構建一個多階段的發展旅程，從可收藏的 NFT 系列開始，逐步邁向具有實用性的代幣生態系統。每一代 NeoX 都象徵著創新與遠見，融合未來主義設計、區塊鏈技術與社群共建的目標。</p>
       <p>無論你是收藏家、開發者或加密愛好者，NeoX 都是你邁向安全、創意與去中心化財富未來的大門。</p>
     </div>
 
-    <!-- README Section -->
-    <div class="readme">
-      <strong>GitHub 專案總覽：</strong><br/><br/>
-      - 專案倉庫：<code>https://github.com/neoxcoin</code><br/>
-      - 使用技術：Solidity、Thirdweb、IPFS、HTML/CSS<br/>
-      - 重要檔案：<code>README.md</code>、<code>NeoXCoin.sol</code>、<code>index-global.html</code><br/>
-      - 部署教學：請參閱 <code>README.md</code> 以了解智能合約部署與網站整合指南<br/>
+    <div class="tech-box">
+      <strong>GitHub 專案總覽</strong>
+      <ul class="tech-list">
+        <li>• <strong>專案倉庫：</strong> <code>https://github.com/neoxcoin</code></li>
+        <li>• <strong>使用技術：</strong> Solidity、Thirdweb、IPFS、HTML5 / CSS3 架構</li>
+        <li>• <strong>重要檔案：</strong> <code>README.md</code>、<code>NeoXCoin.sol</code>、<code>index-global.html</code></li>
+        <li>• <strong>部署教學：</strong> 請參閱 <code>README.md</code> 以了解智能合約部署與網站整合指南。</li>
+      </ul>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn-back" href="index-zh.html">← 返回主頁</a>
     </div>
   </div>
 
-  <!-- Back to Home -->
-  <div class="btn-row">
-    <a class="btn btn-blue" href="index-zh.html">← 返回主頁</a>
-  </div>
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+    </div>
+    <div class="footer-links">
+      <a href="about.html">關於</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">代幣資訊</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-zh.html">免責聲明</a>
+    </div>
+    <div class="copyright">© 2026 NeoX. 保留所有權利。</div>
+  </footer>
 
-  <!-- Footer -->
-  <div class="footer">
-    © 2025 NeoX. 保留所有權利。|
-    <a href="disclaimer-zh.html">免責聲明</a>
-  </div>
+  <script>
+    const connectBtn = document.getElementById('connect-btn');
+
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
+    }
+
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "連接中...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+        } catch (error) {
+          console.error("錢包連接錯誤:", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
+      } else {
+        alert("未偵測到 Web3 錢包。正在引導至 MetaMask 下載頁面...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', checkConnection);
+  </script>
+
 </body>
 </html>
