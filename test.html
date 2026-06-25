@@ -6,13 +6,24 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>How to Buy NeoX Coin (NXC)</title>
+    <title>How to Buy NeoX Coin (NXC) - Global</title>
     <meta name="description" content="Simple step-by-step guide to buy NeoX Coin (NXC) on Base Network using MetaMask or other Web3 wallets." />
-    <link rel="canonical" href="https://neoxcoin.github.io/how-to-buy.html" />
+    <link rel="canonical" href="https://neoxcoin.github.io/how-to-buy-global.html" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement({
+                pageLanguage: 'en', 
+                includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+                autoDisplay: false, 
+                multilanguagePage: true 
+            }, 'google_translate_element');
+        }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
     <style>
         :root {
             --bg-dark: #03010a;
@@ -33,14 +44,26 @@
             text-align: center;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            top: 0 !important;
+            position: static !important;
+            margin-top: 0 !important;
+        }
+        .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            width: 0 !important;
+        }
+        iframe.goog-te-banner-frame {
+            display: none !important;
+        }
+        body > .skiptranslate {
+            display: none !important;
         }
         a {
             text-decoration: none;
             color: inherit;
             transition: all 0.2s ease;
-        }
-        .lang-hidden {
-            display: none !important;
         }
         header {
             position: fixed;
@@ -83,42 +106,28 @@
             align-items: center;
             gap: 20px;
         }
-        .language-switch {
-            font-size: 13px;
-            color: var(--text-muted);
-            display: flex;
-            gap: 6px;
-            align-items: center;
+        #google_translate_element {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
         }
-        .language-switch button {
-            background: none;
-            border: none;
-            color: rgba(255, 255, 255, 0.5);
+        #google_translate_element .goog-te-gadget {
+            font-size: 12px !important;
+            color: #fff !important;
+        }
+        #google_translate_element .goog-te-gadget span {
+            display: none !important;
+        }
+        #google_translate_element select {
+            background: transparent !important;
+            color: #fff !important;
+            border: none !important;
+            font-size: 12px !important;
+            padding: 4px 6px !important;
+            outline: none !important;
             cursor: pointer;
-            font-family: var(--font-stack);
-            font-size: 13px;
-            font-weight: 500;
-            padding: 0;
-            transition: color 0.2s;
-        }
-        .language-switch button.active {
-            color: var(--text-main);
-            font-weight: 700;
-        }
-        .language-switch button:hover {
-            color: var(--primary);
-        }
-        .language-switch a.global-link {
-            color: rgba(255, 255, 255, 0.4);
-            font-weight: 500;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .language-switch a.global-link:hover {
-            color: var(--primary);
-        }
-        .lang-sep {
-            opacity: 0.3;
         }
         .btn-connect {
             font-size: 13px;
@@ -346,7 +355,7 @@
             font-size: 12px;
             color: rgba(255,255,255,0.4);
         }
-        @media (max-width: 900px) {
+        @media (max-width: 950px) {
             header { padding: 0 20px; }
             .nav-links { display: none; }
             .page-title { font-size: 32px; }
@@ -356,7 +365,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+        <a href="index-global.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
         <div class="nav-links">
             <a href="what-is-neox.html">What is NeoX?</a>
             <a href="how-to-buy.html">How to Buy?</a>
@@ -366,76 +375,42 @@
         </div>
         <div class="header-right">
             <div class="language-switch">
-                <button id="lang-en-btn" class="active" onclick="toggleLanguage('en')">EN</button>
-                <span class="lang-sep">|</span>
-                <button id="lang-zh-btn" onclick="toggleLanguage('zh')">繁</button>
-                <span class="lang-sep">|</span>
-                <a href="how-to-buy-global.html" class="global-link" id="lang-global-btn">Global</a>
+                <div id="google_translate_element" style="display: inline-block; vertical-align: middle;"></div>
             </div>
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
     </header>
 
     <div class="container">
-        <h1 class="page-title">
-            <span class="lang-item lang-en">How to Buy NeoX Coin</span>
-            <span class="lang-item lang-zh lang-hidden">如何購買 NeoX Coin</span>
-        </h1>
-        <p class="page-subtitle">
-            <span class="lang-item lang-en">Follow this simple 3-step guide to acquire NXC on the Base network.</span>
-            <span class="lang-item lang-zh lang-hidden">只需跟隨以下簡單 3 個步驟，即可在 Base 網絡上輕鬆獲取您的 NXC。</span>
-        </p>
+        <h1 class="page-title">How to Buy NeoX Coin</h1>
+        <p class="page-subtitle">Follow this simple 3-step guide to acquire NXC on the Base network.</p>
 
         <div class="steps-container">
             <div class="step-card">
                 <span class="step-number">Step 01</span>
-                <div class="lang-item lang-en">
-                    <h3 class="step-title">Create a Web3 Wallet</h3>
-                    <p class="step-desc">Download and set up a secure crypto wallet such as MetaMask, Coinbase Wallet, or Trust Wallet. Make sure to securely back up your seed phrase and add the <strong>Base Network</strong> to your wallet networks.</p>
-                </div>
-                <div class="lang-item lang-zh lang-hidden">
-                    <h3 class="step-title">創建 Web3 加密錢包</h3>
-                    <p class="step-desc">下載並設定一個安全的加密貨幣錢包（如 MetaMask、Coinbase Wallet 或 Trust Wallet）。請務必安全地備份您的助記詞，並在錢包網絡中新增 <strong>Base Network</strong>。</p>
-                </div>
+                <h3 class="step-title">Create a Web3 Wallet</h3>
+                <p class="step-desc">Download and set up a secure crypto wallet such as MetaMask, Coinbase Wallet, or Trust Wallet. Make sure to securely back up your seed phrase and add the <strong>Base Network</strong> to your wallet networks.</p>
             </div>
 
             <div class="step-card">
                 <span class="step-number">Step 02</span>
-                <div class="lang-item lang-en">
-                    <h3 class="step-title">Deposit Ethereum (ETH) on Base</h3>
-                    <p class="step-desc">Purchase Ethereum (ETH) from your preferred central exchange (like Coinbase, Binance, or Kraken) and withdraw it directly to your Web3 wallet address using the <strong>Base Network</strong>. Alternatively, you can bridge ETH from Ethereum mainnet to Base.</p>
-                </div>
-                <div class="lang-item lang-zh lang-hidden">
-                    <h3 class="step-title">充值或準備 Base 網絡的 ETH</h3>
-                    <p class="step-desc">從您信任的中心化交易所（如 Binance、Coinbase 或 Kraken）購買以太坊（ETH），提現時網絡選擇 <strong>Base Network</strong> 並直接轉入您的錢包地址。或者，您亦可以使用官方跨鏈橋將以太坊主網的 ETH 跨鏈至 Base。</p>
-                </div>
+                <h3 class="step-title">Deposit Ethereum (ETH) on Base</h3>
+                <p class="step-desc">Purchase Ethereum (ETH) from your preferred central exchange (like Coinbase, Binance, or Kraken) and withdraw it directly to your Web3 wallet address using the <strong>Base Network</strong>. Alternatively, you can bridge ETH from Ethereum mainnet to Base.</p>
             </div>
 
             <div class="step-card">
                 <span class="step-number">Step 03</span>
-                <div class="lang-item lang-en">
-                    <h3 class="step-title">Swap ETH for NXC via Thirdweb</h3>
-                    <p class="step-desc">Connect your wallet directly to our verified token pool. Input the official NeoX Coin contract address if prompted: <code id="nxc-contract-en">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>, enter the amount of ETH you want to swap, and confirm the transaction.</p>
-                    <a class="inline-btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">Go to Thirdweb Swap ↗</a>
-                </div>
-                <div class="lang-item lang-zh lang-hidden">
-                    <h3 class="step-title">經 Thirdweb 將 ETH 兌換為 NXC</h3>
-                    <p class="step-desc">將您的錢包直接連接到我們已驗證的代幣池。如果系統提示，請輸入官方唯一的 NeoX Coin 合約地址：<code id="nxc-contract-zh">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>，輸入您想兌換的 ETH 數量，然後確認交易。</p>
-                    <a class="inline-btn" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">前往 Thirdweb 兌換 ↗</a>
-                </div>
-
+                <h3 class="step-title">Swap ETH for NXC via Thirdweb</h3>
+                <p class="step-desc">Connect your wallet directly to our verified token pool. Input the official NeoX Coin contract address if prompted: <code class="notranslate" id="nxc-contract-global">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>, enter the amount of ETH you want to swap, and confirm the transaction.</p>
+                <a class="inline-btn text-black font-semibold" href="https://thirdweb.com/base/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">Go to Thirdweb Swap ↗</a>
+                
                 <img class="step-guide-img" src="assets/how-to-buy/buy-nxc-thirdweb-swap.png" alt="Swap Guide Screenshot">
 
                 <div class="token-import-box">
                     <span class="step-number" style="color: var(--primary);">Token Import Tool</span>
-                    <div class="lang-item lang-en">
-                        <p class="step-desc" style="font-size: 14px;">If NXC does not appear automatically in your wallet after the swap, you can import it manually or use our automation shortcut below:</p>
-                    </div>
-                    <div class="lang-item lang-zh lang-hidden">
-                        <p class="step-desc" style="font-size: 14px;">如果兌換後錢包內未自動顯示 NXC，您可以手動複製資料匯入，或點擊下方快捷鍵自動新增：</p>
-                    </div>
-
-                    <div class="mono-box">
+                    <p class="step-desc" style="font-size: 14px;">If NXC does not appear automatically in your wallet after the swap, you can import it manually or use our automation shortcut below:</p>
+                    
+                    <div class="mono-box notranslate">
                         <button class="copy-btn" onclick="copyContractAddress()">Copy</button>
                         Contract: <span id="nxc-contract-box">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</span><br/>
                         Symbol: NXC<br/>
@@ -452,10 +427,9 @@
         </div>
 
         <div class="back-home-container">
-            <a href="index.html" class="btn-back-home">
+            <a href="index-global.html" class="btn-back-home">
                 <i class="fa-solid fa-arrow-left"></i>
-                <span class="lang-item lang-en">Back to Home</span>
-                <span class="lang-item lang-zh lang-hidden">返回首頁</span>
+                <span>Back to Home</span>
             </a>
         </div>
     </div>
@@ -469,44 +443,27 @@
             <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
         </div>
         <div class="footer-links">
-            <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
+            <a href="about-global.html">About</a> | <a href="faq-global.html">FAQ</a> | <a href="token-info-global.html">Token Info</a> | <a href="neox-wiki-global.html">Wiki</a> | <a href="disclaimer-global.html">Disclaimer</a>
         </div>
         <div class="copyright">© 2026 NeoX. All rights reserved.</div>
     </footer>
 
     <script>
-        // === 新增：官方完整合約地址與自動縮短顯示邏輯 ===
+        // 定義唯一的官方完整合約地址
         const FULL_CONTRACT_ADDRESS = "0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B";
 
+        // 全自動將網頁上的顯示地址縮短成 0x9C17...B40B
         function initializeShortenedAddresses() {
-            // 縮短成前 6 碼 + ... + 後 4 碼 (0x9C17...B40B)
             const shortened = `${FULL_CONTRACT_ADDRESS.substring(0, 6)}...${FULL_CONTRACT_ADDRESS.substring(FULL_CONTRACT_ADDRESS.length - 4)}`;
             
-            const elEn = document.getElementById('nxc-contract-en');
-            const elZh = document.getElementById('nxc-contract-zh');
+            const elGlobal = document.getElementById('nxc-contract-global');
             const elBox = document.getElementById('nxc-contract-box');
             
-            if (elEn) elEn.innerText = shortened;
-            if (elZh) elZh.innerText = shortened;
+            if (elGlobal) elGlobal.innerText = shortened;
             if (elBox) elBox.innerText = shortened;
         }
 
-        // 1. 全自動雙語無縫切換控制腳本
-        function toggleLanguage(lang) {
-            document.querySelectorAll('.lang-item').forEach(el => el.classList.add('lang-hidden'));
-            document.querySelectorAll('.lang-' + lang).forEach(el => el.classList.remove('lang-hidden'));
-            const btnEn = document.getElementById('lang-en-btn');
-            const btnZh = document.getElementById('lang-zh-btn');
-            if(lang === 'en') {
-                btnEn.classList.add('active');
-                btnZh.classList.remove('active');
-            } else {
-                btnZh.classList.add('active');
-                btnEn.classList.remove('active');
-            }
-        }
-
-        // 2. 一鍵複製合約地址功能（確保複製出去的是 FULL_CONTRACT_ADDRESS 完整地址）
+        // 一鍵複製合約地址功能（確保複製出去的是完整長地址）
         function copyContractAddress() {
             navigator.clipboard.writeText(FULL_CONTRACT_ADDRESS).then(() => {
                 alert("Contract address copied successfully!");
@@ -515,7 +472,7 @@
             });
         }
 
-        // 3. Web3 快捷加幣腳本
+        // Web3 快捷加幣腳本
         async function addNxcToMetaMask() {
             if (typeof window.ethereum !== 'undefined') {
                 try {
@@ -539,7 +496,7 @@
             }
         }
 
-        // 4. 原生錢包連接腳本
+        // 原生錢包連接腳本
         const connectBtn = document.getElementById('connect-btn');
         async function checkConnection() {
             if (typeof window.ethereum !== 'undefined') {
@@ -564,16 +521,14 @@
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     updateButton(accounts[0]);
                 } catch (error) {
-                    console.error("Wallet login error:", error);
                     connectBtn.innerText = "Connect Wallet";
                 }
             } else {
-                alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
                 window.open('https://metamask.io/download/', '_blank');
             }
         });
 
-        // 網頁載入完成後同時初始化地址截短與錢包狀態檢查
+        // 網頁載入完成後同時執行初始化
         window.addEventListener('DOMContentLoaded', () => {
             initializeShortenedAddresses();
             checkConnection();
