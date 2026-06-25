@@ -61,7 +61,7 @@
     }
 
     /* Hide Google Translate White Top Bar */
-    .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important; }
+    .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important; height: 0 !important; }
     iframe.goog-te-banner-frame { display: none !important; }
     body > .skiptranslate { display: none !important; }
 
@@ -206,20 +206,26 @@
     
     .trouble-card li { margin-bottom: 8px; }
     
+    /* 【關鍵修正】確保超長代碼/合約地址在手機版上能完美自動換行，絕不跳出框框 */
     .trouble-card code {
       background: rgba(0, 0, 0, 0.35);
-      padding: 3px 8px;
+      padding: 4px 8px;
       border-radius: 4px;
       font-family: monospace;
       color: var(--secondary);
       font-size: 14px;
+      word-break: break-all;
+      white-space: pre-wrap;
+      display: inline-block;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     .highlight-green { color: var(--secondary); font-weight: 600; }
     .highlight-link { color: var(--primary); text-decoration: underline; }
     .highlight-link:hover { color: var(--secondary); }
 
-    /* 全站統一的極簡毛玻璃按鈕（已修正） */
+    /* Standardized Action Return Link */
     .btn-row {
       display: flex;
       justify-content: center;
@@ -271,7 +277,7 @@
       header { padding: 0 20px; }
       .nav-links { display: none; }
       .page-title { font-size: 34px; }
-      .trouble-card { padding: 25px; }
+      .trouble-card { padding: 25px 20px; }
     }
   </style>
 </head>
