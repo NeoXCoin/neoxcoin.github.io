@@ -25,19 +25,21 @@
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
         .tagline { font-size: 42px; font-weight: 800; margin-bottom: 10px; background: linear-gradient(120deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
+        /* NFT 系列卡片 */
         .nft-series { background: var(--glass); backdrop-filter: blur(15px); border: 1px solid var(--border); border-radius: 20px; padding: 30px; margin-bottom: 30px; text-align: left; }
-        .nft-series h3 { color: var(--primary); margin-top: 0; }
+        .nft-series h3 { color: var(--primary); margin-top: 0; font-size: 1.5rem; }
         .nft-content-row { display: flex; flex-direction: row; gap: 24px; align-items: center; }
         .nft-media { flex: 0 0 240px; }
         .nft-media video, .nft-media img { width: 100%; border-radius: 12px; display: block; }
         
-        .opensea-link { color: var(--primary); font-weight: 600; display: inline-block; margin-top: 10px; }
+        .opensea-link { color: var(--secondary); font-weight: 600; display: inline-block; margin-top: 15px; padding: 8px 16px; border: 1px solid var(--secondary); border-radius: 8px; transition: 0.3s; }
+        .opensea-link:hover { background: var(--secondary); color: #000; }
         
         footer { padding: 40px 0; margin-top: 50px; border-top: 1px solid var(--border); }
         .social-icons img { width: 36px; height: 36px; margin: 0 10px; filter: grayscale(100%) brightness(0.7); transition: 0.3s; }
         .social-icons img:hover { filter: grayscale(0%) brightness(1); transform: scale(1.1); }
         
-        @media (max-width: 640px) { .nft-content-row { flex-direction: column; } .nft-media { width: 100%; } }
+        @media (max-width: 640px) { .nft-content-row { flex-direction: column; text-align: center; } .nft-media { width: 100%; } }
     </style>
 </head>
 <body>
@@ -49,22 +51,55 @@
 
     <div class="container">
         <h1 class="tagline">NeoX NFT Projects</h1>
-        <p style="color: var(--text-muted); margin-bottom: 50px;">Discover our exclusive digital collections</p>
+        <p style="color: var(--text-muted); margin-bottom: 50px;">Explore our exclusive digital collections</p>
 
-        <!-- 範例：你可以按呢個結構加返你原本嗰啲 Video 同描述 -->
+        <!-- Series 1 -->
         <div class="nft-series">
             <h3>🏞️ NeoX Colorful Shan Shui</h3>
             <div class="nft-content-row">
-                <div class="nft-media">
-                    <video autoplay muted loop playsinline><source src="https://neoxcoin.github.io/NeoX%20Colorful%20Shan%20Shui.mp4" type="video/mp4"></video>
-                </div>
-                <div class="nft-info">
+                <div class="nft-media"><video autoplay muted loop playsinline><source src="https://neoxcoin.github.io/NeoX%20Colorful%20Shan%20Shui.mp4" type="video/mp4"></video></div>
+                <div>
                     <p>Reimagining traditional Chinese landscape painting through futuristic light.</p>
                     <a href="https://opensea.io/collection/neox-colorful-shan-shui" target="_blank" class="opensea-link">View on OpenSea</a>
                 </div>
             </div>
         </div>
-        <!-- 記得按上面結構複製返你其他 NFT Series (Cosmic Visions, Abstract Realms 等) -->
+
+        <!-- Series 2 -->
+        <div class="nft-series">
+            <h3>🌌 NeoX Cosmic Visions</h3>
+            <div class="nft-content-row">
+                <div class="nft-media"><video autoplay muted loop playsinline><source src="https://neoxcoin.github.io/NeoXCosmicVisions.MP4" type="video/mp4"></video></div>
+                <div>
+                    <p>Exploring abstract cosmic art through luminous waves and prisms.</p>
+                    <a href="https://opensea.io/collection/neox-cosmic-visions" target="_blank" class="opensea-link">View on OpenSea</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Series 3 -->
+        <div class="nft-series">
+            <h3>🚀 NeoX Abstract Realms</h3>
+            <div class="nft-content-row">
+                <div class="nft-media"><video autoplay muted loop playsinline><source src="https://neoxcoin.github.io/NeoX%20Abstract%20Realms.mp4" type="video/mp4"></video></div>
+                <div>
+                    <p>A bold journey merging futuristic digital art with timeless chaos.</p>
+                    <a href="https://opensea.io/collection/neox-abstract-realms" target="_blank" class="opensea-link">View on OpenSea</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Series 4 -->
+        <div class="nft-series">
+            <h3>🎨 NeoX Van Gogh Visions</h3>
+            <div class="nft-content-row">
+                <div class="nft-media"><video autoplay muted loop playsinline><source src="https://neoxcoin.github.io/NeoXVanGogh.MP4" type="video/mp4"></video></div>
+                <div>
+                    <p>A tribute to Van Gogh, reimagining his iconic style through a NeoX lens.</p>
+                    <a href="https://opensea.io/collection/neox-van-gogh-visions" target="_blank" class="opensea-link">View on OpenSea</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <footer>
