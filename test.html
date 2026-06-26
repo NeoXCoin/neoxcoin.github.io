@@ -423,6 +423,48 @@
             © 2026 NeoX. All rights reserved.
         </div>
     </footer>
+    
+    <script>
+    const connectBtn = document.getElementById('connect-btn');
 
+    // Passive active connection sniffing checks
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
+    }
+
+    // Compressing addresses dynamically to fit navbar structures beautifully
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
+    // Trigger explicit request wallet context calls
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "Connecting...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+          console.log("Connected to wallet:", accounts[0]);
+        } catch (error) {
+          console.error("User cancelled login sequence", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
+      } else {
+        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', checkConnection);
+  </script>
+    
 </body>
 </html>
