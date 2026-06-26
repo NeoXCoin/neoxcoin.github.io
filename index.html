@@ -259,17 +259,28 @@
     }
 
     .social-icons { margin-bottom: 25px; }
-    .social-icons img {
-      width: 22px;
-      margin: 0 15px;
-      opacity: 0.5;
-      filter: brightness(0) invert(1);
-      transition: all 0.2s ease;
-    }
+        .social-icons img {
+        width: 22px;
+        margin: 0 15px;
+    
+        /* 1. 唔好用 brightness 同 invert，改用 grayscale 轉做灰色 */
+        filter: grayscale(100%); 
+    
+        /* 2. 透過控制對比度 (contrast) 或亮度 (brightness)，去調校你想要嘅「淺灰色」 */
+        /* brightness 數值大於 1 會變亮（即係變淺灰色）*/
+        filter: grayscale(100%) brightness(1.4); 
+    
+        /* 3. 透明度可以設為 1（不透明）或者 0.9，等佢清析啲 */
+        opacity: 0.9; 
+    
+        transition: all 0.2s ease;
+     }
+
+    /* 滑鼠放上去（Hover）時變回原本的彩色 */
     .social-icons img:hover {
-      opacity: 0.5;
-      filter: none;
-      transform: scale(1.1);
+        filter: grayscale(0%) brightness(1); /* 回復原本顏色 */
+        opacity: 1;
+        transform: scale(1.1);
     }
 
     .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
