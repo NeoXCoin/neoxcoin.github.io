@@ -260,30 +260,33 @@
 
     .social-icons { margin-bottom: 25px; }
     .social-icons img {
-        width: 22px;
-        height: 22px; /* 確保長寬一樣，先可以變完美圓形 */
+        /* 1. 將本來的 22px 稍微縮小一點點（例如 18px），配合 padding 後總體大小就跟原本一樣了 */
+        width: 18px;
+        height: 18px; 
         margin: 0 15px;
-        padding: 8px; /* 內邊距：等中間個 logo 同圓邊有啲呼吸空間，唔會太迫 */
     
-        /* 1. 核心：加上淡淡的灰色圓形背景與邊框 */
-        background: rgba(255, 255, 255, 0.05); /* 5% 透明度的白，會呈現淡淡的內凹灰色感 */
-        border: 1px solid rgba(255, 255, 255, 0.15); /* 淡淡的白邊 */
-        border-radius: 50%; /* 變成完美的圓形圈圈 */
+        /* 2. 核心：將 padding 縮細，圓框就會緊貼住 Logo，唔會好似大得滯 */
+        padding: 4px; 
     
-        /* 2. 保持之前講嘅變灰同深色調校 */
-        filter: grayscale(100%) brightness(0.7); /* 你可以自由調校呢度嘅深淺 */
+        /* 圓框設定保持 */
+        background: rgba(255, 255, 255, 0.05); 
+        border: 1px solid rgba(255, 255, 255, 0.15); 
+        border-radius: 50%; 
+    
+        /* 之前你調校好的深灰色濾鏡 */
+        filter: grayscale(100%) brightness(0.7); 
         opacity: 0.9; 
     
         transition: all 0.2s ease;
-        box-sizing: content-box; /* 確保 padding 唔會縮細咗你原本 22px 嘅 logo */
-     }
+        box-sizing: content-box; 
+    }
 
-    /* 滑鼠放上去（Hover）時變亮/變回彩色，圓邊亦都一齊變亮 */
+    /* Hover 效果保持不變 */
     .social-icons img:hover {
         filter: grayscale(0%) brightness(1); 
         opacity: 1;
-        background: rgba(255, 255, 255, 0.15); /* Hover 時圓圈底色變亮少少 */
-        border-color: rgba(255, 255, 255, 0.4); /* Hover 時圓邊變明顯 */
+        background: rgba(255, 255, 255, 0.15); 
+        border-color: rgba(255, 255, 255, 0.4); 
         transform: scale(1.1);
     }
     
