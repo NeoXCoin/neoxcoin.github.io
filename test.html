@@ -6,34 +6,46 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Token Info - NeoX Coin (NXC)</title>
-    <meta name="description" content="Official tokenomics and smart contract information for NeoX Coin (NXC) on Base Mainnet." />
-    <link rel="canonical" href="https://neoxcoin.github.io/token-info-global.html" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Explore the NeoX NFT collections, including NeoX Colorful Shan Shui, Cosmic Visions, Genesis Series, Van Gogh Visions, and Abstract Realms." />
+    <title>NFT Collections - NeoX</title>
+    <link rel="canonical" href="https://neoxcoin.io/nft-projects.html" />
+    <link rel="alternate" href="https://neoxcoin.io/nft-projects.html" hreflang="en" />
+    <link rel="alternate" href="https://neoxcoin.io/nft-projects-zh.html" hreflang="zh-Hant" />
+    <link rel="alternate" href="https://neoxcoin.io/nft-projects-global.html" hreflang="x-default" />
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {"@type": "WebSite", "@id": "https://neoxcoin.io/#website", "name": "NeoX Coin (NXC)", "url": "https://neoxcoin.io/"},
+            {"@type": "Organization", "name": "NeoX", "url": "https://neoxcoin.io/", "logo": "https://neoxcoin.io/XNXC.png"},
+            {"@type": "WebPage", "@id": "https://neoxcoin.io/nft-projects.html#webpage", "url": "https://neoxcoin.io/nft-projects.html", "name": "NeoX NFT Projects", "inLanguage": "en", "isPartOf": {"@id": "https://neoxcoin.io/#website"}}
+        ]
+    }
+    </script>
+
     <style>
         :root {
-            --bg-dark: #03010a;
+            --primary: #00d9ff;
+            --primary-glow: rgba(0, 217, 255, 0.4);
+            --bg-gradient: radial-gradient(circle at center, #140730 0%, #05020f 100%);
+            --card-bg: rgba(255, 255, 255, 0.04);
+            --card-border: rgba(255, 255, 255, 0.08);
             --text-main: #ffffff;
             --text-muted: rgba(255, 255, 255, 0.7);
-            --primary: #a370ff;
-            --secondary: #00ffcc;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --font-stack: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
             margin: 0;
-            /* Unified starry background canvas */
-            background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
-            background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
-            font-family: var(--font-stack);
+            background: var(--bg-gradient);
+            background-image: var(--bg-gradient), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.03' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: var(--text-main);
             text-align: center;
             -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.01em;
             overflow-x: hidden;
+            padding-bottom: 60px;
         }
 
         a {
@@ -42,7 +54,7 @@
             transition: all 0.2s ease;
         }
 
-        /* --- 1. Header (Glassmorphism Navbar) --- */
+        /* --- Sticky Header --- */
         header {
             position: fixed;
             top: 0;
@@ -52,368 +64,350 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 50px;
-            background: rgba(7, 2, 20, 0.6);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid var(--border);
+            padding: 0 30px;
+            background: rgba(5, 2, 15, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--card-border);
             z-index: 1000;
             box-sizing: border-box;
         }
 
-        .nav-logo {
-            height: 32px;
+        .logo {
+            width: 50px;
+            height: auto;
             opacity: 0.9;
+            transition: transform 0.3s ease;
         }
-
-        .nav-logo:hover {
-            opacity: 1;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-muted);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .language-switch {
-            font-size: 13px;
-            color: var(--text-muted);
-            display: flex;
-            gap: 6px;
-        }
-
-        .language-switch a:hover {
-            color: var(--text-main);
-        }
-
-        .lang-sep {
-            opacity: 0.3;
-        }
-
-        .btn-connect {
-            font-size: 13px;
-            font-weight: 600;
-            padding: 8px 18px;
-            border-radius: 999px;
-            background: transparent;
-            color: var(--secondary);
-            border: 1px solid rgba(0, 255, 204, 0.3);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .btn-connect:hover {
-            background: rgba(0, 255, 204, 0.05);
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
-        }
-
-        /* --- Main Container --- */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 140px 20px 80px 20px;
-        }
-
-        /* --- 2. Animations --- */
-        @keyframes fadeInUpLoopSlow {
-            0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-            18% { opacity: 1; transform: translateY(0); filter: blur(0); }
-            86% { opacity: 1; transform: translateY(0); filter: blur(0); }
-            93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); }
-            100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-        }
-
-        @keyframes textShimmer {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .page-title {
-            font-size: 52px;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite, textShimmer 4s linear infinite;
-        }
-
-        /* --- 3. Token Info Cards --- */
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-top: 50px;
-            text-align: left;
-        }
-
-        .info-card {
-            background: var(--glass);
-            border: 1px solid var(--border);
-            padding: 30px;
+            font-size: 14px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(0, 217, 255, 0.25);
             border-radius: 20px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            padding: 6px 14px;
+            box-shadow: 0 4px 12px rgba(0, 217, 255, 0.1);
         }
 
-        .info-card:hover {
-            border-color: rgba(163, 112, 255, 0.3);
-            background: rgba(255, 255, 255, 0.05);
+        .language-switch a {
+            color: var(--text-muted);
+            margin: 0 4px;
+        }
+
+        .language-switch a:hover, .language-switch a.active {
+            color: var(--primary);
+            text-shadow: 0 0 8px var(--primary-glow);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            margin-top: 130px;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+
+        h1.tagline {
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+        }
+
+        .subtagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* --- NFT Main Container --- */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- NFT Series Card (Flex Layout) --- */
+        .nft-series {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 24px;
+            text-align: left;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nft-series:hover {
+            transform: translateY(-4px);
+            border-color: rgba(0, 217, 255, 0.3);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 217, 255, 0.05);
+        }
+
+        /* Inner card row for Media + Text */
+        .nft-content-row {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        @media (min-width: 640px) {
+            .nft-content-row {
+                flex-direction: row;
+                align-items: center;
+            }
+            .nft-media {
+                flex: 0 0 240px;
+            }
+            .nft-info {
+                flex: 1;
+            }
+        }
+
+        .nft-series h3 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nft-series p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 12px 0;
+            font-size: 105%;
+        }
+
+        /* --- Media Styling (Videos & Images) --- */
+        .nft-series video, 
+        .nft-series img {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            display: block;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .nft-series video:hover, 
+        .nft-series img:hover {
+            transform: scale(1.03);
+        }
+
+        /* --- Buttons --- */
+        .opensea-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .opensea-link:hover {
+            color: #fff;
+            text-shadow: 0 0 8px var(--primary-glow);
+        }
+
+        .btn {
+            background: #0a0a0a;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 32px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 12px rgba(0,217,255,0.2);
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 25px var(--primary-glow);
             transform: translateY(-2px);
         }
 
-        .card-label {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--primary);
-            margin-bottom: 8px;
+        .btn-blue {
+            background: #0d6efd;
+            border: 2px solid #3399ff;
+            color: white;
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
         }
-
-        .card-value {
-            font-size: 20px;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        /* Exclusive style for contract address: Ensure mobile version does not wrap out of bounds */
-        .address-box {
-            grid-column: span 2;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border);
-            padding: 25px;
-            border-radius: 16px;
-            text-align: center;
-        }
-
-        .contract-code {
-            display: block;
-            font-family: monospace;
-            font-size: 16px;
-            color: var(--secondary);
-            word-break: break-all; /* Critical Fix: Automatic line wrapping for long code hashes */
-            margin: 15px 0;
-            line-height: 1.5;
-            padding: 10px;
-            background: rgba(0, 255, 204, 0.05);
-            border-radius: 8px;
-        }
-
-        .btn-explorer {
-            display: inline-block;
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-main);
-            padding: 8px 20px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            margin-top: 10px;
-        }
-
-        .btn-explorer:hover {
-            background: var(--glass);
-            border-color: var(--primary);
-        }
-
-        /* --- 4. Coin Animation --- */
-        .visual-section {
-            margin: 40px 0;
-        }
-
-        .coin-gif {
-            width: 120px;
-            border-radius: 50%;
-            filter: drop-shadow(0 0 15px rgba(163, 112, 255, 0.4));
+        .btn-blue:hover {
+            background: #3399ff;
+            color: white;
+            box-shadow: 0 0 25px rgba(51, 153, 255, 0.5);
         }
 
         /* --- Footer --- */
-        footer {
-            width: 100%;
-            border-top: 1px solid var(--border);
-            padding: 40px 0;
+        .footer {
             margin-top: 80px;
-            background: rgba(0,0,0,0.1);
-        }
-
-        .social-icons {
-            margin-bottom: 25px;
-        }
-
-        .social-icons img {
-            width: 22px;
-            margin: 0 15px;
-            opacity: 0.5;
-            filter: brightness(0) invert(1);
-            transition: all 0.2s ease;
-        }
-
-        .social-icons img:hover {
-            opacity: 1;
-            filter: none;
-            transform: scale(1.1);
-        }
-
-        .footer-links {
             font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.4);
+            border-top: 1px solid var(--card-border);
+            padding-top: 30px;
         }
 
-        .footer-links a {
-            margin: 0 8px;
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
+            margin-left: 10px;
         }
-
-        .footer-links a:hover {
-            color: var(--text-main);
-        }
-
-        .copyright {
-            font-size: 12px;
-            color: rgba(255,255,255,0.4);
-        }
-
-        @media (max-width: 768px) {
-            header { padding: 0 20px; }
-            .nav-links { display: none; }
-            .page-title { font-size: 36px; }
-            .info-grid { grid-template-columns: 1fr; }
-            .address-box { grid-column: span 1; }
+        .footer a:hover {
+            color: var(--primary);
         }
     </style>
 </head>
 <body>
+
     <header>
-        <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
-        <div class="nav-links">
-            <a href="what-is-neox.html">What is NeoX?</a>
-            <a href="how-to-buy.html">How to Buy?</a>
-            <a href="game.html">NeoX Game</a>
-            <a href="metaverse.html">Metaverse Exhibition</a>
-            <a href="nft-projects.html">NFT Projects</a>
-        </div>
-        <div class="header-right">
-            <div class="language-switch">
-                <a href="token-info-global.html">EN</a>
-                <span class="lang-sep">|</span>
-                <a href="token-info-zh.html">繁</a>
-            </div>
-            <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+        <a href="index.html">
+            <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo" />
+        </a>
+        <div class="language-switch">
+            <a href="nft-projects.html" class="active">EN</a> | 
+            <a href="nft-projects-zh.html">繁</a> | 
+            <a href="nft-projects-global.html">Global</a>
         </div>
     </header>
 
-    <div class="container">
-        <div class="visual-section">
-            <img class="coin-gif" src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NXC 360">
+    <section class="hero">
+        <h1 class="tagline">NeoX NFT Projects</h1>
+        <p class="subtagline">Timekeeper Edition, Van Gogh Visions, Abstract Realms & more</p>
+    </section>
+
+    <main class="container">
+        
+        <!-- NeoX Colorful Shan Shui -->
+        <div class="nft-series">
+            <h3>🏞️ NeoX Colorful Shan Shui (New Collection)</h3>
+            <div class="nft-content-row">
+                <div class="nft-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://neoxcoin.github.io/NeoX%20Colorful%20Shan%20Shui.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="nft-info">
+                    <p>The <strong>NeoX Colorful Shan Shui</strong> collection reimagines traditional Chinese landscape painting through vibrant abstract colors. Featuring <strong>8 unique artworks</strong>, each piece blends mountain and water elements with futuristic light, symbolizing harmony between nature and imagination.</p>
+                    <a href="https://opensea.io/collection/neox-colorful-shan-shui" target="_blank" class="opensea-link">🔗 View Collection on OpenSea</a>
+                </div>
+            </div>
         </div>
-        
-        <h1 class="page-title">Token Information</h1>
-        
-        <div class="info-grid">
-            <div class="info-card">
-                <div class="card-label">Token Name</div>
-                <div class="card-value" style="display: flex; align-items: center; gap: 10px;">
-                    <img src="https://neoxcoin.github.io/XNXC.png" alt="Logo" style="width: 24px; height: 24px; border-radius: 4px;">
-                    NeoX Coin
+
+        <!-- NeoX Cosmic Visions -->
+        <div class="nft-series">
+            <h3>🌌 NeoX Cosmic Visions (New Collection)</h3>
+            <div class="nft-content-row">
+                <div class="nft-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://neoxcoin.github.io/NeoXCosmicVisions.MP4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="nft-info">
+                    <p>The <strong>NeoX Cosmic Visions</strong> is the latest NFT series exploring abstract cosmic art. Featuring <strong>8 unique chapters</strong>, each piece illustrates luminous waves, prisms, and the eternal harmony of the universe.</p>
+                    <a href="https://opensea.io/collection/neox-cosmic-visions" target="_blank" class="opensea-link">🔗 View Collection on OpenSea</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- NeoX Abstract Realms -->
+        <div class="nft-series">
+            <h3>🚀 NeoX Abstract Realms (New Collection)</h3>
+            <div class="nft-content-row">
+                <div class="nft-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://neoxcoin.github.io/NeoX%20Abstract%20Realms.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="nft-info">
+                    <p>A bold journey into abstract expression, merging futuristic digital art with timeless chaos and harmony.</p>
+                    <p>The <strong>NeoX Abstract Realms</strong> collection contains <strong>3 unique NFTs</strong>, each a one-of-a-kind creation.</p>
+                    <a href="https://opensea.io/collection/neox-abstract-realms" target="_blank" class="opensea-link">🔗 View Collection on OpenSea</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- NeoX Van Gogh Visions -->
+        <div class="nft-series">
+            <h3>🎨 NeoX Van Gogh Visions (Ongoing)</h3>
+            <div class="nft-content-row">
+                <div class="nft-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://neoxcoin.github.io/NeoXVanGogh.MP4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="nft-info">
+                    <p>A tribute to the visionary artistry of Van Gogh, this 1/1 edition NFT series reimagines his iconic expression through a NeoX lens.</p>
+                    <p>Each NFT in this series is unique (1 of 1), combining AI creativity and painterly textures.</p>
+                    <a href="https://opensea.io/collection/neox-van-gogh-visions" target="_blank" class="opensea-link">🔗 View Collection</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- NeoX Genesis Series -->
+        <div class="nft-series">
+            <h3>⏳ NeoX Genesis Series</h3>
+            
+            <!-- Sub-item 1 -->
+            <div class="nft-content-row" style="margin-bottom: 20px;">
+                <div class="nft-media">
+                    <img src="https://neoxcoin.github.io/NeoXGenesisEdition.jpg" alt="NeoCoin Genesis NFT" loading="lazy" />
+                </div>
+                <div class="nft-info">
+                    <p><strong>NeoCoin Genesis Edition</strong> is the very first and only NFT launched by the NeoX team — a historic 1/1 genesis mint.</p>
+                    <p>🎨 Design Style: Black-gold Roman emblem, silver embossed text</p>
+                    <p>🚀 Genesis Token: <strong>Quantum Seed</strong> — 1/1 edition, the original NeoX NFT.</p>
+                    <a href="https://opensea.io/collection/neocoin-genesis-edition-g1" target="_blank" class="opensea-link">🔗 View on OpenSea</a>
                 </div>
             </div>
             
-            <div class="info-card">
-                <div class="card-label">Ticker Symbol</div>
-                <div class="card-value">NXC</div>
-            </div>
-            
-            <div class="info-card">
-                <div class="card-label">Blockchain Network</div>
-                <div class="card-value">Base Mainnet</div>
-            </div>
-            
-            <div class="info-card">
-                <div class="card-label">Total Supply</div>
-                <div class="card-value">1,000,000,000 NXC</div>
-            </div>
-            
-            <div class="address-box info-card">
-                <div class="card-label">Smart Contract Address</div>
-                <code class="contract-code">0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code>
-                <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank" class="btn-explorer">View on BaseScan →</a>
+            <hr style="border: 0; border-top: 1px solid var(--card-border); margin: 10px 0 20px 0;">
+
+            <!-- Sub-item 2 -->
+            <div class="nft-content-row">
+                <div class="nft-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://neoxcoin.github.io/NeoXTimekeeper.MP4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="nft-info">
+                    <p><strong>NeoX Genesis NFT</strong> is a futuristic sci-fi inspired collection categorized into six rarity tiers, including the legendary <strong>Timekeeper Edition</strong> (limited to 8).</p>
+                    <p>✅ Timekeeper Edition has been successfully deployed on the Base Mainnet using OpenSea.</p>
+                    <a href="https://opensea.io/collection/neox-timekeeper-edition" target="_blank" class="opensea-link">🔗 View on OpenSea</a>
+                </div>
             </div>
         </div>
 
-        <div style="margin-top: 60px;">
-            <a href="index.html" style="font-size: 15px; color: var(--text-muted); border-bottom: 1px solid var(--border);">← Back to Home</a>
+        <div style="text-align: center; margin-top: 40px;">
+            <a class="btn btn-blue" href="index.html">← Back to Home</a>
         </div>
-    </div>
+    </main>
 
-    <footer>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
-            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
-            <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
-            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
-            <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
-        </div>
-        <div class="footer-links">
-            <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info-global.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
-        </div>
-        <div class="copyright">© 2026 NeoX. All rights reserved.</div>
+    <footer class="footer">
+        © 2026 NeoX. All rights reserved. | <a href="disclaimer-en.html">Disclaimer</a>
     </footer>
 
-    <script>
-        const connectBtn = document.getElementById('connect-btn');
-
-        async function checkConnection() {
-            if (typeof window.ethereum !== 'undefined') {
-                const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-                if (accounts.length > 0) {
-                    updateButton(accounts[0]);
-                }
-            }
-        }
-
-        function updateButton(address) {
-            const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
-            connectBtn.innerText = shortAddress;
-            connectBtn.style.color = "#00ffcc";
-            connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
-        }
-
-        connectBtn.addEventListener('click', async () => {
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    connectBtn.innerText = "Connecting...";
-                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-                    updateButton(accounts[0]);
-                } catch (error) {
-                    console.error("Wallet login error:", error);
-                    connectBtn.innerText = "Connect Wallet";
-                }
-            } else {
-                alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
-                window.open('https://metamask.io/download/', '_blank');
-            }
-        });
-
-        window.addEventListener('DOMContentLoaded', checkConnection);
-    </script>
 </body>
 </html>
