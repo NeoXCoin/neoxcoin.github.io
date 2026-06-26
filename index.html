@@ -260,21 +260,17 @@
 
     .social-icons { margin-bottom: 25px; }
         .social-icons img {
-        width: 22px;
-        margin: 0 15px;
+            width: 22px;
+            margin: 0 15px;
     
-        /* 1. 唔好用 brightness 同 invert，改用 grayscale 轉做灰色 */
-        filter: grayscale(100%); 
+            /* 1. 保持 100% 變灰 */
+            filter: grayscale(100%) brightness(0.6); /* 數值低於 1 佢就會變暗、變深色 */
     
-        /* 2. 透過控制對比度 (contrast) 或亮度 (brightness)，去調校你想要嘅「淺灰色」 */
-        /* brightness 數值大於 1 會變亮（即係變淺灰色）*/
-        filter: grayscale(100%) brightness(1.4); 
+            /* 2. 保持不透明度，令圖標線條更實淨 */
+            opacity: 0.9; 
     
-        /* 3. 透明度可以設為 1（不透明）或者 0.9，等佢清析啲 */
-        opacity: 0.9; 
-    
-        transition: all 0.2s ease;
-     }
+            transition: all 0.2s ease;
+    }
 
     /* 滑鼠放上去（Hover）時變回原本的彩色 */
     .social-icons img:hover {
