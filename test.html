@@ -16,42 +16,28 @@
             --text-muted: rgba(255, 255, 255, 0.7);
         }
 
-        body { 
-            margin: 0; 
-            background: radial-gradient(circle at center, #110526 0%, #03010a 100%); 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            color: var(--text-main); 
-            text-align: center; 
-            padding-top: 100px;
-        }
-
-        /* Header 統一 */
+        body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); text-align: center; padding-top: 100px; }
+        
         header { position: fixed; top: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 50px; background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000; box-sizing: border-box; }
         .nav-logo { height: 32px; }
         .btn-connect { padding: 8px 18px; border-radius: 999px; background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3); font-weight: 600; cursor: pointer; }
-
-        /* 漸變文字標題 */
-        .tagline { 
-            font-size: 42px; font-weight: 800; margin-bottom: 10px; 
-            background: linear-gradient(120deg, #fff, var(--primary)); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-        }
-
-        /* 卡片與內容 */
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        .nft-series { 
-            background: var(--glass); backdrop-filter: blur(15px); border: 1px solid var(--border); 
-            border-radius: 20px; padding: 30px; margin-bottom: 30px; text-align: left;
-        }
-        .nft-series h3 { color: var(--primary); margin-top: 0; }
-        .nft-media video, .nft-media img { width: 100%; max-width: 240px; border-radius: 12px; display: block; margin: 0 auto; }
         
-        /* 底部 Footer 與 Social Media */
-        footer { width: 100%; border-top: 1px solid var(--border); padding: 40px 0; margin-top: 50px; background: rgba(0,0,0,0.2); }
-        .social-icons img { width: 24px; height: 24px; margin: 0 10px; padding: 8px; border-radius: 50%; background: rgba(255,255,255,0.05); filter: grayscale(100%) brightness(0.7); transition: 0.3s; }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .tagline { font-size: 42px; font-weight: 800; margin-bottom: 10px; background: linear-gradient(120deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .nft-series { background: var(--glass); backdrop-filter: blur(15px); border: 1px solid var(--border); border-radius: 20px; padding: 30px; margin-bottom: 30px; text-align: left; }
+        .nft-series h3 { color: var(--primary); margin-top: 0; }
+        .nft-content-row { display: flex; flex-direction: row; gap: 24px; align-items: center; }
+        .nft-media { flex: 0 0 240px; }
+        .nft-media video, .nft-media img { width: 100%; border-radius: 12px; display: block; }
+        
+        .opensea-link { color: var(--primary); font-weight: 600; display: inline-block; margin-top: 10px; }
+        
+        footer { padding: 40px 0; margin-top: 50px; border-top: 1px solid var(--border); }
+        .social-icons img { width: 36px; height: 36px; margin: 0 10px; filter: grayscale(100%) brightness(0.7); transition: 0.3s; }
         .social-icons img:hover { filter: grayscale(0%) brightness(1); transform: scale(1.1); }
         
-        @media (max-width: 600px) { header { padding: 0 20px; } .nft-series { text-align: center; } }
+        @media (max-width: 640px) { .nft-content-row { flex-direction: column; } .nft-media { width: 100%; } }
     </style>
 </head>
 <body>
@@ -65,17 +51,20 @@
         <h1 class="tagline">NeoX NFT Projects</h1>
         <p style="color: var(--text-muted); margin-bottom: 50px;">Discover our exclusive digital collections</p>
 
-        <!-- 卡片區域 -->
+        <!-- 範例：你可以按呢個結構加返你原本嗰啲 Video 同描述 -->
         <div class="nft-series">
             <h3>🏞️ NeoX Colorful Shan Shui</h3>
-            <div class="nft-media">
-                <video autoplay muted loop playsinline><source src="https://neoxcoin.github.io/NeoX%20Colorful%20Shan%20Shui.mp4" type="video/mp4"></video>
+            <div class="nft-content-row">
+                <div class="nft-media">
+                    <video autoplay muted loop playsinline><source src="https://neoxcoin.github.io/NeoX%20Colorful%20Shan%20Shui.mp4" type="video/mp4"></video>
+                </div>
+                <div class="nft-info">
+                    <p>Reimagining traditional Chinese landscape painting through futuristic light.</p>
+                    <a href="https://opensea.io/collection/neox-colorful-shan-shui" target="_blank" class="opensea-link">View on OpenSea</a>
+                </div>
             </div>
-            <p>Reimagining traditional Chinese landscape painting through futuristic light.</p>
         </div>
-        
-        <!-- 你可以繼續添加其他 NFT Series，結構同上 -->
-
+        <!-- 記得按上面結構複製返你其他 NFT Series (Cosmic Visions, Abstract Realms 等) -->
     </div>
 
     <footer>
@@ -83,7 +72,6 @@
             <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/facebook.png"></a>
             <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/twitter.png"></a>
         </div>
-        <div style="font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 15px;">© 2026 NeoX. All rights reserved.</div>
     </footer>
 
     <script>
