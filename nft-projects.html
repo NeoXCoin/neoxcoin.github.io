@@ -121,10 +121,14 @@
         }
 
         h1.tagline {
-            font-size: 32px;
-            margin: 0 0 10px 0;
-            color: var(--primary);
-            font-weight: 700;
+           font-size: 32px;
+           margin: 0 0 10px 0;
+           font-weight: 700;
+    
+         /* 🎨 霓虹光管漸變色設定 */
+          background: linear-gradient(135deg, #00ffcc 0%, #a370ff 50%, #ff007f 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent; /* 確保呢度都係透明，食到漸變 */
         }
 
         .subtagline {
