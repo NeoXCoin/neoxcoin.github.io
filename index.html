@@ -259,26 +259,34 @@
     }
 
     .social-icons { margin-bottom: 25px; }
-        .social-icons img {
-            width: 22px;
-            margin: 0 15px;
+    .social-icons img {
+        width: 22px;
+        height: 22px; /* 確保長寬一樣，先可以變完美圓形 */
+        margin: 0 15px;
+        padding: 8px; /* 內邊距：等中間個 logo 同圓邊有啲呼吸空間，唔會太迫 */
     
-            /* 1. 保持 100% 變灰 */
-            filter: grayscale(100%) brightness(0.6); /* 數值低於 1 佢就會變暗、變深色 */
+        /* 1. 核心：加上淡淡的灰色圓形背景與邊框 */
+        background: rgba(255, 255, 255, 0.05); /* 5% 透明度的白，會呈現淡淡的內凹灰色感 */
+        border: 1px solid rgba(255, 255, 255, 0.15); /* 淡淡的白邊 */
+        border-radius: 50%; /* 變成完美的圓形圈圈 */
     
-            /* 2. 保持不透明度，令圖標線條更實淨 */
-            opacity: 0.9; 
+        /* 2. 保持之前講嘅變灰同深色調校 */
+        filter: grayscale(100%) brightness(0.7); /* 你可以自由調校呢度嘅深淺 */
+        opacity: 0.9; 
     
-            transition: all 0.2s ease;
-    }
+        transition: all 0.2s ease;
+        box-sizing: content-box; /* 確保 padding 唔會縮細咗你原本 22px 嘅 logo */
+     }
 
-    /* 滑鼠放上去（Hover）時變回原本的彩色 */
+    /* 滑鼠放上去（Hover）時變亮/變回彩色，圓邊亦都一齊變亮 */
     .social-icons img:hover {
-        filter: grayscale(0%) brightness(1); /* 回復原本顏色 */
+        filter: grayscale(0%) brightness(1); 
         opacity: 1;
+        background: rgba(255, 255, 255, 0.15); /* Hover 時圓圈底色變亮少少 */
+        border-color: rgba(255, 255, 255, 0.4); /* Hover 時圓邊變明顯 */
         transform: scale(1.1);
     }
-
+    
     .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
     .footer-links a { margin: 0 8px; }
     .footer-links a:hover { color: var(--text-main); }
