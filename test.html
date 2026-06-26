@@ -13,16 +13,22 @@
     <link rel="alternate" href="https://neoxcoin.io/nft-projects-zh.html" hreflang="zh-Hant" />
     <link rel="alternate" href="https://neoxcoin.io/nft-projects-global.html" hreflang="x-default" />
     
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {"@type": "WebSite", "@id": "https://neoxcoin.io/#website", "name": "NeoX Coin (NXC)", "url": "https://neoxcoin.io/"},
-        {"@type": "Organization", "name": "NeoX", "url": "https://neoxcoin.io/", "logo": "https://neoxcoin.io/XNXC.png"},
-        {"@type": "WebPage", "@id": "https://neoxcoin.io/nft-projects-global.html#webpage", "url": "https://neoxcoin.io/nft-projects-global.html", "name": "NeoX NFT Projects (Global)", "inLanguage": "en", "isPartOf": {"@id": "https://neoxcoin.io/#website"}}
-      ]
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- 🌐 1. 完全採用 index-global.html 嘅 Google 翻譯初始化腳本 -->
+    <script>
+        function googleTranslateElementInit(){
+            new google.translate.TranslateElement({
+                pageLanguage: 'en', 
+                includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+                autoDisplay: false, 
+                multilanguagePage: true 
+            }, 'google_translate_element');
+        }
     </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
     
     <style>
         :root {
@@ -42,7 +48,21 @@
             color: var(--text-main);
             text-align: center;
             padding-top: 100px;
+            /* Google Translate Tweak Overrides */
+            top: 0 !important;
+            position: static !important;
+            margin-top: 0 !important;
         }
+
+        /* 徹底隱藏 Google 翻譯頂部自帶的白色橫條 */
+        .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { 
+            display: none !important; 
+            visibility: hidden !important; 
+            height: 0 !important; 
+            width: 0 !important; 
+        }
+        iframe.goog-te-banner-frame { display: none !important; }
+        body > .skiptranslate { display: none !important; }
 
         a {
             text-decoration: none;
@@ -50,7 +70,7 @@
             transition: all 0.2s ease;
         }
 
-        /* --- 1. Sticky Header --- */
+        /* --- Sticky Header --- */
         header {
             position: fixed;
             top: 0;
@@ -96,34 +116,33 @@
         .header-right {
             display: flex;
             align-items: center;
-            gap: 15px; /* 控制翻譯掣同 Wallet 之間嘅距離 */
+            gap: 15px;
         }
 
-        /* 🌐 Google Translate 自訂美化樣式 */
+        /* 🌐 2. 完全複製 index-global.html 嘅黑色膠囊翻譯掣美化樣式 */
         #google_translate_element {
-            display: inline-block;
+            display: inline-block; 
+            padding: 2px 6px; 
+            border-radius: 20px; 
+            background: rgba(0, 0, 0, 0.4); 
+            border: 1px solid var(--border); 
         }
-        .goog-te-gadget-simple {
-            background-color: rgba(255, 255, 255, 0.05) !important;
-            border: 1px solid var(--border) !important;
-            padding: 5px 10px !important;
-            border-radius: 999px !important;
-            font-family: 'Plus Jakarta Sans', sans-serif !important;
-            font-size: 13px !important;
-            cursor: pointer;
+        #google_translate_element .goog-te-gadget { 
+            font-size: 12px !important; 
+            color: #fff !important; 
         }
-        .goog-te-gadget-simple .goog-te-menu-value span {
-            color: var(--text-muted) !important;
+        #google_translate_element .goog-te-gadget span { 
+            display: none !important; 
         }
-        .goog-te-gadget-simple .goog-te-menu-value span:hover {
-            color: var(--primary) !important;
+        #google_translate_element select {
+            background: transparent !important; 
+            color: #fff !important; 
+            border: none !important; 
+            font-size: 12px !important; 
+            padding: 4px 6px !important; 
+            outline: none !important; 
+            cursor: pointer; 
         }
-        .goog-te-gadget-icon {
-            display: none !important; /* 隱藏官方長得比較醜嘅 Icon */
-        }
-        /* 隱藏頂部 Google 翻譯橫幅 */
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; }
 
         .btn-connect {
             font-size: 13px;
@@ -164,7 +183,6 @@
             font-size: 32px;
             margin: 0 0 10px 0;
             font-weight: 700;
-            /* 🎨 流動霓虹光管漸變色 */
             background: linear-gradient(135deg, #00ffcc 0%, #a370ff 35%, #ff007f 70%, #00ffcc 100%);
             background-size: 400% 100%;
             animation: neonFlow 6s linear infinite;
@@ -183,7 +201,7 @@
             margin: 0;
         }
 
-        /* --- NFT 卡片 RWD 布局 --- */
+        /* --- NFT Cards --- */
         .nft-series {
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid var(--border);
@@ -338,14 +356,14 @@
     <header>
         <a href="index-global.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
         <div class="nav-links">
-            <a href="what-is-neox-global.html">What is NeoX?</a>
-            <a href="how-to-buy-global.html">How to Buy?</a>
-            <a href="game-global.html">NeoX Game</a>
-            <a href="metaverse-global.html">Metaverse Exhibition</a>
-            <a href="nft-projects-global.html">NFT Projects</a>
+            <a href="index-global.html">What is NeoX?</a>
+            <a href="how-to-buy.html">How to Buy?</a>
+            <a href="game.html">NeoX Game</a>
+            <a href="metaverse.html">Metaverse Exhibition</a>
+            <a href="nft-projects.html">NFT Projects</a>
         </div>
         <div class="header-right">
-            <!-- 🌐 Google Translate 按鈕放置位置 -->
+            <!-- 🌐 3. 完美對接 index-global.html 的 Google 翻譯 DOM 節點 -->
             <div id="google_translate_element"></div>
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
@@ -432,7 +450,6 @@
         <div class="nft-series">
             <h3>NeoX Genesis Series</h3>
             
-            <!-- 子項目 1 -->
             <div class="nft-content-row" style="margin-bottom: 20px;">
                 <div class="nft-media">
                     <img src="https://neoxcoin.github.io/NeoXGenesisEdition.jpg" alt="NeoCoin Genesis NFT" loading="lazy" />
@@ -447,7 +464,6 @@
             
             <hr style="border: 0; border-top: 1px solid var(--border); margin: 10px 0 20px 0;">
             
-            <!-- 子項目 2 -->
             <div class="nft-content-row">
                 <div class="nft-media">
                     <video autoplay muted loop playsinline>
@@ -479,22 +495,10 @@
             <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
         </div>
         <div class="footer-links">
-            <a href="about-global.html">About</a> | <a href="faq-global.html">FAQ</a> | <a href="token-info-global.html">Token Info</a> | <a href="neox-wiki-global.html">Wiki</a> | <a href="disclaimer-global.html">Disclaimer</a>
+            <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
         </div>
         <div class="copyright">© 2026 NeoX. All rights reserved.</div>
     </footer>
-
-    <!-- 🌐 加載 Google 翻譯官方腳本 -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'zh-TW,zh-CN,en,ja,ko,es,fr', // 你可以依需求增減允許翻譯嘅語系
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         const connectBtn = document.getElementById('connect-btn');
