@@ -28,8 +28,8 @@
         :root {
             --primary: #00d9ff;
             --primary-glow: rgba(0, 217, 255, 0.4);
-            --bg-gradient: radial-gradient(circle at center, #140730 0%, #05020f 100%);
-            --card-bg: rgba(255, 255, 255, 0.04);
+            --bg-gradient: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+            --card-bg: rgba(255, 255, 255, 0.06);
             --card-border: rgba(255, 255, 255, 0.08);
             --text-main: #ffffff;
             --text-muted: rgba(255, 255, 255, 0.7);
@@ -38,14 +38,14 @@
         body {
             margin: 0;
             background: var(--bg-gradient);
-            background-image: var(--bg-gradient), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.03' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+            background-image: var(--bg-gradient), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             color: var(--text-main);
             text-align: center;
             -webkit-font-smoothing: antialiased;
             letter-spacing: -0.01em;
             overflow-x: hidden;
-            padding-bottom: 60px;
+            padding-bottom: 40px;
         }
 
         a {
@@ -54,7 +54,7 @@
             transition: all 0.2s ease;
         }
 
-        /* --- Sticky Header --- */
+        /* --- 主頁風格 Sticky Header --- */
         header {
             position: fixed;
             top: 0;
@@ -65,9 +65,9 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 30px;
-            background: rgba(5, 2, 15, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: rgba(7, 2, 20, 0.6);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--card-border);
             z-index: 1000;
             box-sizing: border-box;
@@ -76,30 +76,30 @@
         .logo {
             width: 50px;
             height: auto;
-            opacity: 0.9;
+            opacity: 0.85;
             transition: transform 0.3s ease;
         }
         .logo:hover {
             transform: scale(1.05);
         }
 
+        /* 純淨語言選擇欄（已移除Wallet關聯功能鍵） */
         .language-switch {
             font-size: 14px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(0, 217, 255, 0.25);
-            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(0, 217, 255, 0.35);
+            border-radius: 10px;
             padding: 6px 14px;
-            box-shadow: 0 4px 12px rgba(0, 217, 255, 0.1);
+            box-shadow: 0 0 14px rgba(0, 217, 255, 0.18);
         }
 
         .language-switch a {
-            color: var(--text-muted);
+            color: #fff;
             margin: 0 4px;
         }
 
         .language-switch a:hover, .language-switch a.active {
             color: var(--primary);
-            text-shadow: 0 0 8px var(--primary-glow);
         }
 
         /* --- Hero Section --- */
@@ -110,12 +110,10 @@
         }
 
         h1.tagline {
-            font-size: 2.5rem;
+            font-size: 32px;
             margin: 0 0 10px 0;
             color: var(--primary);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            text-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+            font-weight: 700;
         }
 
         .subtagline {
@@ -124,36 +122,25 @@
             margin: 0;
         }
 
-        /* --- NFT Main Container --- */
+        /* --- Container --- */
         .container {
-            max-width: 960px;
+            max-width: 880px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* --- NFT Series Card (Flex Layout) --- */
+        /* --- NFT 卡片 RWD 布局 --- */
         .nft-series {
             background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 24px;
+            border-radius: 16px;
+            padding: 30px 24px;
             text-align: left;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             display: flex;
             flex-direction: column;
-            gap: 24px;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            gap: 20px;
         }
 
-        .nft-series:hover {
-            transform: translateY(-4px);
-            border-color: rgba(0, 217, 255, 0.3);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 217, 255, 0.05);
-        }
-
-        /* Inner card row for Media + Text */
         .nft-content-row {
             display: flex;
             flex-direction: column;
@@ -176,102 +163,106 @@
         .nft-series h3 {
             color: var(--primary);
             margin: 0;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .nft-series p {
-            color: var(--text-muted);
+            color: var(--text-main);
             line-height: 1.6;
             margin: 12px 0;
-            font-size: 105%;
         }
 
-        /* --- Media Styling (Videos & Images) --- */
+        /* --- 影片與圖片樣式（完整保留動畫屬性） --- */
         .nft-series video, 
         .nft-series img {
             width: 100%;
             max-width: 240px;
             height: auto;
             display: block;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-            background: rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
+            border-radius: 8px;
+            margin: 0 auto;
         }
 
-        .nft-series video:hover, 
-        .nft-series img:hover {
-            transform: scale(1.03);
-        }
-
-        /* --- Buttons --- */
+        /* --- 連結與按鈕 --- */
         .opensea-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
             color: var(--primary);
             font-weight: 600;
+            display: inline-block;
             margin-top: 8px;
         }
         .opensea-link:hover {
-            color: #fff;
-            text-shadow: 0 0 8px var(--primary-glow);
+            text-decoration: underline;
         }
 
         .btn {
             background: #0a0a0a;
             border: 2px solid var(--primary);
             color: var(--primary);
-            padding: 12px 32px;
-            border-radius: 14px;
+            padding: 12px 24px;
+            border-radius: 12px;
             font-size: 16px;
-            font-weight: 600;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 4px 12px rgba(0,217,255,0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(0, 217, 255, 0.5);
+            min-width: 180px;
         }
 
         .btn:hover {
             background: var(--primary);
             color: #000;
-            box-shadow: 0 0 25px var(--primary-glow);
-            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.8);
+            transform: translateY(-3px);
         }
 
         .btn-blue {
             background: #0d6efd;
             border: 2px solid #3399ff;
             color: white;
-            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
-        }
-        .btn-blue:hover {
-            background: #3399ff;
-            color: white;
-            box-shadow: 0 0 25px rgba(51, 153, 255, 0.5);
         }
 
-        /* --- Footer --- */
-        .footer {
-            margin-top: 80px;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.4);
-            border-top: 1px solid var(--card-border);
-            padding-top: 30px;
+        /* --- 底部主頁同款 Social Media 與 Footer --- */
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 60px 0 20px;
+            flex-wrap: wrap;
         }
 
-        .footer a {
+        .footer-social a img {
+            width: 28px;
+            height: 28px;
+            opacity: 0.8;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+
+        .footer-social a:hover img {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .footer-links {
+            font-size: 14px;
             color: rgba(255, 255, 255, 0.6);
-            margin-left: 10px;
+            margin-bottom: 15px;
         }
-        .footer a:hover {
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0 8px;
+        }
+
+        .footer-links a:hover {
             color: var(--primary);
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
@@ -307,7 +298,7 @@
                 </div>
                 <div class="nft-info">
                     <p>The <strong>NeoX Colorful Shan Shui</strong> collection reimagines traditional Chinese landscape painting through vibrant abstract colors. Featuring <strong>8 unique artworks</strong>, each piece blends mountain and water elements with futuristic light, symbolizing harmony between nature and imagination.</p>
-                    <a href="https://opensea.io/collection/neox-colorful-shan-shui" target="_blank" class="opensea-link">🔗 View Collection on OpenSea</a>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-colorful-shan-shui" target="_blank" class="opensea-link">View Collection on OpenSea</a></p>
                 </div>
             </div>
         </div>
@@ -324,7 +315,7 @@
                 </div>
                 <div class="nft-info">
                     <p>The <strong>NeoX Cosmic Visions</strong> is the latest NFT series exploring abstract cosmic art. Featuring <strong>8 unique chapters</strong>, each piece illustrates luminous waves, prisms, and the eternal harmony of the universe.</p>
-                    <a href="https://opensea.io/collection/neox-cosmic-visions" target="_blank" class="opensea-link">🔗 View Collection on OpenSea</a>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-cosmic-visions" target="_blank" class="opensea-link">View Collection on OpenSea</a></p>
                 </div>
             </div>
         </div>
@@ -342,7 +333,7 @@
                 <div class="nft-info">
                     <p>A bold journey into abstract expression, merging futuristic digital art with timeless chaos and harmony.</p>
                     <p>The <strong>NeoX Abstract Realms</strong> collection contains <strong>3 unique NFTs</strong>, each a one-of-a-kind creation.</p>
-                    <a href="https://opensea.io/collection/neox-abstract-realms" target="_blank" class="opensea-link">🔗 View Collection on OpenSea</a>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-abstract-realms" target="_blank" class="opensea-link">View Collection on OpenSea</a></p>
                 </div>
             </div>
         </div>
@@ -360,7 +351,7 @@
                 <div class="nft-info">
                     <p>A tribute to the visionary artistry of Van Gogh, this 1/1 edition NFT series reimagines his iconic expression through a NeoX lens.</p>
                     <p>Each NFT in this series is unique (1 of 1), combining AI creativity and painterly textures.</p>
-                    <a href="https://opensea.io/collection/neox-van-gogh-visions" target="_blank" class="opensea-link">🔗 View Collection</a>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-van-gogh-visions" target="_blank" class="opensea-link">View Collection</a></p>
                 </div>
             </div>
         </div>
@@ -369,7 +360,7 @@
         <div class="nft-series">
             <h3>⏳ NeoX Genesis Series</h3>
             
-            <!-- Sub-item 1 -->
+            <!-- 子項目 1 -->
             <div class="nft-content-row" style="margin-bottom: 20px;">
                 <div class="nft-media">
                     <img src="https://neoxcoin.github.io/NeoXGenesisEdition.jpg" alt="NeoCoin Genesis NFT" loading="lazy" />
@@ -378,13 +369,13 @@
                     <p><strong>NeoCoin Genesis Edition</strong> is the very first and only NFT launched by the NeoX team — a historic 1/1 genesis mint.</p>
                     <p>🎨 Design Style: Black-gold Roman emblem, silver embossed text</p>
                     <p>🚀 Genesis Token: <strong>Quantum Seed</strong> — 1/1 edition, the original NeoX NFT.</p>
-                    <a href="https://opensea.io/collection/neocoin-genesis-edition-g1" target="_blank" class="opensea-link">🔗 View on OpenSea</a>
+                    <p>🔗 <a href="https://opensea.io/collection/neocoin-genesis-edition-g1" target="_blank" class="opensea-link">View on OpenSea</a></p>
                 </div>
             </div>
             
             <hr style="border: 0; border-top: 1px solid var(--card-border); margin: 10px 0 20px 0;">
 
-            <!-- Sub-item 2 -->
+            <!-- 子項目 2 -->
             <div class="nft-content-row">
                 <div class="nft-media">
                     <video autoplay muted loop playsinline>
@@ -395,18 +386,36 @@
                 <div class="nft-info">
                     <p><strong>NeoX Genesis NFT</strong> is a futuristic sci-fi inspired collection categorized into six rarity tiers, including the legendary <strong>Timekeeper Edition</strong> (limited to 8).</p>
                     <p>✅ Timekeeper Edition has been successfully deployed on the Base Mainnet using OpenSea.</p>
-                    <a href="https://opensea.io/collection/neox-timekeeper-edition" target="_blank" class="opensea-link">🔗 View on OpenSea</a>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-timekeeper-edition" target="_blank" class="opensea-link">View on OpenSea</a></p>
                 </div>
             </div>
         </div>
 
+        <!-- 返回主頁按鈕 -->
         <div style="text-align: center; margin-top: 40px;">
             <a class="btn btn-blue" href="index.html">← Back to Home</a>
         </div>
     </main>
 
-    <footer class="footer">
-        © 2026 NeoX. All rights reserved. | <a href="disclaimer-en.html">Disclaimer</a>
+    <!-- 完美同步主頁設計的 Footer 區塊 -->
+    <footer>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/facebook.png" alt="Facebook" onerror="this.src='https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png'"></a>
+            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/twitter.png" alt="X" onerror="this.src='https://img.icons8.com/ios-filled/50/ffffff/twitterx.png'"></a>
+            <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/instagram.png" alt="Instagram" onerror="this.src='https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png'"></a>
+            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/tiktok.png" alt="TikTok" onerror="this.src='https://img.icons8.com/ios-filled/50/ffffff/tiktok.png'"></a>
+            <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/youtube.png" alt="YouTube" onerror="this.src='https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png'"></a>
+        </div>
+        <div class="footer-links">
+            <a href="about.html">About</a> | 
+            <a href="faq.html">FAQ</a> | 
+            <a href="token-info.html">Token Info</a> | 
+            <a href="neox-wiki.html">Wiki</a> | 
+            <a href="disclaimer-en.html">Disclaimer</a>
+        </div>
+        <div class="footer-copyright">
+            © 2026 NeoX. All rights reserved.
+        </div>
     </footer>
 
 </body>
