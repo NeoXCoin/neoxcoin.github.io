@@ -25,40 +25,33 @@
             padding-top: 100px;
         }
 
-        /* 統一 Header */
+        /* Header 統一 */
         header { position: fixed; top: 0; width: 100%; height: 70px; display: flex; align-items: center; justify-content: space-between; padding: 0 50px; background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); z-index: 1000; box-sizing: border-box; }
         .nav-logo { height: 32px; }
         .btn-connect { padding: 8px 18px; border-radius: 999px; background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3); font-weight: 600; cursor: pointer; }
 
-        /* 標題漸變效果 */
+        /* 漸變文字標題 */
         .tagline { 
             font-size: 42px; font-weight: 800; margin-bottom: 10px; 
             background: linear-gradient(120deg, #fff, var(--primary)); 
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
         }
 
-        /* 玻璃質感卡片 */
+        /* 卡片與內容 */
         .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
         .nft-series { 
-            background: var(--glass); 
-            backdrop-filter: blur(15px); 
-            border: 1px solid var(--border); 
-            border-radius: 20px; 
-            padding: 30px; 
-            margin-bottom: 30px; 
-            text-align: left;
+            background: var(--glass); backdrop-filter: blur(15px); border: 1px solid var(--border); 
+            border-radius: 20px; padding: 30px; margin-bottom: 30px; text-align: left;
         }
         .nft-series h3 { color: var(--primary); margin-top: 0; }
-
-        /* 按鈕風格統一 */
-        .btn { 
-            background: rgba(163, 112, 255, 0.1); border: 1px solid var(--primary); 
-            color: white; padding: 12px 24px; border-radius: 12px; display: inline-block; 
-            transition: all 0.3s;
-        }
-        .btn:hover { background: var(--primary); color: #000; }
-
-        @media (max-width: 600px) { header { padding: 0 20px; } }
+        .nft-media video, .nft-media img { width: 100%; max-width: 240px; border-radius: 12px; display: block; margin: 0 auto; }
+        
+        /* 底部 Footer 與 Social Media */
+        footer { width: 100%; border-top: 1px solid var(--border); padding: 40px 0; margin-top: 50px; background: rgba(0,0,0,0.2); }
+        .social-icons img { width: 24px; height: 24px; margin: 0 10px; padding: 8px; border-radius: 50%; background: rgba(255,255,255,0.05); filter: grayscale(100%) brightness(0.7); transition: 0.3s; }
+        .social-icons img:hover { filter: grayscale(0%) brightness(1); transform: scale(1.1); }
+        
+        @media (max-width: 600px) { header { padding: 0 20px; } .nft-series { text-align: center; } }
     </style>
 </head>
 <body>
@@ -70,17 +63,28 @@
 
     <div class="container">
         <h1 class="tagline">NeoX NFT Projects</h1>
-        <p class="subtagline">Discover our exclusive digital collections</p>
+        <p style="color: var(--text-muted); margin-bottom: 50px;">Discover our exclusive digital collections</p>
 
-        <!-- 卡片範例 -->
+        <!-- 卡片區域 -->
         <div class="nft-series">
             <h3>🏞️ NeoX Colorful Shan Shui</h3>
-            <p>Reimagining traditional landscapes through futuristic light.</p>
-            <a href="#" class="btn">View on OpenSea</a>
+            <div class="nft-media">
+                <video autoplay muted loop playsinline><source src="https://neoxcoin.github.io/NeoX%20Colorful%20Shan%20Shui.mp4" type="video/mp4"></video>
+            </div>
+            <p>Reimagining traditional Chinese landscape painting through futuristic light.</p>
         </div>
         
-        <a href="index.html" style="color: var(--text-muted);">← Back to Home</a>
+        <!-- 你可以繼續添加其他 NFT Series，結構同上 -->
+
     </div>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/facebook.png"></a>
+            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/twitter.png"></a>
+        </div>
+        <div style="font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 15px;">© 2026 NeoX. All rights reserved.</div>
+    </footer>
 
     <script>
         document.getElementById('connect-btn').addEventListener('click', async () => {
