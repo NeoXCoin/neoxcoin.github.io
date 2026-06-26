@@ -55,7 +55,7 @@
 
         <!-- Series 1 -->
         <div class="nft-series">
-            <h3>🏞️ NeoX Colorful Shan Shui</h3>
+            <h3> NeoX Colorful Shan Shui</h3>
             <div class="nft-content-row">
                 <div class="nft-media"><video autoplay muted loop playsinline><source src="https://neoxcoin.github.io/NeoX%20Colorful%20Shan%20Shui.mp4" type="video/mp4"></video></div>
                 <div>
@@ -67,7 +67,7 @@
 
         <!-- Series 2 -->
         <div class="nft-series">
-            <h3>🌌 NeoX Cosmic Visions</h3>
+            <h3> NeoX Cosmic Visions</h3>
             <div class="nft-content-row">
                 <div class="nft-media"><video autoplay muted loop playsinline><source src="https://neoxcoin.github.io/NeoXCosmicVisions.MP4" type="video/mp4"></video></div>
                 <div>
@@ -79,7 +79,7 @@
 
         <!-- Series 3 -->
         <div class="nft-series">
-            <h3>🚀 NeoX Abstract Realms</h3>
+            <h3> NeoX Abstract Realms</h3>
             <div class="nft-content-row">
                 <div class="nft-media"><video autoplay muted loop playsinline><source src="https://neoxcoin.github.io/NeoX%20Abstract%20Realms.mp4" type="video/mp4"></video></div>
                 <div>
@@ -91,7 +91,7 @@
 
         <!-- Series 4 -->
         <div class="nft-series">
-            <h3>🎨 NeoX Van Gogh Visions</h3>
+            <h3> NeoX Van Gogh Visions</h3>
             <div class="nft-content-row">
                 <div class="nft-media"><video autoplay muted loop playsinline><source src="https://neoxcoin.github.io/NeoXVanGogh.MP4" type="video/mp4"></video></div>
                 <div>
@@ -102,18 +102,74 @@
         </div>
     </div>
 
+   <!-- 返回主頁按鈕 -->
+        <div style="text-align: center; margin-top: 40px;">
+            <a class="btn btn-blue" href="index.html">← Back to Home</a>
+        </div>
+    </main>
+
+    <!-- 完美同步主頁設計的 Footer 區塊 -->
     <footer>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/facebook.png"></a>
-            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/twitter.png"></a>
+        <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/facebook.png" alt="Facebook" onerror="this.src='https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png'"></a>
+            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/twitter.png" alt="X" onerror="this.src='https://img.icons8.com/ios-filled/50/ffffff/twitterx.png'"></a>
+            <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/instagram.png" alt="Instagram" onerror="this.src='https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png'"></a>
+            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/tiktok.png" alt="TikTok" onerror="this.src='https://img.icons8.com/ios-filled/50/ffffff/tiktok.png'"></a>
+            <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/youtube.png" alt="YouTube" onerror="this.src='https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png'"></a>
+        </div>
+        <div class="footer-links">
+            <a href="about.html">About</a> | 
+            <a href="faq.html">FAQ</a> | 
+            <a href="token-info.html">Token Info</a> | 
+            <a href="neox-wiki.html">Wiki</a> | 
+            <a href="disclaimer-en.html">Disclaimer</a>
+        </div>
+        <div class="footer-copyright">
+            © 2026 NeoX. All rights reserved.
         </div>
     </footer>
-
+    
     <script>
-        document.getElementById('connect-btn').addEventListener('click', async () => {
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            document.getElementById('connect-btn').innerText = accounts[0].substring(0,6) + "...";
-        });
-    </script>
+    const connectBtn = document.getElementById('connect-btn');
+
+    // Passive active connection sniffing checks
+    async function checkConnection() {
+      if (typeof window.ethereum !== 'undefined') {
+        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+        if (accounts.length > 0) {
+          updateButton(accounts[0]);
+        }
+      }
+    }
+
+    // Compressing addresses dynamically to fit navbar structures beautifully
+    function updateButton(address) {
+      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+      connectBtn.innerText = shortAddress;
+      connectBtn.style.color = "#00ffcc";
+      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+    }
+
+    // Trigger explicit request wallet context calls
+    connectBtn.addEventListener('click', async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          connectBtn.innerText = "Connecting...";
+          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+          updateButton(accounts[0]);
+          console.log("Connected to wallet:", accounts[0]);
+        } catch (error) {
+          console.error("User cancelled login sequence", error);
+          connectBtn.innerText = "Connect Wallet";
+        }
+      } else {
+        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
+        window.open('https://metamask.io/download/', '_blank');
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', checkConnection);
+  </script>
+    
 </body>
 </html>
