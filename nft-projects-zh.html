@@ -1,250 +1,490 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="探索 NeoX NFT 系列，包括 NeoX Colorful Shan Shui（七彩山水）、Cosmic Visions（宇宙幻象）、Genesis Series（創世系列）、Van Gogh Visions（梵高視界）和 Abstract Realms（抽象領域）。" />
+    <title>NFT 收藏系列 - NeoX</title>
+    <link rel="canonical" href="https://neoxcoin.io/nft-projects-zh.html" />
+    <link rel="alternate" href="https://neoxcoin.io/nft-projects.html" hreflang="en" />
+    <link rel="alternate" href="https://neoxcoin.io/nft-projects-zh.html" hreflang="zh-Hant" />
+    <link rel="alternate" href="https://neoxcoin.io/nft-projects-global.html" hreflang="x-default" />
     
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="探索 NeoX 的 NFT 系列，包括 NeoX 彩色山水、Cosmic Visions、創世系列、梵高視界，以及抽象領域。" />
-  <title>NFT 收藏系列 - NeoX</title>
-  
-  <link rel="canonical" href="https://neoxcoin.io/nft-projects-zh.html" />
-  <link rel="alternate" href="https://neoxcoin.io/nft-projects.html" hreflang="en" />
-  <link rel="alternate" href="https://neoxcoin.io/nft-projects-zh.html" hreflang="zh-Hant" />
-  <link rel="alternate" href="https://neoxcoin.io/nft-projects-global.html" hreflang="x-default" />
-  <style>
-    body {
-       margin: 0;
-      /* Option B: Deep Starfield Canvas */
-      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
-      background-image: 
-        radial-gradient(circle at center, #110526 0%, #03010a 100%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
-      
-      font-family: var(--font-stack);
-      color: var(--text-main);
-      text-align: center;
-      -webkit-font-smoothing: antialiased;
-      letter-spacing: -0.01em;
-      overflow-x: hidden;
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {"@type": "WebSite", "@id": "https://neoxcoin.io/#website", "name": "NeoX Coin (NXC)", "url": "https://neoxcoin.io/"},
+        {"@type": "Organization", "name": "NeoX", "url": "https://neoxcoin.io/", "logo": "https://neoxcoin.io/XNXC.png"},
+        {"@type": "WebPage", "@id": "https://neoxcoin.io/nft-projects-zh.html#webpage", "url": "https://neoxcoin.io/nft-projects-zh.html", "name": "NeoX NFT 項目", "inLanguage": "zh-Hant", "isPartOf": {"@id": "https://neoxcoin.io/#website"}}
+      ]
     }
+    </script>
+    
+    <style>
+        :root {
+            --primary: #a370ff;
+            --secondary: #00ffcc;
+            --bg-dark: #03010a;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+        }
 
-    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+        body {
+            margin: 0;
+            background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            text-align: center;
+            padding-top: 100px;
+        }
 
-    /* --- 1. Sticky Header (Glassmorphism) --- */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 50px;
-      background: rgba(7, 2, 20, 0.6);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      box-sizing: border-box;
-    } 
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+        }
 
-    /* 將原本的 h1 樣式修改或添加以下內容 */
-    h1.tagline {
-        margin-top: 100px; /* 根據您的 header 高度調整，建議大於 header 的 70px */
-        font-size: 32px;
-        margin-bottom: 10px;
-        color: #00d9ff;
-    }
+        /* --- 1. Sticky Header --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            background: rgba(7, 2, 20, 0.6);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            box-sizing: border-box;
+        }
 
-    .logo {
-      width: 60px;
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      opacity: 0.85;
-    }
+        .nav-logo {
+            height: 32px;
+            opacity: 0.9;
+        }
 
-    .language-switch{
-      position:absolute; top:20px; right:20px;
-      font-size:14px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(0,217,255,.35);
-      border-radius:10px;
-      padding:6px 10px;
-      box-shadow:0 0 14px rgba(0,217,255,.18);
-    }
-    .language-switch a{
-      color:#fff; text-decoration:none; margin:0 6px;
-    }
-    .language-switch a:hover{ color:#00d9ff; }
+        .nav-logo:hover {
+            opacity: 1;
+        }
 
-    h1 {
-      font-size: 32px;
-      margin-bottom: 30px;
-    }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
 
-    .nft-series {
-      max-width: 880px;
-      margin: 0 auto 40px;
-      background: rgba(255, 255, 255, 0.06);
-      padding: 30px 24px;
-      border-radius: 16px;
-      text-align: left;
-    }
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
 
-    .nft-series h3 {
-      color: #00d9ff;
-      margin-top: 0;
-    }
+        .nav-links a:hover {
+            color: var(--primary);
+        }
 
-    .nft-series video, 
-    .nft-series img {
-      max-width: 240px;
-      margin: 16px auto;
-      display: block;
-      border-radius: 8px;
-    }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
 
-    .btn-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 20px;
-    }
+        .btn-connect {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--secondary);
+            border: 1px solid rgba(0, 255, 204, 0.3);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
 
-    .btn {
-      background: #0a0a0a;
-      border: 2px solid #00d9ff;
-      color: #00d9ff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      min-width: 180px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px rgba(0,217,255,0.5);
-    }
+        .btn-connect:hover {
+            background: rgba(0, 255, 204, 0.05);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+        }
 
-    .btn:hover {
-      background: #00d9ff;
-      color: #000;
-      box-shadow: 0 0 20px rgba(0,217,255,0.8);
-      transform: translateY(-3px);
-    }
+        /* --- Main Container --- */
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-    .btn-blue {
-      background: #0d6efd;
-      border: 2px solid #3399ff;
-      color: white;
-    }
+        /* --- Hero Section --- */
+        .hero {
+            margin-top: 20px;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
 
-    .footer {
-      margin-top: 60px;
-      font-size: 13px;
-      color: rgba(255, 255, 255, 0.5);
-    }
+        h1.tagline {
+            font-size: 32px;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+            /* 🎨 流動霓虹光管漸變色 */
+            background: linear-gradient(135deg, #00ffcc 0%, #a370ff 35%, #ff007f 70%, #00ffcc 100%);
+            background-size: 400% 100%;
+            animation: neonFlow 6s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
-    }
-  </style>
+        @keyframes neonFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
+        }
+
+        .subtagline {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* --- NFT 卡片 RWD 布局 --- */
+        .nft-series {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 30px 24px;
+            text-align: left;
+            margin-bottom: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .nft-content-row {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        @media (min-width: 640px) {
+            .nft-content-row {
+                flex-direction: row;
+                align-items: center;
+            }
+            .nft-media {
+                flex: 0 0 240px;
+            }
+            .nft-info {
+                flex: 1;
+            }
+        }
+
+        .nft-series h3 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .nft-series p {
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 12px 0;
+        }
+
+        .nft-series video, .nft-series img {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            margin: 0 auto;
+        }
+
+        .opensea-link {
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        .opensea-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            background: #0a0a0a;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(0, 217, 255, 0.5);
+            min-width: 180px;
+        }
+
+        .btn:hover {
+            background: var(--primary);
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.8);
+            transform: translateY(-3px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            width: 100%;
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            margin-top: 50px;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .social-icons {
+            margin-bottom: 25px;
+        }
+
+        .social-icons img {
+            width: 18px;
+            height: 18px;
+            margin: 0 15px;
+            padding: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            filter: grayscale(100%) brightness(0.7);
+            opacity: 0.9;
+            transition: all 0.2s ease;
+            box-sizing: content-box;
+        }
+
+        .social-icons img:hover {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+
+        .footer-links {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            margin: 0 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-main);
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
+        }
+
+        @media (max-width: 900px) {
+            header { padding: 0 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
 </head>
 <body>
-  <a href="index-zh.html">
-  <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/apple-touch-icon.png" alt="NeoX Logo" />
-  <div class="language-switch">
-    <a href="nft-projects.html">EN</a> | <a href="nft-projects-zh.html">繁</a> | <a href="nft-projects-global.html">Global</a>
-  </div>
 
-  <h1 class="tagline">NeoX NFT 系列</h1>
-  <p class="subtagline">Timekeeper、梵高視界、抽象境域 等</p>
+    <header>
+        <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+        <div class="nav-links">
+            <a href="what-is-neox-zh.html">什麼是 NeoX？</a>
+            <a href="how-to-buy-zh.html">如何購買？</a>
+            <a href="game-zh.html">NeoX 遊戲</a>
+            <a href="metaverse-zh.html">元宇宙展覽</a>
+            <a href="nft-projects-zh.html">NFT 項目</a>
+        </div>
+        <div class="header-right">
+            <button class="btn-connect" id="connect-btn">連接錢包</button>
+        </div>
+    </header>
 
-  <!-- NeoX 彩色山水 -->
-  <div class="nft-series">
-    <h3>🏞️ NeoX 彩色山水（全新系列）</h3>
-    <video autoplay muted loop playsinline>
-      <source src="https://neoxcoin.github.io/NeoX%20Colorful%20Shan%20Shui.mp4" type="video/mp4">
-      您的瀏覽器不支援影片播放。
-    </video>
-    <p><strong>NeoX 彩色山水</strong> 系列融合傳統山水藝術與抽象色彩，透過未來感的光影重塑經典意境。  
-    系列包含 <strong>8 件獨特 NFT</strong>，每件作品都展現自然與想像力的和諧交融。</p>
-    <p>🔗 <a href="https://opensea.io/collection/neox-colorful-shan-shui" target="_blank" style="color:#00d9ff;">前往 OpenSea 瀏覽系列</a></p>
-  </div>
+    <section class="hero">
+        <h1 class="tagline">NeoX NFT 項目</h1>
+        <p class="subtagline">時之守護者珍藏版、梵高視界、抽象領域及更多精彩系列</p>
+    </section>
 
-  <!-- NeoX Cosmic Visions -->
-  <div class="nft-series">
-    <h3>🌌 NeoX Cosmic Visions（全新系列）</h3>
-    <video autoplay muted loop playsinline>
-      <source src="https://neoxcoin.github.io/NeoXCosmicVisions.MP4" type="video/mp4">
-      您的瀏覽器不支援影片播放。
-    </video>
-    <p><strong>NeoX Cosmic Visions</strong> 是 NeoX 最新的 NFT 系列，以抽象的宇宙藝術為主題。  
-    系列包含 <strong>8 個章節</strong>，每件作品展現光之波動、棱鏡及宇宙和諧的永恆意象。</p>
-    <p>🔗 <a href="https://opensea.io/collection/neox-cosmic-visions" target="_blank" style="color:#00d9ff;">前往 OpenSea 瀏覽系列</a></p>
-  </div>
+    <main class="container">
 
-  <!-- NeoX 抽象領域 -->
-  <div class="nft-series">
-    <h3>🚀 NeoX 抽象領域（新系列）</h3>
-    <video autoplay muted loop playsinline>
-      <source src="https://neoxcoin.github.io/NeoX%20Abstract%20Realms.mp4" type="video/mp4">
-      您的瀏覽器不支援影片播放。
-    </video>
-    <p>一場大膽的抽象藝術之旅，融合未來數位藝術與永恆的混沌與和諧。</p>
-    <p><strong>NeoX 抽象領域</strong> 系列包含 <strong>3 個獨特 NFT</strong>，每件作品都是唯一 (1 of 1)。</p>
-    <p>✨ 此系列探索全新的質感、超現實的形狀與鮮明對比 —— 將抽象藝術帶入 Web3 世界。</p>
-    <p>🔗 <a href="https://opensea.io/collection/neox-abstract-realms" target="_blank" style="color:#00d9ff;">前往 OpenSea 瀏覽系列</a></p>
-  </div>
-  
-  <!-- NeoX 梵高視界 -->
-  <div class="nft-series">
-    <h3>🎨 NeoX 梵高視界（進行中）</h3>
-    <video autoplay muted loop playsinline>
-      <source src="https://neoxcoin.github.io/NeoXVanGogh.MP4" type="video/mp4">
-      您的瀏覽器不支援影片播放。
-    </video>
-    <p>此系列致敬梵高的藝術精神，透過 NeoX 的視角重塑其經典畫作，以 AI 融合印象派筆觸創作獨一無二的 NFT。</p>
-    <p>🖼️ 每一張 NFT 均為獨一無二（1/1），兼具創意與藝術性</p>
-    <p>🔗 <a href="https://opensea.io/collection/neox-van-gogh-visions" target="_blank" style="color:#00d9ff;">查看整個系列</a></p>
-  </div>
-  
-  <!-- NeoX 創世系列 -->
-  <div class="nft-series">
-    <h3>⏳ NeoX 創世系列</h3>
-    <div>
-      <img src="https://neoxcoin.github.io/NeoXGenesisEdition.jpg" alt="NeoCoin Genesis NFT" />
-      <p><strong>NeoCoin Genesis Edition</strong> 是 NeoX 團隊發行的首個 NFT —— 歷史性的 1/1 Genesis 鑄造。</p>
-      <p>🎨 設計風格：黑金羅馬徽章風、銀色浮雕文字</p>
-      <p>🚀 元始代幣：<strong>Quantum Seed</strong> — NeoX 項目的原創 NFT。</p>
-      <p>🔗 <a href="https://opensea.io/collection/neocoin-genesis-edition-g1" target="_blank" style="color:#00d9ff;">在 OpenSea 上查看</a></p>
-    </div>
-    <div>
-      <video autoplay muted loop playsinline>
-        <source src="https://neoxcoin.github.io/NeoXTimekeeper.MP4" type="video/mp4">
-        您的瀏覽器不支援影片播放。
-      </video>
-      <p><strong>NeoX Genesis NFT</strong> 以未來科幻為靈感，劃分為六個稀有等級，其中包括限量 <strong>Timekeeper Edition</strong>（僅 8 張）。</p>
-      <p>✅ Timekeeper Edition 已成功透過 OpenSea 部署於 Base 主網。</p>
-      <p>🔗 <a href="https://opensea.io/collection/neox-timekeeper-edition" target="_blank" style="color:#00d9ff;">前往 OpenSea 查看</a></p>
-    </div>
-  </div>
+        <!-- NeoX Colorful Shan Shui -->
+        <div class="nft-series">
+            <h3>NeoX 七彩山水系列 (全新收藏)</h3>
+            <div class="nft-content-row">
+                <div class="nft-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://neoxcoin.github.io/NeoX%20Colorful%20Shan%20Shui.mp4" type="video/mp4">
+                        您的瀏覽器不支援影片標籤。
+                    </video>
+                </div>
+                <div class="nft-info">
+                    <p><strong>NeoX 七彩山水</strong>系列透過充滿活力的抽象色彩，重新詮釋了中國傳統山水畫。此系列包含 <strong>8 件獨特藝術品</strong>，每幅作品都將山水元素與未來感的光影相融合，象徵著自然與想像力的完美和諧。</p>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-colorful-shan-shui" target="_blank" class="opensea-link">在 OpenSea 上查看收藏系列</a></p>
+                </div>
+            </div>
+        </div>
 
-  <div class="btn-row">
-    <a class="btn btn-blue" href="index-zh.html">← 返回主頁</a>
-  </div>
+        <!-- NeoX Cosmic Visions -->
+        <div class="nft-series">
+            <h3>NeoX 宇宙幻象系列 (全新收藏)</h3>
+            <div class="nft-content-row">
+                <div class="nft-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://neoxcoin.github.io/NeoXCosmicVisions.MP4" type="video/mp4">
+                        您的瀏覽器不支援影片標籤。
+                    </video>
+                </div>
+                <div class="nft-info">
+                    <p><strong>NeoX 宇宙幻象</strong>是探索抽象宇宙藝術的最新 NFT 系列。本系列共包含 <strong>8 個獨特章節</strong>，每件作品皆描繪出璀璨的光波、三稜鏡以及宇宙恆久的和諧之美。</p>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-cosmic-visions" target="_blank" class="opensea-link">在 OpenSea 上查看收藏系列</a></p>
+                </div>
+            </div>
+        </div>
 
-  <div class="footer">
-    © 2025 NeoX 保留所有權利 |
-    <a href="disclaimer-zh.html">免責聲明</a>
-  </div>
+        <!-- NeoX Abstract Realms -->
+        <div class="nft-series">
+            <h3>NeoX 抽象領域系列 (全新收藏)</h3>
+            <div class="nft-content-row">
+                <div class="nft-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://neoxcoin.github.io/NeoX%20Abstract%20Realms.mp4" type="video/mp4">
+                        您的瀏覽器不支援影片標籤。
+                    </video>
+                </div>
+                <div class="nft-info">
+                    <p>一場通往抽象表現主義的帶膽旅程，將未來感數位藝術與永恆的混沌與和諧完美交織。</p>
+                    <p><strong>NeoX 抽象領域</strong>系列包含 <strong>3 枚獨一無二的 NFT</strong>，每枚皆為絕無僅有的原創之作。</p>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-abstract-realms" target="_blank" class="opensea-link">在 OpenSea 上查看收藏系列</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- NeoX Van Gogh Visions -->
+        <div class="nft-series">
+            <h3>NeoX 梵高視界系列 (進行中)</h3>
+            <div class="nft-content-row">
+                <div class="nft-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://neoxcoin.github.io/NeoXVanGogh.MP4" type="video/mp4">
+                        您的瀏覽器不支援影片標籤。
+                    </video>
+                </div>
+                <div class="nft-info">
+                    <p>本系列旨在向富有遠見藝術眼光的梵高致敬。這款 1/1 珍藏版 NFT 系列透過 NeoX 的獨特視角，重新構想了其標誌性的藝術表現。</p>
+                    <p>該系列中的每枚 NFT 均為獨一無二（1/1 孤品），融合了 AI 創意與細膩的油畫質感。</p>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-van-gogh-visions" target="_blank" class="opensea-link">查看收藏系列</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- NeoX Genesis Series -->
+        <div class="nft-series">
+            <h3>NeoX 創世系列</h3>
+            
+            <!-- 子項目 1 -->
+            <div class="nft-content-row" style="margin-bottom: 20px;">
+                <div class="nft-media">
+                    <img src="https://neoxcoin.github.io/NeoXGenesisEdition.jpg" alt="NeoCoin Genesis NFT" loading="lazy" />
+                </div>
+                <div class="nft-info">
+                    <p><strong>NeoCoin 創世珍藏版 (Genesis Edition)</strong> 是 NeoX 團隊推出歷史上的首枚、亦是唯一一枚 NFT —— 具備歷史意義的 1/1 創世鑄造。</p>
+                    <p>🎨 設計風格：黑金羅馬徽章，搭配銀色浮雕文字</p>
+                    <p>💎 創世代幣：<strong>量子種子 (Quantum Seed)</strong> —— 1/1 孤品，最原始的 NeoX 代令級 NFT。</p>
+                    <p>🔗 <a href="https://opensea.io/collection/neocoin-genesis-edition-g1" target="_blank" class="opensea-link">在 OpenSea 上查看</a></p>
+                </div>
+            </div>
+            
+            <hr style="border: 0; border-top: 1px solid var(--border); margin: 10px 0 20px 0;">
+            
+            <!-- 子項目 2 -->
+            <div class="nft-content-row">
+                <div class="nft-media">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://neoxcoin.github.io/NeoXTimekeeper.MP4" type="video/mp4">
+                        您的瀏覽器不支援影片標籤。
+                    </video>
+                </div>
+                <div class="nft-info">
+                    <p><strong>NeoX 創世 NFT</strong> 是一個受未來科幻小說啟發的收藏系列，共分為六個稀有度等級，其中包括傳奇的<strong>時之守護者珍藏版 (Timekeeper Edition)</strong>（全球限量 8 枚）。</p>
+                    <p>✅ 時之守護者珍藏版已透過 OpenSea 成功部署於 Base 主網上。</p>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-timekeeper-edition" target="_blank" class="opensea-link">在 OpenSea 上查看</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 返回主頁按鈕 -->
+        <div style="text-align: center; margin-top: 40px;">
+            <a class="btn" href="index-zh.html">← 返回主頁</a>
+        </div>
+        
+    </main>
+
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+            <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+            <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+        </div>
+        <div class="footer-links">
+            <a href="about-zh.html">關於我們</a> | <a href="faq-zh.html">常見問題</a> | <a href="token-info-zh.html">代幣資訊</a> | <a href="neox-wiki-zh.html">維基百科</a> | <a href="disclaimer-zh.html">免責聲明</a>
+        </div>
+        <div class="copyright">© 2026 NeoX. 保留所有權利。</div>
+    </footer>
+
+    <script>
+        const connectBtn = document.getElementById('connect-btn');
+        async function checkConnection() {
+            if (typeof window.ethereum !== 'undefined') {
+                const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                if (accounts.length > 0) { updateButton(accounts[0]); }
+            }
+        }
+        function updateButton(address) {
+            const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+            connectBtn.innerText = shortAddress;
+            connectBtn.style.color = "#00ffcc";
+            connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+        }
+        connectBtn.addEventListener('click', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    connectBtn.innerText = "連接中...";
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    updateButton(accounts[0]);
+                } catch (error) {
+                    console.error("用戶取消了登入程序", error);
+                    connectBtn.innerText = "連接錢包";
+                }
+            } else {
+                alert("未偵測到 Web3 錢包。正在重新導向至 MetaMask 下載頁面...");
+                window.open('https://metamask.io/download/', '_blank');
+            }
+        });
+        window.addEventListener('DOMContentLoaded', checkConnection);
+    </script>
 </body>
 </html>
