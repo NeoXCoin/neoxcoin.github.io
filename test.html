@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="description" content="探索 NeoX NFT 系列，包括 NeoX Colorful Shan Shui（七彩山水）、Cosmic Visions（宇宙幻象）、Genesis Series（創世系列）、Van Gogh Visions（梵高視界）和 Abstract Realms（抽象領域）。" />
-    <title>NFT 收藏系列 - NeoX</title>
-    <link rel="canonical" href="https://neoxcoin.io/nft-projects-zh.html" />
+    <meta name="description" content="Explore the NeoX NFT collections, including NeoX Colorful Shan Shui, Cosmic Visions, Genesis Series, Van Gogh Visions, and Abstract Realms." />
+    <title>NFT Collections - NeoX (Global)</title>
+    <link rel="canonical" href="https://neoxcoin.io/nft-projects-global.html" />
     <link rel="alternate" href="https://neoxcoin.io/nft-projects.html" hreflang="en" />
     <link rel="alternate" href="https://neoxcoin.io/nft-projects-zh.html" hreflang="zh-Hant" />
     <link rel="alternate" href="https://neoxcoin.io/nft-projects-global.html" hreflang="x-default" />
@@ -19,7 +19,7 @@
       "@graph": [
         {"@type": "WebSite", "@id": "https://neoxcoin.io/#website", "name": "NeoX Coin (NXC)", "url": "https://neoxcoin.io/"},
         {"@type": "Organization", "name": "NeoX", "url": "https://neoxcoin.io/", "logo": "https://neoxcoin.io/XNXC.png"},
-        {"@type": "WebPage", "@id": "https://neoxcoin.io/nft-projects-zh.html#webpage", "url": "https://neoxcoin.io/nft-projects-zh.html", "name": "NeoX NFT 項目", "inLanguage": "zh-Hant", "isPartOf": {"@id": "https://neoxcoin.io/#website"}}
+        {"@type": "WebPage", "@id": "https://neoxcoin.io/nft-projects-global.html#webpage", "url": "https://neoxcoin.io/nft-projects-global.html", "name": "NeoX NFT Projects (Global)", "inLanguage": "en", "isPartOf": {"@id": "https://neoxcoin.io/#website"}}
       ]
     }
     </script>
@@ -96,8 +96,34 @@
         .header-right {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px; /* 控制翻譯掣同 Wallet 之間嘅距離 */
         }
+
+        /* 🌐 Google Translate 自訂美化樣式 */
+        #google_translate_element {
+            display: inline-block;
+        }
+        .goog-te-gadget-simple {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid var(--border) !important;
+            padding: 5px 10px !important;
+            border-radius: 999px !important;
+            font-family: 'Plus Jakarta Sans', sans-serif !important;
+            font-size: 13px !important;
+            cursor: pointer;
+        }
+        .goog-te-gadget-simple .goog-te-menu-value span {
+            color: var(--text-muted) !important;
+        }
+        .goog-te-gadget-simple .goog-te-menu-value span:hover {
+            color: var(--primary) !important;
+        }
+        .goog-te-gadget-icon {
+            display: none !important; /* 隱藏官方長得比較醜嘅 Icon */
+        }
+        /* 隱藏頂部 Google 翻譯橫幅 */
+        .goog-te-banner-frame.skiptranslate { display: none !important; }
+        body { top: 0px !important; }
 
         .btn-connect {
             font-size: 13px;
@@ -109,6 +135,7 @@
             border: 1px solid rgba(0, 255, 204, 0.3);
             cursor: pointer;
             transition: all 0.2s;
+            white-space: nowrap;
         }
 
         .btn-connect:hover {
@@ -309,99 +336,101 @@
 <body>
 
     <header>
-        <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+        <a href="index-global.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
         <div class="nav-links">
-            <a href="index.html">什麼是 NeoX？</a>
-            <a href="how-to-buy.html">如何購買？</a>
-            <a href="game.html">NeoX 遊戲</a>
-            <a href="metaverse.html">元宇宙展覽</a>
-            <a href="nft-projects.html">NFT 項目</a>
+            <a href="what-is-neox-global.html">What is NeoX?</a>
+            <a href="how-to-buy-global.html">How to Buy?</a>
+            <a href="game-global.html">NeoX Game</a>
+            <a href="metaverse-global.html">Metaverse Exhibition</a>
+            <a href="nft-projects-global.html">NFT Projects</a>
         </div>
         <div class="header-right">
-            <button class="btn-connect" id="connect-btn">連接錢包</button>
+            <!-- 🌐 Google Translate 按鈕放置位置 -->
+            <div id="google_translate_element"></div>
+            <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
     </header>
 
     <section class="hero">
-        <h1 class="tagline">NeoX NFT 項目</h1>
-        <p class="subtagline">時之守護者珍藏版、梵高視界、抽象領域及更多精彩系列</p>
+        <h1 class="tagline">NeoX NFT Projects</h1>
+        <p class="subtagline">Timekeeper Edition, Van Gogh Visions, Abstract Realms & more</p>
     </section>
 
     <main class="container">
 
         <!-- NeoX Colorful Shan Shui -->
         <div class="nft-series">
-            <h3>NeoX 七彩山水系列 (全新收藏)</h3>
+            <h3>NeoX Colorful Shan Shui (New Collection)</h3>
             <div class="nft-content-row">
                 <div class="nft-media">
                     <video autoplay muted loop playsinline>
                         <source src="https://neoxcoin.github.io/NeoX%20Colorful%20Shan%20Shui.mp4" type="video/mp4">
-                        您的瀏覽器不支援影片標籤。
+                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="nft-info">
-                    <p><strong>NeoX 七彩山水</strong>系列透過充滿活力的抽象色彩，重新詮釋了中國傳統山水畫。此系列包含 <strong>8 件獨特藝術品</strong>，每幅作品都將山水元素與未來感的光影相融合，象徵著自然與想像力的完美和諧。</p>
-                    <p>🔗 <a href="https://opensea.io/collection/neox-colorful-shan-shui" target="_blank" class="opensea-link">在 OpenSea 上查看收藏系列</a></p>
+                    <p>The <strong>NeoX Colorful Shan Shui</strong> collection reimagines traditional Chinese landscape painting through vibrant abstract colors. Featuring <strong>8 unique artworks</strong>, each piece blends mountain and water elements with futuristic light, symbolizing harmony between nature and imagination.</p>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-colorful-shan-shui" target="_blank" class="opensea-link">View Collection on OpenSea</a></p>
                 </div>
             </div>
         </div>
 
         <!-- NeoX Cosmic Visions -->
         <div class="nft-series">
-            <h3>NeoX 宇宙幻象系列 (全新收藏)</h3>
+            <h3>NeoX Cosmic Visions (New Collection)</h3>
             <div class="nft-content-row">
                 <div class="nft-media">
                     <video autoplay muted loop playsinline>
                         <source src="https://neoxcoin.github.io/NeoXCosmicVisions.MP4" type="video/mp4">
-                        您的瀏覽器不支援影片標籤。
+                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="nft-info">
-                    <p><strong>NeoX 宇宙幻象</strong>是探索抽象宇宙藝術的最新 NFT 系列。本系列共包含 <strong>8 個獨特章節</strong>，每件作品皆描繪出璀璨的光波、三稜鏡以及宇宙恆久的和諧之美。</p>
-                    <p>🔗 <a href="https://opensea.io/collection/neox-cosmic-visions" target="_blank" class="opensea-link">在 OpenSea 上查看收藏系列</a></p>
+                    <p>The <strong>NeoX Cosmic Visions</strong> is the latest NFT series exploring abstract cosmic art. Featuring <strong>8 unique chapters</strong>, each piece illustrates luminous waves, prisms, and the eternal harmony of the universe.</p>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-cosmic-visions" target="_blank" class="opensea-link">View Collection on OpenSea</a></p>
                 </div>
             </div>
         </div>
 
         <!-- NeoX Abstract Realms -->
         <div class="nft-series">
-            <h3>NeoX 抽象領域系列 (全新收藏)</h3>
+            <h3>NeoX Abstract Realms (New Collection)</h3>
             <div class="nft-content-row">
                 <div class="nft-media">
                     <video autoplay muted loop playsinline>
                         <source src="https://neoxcoin.github.io/NeoX%20Abstract%20Realms.mp4" type="video/mp4">
-                        您的瀏覽器不支援影片標籤。
+                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="nft-info">
-                    <p>一場通往抽象表現主義的帶膽旅程，將未來感數位藝術與永恆的混沌與和諧完美交織。</p>
-                    <p><strong>NeoX 抽象領域</strong>系列包含 <strong>3 枚獨一無二的 NFT</strong>，每枚皆為絕無僅有的原創之作。</p>
-                    <p>🔗 <a href="https://opensea.io/collection/neox-abstract-realms" target="_blank" class="opensea-link">在 OpenSea 上查看收藏系列</a></p>
+                    <p>A bold journey into abstract expression, merging futuristic digital art with timeless chaos and harmony.</p>
+                    <p>The <strong>NeoX Abstract Realms</strong> collection contains <strong>3 unique NFTs</strong>, each a one-of-a-kind creation.</p>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-abstract-realms" target="_blank" class="opensea-link">View Collection on OpenSea</a></p>
                 </div>
             </div>
         </div>
 
         <!-- NeoX Van Gogh Visions -->
         <div class="nft-series">
-            <h3>NeoX 梵高視界系列 (進行中)</h3>
+            <h3>NeoX Van Gogh Visions (Ongoing)</h3>
             <div class="nft-content-row">
                 <div class="nft-media">
                     <video autoplay muted loop playsinline>
                         <source src="https://neoxcoin.github.io/NeoXVanGogh.MP4" type="video/mp4">
-                        您的瀏覽器不支援影片標籤。
+                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="nft-info">
-                    <p>本系列旨在向富有遠見藝術眼光的梵高致敬。這款 1/1 珍藏版 NFT 系列透過 NeoX 的獨特視角，重新構想了其標誌性的藝術表現。</p>
-                    <p>該系列中的每枚 NFT 均為獨一無二（1/1 孤品），融合了 AI 創意與細膩的油畫質感。</p>
-                    <p>🔗 <a href="https://opensea.io/collection/neox-van-gogh-visions" target="_blank" class="opensea-link">查看收藏系列</a></p>
+                    <p>A tribute to the visionary artistry of Van Gogh, this 1/1 edition NFT series reimagines his iconic expression through a NeoX lens.</p>
+                    <p>Each NFT in this series is unique (1 of 1), combining AI creativity and painterly textures.</p>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-van-gogh-visions" target="_blank" class="opensea-link">View Collection</a></p>
                 </div>
             </div>
         </div>
 
         <!-- NeoX Genesis Series -->
         <div class="nft-series">
-            <h3>NeoX 創世系列</h3>
+            <h3>NeoX Genesis Series</h3>
             
             <!-- 子項目 1 -->
             <div class="nft-content-row" style="margin-bottom: 20px;">
@@ -409,10 +438,10 @@
                     <img src="https://neoxcoin.github.io/NeoXGenesisEdition.jpg" alt="NeoCoin Genesis NFT" loading="lazy" />
                 </div>
                 <div class="nft-info">
-                    <p><strong>NeoCoin 創世珍藏版 (Genesis Edition)</strong> 是 NeoX 團隊推出歷史上的首枚、亦是唯一一枚 NFT —— 具備歷史意義的 1/1 創世鑄造。</p>
-                    <p>🎨 設計風格：黑金羅馬徽章，搭配銀色浮雕文字</p>
-                    <p>💎 創世代幣：<strong>量子種子 (Quantum Seed)</strong> —— 1/1 孤品，最原始的 NeoX 代令級 NFT。</p>
-                    <p>🔗 <a href="https://opensea.io/collection/neocoin-genesis-edition-g1" target="_blank" class="opensea-link">在 OpenSea 上查看</a></p>
+                    <p><strong>NeoCoin Genesis Edition</strong> is the very first and only NFT launched by the NeoX team — a historic 1/1 genesis mint.</p>
+                    <p>🎨 Design Style: Black-gold Roman emblem, silver embossed text</p>
+                    <p>💎 Genesis Token: <strong>Quantum Seed</strong> — 1/1 edition, the original NeoX NFT.</p>
+                    <p>🔗 <a href="https://opensea.io/collection/neocoin-genesis-edition-g1" target="_blank" class="opensea-link">View on OpenSea</a></p>
                 </div>
             </div>
             
@@ -423,20 +452,20 @@
                 <div class="nft-media">
                     <video autoplay muted loop playsinline>
                         <source src="https://neoxcoin.github.io/NeoXTimekeeper.MP4" type="video/mp4">
-                        您的瀏覽器不支援影片標籤。
+                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="nft-info">
-                    <p><strong>NeoX 創世 NFT</strong> 是一個受未來科幻小說啟發的收藏系列，共分為六個稀有度等級，其中包括傳奇的<strong>時之守護者珍藏版 (Timekeeper Edition)</strong>（全球限量 8 枚）。</p>
-                    <p>✅ 時之守護者珍藏版已透過 OpenSea 成功部署於 Base 主網上。</p>
-                    <p>🔗 <a href="https://opensea.io/collection/neox-timekeeper-edition" target="_blank" class="opensea-link">在 OpenSea 上查看</a></p>
+                    <p><strong>NeoX Genesis NFT</strong> is a futuristic sci-fi inspired collection categorized into six rarity tiers, including the legendary <strong>Timekeeper Edition</strong> (limited to 8).</p>
+                    <p>✅ Timekeeper Edition has been successfully deployed on the Base Mainnet using OpenSea.</p>
+                    <p>🔗 <a href="https://opensea.io/collection/neox-timekeeper-edition" target="_blank" class="opensea-link">View on OpenSea</a></p>
                 </div>
             </div>
         </div>
 
         <!-- 返回主頁按鈕 -->
         <div style="text-align: center; margin-top: 40px;">
-            <a class="btn" href="index.html">← 返回主頁</a>
+            <a class="btn" href="index-global.html">← Back to Home</a>
         </div>
         
     </main>
@@ -450,10 +479,22 @@
             <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
         </div>
         <div class="footer-links">
-            <a href="about.html">關於我們</a> | <a href="faq.html">常見問題</a> | <a href="token-info.html">代幣資訊</a> | <a href="neox-wiki.html">維基百科</a> | <a href="disclaimer-en.html">免責聲明</a>
+            <a href="about-global.html">About</a> | <a href="faq-global.html">FAQ</a> | <a href="token-info-global.html">Token Info</a> | <a href="neox-wiki-global.html">Wiki</a> | <a href="disclaimer-global.html">Disclaimer</a>
         </div>
-        <div class="copyright">© 2026 NeoX. 保留所有權利。</div>
+        <div class="copyright">© 2026 NeoX. All rights reserved.</div>
     </footer>
+
+    <!-- 🌐 加載 Google 翻譯官方腳本 -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'zh-TW,zh-CN,en,ja,ko,es,fr', // 你可以依需求增減允許翻譯嘅語系
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
         const connectBtn = document.getElementById('connect-btn');
@@ -472,15 +513,15 @@
         connectBtn.addEventListener('click', async () => {
             if (typeof window.ethereum !== 'undefined') {
                 try {
-                    connectBtn.innerText = "連接中...";
+                    connectBtn.innerText = "Connecting...";
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     updateButton(accounts[0]);
                 } catch (error) {
-                    console.error("用戶取消了登入程序", error);
-                    connectBtn.innerText = "連接錢包";
+                    console.error("User cancelled login sequence", error);
+                    connectBtn.innerText = "Connect Wallet";
                 }
             } else {
-                alert("未偵測到 Web3 錢包。正在重新導向至 MetaMask 下載頁面...");
+                alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
                 window.open('https://metamask.io/download/', '_blank');
             }
         });
