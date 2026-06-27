@@ -290,8 +290,47 @@
         }
 
         @media (max-width: 900px) {
-            header { padding: 0 20px; }
-            .tagline { font-size: 40px; }
+            header { 
+               padding: 0 10px !important; 
+               gap: 8px !important;
+            }
+            .header-right {
+                gap: 8px !important;
+            }
+
+            /* 手機版隱藏 Global 選單以騰出空間，只保留 EN | 繁 */
+            .language-switch a[href*="global"],
+            .language-switch span:last-of-type {
+                display: none !important;
+            }
+            .language-switch {
+                font-size: 11px !important;
+                gap: 3px !important;
+            }
+
+            /* 將 Fullscreen 🚀 字眼縮短成 Live 🚀 確保排版不下墜 */
+            header button[onclick*="window.open"] {
+                font-size: 0 !important;
+                padding: 6px 10px !important;
+            }
+            header button[onclick*="window.open"]::after {
+                content: "Live 🚀";
+                font-size: 11px !important;
+            }
+
+            /* 縮小 Connect Wallet 按鈕 */
+            .btn-connect {
+                font-size: 11px !important;
+                padding: 6px 10px !important;
+                white-space: nowrap !important;
+            }
+
+            .container { 
+                padding-top: 85px; 
+            }
+            .tagline { 
+                font-size: 36px; 
+            }
         }
 
         /* Market Links */
