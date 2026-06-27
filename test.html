@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
     <!-- Favicon (ICO + SVG + Apple Icon) -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -9,30 +9,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
-    <!-- SEO 優化 -->
-    <title>NeoX 遊戲 – 接金幣挑戰與精通 Web3 街機體驗</title>
-    <meta name="description" content="踏入 NeoX 遊戲世界 — 新一代 Web3 街機遊戲，挑戰你的反應極限，收集 NXC 能量，探索去中心化遊戲的未來。" />
-    <meta name="keywords" content="NeoX, NeoX 遊戲, NXC, Web3 街機, 接金幣, Base 主網, NFT, 代幣, 區塊鏈遊戲" />
+    <!-- SEO -->
+    <title>NeoX Game – Catch the Coins & Master the Web3 Arcade (Global)</title>
+    <meta name="description" content="Step into the NeoX Game — a next-gen Web3 arcade where players test their reflexes, collect NXC energy, and explore the future of decentralized gaming globally." />
+    <meta name="keywords" content="NeoX, NeoX Game, NXC, Web3 Arcade, Catch the Coins, Base Mainnet, NFT, Token, Gaming, Global" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="NeoX" />
     
-    <!-- 多語言 SEO 關聯 -->
+    <!-- Multi-language SEO -->
     <link rel="alternate" href="https://neoxcoin.io/game.html" hreflang="en" />
     <link rel="alternate" href="https://neoxcoin.io/game-zh.html" hreflang="zh-Hant" />
     <link rel="alternate" href="https://neoxcoin.io/game-global.html" hreflang="x-default" />
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="NeoX 遊戲 – 接金幣挑戰與精通 Web3 街機體驗" />
-    <meta property="og:description" content="玩 NeoX 遊戲 — 收集 NXC 能量，在全新進化的 Web3 街機中挑戰你的極限反應。" />
-    <meta property="og:image" content="https://neoxcoin.github.io/XNXC.png" />
-    <meta property="og:url" content="https://neoxcoin.io/game-zh.html" />
+    <meta property="og:title" content="NeoX Game – Catch the Coins & Master the Web3 Arcade (Global)" />
+    <meta property="og:description" content="Play NeoX Game — collect NXC energy and challenge your reflexes in the next evolution of Web3 gaming." />
+    <meta property="og:image" content="https://neoxcoin.io/XNXC.png" />
+    <meta property="og:url" content="https://neoxcoin.io/game-global.html" />
     <meta property="og:type" content="website" />
     
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="NeoX 遊戲 – 接金幣挑戰與精通 Web3 街機體驗" />
-    <meta name="twitter:description" content="玩 NeoX 遊戲 — 收集 NXC 能量，體驗新一代 Web3 街機帶來的極致樂趣。" />
-    <meta name="twitter:image" content="https://neoxcoin.github.io/XNXC.png" />
+    <meta name="twitter:title" content="NeoX Game – Catch the Coins & Master the Web3 Arcade (Global)" />
+    <meta name="twitter:description" content="Play NeoX Game — collect NXC energy and experience the next generation of Web3 arcade fun." />
+    <meta name="twitter:image" content="https://neoxcoin.io/XNXC.png" />
 
     <!-- Google Fonts 同步 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* 100% 同步首頁設計變數與風格 */
+        /* 100% 同步 index.html 嘅設計變數與風格 */
         :root {
             --bg-dark: #03010a;
             --text-main: #ffffff;
@@ -83,9 +83,13 @@
         .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
         .header-right { display: flex; align-items: center; gap: 20px; }
-        .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; }
-        .language-switch a:hover, .language-switch a.active { color: var(--text-main); }
-        .lang-sep { opacity: 0.3; }
+        
+        /* Google Translate 樣式容器（完美相容導航列） */
+        .google-translate-wrapper {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
         .btn-connect {
             font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px;
             background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3);
@@ -93,10 +97,10 @@
         }
         .btn-connect:hover { background: rgba(0, 255, 204, 0.05); box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); }
 
-        /* --- 遊戲主內容排版區（同步優化拉高 Title 位置） --- */
+        /* --- 遊戲主內容排版區（已同步拉高 Title 位置） --- */
         .container {
             max-width: 1200px; margin: 0 auto; 
-            padding: 110px 20px 40px 20px; /* 拉高標題緊靠頂部 */
+            padding: 110px 20px 40px 20px; /* 整體往上提，緊貼導航欄 */
             display: flex; flex-direction: column; align-items: center;
         }
 
@@ -125,7 +129,7 @@
         
         p.subtagline { 
             font-size: 18px; color: var(--text-muted); font-weight: 400; 
-            margin: 0 0 35px 0; /* 優化與影片之距離 */
+            margin: 0 0 35px 0; /* 優化與下方影片的距離 */
             max-width: 600px; 
             animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
         }
@@ -191,18 +195,18 @@
         }
     </style>
     
-    <!-- 結構化數據 (Structured Data) -->
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "VideoObject",
-        "name": "NeoX 接金幣挑戰 – 全球 Play-to-Earn 區塊鏈遊戲",
-        "description": "加入 NeoX 接金幣遊戲 – 互動式邊玩邊賺 Web3 體驗。收集 NeoX 代幣，解鎖隱藏關卡，在全球排行榜上爭奪榮耀！",
+        "name": "NeoX Catch the Coins – Global Play-to-Earn Game",
+        "description": "Join the NeoX Catch the Coins Game – an interactive play-to-earn Web3 experience. Collect NeoX Coins, unlock hidden levels, and rise on the global leaderboard!",
         "thumbnailUrl": "https://neoxcoin.github.io/NeoXGamePage.png",
         "uploadDate": "2025-11-08T00:00:00-05:00",
         "duration": "PT0M30S",
         "contentUrl": "https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4",
-        "embedUrl": "https://neoxcoin.io/game-zh.html",
+        "embedUrl": "https://neoxcoin.io/game-global.html",
         "publisher": {
             "@type": "Organization",
             "name": "NeoX",
@@ -216,55 +220,52 @@
 </head>
 <body>
 
-    <!-- 頂部 Sticky Header 導航欄 -->
+    <!-- 頂部 Sticky Header -->
     <header class="nav-header">
-        <a href="index-zh.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+        <a href="index-global.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
         <div class="nav-links">
-            <a href="what-is-neox-zh.html">什麼是 NeoX？</a>
-            <a href="how-to-buy-zh.html">如何購買？</a>
-            <a href="game-zh.html" class="active">NeoX 遊戲</a>
-            <a href="metaverse-zh.html">元宇宙展覽</a>
-            <a href="nft-projects-zh.html">NFT 項目</a>
+            <a href="what-is-neox.html">What is NeoX?</a>
+            <a href="how-to-buy.html">How to Buy?</a>
+            <a href="game-global.html" class="active">NeoX Game</a>
+            <a href="metaverse.html">Metaverse Exhibition</a>
+            <a href="nft-projects.html">NFT Projects</a>
         </div>
         <div class="header-right">
-            <div class="language-switch">
-                <a href="/game.html">EN</a>
-                <span class="lang-sep">|</span>
-                <a class="active" href="/game-zh.html">繁</a>
-                <span class="lang-sep">|</span>
-                <a href="/game-global.html">Global</a>
+            <!-- 100% 同步 index-global.html 的 Google 翻譯整合結構 -->
+            <div class="google-translate-wrapper">
+                <div id="google_translate_element"></div>
             </div>
-            <button class="btn-connect" id="connect-btn">連接錢包</button>
+            <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
     </header>
     
     <div class="container">
         <header>
-            <h1 class="tagline">NeoX 遊戲</h1>
-            <p class="subtagline">狂接金幣、衝上排行榜、贏取屬於你的榮耀</p>
+            <h1 class="tagline">NeoX Game</h1>
+            <p class="subtagline">Catch coins, climb the leaderboard, win glory</p>
         </header>
         
-        <section class="hero" aria-label="NeoX Catch 預覽">
+        <section class="hero" aria-label="NeoX Catch preview">
             <div class="hero-ratio">
-                <a class="hero-link stop-bgm" href="https://neoxcoin.github.io/neox-game/iframe" target="_blank" rel="noopener" aria-label="開始玩 NeoX 遊戲"></a>
+                <a class="hero-link stop-bgm" href="https://neoxcoin.github.io/neox-game/iframe" target="_blank" rel="noopener" aria-label="Play NeoX Game"></a>
                 <video autoplay muted loop playsinline preload="metadata" poster="https://neoxcoin.github.io/NeoXGamePage.png" aria-hidden="true">
                     <source src="https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4" type="video/mp4">
-                    <img src="https://neoxcoin.github.io/NeoXGamePage.png" alt="NeoX 遊戲預覽" style="width:100%;height:100%;object-fit:cover;">
+                    <img src="https://neoxcoin.github.io/NeoXGamePage.png" alt="NeoX Game Preview" style="width:100%;height:100%;object-fit:cover;">
                 </video>
                 <div class="fade" aria-hidden="true"></div>
             </div>
         </section>
         
         <div class="overlay-text">
-            <h2>🎮 NeoX Catch (接金幣)</h2>
+            <h2>🎮 NeoX Catch</h2>
             <p>
-                踏入 NeoX 宇宙，測試你的極限反應！<br/>
-                在時間耗盡前盡可能接住更多的 NeoX 代幣 —<br/>
-                每一枚金幣都將計入你的總分，助你登上全球名人榜。
+                Step into the NeoX Universe and test your reflexes!<br/>
+                Catch as many NeoX Coins as you can before time runs out —<br/>
+                every coin counts toward your score and leaderboard rank.
             </p>
             <div class="btn-row">
-                <a href="https://neoxcoin.github.io/neox-game/iframe" class="btn btn-primary stop-bgm" target="_blank" rel="noopener">▶ 立即開玩</a>
-                <a href="index-zh.html" class="btn btn-secondary">← 返回首頁</a>
+                <a href="https://neoxcoin.github.io/neox-game/iframe" class="btn btn-primary stop-bgm" target="_blank" rel="noopener">▶ Play Now</a>
+                <a href="index-global.html" class="btn btn-secondary">← Back to Home</a>
             </div>
         </div>
     </div>
@@ -279,16 +280,27 @@
             <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
         </div>
         <div class="footer-links">
-            <a href="about-zh.html">關於我們</a> | <a href="faq-zh.html">常見問題</a> | <a href="token-info-zh.html">代幣資訊</a> | <a href="neox-wiki-zh.html">維基百科</a> | <a href="disclaimer-zh.html">免責聲明</a>
+            <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
         </div>
-        <div class="copyright">© 2026 NeoX. 版權所有。</div>
+        <div class="copyright">© 2026 NeoX. All rights reserved.</div>
     </footer>
 
-    <!-- 音訊背景音樂 -->
+    <!-- Audio BGM -->
     <audio id="bgm" src="https://neoxcoin.github.io/puzzle-game-bright-casual-video-game-music-249202.mp3" loop preload="auto"></audio>
 
+    <!-- 100% 同步 index-global.html 的 Google Translate 引擎腳本 -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script>
-        // 1. 影片漸顯邏輯
+        // 1. Video Fade-in logic
         (function(){
             const v = document.querySelector('.hero video');
             if(!v) return;
@@ -299,7 +311,7 @@
             }
         })();
 
-        // 2. 智能背景音訊引擎 (無切換按鈕，點擊畫面即優雅啟動)
+        // 2. Intelligent Background Audio Engine (No Toggle Button)
         (function(){
             const bgm = document.getElementById('bgm');
             let hasInteracted = false;
@@ -324,7 +336,7 @@
                 bgm.currentTime = 0;
             }
 
-            // 當點擊進入 iframe 遊戲時全自動暫停背景 BGM
+            // Stop BGM when entering iframe game
             document.querySelectorAll('.stop-bgm').forEach(a => {
                 ['pointerdown', 'click'].forEach(ev => a.addEventListener(ev, stopBgm, {passive:true}));
             });
@@ -340,7 +352,7 @@
             });
         })();
 
-        // 3. Web3 錢包連接邏輯
+        // 3. Web3 Wallet Connection
         const connectBtn = document.getElementById('connect-btn');
         async function checkConnection() {
             if (typeof window.ethereum !== 'undefined') {
@@ -357,15 +369,15 @@
         connectBtn.addEventListener('click', async () => {
             if (typeof window.ethereum !== 'undefined') {
                 try {
-                    connectBtn.innerText = "連接中...";
+                    connectBtn.innerText = "Connecting...";
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     updateButton(accounts[0]);
                 } catch (error) {
                     console.error(error);
-                    connectBtn.innerText = "連接錢包";
+                    connectBtn.innerText = "Connect Wallet";
                 }
             } else {
-                alert("未偵測到 Web3 錢包。正在引導至 MetaMask 下載頁面...");
+                alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
                 window.open('https://metamask.io/download/', '_blank');
             }
         });
