@@ -157,16 +157,6 @@
         .btn-primary:hover { box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
         .btn-secondary { background: transparent; color: var(--text-main); border: 1px solid var(--border); }
         .btn-secondary:hover { background: var(--glass); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
-        
-        /* 音樂切換鈕 */
-        .audio-toggle {
-            position: fixed; bottom: 20px; right: 20px;
-            background: rgba(7, 2, 20, 0.8); border: 1px solid var(--border);
-            color: var(--text-muted); padding: 10px 16px; border-radius: 999px;
-            cursor: pointer; font-size: 13px; font-weight: 500; font-family: var(--font-stack);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 1000; transition: all 0.2s;
-        }
-        .audio-toggle:hover { color: #fff; border-color: var(--primary); box-shadow: 0 0 15px rgba(163, 112, 255, 0.2); }
 
         /* 同步首頁嘅 Footer 樣式與 Social Icons */
         footer {
@@ -274,8 +264,6 @@
             </div>
         </div>
     </div>
-    
-    <button class="audio-toggle" id="audioToggle">🎵 Music: Off</button>
 
     <!-- Footer 結構 -->
     <footer>
@@ -307,49 +295,32 @@
             }
         })();
 
-        // 2. Optimized Audio Engine
+        // 2. Intelligent Background Audio Engine (No Toggle Button)
         (function(){
             const bgm = document.getElementById('bgm');
-            const audioToggle = document.getElementById('audioToggle');
-            let isMuted = true;
+            let hasInteracted = false;
 
             bgm.volume = 0;
             bgm.muted = true;
             bgm.play().catch(()=>{});
 
             function unlockAudio() {
-                if(isMuted) {
-                    isMuted = false;
+                if(!hasInteracted) {
+                    hasInteracted = true;
                     bgm.muted = false;
                     bgm.volume = 0.4;
-                    audioToggle.innerHTML = "🔊 Music: On";
                     bgm.play().catch(()=>{});
                 }
                 ['pointerdown', 'keydown'].forEach(ev => window.removeEventListener(ev, unlockAudio));
             }
             ['pointerdown', 'keydown'].forEach(ev => window.addEventListener(ev, unlockAudio, { once: true, passive: true }));
 
-            audioToggle.addEventListener('click', (e) => {
-                e.stopPropagation();
-                if (bgm.paused || bgm.muted || bgm.volume === 0) {
-                    bgm.muted = false;
-                    bgm.volume = 0.4;
-                    bgm.play().catch(()=>{});
-                    audioToggle.innerHTML = "🔊 Music: On";
-                    isMuted = false;
-                } else {
-                    bgm.pause();
-                    audioToggle.innerHTML = "🔇 Music: Off";
-                    isMuted = true;
-                }
-            });
-
             function stopBgm(){
                 try { bgm.pause(); } catch(e){}
                 bgm.currentTime = 0;
-                audioToggle.innerHTML = "🔇 Music: Off";
             }
 
+            // Stop BGM when entering iframe game
             document.querySelectorAll('.stop-bgm').forEach(a => {
                 ['pointerdown', 'click'].forEach(ev => a.addEventListener(ev, stopBgm, {passive:true}));
             });
@@ -359,7 +330,7 @@
             document.addEventListener('visibilitychange', () => {
                 if (document.visibilityState === 'hidden') {
                     bgm.pause();
-                } else if (document.visibilityState === 'visible' && !isMuted) {
+                } else if (document.visibilityState === 'visible' && hasInteracted) {
                     bgm.play().catch(()=>{});
                 }
             });
