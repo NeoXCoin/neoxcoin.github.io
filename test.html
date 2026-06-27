@@ -40,7 +40,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* 100% 同步首頁嘅設計變數與風格 */
+        /* 100% 同步首頁設計變數與風格 */
         :root {
             --bg-dark: #03010a;
             --text-main: #ffffff;
@@ -66,19 +66,8 @@
             letter-spacing: -0.01em;
             overflow-x: hidden;
             padding-bottom: 50px;
-            top: 0px !important; /* 強制防止 Google Translate 讓整體頁面下移 */
+            top: 0px !important; /* 防止 Google Translate 導向時頁面下移 */
         }
-
-        /* Google Translate Tweak Overrides */
-          top: 0 !important;
-          position: static !important;
-          margin-top: 0 !important;
-        }
-
-        /* 徹底隱藏 Google 翻譯頂部自帶的白色橫條 */
-        .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important; }
-        iframe.goog-te-banner-frame { display: none !important; }
-        body > .skiptranslate { display: none !important; }
 
         a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
         
@@ -91,33 +80,43 @@
         }
         .nav-logo { height: 32px; opacity: 0.9; }
         .nav-logo:hover { opacity: 1; }
-        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links { display: flex; gap: 24px; align-items: center; }
         .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
-        .header-right { display: flex; align-items: center; gap: 20px; }
+        .header-right { display: flex; align-items: center; gap: 15px; }
         
-        /* Custom Black Pill Styling for Google Widget */
+        /* ----------------------------------------------------
+           100% 複製 index-global.html 的 Custom Black Pill Styling 
+        ---------------------------------------------------- */
         #google_translate_element {
-          display: inline-block;
-          padding: 2px 6px;
-          border-radius: 20px;
-          background: rgba(0, 0, 0, 0.4);
-          border: 1px solid var(--border);
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border);
         }
-        #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
-        #google_translate_element .goog-te-gadget span { display: none !important; } /* 隱藏 Google 提供 字眼 */
+        #google_translate_element .goog-te-gadget { 
+            font-size: 12px !important; 
+            color: #fff !important; 
+        }
+        #google_translate_element .goog-te-gadget span { 
+            display: none !important; /* 完美隱藏「由 Google 提供翻譯」字眼 */
+        }
         #google_translate_element select {
-          background: transparent !important;
-          color: #fff !important;
-          border: none !important;
-          font-size: 12px !important;
-          padding: 4px 6px !important;
-          outline: none !important;
+            background: transparent !important;
+            color: #fff !important;
+            border: none !important;
+            font-size: 12px !important;
+            padding: 4px 6px !important;
+            outline: none !important;
+            cursor: pointer;
         }
-        /* 隱藏鼠標懸停時的高亮文字框 */
-        font {
-            background-color: transparent !important;
-            box-shadow: none !important;
+        /* 隱藏原生自帶的頂部 Banner 橫條 */
+        .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame {
+            display: none !important;
+        }
+        .goog-te-balloon-frame, .goog-tooltip {
+            display: none !important;
         }
         
         .btn-connect {
@@ -151,7 +150,7 @@
 
         h1.tagline {
             font-size: clamp(38px, 6vw, 56px); font-weight: 800; line-height: 1.1; 
-            margin: 0 0 10px 0; /* 縮減下邊距 */
+            margin: 0 0 10px 0; 
             background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
             background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite, textShimmer 4s linear infinite;
@@ -159,7 +158,7 @@
         
         p.subtagline { 
             font-size: 18px; color: var(--text-muted); font-weight: 400; 
-            margin: 0 0 35px 0; /* 優化與下方影片的距離 */
+            margin: 0 0 35px 0; 
             max-width: 600px; 
             animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
         }
@@ -260,31 +259,11 @@
             <a href="metaverse.html">Metaverse Exhibition</a>
             <a href="nft-projects.html">NFT Projects</a>
         </div>
-     </header>
-
-     <style>
-        
-         .header-right { display: flex; align-items: center; gap: 15px; }
-
-        /* Custom Black Pill Styling for Google Widget */
-        #google_translate_element {
-          display: inline-block;
-          padding: 2px 6px;
-          border-radius: 20px;
-          background: rgba(0, 0, 0, 0.4);
-          border: 1px solid var(--border);
-        }
-        #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
-        #google_translate_element .goog-te-gadget span { display: none !important; } /* 隱藏 Google 提供 字眼 */
-        #google_translate_element select {
-          background: transparent !important;
-          color: #fff !important;
-          border: none !important;
-          font-size: 12px !important;
-          padding: 4px 6px !important;
-          outline: none !important;
-          cursor: pointer;
-        }
+        <div class="header-right">
+            <!-- 100% 完美對齊 index-global.html 嘅 Google 翻譯核心結構 -->
+            <div id="google_translate_element"></div>
+            <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+        </div>
     </header>
     
     <div class="container">
@@ -336,19 +315,18 @@
     <!-- Audio BGM -->
     <audio id="bgm" src="https://neoxcoin.github.io/puzzle-game-bright-casual-video-game-music-249202.mp3" loop preload="auto"></audio>
 
-    <script>
-        function googleTranslateElementInit(){
-          new google.translate.TranslateElement({
-            pageLanguage: 'en', 
-            includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
-            autoDisplay: false, 
-            multilanguagePage: true 
-          }, 'google_translate_element');
+    <!-- 100% 同步 index-global.html 嘅 Google Translate 引擎初始化腳本 -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
         }
-      </script>
-      <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
-    
-   <script>
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
         // 1. Video Fade-in logic
         (function(){
             const v = document.querySelector('.hero video');
