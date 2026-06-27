@@ -7,6 +7,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://neoxcoin.github.io/XNXC.png">
     
+    <!-- 引入 Font Awesome 用於顯示社交媒體圖標（如 Twitter, Discord） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         :root {
             --bg-dark: #070214;
@@ -34,6 +37,9 @@
                 radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
                 radial-gradient(circle at 90% 80%, rgba(0, 255, 204, 0.1) 0%, transparent 40%);
             background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* 1. Sticky Header */
@@ -111,7 +117,7 @@
             box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5);
         }
 
-        /* 主頁頂部全螢幕按鈕樣式 */
+        /* 頂部全螢幕按鈕樣式 */
         header button[onclick*="window.open"] {
             font-family: var(--font-stack);
             font-size: 13px;
@@ -134,8 +140,9 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 110px 20px 60px;
+            padding: 110px 20px 40px;
             text-align: center;
+            flex: 1; /* 讓內容撐開，使 footer 留在最底部 */
         }
 
         .tagline {
@@ -146,7 +153,6 @@
             background: linear-gradient(135deg, #fff 30%, var(--secondary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: fadeInDown 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .subtagline {
@@ -159,13 +165,13 @@
             margin-right: auto;
         }
 
-        /* 🚀 核心修正：外層容器保持 16:9，並一刀切掉多出來的藍條 */
+        /* 🚀 外層容器保持 16:9，並一刀切掉多出來的藍條 */
         .iframe-container {
             width: 100%;
             max-width: 900px;
             margin: 0 auto 30px;
             border-radius: 16px;
-            overflow: hidden; /* 負責切除藍條 */
+            overflow: hidden; 
             background: var(--glass);
             border: 1px solid var(--border);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -173,7 +179,7 @@
             aspect-ratio: 16 / 9;
         }
 
-        /* 🚀 核心修正：高度故意加多，將 OnCyber 底部藍條擠出可視範圍 */
+        /* 🚀 高度故意加多，將 OnCyber 底部藍條擠出可視範圍 */
         .iframe-container iframe {
             width: 100%;
             height: calc(100% + 42px);
@@ -181,7 +187,7 @@
             display: block;
         }
 
-        /* 3. Button Rows Below */
+        /* 3. Button Rows */
         .btn-row {
             display: flex;
             justify-content: center;
@@ -225,15 +231,43 @@
             transform: translateY(-1px);
         }
 
-        /* Ticket Info Note */
         .ticket-note {
             margin-top: 25px;
             font-size: 12px;
             color: var(--text-muted);
+        }
+
+        /* 🌐 補回的 Social Media Footer 樣式 */
+        footer {
+            border-top: 1px solid var(--border);
+            background: rgba(7, 2, 20, 0.5);
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .social-links {
             display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 25px;
+            margin-bottom: 15px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
         }
 
         /* 4. Modal (Popup Box) */
@@ -312,7 +346,7 @@
             background: #9d4edd;
         }
 
-        /* 📱 手機版 RWD 樣式與排版空間優化 */
+        /* 📱 手機版自適應 */
         @media (max-width: 900px) {
             header { 
                 padding: 0 10px !important; 
@@ -322,7 +356,6 @@
                 gap: 8px !important;
             }
 
-            /* 手機版隱藏 Global 選單以騰出空間，只保留 EN | 繁 */
             .language-switch a[href*="global"],
             .language-switch span:last-of-type {
                 display: none !important;
@@ -332,7 +365,6 @@
                 gap: 3px !important;
             }
 
-            /* 將 Fullscreen 🚀 字眼縮短成 Live 🚀 確保排版不下墜 */
             header button[onclick*="window.open"] {
                 font-size: 0 !important;
                 padding: 6px 10px !important;
@@ -342,7 +374,6 @@
                 font-size: 11px !important;
             }
 
-            /* 縮小 Connect Wallet 按鈕 */
             .btn-connect {
                 font-size: 11px !important;
                 padding: 6px 10px !important;
@@ -374,7 +405,6 @@
                 <a href="metaverse-global.html">Global</a>
             </div>
             
-            <!-- 全螢幕按鈕（手機版會自動精簡為 Live 🚀） -->
             <button onclick="window.open('https://oncyber.io/spaces/dYscw7Xqf6X70Zt4VPhb','_blank')">
                 Fullscreen 🚀
             </button>
@@ -408,7 +438,20 @@
         </p>
     </div>
 
-    <!-- 4. Pop-up Ticket Modal -->
+    <!-- 🌐 4. 補回的 Footer (包含 Social Media 連結) -->
+    <footer>
+        <div class="social-links">
+            <a href="#" target="_blank" title="Twitter / X"><i class="fab fa-twitter"></i></a>
+            <a href="#" target="_blank" title="Discord"><i class="fab fa-discord"></i></a>
+            <a href="#" target="_blank" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 NeoX. 保留所有權利。
+        </div>
+    </footer>
+
+    <!-- 5. Pop-up Ticket Modal -->
     <div class="modal-overlay" id="ticketModal">
         <div class="modal-box">
             <div class="modal-icon">✨</div>
@@ -418,17 +461,13 @@
         </div>
     </div>
 
-    <!-- 5. Interactive Scripts -->
     <script>
-        // Modal functions
         function openModal() {
             document.getElementById('ticketModal').classList.add('active');
         }
         function closeModal() {
             document.getElementById('ticketModal').classList.remove('active');
         }
-
-        // Close modal if clicking outside the content box
         document.getElementById('ticketModal').addEventListener('click', function(e) {
             if (e.target === this) closeModal();
         });
