@@ -40,7 +40,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* 100% 同步 index.html 嘅設計變數與風格 */
+        /* 100% 同步首頁嘅設計變數與風格 */
         :root {
             --bg-dark: #03010a;
             --text-main: #ffffff;
@@ -66,6 +66,7 @@
             letter-spacing: -0.01em;
             overflow-x: hidden;
             padding-bottom: 50px;
+            top: 0px !important; /* 強制防止 Google Translate 讓整體頁面下移 */
         }
 
         a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
@@ -84,10 +85,23 @@
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
         .header-right { display: flex; align-items: center; gap: 20px; }
         
-        /* Google Translate 樣式容器（完美相容導航列） */
+        /* 100% 精準同步 index-global.html 嘅 Google 翻譯下拉選單美化與隱藏效果 */
         .google-translate-wrapper {
             display: inline-block;
             vertical-align: middle;
+        }
+        /* 隱藏 Google Translate 頂部自帶的白色橫條 (Toolbar) */
+        .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame {
+            display: none !important;
+        }
+        /* 隱藏彈出的翻譯提示框與氣泡 */
+        .goog-te-balloon-frame, .goog-te-balloon, .goog-tooltip, .goog-tooltip:hover {
+            display: none !important;
+        }
+        /* 隱藏鼠標懸停時的高亮文字框 */
+        font {
+            background-color: transparent !important;
+            box-shadow: none !important;
         }
         
         .btn-connect {
@@ -231,7 +245,7 @@
             <a href="nft-projects.html">NFT Projects</a>
         </div>
         <div class="header-right">
-            <!-- 100% 同步 index-global.html 的 Google 翻譯整合結構 -->
+            <!-- 100% 精準對齊 index-global.html 嘅 Google 翻譯核心部件容器 -->
             <div class="google-translate-wrapper">
                 <div id="google_translate_element"></div>
             </div>
@@ -288,7 +302,7 @@
     <!-- Audio BGM -->
     <audio id="bgm" src="https://neoxcoin.github.io/puzzle-game-bright-casual-video-game-music-249202.mp3" loop preload="auto"></audio>
 
-    <!-- 100% 同步 index-global.html 的 Google Translate 引擎腳本 -->
+    <!-- 100% 同步 index-global.html 嘅 Google Translate 引擎初始化腳本 -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
