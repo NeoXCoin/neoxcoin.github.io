@@ -95,19 +95,38 @@
 
         /* --- 遊戲主內容排版區 --- */
         .container {
-            max-width: 1200px; margin: 0 auto; padding: 120px 20px 40px 20px;
+            max-width: 1200px; margin: 0 auto; padding: 140px 20px 40px 20px;
             display: flex; flex-direction: column; align-items: center;
         }
 
-        /* 標題與極光漸變文字效果 */
+        /* --- 100% 同步首頁嘅流光與淡入淡出動畫效果 --- */
+        @keyframes fadeInUpLoopSlow {
+            0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+            18% { opacity: 1; transform: translateY(0); filter: blur(0); }
+            86% { opacity: 1; transform: translateY(0); filter: blur(0); }
+            93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); }
+            100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+        }
+
+        @keyframes textShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         h1.tagline {
-            font-size: clamp(36px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin: 0 0 15px 0;
+            font-size: clamp(38px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin: 0 0 15px 0;
             background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
             background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite, textShimmer 4s linear infinite;
         }
-        p.subtagline { font-size: 16px; color: var(--text-muted); font-weight: 400; margin-bottom: 40px; max-width: 600px; }
         
-        /* Hero 影片外框優化 */
+        p.subtagline { 
+            font-size: 18px; color: var(--text-muted); font-weight: 400; margin-bottom: 40px; max-width: 600px; 
+            animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
+        }
+        
+        /* Hero 影片外框 */
         .hero {
             position: relative; width: 100%; max-width: 850px; margin: 0 auto 40px;
             border-radius: 16px; overflow: hidden; border: 1px solid var(--border);
@@ -127,7 +146,7 @@
         .overlay-text h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; color: #fff; }
         .overlay-text p { color: var(--text-muted); font-size: 15px; margin-bottom: 30px; line-height: 1.6; }
         
-        /* --- 同步首頁嘅 Button 樣式 --- */
+        /* 同步首頁嘅 Button 樣式 */
         .btn-row { display: flex; gap: 20px; justify-content: center; margin-bottom: 25px; flex-wrap: wrap; width: 100%; }
         .btn {
             padding: 14px 30px; border-radius: 8px; font-size: 15px; font-weight: 600;
@@ -149,7 +168,7 @@
         }
         .audio-toggle:hover { color: #fff; border-color: var(--primary); box-shadow: 0 0 15px rgba(163, 112, 255, 0.2); }
 
-        /* --- 100% 同步首頁嘅 Footer 樣式與 Social Icons --- */
+        /* 同步首頁嘅 Footer 樣式與 Social Icons */
         footer {
             width: 100%; border-top: 1px solid var(--border); padding: 40px 0;
             margin-top: 60px; background: rgba(0,0,0,0.1); box-sizing: border-box;
@@ -258,7 +277,7 @@
     
     <button class="audio-toggle" id="audioToggle">🎵 Music: Off</button>
 
-    <!-- 100% 同步自 index.html 嘅 Footer 結構 -->
+    <!-- Footer 結構 -->
     <footer>
         <div class="social-icons">
             <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
@@ -346,7 +365,7 @@
             });
         })();
 
-        // 3. Web3 Wallet Connection (Same as index.html logic)
+        // 3. Web3 Wallet Connection
         const connectBtn = document.getElementById('connect-btn');
         async function checkConnection() {
             if (typeof window.ethereum !== 'undefined') {
