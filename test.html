@@ -93,6 +93,24 @@
       box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
     }
 
+    /* --- Main Container --- */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 140px 20px 50px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* --- 2. Hero Section --- */
+    .hero {
+      margin-bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     h1 {
       font-size: 32px;
       margin-bottom: 10px;
@@ -118,96 +136,108 @@
       border: none;
     }
 
+    /* --- 4. Call to Actions --- */
     .btn-row {
       display: flex;
+      gap: 20px;
       justify-content: center;
+      margin-bottom: 25px;
       flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 20px;
     }
 
     .btn {
-      background: #0a0a0a;
-      border: 2px solid #00d9ff;
-      color: #00d9ff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      min-width: 180px;
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px rgba(0,217,255,0.5);
+      gap: 10px;
+      min-width: 190px;
     }
 
-    .btn:hover {
-      background: #00d9ff;
-      color: #000;
-      box-shadow: 0 0 20px rgba(0,217,255,0.8);
-      transform: translateY(-3px);
+    /* Primary: solid aesthetic crisp white */
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 5px 20px rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
     }
 
-    .btn-blue {
-      background: #0d6efd;
-      border: 2px solid #3399ff;
-      color: white;
+    /* Secondary: thin wired outlined borders */
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      background: var(--glass);
+      border-color: rgba(255,255,255,0.2);
     }
 
-    .notice {
-      margin-top: 12px;
-      font-size: 13px;
-      color: #ccc;
+    .icon-small { width: 18px; height: 18px; object-fit: contain; }
+
+    /* Market Links */
+    .market-link { margin-top: 15px; font-size: 13px; color: var(--text-muted); }
+    .market-link a { margin: 0 5px; }
+    .market-link a:hover { color: var(--primary); }
+
+    /* --- 5. Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 50px;
+      background: rgba(0,0,0,0.1);
     }
 
-    .footer {
-      margin-top: 60px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.55);
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+        /* 1. 將本來的 22px 稍微縮小一點點（例如 18px），配合 padding 後總體大小就跟原本一樣了 */
+        width: 18px;
+        height: 18px; 
+        margin: 0 15px;
+    
+        /* 2. 核心：將 padding 縮細，圓框就會緊貼住 Logo，唔會好似大得滯 */
+        padding: 4px; 
+    
+        /* 圓框設定保持 */
+        background: rgba(255, 255, 255, 0.05); 
+        border: 1px solid rgba(255, 255, 255, 0.15); 
+        border-radius: 50%; 
+    
+        /* 之前你調校好的深灰色濾鏡 */
+        filter: grayscale(100%) brightness(0.7); 
+        opacity: 0.9; 
+    
+        transition: all 0.2s ease;
+        box-sizing: content-box; 
     }
 
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
+    /* Hover 效果保持不變 */
+    .social-icons img:hover {
+        filter: grayscale(0%) brightness(1); 
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.15); 
+        border-color: rgba(255, 255, 255, 0.4); 
+        transform: scale(1.1);
     }
+    
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-    .footer a:hover {
-      text-decoration: underline;
+    /* --- Responsive Viewport Adaptation --- */
+    @media (max-width: 900px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .tagline { font-size: 40px; }
+      .ecosystem-grid { grid-template-columns: 1fr; gap: 15px; }
     }
-
-    /* Modal Style */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.75);
-    }
-    .modal-content {
-      background: #0a0a0a;
-      margin: 15% auto;
-      padding: 20px;
-      border: 2px solid #00d9ff;
-      border-radius: 12px;
-      width: 80%; max-width: 400px;
-      color: white;
-      box-shadow: 0 0 20px rgba(0,217,255,0.7);
-      text-align: center;
-    }
-    .modal-content h2 {
-      color: #00d9ff;
-      margin-bottom: 10px;
-    }
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      cursor: pointer;
-    }
-    .close:hover { color: #fff; }
   </style>
   
   <!-- 🎥 Video SEO structured data for NeoX Metaverse Exhibition -->
@@ -290,12 +320,20 @@
   <!-- Notice -->
   <p class="notice">💡 The current exhibition is free to explore. Tickets will be introduced in future events.</p>
 
-  <!-- Footer -->
-  <div class="footer">
-    © 2025 NeoX. All rights reserved. |
-    <a href="disclaimer-en.html">Disclaimer</a>
-  </div>
-
+  <footer>
+      <div class="social-icons">
+          <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+          <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+          <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+          <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+          <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+      </div>
+      <div class="footer-links">
+          <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
+      </div>
+      <div class="copyright">© 2026 NeoX. All rights reserved.</div>
+  </footer>
+  
   <!-- Modal Script -->
   <script>
     function openModal() {
