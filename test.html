@@ -93,9 +93,10 @@
         }
         .btn-connect:hover { background: rgba(0, 255, 204, 0.05); box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); }
 
-        /* --- 遊戲主內容排版區 --- */
+        /* --- 遊戲主內容排版區（已拉高 Title 位置） --- */
         .container {
-            max-width: 1200px; margin: 0 auto; padding: 140px 20px 40px 20px;
+            max-width: 1200px; margin: 0 auto; 
+            padding: 110px 20px 40px 20px; /* 由 140px 調整為 110px，將內容整體往上提 */
             display: flex; flex-direction: column; align-items: center;
         }
 
@@ -115,14 +116,17 @@
         }
 
         h1.tagline {
-            font-size: clamp(38px, 6vw, 56px); font-weight: 800; line-height: 1.1; margin: 0 0 15px 0;
+            font-size: clamp(38px, 6vw, 56px); font-weight: 800; line-height: 1.1; 
+            margin: 0 0 10px 0; /* 縮減下邊距，讓副標題更貼近 */
             background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
             background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite, textShimmer 4s linear infinite;
         }
         
         p.subtagline { 
-            font-size: 18px; color: var(--text-muted); font-weight: 400; margin-bottom: 40px; max-width: 600px; 
+            font-size: 18px; color: var(--text-muted); font-weight: 400; 
+            margin: 0 0 35px 0; /* 調整外邊距，優化同下方影片的距離 */
+            max-width: 600px; 
             animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
         }
         
