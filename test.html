@@ -346,10 +346,21 @@
 
         /* --- Responsive Viewport Adaptation --- */
         @media (max-width: 900px) {
-          header { padding: 0 20px; }
-          .nav-links { display: none; }
-          .tagline { font-size: 40px; }
-          .ecosystem-grid { grid-template-columns: 1fr; gap: 15px; }
+            header { 
+                padding: 0 20px; 
+            }
+            .container { 
+                padding-top: 85px; 
+            }
+            .tagline { 
+                font-size: 40px; 
+            }
+
+            /* 🚀 核心修正：手機版時，將 3D 容器高度拉高，比例改為 4:3 讓畫面內容能完整顯示 */
+            .iframe-container {
+                aspect-ratio: 4 / 3 !important; /* 窄螢幕下提供更多垂直空間 */
+                max-width: 100%;
+            }
         }
     </style>
 
