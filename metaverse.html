@@ -11,9 +11,20 @@
   <title>NeoX Metaverse Exhibition</title>
   <meta name="description" content="Step into the NeoX Metaverse Exhibition — a dynamic virtual gallery blending NFTs, art, and immersive 3D experiences. Explore futuristic visuals and digital creativity from the NeoX universe." />
   <style>
+    :root {
+      --bg-dark: #03010a; /* Deep cosmic space */
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --primary: #a370ff; /* Royal Violet */
+      --secondary: #00ffcc; /* Cyberpunk Teal */
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-stack: 'Plus Jakarta Sans', sans-serif;
+    }
+
     body {
       margin: 0;
-      * Option B: Deep Starfield Canvas */
+      /* Option B: Deep Starfield Canvas */
       background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
       background-image: 
         radial-gradient(circle at center, #110526 0%, #03010a 100%),
@@ -45,153 +56,246 @@
       border-bottom: 1px solid var(--border);
       z-index: 1000;
       box-sizing: border-box;
-    } 
-
-    /* 將原本的 h1 樣式修改或添加以下內容 */
-    h1.tagline {
-        margin-top: 100px; /* 根據您的 header 高度調整，建議大於 header 的 70px */
-        font-size: 32px;
-        margin-bottom: 10px;
-        color: #00d9ff;
     }
 
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      width: 60px;
-      opacity: 0.9;
+    .nav-logo { height: 32px; opacity: 0.9; }
+    .nav-logo:hover { opacity: 1; }
+
+    .nav-links { display: flex; gap: 30px; align-items: center; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+    .nav-links a:hover { color: var(--primary); }
+
+    .header-right { display: flex; align-items: center; gap: 20px; }
+
+    /* Language Switcher */
+    .language-switch {
+      font-size: 13px;
+      color: var(--text-muted);
+      display: flex; gap: 6px;
+    }
+    .language-switch a:hover { color: var(--text-main); }
+    .lang-sep { opacity: 0.3; }
+
+    /* Connect Wallet Button */
+    .btn-connect {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--secondary);
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-connect:hover {
+      background: rgba(0, 255, 204, 0.05);
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
     }
 
-    .language-switch{
-      position:absolute; top:20px; right:20px;
-      font-size:14px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(0,217,255,.35);
-      border-radius:10px;
-      padding:6px 10px;
-      box-shadow:0 0 14px rgba(0,217,255,.18);
-    }
-    .language-switch a{
-      color:#fff; text-decoration:none; margin:0 6px;
-    }
-    .language-switch a:hover{ color:#00d9ff; }
-
-    h1 {
-      font-size: 32px;
-      margin-bottom: 10px;
-      color: #00d9ff;
+    /* --- Main Container --- */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 140px 20px 50px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    p.lead {
-      color: #cfd7ff;
-      margin-bottom: 30px;
+    /* --- 2. Hero Section --- */
+    .hero {
+      margin-bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .iframe-container {
-      max-width: 900px;
-      margin: 0 auto 30px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    /* Animation: Continuous Elegant Slow Fade-in Up (14s loop) */
+    @keyframes fadeInUpLoopSlow {
+      0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+      18% { opacity: 1; transform: translateY(0); filter: blur(0); } /* Fully visible at 2.5s */
+      86% { opacity: 1; transform: translateY(0); filter: blur(0); } /* Still state holding */
+      93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); } /* Fading away */
+      100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
     }
 
-    iframe {
+    /* Animation: Aurora Shimmer shifting within text (4s loop) */
+    @keyframes textShimmer {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .tagline {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 15px;
+      
+      /* Liquid multi-tone aurora gradient mapped to enlarged background canvas */
+      background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
+      background-size: 200% auto;
+      
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      
+      /* Dual animation stacking */
+      animation: 
+        fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite,
+        textShimmer 4s linear infinite;
+    }
+
+    .subtagline {
+      font-size: 18px;
+      color: var(--text-muted);
+      font-weight: 400;
+      margin-bottom: 40px;
+      max-width: 600px;
+      /* Smoothly trailing behind the headline by 0.6s */
+      animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
+    }
+
+    .coin-visual {
+      position: relative;
+      margin-bottom: 50px;
+    }
+    .coin {
+      width: 130px;
+      filter: drop-shadow(0 0 25px rgba(163, 112, 255, 0.3));
+    }
+
+    /* --- 3. Ecosystem Grid --- */
+    .ecosystem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
       width: 100%;
-      height: 500px;
-      border: none;
+      margin-bottom: 80px;
     }
 
+    .eco-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      padding: 30px;
+      border-radius: 16px;
+      text-align: left;
+      transition: all 0.3s ease;
+      display: block;
+      color: inherit;
+    }
+    .eco-card:hover {
+      border-color: rgba(163, 112, 255, 0.3);
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .eco-icon { font-size: 24px; margin-bottom: 15px; display: block; }
+    .eco-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+    .eco-desc { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
+
+    /* --- 4. Call to Actions --- */
     .btn-row {
       display: flex;
+      gap: 20px;
       justify-content: center;
+      margin-bottom: 25px;
       flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 20px;
     }
 
     .btn {
-      background: #0a0a0a;
-      border: 2px solid #00d9ff;
-      color: #00d9ff;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-size: 16px;
-      cursor: pointer;
-      text-decoration: none;
-      min-width: 180px;
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 8px rgba(0,217,255,0.5);
+      gap: 10px;
+      min-width: 190px;
     }
 
-    .btn:hover {
-      background: #00d9ff;
-      color: #000;
-      box-shadow: 0 0 20px rgba(0,217,255,0.8);
-      transform: translateY(-3px);
+    /* Primary: solid aesthetic crisp white */
+    .btn-primary {
+      background: #ffffff;
+      color: #000000;
+    }
+    .btn-primary:hover {
+      box-shadow: 0 5px 20px rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
     }
 
-    .btn-blue {
-      background: #0d6efd;
-      border: 2px solid #3399ff;
-      color: white;
+    /* Secondary: thin wired outlined borders */
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      background: var(--glass);
+      border-color: rgba(255,255,255,0.2);
     }
 
-    .notice {
-      margin-top: 12px;
-      font-size: 13px;
-      color: #ccc;
+    .icon-small { width: 18px; height: 18px; object-fit: contain; }
+
+    /* Market Links */
+    .market-link { margin-top: 15px; font-size: 13px; color: var(--text-muted); }
+    .market-link a { margin: 0 5px; }
+    .market-link a:hover { color: var(--primary); }
+
+    /* --- 5. Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 50px;
+      background: rgba(0,0,0,0.1);
     }
 
-    .footer {
-      margin-top: 60px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.55);
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+        /* 1. 將本來的 22px 稍微縮小一點點（例如 18px），配合 padding 後總體大小就跟原本一樣了 */
+        width: 18px;
+        height: 18px; 
+        margin: 0 15px;
+    
+        /* 2. 核心：將 padding 縮細，圓框就會緊貼住 Logo，唔會好似大得滯 */
+        padding: 4px; 
+    
+        /* 圓框設定保持 */
+        background: rgba(255, 255, 255, 0.05); 
+        border: 1px solid rgba(255, 255, 255, 0.15); 
+        border-radius: 50%; 
+    
+        /* 之前你調校好的深灰色濾鏡 */
+        filter: grayscale(100%) brightness(0.7); 
+        opacity: 0.9; 
+    
+        transition: all 0.2s ease;
+        box-sizing: content-box; 
     }
 
-    .footer a {
-      color: #aaa;
-      text-decoration: none;
+    /* Hover 效果保持不變 */
+    .social-icons img:hover {
+        filter: grayscale(0%) brightness(1); 
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.15); 
+        border-color: rgba(255, 255, 255, 0.4); 
+        transform: scale(1.1);
     }
+    
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-    .footer a:hover {
-      text-decoration: underline;
+    /* --- Responsive Viewport Adaptation --- */
+    @media (max-width: 900px) {
+      header { padding: 0 20px; }
+      .nav-links { display: none; }
+      .tagline { font-size: 40px; }
+      .ecosystem-grid { grid-template-columns: 1fr; gap: 15px; }
     }
-
-    /* Modal Style */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0; top: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.75);
-    }
-    .modal-content {
-      background: #0a0a0a;
-      margin: 15% auto;
-      padding: 20px;
-      border: 2px solid #00d9ff;
-      border-radius: 12px;
-      width: 80%; max-width: 400px;
-      color: white;
-      box-shadow: 0 0 20px rgba(0,217,255,0.7);
-      text-align: center;
-    }
-    .modal-content h2 {
-      color: #00d9ff;
-      margin-bottom: 10px;
-    }
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      cursor: pointer;
-    }
-    .close:hover { color: #fff; }
   </style>
   
   <!-- 🎥 Video SEO structured data for NeoX Metaverse Exhibition -->
