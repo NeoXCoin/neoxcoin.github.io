@@ -10,29 +10,33 @@
     <title>NeoX Metaverse Exhibition</title>
     <meta name="description" content="Step into the NeoX Metaverse Exhibition — a dynamic virtual gallery blending NFTs, art, and immersive 3D experiences. Explore futuristic visuals and digital creativity from the NeoX universe." />
     
+    <!-- Fonts Connect (Same as index.html) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            --bg-main: #03010a;
+            --bg-dark: #03010a; /* Deep cosmic space */
             --text-main: #ffffff;
-            --text-muted: #cfd7ff;
-            --accent: #00d9ff;
-            --accent-glow: rgba(0, 217, 255, 0.4);
-            --border: rgba(0, 217, 255, 0.2);
-            --card-bg: rgba(7, 2, 20, 0.6);
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --primary: #a370ff; /* Royal Violet */
+            --secondary: #00ffcc; /* Cyberpunk Teal */
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --font-stack: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
             margin: 0;
-            background: radial-gradient(circle at center, #110526 0%, var(--bg-main) 100%);
-            background-image: radial-gradient(circle at center, #110526 0%, var(--bg-main) 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.03' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/path%3E%3C/svg%3E");
+            background: radial-gradient(circle at center, #110526 0%, var(--bg-dark) 100%);
+            background-image: radial-gradient(circle at center, #110526 0%, var(--bg-dark) 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
             font-family: var(--font-stack);
             color: var(--text-main);
             text-align: center;
             -webkit-font-smoothing: antialiased;
             letter-spacing: -0.01em;
             overflow-x: hidden;
-            padding-top: 90px; /* Space for fixed header */
         }
 
         a {
@@ -41,7 +45,7 @@
             transition: all 0.2s ease;
         }
 
-        /* --- 1. Sticky Header (Glassmorphism) --- */
+        /* --- 1. Sticky Header (Same as index.html) --- */
         header {
             position: fixed;
             top: 0;
@@ -51,117 +55,128 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 30px;
-            background: rgba(7, 2, 20, 0.75);
+            padding: 0 50px;
+            background: rgba(7, 2, 20, 0.6);
             backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             box-sizing: border-box;
         }
 
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo {
-            width: 40px;
-            height: 40px;
+        .nav-logo {
+            height: 32px;
             opacity: 0.9;
-            transition: transform 0.3s ease;
         }
 
-        .logo:hover {
-            transform: scale(1.05);
+        .nav-logo:hover {
+            opacity: 1;
         }
 
         .header-right {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
         }
 
+        /* Language Switcher */
         .language-switch {
-            font-size: 14px;
-            background: rgba(0, 0, 0, .4);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 6px 12px;
-            box-shadow: 0 0 10px rgba(0, 217, 255, 0.1);
-        }
-
-        .language-switch a {
-            color: #fff;
-            margin: 0 4px;
-            opacity: 0.8;
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            gap: 6px;
         }
 
         .language-switch a:hover {
-            color: var(--accent);
-            opacity: 1;
+            color: var(--text-main);
+        }
+
+        .lang-sep {
+            opacity: 0.3;
         }
 
         /* Connect Wallet Button */
-        .btn-wallet {
-            background: linear-gradient(135deg, rgba(0, 217, 255, 0.2), rgba(0, 217, 255, 0.05));
-            border: 1px solid var(--accent);
-            color: var(--accent);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
+        .btn-connect {
+            font-size: 13px;
             font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: transparent;
+            color: var(--secondary);
+            border: 1px solid rgba(0, 255, 204, 0.3);
             cursor: pointer;
-            box-shadow: 0 0 12px rgba(0, 217, 255, 0.2);
-            transition: all 0.3s ease;
+            transition: all 0.2s;
         }
 
-        .btn-wallet:hover {
-            background: var(--accent);
-            color: #000;
-            box-shadow: 0 0 20px var(--accent-glow);
-            transform: translateY(-1px);
+        .btn-connect:hover {
+            background: rgba(0, 255, 204, 0.05);
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
         }
 
-        /* --- Main Content --- */
+        /* --- Main Container --- */
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 140px 20px 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        h1.tagline {
-            font-size: 38px;
+        /* --- 2. Title Section & Animations (Same as index.html) --- */
+        @keyframes fadeInUpLoopSlow {
+            0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+            18% { opacity: 1; transform: translateY(0); filter: blur(0); }
+            86% { opacity: 1; transform: translateY(0); filter: blur(0); }
+            93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); }
+            100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+        }
+
+        @keyframes textShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .tagline {
+            font-size: 56px;
             font-weight: 800;
-            margin-bottom: 5px;
-            color: var(--accent);
-            text-shadow: 0 0 20px rgba(0, 217, 255, 0.3);
+            line-height: 1.1;
+            margin-bottom: 15px;
+            background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite, textShimmer 4s linear infinite;
         }
 
         .subtagline {
-            color: var(--text-muted);
             font-size: 18px;
-            margin-top: 0;
+            color: var(--text-muted);
+            font-weight: 400;
             margin-bottom: 40px;
+            max-width: 600px;
+            animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
         }
 
-        /* --- Video & Exhibition Frame --- */
+        /* --- 3. Video Exhibition Frame --- */
         .iframe-container {
+            width: 100%;
             max-width: 900px;
-            margin: 0 auto 40px;
+            margin: 0 auto 30px;
             border-radius: 16px;
             overflow: hidden;
+            background: var(--glass);
             border: 1px solid var(--border);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 217, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             position: relative;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
 
         .iframe-container:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 217, 255, 0.15);
+            border-color: rgba(163, 112, 255, 0.3);
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.04);
         }
 
         video {
@@ -170,99 +185,85 @@
             display: block;
         }
 
-        .video-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(3, 1, 10, 0.85), rgba(3, 1, 10, 0.15));
-        }
-
-        .float-hint {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: var(--accent);
-            font-size: 16px;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
-            animation: floatHint 2s infinite ease-in-out;
-        }
-
         @keyframes floatHint {
-            0%, 100% { transform: translate(-50%, 0); opacity: 0.8; }
+            0%, 100% { transform: translate(-50%, 0); opacity: 0.9; }
             50% { transform: translate(-50%, -6px); opacity: 1; }
         }
 
-        /* --- Buttons --- */
+        /* --- 4. Buttons --- */
         .btn-row {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
             gap: 20px;
-            margin-top: 20px;
+            justify-content: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
         }
 
         .btn {
-            background: rgba(7, 2, 20, 0.5);
-            border: 2px solid var(--accent);
-            color: var(--accent);
             padding: 14px 30px;
-            border-radius: 14px;
-            font-size: 16px;
+            border-radius: 8px;
+            font-size: 15px;
             font-weight: 600;
-            cursor: pointer;
-            min-width: 180px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 4px 12px rgba(0, 217, 255, 0.1);
+            gap: 10px;
+            min-width: 190px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
         }
 
-        .btn:hover {
-            background: var(--accent);
-            color: #000;
-            box-shadow: 0 0 25px var(--accent-glow);
-            transform: translateY(-3px);
+        .btn-primary {
+            background: #ffffff;
+            color: #000000;
+            border: none;
         }
 
-        .btn-blue {
-            background: rgba(13, 110, 253, 0.1);
-            border: 2px solid #3399ff;
-            color: #3399ff;
+        .btn-primary:hover {
+            box-shadow: 0 5px 20px rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
         }
 
-        .btn-blue:hover {
-            background: #3399ff;
-            color: white;
-            box-shadow: 0 0 25px rgba(51, 153, 255, 0.4);
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--glass);
+            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
         }
 
         .notice {
-            margin-top: 25px;
-            font-size: 14px;
-            color: #a0a5c0;
+            margin-top: 15px;
+            font-size: 13px;
+            color: var(--text-muted);
         }
 
+        /* --- 5. Footer --- */
         .footer {
-            margin-top: 80px;
-            padding: 30px 0;
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.4);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            width: 100%;
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            margin-top: 60px;
+            background: rgba(0,0,0,0.1);
+            font-size: 12px;
+            color: rgba(255,255,255,0.4);
         }
 
         .footer a {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--text-muted);
+            margin: 0 8px;
         }
 
         .footer a:hover {
-            color: var(--accent);
-            text-decoration: none;
+            color: var(--text-main);
         }
 
-        /* --- Modal Style (Glassmorphism) --- */
+        /* --- Modal Style (Synced) --- */
         .modal {
             display: none;
             position: fixed;
@@ -273,27 +274,25 @@
             height: 100%;
             background: rgba(3, 1, 10, 0.8);
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
         }
 
         .modal-content {
             background: #070214;
             margin: 15% auto;
             padding: 30px;
-            border: 1px solid var(--accent);
+            border: 1px solid var(--border);
             border-radius: 16px;
-            width: 85%;
+            width: 80%;
             max-width: 400px;
             color: white;
-            box-shadow: 0 0 30px rgba(0, 217, 255, 0.2);
+            box-shadow: 0 0 20px rgba(163, 112, 255, 0.2);
             text-align: center;
             position: relative;
         }
 
         .modal-content h2 {
-            color: var(--accent);
-            margin-top: 0;
-            margin-bottom: 15px;
+            color: var(--primary);
+            margin-bottom: 10px;
         }
 
         .close {
@@ -303,60 +302,19 @@
             color: #aaa;
             font-size: 28px;
             cursor: pointer;
-            transition: color 0.2s;
         }
 
         .close:hover {
             color: #fff;
         }
 
-        .social-icons { margin-bottom: 25px; }
-        .social-icons img {
-            /* 1. 將本來的 22px 稍微縮小一點點（例如 18px），配合 padding 後總體大小就跟原本一樣了 */
-            width: 18px;
-            height: 18px; 
-            margin: 0 15px;
-    
-            /* 2. 核心：將 padding 縮細，圓框就會緊貼住 Logo，唔會好似大得滯 */
-            padding: 4px; 
-    
-            /* 圓框設定保持 */
-            background: rgba(255, 255, 255, 0.05); 
-            border: 1px solid rgba(255, 255, 255, 0.15); 
-            border-radius: 50%; 
-    
-            /* 之前你調校好的深灰色濾鏡 */
-            filter: grayscale(100%) brightness(0.7); 
-            opacity: 0.9; 
-    
-            transition: all 0.2s ease;
-            box-sizing: content-box; 
-        }
-
-        /* Hover 效果保持不變 */
-        .social-icons img:hover {
-            filter: grayscale(0%) brightness(1); 
-            opacity: 1;
-            background: rgba(255, 255, 255, 0.15); 
-            border-color: rgba(255, 255, 255, 0.4); 
-            transform: scale(1.1);
-        }
-    
-        .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
-        .footer-links a { margin: 0 8px; }
-        .footer-links a:hover { color: var(--text-main); }
-        .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
-
-        /* --- Responsive Viewport Adaptation --- */
         @media (max-width: 900px) {
-          header { padding: 0 20px; }
-          .nav-links { display: none; }
-          .tagline { font-size: 40px; }
-          .ecosystem-grid { grid-template-columns: 1fr; gap: 15px; }
+            header { padding: 0 20px; }
+            .tagline { font-size: 40px; }
         }
     </style>
 
-    <!-- 🎥 Video SEO structured data for NeoX Metaverse Exhibition -->
+    <!-- 🎥 Video SEO structured data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -381,60 +339,51 @@
 
     <!-- 1. Sticky Header -->
     <header>
-        <div class="header-left">
-            <a href="index.html">
-                <img id="neoxLogo" class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"/>
-            </a>
-        </div>
+        <a href="index.html">
+            <img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo">
+        </a>
         <div class="header-right">
-            <!-- Language Switch -->
             <div class="language-switch">
-                <a href="metaverse.html">EN</a> | <a href="metaverse-zh.html">繁</a> | <a href="metaverse-global.html">Global</a>
+                <a href="metaverse.html">EN</a>
+                <span class="lang-sep">|</span>
+                <a href="metaverse-zh.html">繁</a>
+                <span class="lang-sep">|</span>
+                <a href="metaverse-global.html">Global</a>
             </div>
-            <!-- Connect Wallet -->
-            <button class="btn-wallet" onclick="alert('Wallet connection feature coming soon!')">Connect Wallet</button>
+            <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
     </header>
 
     <div class="container">
+        <!-- 2. Animated Aurora Tagline -->
         <h1 class="tagline">NeoX Metaverse Exhibition</h1>
         <p class="subtagline">Immersive galleries, art & motion</p>
 
-        <!-- 🎬 Clickable Video Entrance to OnCyber -->
+        <!-- 🎬 Clickable Video Entrance -->
         <div class="iframe-container" onclick="window.open('https://oncyber.io/neoxdynamic','_blank')">
-            <!-- 背景影片 -->
             <video autoplay muted loop playsinline preload="auto">
                 <source src="https://neoxcoin.github.io/NeoXDynamicVisions%20.mp4" type="video/mp4">
             </video>
-            <!-- 半透明漸層遮罩 -->
-            <div class="video-overlay"></div>
-            <!-- 🚀 動畫提示 -->
-            <div class="float-hint">🚀 Tap to Enter NeoX Metaverse Exhibition</div>
+            <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(3,1,10,0.7), rgba(3,1,10,0.15));"></div>
+            <div style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); color:var(--secondary); font-size:15px; font-weight:500; opacity:0.9; animation:floatHint 2s infinite;">
+                🚀 Tap to Enter NeoX Metaverse Exhibition
+            </div>
         </div>
 
-        <!-- Buttons -->
+        <!-- Buttons (Styled like index.html) -->
         <div class="btn-row">
-            <a class="btn" href="#" onclick="openModal(); return false;">🎟️ Buy Ticket</a>
-            <a class="btn btn-blue" href="index.html">← Back to Home</a>
+            <button class="btn btn-primary" onclick="openModal();">🎟️ Buy Ticket</button>
+            <a class="btn btn-secondary" href="index.html">← Back to Home</a>
         </div>
 
         <!-- Notice -->
         <p class="notice">💡 The current exhibition is free to explore. Tickets will be introduced in future events.</p>
 
-        <footer>
-            <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
-            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
-            <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
-            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
-            <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
-         </div>
-          <div class="footer-links">
-            <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
-          </div>
-         <div class="copyright">© 2025 NeoX. All rights reserved.</div>
-        </footer>
-
+        <!-- Footer -->
+        <div class="footer">
+            © 2025 NeoX. All rights reserved. | <a href="disclaimer-en.html">Disclaimer</a>
+        </div>
+    </div>
 
     <!-- Modal -->
     <div id="ticketModal" class="modal">
@@ -460,16 +409,47 @@
             }
         }
 
+        // --- Connect Wallet Script (Same Logic as index.html) ---
+        const connectBtn = document.getElementById('connect-btn');
+        async function checkConnection() {
+            if (typeof window.ethereum !== 'undefined') {
+                const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                if (accounts.length > 0) { updateButton(accounts[0]); }
+            }
+        }
+        function updateButton(address) {
+            const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+            connectBtn.innerText = shortAddress;
+            connectBtn.style.color = "#00ffcc";
+            connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+        }
+        connectBtn.addEventListener('click', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    connectBtn.innerText = "Connecting...";
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    updateButton(accounts[0]);
+                } catch (error) {
+                    console.error(error);
+                    connectBtn.innerText = "Connect Wallet";
+                }
+            } else {
+                alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
+                window.open('https://metamask.io/download/', '_blank');
+            }
+        });
+        window.addEventListener('DOMContentLoaded', checkConnection);
+
         // 🔍 Detect IG / Threads browser
         (function() {
             const ua = navigator.userAgent || navigator.vendor || window.opera;
             if (ua.includes("Instagram") || ua.includes("Threads")) {
                 const container = document.querySelector(".iframe-container");
                 container.innerHTML = `
-                    <div style="padding:40px 20px; background:#070214; border:1px solid #00d9ff; border-radius:16px; color:#fff;">
-                        <h2 style="color:#00d9ff; margin-top:0;">⚠️ Browser Not Supported</h2>
-                        <p style="color:#cfd7ff;">Instagram / Threads in-app browser cannot display this exhibition.<br> 👉 Please open in <b>Safari</b> or <b>Chrome</b> for the full experience.</p>
-                        <a href="https://neoxcoin.github.io/metaverse.html" target="_blank" style="display:inline-block;margin-top:15px;padding:12px 24px; background:#00d9ff;color:#000;border-radius:12px;text-decoration:none;font-weight:600;box-shadow:0 4px 12px rgba(0,217,255,0.3);"> Open in Browser </a>
+                    <div style="padding:40px 20px; background:#070214; border:1px solid var(--border); border-radius:16px; color:#fff;">
+                        <h2 style="color:var(--secondary); margin-top:0;">⚠️ Browser Not Supported</h2>
+                        <p style="color:var(--text-muted);">Instagram / Threads in-app browser cannot display this exhibition.<br> 👉 Please open in <b>Safari</b> or <b>Chrome</b> for the full experience.</p>
+                        <a href="https://neoxcoin.github.io/metaverse.html" target="_blank" style="display:inline-block;margin-top:15px;padding:12px 24px; background:var(--secondary);color:#000;border-radius:8px;text-decoration:none;font-weight:600;"> Open in Browser </a>
                     </div>
                 `;
             }
