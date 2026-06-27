@@ -1,244 +1,375 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
-<head>  
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-  <!-- SEO -->
-  <title>NeoX Game – Catch the Coins & Master the Web3 Arcade</title>
-  <meta name="description" content="Step into NeoX Game — a Web3 mini arcade where players catch coins, build combos, and test their reflexes in the future of decentralized gaming." />
-  <meta name="keywords" content="NeoX, NeoX Game, NXC, Web3 Arcade, Catch the Coins, Base Mainnet, NFT, Token, Gaming" />
-  <meta name="robots" content="index, follow" />
-  <meta name="author" content="NeoX" />
-  <link rel="canonical" href="https://neoxcoin.github.io/game-global.html" />
-
-  <!-- Multi-language SEO -->
-  <link rel="alternate" href="https://neoxcoin.io/game.html" hreflang="en" />
-  <link rel="alternate" href="https://neoxcoin.io/game-zh.html" hreflang="zh-Hant" />
-  <link rel="alternate" href="https://neoxcoin.io/game-global.html" hreflang="x-default" />
-
-  <!-- Icons -->
-  <link rel="icon" href="https://neoxcoin.io/XNXC.png" />
-  <link rel="apple-touch-icon" href="https://neoxcoin.io/XNXC.png" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="NeoX Game – Catch the Coins & Master the Web3 Arcade" />
-  <meta property="og:description" content="Play NeoX Game — catch coins, chase combos, and climb the leaderboard in this Web3 arcade experience." />
-  <meta property="og:image" content="https://neoxcoin.io/XNXC.png" />
-  <meta property="og:url" content="https://neoxcoin.io/game-global.html" />
-  <meta property="og:type" content="website" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="NeoX Game – Catch the Coins & Master the Web3 Arcade" />
-  <meta name="twitter:description" content="Join NeoX Game — a Web3 mini arcade where you catch coins and rise to the top of the leaderboard!" />
-  <meta name="twitter:image" content="https://neoxcoin.io/XNXC.png" />
-  
-  <style>
-    :root{
-      --bg1:#0a0a2a; --bg2:#050519;
-      --gold1:#ffd36b; --gold2:#ffb800;
-      --glass:rgba(255,255,255,.08); --glass-bd:rgba(255,255,255,.18);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang TC","Noto Sans",Arial,sans-serif;
-      background:radial-gradient(circle at center, var(--bg1) 0%, var(--bg2) 100%);
-      color:#fff; text-align:center; overflow-x:hidden;
-      padding:40px 20px;
-    }
-
-    /* 與英文版一致：Logo 左上 + 語言右上（absolute） */
-    .logo{ position:absolute; top:20px; left:20px; width:60px; opacity:.95; }
-    .language-switch{
-      position:absolute; top:20px; right:20px;
-      font-size:14px;
-      background:rgba(0,0,0,.35);
-      border:1px solid rgba(0,217,255,.35);
-      border-radius:10px;
-      padding:6px 10px;
-      box-shadow:0 0 14px rgba(0,217,255,.18);
-    }
-    .language-switch a{
-      color:#fff; text-decoration:none; margin:0 6px;
-    }
-    .language-switch a:hover{ color:#00d9ff; }
-
-    header{ padding-top:80px; }
-    h1{ font-size:clamp(26px,5vw,40px); margin:10px 0 8px; }
-    .subtitle{ opacity:.85; font-size:clamp(14px,2vw,18px); margin-bottom:24px; }
-
-    /* 影片（整塊可點） */
-    .hero{
-      position:relative; width:90%; max-width:900px; margin:0 auto;
-      border-radius:16px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,.45);
-      background:radial-gradient(1100px 340px at 50% 100%, rgba(0,152,255,.14), transparent);
-    }
-    .hero-ratio{ position:relative; padding-top:56.25%; }
-    .hero video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; border:none; z-index:0; filter:contrast(1.05) saturate(1.08); }
-    .hero .fade{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(5,7,20,.78) 100%); z-index:1; pointer-events:none; }
-    .hero .hero-link{ position:absolute; inset:0; z-index:2; display:block; }
-
-    /* 手機改成 1:1 */
-    @media (max-width:480px){
-      .hero-ratio{ padding-top:100%; }
-      .hero video{ object-position:center; }
-    }
-
-    .overlay-text{ margin-top:24px; }
-    .overlay-text h2{ font-size:clamp(22px,4vw,32px); margin-bottom:10px; }
-    .overlay-text p{ opacity:.9; font-size:clamp(14px,2vw,18px); margin-bottom:18px; }
-
-    /* 按鈕（等寬 + glow） */
-    .btn{
-      display:inline-block; margin:10px 12px; padding:14px 30px;
-      font-weight:700; text-decoration:none; border-radius:999px; position:relative;
-      background:linear-gradient(90deg, var(--gold1), var(--gold2)); color:#0a0b1f;
-      box-shadow:0 6px 18px rgba(255,184,0,.35), inset 0 1px 0 #fff4cc;
-      transition:transform .15s ease, box-shadow .15s ease;
-      text-align:center; box-sizing:border-box;
-    }
-    .btn:hover{ transform:translateY(-2px); box-shadow:0 10px 24px rgba(255,184,0,.45); }
-
-    .btn-home{
-      background:rgba(255,255,255,.08) !important; color:#fff !important;
-      border:1px solid var(--glass-bd); backdrop-filter:blur(6px);
-      box-shadow:0 10px 24px rgba(255,184,0,.35), inset 0 1px 0 #fff4cc;
-    }
-    .btn-home:hover{ box-shadow:0 14px 32px rgba(255,184,0,.45), inset 0 1px 0 #fff4cc; }
-    .btn-home::after{
-      content:''; position:absolute; left:50%; bottom:-8px; width:80%; height:12px;
-      transform:translateX(-50%); border-radius:50%;
-      background:radial-gradient(ellipse at center, rgba(255,184,0,.45), transparent 70%);
-      filter:blur(8px); opacity:.5; pointer-events:none;
-    }
-
-    /* 兩個按鈕等寬：桌面 220–300px、手機 ~70% */
-    .btn, .btn-home{ width:clamp(200px, 70%, 300px); }
+<head>
+    <!-- Favicon (ICO + SVG + Apple Icon) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
-    footer{ margin-top:40px; padding:20px; font-size:13px; opacity:.6; }
-  </style>
-  
-  <!-- 🎮 Video SEO 結構化資料：NeoX 捕捉金幣遊戲（繁體中文版） -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "VideoObject",
-    "name": "NeoX 捕捉金幣遊戲 — 全球版",
-    "description": "加入 NeoX 捕捉金幣遊戲，體驗結合 Web3 技術的互動式遊戲樂趣！收集 NeoX 金幣、解鎖隱藏關卡，挑戰排行榜，成為 NeoX 世界的贏家！",
-    "thumbnailUrl": "https://neoxcoin.github.io/XNXC.png",
-    "uploadDate": "2025-11-08T00:00:00-05:00",
-    "contentUrl": "https://neoxcoin.github.io/neox-game/Opening3.mp4",
-    "publisher": {
-      "@type": "Organization",
-      "name": "NeoX",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://neoxcoin.github.io/XNXC.png"
-      }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- SEO 優化 -->
+    <title>NeoX 遊戲 – 接金幣挑戰與精通 Web3 街機體驗</title>
+    <meta name="description" content="踏入 NeoX 遊戲世界 — 新一代 Web3 街機遊戲，挑戰你的反應極限，收集 NXC 能量，探索去中心化遊戲的未來。" />
+    <meta name="keywords" content="NeoX, NeoX 遊戲, NXC, Web3 街機, 接金幣, Base 主網, NFT, 代幣, 區塊鏈遊戲" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="NeoX" />
+    
+    <!-- 多語言 SEO 關聯 -->
+    <link rel="alternate" href="https://neoxcoin.io/game.html" hreflang="en" />
+    <link rel="alternate" href="https://neoxcoin.io/game-zh.html" hreflang="zh-Hant" />
+    <link rel="alternate" href="https://neoxcoin.io/game-global.html" hreflang="x-default" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="NeoX 遊戲 – 接金幣挑戰與精通 Web3 街機體驗" />
+    <meta property="og:description" content="玩 NeoX 遊戲 — 收集 NXC 能量，在全新進化的 Web3 街機中挑戰你的極限反應。" />
+    <meta property="og:image" content="https://neoxcoin.github.io/XNXC.png" />
+    <meta property="og:url" content="https://neoxcoin.io/game-zh.html" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NeoX 遊戲 – 接金幣挑戰與精通 Web3 街機體驗" />
+    <meta name="twitter:description" content="玩 NeoX 遊戲 — 收集 NXC 能量，體驗新一代 Web3 街機帶來的極致樂趣。" />
+    <meta name="twitter:image" content="https://neoxcoin.github.io/XNXC.png" />
+
+    <!-- Google Fonts 同步 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 100% 同步首頁設計變數與風格 */
+        :root {
+            --bg-dark: #03010a;
+            --text-main: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+            --primary: #a370ff;       /* 皇家紫 */
+            --secondary: #00ffcc;     /* Cyberpunk 螢光綠 */
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+            --font-stack: 'Plus Jakarta Sans', sans-serif;
+        }
+        
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        
+        body {
+            margin: 0;
+            background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+            background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+            font-family: var(--font-stack);
+            color: var(--text-main);
+            text-align: center;
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.01em;
+            overflow-x: hidden;
+            padding-bottom: 50px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+        
+        /* --- 100% 同步首頁嘅 Sticky Header 導航欄 --- */
+        header.nav-header {
+            position: fixed; top: 0; left: 0; width: 100%; height: 70px;
+            display: flex; align-items: center; justify-content: space-between; padding: 0 50px;
+            background: rgba(7, 2, 20, 0.6); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--border); z-index: 1000; box-sizing: border-box;
+        }
+        .nav-logo { height: 32px; opacity: 0.9; }
+        .nav-logo:hover { opacity: 1; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; }
+        .language-switch a:hover, .language-switch a.active { color: var(--text-main); }
+        .lang-sep { opacity: 0.3; }
+        .btn-connect {
+            font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 999px;
+            background: transparent; color: var(--secondary); border: 1px solid rgba(0, 255, 204, 0.3);
+            cursor: pointer; transition: all 0.2s;
+        }
+        .btn-connect:hover { background: rgba(0, 255, 204, 0.05); box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); }
+
+        /* --- 遊戲主內容排版區（同步優化拉高 Title 位置） --- */
+        .container {
+            max-width: 1200px; margin: 0 auto; 
+            padding: 110px 20px 40px 20px; /* 拉高標題緊靠頂部 */
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        /* --- 100% 同步首頁嘅流光與淡入淡出動畫效果 --- */
+        @keyframes fadeInUpLoopSlow {
+            0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+            18% { opacity: 1; transform: translateY(0); filter: blur(0); }
+            86% { opacity: 1; transform: translateY(0); filter: blur(0); }
+            93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); }
+            100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
+        }
+
+        @keyframes textShimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1.tagline {
+            font-size: clamp(38px, 6vw, 56px); font-weight: 800; line-height: 1.1; 
+            margin: 0 0 10px 0; /* 縮減下邊距 */
+            background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
+            background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite, textShimmer 4s linear infinite;
+        }
+        
+        p.subtagline { 
+            font-size: 18px; color: var(--text-muted); font-weight: 400; 
+            margin: 0 0 35px 0; /* 優化與影片之距離 */
+            max-width: 600px; 
+            animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
+        }
+        
+        /* Hero 影片外框 */
+        .hero {
+            position: relative; width: 100%; max-width: 850px; margin: 0 auto 40px;
+            border-radius: 16px; overflow: hidden; border: 1px solid var(--border);
+            background: var(--glass); box-shadow: 0 20px 50px rgba(0,0,0,.5);
+        }
+        .hero-ratio { position: relative; padding-top: 56.25%; }
+        .hero video {
+            position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+            opacity: 0; transition: opacity .8s ease;
+        }
+        .hero video.loaded { opacity: 1; }
+        .hero .fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3,1,10,0) 60%, rgba(3,1,10,0.8) 100%); pointer-events: none; }
+        .hero .hero-link { position: absolute; inset: 0; z-index: 2; display: block; }
+        
+        @media (max-width: 480px) { .hero-ratio { padding-top: 100%; } }
+        
+        .overlay-text h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; color: #fff; }
+        .overlay-text p { color: var(--text-muted); font-size: 15px; margin-bottom: 30px; line-height: 1.6; }
+        
+        /* 同步首頁嘅 Button 樣式 */
+        .btn-row { display: flex; gap: 20px; justify-content: center; margin-bottom: 25px; flex-wrap: wrap; width: 100%; }
+        .btn {
+            padding: 14px 30px; border-radius: 8px; font-size: 15px; font-weight: 600;
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            min-width: 200px; transition: all 0.2s ease; cursor: pointer;
+        }
+        .btn-primary { background: #ffffff; color: #000000; }
+        .btn-primary:hover { box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+        .btn-secondary { background: transparent; color: var(--text-main); border: 1px solid var(--border); }
+        .btn-secondary:hover { background: var(--glass); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+
+        /* 同步首頁嘅 Footer 樣式與 Social Icons */
+        footer {
+            width: 100%; border-top: 1px solid var(--border); padding: 40px 0;
+            margin-top: 60px; background: rgba(0,0,0,0.1); box-sizing: border-box;
+        }
+        .social-icons { margin-bottom: 25px; }
+        .social-icons img {
+            width: 18px; height: 18px; margin: 0 15px; padding: 4px;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%; filter: grayscale(100%) brightness(0.7); opacity: 0.9;
+            transition: all 0.2s ease; box-sizing: content-box;
+        }
+        .social-icons img:hover {
+            filter: grayscale(0%) brightness(1); opacity: 1;
+            background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+        .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+        .footer-links a { margin: 0 8px; }
+        .footer-links a:hover { color: var(--text-main); }
+        .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+        /* RWD 手機版頂部選單適配 */
+        @media (max-width: 900px) {
+            header.nav-header { padding: 0 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
+    
+    <!-- 結構化數據 (Structured Data) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": "NeoX 接金幣挑戰 – 全球 Play-to-Earn 區塊鏈遊戲",
+        "description": "加入 NeoX 接金幣遊戲 – 互動式邊玩邊賺 Web3 體驗。收集 NeoX 代幣，解鎖隱藏關卡，在全球排行榜上爭奪榮耀！",
+        "thumbnailUrl": "https://neoxcoin.github.io/NeoXGamePage.png",
+        "uploadDate": "2025-11-08T00:00:00-05:00",
+        "duration": "PT0M30S",
+        "contentUrl": "https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4",
+        "embedUrl": "https://neoxcoin.io/game-zh.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "NeoX",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://neoxcoin.github.io/XNXC.png"
+            }
+        }
     }
-  }
-  </script>
+    </script>
 </head>
 <body>
 
-  <!-- Logo（左上） -->
-  <a href="index-zh.html">
-    <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
-  </a>
-
-  <!-- 語言切換（右上） -->
-  <div class="language-switch">
-    <a href="/game.html">EN</a> | <a class="active" href="/game-zh.html">繁</a> | <a href="/game-global.html">Global</a>
-  </div>
-
-  <header>
-    <h1 class="tagline">NeoX 遊戲</h1>
-    <p class="subtagline">接住金幣、登上排行榜、贏得榮耀</p>
-  </header>
-
-  <!-- 影片（整塊可點） -->
-  <section class="hero" aria-label="NeoX Catch 預覽動畫">
-    <div class="hero-ratio">
-      <a class="hero-link" href="https://neoxcoin.github.io/neox-game/iframe" target="_blank" rel="noopener" aria-label="開始遊戲"></a>
-      <video autoplay muted loop playsinline preload="metadata"
-             poster="https://neoxcoin.github.io/NeoXGamePage.png"
-             src="https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4">
-      </video>
-      <div class="fade" aria-hidden="true"></div>
+    <!-- 頂部 Sticky Header 導航欄 -->
+    <header class="nav-header">
+        <a href="index-zh.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+        <div class="nav-links">
+            <a href="what-is-neox-zh.html">什麼是 NeoX？</a>
+            <a href="how-to-buy-zh.html">如何購買？</a>
+            <a href="game-zh.html" class="active">NeoX 遊戲</a>
+            <a href="metaverse-zh.html">元宇宙展覽</a>
+            <a href="nft-projects-zh.html">NFT 項目</a>
+        </div>
+        <div class="header-right">
+            <div class="language-switch">
+                <a href="/game.html">EN</a>
+                <span class="lang-sep">|</span>
+                <a class="active" href="/game-zh.html">繁</a>
+                <span class="lang-sep">|</span>
+                <a href="/game-global.html">Global</a>
+            </div>
+            <button class="btn-connect" id="connect-btn">連接錢包</button>
+        </div>
+    </header>
+    
+    <div class="container">
+        <header>
+            <h1 class="tagline">NeoX 遊戲</h1>
+            <p class="subtagline">狂接金幣、衝上排行榜、贏取屬於你的榮耀</p>
+        </header>
+        
+        <section class="hero" aria-label="NeoX Catch 預覽">
+            <div class="hero-ratio">
+                <a class="hero-link stop-bgm" href="https://neoxcoin.github.io/neox-game/iframe" target="_blank" rel="noopener" aria-label="開始玩 NeoX 遊戲"></a>
+                <video autoplay muted loop playsinline preload="metadata" poster="https://neoxcoin.github.io/NeoXGamePage.png" aria-hidden="true">
+                    <source src="https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4" type="video/mp4">
+                    <img src="https://neoxcoin.github.io/NeoXGamePage.png" alt="NeoX 遊戲預覽" style="width:100%;height:100%;object-fit:cover;">
+                </video>
+                <div class="fade" aria-hidden="true"></div>
+            </div>
+        </section>
+        
+        <div class="overlay-text">
+            <h2>🎮 NeoX Catch (接金幣)</h2>
+            <p>
+                踏入 NeoX 宇宙，測試你的極限反應！<br/>
+                在時間耗盡前盡可能接住更多的 NeoX 代幣 —<br/>
+                每一枚金幣都將計入你的總分，助你登上全球名人榜。
+            </p>
+            <div class="btn-row">
+                <a href="https://neoxcoin.github.io/neox-game/iframe" class="btn btn-primary stop-bgm" target="_blank" rel="noopener">▶ 立即開玩</a>
+                <a href="index-zh.html" class="btn btn-secondary">← 返回首頁</a>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <div class="overlay-text">
-    <h2>🎮 NeoX 接幣</h2>
-    <p>
-      進入 NeoX 世界，接住金幣、連續 Combo、與時間競速！<br>
-      每一枚 NeoX Coin 都能讓你在排行榜上更上一層樓。
-    </p>
-    <a href="https://neoxcoin.github.io/neox-game/iframe" class="btn" target="_blank" rel="noopener">▶ 開始遊戲</a>
-    <a href="index-zh.html" class="btn btn-home" aria-label="返回首頁">← 返回首頁</a>
-  </div>
+    <!-- Footer 結構 -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+            <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+            <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+        </div>
+        <div class="footer-links">
+            <a href="about-zh.html">關於我們</a> | <a href="faq-zh.html">常見問題</a> | <a href="token-info-zh.html">代幣資訊</a> | <a href="neox-wiki-zh.html">維基百科</a> | <a href="disclaimer-zh.html">免責聲明</a>
+        </div>
+        <div class="copyright">© 2026 NeoX. 版權所有。</div>
+    </footer>
 
-  <footer>© 2025 NeoX. 版權所有。</footer>
-  
-  <!-- 🎵 只在 game.html 播放的背景音樂 -->
-  <audio id="bgm" src="https://neoxcoin.github.io/puzzle-game-bright-casual-video-game-music-249202.mp3" loop preload="auto"></audio>
+    <!-- 音訊背景音樂 -->
+    <audio id="bgm" src="https://neoxcoin.github.io/puzzle-game-bright-casual-video-game-music-249202.mp3" loop preload="auto"></audio>
 
-  <script>
-  // 影片載入成功後淡入
-  (function(){
-    const v = document.querySelector('.hero video');
-    if(!v) return;
-    function onReady(){ v.classList.add('loaded'); }
-    v.addEventListener('loadeddata', onReady, {once:true});
-    v.addEventListener('canplay', onReady, {once:true});
-  })();
+    <script>
+        // 1. 影片漸顯邏輯
+        (function(){
+            const v = document.querySelector('.hero video');
+            if(!v) return;
+            function onReady(){ v.classList.add('loaded'); }
+            if (v.readyState >= 2) { onReady(); } else {
+                v.addEventListener('loadeddata', onReady, {once:true});
+                v.addEventListener('canplay', onReady, {once:true});
+            }
+        })();
 
-  // 🎵 BGM：只在這頁播放；點擊開遊戲前立刻停止
-  (function(){
-    const bgm = document.getElementById('bgm');
+        // 2. 智能背景音訊引擎 (無切換按鈕，點擊畫面即優雅啟動)
+        (function(){
+            const bgm = document.getElementById('bgm');
+            let hasInteracted = false;
 
-    // 初始：靜音自動播放（避免 iOS/Safari 阻擋）
-    bgm.volume = 0;
-    bgm.muted  = true;
-    bgm.play().catch(()=>{});
+            bgm.volume = 0;
+            bgm.muted = true;
+            bgm.play().catch(()=>{});
 
-    // 第一次互動 → 開聲
-    function unlockAudio(){
-      bgm.muted  = false;
-      bgm.volume = 0.8;           // 預設音量（可改）
-      bgm.play().catch(()=>{});
-      ['click','touchstart','keydown'].forEach(ev=>window.removeEventListener(ev, unlockAudio));
-    }
-    ['click','touchstart','keydown'].forEach(ev=>{
-      window.addEventListener(ev, unlockAudio, { once:true, passive:true });
-    });
+            function unlockAudio() {
+                if(!hasInteracted) {
+                    hasInteracted = true;
+                    bgm.muted = false;
+                    bgm.volume = 0.4;
+                    bgm.play().catch(()=>{});
+                }
+                ['pointerdown', 'keydown'].forEach(ev => window.removeEventListener(ev, unlockAudio));
+            }
+            ['pointerdown', 'keydown'].forEach(ev => window.addEventListener(ev, unlockAudio, { once: true, passive: true }));
 
-    // 停止音樂的統一方法
-    function stopBgm(){
-      try { bgm.pause(); } catch(e){}
-      bgm.currentTime = 0;
-      bgm.muted = true;
-      bgm.volume = 0;
-    }
+            function stopBgm(){
+                try { bgm.pause(); } catch(e){}
+                bgm.currentTime = 0;
+            }
 
-    // 1) 進入遊戲（hero 全幅連結、Play Now 按鈕）：先停 BGM 再開新頁
-    document.querySelectorAll('a.stop-bgm').forEach(a=>{
-      // 在 mousedown/touchstart 時先停，避免新頁開啟前有殘音
-      a.addEventListener('mousedown', stopBgm, {passive:true});
-      a.addEventListener('touchstart', stopBgm, {passive:true});
-      a.addEventListener('click', stopBgm, {passive:true});
-    });
+            // 當點擊進入 iframe 遊戲時全自動暫停背景 BGM
+            document.querySelectorAll('.stop-bgm').forEach(a => {
+                ['pointerdown', 'click'].forEach(ev => a.addEventListener(ev, stopBgm, {passive:true}));
+            });
 
-    // 2) 使用者離開此頁（導航/關閉/切分頁）也停止
-    window.addEventListener('pagehide', stopBgm);
-    window.addEventListener('beforeunload', stopBgm);
-    document.addEventListener('visibilitychange', ()=>{
-      if (document.visibilityState === 'hidden') stopBgm();
-    });
-  })();
-  </script>
+            window.addEventListener('pagehide', stopBgm);
+            window.addEventListener('beforeunload', stopBgm);
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'hidden') {
+                    bgm.pause();
+                } else if (document.visibilityState === 'visible' && hasInteracted) {
+                    bgm.play().catch(()=>{});
+                }
+            });
+        })();
+
+        // 3. Web3 錢包連接邏輯
+        const connectBtn = document.getElementById('connect-btn');
+        async function checkConnection() {
+            if (typeof window.ethereum !== 'undefined') {
+                const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+                if (accounts.length > 0) { updateButton(accounts[0]); }
+            }
+        }
+        function updateButton(address) {
+            const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+            connectBtn.innerText = shortAddress;
+            connectBtn.style.color = "#00ffcc";
+            connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+        }
+        connectBtn.addEventListener('click', async () => {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    connectBtn.innerText = "連接中...";
+                    const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    updateButton(accounts[0]);
+                } catch (error) {
+                    console.error(error);
+                    connectBtn.innerText = "連接錢包";
+                }
+            } else {
+                alert("未偵測到 Web3 錢包。正在引導至 MetaMask 下載頁面...");
+                window.open('https://metamask.io/download/', '_blank');
+            }
+        });
+        window.addEventListener('DOMContentLoaded', checkConnection);
+    </script>
 </body>
 </html>
