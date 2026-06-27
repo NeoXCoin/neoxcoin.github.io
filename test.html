@@ -34,10 +34,17 @@
     <meta name="twitter:description" content="Play NeoX Game — collect NXC energy and experience the next generation of Web3 arcade fun." />
     <meta name="twitter:image" content="https://neoxcoin.io/XNXC.png" />
 
-    <!-- Google Fonts 同步 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        function googleTranslateElementInit(){
+          new google.translate.TranslateElement({
+            pageLanguage: 'en', 
+            includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+            autoDisplay: false, 
+            multilanguagePage: true 
+          }, 'google_translate_element');
+        }
+      </script>
+      <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
     
     <style>
         /* 100% 同步首頁設計變數與風格 */
@@ -69,6 +76,23 @@
             top: 0px !important; /* 核心防止 top bar 留白 setting */
         }
 
+        font-family: var(--font-stack);
+        color: var(--text-main);
+        text-align: center;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+
+         /* Google Translate Override Tweak */
+         top: 0 !important;
+         position: static !important;
+         margin-top: 0 !important;
+        }
+
+        /* Hide Google Translate White Top Bar */
+        .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important; }
+        iframe.goog-te-banner-frame { display: none !important; }
+        body > .skiptranslate { display: none !important; }
+
         a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
         
         /* --- 100% 同步首頁嘅 Sticky Header 導航欄 --- */
@@ -85,35 +109,24 @@
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
         .header-right { display: flex; align-items: center; gap: 15px; }
         
-        /* ----------------------------------------------------
-           100% 複製 index-global.html 的 Custom Black Pill Styling 
-        ---------------------------------------------------- */
+        /* Custom Black Pill Styling for Google Widget */
         #google_translate_element {
-            display: inline-block;
-            padding: 2px 6px;
-            border-radius: 20px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--border);
+          display: inline-block;
+          padding: 2px 6px;
+          border-radius: 20px;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid var(--border);
         }
-        #google_translate_element .goog-te-gadget { 
-            font-size: 12px !important; 
-            color: #fff !important; 
-        }
-        #google_translate_element .goog-te-gadget span { 
-            display: none !important; /* 完美隱藏「由 Google 提供翻譯」字眼 */
-        }
+        #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
+        #google_translate_element .goog-te-gadget span { display: none !important; } 
         #google_translate_element select {
-            background: transparent !important;
-            color: #fff !important;
-            border: none !important;
-            font-size: 12px !important;
-            padding: 4px 6px !important;
-            outline: none !important;
-            cursor: pointer;
-        }
-        /* 徹底隱藏 Google Translate 頂部自帶的白色橫條 */
-        .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame {
-            display: none !important;
+          background: transparent !important;
+          color: #fff !important;
+          border: none !important;
+          font-size: 12px !important;
+          padding: 4px 6px !important;
+          outline: none !important;
+          cursor: pointer;
         }
         iframe.goog-te-banner-frame {
             display: none !important;
