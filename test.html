@@ -38,8 +38,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   
+  <!-- 引入 Google Translate 引擎初始化腳本（100% 同步 index-global.html，加強支援 multilanguage） -->
+  <script>
+    function googleTranslateElementInit(){
+      new google.translate.TranslateElement({
+        pageLanguage: 'en', 
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+        autoDisplay: false, 
+        multilanguagePage: true 
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+  
   <style>
-    /* 100% 同步 index.html 嘅設計變數與風格 */
+    /* 100% 同步首頁的設計變數與風格 */
     :root {
       --bg-dark: #03010a;
       --text-main: #ffffff;
@@ -69,6 +82,7 @@
       /* 強制設定，防止 Google 翻譯強行將 body 往下推 */
       top: 0 !important;
       position: static !important;
+      margin-top: 0 !important;
     }
     
     a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
@@ -99,43 +113,50 @@
     .nav-links a:hover, .nav-links a.active { color: var(--primary); }
     .header-right { display: flex; align-items: center; gap: 20px; }
     
-    /* --- Google Translate 樣式客製化（融入暗黑霓虹風） --- */
-    .translate-wrapper {
-      display: flex;
-      align-items: center;
-    }
+    /* --- 同步 index-global.html 的 Custom Black Pill 翻譯組件外框樣式 --- */
     #google_translate_element {
       display: inline-block;
-    }
-    .goog-te-gadget {
-      font-family: var(--font-stack) !important;
-      color: transparent !important; /* 隱藏原本嘅 "Powered by Google" 廢話字眼 */
-      font-size: 0 !important;
-    }
-    .goog-te-gadget .goog-te-combo {
-      background: rgba(255, 255, 255, 0.05) !important;
-      color: var(--text-main) !important;
-      border: 1px solid var(--border) !important;
-      border-radius: 6px !important;
-      padding: 5px 10px !important;
-      font-size: 13px !important;
-      font-weight: 500;
-      outline: none;
-      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
       transition: all 0.2s ease;
     }
-    .goog-te-gadget .goog-te-combo:hover {
-      border-color: var(--secondary) !important;
+    #google_translate_element:hover {
+      border-color: var(--secondary);
       box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
     }
+    #google_translate_element .goog-te-gadget {
+      font-size: 12px !important;
+      color: #fff !important;
+      font-family: var(--font-stack) !important;
+    }
+    #google_translate_element .goog-te-gadget span {
+      display: none !important; /* 隱藏原本的 "Powered by Google" 廢話字眼 */
+    }
+    #google_translate_element select {
+      background: transparent !important;
+      color: #fff !important;
+      border: none !important;
+      font-size: 12px !important;
+      padding: 4px 6px !important;
+      outline: none !important;
+      cursor: pointer;
+      font-family: var(--font-stack) !important;
+    }
     
-    /* --- 核心：徹底隱藏 Google Translate 頂部跳出嚟嘅白色 Bar 條 --- */
-    .goog-te-banner-frame, 
-    .goog-te-banner-frame.skiptranslate,
+    /* --- 核心：徹底隱藏 Google Translate 頂部跳出嚟嘅白色 Bar 條與彈窗高亮 --- */
+    .goog-te-banner-frame.skiptranslate, 
+    .goog-te-banner-frame,
     .goog-te-banner, 
     iframe.goog-te-banner-frame {
       display: none !important;
       visibility: hidden !important;
+      height: 0 !important;
+      width: 0 !important;
+    }
+    body > .skiptranslate {
+      display: none !important;
     }
     #goog-gt-tt, 
     .goog-te-balloon-frame {
@@ -300,10 +321,8 @@
       <a href="nft-projects.html">NFT Projects</a>
     </div>
     <div class="header-right">
-      <!-- 國際化：已替換成 Google Translation 下拉選單 -->
-      <div class="translate-wrapper">
-        <div id="google_translate_element"></div>
-      </div>
+      <!-- 國際化：已替換成 index-global.html 最新的 Google Translation 下拉組件容器 -->
+      <div id="google_translate_element"></div>
       <button class="btn-connect" id="connect-btn">Connect Wallet</button>
     </div>
   </header>
@@ -355,18 +374,7 @@
   </footer>
 
   <!-- Audio BGM -->
-  <audio id="bgm" src="https://neoxcoin.github.io/puzzle-game-bright-casual-video-game-music-249202.mp3" loop preload="auto"></audio>
-
-  <!-- Google Translate 引擎初始化腳本 -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en', 
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <audio id="bgm" src="https://neoxcoin.github.io/puzzle-game-bright-casual-video-game-music-249202.mp3" loop preload="auto"></auto>
 
   <script>
     // 1. Video Fade-in logic
