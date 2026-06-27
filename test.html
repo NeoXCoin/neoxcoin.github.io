@@ -409,17 +409,18 @@
     }
 
     // 更新掣嘅狀態
+    // 更新掣嘅狀態
     function updateButton(address) {
         if (address) {
-            // 連線後：顯示縮短地址 + Disconnect 提示
+            // 連線後：純粹顯示縮短地址，保持畫面極簡乾淨
             const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
-            connectBtn.innerText = `${shortAddress} (Disconnect)`;
+            connectBtn.innerText = shortAddress;
             connectBtn.style.color = "#00ffcc";
             connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
         } else {
             // 斷開後：還原返做 Connect Wallet 掣
             connectBtn.innerText = "Connect Wallet";
-            connectBtn.style.color = "#00ffcc"; // 直接用返你的 Cyberpunk Teal 色碼
+            connectBtn.style.color = "#00ffcc"; 
             connectBtn.style.borderColor = "rgba(0, 255, 204, 0.3)";
         }
     }
