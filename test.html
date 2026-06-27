@@ -66,7 +66,7 @@
             letter-spacing: -0.01em;
             overflow-x: hidden;
             padding-bottom: 50px;
-            top: 0px !important; /* 防止 Google Translate 導向時頁面下移 */
+            top: 0px !important; /* 核心防止 top bar 留白 setting */
         }
 
         a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
@@ -111,11 +111,14 @@
             outline: none !important;
             cursor: pointer;
         }
-        /* 隱藏原生自帶的頂部 Banner 橫條 */
+        /* 徹底隱藏 Google Translate 頂部自帶的白色橫條 */
         .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame {
             display: none !important;
         }
-        .goog-te-balloon-frame, .goog-tooltip {
+        iframe.goog-te-banner-frame {
+            display: none !important;
+        }
+        body > .skiptranslate {
             display: none !important;
         }
         
@@ -126,10 +129,10 @@
         }
         .btn-connect:hover { background: rgba(0, 255, 204, 0.05); box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); }
 
-        /* --- 遊戲主內容排版區（已同步拉高 Title 位置） --- */
+        /* --- 遊戲主內容排版區（同步優化排版） --- */
         .container {
             max-width: 1200px; margin: 0 auto; 
-            padding: 110px 20px 40px 20px; /* 整體往上提，緊貼導航欄 */
+            padding: 110px 20px 40px 20px; /* 完美排版高度 */
             display: flex; flex-direction: column; align-items: center;
         }
 
@@ -175,7 +178,7 @@
             opacity: 0; transition: opacity .8s ease;
         }
         .hero video.loaded { opacity: 1; }
-        .hero .fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3,1,10,0) 60%, rgba(3,1,10,0.8) 100%); pointer-events: none; }
+        .hero .fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(3, 1, 10, 0) 60%, rgba(3, 1, 10, 0.8) 100%); pointer-events: none; }
         .hero .hero-link { position: absolute; inset: 0; z-index: 2; display: block; }
         
         @media (max-width: 480px) { .hero-ratio { padding-top: 100%; } }
@@ -315,18 +318,20 @@
     <!-- Audio BGM -->
     <audio id="bgm" src="https://neoxcoin.github.io/puzzle-game-bright-casual-video-game-music-249202.mp3" loop preload="auto"></audio>
 
-    <!-- 100% 同步 index-global.html 嘅 Google Translate 引擎初始化腳本 -->
+    <!-- 100% 同步 index-global.html 的 Google Translate 引擎初始化腳本 -->
     <script type="text/javascript">
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
                 pageLanguage: 'en',
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                /* 這裏的特定語言設置將由 Google 部件根據 index-global.html 的 includedLanguages 自動加載 */
             }, 'google_translate_element');
         }
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
     <script>
+        /* 保留智能背景音樂解鎖和 wallet connection 邏輯 */
         // 1. Video Fade-in logic
         (function(){
             const v = document.querySelector('.hero video');
