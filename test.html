@@ -310,6 +310,29 @@
             color: #fff;
         }
 
+        .social-icons { margin-bottom: 25px; }
+        .social-icons img {
+            /* 1. 將本來的 22px 稍微縮小一點點（例如 18px），配合 padding 後總體大小就跟原本一樣了 */
+            width: 18px;
+            height: 18px; 
+            margin: 0 15px;
+    
+            /* 2. 核心：將 padding 縮細，圓框就會緊貼住 Logo，唔會好似大得滯 */
+            padding: 4px; 
+    
+            /* 圓框設定保持 */
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+            border-radius: 50%; 
+    
+            /* 之前你調校好的深灰色濾鏡 */
+            filter: grayscale(100%) brightness(0.7); 
+            opacity: 0.9; 
+    
+            transition: all 0.2s ease;
+            box-sizing: content-box; 
+        }
+
         /* Hover 效果保持不變 */
         .social-icons img:hover {
             filter: grayscale(0%) brightness(1); 
