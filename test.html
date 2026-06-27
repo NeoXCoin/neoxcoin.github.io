@@ -158,25 +158,26 @@
             animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
         }
 
-        /* --- 3. Video Exhibition Frame --- */
+        /* 1. 外層容器：保持原本你覺得好看的 16:9 比例，並把多出來的底端切掉 */
         .iframe-container {
             width: 100%;
             max-width: 900px;
             margin: 0 auto 30px;
             border-radius: 16px;
-            overflow: hidden;
+            overflow: hidden; /* 👈 重點：負責把藍條切掉不顯示 */
             background: var(--glass);
             border: 1px solid var(--border);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            aspect-ratio: 16 / 9; /* 👈 換回原本你最滿意的精緻比例 */
         }
 
-        .iframe-container:hover {
-            border-color: rgba(163, 112, 255, 0.3);
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.04);
+        /* 2. 內層 <iframe>：高度故意設定多一點，把底部藍條擠下去 */
+        .iframe-container iframe {
+           width: 100%;
+           height: calc(100% + 42px); /* 👈 讓它比外框高一點點，把藍條擠出去 */
+           border: none;
+           display: block;
         }
 
         video {
