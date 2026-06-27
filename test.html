@@ -243,26 +243,6 @@
             color: var(--text-muted);
         }
 
-        /* --- 5. Footer --- */
-        .footer {
-            width: 100%;
-            border-top: 1px solid var(--border);
-            padding: 40px 0;
-            margin-top: 60px;
-            background: rgba(0,0,0,0.1);
-            font-size: 12px;
-            color: rgba(255,255,255,0.4);
-        }
-
-        .footer a {
-            color: var(--text-muted);
-            margin: 0 8px;
-        }
-
-        .footer a:hover {
-            color: var(--text-main);
-        }
-
         /* --- Modal Style (Synced) --- */
         .modal {
             display: none;
@@ -311,6 +291,65 @@
         @media (max-width: 900px) {
             header { padding: 0 20px; }
             .tagline { font-size: 40px; }
+        }
+
+        /* Market Links */
+        .market-link { margin-top: 15px; font-size: 13px; color: var(--text-muted); }
+        .market-link a { margin: 0 5px; }
+        .market-link a:hover { color: var(--primary); }
+
+        /* --- 5. Footer --- */
+        footer {
+          width: 100%;
+          border-top: 1px solid var(--border);
+          padding: 40px 0;
+          margin-top: 50px;
+          background: rgba(0,0,0,0.1);
+        }
+
+        .social-icons { margin-bottom: 25px; }
+        .social-icons img {
+            /* 1. 將本來的 22px 稍微縮小一點點（例如 18px），配合 padding 後總體大小就跟原本一樣了 */
+            width: 18px;
+            height: 18px; 
+            margin: 0 15px;
+    
+            /* 2. 核心：將 padding 縮細，圓框就會緊貼住 Logo，唔會好似大得滯 */
+            padding: 4px; 
+    
+            /* 圓框設定保持 */
+            background: rgba(255, 255, 255, 0.05); 
+            border: 1px solid rgba(255, 255, 255, 0.15); 
+            border-radius: 50%; 
+    
+            /* 之前你調校好的深灰色濾鏡 */
+            filter: grayscale(100%) brightness(0.7); 
+            opacity: 0.9; 
+    
+            transition: all 0.2s ease;
+            box-sizing: content-box; 
+        }
+
+        /* Hover 效果保持不變 */
+        .social-icons img:hover {
+            filter: grayscale(0%) brightness(1); 
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.15); 
+            border-color: rgba(255, 255, 255, 0.4); 
+            transform: scale(1.1);
+        }
+    
+        .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+        .footer-links a { margin: 0 8px; }
+        .footer-links a:hover { color: var(--text-main); }
+        .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+
+        /* --- Responsive Viewport Adaptation --- */
+        @media (max-width: 900px) {
+          header { padding: 0 20px; }
+          .nav-links { display: none; }
+          .tagline { font-size: 40px; }
+          .ecosystem-grid { grid-template-columns: 1fr; gap: 15px; }
         }
     </style>
 
@@ -379,11 +418,19 @@
         <!-- Notice -->
         <p class="notice">💡 The current exhibition is free to explore. Tickets will be introduced in future events.</p>
 
-        <!-- Footer -->
-        <div class="footer">
-            © 2025 NeoX. All rights reserved. | <a href="disclaimer-en.html">Disclaimer</a>
-        </div>
-    </div>
+        <footer>
+            <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+            <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+            <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+         </div>
+          <div class="footer-links">
+            <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
+          </div>
+         <div class="copyright">© 2025 NeoX. All rights reserved.</div>
+        </footer>
 
     <!-- Modal -->
     <div id="ticketModal" class="modal">
