@@ -1,558 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Favicon (ICO + SVG + Apple Icon) -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX Metaverse Exhibition – Global Portal</title>
-  <meta name="description" content="Step into the NeoX Metaverse Exhibition — a dynamic virtual gallery blending NFTs, art, and immersive 3D experiences. Explore futuristic visuals and digital creativity with multi-language support." />
-
-  <!-- Fonts Connect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- 🌐 Google Translate Script (Exactly same as index-global.html) -->
-  <script>
-    function googleTranslateElementInit(){
-      new google.translate.TranslateElement({
-        pageLanguage: 'en', 
-        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
-        autoDisplay: false, 
-        multilanguagePage: true 
-      }, 'google_translate_element');
-    }
-  </script>
-  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
-
-  <style>
-    :root {
-      --bg-dark: #03010a; /* Deep cosmic space */
-      --text-main: #ffffff;
-      --text-muted: rgba(255, 255, 255, 0.7);
-      --primary: #a370ff; /* Royal Violet */
-      --secondary: #00ffcc; /* Cyberpunk Teal */
-      --glass: rgba(255, 255, 255, 0.03);
-      --border: rgba(255, 255, 255, 0.08);
-      --font-stack: 'Plus Jakarta Sans', sans-serif;
-    }
-
-    body {
-      margin: 0;
-      background: radial-gradient(circle at center, #110526 0%, var(--bg-dark) 100%);
-      background-image: radial-gradient(circle at center, #110526 0%, var(--bg-dark) 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
-      font-family: var(--font-stack);
-      color: var(--text-main);
-      text-align: center;
-      -webkit-font-smoothing: antialiased;
-      letter-spacing: -0.01em;
-      overflow-x: hidden;
-
-      /* Google Translate Tweak Overrides (Same as index-global.html) */
-      top: 0 !important;
-      position: static !important;
-      margin-top: 0 !important;
-    }
-
-    /* 徹底隱藏 Google 翻譯頂部自帶的白色橫條 (Same as index-global.html) */
-    .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame {
-      display: none !important;
-      visibility: hidden !important;
-      height: 0 !important;
-      width: 0 !important;
-    }
-    iframe.goog-te-banner-frame {
-      display: none !important;
-    }
-    body > .skiptranslate {
-      display: none !important;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s ease;
-    }
-
-    /* --- 1. Sticky Header --- */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 50px;
-      background: rgba(7, 2, 20, 0.6);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      box-sizing: border-box;
-    }
-
-    .nav-logo {
-      height: 32px;
-      opacity: 0.9;
-    }
-
-    .nav-logo:hover {
-      opacity: 1;
-    }
-
-    .header-right {
-      display: flex;
-      align-items: center;
-      gap: 15px; /* Tuned to match index-global header alignment */
-    }
-
-    /* Custom Black Pill Styling for Google Widget (Exactly same as index-global.html) */
-    #google_translate_element {
-      display: inline-block;
-      padding: 2px 6px;
-      border-radius: 20px;
-      background: rgba(0, 0, 0, 0.4);
-      border: 1px solid var(--border);
-    }
-    #google_translate_element .goog-te-gadget {
-      font-size: 12px !important;
-      color: #fff !important;
-    }
-    #google_translate_element .goog-te-gadget span {
-      display: none !important;
-    }
-    #google_translate_element select {
-      background: transparent !important;
-      color: #fff !important;
-      border: none !important;
-      font-size: 12px !important;
-      padding: 4px 6px !important;
-      outline: none !important;
-      cursor: pointer;
-    }
-
-    /* Connect Wallet Button */
-    .btn-connect {
-      font-size: 13px;
-      font-weight: 600;
-      padding: 8px 18px;
-      border-radius: 999px;
-      background: transparent;
-      color: var(--secondary);
-      border: 1px solid rgba(0, 255, 204, 0.3);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-connect:hover {
-      background: rgba(0, 255, 204, 0.05);
-      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
-    }
-
-    /* --- Main Container --- */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 110px 20px 50px 20px; /* Slightly adjusted padding to give global widget breathing room */
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* --- 2. Title Section & Animations --- */
-    @keyframes fadeInUpLoopSlow {
-      0% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-      18% { opacity: 1; transform: translateY(0); filter: blur(0); }
-      86% { opacity: 1; transform: translateY(0); filter: blur(0); }
-      93% { opacity: 0; transform: translateY(-12px); filter: blur(6px); }
-      100% { opacity: 0; transform: translateY(25px); filter: blur(8px); }
-    }
-
-    @keyframes textShimmer {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .tagline {
-      font-size: 56px;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 15px;
-      background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite, textShimmer 4s linear infinite;
-    }
-
-    .subtagline {
-      font-size: 18px;
-      color: var(--text-muted);
-      font-weight: 400;
-      margin-bottom: 40px;
-      max-width: 600px;
-      animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
-    }
-
-    .iframe-container {
-      width: 100%;
-      max-width: 900px;
-      margin: 0 auto 30px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: var(--glass);
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      position: relative;
-      aspect-ratio: 16 / 9;
-    }
-
-    .iframe-container iframe {
-      width: 100%;
-      height: calc(100% + 42px);
-      border: none;
-      display: block;
-    }
-
-    /* --- 4. Buttons --- */
-    .btn-row {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      margin-bottom: 25px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 14px 30px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-width: 190px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-sizing: border-box;
-    }
-
-    .btn-primary {
-      background: #ffffff;
-      color: #000000;
-      border: none;
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 5px 20px rgba(255, 255, 255, 0.15);
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      background: var(--glass);
-      border-color: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
-    }
-
-    .notice {
-      margin-top: 15px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    /* --- Modal Style --- */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 2000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(3, 1, 10, 0.8);
-      backdrop-filter: blur(8px);
-    }
-
-    .modal-content {
-      background: #070214;
-      margin: 15% auto;
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      width: 80%;
-      max-width: 400px;
-      color: white;
-      box-shadow: 0 0 20px rgba(163, 112, 255, 0.2);
-      text-align: center;
-      position: relative;
-    }
-
-    .modal-content h2 {
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
-
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 20px;
-      color: #aaa;
-      font-size: 28px;
-      cursor: pointer;
-    }
-
-    .close:hover {
-      color: #fff;
-    }
-
-    @media (max-width: 900px) {
-      header {
-        padding: 0 10px !important;
-        gap: 8px !important;
-      }
-      .header-right {
-        gap: 8px !important;
-      }
-      header button[onclick*="window.open"] {
-        font-size: 0 !important;
-        padding: 6px 10px !important;
-      }
-      header button[onclick*="window.open"]::after {
-        content: "Live 🚀";
-        font-size: 11px !important;
-      }
-      .btn-connect {
-        font-size: 11px !important;
-        padding: 6px 10px !important;
-        white-space: nowrap !important;
-      }
-      .container {
-        padding-top: 95px;
-      }
-      .tagline {
-        font-size: 36px;
-      }
-    }
-
-    /* --- 5. Footer --- */
-    footer {
-      width: 100%;
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      margin-top: 50px;
-      background: rgba(0,0,0,0.1);
-    }
-
-    .social-icons {
-      margin-bottom: 25px;
-    }
-
-    .social-icons img {
-      width: 18px;
-      height: 18px;
-      margin: 0 15px;
-      padding: 4px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 50%;
-      filter: grayscale(100%) brightness(0.7);
-      opacity: 0.9;
-      transition: all 0.2s ease;
-      box-sizing: content-box;
-    }
-
-    .social-icons img:hover {
-      filter: grayscale(0%) brightness(1);
-      opacity: 1;
-      background: rgba(255, 255, 255, 0.15);
-      border-color: rgba(255, 255, 255, 0.4);
-      transform: scale(1.1);
-    }
-
-    .footer-links {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-
-    .footer-links a {
-      margin: 0 8px;
-    }
-
-    .footer-links a:hover {
-      color: var(--text-main);
-    }
-
-    .copyright {
-      font-size: 12px;
-      color: rgba(255,255,255,0.4);
-    }
-  </style>
-
-  <!-- 🎥 Video SEO structured data -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "VideoObject",
-      "name": "NeoX Metaverse Exhibition – Dynamic Visual Experience",
-      "description": "An evolving visual journey showcasing the NeoX Metaverse world in 3D. Updated regularly with new digital environments and NFT artworks.",
-      "thumbnailUrl": "https://neoxcoin.github.io/XNXC.png",
-      "uploadDate": "2025-11-08",
-      "contentUrl": "https://neoxcoin.github.io/NeoXDynamicVisions%20.mp4",
-      "publisher": {
-        "@type": "Organization",
-        "name": "NeoX",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://neoxcoin.github.io/XNXC.png"
+    <!-- Favicon (ICO + SVG + Apple Icon) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <!-- SEO -->
+    <title>NeoX Game – Catch the Coins & Master the Web3 Arcade</title>
+    <meta name="description" content="Step into the NeoX Game — a next-gen Web3 arcade where players test their reflexes, collect NXC energy, and explore the future of decentralized gaming." />
+    <meta name="keywords" content="NeoX, NeoX Game, NXC, Web3 Arcade, Catch the Coins, Base Mainnet, NFT, Token, Gaming" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="NeoX" />
+    
+    <!-- Multi-language SEO -->
+    <link rel="alternate" href="https://neoxcoin.io/game.html" hreflang="en" />
+    <link rel="alternate" href="https://neoxcoin.io/game-zh.html" hreflang="zh-Hant" />
+    <link rel="alternate" href="https://neoxcoin.io/game-global.html" hreflang="x-default" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="NeoX Game – Catch the Coins & Master the Web3 Arcade" />
+    <meta property="og:description" content="Play NeoX Game — collect NXC energy and challenge your reflexes in the next evolution of Web3 gaming." />
+    <meta property="og:image" content="https://neoxcoin.io/XNXC.png" />
+    <meta property="og:url" content="https://neoxcoin.io/game.html" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NeoX Game – Catch the Coins & Master the Web3 Arcade" />
+    <meta name="twitter:description" content="Play NeoX Game — collect NXC energy and experience the next generation of Web3 arcade fun." />
+    <meta name="twitter:image" content="https://neoxcoin.io/XNXC.png" />
+    
+    <style>
+        :root {
+            --bg1: #0a0a2a;
+            --bg2: #050519;
+            --gold1: #ffd36b;
+            --gold2: #ffb800;
+            --glass: rgba(255,255,255,.08);
+            --glass-bd: rgba(255,255,255,.18);
+            --cyan: #00d9ff;
         }
-      }
+        
+        * { box-sizing: border-box; }
+        
+        html, body { height: 100%; }
+        
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
+            background: radial-gradient(circle at center, var(--bg1) 0%, var(--bg2) 100%);
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+            padding: 40px 20px;
+        }
+        
+        /* Header elements */
+        .logo { position: absolute; top: 20px; left: 20px; width: 60px; opacity: .95; transition: opacity 0.2s; }
+        .logo:hover { opacity: 1; }
+        
+        .language-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 14px;
+            background: rgba(0,0,0,.45);
+            border: 1px solid rgba(0,217,255,.35);
+            border-radius: 10px;
+            padding: 6px 12px;
+            box-shadow: 0 0 14px rgba(0,217,255,.18);
+            z-index: 10;
+        }
+        .language-switch a { color: #fff; text-decoration: none; margin: 0 6px; transition: color 0.2s; }
+        .language-switch a:hover, .language-switch a.active { color: var(--cyan); }
+        
+        header { padding-top: 80px; }
+        h1 { font-size: clamp(26px, 5vw, 40px); margin: 10px 0 8px; letter-spacing: 1px; }
+        p.subtitle { opacity: .85; font-size: clamp(14px, 2vw, 18px); margin-bottom: 24px; }
+        
+        /* Hero video */
+        .hero {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,.45);
+            background: radial-gradient(1100px 340px at 50% 100%, rgba(0,152,255,.14), transparent);
+        }
+        .hero-ratio { position: relative; padding-top: 56.25%; }
+        .hero video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.05) saturate(1.08);
+            opacity: 0;
+            transition: opacity .8s ease;
+        }
+        .hero video.loaded { opacity: 1; }
+        .hero .fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(5,7,20,.78) 100%); pointer-events: none; }
+        .hero .hero-link { position: absolute; inset: 0; z-index: 2; display: block; }
+        
+        @media (max-width: 480px) {
+            .hero-ratio { padding-top: 100%; }
+        }
+        
+        .overlay-text { margin-top: 24px; }
+        .overlay-text h2 { font-size: clamp(22px, 4vw, 32px); margin-bottom: 10px; }
+        .overlay-text p { opacity: .9; font-size: clamp(14px, 2vw, 18px); margin-bottom: 18px; line-height: 1.6; }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            margin: 10px 12px;
+            padding: 14px 30px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 999px;
+            position: relative;
+            background: linear-gradient(90deg, var(--gold1), var(--gold2));
+            color: #0a0b1f;
+            box-shadow: 0 6px 18px rgba(255,184,0,.35), inset 0 1px 0 #fff4cc;
+            transition: transform .15s ease, box-shadow .15s ease;
+            width: clamp(200px, 70%, 300px);
+            text-align: center;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(255,184,0,.45); }
+        
+        .btn-home {
+            background: rgba(255,255,255,.08) !important;
+            color: #fff !important;
+            border: 1px solid var(--glass-bd);
+            backdrop-filter: blur(6px);
+            box-shadow: 0 10px 24px rgba(255,184,0,.15);
+        }
+        .btn-home:hover { box-shadow: 0 14px 32px rgba(255,184,0,.3), inset 0 1px 0 #fff4cc; }
+        .btn-home::after {
+            content: ''; position: absolute; left: 50%; bottom: -8px; width: 80%; height: 12px;
+            transform: translateX(-50%); border-radius: 50%;
+            background: radial-gradient(ellipse at center, rgba(255,184,0,.45), transparent 70%);
+            filter: blur(8px); opacity: .5; pointer-events: none;
+        }
+        
+        /* Audio Control Audio Mute Button */
+        .audio-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--glass-bd);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            transition: background 0.2s;
+        }
+        .audio-toggle:hover { background: rgba(255,255,255,0.15); }
+
+        footer { margin-top: 40px; padding: 20px; font-size: 13px; opacity: .6; }
+    </style>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": "NeoX Catch the Coins – Global Play-to-Earn Game",
+        "description": "Join the NeoX Catch the Coins Game – an interactive play-to-earn Web3 experience. Collect NeoX Coins, unlock hidden levels, and rise on the global leaderboard!",
+        "thumbnailUrl": "https://neoxcoin.github.io/NeoXGamePage.png",
+        "uploadDate": "2025-11-08T00:00:00-05:00",
+        "duration": "PT0M30S",
+        "contentUrl": "https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4",
+        "embedUrl": "https://neoxcoin.io/game.html",
+        "publisher": {
+            "@type": "Organization",
+            "name": "NeoX",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://neoxcoin.github.io/XNXC.png"
+            }
+        }
     }
-  </script>
+    </script>
 </head>
 <body>
-
-  <!-- 1. Sticky Header -->
-  <header>
-    <a href="index-global.html">
-      <img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo">
+    <a href="/" aria-label="Back to Home">
+        <img class="logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo">
     </a>
-    <div class="header-right">
-      <!-- 🌐 Google Translate Container Widget -->
-      <div id="google_translate_element"></div>
-
-      <button onclick="window.open('https://oncyber.io/neoxdynamic','_blank')" style="
-        font-size: 13px;
-        font-weight: 600;
-        padding: 8px 16px;
-        border-radius: 999px;
-        background: rgba(255, 255, 255, 0.05);
-        color: #ffffff;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        cursor: pointer;
-        transition: all 0.2s;
-      " onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.15)';">
-        Fullscreen 🚀
-      </button>
-      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+    
+    <div class="language-switch">
+        <a class="active" href="/game.html">EN</a> | 
+        <a href="/game-zh.html">繁</a> | 
+        <a href="/game-global.html">Global</a>
     </div>
-  </header>
-
-  <div class="container">
-    <!-- 2. Animated Aurora Tagline -->
-    <h1 class="tagline">NeoX Metaverse Exhibition</h1>
-    <p class="subtagline">Immersive galleries, art & motion</p>
-
-    <!-- 🌐 Live Interactive OnCyber Frame -->
-    <div class="iframe-container">
-      <iframe src="https://oncyber.io/neoxdynamic" width="100%" height="100%" allow="fullscreen; xr-spatial-tracking; gyroscope; accelerometer;" sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
-      </iframe>
+    
+    <header>
+        <h1 class="tagline">NeoX Game</h1>
+        <p class="subtitle">Catch coins, climb the leaderboard, win glory</p>
+    </header>
+    
+    <section class="hero" aria-label="NeoX Catch preview">
+        <div class="hero-ratio">
+            <a class="hero-link stop-bgm" href="https://neoxcoin.github.io/neox-game/iframe" target="_blank" rel="noopener" aria-label="Play NeoX Game"></a>
+            <video autoplay muted loop playsinline preload="metadata" poster="https://neoxcoin.github.io/NeoXGamePage.png" aria-hidden="true">
+                <source src="https://neoxcoin.github.io/NeoXcatchcoinAnimation.MP4" type="video/mp4">
+                <img src="https://neoxcoin.github.io/NeoXGamePage.png" alt="NeoX Game Preview" style="width:100%;height:100%;object-fit:cover;">
+            </video>
+            <div class="fade" aria-hidden="true"></div>
+        </div>
+    </section>
+    
+    <div class="overlay-text">
+        <h2>🎮 NeoX Catch</h2>
+        <p>
+            Step into the NeoX Universe and test your reflexes!<br/>
+            Catch as many NeoX Coins as you can before time runs out —<br/>
+            every coin counts toward your score and leaderboard rank.
+        </p>
+        <a href="https://neoxcoin.github.io/neox-game/iframe" class="btn stop-bgm" target="_blank" rel="noopener">▶ Play Now</a>
+        <a href="/" class="btn btn-home">← Back to Home</a>
     </div>
+    
+    <button class="audio-toggle" id="audioToggle">🎵 Music: Off</button>
 
-    <!-- Buttons -->
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="openModal();">🎟️ Buy Ticket</button>
-      <a class="btn btn-secondary" href="index-global.html">← Back to Home</a>
-    </div>
+    <footer>&copy; 2026 NeoX. All rights reserved.</footer>
 
-    <!-- Notice -->
-    <p class="notice">💡 The current exhibition is free to explore. Tickets will be introduced in future events.</p>
+    <!-- Audio BGM -->
+    <audio id="bgm" src="https://neoxcoin.github.io/puzzle-game-bright-casual-video-game-music-249202.mp3" loop preload="auto"></audio>
 
-    <footer>
-      <div class="social-icons">
-        <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
-        <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
-        <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
-        <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
-        <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
-      </div>
-      <div class="footer-links">
-        <a href="about-global.html">About</a> | <a href="faq-global.html">FAQ</a> | <a href="token-info-global.html">Token Info</a> | <a href="neox-wiki-global.html">Wiki</a> | <a href="disclaimer-global.html">Disclaimer</a>
-      </div>
-      <div class="copyright">© 2025 NeoX. All rights reserved.</div>
-    </footer>
-  </div>
+    <script>
+        // 1. Video Fade-in logic
+        (function(){
+            const v = document.querySelector('.hero video');
+            if(!v) return;
+            function onReady(){ v.classList.add('loaded'); }
+            if (v.readyState >= 2) { onReady(); } else {
+                v.addEventListener('loadeddata', onReady, {once:true});
+                v.addEventListener('canplay', onReady, {once:true});
+            }
+        })();
 
-  <!-- Modal -->
-  <div id="ticketModal" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <h2>🎟️ Tickets Not Available</h2>
-      <p>Stay tuned for upcoming exclusive NeoX events!</p>
-    </div>
-  </div>
+        // 2. Optimized Audio Engine
+        (function(){
+            const bgm = document.getElementById('bgm');
+            const audioToggle = document.getElementById('audioToggle');
+            let isMuted = true;
 
-  <!-- Scripts -->
-  <script>
-    function openModal() { document.getElementById("ticketModal").style.display = "block"; }
-    function closeModal() { document.getElementById("ticketModal").style.display = "none"; }
-    window.onclick = function(event) {
-      let modal = document.getElementById("ticketModal");
-      if (event.target == modal) { closeModal(); }
-    }
+            bgm.volume = 0;
+            bgm.muted = true;
+            bgm.play().catch(()=>{});
 
-    // --- Connect Wallet Script ---
-    const connectBtn = document.getElementById('connect-btn');
-    async function checkConnection() {
-      if (typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-        if (accounts.length > 0) { updateButton(accounts[0]); }
-      }
-    }
+            function unlockAudio() {
+                if(isMuted) {
+                    isMuted = false;
+                    bgm.muted = false;
+                    bgm.volume = 0.6;
+                    audioToggle.textContent = "🔊 Music: On";
+                    bgm.play().catch(()=>{});
+                }
+                ['pointerdown', 'keydown'].forEach(ev => window.removeEventListener(ev, unlockAudio));
+            }
+            ['pointerdown', 'keydown'].forEach(ev => window.addEventListener(ev, unlockAudio, { once: true, passive: true }));
 
-    // Fixed original translation to match English context logic
-    function updateButton(address) {
-      const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
-      connectBtn.innerText = shortAddress;
-      connectBtn.style.color = "#00ffcc";
-      connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
-    }
+            // Manual Mute Toggle
+            audioToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (bgm.paused || bgm.muted || bgm.volume === 0) {
+                    bgm.muted = false;
+                    bgm.volume = 0.6;
+                    bgm.play().catch(()=>{});
+                    audioToggle.textContent = "🔊 Music: On";
+                    isMuted = false;
+                } else {
+                    bgm.pause();
+                    audioToggle.textContent = "🔇 Music: Off";
+                    isMuted = true;
+                }
+            });
 
-    connectBtn.addEventListener('click', async () => {
-      if (typeof window.ethereum !== 'undefined') {
-        try {
-          connectBtn.innerText = "Connecting...";
-          const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-          updateButton(accounts[0]);
-        } catch (error) {
-          console.error(error);
-          connectBtn.innerText = "Connect Wallet";
-        }
-      } else {
-        alert("Web3 wallet not detected. Redirecting to MetaMask download page...");
-        window.open('https://metamask.io/download/', '_blank');
-      }
-    });
-    window.addEventListener('DOMContentLoaded', checkConnection);
+            function stopBgm(){
+                try { bgm.pause(); } catch(e){}
+                bgm.currentTime = 0;
+                audioToggle.textContent = "🔇 Music: Off";
+            }
 
-    // 🔍 Detect IG / Threads browser
-    (function() {
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
-      if (ua.includes("Instagram") || ua.includes("Threads")) {
-        const container = document.querySelector(".iframe-container");
-        container.innerHTML = `
-          <div style="padding:40px 20px; background:#070214; border:1px solid var(--border); border-radius:16px; color:#fff;">
-            <h2 style="color:var(--secondary); margin-top:0;">⚠️ Browser Not Supported</h2>
-            <p style="color:var(--text-muted);">The Instagram / Threads in-app browser does not fully support this exhibition.<br> 👉 Please copy the link and open it in <b>Safari</b> or <b>Chrome</b> for the full experience.</p>
-            <a href="https://neoxcoin.github.io/metaverse-global.html" target="_blank" style="display:inline-block;margin-top:15px;padding:12px 24px; background:var(--secondary);color:#000;border-radius:8px;text-decoration:none;font-weight:600;">
-              Open in Browser
-            </a>
-          </div>
-        `;
-      }
-    })();
-  </script>
+            // Stop BGM when jumping into the game iframe
+            document.querySelectorAll('a.stop-bgm').forEach(a => {
+                ['pointerdown', 'click'].forEach(ev => a.addEventListener(ev, stopBgm, {passive:true}));
+            });
+
+            // Page Lifecycle audio sync
+            window.addEventListener('pagehide', stopBgm);
+            window.addEventListener('beforeunload', stopBgm);
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'hidden') {
+                    bgm.pause();
+                } else if (document.visibilityState === 'visible' && !isMuted) {
+                    bgm.play().catch(()=>{});
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
