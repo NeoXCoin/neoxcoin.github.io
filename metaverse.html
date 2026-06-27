@@ -158,25 +158,26 @@
             animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
         }
 
-        /* --- 3. Video Exhibition Frame --- */
+        /* 1. 外層容器：保持原本你覺得好看的 16:9 比例，並把多出來的底端切掉 */
         .iframe-container {
             width: 100%;
             max-width: 900px;
             margin: 0 auto 30px;
             border-radius: 16px;
-            overflow: hidden;
+            overflow: hidden; /* 👈 重點：負責把藍條切掉不顯示 */
             background: var(--glass);
             border: 1px solid var(--border);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            aspect-ratio: 16 / 9; /* 👈 換回原本你最滿意的精緻比例 */
         }
 
-        .iframe-container:hover {
-            border-color: rgba(163, 112, 255, 0.3);
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.04);
+        /* 2. 內層 <iframe>：高度故意設定多一點，把底部藍條擠下去 */
+        .iframe-container iframe {
+           width: 100%;
+           height: calc(100% + 42px); /* 👈 讓它比外框高一點點，把藍條擠出去 */
+           border: none;
+           display: block;
         }
 
         video {
@@ -289,8 +290,47 @@
         }
 
         @media (max-width: 900px) {
-            header { padding: 0 20px; }
-            .tagline { font-size: 40px; }
+            header { 
+               padding: 0 10px !important; 
+               gap: 8px !important;
+            }
+            .header-right {
+                gap: 8px !important;
+            }
+
+            /* 手機版隱藏 Global 選單以騰出空間，只保留 EN | 繁 */
+            .language-switch a[href*="global"],
+            .language-switch span:last-of-type {
+                display: none !important;
+            }
+            .language-switch {
+                font-size: 11px !important;
+                gap: 3px !important;
+            }
+
+            /* 將 Fullscreen 🚀 字眼縮短成 Live 🚀 確保排版不下墜 */
+            header button[onclick*="window.open"] {
+                font-size: 0 !important;
+                padding: 6px 10px !important;
+            }
+            header button[onclick*="window.open"]::after {
+                content: "Live 🚀";
+                font-size: 11px !important;
+            }
+
+            /* 縮小 Connect Wallet 按鈕 */
+            .btn-connect {
+                font-size: 11px !important;
+                padding: 6px 10px !important;
+                white-space: nowrap !important;
+            }
+
+            .container { 
+                padding-top: 85px; 
+            }
+            .tagline { 
+                font-size: 36px; 
+            }
         }
 
         /* Market Links */
@@ -389,24 +429,40 @@
                 <span class="lang-sep">|</span>
                 <a href="metaverse-global.html">Global</a>
             </div>
+        
+            <!-- 🚀 新增的 Fullscreen 按鈕：點擊直接在新分頁全螢幕開啟 OnCyber 展覽/遊戲 -->
+            <button onclick="window.open('https://oncyber.io/neoxdynamic','_blank')" style="
+                font-size: 13px;
+                font-weight: 600;
+                padding: 8px 16px;
+                border-radius: 999px;
+                background: rgba(255, 255, 255, 0.05);
+                color: #ffffff;
+                border: 1px solid rgba(255, 255, 255, 0.15);
+                cursor: pointer;
+                transition: all 0.2s;
+            " onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.15)';">
+                Fullscreen 🚀
+            </button>
+
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
     </header>
-
     <div class="container">
         <!-- 2. Animated Aurora Tagline -->
         <h1 class="tagline">NeoX Metaverse Exhibition</h1>
         <p class="subtagline">Immersive galleries, art & motion</p>
 
-        <!-- 🎬 Clickable Video Entrance -->
-        <div class="iframe-container" onclick="window.open('https://oncyber.io/neoxdynamic','_blank')">
-            <video autoplay muted loop playsinline preload="auto">
-                <source src="https://neoxcoin.github.io/NeoXDynamicVisions%20.mp4" type="video/mp4">
-            </video>
-            <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(3,1,10,0.7), rgba(3,1,10,0.15));"></div>
-            <div style="position:absolute; bottom:20px; left:50%; transform:translateX(-50%); color:var(--secondary); font-size:15px; font-weight:500; opacity:0.9; animation:floatHint 2s infinite;">
-                🚀 Tap to Enter NeoX Metaverse Exhibition
-            </div>
+        <!-- 🌐 Live Interactive OnCyber Frame -->
+        <div class="iframe-container" style="aspect-ratio: 16 / 9; height: auto;">
+            <iframe 
+                src="https://oncyber.io/neoxdynamic" 
+                width="100%" 
+                height="100%" 
+                style="border: none; display: block;" 
+                allow="fullscreen; xr-spatial-tracking; gyroscope; accelerometer;" 
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+            </iframe>
         </div>
 
         <!-- Buttons (Styled like index.html) -->
