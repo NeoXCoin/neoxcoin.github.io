@@ -34,17 +34,10 @@
     <meta name="twitter:description" content="Play NeoX Game — collect NXC energy and experience the next generation of Web3 arcade fun." />
     <meta name="twitter:image" content="https://neoxcoin.io/XNXC.png" />
 
-    <script>
-      function googleTranslateElementInit(){
-        new google.translate.TranslateElement({
-          pageLanguage: 'en', 
-          includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
-          autoDisplay: false, 
-          multilanguagePage: true 
-          }, 'google_translate_element');
-      }
-    </script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+    <!-- Google Fonts 同步 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         /* 100% 同步首頁嘅設計變數與風格 */
@@ -120,7 +113,6 @@
           font-size: 12px !important;
           padding: 4px 6px !important;
           outline: none !important;
-          cursor: pointer;
         }
         /* 隱藏鼠標懸停時的高亮文字框 */
         font {
@@ -270,7 +262,9 @@
         </div>
         <div class="header-right">
             <!-- 100% 精準對齊 index-global.html 嘅 Google 翻譯核心部件容器 -->
-            <div id="google_translate_element"></div>
+            <div class="google-translate-wrapper">
+                <div id="google_translate_element"></div>
+            </div>
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
     </header>
