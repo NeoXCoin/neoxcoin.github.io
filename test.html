@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="en">
 <head>
   <!-- Favicon (ICO + SVG + Apple Icon) -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -7,13 +7,26 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX 元宇宙展覽</title>
-  <meta name="description" content="步入 NeoX 元宇宙展覽 — 一個融合 NFT、藝術與沉浸式 3D 體驗的動態虛擬畫廊。探索來自 NeoX 宇宙的未來感視覺效果與數位創意。" />
+  <title>NeoX Metaverse Exhibition – Global Portal</title>
+  <meta name="description" content="Step into the NeoX Metaverse Exhibition — a dynamic virtual gallery blending NFTs, art, and immersive 3D experiences. Explore futuristic visuals and digital creativity with multi-language support." />
 
-  <!-- Fonts Connect (Same as index.html) -->
+  <!-- Fonts Connect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- 🌐 Google Translate Script (Exactly same as index-global.html) -->
+  <script>
+    function googleTranslateElementInit(){
+      new google.translate.TranslateElement({
+        pageLanguage: 'en', 
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+        autoDisplay: false, 
+        multilanguagePage: true 
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
   <style>
     :root {
@@ -37,6 +50,25 @@
       -webkit-font-smoothing: antialiased;
       letter-spacing: -0.01em;
       overflow-x: hidden;
+
+      /* Google Translate Tweak Overrides (Same as index-global.html) */
+      top: 0 !important;
+      position: static !important;
+      margin-top: 0 !important;
+    }
+
+    /* 徹底隱藏 Google 翻譯頂部自帶的白色橫條 (Same as index-global.html) */
+    .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame {
+      display: none !important;
+      visibility: hidden !important;
+      height: 0 !important;
+      width: 0 !important;
+    }
+    iframe.goog-te-banner-frame {
+      display: none !important;
+    }
+    body > .skiptranslate {
+      display: none !important;
     }
 
     a {
@@ -75,23 +107,32 @@
     .header-right {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 15px; /* Tuned to match index-global header alignment */
     }
 
-    /* Language Switcher */
-    .language-switch {
-      font-size: 13px;
-      color: var(--text-muted);
-      display: flex;
-      gap: 6px;
+    /* Custom Black Pill Styling for Google Widget (Exactly same as index-global.html) */
+    #google_translate_element {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid var(--border);
     }
-
-    .language-switch a:hover {
-      color: var(--text-main);
+    #google_translate_element .goog-te-gadget {
+      font-size: 12px !important;
+      color: #fff !important;
     }
-
-    .lang-sep {
-      opacity: 0.3;
+    #google_translate_element .goog-te-gadget span {
+      display: none !important;
+    }
+    #google_translate_element select {
+      background: transparent !important;
+      color: #fff !important;
+      border: none !important;
+      font-size: 12px !important;
+      padding: 4px 6px !important;
+      outline: none !important;
+      cursor: pointer;
     }
 
     /* Connect Wallet Button */
@@ -116,7 +157,7 @@
     .container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 75px 20px 50px 20px;
+      padding: 110px 20px 50px 20px; /* Slightly adjusted padding to give global widget breathing room */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -284,19 +325,12 @@
       .header-right {
         gap: 8px !important;
       }
-      .language-switch a[href*="global"], .language-switch span:last-of-type {
-        display: none !important;
-      }
-      .language-switch {
-        font-size: 11px !important;
-        gap: 3px !important;
-      }
       header button[onclick*="window.open"] {
         font-size: 0 !important;
         padding: 6px 10px !important;
       }
       header button[onclick*="window.open"]::after {
-        content: "直播 🚀";
+        content: "Live 🚀";
         font-size: 11px !important;
       }
       .btn-connect {
@@ -305,7 +339,7 @@
         white-space: nowrap !important;
       }
       .container {
-        padding-top: 85px;
+        padding-top: 95px;
       }
       .tagline {
         font-size: 36px;
@@ -372,8 +406,8 @@
     {
       "@context": "https://schema.org",
       "@type": "VideoObject",
-      "name": "NeoX 元宇宙展覽 – 動態視覺體驗",
-      "description": "一個展示 3D NeoX 元宇宙世界的動態視覺旅程。定期更新全新的數位環境與 NFT 藝術品。",
+      "name": "NeoX Metaverse Exhibition – Dynamic Visual Experience",
+      "description": "An evolving visual journey showcasing the NeoX Metaverse world in 3D. Updated regularly with new digital environments and NFT artworks.",
       "thumbnailUrl": "https://neoxcoin.github.io/XNXC.png",
       "uploadDate": "2025-11-08",
       "contentUrl": "https://neoxcoin.github.io/NeoXDynamicVisions%20.mp4",
@@ -392,17 +426,13 @@
 
   <!-- 1. Sticky Header -->
   <header>
-    <a href="index.html">
+    <a href="index-global.html">
       <img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo">
     </a>
     <div class="header-right">
-      <div class="language-switch">
-        <a href="metaverse.html">EN</a>
-        <span class="lang-sep">|</span>
-        <a href="metaverse-zh.html">繁</a>
-        <span class="lang-sep">|</span>
-        <a href="metaverse-global.html">Global</a>
-      </div>
+      <!-- 🌐 Google Translate Container Widget -->
+      <div id="google_translate_element"></div>
+
       <button onclick="window.open('https://oncyber.io/neoxdynamic','_blank')" style="
         font-size: 13px;
         font-weight: 600;
@@ -414,16 +444,16 @@
         cursor: pointer;
         transition: all 0.2s;
       " onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.3)';" onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.15)';">
-        全螢幕 🚀
+        Fullscreen 🚀
       </button>
-      <button class="btn-connect" id="connect-btn">連結錢包</button>
+      <button class="btn-connect" id="connect-btn">Connect Wallet</button>
     </div>
   </header>
 
   <div class="container">
     <!-- 2. Animated Aurora Tagline -->
-    <h1 class="tagline">NeoX 元宇宙展覽</h1>
-    <p class="subtagline">沉浸式虛擬畫廊、藝術與動態體驗</p>
+    <h1 class="tagline">NeoX Metaverse Exhibition</h1>
+    <p class="subtagline">Immersive galleries, art & motion</p>
 
     <!-- 🌐 Live Interactive OnCyber Frame -->
     <div class="iframe-container">
@@ -433,12 +463,12 @@
 
     <!-- Buttons -->
     <div class="btn-row">
-      <button class="btn btn-primary" onclick="openModal();">🎟️ 購買門票</button>
-      <a class="btn btn-secondary" href="index.html">← 返回首頁</a>
+      <button class="btn btn-primary" onclick="openModal();">🎟️ Buy Ticket</button>
+      <a class="btn btn-secondary" href="index-global.html">← Back to Home</a>
     </div>
 
     <!-- Notice -->
-    <p class="notice">💡 目前展覽可免費探索。未來特定活動將會引入門票機制。</p>
+    <p class="notice">💡 The current exhibition is free to explore. Tickets will be introduced in future events.</p>
 
     <footer>
       <div class="social-icons">
@@ -449,9 +479,9 @@
         <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
       </div>
       <div class="footer-links">
-        <a href="about.html">關於我們</a> | <a href="faq.html">常見問題</a> | <a href="token-info.html">代幣資料</a> | <a href="neox-wiki.html">維基百科</a> | <a href="disclaimer-en.html">免責聲明</a>
+        <a href="about-global.html">About</a> | <a href="faq-global.html">FAQ</a> | <a href="token-info-global.html">Token Info</a> | <a href="neox-wiki-global.html">Wiki</a> | <a href="disclaimer-global.html">Disclaimer</a>
       </div>
-      <div class="copyright">© 2025 NeoX. 版權所有。</div>
+      <div class="copyright">© 2025 NeoX. All rights reserved.</div>
     </footer>
   </div>
 
@@ -459,8 +489,8 @@
   <div id="ticketModal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="closeModal()">&times;</span>
-      <h2>🎟️ 門票尚未發售</h2>
-      <p>請密切留意即將推出的 NeoX 特別活動！</p>
+      <h2>🎟️ Tickets Not Available</h2>
+      <p>Stay tuned for upcoming exclusive NeoX events!</p>
     </div>
   </div>
 
@@ -482,6 +512,7 @@
       }
     }
 
+    // Fixed original translation to match English context logic
     function updateButton(address) {
       const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
       connectBtn.innerText = shortAddress;
@@ -492,15 +523,15 @@
     connectBtn.addEventListener('click', async () => {
       if (typeof window.ethereum !== 'undefined') {
         try {
-          connectBtn.innerText = "連結中...";
+          connectBtn.innerText = "Connecting...";
           const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
           updateButton(accounts[0]);
         } catch (error) {
           console.error(error);
-          connectBtn.innerText = "連結錢包";
+          connectBtn.innerText = "Connect Wallet";
         }
       } else {
-        alert("未偵測到 Web3 錢包。正重新導向至 MetaMask 下載頁面...");
+        alert("Web3 wallet not detected. Redirecting to MetaMask download page...");
         window.open('https://metamask.io/download/', '_blank');
       }
     });
@@ -513,10 +544,10 @@
         const container = document.querySelector(".iframe-container");
         container.innerHTML = `
           <div style="padding:40px 20px; background:#070214; border:1px solid var(--border); border-radius:16px; color:#fff;">
-            <h2 style="color:var(--secondary); margin-top:0;">⚠️ 不支援此瀏覽器</h2>
-            <p style="color:var(--text-muted);">Instagram / Threads 內建瀏覽器無法正常顯示此展覽。<br> 👉 請複製網址並使用 <b>Safari</b> 或 <b>Chrome</b> 開啟以獲得完整體驗。</p>
-            <a href="https://neoxcoin.github.io/metaverse-zh.html" target="_blank" style="display:inline-block;margin-top:15px;padding:12px 24px; background:var(--secondary);color:#000;border-radius:8px;text-decoration:none;font-weight:600;">
-              在瀏覽器開啟
+            <h2 style="color:var(--secondary); margin-top:0;">⚠️ Browser Not Supported</h2>
+            <p style="color:var(--text-muted);">The Instagram / Threads in-app browser does not fully support this exhibition.<br> 👉 Please copy the link and open it in <b>Safari</b> or <b>Chrome</b> for the full experience.</p>
+            <a href="https://neoxcoin.github.io/metaverse-global.html" target="_blank" style="display:inline-block;margin-top:15px;padding:12px 24px; background:var(--secondary);color:#000;border-radius:8px;text-decoration:none;font-weight:600;">
+              Open in Browser
             </a>
           </div>
         `;
