@@ -391,95 +391,64 @@
 
   <script>
     const connectBtn = document.getElementById('connect-btn');
-let currentAccount = null; // 用嚟儲存當前連線嘅地址
+    let currentAccount = null; // 用嚟儲存當前連線嘅地址
 
-// 檢查原本有冇連線
-async function checkConnection() {
-    if (typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-        if (accounts.length > 0) {
-            currentAccount = accounts[0];
-            updateButton(currentAccount);
+    // 檢查原本有冇連線
+    async function checkConnection() {
+        if (typeof window.ethereum !== 'undefined') {
+            const accounts = await window.ethereum.request({ method: 'eth_accounts' });
+            if (accounts.length > 0) {
+                currentAccount = accounts[0];
+                updateButton(currentAccount);
+            }
         }
     }
-}
 
-// 更新掣嘅狀態
-function updateButton(address) {
-    if (address) {
-        // 連線後：顯示縮短地址，並話畀用戶聽撳落去可以 Disconnect
-        const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
-        connectBtn.innerText = `${shortAddress} (Disconnect)`;
-        connectBtn.style.color = "#00ffcc";
-        connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
-    } else {
-        // 斷開後：還原返做 Connect Wallet 掣
-        connectBtn.innerText = "Connect Wallet";
-        connectBtn.style.color = var(--secondary); // 跟你 CSS 嘅顏色
-        connectBtn.style.borderColor = "rgba(0, 255, 204, 0.3)";
-    }
-}
-
-// 撳掣嘅邏輯
-const connectBtn = document.getElementById('connect-btn');
-let currentAccount = null; // 用嚟儲存當前連線嘅地址
-
-// 檢查原本有冇連線
-async function checkConnection() {
-    if (typeof window.ethereum !== 'undefined') {
-        const accounts = await window.ethereum.request({ method: 'eth_accounts' });
-        if (accounts.length > 0) {
-            currentAccount = accounts[0];
-            updateButton(currentAccount);
+    // 更新掣嘅狀態
+    function updateButton(address) {
+        if (address) {
+            // 連線後：顯示縮短地址，並話畀用戶聽撳落去可以 Disconnect
+            const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
+            connectBtn.innerText = `${shortAddress} (Disconnect)`;
+            connectBtn.style.color = "#00ffcc";
+            connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
+        } else {
+            // 斷開後：還原返做 Connect Wallet 掣
+            connectBtn.innerText = "Connect Wallet";
+            connectBtn.style.color = var(--secondary); // 跟你 CSS 嘅顏色
+            connectBtn.style.borderColor = "rgba(0, 255, 204, 0.3)";
         }
     }
-}
 
-// 更新掣嘅狀態
-function updateButton(address) {
-    if (address) {
-        // 連線後：顯示縮短地址，並話畀用戶聽撳落去可以 Disconnect
-        const shortAddress = address.substring(0, 6) + "..." + address.substring(address.length - 4);
-        connectBtn.innerText = `${shortAddress} (Disconnect)`;
-        connectBtn.style.color = "#00ffcc";
-        connectBtn.style.borderColor = "rgba(0, 255, 204, 0.6)";
-    } else {
-        // 斷開後：還原返做 Connect Wallet 掣
-        connectBtn.innerText = "Connect Wallet";
-        connectBtn.style.color = var(--secondary); // 跟你 CSS 嘅顏色
-        connectBtn.style.borderColor = "rgba(0, 255, 204, 0.3)";
-    }
-}
+    // 撳掣嘅邏輯
+    connectBtn.addEventListener('click', async () => {
+        if (typeof window.ethereum !== 'undefined') {
+            // 【核心修改】如果已經連咗線，撳落去就做 Disconnect
+            if (currentAccount) {
+                currentAccount = null;
+                updateButton(null);
+                console.log("Wallet disconnected from UI");
+                return;
+            }
 
-// 撳掣嘅邏輯
-connectBtn.addEventListener('click', async () => {
-    if (typeof window.ethereum !== 'undefined') {
-        // 【核心修改】如果已經連咗線，撳落去就做 Disconnect
-        if (currentAccount) {
-            currentAccount = null;
-            updateButton(null);
-            console.log("Wallet disconnected from UI");
-            return;
+            // 如果未連線，就執行原有的連線程序
+            try {
+                connectBtn.innerText = "Connecting...";
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                currentAccount = accounts[0];
+                updateButton(currentAccount);
+                console.log("Connected to wallet:", currentAccount);
+            } catch (error) {
+                console.error("User cancelled login sequence", error);
+                updateButton(null);
+            }
+        } else {
+            alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
+            window.open('https://metamask.io/download/', '_blank');
         }
+    });
 
-        // 如果未連線，就執行原有的連線程序
-        try {
-            connectBtn.innerText = "Connecting...";
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            currentAccount = accounts[0];
-            updateButton(currentAccount);
-            console.log("Connected to wallet:", currentAccount);
-        } catch (error) {
-            console.error("User cancelled login sequence", error);
-            updateButton(null);
-        }
-    } else {
-        alert("Web3 wallet undetected. Redirecting to MetaMask download page...");
-        window.open('https://metamask.io/download/', '_blank');
-    }
-});
-
-window.addEventListener('DOMContentLoaded', checkConnection);
+    window.addEventListener('DOMContentLoaded', checkConnection);
   </script>
 
 </body>
