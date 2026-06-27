@@ -34,10 +34,17 @@
     <meta name="twitter:description" content="Play NeoX Game — collect NXC energy and experience the next generation of Web3 arcade fun." />
     <meta name="twitter:image" content="https://neoxcoin.io/XNXC.png" />
 
-    <!-- Google Fonts 同步 -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      function googleTranslateElementInit(){
+        new google.translate.TranslateElement({
+          pageLanguage: 'en', 
+          includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+          autoDisplay: false, 
+          multilanguagePage: true 
+          }, 'google_translate_element');
+      }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
     
     <style>
         /* 100% 同步首頁嘅設計變數與風格 */
@@ -69,6 +76,17 @@
             top: 0px !important; /* 強制防止 Google Translate 讓整體頁面下移 */
         }
 
+        /* Google Translate Tweak Overrides */
+          top: 0 !important;
+          position: static !important;
+          margin-top: 0 !important;
+        }
+
+        /* 徹底隱藏 Google 翻譯頂部自帶的白色橫條 */
+        .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important; }
+        iframe.goog-te-banner-frame { display: none !important; }
+        body > .skiptranslate { display: none !important; }
+
         a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
         
         /* --- 100% 同步首頁嘅 Sticky Header 導航欄 --- */
@@ -85,18 +103,24 @@
         .nav-links a:hover, .nav-links a.active { color: var(--primary); }
         .header-right { display: flex; align-items: center; gap: 20px; }
         
-        /* 100% 精準同步 index-global.html 嘅 Google 翻譯下拉選單美化與隱藏效果 */
-        .google-translate-wrapper {
-            display: inline-block;
-            vertical-align: middle;
+        /* Custom Black Pill Styling for Google Widget */
+        #google_translate_element {
+          display: inline-block;
+          padding: 2px 6px;
+          border-radius: 20px;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid var(--border);
         }
-        /* 隱藏 Google Translate 頂部自帶的白色橫條 (Toolbar) */
-        .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame {
-            display: none !important;
-        }
-        /* 隱藏彈出的翻譯提示框與氣泡 */
-        .goog-te-balloon-frame, .goog-te-balloon, .goog-tooltip, .goog-tooltip:hover {
-            display: none !important;
+        #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
+        #google_translate_element .goog-te-gadget span { display: none !important; } /* 隱藏 Google 提供 字眼 */
+        #google_translate_element select {
+          background: transparent !important;
+          color: #fff !important;
+          border: none !important;
+          font-size: 12px !important;
+          padding: 4px 6px !important;
+          outline: none !important;
+          cursor: pointer;
         }
         /* 隱藏鼠標懸停時的高亮文字框 */
         font {
@@ -246,9 +270,7 @@
         </div>
         <div class="header-right">
             <!-- 100% 精準對齊 index-global.html 嘅 Google 翻譯核心部件容器 -->
-            <div class="google-translate-wrapper">
-                <div id="google_translate_element"></div>
-            </div>
+            <div id="google_translate_element"></div>
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
     </header>
