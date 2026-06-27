@@ -260,13 +260,31 @@
             <a href="metaverse.html">Metaverse Exhibition</a>
             <a href="nft-projects.html">NFT Projects</a>
         </div>
-        <div class="header-right">
-            <!-- 100% 精準對齊 index-global.html 嘅 Google 翻譯核心部件容器 -->
-            <div class="google-translate-wrapper">
-                <div id="google_translate_element"></div>
-            </div>
-            <button class="btn-connect" id="connect-btn">Connect Wallet</button>
-        </div>
+     </header>
+
+     <style>
+        
+         .header-right { display: flex; align-items: center; gap: 15px; }
+
+        /* Custom Black Pill Styling for Google Widget */
+        #google_translate_element {
+          display: inline-block;
+          padding: 2px 6px;
+          border-radius: 20px;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid var(--border);
+        }
+        #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
+        #google_translate_element .goog-te-gadget span { display: none !important; } /* 隱藏 Google 提供 字眼 */
+        #google_translate_element select {
+          background: transparent !important;
+          color: #fff !important;
+          border: none !important;
+          font-size: 12px !important;
+          padding: 4px 6px !important;
+          outline: none !important;
+          cursor: pointer;
+        }
     </header>
     
     <div class="container">
@@ -318,18 +336,19 @@
     <!-- Audio BGM -->
     <audio id="bgm" src="https://neoxcoin.github.io/puzzle-game-bright-casual-video-game-music-249202.mp3" loop preload="auto"></audio>
 
-    <!-- 100% 同步 index-global.html 嘅 Google Translate 引擎初始化腳本 -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <script>
+        function googleTranslateElementInit(){
+          new google.translate.TranslateElement({
+            pageLanguage: 'en', 
+            includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+            autoDisplay: false, 
+            multilanguagePage: true 
+          }, 'google_translate_element');
+        }
+      </script>
+      <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
+    
+   <script>
         // 1. Video Fade-in logic
         (function(){
             const v = document.querySelector('.hero video');
