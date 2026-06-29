@@ -283,12 +283,28 @@
       font-weight: 600;
     }
 
-    /* Footer action */
-    .wiki-footer {
-      margin-top: 20px;
-      text-align: center;
+    .social-icons img {
+        /* 調整返適合嘅大小 */
+        width: 32px;    /* 之前可能太大，改返 32px 或 24px */
+        height: 32px;   /* 保持與 width 一致，確保係正方形 */
+    
+        margin: 0 10px; /* 圖示之間嘅距離 */
+        padding: 6px;   /* 圖示入面嘅留白 */
+    
+        background: rgba(255, 255, 255, 0.05); 
+        border: 1px solid rgba(255, 255, 255, 0.15); 
+        border-radius: 50%; 
+    
+        filter: grayscale(100%) brightness(0.7); 
+        opacity: 0.9; 
+    
+        transition: all 0.2s ease;
+    
+        /* 關鍵：防止內容溢出 */
+        object-fit: contain; 
+        box-sizing: border-box; 
     }
-
+    
     .home-btn {
       display: inline-flex;
       align-items: center;
