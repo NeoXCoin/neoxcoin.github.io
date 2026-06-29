@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>NeoX Wiki – Official Ecosystem Overview</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>NeoX Wiki – Ecosystem Overview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #a370ff;
@@ -13,66 +13,72 @@
             --glass: rgba(255, 255, 255, 0.03);
             --border: rgba(255, 255, 255, 0.08);
             --text-main: #ffffff;
-            --text-muted: rgba(255, 255, 255, 0.7);
         }
 
-        body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); padding-top: 100px; line-height: 1.6; }
-        
+        body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); line-height: 1.7; padding-top: 80px; }
         .container { max-width: 800px; margin: 0 auto; padding: 20px; }
 
         /* 漸變標題 */
-        .wiki-title { font-size: 42px; font-weight: 800; text-align: center; margin-bottom: 10px; background: linear-gradient(120deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        h1 { font-size: 3rem; background: linear-gradient(120deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin-bottom: 20px; }
         
-        /* 藥丸標籤 */
-        .tags { display: flex; justify-content: center; gap: 10px; margin-bottom: 40px; flex-wrap: wrap; }
-        .tag { padding: 6px 15px; border-radius: 20px; background: var(--glass); border: 1px solid var(--border); font-size: 12px; color: var(--secondary); }
+        /* 玻璃卡片 */
+        section { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; padding: 40px; margin-bottom: 30px; transition: 0.4s; }
+        section:hover { border-color: var(--primary); }
+        h2 { color: var(--secondary); display: flex; align-items: center; gap: 10px; margin-top: 0; }
+        
+        /* 列表樣式 */
+        ul { padding-left: 20px; }
+        li { margin-bottom: 10px; color: rgba(255,255,255,0.8); }
+        code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; color: var(--secondary); font-family: monospace; }
 
-        /* 內容卡片 */
-        .wiki-card { background: var(--glass); backdrop-filter: blur(15px); border: 1px solid var(--border); border-radius: 20px; padding: 30px; margin-bottom: 25px; }
-        .wiki-card h3 { color: var(--primary); margin-top: 0; font-size: 1.4rem; }
-        
-        /* Footer */
-        footer { padding: 40px 0; margin-top: 60px; border-top: 1px solid var(--border); text-align: center; }
-        .social-icons img { width: 36px; height: 36px; margin: 0 10px; filter: grayscale(100%) brightness(0.7); transition: 0.3s; }
-        .social-icons img:hover { filter: grayscale(0%) brightness(1); transform: scale(1.1); }
-        .footer-links a { color: var(--text-muted); margin: 0 10px; text-decoration: none; font-size: 14px; }
+        /* 底部按鈕 */
+        .back-btn { display: inline-block; padding: 12px 30px; border: 1px solid var(--border); border-radius: 99px; color: white; text-decoration: none; transition: 0.3s; }
+        .back-btn:hover { background: var(--primary); border-color: var(--primary); }
+
+        footer { text-align: center; padding: 50px 0; color: rgba(255,255,255,0.4); font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1 class="wiki-title">NeoX Official Wiki</h1>
-        
-        <div class="tags">
-            <span class="tag">BASE MAINNET</span>
-            <span class="tag">ERC-20</span>
-            <span class="tag">NFT</span>
-            <span class="tag">METAVERSE</span>
-        </div>
+<div class="container">
+    <h1>NeoX Official Wiki</h1>
 
-        <div class="wiki-card">
-            <h3>Overview</h3>
-            <p>NeoX is a decentralized Web3 ecosystem built on Base Mainnet, combining digital art, blockchain gaming, and metaverse-style interactive experiences under a unified brand.</p>
-        </div>
+    <section>
+        <h2>🌐 Overview</h2>
+        <p>NeoX is a decentralized Web3 ecosystem built on <strong>Base Mainnet</strong>, combining digital art, blockchain gaming, and metaverse-style interactive experiences under a unified brand.</p>
+    </section>
 
-        <div class="wiki-card">
-            <h3>NeoX Coin (NXC)</h3>
-            <p><strong>Contract:</strong> 0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B<br>
-            NXC is the utility token of the NeoX ecosystem on Base Mainnet.</p>
-        </div>
+    <section>
+        <h2>💎 NeoX Coin (NXC)</h2>
+        <p>NXC is the utility token of the NeoX ecosystem on Base Mainnet.</p>
+        <p><strong>Contract:</strong> <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code></p>
+    </section>
 
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="index.html" style="color: var(--text-muted); border: 1px solid var(--border); padding: 10px 20px; border-radius: 999px; text-decoration: none;">← Back to Home</a>
-        </div>
+    <section>
+        <h2>🎨 NFT Collections</h2>
+        <p>Curated series exploring different visual themes:</p>
+        <ul>
+            <li><strong>Genesis Edition:</strong> Origin pieces of NeoX.</li>
+            <li><strong>Timekeeper:</strong> Themed around time and rhythm.</li>
+            <li><strong>Van Gogh Visions:</strong> Classical aesthetics reimagined.</li>
+            <li><strong>Abstract Realms:</strong> Experimental color and form.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>🎮 Game & Metaverse</h2>
+        <p><strong>NeoX Catch:</strong> Browser-based HTML5 arcade game.</p>
+        <p><strong>Metaverse Exhibition:</strong> Immersive 3D environments hosted on platforms like OnCyber.</p>
+    </section>
+
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="index.html" class="back-btn">← Back to Home</a>
     </div>
 
     <footer>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/facebook.png"></a>
-            <a href="https://x.com/neox__official" target="_blank"><img src="url?id=0twitter.png"></a>
-        </div>
-        <div style="margin-top: 20px; font-size: 12px; color: rgba(255,255,255,0.4);">© 2026 NeoX. All rights reserved.</div>
+        <p>© 2026 NeoX. All rights reserved.</p>
     </footer>
+</div>
 
 </body>
 </html>
