@@ -1,84 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>NeoX Wiki – Ecosystem Overview</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #a370ff;
-            --secondary: #00ffcc;
-            --bg-dark: #03010a;
-            --glass: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.08);
-            --text-main: #ffffff;
-        }
-
-        body { margin: 0; background: radial-gradient(circle at center, #110526 0%, #03010a 100%); font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); line-height: 1.7; padding-top: 80px; }
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
-
-        /* 漸變標題 */
-        h1 { font-size: 3rem; background: linear-gradient(120deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; margin-bottom: 20px; }
-        
-        /* 玻璃卡片 */
-        section { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; padding: 40px; margin-bottom: 30px; transition: 0.4s; }
-        section:hover { border-color: var(--primary); }
-        h2 { color: var(--secondary); display: flex; align-items: center; gap: 10px; margin-top: 0; }
-        
-        /* 列表樣式 */
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; color: rgba(255,255,255,0.8); }
-        code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; color: var(--secondary); font-family: monospace; }
-
-        /* 底部按鈕 */
-        .back-btn { display: inline-block; padding: 12px 30px; border: 1px solid var(--border); border-radius: 99px; color: white; text-decoration: none; transition: 0.3s; }
-        .back-btn:hover { background: var(--primary); border-color: var(--primary); }
-
-        footer { text-align: center; padding: 50px 0; color: rgba(255,255,255,0.4); font-size: 0.9rem; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeoX Wiki – Official Overview of the NeoX Ecosystem</title>
+  
+  <!-- 引入主頁風格的 CSS 設置 -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- 將你主頁的 <style> 內容整段貼在這裡，為了方便，我這裡縮減展示 -->
+  <style>
+    /* 這裡請貼上你主頁原有的 CSS */
+    /* ... 確保包含 header, footer, 以及變數定義 ... */
+    
+    /* 針對 Wiki 頁面補充的樣式 */
+    .wiki-content {
+        color: var(--text-muted);
+        line-height: 1.8;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 100px 20px;
+        text-align: left;
+    }
+    .wiki-content h2, .wiki-content h3 { color: var(--text-main); margin-top: 40px; }
+    .wiki-content p { margin-bottom: 20px; }
+  </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>NeoX Official Wiki</h1>
-
-    <section>
-        <h2>🌐 Overview</h2>
-        <p>NeoX is a decentralized Web3 ecosystem built on <strong>Base Mainnet</strong>, combining digital art, blockchain gaming, and metaverse-style interactive experiences under a unified brand.</p>
-    </section>
-
-    <section>
-        <h2>💎 NeoX Coin (NXC)</h2>
-        <p>NXC is the utility token of the NeoX ecosystem on Base Mainnet.</p>
-        <p><strong>Contract:</strong> <code>0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</code></p>
-    </section>
-
-    <section>
-        <h2>🎨 NFT Collections</h2>
-        <p>Curated series exploring different visual themes:</p>
-        <ul>
-            <li><strong>Genesis Edition:</strong> Origin pieces of NeoX.</li>
-            <li><strong>Timekeeper:</strong> Themed around time and rhythm.</li>
-            <li><strong>Van Gogh Visions:</strong> Classical aesthetics reimagined.</li>
-            <li><strong>Abstract Realms:</strong> Experimental color and form.</li>
-        </ul>
-    </section>
-
-    <section>
-        <h2>🎮 Game & Metaverse</h2>
-        <p><strong>NeoX Catch:</strong> Browser-based HTML5 arcade game.</p>
-        <p><strong>Metaverse Exhibition:</strong> Immersive 3D environments hosted on platforms like OnCyber.</p>
-    </section>
-
-    <div style="text-align: center; margin-top: 40px;">
-        <a href="index.html" class="back-btn">← Back to Home</a>
+  <!-- 這部分直接用你主頁的 Header -->
+  <header>
+    <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+    <div class="nav-links">
+      <a href="what-is-neox.html">What is NeoX?</a>
+      <a href="how-to-buy.html">How to Buy?</a>
+      <a href="game.html">NeoX Game</a>
+      <a href="metaverse.html">Metaverse Exhibition</a>
+      <a href="nft-projects.html">NFT Projects</a>
     </div>
+    <div class="header-right">
+        <!-- ... 語言與錢包按鈕 ... -->
+    </div>
+  </header>
 
-    <footer>
-        <p>© 2026 NeoX. All rights reserved.</p>
-    </footer>
-</div>
+  <!-- Wiki 內容區塊 -->
+  <main class="wiki-content">
+      <h1>NeoX Official Wiki</h1>
+      <p>A reference-style summary of the NeoX ecosystem on Base Mainnet...</p>
+      
+      <!-- 這裡放入你原本的 Wiki 內容 -->
+      <h2>Overview</h2>
+      <p>NeoX is a decentralized Web3 ecosystem...</p>
+      
+      <!-- 請將你原本的 Wiki 文字貼在這裡 -->
+  </main>
+
+  <!-- 這部分直接用你主頁的 Footer -->
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+    </div>
+    <div class="footer-links">
+      <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
+    </div>
+    <div class="copyright">© 2025 NeoX. All rights reserved.</div>
+  </footer>
 
 </body>
 </html>
