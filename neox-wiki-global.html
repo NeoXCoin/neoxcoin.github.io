@@ -67,6 +67,42 @@
         position: static !important;
     }
 
+    .goog-te-banner-frame.skiptranslate, 
+    .goog-te-banner-frame,
+    iframe.goog-te-banner-frame { 
+        display: none !important; 
+        visibility: hidden !important; 
+        height: 0 !important; 
+        width: 0 !important; 
+    }
+    
+    body > .skiptranslate { 
+        display: none !important; 
+        visibility: hidden !important;
+        height: 0 !important;
+    }
+
+    /* 隱藏原生的 Google Logo 網頁圖標，保持自訂下拉選單純淨 */
+    .goog-te-gadget-simple img,
+    .goog-te-menu-value span:nth-child(3) { 
+        display: none !important; 
+    }
+    
+    .goog-te-gadget-simple {
+        background-color: rgba(5, 12, 40, 0.9) !important;
+        border: 1px solid rgba(150, 195, 255, 0.7) !important;
+        padding: 4px 10px !important;
+        border-radius: 999px !important;
+        font-family: var(--font-stack) !important;
+        font-size: 13px !important;
+        cursor: pointer;
+    }
+
+    .goog-te-menu-value {
+        color: rgba(255, 255, 255, 0.85) !important;
+        margin: 0 !important;
+    }
+
     a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
 
     .wiki-shell {
@@ -161,33 +197,9 @@
       color: rgba(186, 198, 255, 0.86);
     }
 
-    /* Google Translate Widget Styling */
     .google-translate-wrapper {
       display: flex;
       align-items: center;
-    }
-
-    /* 完美同步 index-global.html：強制隱藏一切 Google 原生白色橫條 iframe 彈窗 */
-    .goog-te-banner-frame, 
-    .goog-te-banner-frame.skiptranslate,
-    .goog-te-gadget-simple img,
-    .goog-te-menu-value span:nth-child(3) { 
-        display: none !important; 
-    }
-    
-    .goog-te-gadget-simple {
-        background-color: rgba(5, 12, 40, 0.9) !important;
-        border: 1px solid rgba(150, 195, 255, 0.7) !important;
-        padding: 4px 10px !important;
-        border-radius: 999px !important;
-        font-family: var(--font-stack) !important;
-        font-size: 13px !important;
-        cursor: pointer;
-    }
-
-    .goog-te-menu-value {
-        color: rgba(255, 255, 255, 0.85) !important;
-        margin: 0 !important;
     }
 
     /* Main title */
