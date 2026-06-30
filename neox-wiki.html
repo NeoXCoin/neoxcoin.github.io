@@ -376,9 +376,9 @@
         width: 100%;        /* 確保佢撐開成個闊度 */
     }
 
-    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a {margin: 0 8px;color: #ffffff; /* 👈 加呢一行，預設就會變返白色 */}
     .footer-links a { margin: 0 8px; }
-    .footer-links a:hover { color: var(--text-main); }
+    .footer-links a:hover {color: var(--text-main); /* 或者可以改成其他懸停顏色，例如 #cccccc */}
     .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
     @media (max-width: 640px) {
