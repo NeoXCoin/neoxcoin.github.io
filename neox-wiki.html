@@ -34,7 +34,7 @@
         --secondary: #00ffcc; /* 賽博朋克青 */
         --glass: rgba(255, 255, 255, 0.03);
         --border: rgba(255, 255, 255, 0.08);
-        --font-stack: 'Plus Jakarta Sans', sans-serif; /* 👈 首頁的核心字體 */
+        --font-stack: 'Plus Jakarta Sans', sans-serif; /* 首頁的核心字體 */
     }
 
     * {
@@ -55,14 +55,7 @@
         display: flex;
         justify-content: center;
         padding: 32px 16px 40px;
-    }
-
-    font-family: var(--font-stack);
-      color: var(--text-main);
-      text-align: center;
-      -webkit-font-smoothing: antialiased;
-      letter-spacing: -0.01em;
-      overflow-x: hidden;
+        overflow-x: hidden;
     }
 
     a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
@@ -303,6 +296,9 @@
     .market-link a { margin: 0 5px; }
     .market-link a:hover { color: var(--primary); }
 
+    /* ==========================================================================
+       Footer 區塊結構重組優化 (乾淨、無衝突、完美同步首頁風格)
+       ========================================================================== */
     footer {
       width: 100%;
       border-top: 1px solid var(--border);
@@ -311,17 +307,18 @@
       background: rgba(0,0,0,0.1);
     }
 
+    /* 社交 Icon 區域：拉開上下間距，增加網頁呼吸感 */
     .social-icons {
         display: flex;
-        justify-content: center; /* 水平置中 */
+        justify-content: center;
         align-items: center;
         gap: 15px;
-        margin: 30px 0 20px 0; /* 👈 拉開同上方條分界線的距離 */
-    }   
+        margin: 35px 0 22px 0;
+    }
 
     .social-icons a {
         display: inline-block;
-        line-height: 0; /* 防止圖片下方出現多餘空間 */
+        line-height: 0;
     }
 
     .social-icons a img {
@@ -342,47 +339,6 @@
         background: rgba(255, 255, 255, 0.15);
     }
 
-    .footer-links {
-        font-size: 13px;
-        color: var(--text-muted);
-        margin-bottom: 15px;
-        text-align: center; /* 文字置中 */
-    }
-
-    .home-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        min-width: 210px;
-        padding: 10px 22px;
-        border-radius: 999px;
-        border: 1px solid rgba(180, 220, 255, 0.9);
-        background: radial-gradient(circle at 0 0, #4fb5ff, #365bff);
-        color: #ffffff;
-        font-size: 14px;
-        font-weight: 600;
-        text-decoration: none;
-        box-shadow: 0 0 18px rgba(120, 200, 255, 0.9), 0 0 38px rgba(90, 140, 255, 0.85);
-    }
-
-    .home-btn span {
-        font-size: 16px;
-    }
-
-    /* ==========================================================================
-       5. Footer 區塊完整優化（完美同步首頁風格）
-       ========================================================================== */
-
-    /* 社交 Icon 區域：拉開上下間距，增加網頁呼吸感 */
-    .social-icons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        margin: 35px 0 22px 0;
-    }
-
     /* 底部連結外框：設定字型大小與置中 */
     .footer-links {
         font-size: 13px;
@@ -395,7 +351,7 @@
     /* 連結預設狀態：無咁突出，完美融入深色星空背景 */
     .footer-links a {
         margin: 0 8px;
-        color: var(--text-muted) !important; /* 使用首頁的半透明白 */
+        color: var(--text-muted) !important; /* 使用首頁的半透明白（約70%透明度） */
         transition: color 0.2s ease;         /* 加上平滑過渡動畫 */
     }
 
