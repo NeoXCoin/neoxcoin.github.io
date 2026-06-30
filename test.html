@@ -1,30 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
   <meta charset="UTF-8" />
   <title>NeoX Coin (NXC) – Official Press Kit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Official media & branding resource for NeoX Coin (NXC) on Base Mainnet. Find logos, key facts, token details, and ecosystem overview." />
-  <meta name="keywords" content="NeoX, NeoX Coin, NXC, Press Kit, Media Assets, Base Mainnet, ERC-20" />
-  <meta name="author" content="NeoX Official" />
-
-  <!-- Canonical & hreflang for Global version -->
-  <link rel="canonical" href="https://neoxcoin.github.io/press-kit.html" />
+  <meta name="description" content="Official media & branding press kit for NeoX Coin (NXC) on Base Mainnet – logos, key facts, token overview, NFTs, gaming, and contact information." />
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="NeoX Coin (NXC) – Official Press Kit" />
+  <meta property="og:description" content="Download official NeoX Coin (NXC) media assets, logos, and branding guidelines for press, listings, and collaborations." />
+  <meta property="og:image" content="https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG" />
+  <meta property="og:url" content="https://neoxcoin.io/press-kit.html" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NeoX Coin (NXC) – Official Press Kit" />
+  <meta name="twitter:description" content="Official media & branding press kit for NeoX Coin (NXC) on Base Mainnet." />
+  <meta name="twitter:image" content="https://neoxcoin.io/NeoX-PressKit-Cover.PNG" />
 
   <style>
     :root {
-        --bg-dark: #03010a; 
-        --text-main: #ffffff;
-        --text-muted: rgba(255, 255, 255, 0.7);
-        --primary: #a370ff; 
-        --secondary: #00ffcc; 
-        --glass: rgba(255, 255, 255, 0.03);
-        --border: rgba(255, 255, 255, 0.08);
-        --font-stack: 'Plus Jakarta Sans', sans-serif; 
+      --bg-dark: #03010a;
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --primary: #a370ff;
+      --secondary: #00ffcc;
+      --glass: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --font-stack: 'Plus Jakarta Sans', sans-serif;
     }
 
     * {
@@ -32,441 +39,522 @@
     }
 
     body {
-        margin: 0;
-        background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
-        background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
-    
-        font-family: var(--font-stack);
-        color: var(--text-main);
-        -webkit-font-smoothing: antialiased;
-        letter-spacing: -0.01em;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        padding: 32px 16px 40px;
-        overflow-x: hidden;
-        
-        /* 核心修正：強制鎖死網頁頂部，搭配下方樣式絕不留白給翻譯條 */
-        top: 0px !important;
-        position: static !important;
+      margin: 0;
+      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+      background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      font-family: var(--font-stack);
+      color: var(--text-main);
+      -webkit-font-smoothing: antialiased;
+      letter-spacing: -0.01em;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 0 16px 40px; /* 移除頂部 padding，交由 header 與 margin 控制 */
+      overflow-x: hidden;
     }
 
-    /* ==========================================================================
-       Google Translate 終極壓制樣式 (與 index-global.html 完全一致的隱形效果)
-       ========================================================================== */
-    .goog-te-banner-frame.skiptranslate, 
-    .goog-te-banner-frame,
-    iframe.goog-te-banner-frame { 
-        display: none !important; 
-        visibility: hidden !important; 
-        height: 0 !important; 
-        width: 0 !important; 
-    }
-    
-    body > .skiptranslate { 
-        display: none !important; 
-        visibility: hidden !important;
-        height: 0 !important;
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
     }
 
-    /* 隱藏原生的 Google Logo 網頁圖標，保持自訂下拉選單純淨 */
-    .goog-te-gadget-simple img,
-    .goog-te-menu-value span:nth-child(3) { 
-        display: none !important; 
-    }
-    
-    .goog-te-gadget-simple {
-        background-color: rgba(5, 12, 40, 0.9) !important;
-        border: 1px solid rgba(150, 195, 255, 0.7) !important;
-        padding: 4px 10px !important;
-        border-radius: 999px !important;
-        font-family: var(--font-stack) !important;
-        font-size: 13px !important;
-        cursor: pointer;
+    .wrap {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 0 20px 56px;
     }
 
-    .goog-te-menu-value {
-        color: rgba(255, 255, 255, 0.85) !important;
-        margin: 0 !important;
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
-    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+    .brand-row img {
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+    }
 
-    .press-shell {
-      width: 100%;
-      max-width: var(--page-max-width, 1100px);
-      background: linear-gradient(145deg, rgba(18, 10, 46, 0.98), rgba(7, 5, 30, 0.98));
-      border-radius: 26px;
-      border: 1px solid rgba(160, 200, 255, 0.3);
-      box-shadow:
-        0 0 40px rgba(30, 60, 160, 0.7),
-        0 0 80px rgba(140, 80, 255, 0.5);
-      padding: 18px 18px 26px;
+    .brand-row span {
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    /* 將 Hero 往下拉 110px，避免被 fixed 的頂部導覽列遮擋 */
+    .hero {
+      margin-top: 110px; 
+      background: radial-gradient(circle at top, #071a44 0, #04091c 60%, #020717 100%);
+      border-radius: 32px;
+      padding: 40px;
       position: relative;
       overflow: hidden;
     }
 
-    .press-shell::before {
+    .hero::before {
       content: "";
       position: absolute;
       inset: -40%;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(103, 178, 255, 0.15) 0, transparent 55%),
-        radial-gradient(circle at 100% 0%, rgba(170, 128, 255, 0.18) 0, transparent 55%);
+      background: radial-gradient(circle at 20% 0%, rgba(47, 182, 255, 0.16), transparent 55%), radial-gradient(circle at 80% 100%, rgba(0, 255, 204, 0.12), transparent 55%);
+      opacity: 0.9;
       pointer-events: none;
-      z-index: 0;
     }
 
-    .press-inner {
+    .hero-inner {
       position: relative;
-      z-index: 1;
-    }
-
-    /* Header bar */
-    .press-header-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 0 0, rgba(120, 190, 255, 0.4), transparent 60%),
-                  radial-gradient(circle at 100% 0, rgba(180, 130, 255, 0.35), transparent 60%),
-                  rgba(9, 14, 46, 0.96);
-      border: 1px solid rgba(160, 210, 255, 0.6);
-      box-shadow: 0 0 24px rgba(110, 170, 255, 0.65);
-      margin-bottom: 24px;
-    }
-
-    .press-logo-wrap {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .press-logo-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 15%, #ffffff 0, #75c9ff 22%, #1048ff 58%, #04081a 100%);
-      box-shadow:
-        0 0 16px rgba(138, 197, 255, 0.9),
-        0 0 32px rgba(90, 160, 255, 0.9);
-      border: 1px solid rgba(203, 228, 255, 0.95);
-      padding: 0;
-    }
-
-    .press-logo-link img {
-      width: 26px;
-      height: 26px;
-      display: block;
-    }
-
-    .press-title-text {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .press-label {
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(214, 224, 255, 0.86);
-    }
-
-    .press-sub-label {
-      font-size: 11px;
-      color: rgba(186, 198, 255, 0.86);
-    }
-
-    .btn-back {
-      font-size: 13px;
-      padding: 6px 16px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: var(--text-muted);
-    }
-    .btn-back:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .google-translate-wrapper {
-      display: flex;
-      align-items: center;
-      margin-left: auto;
-      margin-right: 12px;
-    }
-
-    /* Hero Grid Layout */
-    .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 32px;
       align-items: center;
-      margin: 20px 0 40px;
     }
 
-    .hero-content h1 {
+    .hero-copy h1 {
+      margin: 0 0 10px;
+      font-size: clamp(26px, 3.1vw, 32px);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-copy h1 span {
+      color: #1c9cff;
+    }
+
+    .hero-copy p.lead {
       margin: 0 0 16px;
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-    }
-    .hero-content h1 span {
-      color: #38bdf8;
-    }
-
-    .hero-content p {
-      font-size: 16px;
-      line-height: 1.6;
       color: var(--text-muted);
-      margin-bottom: 24px;
+      font-size: 15px;
+      line-height: 1.7;
     }
 
-    /* Tag pills */
-    .tag-row {
+    .pill-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 30px;
+      margin-bottom: 18px;
     }
 
-    .tag-pill {
-      padding: 6px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.04);
+    .pill {
       font-size: 12px;
-      letter-spacing: 0.05em;
-      color: rgba(255, 255, 255, 0.8);
+      padding: 5px 11px;
+      border-radius: 999px;
+      border: 1px solid rgba(47, 182, 255, 0.5);
+      background: rgba(3, 16, 40, 0.8);
+      color: #d7e7ff;
     }
 
-    /* Action Buttons */
-    .btn-group {
+    .hero-buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-    }
-    .btn-primary {
-      padding: 12px 24px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #0ea5e9, #2563eb);
-      color: #fff;
-      font-weight: 600;
-      font-size: 14px;
-      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(14, 165, 233, 0.6);
-    }
-    .btn-secondary {
-      padding: 12px 24px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #fff;
-      font-weight: 600;
-      font-size: 14px;
-    }
-    .btn-secondary:hover {
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.3);
+      gap: 10px;
     }
 
-    /* Visual Showcase Preview */
-    .preview-box {
-      background: rgba(9, 12, 46, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 12px;
-      position: relative;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    .btn-main, .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
     }
-    .preview-box img {
+
+    .btn-main {
+      background: linear-gradient(135deg, #1c9cff, #35d0ff);
+      color: #020717;
+      box-shadow: 0 10px 30px rgba(47, 182, 255, 0.45);
+    }
+
+    .btn-main:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-ghost {
+      border-color: rgba(255, 255, 255, 0.32);
+      color: #e1e7ff;
+      background: rgba(5, 11, 31, 0.9);
+    }
+
+    .btn-ghost:hover {
+      border-color: #ffffff;
+    }
+
+    .hero-media {
+      display: grid;
+      place-items: center;
+    }
+
+    .cover-frame {
+      width: min(340px, 100%);
+      aspect-ratio: 1 / 1;
+      border-radius: 28px;
+      background: radial-gradient(circle at top, #08214f 0, #020717 60%);
+      border: 1px solid rgba(132, 196, 255, 0.4);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.85);
+      padding: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover-frame img {
       width: 100%;
-      height: auto;
-      border-radius: 12px;
+      height: 100%;
+      border-radius: 22px;
+      object-fit: cover;
       display: block;
     }
-    .preview-badge {
+
+    .badge-top {
       position: absolute;
-      top: 24px;
-      left: 24px;
-      background: rgba(0,0,0,0.75);
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 4px 12px;
-      border-radius: 6px;
+      top: 12px;
+      left: 16px;
+      padding: 4px 10px;
+      border-radius: 999px;
       font-size: 11px;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(2, 7, 23, 0.86);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: #e4ecff;
+    }
+
+    main {
+      margin-top: 32px;
+      display: grid;
+      gap: 22px;
+    }
+
+    section {
+      background: radial-gradient(circle at top, #071127 0, #050b1f 55%, #040818 100%);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      padding: 24px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    section h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    /* Content Sections */
-    .section {
-      background: linear-gradient(135deg, rgba(15, 25, 74, 0.98), rgba(9, 12, 46, 0.98));
-      border-radius: 16px;
-      padding: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      margin-bottom: 20px;
+    section h2 span {
+      color: #1c9cff;
     }
 
-    .section-num {
-      color: #38bdf8;
-      font-weight: 700;
-      margin-right: 6px;
-    }
-
-    .section h2 {
-      margin: 0 0 14px;
-      font-size: 20px;
-      letter-spacing: 0.02em;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding-bottom: 10px;
-    }
-
-    .section p {
+    section p {
       margin: 0 0 12px;
-      font-size: 15px;
-      line-height: 1.6;
-      color: rgba(255, 255, 255, 0.8);
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
     }
 
-    .section strong {
-      color: #ffffff;
+    section ul {
+      margin: 6px 0 12px 18px;
+      padding: 0;
+      color: var(--text-muted);
+      font-size: 14px;
+      line-height: 1.7;
     }
 
-    /* Footer Styles */
-    footer {
-      width: 100%;
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      margin-top: 60px;
-      background: rgba(0,0,0,0.1);
+    section li {
+      margin-bottom: 6px;
     }
 
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .token-item {
+      background: rgba(4, 16, 38, 0.9);
+      border-radius: 12px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .token-item strong {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+      color: #d8e4ff;
+    }
+
+    code.addr {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      background: rgba(0, 0, 0, 0.55);
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(92, 151, 255, 0.45);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #e5edff;
+      word-break: break-all;
+    }
+
+    .logo-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .logo-card {
+      background: rgba(3, 12, 32, 0.9);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      text-align: center;
+    }
+
+    .logo-card img {
+      max-width: 96px;
+      max-height: 96px;
+      margin-bottom: 12px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.9));
+    }
+
+    .logo-card span {
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .color-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(3, 13, 34, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .swatch-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+    }
+
+    .dot-gold { background: #f2c24a; }
+    .dot-blue { background: linear-gradient(135deg, #0090ff, #2fb6ff); }
+    .dot-bg { background: #020717; }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .link-card {
+      background: rgba(3, 12, 32, 0.95);
+      border-radius: 12px;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 13px;
+    }
+
+    .link-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #dbe4ff;
+    }
+
+    .link-card a {
+      color: #1c9cff;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .link-card a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-box {
+      margin-top: 10px;
+      padding: 16px;
+      border-radius: 12px;
+      border: 1px dashed rgba(255, 255, 255, 0.25);
+      background: rgba(3, 13, 32, 0.94);
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .contact-box a {
+      color: #1c9cff;
+      text-decoration: none;
+    }
+
+    .contact-box a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- Footer Social Media Style (首頁完全同步) --- */
     .social-icons {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        margin: 35px 0 22px 0;
+      margin-bottom: 25px;
     }
 
-    .social-icons a img {
-        width: 32px !important; 
-        height: 32px !important;
-        object-fit: contain;
-        border-radius: 50%;
-        padding: 6px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        filter: grayscale(100%) brightness(0.7);
-        transition: all 0.3s ease;
+    .social-icons img {
+      width: 18px;
+      height: 18px;
+      margin: 0 15px;
+      padding: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      filter: grayscale(100%) brightness(0.7);
+      opacity: 0.9;
+      transition: all 0.2s ease;
+      box-sizing: content-box;
     }
 
-    .social-icons a img:hover {
-        filter: grayscale(0%) brightness(1);
-        transform: scale(1.1);
-        background: rgba(255, 255, 255, 0.15);
-    }
-
-    .footer-links {
-        font-size: 13px;
-        margin-bottom: 18px;
-        text-align: center;
-        display: block;
+    .social-icons img:hover {
+      filter: grayscale(0%) brightness(1);
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: scale(1.1);
     }
 
     .footer-links a {
-        margin: 0 8px;
-        color: var(--text-muted) !important;
+      margin: 0 8px;
+      color: var(--text-muted);
+      text-decoration: none;
     }
 
     .footer-links a:hover {
-        color: var(--text-main) !important;
+      color: var(--text-main);
     }
 
-    .copyright {
-        font-size: 12px;
-        color: rgba(255, 255, 255, 0.4);
-        text-align: center;
-        display: block;
-        margin-top: 5px;
-    }
-    
-    @media (max-width: 850px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 24px; }
-    }
-    @media (max-width: 640px) {
-      body { padding: 18px 10px 24px; }
-      .press-shell { border-radius: 18px; padding: 14px 12px 20px; }
-      .press-header-bar { padding-inline: 12px; }
-      .section { padding: 18px; }
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .two-col {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="press-shell">
-    <div class="press-inner">
-
-      <!-- Top Header Bar -->
-      <header class="press-header-bar">
-        <div class="press-logo-wrap">
-          <div class="press-logo-link">
-            <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
-          </div>
-          <div class="press-title-text">
-            <span class="press-label">NeoX Coin (NXC)</span>
-            <span class="press-sub-label">Official Press Kit</span>
-          </div>
+  <div class="wrap">
+    
+    <!-- 全螢幕置頂的外殼 (Head Box) -->
+    <header class="topbar" style="
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      padding: 16px 32px; 
+      background: rgba(5, 11, 31, 0.85); 
+      backdrop-filter: blur(12px); 
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08); 
+      z-index: 9999;
+    ">
+      <!-- 左上角 Logo 區塊：點擊返回主頁 -->
+      <a href="https://neoxcoin.github.io/" class="brand-row" style="
+        display: flex; 
+        align-items: center; 
+        gap: 12px; 
+        text-decoration: none; 
+        color: #ffffff;
+      ">
+        <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Coin logo" style="width: 32px; height: 32px; object-fit: contain;" />
+        <span style="font-weight: 600; font-size: 15px; letter-spacing: 0.5px; text-transform: uppercase;">NeoX Coin (NXC) · Press Kit</span>
+      </a>
+      
+      <!-- 右上角區塊：語系切換鍵 (當前 EN 為高亮藍色) -->
+      <div class="header-right">
+        <div class="language-switch" style="font-size: 13px; color: var(--text-muted); display: flex; gap: 6px;">
+          <a href="press-kit.html" style="color: #1c9cff; font-weight: 600; text-decoration: none;">EN</a>
+          <span class="lang-sep" style="opacity: 0.3;">|</span>
+          <a href="press-kit-zh.html" style="text-decoration: none;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='var(--text-muted)'">繁</a>
         </div>
+      </div>
+    </header>
 
-        <!-- Google Translate Widget Inside Header -->
-        <div class="google-translate-wrapper">
-          <div id="google_translate_element"></div>
-        </div>
-
-        <a href="index.html" class="btn-back">← Back to Home</a>
-      </header>
-
-      <!-- Hero Visual Section -->
-      <section class="hero-grid">
-        <div class="hero-content">
-          <h1>NEOX COIN <span>(NXC)</span> –<br>OFFICIAL PRESS KIT</h1>
-          <p>
+    <!-- Hero Section -->
+    <section class="hero" aria-labelledby="presskit-hero-title">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1 id="presskit-hero-title">
+            NeoX Coin <span>(NXC)</span> – Official Press Kit
+          </h1>
+          <p class="lead">
             Official media & branding resource for NeoX Coin (NXC) on Base Mainnet. Find logos, key facts, token details, and ecosystem overview for listings, coverage, and partnerships.
           </p>
-          
-          <div class="tag-row">
-            <span class="tag-pill">Base Mainnet</span>
-            <span class="tag-pill">Web3 · Digital Art · Gaming</span>
-            <span class="tag-pill">Media & Branding Kit</span>
+          <div class="pill-row">
+            <div class="pill">Base Mainnet</div>
+            <div class="pill">Web3 · Digital Art · Gaming</div>
+            <div class="pill">Media & Branding Kit</div>
           </div>
-
-          <div class="btn-group">
-            <a href="#" class="btn-primary">Download Full Press Kit (ZIP)</a>
-            <a href="#" class="btn-secondary">View Cover Image</a>
-            <a href="#" class="btn-secondary">Browse All Assets</a>
+          <div class="hero-buttons">
+            <a class="btn-main" href="https://neoxcoin.github.io/NeoX-PressKit.zip" download>
+              Download Full Press Kit (ZIP)
+            </a>
+            <a class="btn-ghost" href="https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG" target="_blank" rel="noopener">
+              View Cover Image
+            </a>
+            <a class="btn-ghost" href="#media-assets">
+              Browse All Assets
+            </a>
           </div>
         </div>
-
-        <div class="preview-box">
-          <span class="preview-badge">NEOX COIN PRESS KIT COVER</span>
-          <img src="https://neoxcoin.github.io/XNXC.png" alt="Press Kit Cover" />
+        <div class="hero-media">
+          <div class="cover-frame">
+            <span class="badge-top">NeoX Coin Press Kit Cover</span>
+            <img src="https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG" alt="NeoX Coin (NXC) official press kit cover" />
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Brand Overview -->
-      <section class="section" id="overview">
-        <h2><span class="section-num">01 ·</span> BRAND OVERVIEW</h2>
+    <main>
+      <!-- 01 · Brand Overview (已優化高亮與語句潤飾) -->
+      <section id="overview">
+        <h2><span>01 ·</span> Brand Overview</h2>
         <p>
           <strong>NeoX Coin (NXC)</strong> is a next-generation digital asset on <strong>Base Mainnet</strong>, designed to unify Web3 experiences across NFTs, digital art, interactive games, and metaverse-style exhibitions.
         </p>
@@ -474,46 +562,172 @@
           Built as a <strong>creative utility token</strong> rather than a speculative product, NXC connects NeoX NFT collections, browser-based mini-games, virtual galleries, and future digital-ownership experiences under a single brand.
         </p>
         <p>
-          NeoX focuses on <strong>clarity, creativity, and long-term identity</strong>, ensuring a consistent visual and cultural presence across all platforms.
+          Driven by <strong>clarity, creativity, and long-term vision</strong>, NeoX establishes a powerful, cohesive visual and cultural identity across the evolving Web3 landscape.
         </p>
       </section>
 
-      <!-- Core Details -->
-      <section class="section" id="details">
-        <h2><span class="section-num">02 ·</span> OFFICIAL DETAILS</h2>
-        <p><strong>Token Name:</strong> NeoX Coin</p>
-        <p><strong>Ticker Symbol:</strong> NXC</p>
-        <p><strong>Blockchain Network:</strong> Base Mainnet (Layer 2 secured by Ethereum)</p>
-        <p><strong>Token Standard:</strong> ERC-20</p>
-        <p><strong>Smart Contract Address:</strong> 0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</p>
+      <!-- 02 · Mission & Vision (已優化強動詞) -->
+      <section id="mission">
+        <div class="two-col">
+          <div>
+            <h2><span>02 ·</span> Mission & Vision</h2>
+            <p><strong>Vision</strong></p>
+            <p>
+              To build an accessible Web3 ecosystem where art, gaming, digital identity, and community interact seamlessly through a unified brand.
+            </p>
+            <p><strong>Mission</strong></p>
+            <ul>
+              <li><strong>Launch</strong> a highly adaptive utility token for multi-platform experiences.</li>
+              <li><strong>Empower</strong> global creators with open, accessible, decentralized tools.</li>
+              <li><strong>Cultivate</strong> next-generation artistic and gamified ecosystems.</li>
+              <li><strong>Bridge</strong> Web3 culture with everyday digital audiences.</li>
+            </ul>
+          </div>
+
+          <!-- 03 · What NeoX Represents -->
+          <div id="represents">
+            <h2><span>03 ·</span> What NeoX Represents</h2>
+            <p>
+              NeoX blends <strong>premium digital branding</strong>, <strong>high-quality art</strong>, and <strong>utility-focused innovation</strong>.
+            </p>
+            <p>Our core symbolism:</p>
+            <ul>
+              <li><strong>Gold</strong> → value, authenticity, and trust.</li>
+              <li><strong>NeoX Blue</strong> → technology, innovation, and digital expansion.</li>
+              <li><strong>Deep Space Black</strong> → infinite possibilities and the boundless Web3 landscape.</li>
+            </ul>
+            <div class="color-row">
+              <div class="swatch"><span class="swatch-dot dot-gold"></span> #f2c24a</div>
+              <div class="swatch"><span class="swatch-dot dot-blue"></span> #1c9cff</div>
+              <div class="swatch"><span class="swatch-dot dot-bg"></span> #020717</div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <!-- Footer Section -->
-      <footer>
-          <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
-            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
-            <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="url?id=0icon-instagram-new.PNG" alt="Instagram" /></a>
-            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
-            <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
-          </div>
-          <div class="footer-links">
-            <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
-          </div>
-          <div class="copyright">© 2025 NeoX. All rights reserved.</div>
-      </footer>
-    </div>
-  </main>
+      <!-- 04 · Key Token Facts -->
+      <section id="token">
+        <h2><span>04 ·</span> Key Token Facts</h2>
+        <p>Official specifications for NeoX Coin (NXC) on the blockchain:</p>
+        <div class="token-grid">
+          <div class="token-item"><strong>Token Name</strong>NeoX Coin</div>
+          <div class="token-item"><strong>Ticker Symbol</strong>NXC</div>
+          <div class="token-item"><strong>Blockchain Network</strong>Base Mainnet</div>
+          <div class="token-item"><strong>Token Standard</strong>ERC-20</div>
+          <div class="token-item"><strong>Total Supply</strong>1,000,000,000 NXC</div>
+        </div>
+        <p style="margin-top: 14px; margin-bottom: 6px;"><strong>Smart Contract Address:</strong></p>
+        <code class="addr">
+          <img src="https://neoxcoin.github.io/favicon.svg" alt="NXC token icon" class="icon-small" />
+          0x0000000000000000000000000000000000000000
+        </code>
+      </section>
 
-  <!-- Google Translate Official Script Integration (Exact match with index-global.html) -->
-  <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-  </script>
-  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      <!-- 05 · Media Assets -->
+      <section id="media-assets">
+        <h2><span>05 ·</span> Official Branding Assets</h2>
+        <p>Preview and download individual official branding resources below:</p>
+        <div class="logo-row">
+          <div class="logo-card">
+            <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Coin Round Logo" />
+            <span>Round Logo (PNG)</span>
+          </div>
+          <div class="logo-card">
+            <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Coin Square Logo" />
+            <span>Square Logo (PNG)</span>
+          </div>
+          <div class="logo-card">
+            <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Coin Banner Logo" />
+            <span>Horizontal Banner (PNG)</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 06 · Important Legal Disclaimer (已優化標準合規文風) -->
+      <section id="disclaimer">
+        <h2><span>06 ·</span> Legal Disclaimer</h2>
+        <p>
+          NeoX Coin (NXC) operates strictly as a <strong>utility and ecosystem token</strong>. It does not constitute a financial instrument, investment product, or security in any jurisdiction. Participants assume all inherent <strong>risks associated with cryptographic assets</strong>.
+        </p>
+      </section>
+
+      <!-- 07 · Official Links -->
+      <section id="links">
+        <h2><span>07 ·</span> Official Resource Links</h2>
+        <div class="links-grid">
+          <div class="link-card"><strong>Official Website</strong><a href="https://neoxcoin.io/" target="_blank" rel="noopener">https://neoxcoin.io/</a></div>
+          <div class="link-card"><strong>Whitepaper</strong><a href="https://neoxcoin.github.io/whitepaper.html" target="_blank" rel="noopener">View Whitepaper</a></div>
+          <div class="link-card"><strong>BaseScan Token Page</strong><a href="#" target="_blank" rel="noopener">View on BaseScan</a></div>
+          <div class="link-card"><strong>X (Twitter)</strong><a href="https://x.com/neox__official" target="_blank" rel="noopener">@neox__official</a></div>
+          <div class="link-card"><strong>Instagram</strong><a href="https://www.instagram.com/neox__official/" target="_blank" rel="noopener">@neox__official</a></div>
+          <div class="link-card"><strong>YouTube</strong><a href="https://www.youtube.com/@NeoX_officials" target="_blank" rel="noopener">@NeoX_officials</a></div>
+          <div class="link-card"><strong>TikTok</strong><a href="https://www.tiktok.com/@neox.world" target="_blank" rel="noopener">@neox.world</a></div>
+          <div class="link-card"><strong>OpenSea</strong><a href="#" target="_blank" rel="noopener">Official NeoX Profile</a></div>
+          <div class="link-card"><strong>GitHub</strong><a href="https://github.com/neoxcoin" target="_blank" rel="noopener">https://github.com/neoxcoin</a></div>
+        </div>
+      </section>
+
+      <!-- 08 · Contact & Press -->
+      <section id="contact">
+        <h2><span>08 ·</span> Contact & Press Inquiries</h2>
+        <p>For collaboration proposals, media requests, or usage of NeoX branding in campaigns, please get in touch:</p>
+        <div class="contact-box">
+          <strong>Press & Business Inquiries:</strong><br />
+          Email: <a href="mailto:info@neoxcoin.io">info@neoxcoin.io</a>
+          <p style="margin: 8px 0 0; font-size: 12px; opacity: 0.8;">
+            When possible, please include links to your publication, platform, or project, along with a brief description of how you plan to feature NeoX Coin (NXC).
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- 完全同步首頁樣式且間距緊湊的 Footer 區塊 -->
+    <footer style="
+      width: 100%; 
+      border-top: 1px solid var(--border); 
+      padding: 40px 0; 
+      margin-top: 50px; 
+      background: rgba(0,0,0,0.1); 
+      text-align: center; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center;
+    ">
+      <!-- 1. 社群媒體 Icon 區塊 -->
+      <div class="social-icons" style="margin-bottom: 25px; display: flex; justify-content: center; align-items: center; gap: 0;">
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+        <a href="https://x.com/neox__official" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+        <a href="https://www.instagram.com/neox__official/" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+        <a href="https://www.tiktok.com/@neox.world" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+        <a href="https://www.youtube.com/@NeoX_officials" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+      </div>
+
+      <!-- 2. 中間選單文字區 (限制最大寬度以聚集範圍) -->
+      <div class="footer-links" style="
+        font-size: 13px; 
+        color: var(--text-muted); 
+        margin-bottom: 15px; 
+        display: flex; 
+        justify-content: center; 
+        flex-wrap: wrap; 
+        max-width: 450px; 
+        width: 100%; 
+        text-align: center; 
+        line-height: 1.8;
+      ">
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="token-info.html">Token Info</a>
+        <a href="neox-wiki.html">Wiki</a>
+        <a href="disclaimer-en.html">Disclaimer</a>
+      </div>
+
+      <!-- 3. 最底部的版權宣告 -->
+      <div class="copyright" style="font-size: 12px; color: rgba(255,255,255,0.4); text-align: center; width: 100%;">
+        © 2025 NeoX. All rights reserved.
+      </div>
+    </footer>
+
+  </div>
 </body>
 </html>
