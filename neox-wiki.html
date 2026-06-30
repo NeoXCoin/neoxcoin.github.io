@@ -316,8 +316,8 @@
         justify-content: center; /* 水平置中 */
         align-items: center;
         gap: 15px;
-        margin: 20px 0;
-    }
+        margin: 30px 0 20px 0; /* 👈 拉開同上方條分界線的距離 */
+    }   
 
     .social-icons a {
         display: inline-block;
@@ -345,48 +345,75 @@
     .footer-links {
         font-size: 13px;
         color: var(--text-muted);
-        margin-bottom: 10px;
+        margin-bottom: 15px;
         text-align: center; /* 文字置中 */
     }
-    
+
     .home-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-width: 210px;
-      padding: 10px 22px;
-      border-radius: 999px;
-      border: 1px solid rgba(180, 220, 255, 0.9);
-      background: radial-gradient(circle at 0 0, #4fb5ff, #365bff);
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      box-shadow:
-        0 0 18px rgba(120, 200, 255, 0.9),
-        0 0 38px rgba(90, 140, 255, 0.85);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-width: 210px;
+        padding: 10px 22px;
+        border-radius: 999px;
+        border: 1px solid rgba(180, 220, 255, 0.9);
+        background: radial-gradient(circle at 0 0, #4fb5ff, #365bff);
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        box-shadow: 0 0 18px rgba(120, 200, 255, 0.9), 0 0 38px rgba(90, 140, 255, 0.85);
     }
 
     .home-btn span {
-      font-size: 16px;
+        font-size: 16px;
     }
 
-    .footer-links { 
-        font-size: 13px; 
-        color: var(--text-muted); 
-        margin-bottom: 10px; 
-        text-align: center; /* 關鍵：強制文字置中 */
-        display: block;     /* 確保佢係一個獨立區塊 */
-        width: 100%;        /* 確保佢撐開成個闊度 */
+    /* ==========================================================================
+       5. Footer 區塊完整優化（完美同步首頁風格）
+       ========================================================================== */
+
+    /* 社交 Icon 區域：拉開上下間距，增加網頁呼吸感 */
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin: 35px 0 22px 0;
     }
 
-    .footer-links a {margin: 0 8px;color: var(--text-muted) !important; /* 👈 使用半透明白（約 70% 透明度），望落去會變淡同柔和 */transition: color 0.2s ease;         /* 👈 加上平滑效果 */}
-    .footer-links a { margin: 0 8px; }
-    .footer-links a:hover {color: var(--text-main) !important;  /* 👈 移上去時先會令佢變返亮眼嘅純白色 */}
-    .copyright { font-size: 12px;color: rgba(255,255,255,0.4);text-align: center; /* 👈 加呢一行，版權文字就會排返去正中間 */display: block;     /* 👈 確保它作為獨立區塊撐開，置中才會精準 */width: 100%;
+    /* 底部連結外框：設定字型大小與置中 */
+    .footer-links {
+        font-size: 13px;
+        margin-bottom: 18px;
+        text-align: center;
+        display: block;
+        width: 100%;
     }
 
+    /* 連結預設狀態：無咁突出，完美融入深色星空背景 */
+    .footer-links a {
+        margin: 0 8px;
+        color: var(--text-muted) !important; /* 使用首頁的半透明白 */
+        transition: color 0.2s ease;         /* 加上平滑過渡動畫 */
+    }
+
+    /* 連結滑鼠懸停（Hover）狀態：亮起變成 100% 純白 */
+    .footer-links a:hover {
+        color: var(--text-main) !important;  /* 移上去時溫和亮起 */
+    }
+
+    /* 最底部版權文字：移除所有靠邊干擾，乖乖留在正中間 */
+    .copyright {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        text-align: center;                  /* 強制置中 */
+        display: block;                      /* 確保作為獨立區塊撐開 */
+        width: 100%;
+        margin-top: 5px;
+    }
+    
     @media (max-width: 640px) {
       body {
         padding: 18px 10px 24px;
