@@ -1,74 +1,519 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>NeoX Wiki – Official Overview of the NeoX Ecosystem</title>
-  
-  <!-- 引入主頁風格的 CSS 設置 -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- 將你主頁的 <style> 內容整段貼在這裡，為了方便，我這裡縮減展示 -->
-  <style>
-    /* 這裡請貼上你主頁原有的 CSS */
-    /* ... 確保包含 header, footer, 以及變數定義 ... */
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     
-    /* 針對 Wiki 頁面補充的樣式 */
-    .wiki-content {
-        color: var(--text-muted);
-        line-height: 1.8;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 100px 20px;
-        text-align: left;
+  <meta charset="UTF-8" />
+  <title>NeoX Coin (NXC) – Official Press Kit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Official media & branding resource for NeoX Coin (NXC) on Base Mainnet. Find logos, key facts, token details, and ecosystem overview." />
+  <meta name="keywords" content="NeoX, NeoX Coin, NXC, Press Kit, Media Assets, Base Mainnet, ERC-20" />
+  <meta name="author" content="NeoX Official" />
+
+  <!-- Canonical & hreflang for Global version -->
+  <link rel="canonical" href="https://neoxcoin.github.io/press-kit.html" />
+
+  <style>
+    :root {
+        --bg-dark: #03010a; 
+        --text-main: #ffffff;
+        --text-muted: rgba(255, 255, 255, 0.7);
+        --primary: #a370ff; 
+        --secondary: #00ffcc; 
+        --glass: rgba(255, 255, 255, 0.03);
+        --border: rgba(255, 255, 255, 0.08);
+        --font-stack: 'Plus Jakarta Sans', sans-serif; 
     }
-    .wiki-content h2, .wiki-content h3 { color: var(--text-main); margin-top: 40px; }
-    .wiki-content p { margin-bottom: 20px; }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+        background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+    
+        font-family: var(--font-stack);
+        color: var(--text-main);
+        -webkit-font-smoothing: antialiased;
+        letter-spacing: -0.01em;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 32px 16px 40px;
+        overflow-x: hidden;
+        
+        /* 核心修正：強制鎖死網頁頂部，搭配下方樣式絕不留白給翻譯條 */
+        top: 0px !important;
+        position: static !important;
+    }
+
+    /* ==========================================================================
+       Google Translate 終極壓制樣式 (與 index-global.html 完全一致的隱形效果)
+       ========================================================================== */
+    .goog-te-banner-frame.skiptranslate, 
+    .goog-te-banner-frame,
+    iframe.goog-te-banner-frame { 
+        display: none !important; 
+        visibility: hidden !important; 
+        height: 0 !important; 
+        width: 0 !important; 
+    }
+    
+    body > .skiptranslate { 
+        display: none !important; 
+        visibility: hidden !important;
+        height: 0 !important;
+    }
+
+    /* 隱藏原生的 Google Logo 網頁圖標，保持自訂下拉選單純淨 */
+    .goog-te-gadget-simple img,
+    .goog-te-menu-value span:nth-child(3) { 
+        display: none !important; 
+    }
+    
+    .goog-te-gadget-simple {
+        background-color: rgba(5, 12, 40, 0.9) !important;
+        border: 1px solid rgba(150, 195, 255, 0.7) !important;
+        padding: 4px 10px !important;
+        border-radius: 999px !important;
+        font-family: var(--font-stack) !important;
+        font-size: 13px !important;
+        cursor: pointer;
+    }
+
+    .goog-te-menu-value {
+        color: rgba(255, 255, 255, 0.85) !important;
+        margin: 0 !important;
+    }
+
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+
+    .press-shell {
+      width: 100%;
+      max-width: var(--page-max-width, 1100px);
+      background: linear-gradient(145deg, rgba(18, 10, 46, 0.98), rgba(7, 5, 30, 0.98));
+      border-radius: 26px;
+      border: 1px solid rgba(160, 200, 255, 0.3);
+      box-shadow:
+        0 0 40px rgba(30, 60, 160, 0.7),
+        0 0 80px rgba(140, 80, 255, 0.5);
+      padding: 18px 18px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .press-shell::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(103, 178, 255, 0.15) 0, transparent 55%),
+        radial-gradient(circle at 100% 0%, rgba(170, 128, 255, 0.18) 0, transparent 55%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .press-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Header bar */
+    .press-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 0 0, rgba(120, 190, 255, 0.4), transparent 60%),
+                  radial-gradient(circle at 100% 0, rgba(180, 130, 255, 0.35), transparent 60%),
+                  rgba(9, 14, 46, 0.96);
+      border: 1px solid rgba(160, 210, 255, 0.6);
+      box-shadow: 0 0 24px rgba(110, 170, 255, 0.65);
+      margin-bottom: 24px;
+    }
+
+    .press-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .press-logo-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 15%, #ffffff 0, #75c9ff 22%, #1048ff 58%, #04081a 100%);
+      box-shadow:
+        0 0 16px rgba(138, 197, 255, 0.9),
+        0 0 32px rgba(90, 160, 255, 0.9);
+      border: 1px solid rgba(203, 228, 255, 0.95);
+      padding: 0;
+    }
+
+    .press-logo-link img {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+
+    .press-title-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .press-label {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(214, 224, 255, 0.86);
+    }
+
+    .press-sub-label {
+      font-size: 11px;
+      color: rgba(186, 198, 255, 0.86);
+    }
+
+    .btn-back {
+      font-size: 13px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-muted);
+    }
+    .btn-back:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .google-translate-wrapper {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      margin-right: 12px;
+    }
+
+    /* Hero Grid Layout */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 32px;
+      align-items: center;
+      margin: 20px 0 40px;
+    }
+
+    .hero-content h1 {
+      margin: 0 0 16px;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .hero-content h1 span {
+      color: #38bdf8;
+    }
+
+    .hero-content p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* Tag pills */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    .tag-pill {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Action Buttons */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn-primary {
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #0ea5e9, #2563eb);
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      box-shadow: 0 4px 20px rgba(14, 165, 233, 0.4);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(14, 165, 233, 0.6);
+    }
+    .btn-secondary {
+      padding: 12px 24px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.3);
+    }
+
+    /* Visual Showcase Preview */
+    .preview-box {
+      background: rgba(9, 12, 46, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 12px;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .preview-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+    .preview-badge {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: rgba(0,0,0,0.75);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* Content Sections */
+    .section {
+      background: linear-gradient(135deg, rgba(15, 25, 74, 0.98), rgba(9, 12, 46, 0.98));
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .section-num {
+      color: #38bdf8;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      letter-spacing: 0.02em;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 10px;
+    }
+
+    .section p {
+      margin: 0 0 12px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .section strong {
+      color: #ffffff;
+    }
+
+    /* Footer Styles */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 60px;
+      background: rgba(0,0,0,0.1);
+    }
+
+    .social-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        margin: 35px 0 22px 0;
+    }
+
+    .social-icons a img {
+        width: 32px !important; 
+        height: 32px !important;
+        object-fit: contain;
+        border-radius: 50%;
+        padding: 6px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        filter: grayscale(100%) brightness(0.7);
+        transition: all 0.3s ease;
+    }
+
+    .social-icons a img:hover {
+        filter: grayscale(0%) brightness(1);
+        transform: scale(1.1);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .footer-links {
+        font-size: 13px;
+        margin-bottom: 18px;
+        text-align: center;
+        display: block;
+    }
+
+    .footer-links a {
+        margin: 0 8px;
+        color: var(--text-muted) !important;
+    }
+
+    .footer-links a:hover {
+        color: var(--text-main) !important;
+    }
+
+    .copyright {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.4);
+        text-align: center;
+        display: block;
+        margin-top: 5px;
+    }
+    
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 640px) {
+      body { padding: 18px 10px 24px; }
+      .press-shell { border-radius: 18px; padding: 14px 12px 20px; }
+      .press-header-bar { padding-inline: 12px; }
+      .section { padding: 18px; }
+    }
   </style>
 </head>
 <body>
+  <main class="press-shell">
+    <div class="press-inner">
 
-  <!-- 這部分直接用你主頁的 Header -->
-  <header>
-    <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
-    <div class="nav-links">
-      <a href="what-is-neox.html">What is NeoX?</a>
-      <a href="how-to-buy.html">How to Buy?</a>
-      <a href="game.html">NeoX Game</a>
-      <a href="metaverse.html">Metaverse Exhibition</a>
-      <a href="nft-projects.html">NFT Projects</a>
-    </div>
-    <div class="header-right">
-        <!-- ... 語言與錢包按鈕 ... -->
-    </div>
-  </header>
+      <!-- Top Header Bar -->
+      <header class="press-header-bar">
+        <div class="press-logo-wrap">
+          <div class="press-logo-link">
+            <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo" />
+          </div>
+          <div class="press-title-text">
+            <span class="press-label">NeoX Coin (NXC)</span>
+            <span class="press-sub-label">Official Press Kit</span>
+          </div>
+        </div>
 
-  <!-- Wiki 內容區塊 -->
-  <main class="wiki-content">
-      <h1>NeoX Official Wiki</h1>
-      <p>A reference-style summary of the NeoX ecosystem on Base Mainnet...</p>
-      
-      <!-- 這裡放入你原本的 Wiki 內容 -->
-      <h2>Overview</h2>
-      <p>NeoX is a decentralized Web3 ecosystem...</p>
-      
-      <!-- 請將你原本的 Wiki 文字貼在這裡 -->
+        <!-- Google Translate Widget Inside Header -->
+        <div class="google-translate-wrapper">
+          <div id="google_translate_element"></div>
+        </div>
+
+        <a href="index.html" class="btn-back">← Back to Home</a>
+      </header>
+
+      <!-- Hero Visual Section -->
+      <section class="hero-grid">
+        <div class="hero-content">
+          <h1>NEOX COIN <span>(NXC)</span> –<br>OFFICIAL PRESS KIT</h1>
+          <p>
+            Official media & branding resource for NeoX Coin (NXC) on Base Mainnet. Find logos, key facts, token details, and ecosystem overview for listings, coverage, and partnerships.
+          </p>
+          
+          <div class="tag-row">
+            <span class="tag-pill">Base Mainnet</span>
+            <span class="tag-pill">Web3 · Digital Art · Gaming</span>
+            <span class="tag-pill">Media & Branding Kit</span>
+          </div>
+
+          <div class="btn-group">
+            <a href="#" class="btn-primary">Download Full Press Kit (ZIP)</a>
+            <a href="#" class="btn-secondary">View Cover Image</a>
+            <a href="#" class="btn-secondary">Browse All Assets</a>
+          </div>
+        </div>
+
+        <div class="preview-box">
+          <span class="preview-badge">NEOX COIN PRESS KIT COVER</span>
+          <img src="https://neoxcoin.github.io/XNXC.png" alt="Press Kit Cover" />
+        </div>
+      </section>
+
+      <!-- Brand Overview -->
+      <section class="section" id="overview">
+        <h2><span class="section-num">01 ·</span> BRAND OVERVIEW</h2>
+        <p>
+          <strong>NeoX Coin (NXC)</strong> is a next-generation digital asset on <strong>Base Mainnet</strong>, designed to unify Web3 experiences across NFTs, digital art, interactive games, and metaverse-style exhibitions.
+        </p>
+        <p>
+          Built as a <strong>creative utility token</strong> rather than a speculative product, NXC connects NeoX NFT collections, browser-based mini-games, virtual galleries, and future digital-ownership experiences under a single brand.
+        </p>
+        <p>
+          NeoX focuses on <strong>clarity, creativity, and long-term identity</strong>, ensuring a consistent visual and cultural presence across all platforms.
+        </p>
+      </section>
+
+      <!-- Core Details -->
+      <section class="section" id="details">
+        <h2><span class="section-num">02 ·</span> OFFICIAL DETAILS</h2>
+        <p><strong>Token Name:</strong> NeoX Coin</p>
+        <p><strong>Ticker Symbol:</strong> NXC</p>
+        <p><strong>Blockchain Network:</strong> Base Mainnet (Layer 2 secured by Ethereum)</p>
+        <p><strong>Token Standard:</strong> ERC-20</p>
+        <p><strong>Smart Contract Address:</strong> 0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B</p>
+      </section>
+
+      <!-- Footer Section -->
+      <footer>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+            <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+            <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="url?id=0icon-instagram-new.PNG" alt="Instagram" /></a>
+            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+            <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+          </div>
+          <div class="footer-links">
+            <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
+          </div>
+          <div class="copyright">© 2025 NeoX. All rights reserved.</div>
+      </footer>
+    </div>
   </main>
 
-  <!-- 這部分直接用你主頁的 Footer -->
-  <footer>
-    <div class="social-icons">
-      <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
-      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
-      <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
-      <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
-      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
-    </div>
-    <div class="footer-links">
-      <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
-    </div>
-    <div class="copyright">© 2025 NeoX. All rights reserved.</div>
-  </footer>
-
+  <!-- Google Translate Official Script Integration (Exact match with index-global.html) -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
