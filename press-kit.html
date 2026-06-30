@@ -35,8 +35,13 @@
         --text-muted: rgba(255, 255, 255, 0.7);
         --primary: #a370ff; /* 皇家紫 */
         --secondary: #00ffcc; /* 賽博朋克青 */
+        --accent: #1c9cff;
+        --muted: rgba(255, 255, 255, 0.7);
         --glass: rgba(255, 255, 255, 0.03);
         --border: rgba(255, 255, 255, 0.08);
+        --border-subtle: rgba(255, 255, 255, 0.08);
+        --radius-lg: 24px;
+        --radius-md: 12px;
         --font-stack: 'Plus Jakarta Sans', sans-serif; /* 首頁的核心字體 */
     }
 
@@ -93,7 +98,11 @@
       margin-top: 80px; /* 新增這行，把內容往下推，就不會被導覽列擋到 */
       background: radial-gradient(circle at top, #071a44 0, #04091c 60%, #020717 100%);
       border-radius: 32px;
-      /* ...其餘原本的設定保持不變... */
+      padding: 40px 32px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
     }
 
     .hero::before {
@@ -113,6 +122,19 @@
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
       gap: 32px;
       align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .pill-row, .hero-buttons {
+        justify-content: center;
+      }
+      .hero-media {
+        order: -1;
+      }
     }
 
     .hero-copy h1 {
@@ -280,6 +302,12 @@
       gap: 18px;
     }
 
+    @media (max-width: 768px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .token-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -330,23 +358,44 @@
     .logo-card {
       background: rgba(3, 12, 32, 0.9);
       border-radius: var(--radius-md);
-      padding: 10px 11px 12px;
+      padding: 16px 12px;
       border: 1px solid rgba(255, 255, 255, 0.06);
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
     }
 
     .logo-card img {
       max-width: 96px;
       max-height: 96px;
-      margin-bottom: 8px;
       object-fit: contain;
-      filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.9));
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8));
     }
 
     .logo-card span {
       display: block;
       font-size: 12px;
-      color: var(--muted);
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .logo-card .download-link {
+      font-size: 11px;
+      color: var(--accent);
+      text-decoration: none;
+      border: 1px solid rgba(28, 156, 255, 0.3);
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(28, 156, 255, 0.05);
+      transition: all 0.2s;
+    }
+
+    .logo-card .download-link:hover {
+      background: var(--accent);
+      color: #020717;
     }
 
     .color-row {
@@ -457,28 +506,19 @@
 
     .social-icons { margin-bottom: 25px; }
     .social-icons img {
-        /* 1. 將本來的 22px 稍微縮小一點點（例如 18px），配合 padding 後總體大小就跟原本一樣了 */
         width: 18px;
         height: 18px; 
         margin: 0 15px;
-    
-        /* 2. 核心：將 padding 縮細，圓框就會緊貼住 Logo，唔會好似大得滯 */
         padding: 4px; 
-    
-        /* 圓框設定保持 */
         background: rgba(255, 255, 255, 0.05); 
         border: 1px solid rgba(255, 255, 255, 0.15); 
         border-radius: 50%; 
-    
-        /* 之前你調校好的深灰色濾鏡 */
         filter: grayscale(100%) brightness(0.7); 
         opacity: 0.9; 
-    
         transition: all 0.2s ease;
         box-sizing: content-box; 
     }
 
-    /* Hover 效果保持不變 */
     .social-icons img:hover {
         filter: grayscale(0%) brightness(1); 
         opacity: 1;
@@ -488,16 +528,9 @@
     }
 
     .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
-    .footer-links a { margin: 0 8px; }
+    .footer-links a { margin: 0 8px; text-decoration: none; color: var(--text-muted); }
     .footer-links a:hover { color: var(--text-main); }
     .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
-
-    @media (max-width: 900px) {
-      header { padding: 0 20px; }
-      .nav-links { display: none; }
-      .tagline { font-size: 40px; }
-      .ecosystem-grid { grid-template-columns: 1fr; gap: 15px; }
-    }
   </style>
 </head>
 
@@ -534,14 +567,11 @@
   
       <div class="header-right">
        <div class="language-switch" style="font-size: 13px; color: var(--text-muted); display: flex; gap: 6px;">
-        <!-- 1. 英文版連結修改為 press-kit.html -->
         <a href="press-kit.html" style="color: #1c9cff; font-weight: 600; text-decoration: none;">EN</a> 
         <span class="lang-sep">|</span> 
-        <!-- 2. 中文版連結修改為 press-kit-zh.html -->
-        <a href="press-kit-zh.html" style="text-decoration: none;" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='var(--text-muted)'">繁</a>
+        <a href="press-kit-zh.html" style="text-decoration: none; color: rgba(255,255,255,0.7);" onmouseover="this.style.color='#ffffff'" onmouseout="this.style.color='rgba(255,255,255,0.7)'">繁</a>
       </div>
     </div>
-
     </header>
 
     <section class="hero" aria-labelledby="presskit-hero-title">
@@ -567,7 +597,7 @@
             <a class="btn-ghost" href="https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG" target="_blank" rel="noopener">
               View Cover Image
             </a>
-            <a class="btn-ghost" href="#media-assets">
+            <a class="btn-ghost" href="#branding">
               Browse All Assets
            </a>
         </div>
@@ -701,23 +731,23 @@
 
         <div class="logo-row">
           <div class="logo-card">
-            <img src="https://neoxcoin.io/%20NeoXCoin.png"
-                 alt="NeoX Gold Coin logo" />
+            <img src="https://neoxcoin.io/%20NeoXCoin.png" alt="NeoX Gold Coin logo" />
             <span>Primary Coin Logo (3D)</span>
+            <a href="https://neoxcoin.github.io/NeoXCoin.png" class="download-link" target="_blank" download>PNG</a>
           </div>
           <div class="logo-card">
-            <img src="https://neoxcoin.io/XNXC.png"
-                 alt="NeoX X technology logo" />
+            <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX X technology logo" />
             <span>NeoX “X” Technology Mark</span>
+            <a href="https://neoxcoin.github.io/XNXC.png" class="download-link" target="_blank" download>PNG</a>
           </div>
           <div class="logo-card">
-            <img src="https://neoxcoin.io/NeoXCoin.svg"
-                 alt="NeoX NXC vector mark" />
-            <span>Vector Icon (SVG, 32×32+)</span>
+            <img src="https://neoxcoin.github.io/NeoXCoin.svg" alt="NeoX NXC vector mark" />
+            <span>Vector Icon (SVG)</span>
+            <a href="https://neoxcoin.github.io/NeoXCoin.svg" class="download-link" target="_blank" download>SVG</a>
           </div>
         </div>
 
-        <p style="margin-top:10px;"><strong>Brand Colors</strong></p>
+        <p style="margin-top:20px;"><strong>Brand Colors</strong></p>
         <div class="color-row">
           <div class="swatch">
             <span class="swatch-dot dot-gold"></span>
@@ -733,7 +763,7 @@
           </div>
         </div>
 
-        <p style="margin-top:10px;"><strong>Usage Guidelines</strong></p>
+        <p style="margin-top:15px;"><strong>Usage Guidelines</strong></p>
         <ul>
           <li>Do not rotate, stretch, or distort the logos.</li>
           <li>Do not change the official colors or apply heavy filters.</li>
@@ -761,14 +791,14 @@
 
         <p>
           <strong>Direct Cover Link:</strong><br />
-          <a href="https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG" target="_blank" rel="noopener">
+          <a href="https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG" target="_blank" rel="noopener" style="color: var(--accent);">
             https://neoxcoin.github.io/NeoX-PressKit-Cover.PNG
           </a>
         </p>
 
         <p>
           <strong>GitHub Asset Directory:</strong><br />
-          <a href="https://github.com/neoxcoin/neoxcoin.github.io" target="_blank" rel="noopener">
+          <a href="https://github.com/neoxcoin/neoxcoin.github.io" target="_blank" rel="noopener" style="color: var(--accent);">
             https://github.com/neoxcoin/neoxcoin.github.io
           </a>
         </p>
@@ -908,11 +938,10 @@
         </div>
       </section>
     </main>
-    <!-- 底部區塊：所有元素完美置中 -->
+
     <!-- 完全同步首頁樣式的 Footer 區塊 -->
     <footer style="width: 100%; border-top: 1px solid var(--border); padding: 40px 0; margin-top: 50px; background: rgba(0,0,0,0.1); text-align: center;">
-  
-      <!-- 1. 社群媒體 Icon 區塊 (完全使用首頁的 class 名稱與置中排版) -->
+      <!-- 社群媒體 Icon 區塊 -->
       <div class="social-icons" style="margin-bottom: 25px; display: flex; justify-content: center; align-items: center; gap: 0;">
         <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
         <a href="https://x.com/neox__official" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
@@ -921,16 +950,15 @@
         <a href="https://www.youtube.com/@NeoX_officials" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
       </div>
 
-      <!-- 2. 中間選單文字區 (完全套用首頁 .footer-links 樣式與間距，並強制置中) -->
+      <!-- 中間選單文字區 -->
       <div class="footer-links" style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px; display: flex; justify-content: center; flex-wrap: wrap; width: 100%; text-align: center;">
         <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
       </div>
 
-      <!-- 3. 最底部的版權宣告 (完全套用首頁 .copyright 樣式) -->
+      <!-- 最底部的版權宣告 -->
       <div class="copyright" style="font-size: 12px; color: rgba(255,255,255,0.4); text-align: center; width: 100%;">
         © 2025 NeoX. All rights reserved.
       </div>
-
     </footer>
   </div>
 </body>
