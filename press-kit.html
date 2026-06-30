@@ -912,18 +912,31 @@
       </section>
     </main>
     <!-- 底部區塊：所有元素完美置中 -->
-    <footer>
-        <div class="social-icons">
-          <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
-          <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
-          <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
-          <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
-          <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
-        </div>
-        <div class="footer-links">
-          <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
-        </div>
-        <div class="copyright">© 2025 NeoX. All rights reserved.</div>
+    <!-- 完全同步首頁樣式的 Footer 區塊 -->
+    <footer style="width: 100%; border-top: 1px solid var(--border); padding: 40px 0; margin-top: 50px; background: rgba(0,0,0,0.1); text-align: center;">
+  
+      <!-- 1. 社群媒體 Icon 區塊 (完全使用首頁的 class 名稱與置中排版) -->
+      <div class="social-icons" style="margin-bottom: 25px; display: flex; justify-content: center; align-items: center; gap: 0;">
+        <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+        <a href="https://x.com/neox__official" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+        <a href="https://www.instagram.com/neox__official/" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+        <a href="https://www.tiktok.com/@neox.world" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+        <a href="https://www.youtube.com/@NeoX_officials" target="_blank" rel="noopener"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+      </div>
+
+      <!-- 2. 中間選單文字區 (完全套用首頁 .footer-links 樣式與間距，並強制置中) -->
+      <div class="footer-links" style="font-size: 13px; color: var(--text-muted); margin-bottom: 10px; display: flex; justify-content: center; flex-wrap: wrap; gap: 16px; width: 100%; text-align: center;">
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="token-info.html">Token Info</a>
+        <a href="neox-wiki.html">Wiki</a>
+        <a href="disclaimer-en.html">Disclaimer</a>
+      </div>
+
+      <!-- 3. 最底部的版權宣告 (完全套用首頁 .copyright 樣式) -->
+      <div class="copyright" style="font-size: 12px; color: rgba(255,255,255,0.4); text-align: center; width: 100%;">
+        © 2025 NeoX. All rights reserved.
+      </div>
 
     </footer>
   </div>
