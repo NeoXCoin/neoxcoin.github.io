@@ -30,38 +30,38 @@
 
   <style>
     :root {
-      --bg: #020717;
-      --bg-alt: #050b1f;
-      --card: #070f26;
-      --accent: #2fb6ff;
-      --accent-soft: rgba(47, 182, 255, 0.16);
-      --text: #f5f7ff;
-      --muted: #9aa4c4;
-      --border-subtle: rgba(255, 255, 255, 0.06);
-      --radius-lg: 18px;
-      --radius-md: 12px;
-      --shadow-soft: 0 24px 70px rgba(0, 0, 0, 0.65);
+        --bg-dark: #03010a; /* 宇宙深空黑 */
+        --text-main: #ffffff;
+        --text-muted: rgba(255, 255, 255, 0.7);
+        --primary: #a370ff; /* 皇家紫 */
+        --secondary: #00ffcc; /* 賽博朋克青 */
+        --glass: rgba(255, 255, 255, 0.03);
+        --border: rgba(255, 255, 255, 0.08);
+        --font-stack: 'Plus Jakarta Sans', sans-serif; /* 首頁的核心字體 */
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html,
     body {
-      margin: 0;
-      padding: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, "PingFang TC", "Noto Sans", Arial, sans-serif;
-      background: radial-gradient(circle at top, #071435 0, #020717 55%, #000000 100%);
-      color: var(--text);
+        margin: 0;
+        /* 套用首頁的深色星空漸層與細微粒子底圖 */
+        background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+        background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+    
+        font-family: var(--font-stack);
+        color: var(--text-main);
+        -webkit-font-smoothing: antialiased;
+        letter-spacing: -0.01em;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        padding: 32px 16px 40px;
+        overflow-x: hidden;
     }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
 
     .wrap {
       width: min(1120px, 100%);
