@@ -69,21 +69,6 @@
       padding: 32px 20px 56px;
     }
 
-   <header class="topbar">
-      <!-- 左上角 Logo 區塊：現在整個變為可點擊，並返回主頁 -->
-      <a href="https://neoxcoin.github.io/" class="brand-row" style="text-decoration: none;">
-        <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Coin logo" />
-        <span>NeoX Coin (NXC) · Press Kit</span>
-      </a>
-  
-  <!-- 右上角區塊：取消 Back to Home，換成語系切換鍵 -->
-  <div class="lang-switch" style="font-size: 13px; font-weight: 500; display: flex; gap: 8px; align-items: center;">
-    <a href="#" style="color: var(--text-main); text-decoration: none;">ENG</a>
-    <span style="color: var(--text-muted); opacity: 0.5;">|</span>
-    <a href="#" style="color: var(--text-muted); text-decoration: none;" onmouseover="this.style.color='var(--text-main)'" onmouseout="this.style.color='var(--text-muted)'">繁體</a>
-  </div>
-</header>
-
     .brand-row {
       display: flex;
       align-items: center;
@@ -502,17 +487,18 @@
 <body>
   <div class="wrap">
     <header class="topbar">
-      <div class="brand-row">
+      <!-- 左上角 Logo 區塊：現在整個變為可點擊，並返回主頁 -->
+      <a href="https://neoxcoin.github.io/" class="brand-row" style="text-decoration: none;">
         <img src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Coin logo" />
         <span>NeoX Coin (NXC) · Press Kit</span>
-      </div>
-      <a class="back-link" href="https://neoxcoin.github.io/">
-        <svg viewBox="0 0 20 20" aria-hidden="true">
-          <path fill="currentColor"
-                d="M11.78 4.22a.75.75 0 0 1 0 1.06L8.06 9l3.72 3.72a.75.75 0 1 1-1.06 1.06L6 9.97a.75.75 0 0 1 0-1.06l4.72-4.69a.75.75 0 0 1 1.06 0Z"/>
-        </svg>
-        Back to Home
       </a>
+  
+      <!-- 右上角區塊：取消 Back to Home，換成語系切換鍵 -->
+      <div class="lang-switch" style="font-size: 13px; font-weight: 500; display: flex; gap: 8px; align-items: center;">
+        <a href="#" style="color: var(--text-main); text-decoration: none;">ENG</a>
+        <span style="color: var(--text-muted); opacity: 0.5;">|</span>
+        <a href="#" style="color: var(--text-muted); text-decoration: none;" onmouseover="this.style.color='var(--text-main)'" onmouseout="this.style.color='var(--text-muted)'">繁體</a>
+      </div>
     </header>
 
     <section class="hero" aria-labelledby="presskit-hero-title">
