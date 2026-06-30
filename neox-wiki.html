@@ -379,7 +379,8 @@
     .footer-links a {margin: 0 8px;color: #ffffff; /* 👈 加呢一行，預設就會變返白色 */}
     .footer-links a { margin: 0 8px; }
     .footer-links a:hover {color: var(--text-main); /* 或者可以改成其他懸停顏色，例如 #cccccc */}
-    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+    .copyright { font-size: 12px;color: rgba(255,255,255,0.4);text-align: center; /* 👈 加呢一行，版權文字就會排返去正中間 */display: block;     /* 👈 確保它作為獨立區塊撐開，置中才會精準 */width: 100%;
+    }
 
     @media (max-width: 640px) {
       body {
