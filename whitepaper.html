@@ -29,11 +29,10 @@
         margin: 0;
         padding: 0;
         font-family: var(--font-stack);
-        /* 🔴 核心修改：換上你首頁嘅漸變色 (例如由左上到右下) */
-        background: linear-gradient(135deg, #110526 0%, #03010a 50%, #070214 100%);
-        /* 如果你想保留微細嘅點點背景網格，可以好似下面咁寫 */
-        background-image: linear-gradient(135deg, #110526 0%, #03010a 100%), 
-                         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+    
+        /* 🟢 將背景改成同首頁一樣嘅深色漸變（以下為 135deg 傾斜線性漸變範例） */
+        background: linear-gradient(135deg, #070214 0%, #03010a 50%, #110526 100%);
+    
         color: #f5f5f5;
         line-height: 1.7;
         -webkit-font-smoothing: antialiased;
