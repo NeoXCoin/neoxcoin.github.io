@@ -152,53 +152,57 @@ hr { border: 0; border-top: 1px solid rgba(255,255,255,0.08); margin: 28px 0; }
 .btn-row { display: flex; justify-content: center; margin-top: 40px; }
 .btn-back { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; background: transparent; color: var(--text-main); border: 1px solid var(--border); }
 .btn-back:hover { background: var(--glass); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
-/* --- 底部 Social Media 主頁風格化 --- */
-.wrap + div, 
-footer,
-div[style*="justify-content: center"] {
-    /* 確保底部容器置中且有足夠邊距 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    margin-top: 40px;
-}
+/* Market Links */
+    .market-link { margin-top: 15px; font-size: 13px; color: var(--text-muted); }
+    .market-link a { margin: 0 5px; }
+    .market-link a:hover { color: var(--primary); }
 
-/* 針對社交媒體圖標 A 連結的設定 */
-.wrap ~ a img,
-footer a img {
-    width: 28px; /* 統一圖標大小 */
-    height: 28px;
-    transition: all 0.3s ease;
-    filter: grayscale(20%) opacity(0.8); /* 預設帶點透明 */
-}
+    /* --- 5. Footer --- */
+    footer {
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding: 40px 0;
+      margin-top: 50px;
+      background: rgba(0,0,0,0.1);
+    }
 
-/* 🟢 滑鼠微懸停 (Hover) 時激發同主頁一樣嘅彩色放大同埋霓虹發光效果 */
-.wrap ~ a:hover img,
-footer a:hover img {
-    filter: grayscale(0%) opacity(1);
-    transform: scale(1.15) translateY(-2px);
-    /* 營造出類似主頁嘅紫色/青色霓虹光暈 */
-    box-shadow: 0 0 12px rgba(163, 112, 255, 0.5), 0 0 20px rgba(0, 255, 204, 0.3);
-    border-radius: 50%;
-}
+    .social-icons { margin-bottom: 25px; }
+    .social-icons img {
+        /* 1. 將本來的 22px 稍微縮小一點點（例如 18px），配合 padding 後總體大小就跟原本一樣了 */
+        width: 18px;
+        height: 18px; 
+        margin: 0 15px;
+    
+        /* 2. 核心：將 padding 縮細，圓框就會緊貼住 Logo，唔會好似大得滯 */
+        padding: 4px; 
+    
+        /* 圓框設定保持 */
+        background: rgba(255, 255, 255, 0.05); 
+        border: 1px solid rgba(255, 255, 255, 0.15); 
+        border-radius: 50%; 
+    
+        /* 之前你調校好的深灰色濾鏡 */
+        filter: grayscale(100%) brightness(0.7); 
+        opacity: 0.9; 
+    
+        transition: all 0.2s ease;
+        box-sizing: content-box; 
+    }
 
-/* 最底部的 Footer 文字連結（如 About | FAQ 嗰行） */
-footer, .small, div+span {
-    color: var(--text-muted);
-    font-size: 14px;
-    margin-top: 20px;
-}
+    /* Hover 效果保持不變 */
+    .social-icons img:hover {
+        filter: grayscale(0%) brightness(1); 
+        opacity: 1;
+        background: rgba(255, 255, 255, 0.15); 
+        border-color: rgba(255, 255, 255, 0.4); 
+        transform: scale(1.1);
+    }
+    
+    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .footer-links a { margin: 0 8px; }
+    .footer-links a:hover { color: var(--text-main); }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-footer a, .small a {
-    color: var(--text-muted);
-    transition: color 0.2s ease;
-}
-
-footer a:hover, .small a:hover {
-    color: var(--secondary); /* 移上去時變成主頁的青綠色 */
-    text-decoration: none;
-}
 </style>
 </head>
 <body>
