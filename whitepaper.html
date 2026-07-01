@@ -119,6 +119,27 @@
     @keyframes fadeInGlow { 0% { opacity: 0; transform: translateY(10px); box-shadow: 0 0 0 rgba(255,215,0,0); } 60% { opacity: 1; transform: translateY(0); box-shadow: 0 0 26px rgba(255,215,0,0.55); } 100% { opacity: 1; box-shadow: 0 0 16px rgba(255,215,0,0.35); } }
     .coin-anim { animation: fadeInGlow 2s ease-out; }
 
+    /* Back Home Button Row */
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+    .btn-back {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+    .btn-back:hover {
+      background: var(--glass);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+
     /* --- 5. Footer (完全同步 about.html 簡約白色風格) --- */
     footer {
       width: 100%;
@@ -332,17 +353,15 @@
         For listing and verification purposes, the BaseScan contract, this whitepaper, and official token info page are the primary references.
       </p>
     </div>
+
+    <div class="btn-row" style="gap: 20px;">
+     <a class="btn-back" href="index.html">← Previous Page </a>
+        <a class="btn-back" href="whitepaper.html" style="color: var(--secondary); border-color: rgba(0, 255, 204, 0.3);"> Next page →</a>
+    </div>
   </div>
 
   <!-- 底部頁尾區塊 -->
   <footer>
-    <!-- 完美置中的純文字分頁導覽 -->
-    <div class="page-navigation">
-      <a href="about.html">← Previous Page</a>
-      <span class="page-nav-sep">|</span>
-      <a href="press-kit.html">Next Page →</a>
-    </div>
-
     <!-- Social Media 圖標放喺導覽下面 -->
     <div class="social-icons">
       <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
