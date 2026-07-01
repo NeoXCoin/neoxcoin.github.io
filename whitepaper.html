@@ -119,7 +119,7 @@
     @keyframes fadeInGlow { 0% { opacity: 0; transform: translateY(10px); box-shadow: 0 0 0 rgba(255,215,0,0); } 60% { opacity: 1; transform: translateY(0); box-shadow: 0 0 26px rgba(255,215,0,0.55); } 100% { opacity: 1; box-shadow: 0 0 16px rgba(255,215,0,0.35); } }
     .coin-anim { animation: fadeInGlow 2s ease-out; }
 
-    /* --- 5. Footer (純文字完美置中導覽) --- */
+    /* --- 5. Footer (完全同步 about.html 簡約白色風格) --- */
     footer {
       width: 100%;
       border-top: 1px solid var(--border);
@@ -130,78 +130,82 @@
       box-sizing: border-box;
     }
 
-    /* 頁面導覽：完全複製 about.html 的純文字置中風格 */
+    /* 上下頁導覽：完全置中、白色、大細跟返 about.html */
     .page-navigation {
-      font-size: 16px; /* 可根據 about.html 的字體大小調整，通常為 14px-16px */
+      font-size: 14px; 
       margin-bottom: 30px;
       text-align: center;
-      color: var(--text-muted);
+      color: rgba(255, 255, 255, 0.7);
     }
     
     .page-navigation a {
-      color: var(--secondary); /* 保持你喜歡的亮青色，若要純白可改為 var(--text-main) */
+      color: #ffffff; /* 改返做純白色 */
       text-decoration: none;
-      transition: color 0.2s ease;
+      transition: opacity 0.2s ease;
       display: inline-block;
       margin: 0 15px;
     }
     
     .page-navigation a:hover {
-      color: #ffffff;
+      opacity: 0.8;
       text-decoration: underline;
     }
 
     .page-nav-sep {
       opacity: 0.3;
-      color: var(--text-main);
+      color: #ffffff;
     }
 
-    /* --- Footer --- */
-    footer {
-      width: 100%;
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      margin-top: 60px;
-      background: rgba(0,0,0,0.1);
-      text-align: center;
+    /* Social Icons 置中保持不變 */
+    .social-icons { 
+      display: flex; 
+      justify-content: center; 
+      align-items: center;
+      gap: 0;
+      margin-bottom: 25px; 
     }
-
-    .social-icons { margin-bottom: 25px; }
+    .social-icons a { text-decoration: none; display: inline-block; }
     .social-icons img {
-        /* 1. 將本來的 22px 稍微縮小一點點（例如 18px），配合 padding 後總體大小就跟原本一樣了 */
-        width: 18px;
-        height: 18px; 
-        margin: 0 15px;
-    
-        /* 2. 核心：將 padding 縮細，圓框就會緊貼住 Logo，唔會好似大得滯 */
-        padding: 4px; 
-    
-        /* 圓框設定保持 */
-        background: rgba(255, 255, 255, 0.05); 
-        border: 1px solid rgba(255, 255, 255, 0.15); 
-        border-radius: 50%; 
-    
-        /* 之前你調校好的深灰色濾鏡 */
-        filter: grayscale(100%) brightness(0.7); 
-        opacity: 0.9; 
-    
-        transition: all 0.2s ease;
-        box-sizing: content-box; 
+      width: 18px;
+      height: 18px; 
+      margin: 0 15px;
+      padding: 4px; 
+      background: rgba(255, 255, 255, 0.05); 
+      border: 1px solid rgba(255, 255, 255, 0.15); 
+      border-radius: 50%; 
+      filter: grayscale(100%) brightness(0.7); 
+      opacity: 0.9; 
+      transition: all 0.2s ease;
+      box-sizing: content-box; 
     }
-
-    /* Hover 效果保持不變 */
     .social-icons img:hover {
-        filter: grayscale(0%) brightness(1); 
-        opacity: 1;
-        background: rgba(255, 255, 255, 0.15); 
-        border-color: rgba(255, 255, 255, 0.4); 
-        transform: scale(1.1);
+      filter: grayscale(0%) brightness(1); 
+      opacity: 1;
+      background: rgba(255, 255, 255, 0.15); 
+      border-color: rgba(255, 255, 255, 0.4); 
+      transform: scale(1.1);
     }
-
-    .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
-    .footer-links a { margin: 0 8px; }
-    .footer-links a:hover { color: var(--text-main); }
-    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
+    
+    /* 最底部的 About | FAQ | Token Info 鏈接：改回乾淨的白色 */
+    .footer-links { 
+      font-size: 13px; 
+      color: rgba(255, 255, 255, 0.4); /* 分隔線顏色 */
+      margin-bottom: 15px; 
+      text-align: center; 
+    }
+    .footer-links a { 
+      margin: 0 8px; 
+      text-decoration: none; 
+      color: #ffffff; /* 改返做白色，唔再係紫色 */
+      display: inline-block; 
+      opacity: 0.7;
+      transition: opacity 0.2s ease;
+    }
+    .footer-links a:hover { 
+      opacity: 1; 
+      text-decoration: underline;
+    }
+    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); text-align: center; }
 
     /* 響應式手機版適配 */
     @media (max-width: 900px) {
