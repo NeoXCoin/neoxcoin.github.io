@@ -119,20 +119,47 @@
     @keyframes fadeInGlow { 0% { opacity: 0; transform: translateY(10px); box-shadow: 0 0 0 rgba(255,215,0,0); } 60% { opacity: 1; transform: translateY(0); box-shadow: 0 0 26px rgba(255,215,0,0.55); } 100% { opacity: 1; box-shadow: 0 0 16px rgba(255,215,0,0.35); } }
     .coin-anim { animation: fadeInGlow 2s ease-out; }
 
-    /* --- 5. Footer (修正為完全置中) --- */
+    /* --- 5. Footer (純文字完美置中導覽) --- */
     footer {
       width: 100%;
       border-top: 1px solid var(--border);
       padding: 40px 0;
       margin-top: 50px;
       background: rgba(0,0,0,0.2);
-      text-align: center; /* 確保內部所有行內元素與區塊水平置中 */
+      text-align: center;
       box-sizing: border-box;
     }
 
+    /* 頁面導覽：完全複製 about.html 的純文字置中風格 */
+    .page-navigation {
+      font-size: 16px; /* 可根據 about.html 的字體大小調整，通常為 14px-16px */
+      margin-bottom: 30px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+    
+    .page-navigation a {
+      color: var(--secondary); /* 保持你喜歡的亮青色，若要純白可改為 var(--text-main) */
+      text-decoration: none;
+      transition: color 0.2s ease;
+      display: inline-block;
+      margin: 0 15px;
+    }
+    
+    .page-navigation a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .page-nav-sep {
+      opacity: 0.3;
+      color: var(--text-main);
+    }
+
+    /* Social Icons & 其他保持置中 */
     .social-icons { 
       display: flex; 
-      justify-content: center; /* 使用 flex 置中所有的社交媒體圖標 */
+      justify-content: center; 
       align-items: center;
       gap: 0;
       margin-bottom: 25px; 
@@ -304,21 +331,30 @@
     </div>
   </div>
 
-  <!-- 底部頁尾區塊 (修正完全置中) -->
+  <!-- 底部頁尾區塊 -->
   <footer>
+    <!-- 完美置中的純文字分頁導覽 -->
+    <div class="page-navigation">
+      <a href="about.html">← Previous Page</a>
+      <span class="page-nav-sep">|</span>
+      <a href="press-kit.html">Next Page →</a>
+    </div>
+
+    <!-- Social Media 圖標放喺導覽下面 -->
     <div class="social-icons">
       <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
-      <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+      <a href="https://x.com/neox__official" target="_blank"><img src="url?id=12icon-x-new.PNG" alt="X" /></a>
       <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
       <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
-      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+      <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="url?id=12icon-youtube-new.PNG" alt="YouTube" /></a>
     </div>
+    
     <div class="footer-links">
       <a href="index.html">Home</a> | 
       <a href="token-info.html" target="_blank">Token Info</a> | 
       <a href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c" target="_blank">GeckoTerminal</a> | 
       <a href="mailto:info@neoxcoin.io">Contact</a> | 
-      <a href="https://neoxcoin.github.io/whitepaper-en-print.pdf" target="_blank">📄 View NeoX Whitepaper (PDF)</a>
+      <a href="https://neoxcoin.io/what-is-neox.html2whitepaper.pdf" target="_blank">📄 View NeoX Whitepaper (PDF)</a>
     </div>
     <div class="copyright">© 2026 NeoX. All rights reserved.</div>
   </footer>
