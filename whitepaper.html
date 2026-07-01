@@ -13,259 +13,145 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* 引入主頁的 CSS 變數 */
-    :root {
-      --bg-dark: #03010a;
-      --text-main: #ffffff;
-      --text-muted: rgba(255, 255, 255, 0.7);
-      --primary: #a370ff;
-      --secondary: #00ffcc;
-      --glass: rgba(255, 255, 255, 0.03);
-      --border: rgba(255, 255, 255, 0.08);
-      --font-stack: 'Plus Jakarta Sans', sans-serif;
-    }
+/* 引入主頁的 CSS 變數 */
+:root {
+    --bg-dark: #03010a;
+    --text-main: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.7);
+    --primary: #a370ff;
+    --secondary: #00ffcc;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.08);
+    --font-stack: 'Plus Jakarta Sans', sans-serif;
+}
 
-    body {
-      margin: 0;
-      /* Option B: Deep Starfield Canvas */
-      background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
-      background-image: 
-        radial-gradient(circle at center, #110526 0%, #03010a 100%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
-      
-      font-family: var(--font-stack);
-      color: var(--text-main);
-      text-align: center;
-      -webkit-font-smoothing: antialiased;
-      letter-spacing: -0.01em;
-      overflow-x: hidden;
-    }
+body {
+    margin: 0;
+    /* 背景保持深色繁星感（同首頁一致） */
+    background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+    background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+    font-family: var(--font-stack);
+    color: var(--text-main);
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+    overflow-x: hidden;
+}
 
-    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
 
-    /* --- 1. Sticky Header --- */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 70px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 50px;
-      background: rgba(7, 2, 20, 0.6);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      box-sizing: border-box;
-    }
+/* --- 1. Sticky Header --- */
+header {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 70px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0 50px; 
+    background: rgba(7, 2, 20, 0.6); 
+    backdrop-filter: blur(15px); 
+    border-bottom: 1px solid var(--border); 
+    z-index: 1000; 
+    box-sizing: border-box; 
+}
+.nav-logo { height: 32px; opacity: 0.9; }
+.nav-logo:hover { opacity: 1; }
+.nav-links { display: flex; gap: 30px; align-items: center; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: all 0.2s ease; }
+.nav-links a:hover { color: var(--primary); text-decoration: none; }
+.header-right { display: flex; align-items: center; gap: 20px; }
+.language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; }
+.language-switch a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+.language-switch a:hover { color: var(--text-main); }
+.lang-sep { opacity: 0.3; }
+.btn-connect {
+    font-size: 13px; 
+    font-weight: 600; 
+    padding: 8px 18px; 
+    border-radius: 999px; 
+    background: transparent; 
+    color: var(--secondary); 
+    border: 1px solid rgba(0, 255, 204, 0.3); 
+    cursor: pointer; 
+    transition: all 0.2; 
+}
+.btn-connect:hover {
+    background: rgba(0, 255, 204, 0.05); 
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); 
+}
 
-    .nav-logo { height: 32px; opacity: 0.9; }
-    .nav-logo:hover { opacity: 1; }
+/* --- Whitepaper Content Layout --- */
+.wrap {
+    max-width: 960px; 
+    margin: 0 auto; 
+    padding: 120px 20px 80px 20px; 
+}
 
-    .nav-links { display: flex; gap: 30px; align-items: center; }
-    .nav-links a { font-size: 14px; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: all 0.2s ease; }
-    .nav-links a:hover { color: var(--primary); text-decoration: none; }
+/* 🟢 核心修改：將炫目彩色漸變正確移到大標題 h1 身上 */
+h1 { 
+    font-size: 2.8rem; 
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 20px; 
+    text-align: left; 
+    background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textShimmer 4s linear infinite;
+}
 
-    .header-right { display: flex; align-items: center; gap: 20px; }
+/* 🟢 核心修改：修正副標題文字，讓它回復正常白色，唔再食咗漸變色 */
+.tagline { 
+    opacity: 0.85; 
+    margin-bottom: 24px; 
+    font-size: 1.1rem; 
+    text-align: left; 
+    color: var(--text-main);
+    background: none;
+    -webkit-background-clip: initial;
+    -webkit-text-fill-color: initial;
+}
 
-    .language-switch { font-size: 13px; color: var(--text-muted); display: flex; gap: 6px; }
-    .language-switch a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
-    .language-switch a:hover { color: var(--text-main); }
-    .lang-sep { opacity: 0.3; }
+h2 { font-size: 1.4rem; margin-top: 32px; text-align: left; color: #ffffff; }
+h3 { font-size: 1.1rem; margin-top: 18px; text-align: left; }
+p { margin: 0 0 12px; text-align: left; }
+.wrap a { color: #4fd1ff; text-decoration: none; }
+.wrap a:hover { text-decoration: underline; }
 
-    .btn-connect {
-      font-size: 13px;
-      font-weight: 600;
-      padding: 8px 18px;
-      border-radius: 999px;
-      background: transparent;
-      color: var(--secondary);
-      border: 1px solid rgba(0, 255, 204, 0.3);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn-connect:hover {
-      background: rgba(0, 255, 204, 0.05);
-      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
-    }
+.muted { opacity: 0.8; font-size: 0.96rem; text-align: left; }
+.box { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; text-align: left; }
+.list { padding-left: 20px; margin: 6px 0 10px; text-align: left; }
+.list li { margin-bottom: 6px; }
+code { font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.9rem; background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; word-break: break-all; }
+.small { font-size: 0.85rem; opacity: 0.78; }
+hr { border: 0; border-top: 1px solid rgba(255,255,255,0.08); margin: 28px 0; }
 
-    .tagline {
-      font-size: 56px;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 15px;
-      
-      /* Liquid multi-tone aurora gradient mapped to enlarged background canvas */
-      background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
-      background-size: 200% auto;
-      
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      
-      /* Dual animation stacking */
-      animation: 
-        fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite,
-        textShimmer 4s linear infinite;
-    }
+.highlight { color: #ffffff; font-weight: 600; }
+.highlight-glow { color: var(--secondary); font-weight: 600; }
 
-    .subtagline {
-      font-size: 18px;
-      color: var(--text-muted);
-      font-weight: 400;
-      margin-bottom: 40px;
-      max-width: 600px;
-      /* Smoothly trailing behind the headline by 0.6s */
-      animation: fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) 0.6s infinite;
-    }
-    /* --- Whitepaper Content Layout --- */
-    .wrap { 
-      max-width: 960px; 
-      margin: 0 auto; 
-      padding: 120px 20px 80px 20px; 
-    }
-    h1, h2, h3 { margin: 0 0 12px; font-weight: 600; }
-    h1 { font-size: 2.2rem; margin-bottom: 10px; text-align: left; }
-    h2 { font-size: 1.4rem; margin-top: 32px; text-align: left; color: #ffffff; }
-    h3 { font-size: 1.1rem; margin-top: 18px; text-align: left; }
-    p { margin: 0 0 12px; text-align: left; }
-    
-    .wrap a { color: #4fd1ff; text-decoration: none; }
-    .wrap a:hover { text-decoration: underline; }
-    .tagline { opacity: 0.85; margin-bottom: 24px; font-size: 1rem; text-align: left; }
-    .muted { opacity: 0.8; font-size: 0.96rem; text-align: left; }
-    
-    .box { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; text-align: left; }
-    .list { padding-left: 20px; margin: 6px 0 10px; text-align: left; }
-    .list li { margin-bottom: 6px; }
-    
-    code { font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.9rem; background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px; word-break: break-all; }
-    .small { font-size: 0.85rem; opacity: 0.78; }
-    hr { border: 0; border-top: 1px solid rgba(255,255,255,0.08); margin: 28px 0; }
-    
-    /* 內文亮點字體樣式 */
-    .highlight { color: #ffffff; font-weight: 600; }
-    .highlight-glow { color: var(--secondary); font-weight: 600; }
+@keyframes textShimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
 
-    @keyframes fadeInGlow { 0% { opacity: 0; transform: translateY(10px); box-shadow: 0 0 0 rgba(255,215,0,0); } 60% { opacity: 1; transform: translateY(0); box-shadow: 0 0 26px rgba(255,215,0,0.55); } 100% { opacity: 1; box-shadow: 0 0 16px rgba(255,215,0,0.35); } }
-    .coin-anim { animation: fadeInGlow 2s ease-out; }
+@keyframes fadeInGlow { 
+    0% { opacity: 0; transform: translateY(10px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.coin-anim { animation: fadeInGlow 2s ease-out; }
 
-    /* Back Home Button Row */
-    .btn-row {
-      display: flex;
-      justify-content: center;
-      margin-top: 40px;
-    }
-    .btn-back {
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border);
-    }
-    .btn-back:hover {
-      background: var(--glass);
-      border-color: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
-    }
-
-    /* --- 5. Footer (完全同步 about.html 簡約白色風格) --- */
-    footer {
-      width: 100%;
-      border-top: 1px solid var(--border);
-      padding: 40px 0;
-      margin-top: 50px;
-      background: rgba(0,0,0,0.2);
-      text-align: center;
-      box-sizing: border-box;
-    }
-
-    /* 上下頁導覽：完全置中、白色、大細跟返 about.html */
-    .page-navigation {
-      font-size: 14px; 
-      margin-bottom: 30px;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.7);
-    }
-    
-    .page-navigation a {
-      color: #ffffff; /* 改返做純白色 */
-      text-decoration: none;
-      transition: opacity 0.2s ease;
-      display: inline-block;
-      margin: 0 15px;
-    }
-    
-    .page-navigation a:hover {
-      opacity: 0.8;
-      text-decoration: underline;
-    }
-
-    .page-nav-sep {
-      opacity: 0.3;
-      color: #ffffff;
-    }
-
-    /* Social Icons 置中保持不變 */
-    .social-icons { 
-      display: flex; 
-      justify-content: center; 
-      align-items: center;
-      gap: 0;
-      margin-bottom: 25px; 
-    }
-    .social-icons a { text-decoration: none; display: inline-block; }
-    .social-icons img {
-      width: 18px;
-      height: 18px; 
-      margin: 0 15px;
-      padding: 4px; 
-      background: rgba(255, 255, 255, 0.05); 
-      border: 1px solid rgba(255, 255, 255, 0.15); 
-      border-radius: 50%; 
-      filter: grayscale(100%) brightness(0.7); 
-      opacity: 0.9; 
-      transition: all 0.2s ease;
-      box-sizing: content-box; 
-    }
-    .social-icons img:hover {
-      filter: grayscale(0%) brightness(1); 
-      opacity: 1;
-      background: rgba(255, 255, 255, 0.15); 
-      border-color: rgba(255, 255, 255, 0.4); 
-      transform: scale(1.1);
-    }
-    
-    /* 最底部的 About | FAQ | Token Info 鏈接：改回乾淨的白色 */
-    .footer-links { 
-      font-size: 13px; 
-      color: rgba(255, 255, 255, 0.4); /* 分隔線顏色 */
-      margin-bottom: 15px; 
-      text-align: center; 
-    }
-    .footer-links a { 
-      margin: 0 8px; 
-      text-decoration: none; 
-      color: #ffffff; /* 改返做白色，唔再係紫色 */
-      display: inline-block; 
-      opacity: 0.7;
-      transition: opacity 0.2s ease;
-    }
-    .footer-links a:hover { 
-      opacity: 1; 
-      text-decoration: underline;
-    }
-    .copyright { font-size: 12px; color: rgba(255,255,255,0.4); text-align: center; }
-
-    /* 響應式手機版適配 */
-    @media (max-width: 900px) {
-      header { padding: 0 20px; }
-      .nav-links { display: none; }
-    }
-  </style>
+.btn-row { display: flex; justify-content: center; margin-top: 40px; }
+.btn-back { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; background: transparent; color: var(--text-main); border: 1px solid var(--border); }
+.btn-back:hover { background: var(--glass); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+</style>
 </head>
 <body>
 
