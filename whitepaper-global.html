@@ -7,7 +7,7 @@
     <meta name="description" content="NeoX Coin (NXC) whitepaper – learn about the vision, ecosystem, token design, and utilities of NeoX on Base Mainnet.">
     <link rel="icon" href="https://neoxcoin.github.io/XNXC.png" type="image/png" />
     
-    <!-- 引入 Plus Jakarta Sans 字體 -->
+    <!-- 引入主頁採用的 Plus Jakarta Sans 字體 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,22 +25,31 @@
         }
         
         body {
-            margin: 0;
-            background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
-            background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
-            font-family: var(--font-stack);
-            color: var(--text-main);
-            text-align: center;
-            -webkit-font-smoothing: antialiased;
-            letter-spacing: -0.01em;
-            overflow-x: hidden;
+          margin: 0;
+          /* Deep Starfield Canvas Background */
+          background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
+          background-image: 
+            radial-gradient(circle at center, #110526 0%, #03010a 100%),
+            url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
+      
+          font-family: var(--font-stack);
+          color: var(--text-main);
+          text-align: center;
+          -webkit-font-smoothing: antialiased;
+          overflow-x: hidden;
+
+          /* Google Translate Override Tweak */
+          top: 0 !important;
+          position: static !important;
+          margin-top: 0 !important;
         }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.2s ease;
-        }
+
+        /* Hide Google Translate White Top Bar */
+        .goog-te-banner-frame.skiptranslate, .goog-te-banner-frame { display: none !important; visibility: hidden !important; height: 0 !important; width: 0 !important; height: 0 !important; }
+        iframe.goog-te-banner-frame { display: none !important; }
+        body > .skiptranslate { display: none !important; }
+
+        a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
         
         /* --- 1. Sticky Header --- */
         header {
@@ -107,7 +116,6 @@
             font-size: 13px !important;
             font-family: var(--font-stack) !important;
         }
-        /* 隱藏 Google 翻譯原生不美觀的頂部 Bar (選填) */
         .goog-te-banner-frame.skiptranslate { display: none !important; }
         body { top: 0px !important; }
         
@@ -227,6 +235,11 @@
             transform: translateY(-2px);
         }
         
+        /* Social Icons */
+        .social-icons { display: flex; justify-content: center; align-items: center; gap: 0; margin-bottom: 25px; }
+        .social-icons img { width: 18px; height: 18px; margin: 0 15px; padding: 4px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 50%; filter: grayscale(100%) brightness(0.7); opacity: 0.9; transition: all 0.2s ease; box-sizing: content-box; }
+        .social-icons img:hover { filter: grayscale(0%) brightness(1); opacity: 1; background: rgba(255, 255, 255, 0.15); border-color: rgba(255, 255, 255, 0.4); transform: scale(1.1); }
+
         footer {
             width: 100%;
             border-top: 1px solid var(--border);
@@ -234,6 +247,10 @@
             margin-top: 25px;
             background: rgba(0,0,0,0.1);
         }
+        .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+        .footer-links a { margin: 0 8px; }
+        .footer-links a:hover { color: var(--secondary); }
+        .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
     </style>
 </head>
 <body>
@@ -242,20 +259,20 @@
     <header>
         <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
         <div class="nav-links">
-            <a href="what-is-neox.html">What is NeoX?</a>
-            <a href="how-to-buy.html">How to Buy?</a>
-            <a href="game.html">NeoX Game</a>
-            <a href="metaverse.html">Metaverse Exhibition</a>
-            <a href="nft-projects.html">NFT Projects</a>
+            <a href="what-is-neox-global.html">What is NeoX?</a>
+            <a href="how-to-buy-global.html">How to Buy?</a>
+            <a href="game-global.html">NeoX Game</a>
+            <a href="metaverse-global.html">Metaverse Exhibition</a>
+            <a href="nft-projects-global.html">NFT Projects</a>
         </div>
         <div class="header-right">
-            <!-- 替換成 Google Translate 撳掣 -->
+            <!-- Google Translate 撳掣 -->
             <div id="google_translate_element"></div>
             <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
     </header>
 
-    <!-- 中間 金幣動畫 -->
+    <!-- 中間 360 金幣動畫 -->
     <div style="text-align:center; margin-top: 110px; margin-bottom: 10px;">
         <img src="https://neoxcoin.github.io/NeoXCoin360.gif" alt="NeoX Coin 360 Animation" style="width:160px; height:auto; border-radius:50%; box-shadow:0 0 20px rgba(255,215,0,0.35);">
     </div>
@@ -297,6 +314,7 @@
         <ul class="list">
             <li><strong>Presale / Private Sale:</strong> None – <span class="highlight">fair community launch</span>.</li>
             <li><strong>Minting after deployment:</strong> Not intended; supply is <span class="highlight">fixed at deployment level</span>.</li>
+            <li><strong>Admin controls:</strong> Limited to standard configuration and security parameters provided by thirdweb.</li>
         </ul>
 
         <h2>5. Utility within the NeoX Ecosystem</h2>
@@ -314,23 +332,31 @@
     </div>
 
     <footer>
-        <div class="footer-links">
-            <a href="what-is-neox.html">What is NeoX?</a>
-            <a href="how-to-buy.html">How to Buy?</a>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+          <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
+          <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+          <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+          <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
         </div>
-        <p class="copyright">© 2026 NeoX Coin. All rights reserved.</p>
+        <div class="footer-links">
+          <a href="about-global.html">About</a> | <a href="faq-global.html">FAQ</a> | <a href="https://neoxcoin.io/token-info-global.html" target="_blank">Global Token Info</a> | <a href="https://neoxcoin.io/whitepaper-global.html" target="_blank">Global Whitepaper</a> | <a href="neox-wiki-global.html">Wiki</a> | <a href="press-kit-global.html" target="_blank">Press Kit</a> | <a href="troubleshooting-global.html">Troubleshooting</a>
+        </div>
+        <div class="copyright">© 2026 NeoX. All rights reserved. | <a href="disclaimer-global.html">Disclaimer</a></div>
     </footer>
 
     <!-- Google Translate 官方腳本載入 -->
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+    function googleTranslateElementInit(){
+      new google.translate.TranslateElement({
+        pageLanguage: 'en', 
+        includedLanguages: 'en,zh-TW,zh-CN,ja,ko,fr,de,es,pt,ru,ar,id,vi,th,it,tr,hi', 
+        autoDisplay: false, 
+        multilanguagePage: true 
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
 </body>
 </html>
