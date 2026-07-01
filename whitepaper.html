@@ -88,6 +88,25 @@
       box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
     }
 
+    .tagline {
+      font-size: 56px;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 15px;
+      
+      /* Liquid multi-tone aurora gradient mapped to enlarged background canvas */
+      background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
+      background-size: 200% auto;
+      
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      
+      /* Dual animation stacking */
+      animation: 
+        fadeInUpLoopSlow 14s cubic-bezier(0.25, 1, 0.5, 1) infinite,
+        textShimmer 4s linear infinite;
+    }
+
     /* --- Whitepaper Content Layout --- */
     .wrap { 
       max-width: 960px; 
