@@ -111,7 +111,7 @@
         .wrap {
             max-width: 960px; 
             margin: 0 auto; 
-            padding: 120px 20px 80px 20px; 
+            padding: 120px 20px 40px 20px; /* 縮減底部 padding，讓內容與按鈕更緊湊 */
         }
 
         /* 大標題：完美居中＋彩色流光 */
@@ -187,44 +187,45 @@
         .market-link a { margin: 0 5px; }
         .market-link a:hover { color: var(--primary); }
 
-        /* --- 5. Footer 全面執整（同步主頁發光風格） --- */
+        /* --- 5. Footer 全面執整（優化間距，貼近按鈕範圍） --- */
         footer {
             width: 100%; 
             border-top: 1px solid var(--border); 
-            padding: 40px 0; 
-            margin-top: 50px; 
+            padding: 30px 0 40px 0; /* 縮減頂部內距 */
+            margin-top: 25px;       /* 核心調整：由 50px 縮減至 25px，等 Social Icons 完美貼近 Previous/Next 按鈕 */
             background: rgba(0,0,0,0.1); 
         }
 
         /* 底部圖標排版置中 */
         .social-icons { 
-          display: flex; 
-          justify-content: center; 
-          align-items: center;
-          gap: 0;
-          margin-bottom: 25px; 
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 25px; 
         }
-        .social-icons a { text-decoration: none; display: inline-block; }
+
+        /* 圖標預設調回精緻的半透明灰色，與主頁一致 */
         .social-icons img {
-          width: 18px;
-          height: 18px; 
-          margin: 0 15px;
-          padding: 4px; 
-          background: rgba(255, 255, 255, 0.05); 
-          border: 1px solid rgba(255, 255, 255, 0.15); 
-          border-radius: 50%; 
-          filter: grayscale(100%) brightness(0.7); 
-          opacity: 0.9; 
-          transition: all 0.2s ease;
-          box-sizing: content-box; 
+            width: 22px; 
+            height: 22px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            filter: grayscale(100%) brightness(0.6) opacity(0.7);
+            box-sizing: content-box;
         }
+
+        /* 滑鼠懸停效果 */
         .social-icons img:hover {
-          filter: grayscale(0%) brightness(1); 
-          opacity: 1;
-          background: rgba(255, 255, 255, 0.15); 
-          border-color: rgba(255, 255, 255, 0.4); 
-          transform: scale(1.1);
+            filter: grayscale(0%) brightness(1) opacity(1);
+            transform: scale(1.15) translateY(-2px);
+            background: rgba(163, 112, 255, 0.1);
+            border-color: var(--secondary);
+            box-shadow: 0 0 15px rgba(163, 112, 255, 0.5), 0 0 25px rgba(0, 255, 204, 0.3);
         }
+
         .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
         .footer-links a { margin: 0 8px; }
         .footer-links a:hover { color: var(--secondary); text-decoration: none; }
@@ -334,12 +335,12 @@
                 <li><strong>BaseScan:</strong> <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">View on BaseScan</a></li>
                 <li><strong>GeckoTerminal (Verified Pool):</strong> <a href="https://www.geckoterminal.com/base/pools/0x59902636b0086c7524948eb920b727b1ee067715" target="_blank" class="highlight-glow">NXC Pool on GeckoTerminal ✅</a></li>
                 <li><strong>Metaverse:</strong> <a href="https://oncyber.io/spaces/gE763XgM9uP4Zf9Z8p6I" target="_blank">NeoX OnCyber</a></li>
-                <li><strong>Game Portal:</strong> <a href="https://neoxcoin.github.io/game.html" target="_blank">NeoX Game</a></li>
+                <li><strong>Game Portal:</strong> <a href="url?id=9" target="_blank">NeoX Game</a></li>
                 <li><strong>OpenSea (NFT Wallet):</strong> <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">View NFTs</a></li>
                 <li><strong>X (Twitter):</strong> <a href="https://x.com/neox__official" target="_blank">@neox__official</a></li>
                 <li><strong>Instagram:</strong> <a href="https://www.instagram.com/neox__official" target="_blank">@neox__official</a></li>
                 <li><strong>TikTok:</strong> <a href="https://www.tiktok.com/@neox.world" target="_blank">@neox.world</a></li>
-                <li><strong>YouTube:</strong> <a href="https://www.youtube.com/@neox_officials" target="_blank">@neox_officials</a></li>
+                <li><strong>YouTube:</strong> <a href="url?id=17" target="_blank">@neox_officials</a></li>
                 <li><strong>GitHub:</strong> <a href="https://github.com/NeoXCoin/neoxcoin.github.io" target="_blank">NeoXCoin Repository</a></li>
                 <li><strong>Email:</strong> <a href="mailto:info@neoxcoin.io">info@neoxcoin.io</a></li>
             </ul>
@@ -348,6 +349,7 @@
             </p>
         </div>
 
+        <!-- 按鈕區塊 -->
         <div class="btn-row" style="gap: 20px;">
             <a class="btn-back" href="about.html">← Previous Page </a>
             <a class="btn-back" href="press-kit.html" style="color: var(--secondary); border-color: rgba(0, 255, 204, 0.3);"> Next page →</a>
@@ -357,10 +359,10 @@
     <!-- 底部頁尾區塊 -->
     <footer>
         <div class="social-icons">
-            <a href="https://www.facebook.com/share/15bUisvj6Z/" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+            <a href="https://www.facebook.com/share/15bUisvj6Z/" target="_blank"><img src="url?id=11icon-facebook-new.PNG" alt="Facebook" /></a>
             <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
             <a href="https://www.instagram.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
-            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
+            <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="url?id=11icon-tiktok-new.PNG" alt="TikTok" /></a>
             <a href="https://youtube.com/@neox_officials?si=Z6PZ_vR_t6Z1_V_v" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
         </div>
         <div class="footer-links">
