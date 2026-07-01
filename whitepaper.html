@@ -94,13 +94,13 @@ header {
     padding: 120px 20px 80px 20px; 
 }
 
-/* 🟢 核心修改：將炫目彩色漸變正確移到大標題 h1 身上 */
+/* 修改 h1，將原本的 text-align: left; 改為 center */
 h1 { 
     font-size: 2.8rem; 
     font-weight: 800;
     line-height: 1.2;
     margin-bottom: 20px; 
-    text-align: left; 
+    text-align: center; /* 🟢 改為置中 */
     background: linear-gradient(120deg, #ffffff 0%, #c299ff 35%, #00ffcc 70%, #ffffff 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -108,12 +108,13 @@ h1 {
     animation: textShimmer 4s linear infinite;
 }
 
-/* 🟢 核心修改：修正副標題文字，讓它回復正常白色，唔再食咗漸變色 */
+/* 修改 .tagline，同樣改為置中，並加上 margin: 0 auto 限制寬度，費事文字拉得太橫 */
 .tagline { 
     opacity: 0.85; 
-    margin-bottom: 24px; 
+    margin: 0 auto 24px auto; /* 🟢 上下保持間距，左右 auto 幫佢置中 */
+    max-width: 800px;         /* 🟢 限制一吓行寬，置中時條線會更好睇 */
     font-size: 1.1rem; 
-    text-align: left; 
+    text-align: center;       /* 🟢 改為置中 */
     color: var(--text-main);
     background: none;
     -webkit-background-clip: initial;
@@ -151,6 +152,53 @@ hr { border: 0; border-top: 1px solid rgba(255,255,255,0.08); margin: 28px 0; }
 .btn-row { display: flex; justify-content: center; margin-top: 40px; }
 .btn-back { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; background: transparent; color: var(--text-main); border: 1px solid var(--border); }
 .btn-back:hover { background: var(--glass); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+/* --- 底部 Social Media 主頁風格化 --- */
+.wrap + div, 
+footer,
+div[style*="justify-content: center"] {
+    /* 確保底部容器置中且有足夠邊距 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+/* 針對社交媒體圖標 A 連結的設定 */
+.wrap ~ a img,
+footer a img {
+    width: 28px; /* 統一圖標大小 */
+    height: 28px;
+    transition: all 0.3s ease;
+    filter: grayscale(20%) opacity(0.8); /* 預設帶點透明 */
+}
+
+/* 🟢 滑鼠微懸停 (Hover) 時激發同主頁一樣嘅彩色放大同埋霓虹發光效果 */
+.wrap ~ a:hover img,
+footer a:hover img {
+    filter: grayscale(0%) opacity(1);
+    transform: scale(1.15) translateY(-2px);
+    /* 營造出類似主頁嘅紫色/青色霓虹光暈 */
+    box-shadow: 0 0 12px rgba(163, 112, 255, 0.5), 0 0 20px rgba(0, 255, 204, 0.3);
+    border-radius: 50%;
+}
+
+/* 最底部的 Footer 文字連結（如 About | FAQ 嗰行） */
+footer, .small, div+span {
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+footer a, .small a {
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+}
+
+footer a:hover, .small a:hover {
+    color: var(--secondary); /* 移上去時變成主頁的青綠色 */
+    text-decoration: none;
+}
 </style>
 </head>
 <body>
