@@ -8,16 +8,45 @@
   <!-- 中文主頁 -->
   <url>
     <loc>https://neoxcoin.io/index-zh.html</loc>
-    <priority>0.80</priority>
+    <priority>0.90</priority>
   </url>
-  <!-- 點樣買 -->
+  <!-- 核心產品與教學 -->
   <url>
     <loc>https://neoxcoin.io/how-to-buy.html</loc>
     <priority>0.80</priority>
   </url>
-  <!-- 遊戲頁面 -->
   <url>
     <loc>https://neoxcoin.io/game.html</loc>
     <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.io/metaverse.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.io/nft-projects.html</loc>
+    <priority>0.80</priority>
+  </url>
+  <!-- 項目介紹與資訊 -->
+  <url>
+    <loc>https://neoxcoin.io/what-is-neox.html</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.io/token-info.html</loc>
+    <priority>0.70</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.io/neox-wiki.html</loc>
+    <priority>0.70</priority>
+  </url>
+  <!-- 輔助頁面 -->
+  <url>
+    <loc>https://neoxcoin.io/about.html</loc>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.io/faq.html</loc>
+    <priority>0.50</priority>
   </url>
 </urlset>
