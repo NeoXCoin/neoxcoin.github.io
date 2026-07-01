@@ -196,34 +196,34 @@
             background: rgba(0,0,0,0.1); 
         }
 
-        /* 底部圖標排版置中 */
+        /* Social Icons 置中保持不變 */
         .social-icons { 
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 25px; 
+          display: flex; 
+          justify-content: center; 
+          align-items: center;
+          gap: 0;
+          margin-bottom: 25px; 
         }
-
-        /* 圖標預設調回精緻的半透明灰色，與主頁一致 */
+        .social-icons a { text-decoration: none; display: inline-block; }
         .social-icons img {
-            width: 22px; 
-            height: 22px;
-            padding: 8px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            filter: grayscale(100%) brightness(0.6) opacity(0.7);
-            box-sizing: content-box;
+          width: 18px;
+          height: 18px; 
+          margin: 0 15px;
+          padding: 4px; 
+          background: rgba(255, 255, 255, 0.05); 
+          border: 1px solid rgba(255, 255, 255, 0.15); 
+          border-radius: 50%; 
+          filter: grayscale(100%) brightness(0.7); 
+          opacity: 0.9; 
+          transition: all 0.2s ease;
+          box-sizing: content-box; 
         }
-
-        /* 滑鼠懸停效果 */
         .social-icons img:hover {
-            filter: grayscale(0%) brightness(1) opacity(1);
-            transform: scale(1.15) translateY(-2px);
-            background: rgba(163, 112, 255, 0.1);
-            border-color: var(--secondary);
-            box-shadow: 0 0 15px rgba(163, 112, 255, 0.5), 0 0 25px rgba(0, 255, 204, 0.3);
+          filter: grayscale(0%) brightness(1); 
+          opacity: 1;
+          background: rgba(255, 255, 255, 0.15); 
+          border-color: rgba(255, 255, 255, 0.4); 
+          transform: scale(1.1);
         }
 
         .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
