@@ -100,24 +100,25 @@
             gap: 20px;
         }
 
-        /* Google Translate 樣式美化 */
+        /* Custom Black Pill Styling for Google Widget */
         #google_translate_element {
-            display: inline-block;
+          display: inline-block;
+          padding: 2px 6px;
+          border-radius: 20px;
+          background: rgba(0, 0, 0, 0.4);
+          border: 1px solid var(--border);
         }
-        .goog-te-gadget-simple {
-            background-color: rgba(255, 255, 255, 0.05) !important;
-            border: 1px solid var(--border) !important;
-            padding: 4px 8px !important;
-            border-radius: 6px !important;
-            cursor: pointer;
+        #google_translate_element .goog-te-gadget { font-size: 12px !important; color: #fff !important; }
+        #google_translate_element .goog-te-gadget span { display: none !important; } /* 隱藏 Google 提供 字眼 */
+        #google_translate_element select {
+          background: transparent !important;
+          color: #fff !important;
+          border: none !important;
+          font-size: 12px !important;
+          padding: 4px 6px !important;
+          outline: none !important;
+          cursor: pointer;
         }
-        .goog-te-gadget-simple .goog-te-menu-value span {
-            color: var(--text-muted) !important;
-            font-size: 13px !important;
-            font-family: var(--font-stack) !important;
-        }
-        .goog-te-banner-frame.skiptranslate { display: none !important; }
-        body { top: 0px !important; }
         
         .btn-connect {
             font-size: 13px;
@@ -266,9 +267,8 @@
             <a href="nft-projects-global.html">NFT Projects</a>
         </div>
         <div class="header-right">
-            <!-- Google Translate 撳掣 -->
-            <div id="google_translate_element"></div>
-            <button class="btn-connect" id="connect-btn">Connect Wallet</button>
+          <div id="google_translate_element"></div>
+          <button class="btn-connect" id="connect-btn">Connect Wallet</button>
         </div>
     </header>
 
