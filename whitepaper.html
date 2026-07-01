@@ -27,7 +27,6 @@
 
         body {
             margin: 0;
-            /* 背景保持深色繁星感（同首頁一致） */
             background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
             background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
             font-family: var(--font-stack);
@@ -85,6 +84,26 @@
         .btn-connect:hover {
             background: rgba(0, 255, 204, 0.05); 
             box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); 
+        }
+
+        /* 📱 核心新增：手機版專屬響應式斷點 (斷點設為 768px) */
+        @media (max-width: 768px) {
+            header {
+                padding: 0 16px; /* 手機版縮小左右留白，免得太迫 */
+            }
+            .nav-links {
+                display: none; /* 🟢 完美隱藏手機版中間那一排冗長的字 */
+            }
+            .header-right {
+                gap: 12px; /* 稍微縮小右邊組件的間距 */
+            }
+            .btn-connect {
+                padding: 6px 12px; /* 縮小按鈕尺寸以配合手機螢幕 */
+                font-size: 12px;
+            }
+            h1 {
+                font-size: 2rem !important; /* 縮小手機版大標題字體，防止折行太難睇 */
+            }
         }
 
         /* --- Whitepaper Content Layout --- */
@@ -214,6 +233,7 @@
     <!-- 頂部導覽列 -->
     <header>
         <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
+        <!-- 在手機版中，此區塊將被 display: none 完美隱藏 -->
         <div class="nav-links">
             <a href="what-is-neox.html">What is NeoX?</a>
             <a href="how-to-buy.html">How to Buy?</a>
@@ -243,7 +263,6 @@
             NeoX Coin (NXC) is a <span class="highlight">community-driven token</span> on <span class="highlight">Base Mainnet</span> that powers the NeoX ecosystem of NFTs, digital art, and immersive Web3 experiences.
         </p>
         
-        <!-- 🟢 完美修正：此處已換上專屬 Class 實現完美右對齊 -->
         <p class="version-info">Document Version: 1.0 &nbsp;|&nbsp; Last updated: 10 November 2025</p>
         <hr>
 
@@ -335,7 +354,6 @@
 
     <!-- 底部頁尾區塊 -->
     <footer>
-        <!-- Social Media 圖標全面主頁風格化 -->
         <div class="social-icons">
             <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
             <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
@@ -386,7 +404,6 @@
                 if (currentAccount) {
                     currentAccount = null;
                     updateButton(null);
-                    console.log("Wallet disconnected from UI");
                     return;
                 }
                 try {
@@ -394,7 +411,6 @@
                     const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
                     currentAccount = accounts[0];
                     updateButton(currentAccount);
-                    console.log("Connected to wallet:", currentAccount);
                 } catch (error) {
                     console.error("User cancelled login sequence", error);
                     updateButton(null);
