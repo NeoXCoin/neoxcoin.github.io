@@ -27,6 +27,7 @@
 
         body {
             margin: 0;
+            /* 背景保持深色繁星感（同首頁一致） */
             background: radial-gradient(circle at center, #110526 0%, #03010a 100%);
             background-image: radial-gradient(circle at center, #110526 0%, #03010a 100%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M1 3h1v1H1zM3 1h1v1H3z'%3E%3C/g%3E%3C/svg%3E");
             font-family: var(--font-stack);
@@ -86,23 +87,23 @@
             box-shadow: 0 0 15px rgba(0, 255, 204, 0.15); 
         }
 
-        /* 📱 核心新增：手機版專屬響應式斷點 (斷點設為 768px) */
+        /* 📱 手機版專屬響應式斷點 (斷點設為 768px) */
         @media (max-width: 768px) {
             header {
-                padding: 0 16px; /* 手機版縮小左右留白，免得太迫 */
+                padding: 0 16px; 
             }
             .nav-links {
-                display: none; /* 🟢 完美隱藏手機版中間那一排冗長的字 */
+                display: none; 
             }
             .header-right {
-                gap: 12px; /* 稍微縮小右邊組件的間距 */
+                gap: 12px; 
             }
             .btn-connect {
-                padding: 6px 12px; /* 縮小按鈕尺寸以配合手機螢幕 */
+                padding: 6px 12px; 
                 font-size: 12px;
             }
             h1 {
-                font-size: 2rem !important; /* 縮小手機版大標題字體，防止折行太難睇 */
+                font-size: 2rem !important; 
             }
         }
 
@@ -149,8 +150,10 @@
         h2 { font-size: 1.4rem; margin-top: 32px; text-align: left; color: #ffffff; }
         h3 { font-size: 1.1rem; margin-top: 18px; text-align: left; }
         p { margin: 0 0 12px; text-align: left; }
+        
+        /* 內文超連結加底線，但排除按鈕 */
         .wrap a { color: #4fd1ff; text-decoration: none; }
-        .wrap a:hover { text-decoration: underline; }
+        .wrap a:not(.btn-back):hover { text-decoration: underline; }
 
         .muted { opacity: 0.8; font-size: 0.96rem; text-align: left; }
         .box { background: rgba(255,255,255,0.04); border-radius: 12px; padding: 16px 18px; margin-bottom: 20px; text-align: left; }
@@ -174,9 +177,10 @@
         }
         .coin-anim { animation: fadeInGlow 2s ease-out; }
 
+        /* 按鈕區域排版 */
         .btn-row { display: flex; justify-content: center; margin-top: 40px; }
-        .btn-back { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; background: transparent; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s ease; }
-        .btn-back:hover { background: var(--glass); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        .btn-back { padding: 12px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; background: transparent; color: var(--text-main); border: 1px solid var(--border); transition: all 0.2s ease; text-decoration: none !important; }
+        .btn-back:hover { background: var(--glass); border-color: rgba(255,255,255,0.2); transform: translateY(-2px); text-decoration: none !important; }
 
         /* Market Links */
         .market-link { margin-top: 15px; font-size: 13px; color: var(--text-muted); }
@@ -200,22 +204,22 @@
             margin-bottom: 25px; 
         }
 
-        /* 圖標基本樣式微調 */
+        /* 🟢 核心修正：將圖標預設調回精緻的半透明灰色，與主頁一致 */
         .social-icons img {
             width: 22px; 
             height: 22px;
             padding: 8px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 50%;
             transition: all 0.3s ease;
-            filter: grayscale(30%) opacity(0.8);
+            filter: grayscale(100%) brightness(0.6) opacity(0.7); /* 完美灰色調 */
             box-sizing: content-box;
         }
 
-        /* 滑鼠懸停：激發完美的霓虹炫彩效果 */
+        /* 滑鼠懸停：激發完美的霓虹炫彩恢復原色效果 */
         .social-icons img:hover {
-            filter: grayscale(0%) opacity(1);
+            filter: grayscale(0%) brightness(1) opacity(1);
             transform: scale(1.15) translateY(-2px);
             background: rgba(163, 112, 255, 0.1);
             border-color: var(--secondary);
@@ -224,7 +228,7 @@
 
         .footer-links { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
         .footer-links a { margin: 0 8px; }
-        .footer-links a:hover { color: var(--secondary); }
+        .footer-links a:hover { color: var(--secondary); text-decoration: none; }
         .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
     </style>
 </head>
@@ -233,7 +237,6 @@
     <!-- 頂部導覽列 -->
     <header>
         <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png" alt="NeoX Logo"></a>
-        <!-- 在手機版中，此區塊將被 display: none 完美隱藏 -->
         <div class="nav-links">
             <a href="what-is-neox.html">What is NeoX?</a>
             <a href="how-to-buy.html">How to Buy?</a>
@@ -308,8 +311,8 @@
         <h2>6. Ecosystem Components</h2>
         <ul class="list">
             <li><strong>NFT Collections:</strong> Curated series such as NeoX Timekeeper Edition, Van Gogh Visions, and Abstract Realms on <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">OpenSea</a>.</li>
-            <li><strong>Interactive Game Portal:</strong> <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Catch the Coins</a>.</li>
-            <li><strong>Metaverse Exhibition:</strong> <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX Exhibition on OnCyber</a>.</li>
+            <li><strong>Interactive Game Portal:</strong> <a href="https://neoxcoin.github.io/game.html" target="_blank">NeoX Catch the Coins</a>.</li>
+            <li><strong>Metaverse Exhibition:</strong> <a href="https://oncyber.io/spaces/gE763XgM9uP4Zf9Z8p6I" target="_blank">NeoX Exhibition on OnCyber</a>.</li>
             <li><strong>Official Project Wallet:</strong> <code>0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2</code>.</li>
         </ul>
 
@@ -330,15 +333,15 @@
                 <li><strong>Official Website:</strong> <a href="https://neoxcoin.github.io" target="_blank">https://neoxcoin.io</a></li>
                 <li><strong>Token Info Page:</strong> <a href="https://neoxcoin.github.io/token-info.html" target="_blank">Token Info</a></li>
                 <li><strong>BaseScan:</strong> <a href="https://basescan.org/token/0x9C17fDa33CBEe4aE3768252Fd62156034F42B40B" target="_blank">View on BaseScan</a></li>
-                <li><strong>GeckoTerminal (Verified Pool):</strong> <a href="https://www.geckoterminal.com/base/pools/0xcb7f0c8a186a3bae59c48f777b950d1c4657aa5c" target="_blank" class="highlight-glow">NXC Pool on GeckoTerminal ✅</a></li>
-                <li><strong>Metaverse:</strong> <a href="https://oncyber.io/neoxdynamic" target="_blank">NeoX OnCyber</a></li>
-                <li><strong>Game Portal:</strong> <a href="https://neoxcoin.github.io/neox-game" target="_blank">NeoX Game</a></li>
+                <li><strong>GeckoTerminal (Verified Pool):</strong> <a href="https://www.geckoterminal.com/base/pools/0x59902636b0086c7524948eb920b727b1ee067715" target="_blank" class="highlight-glow">NXC Pool on GeckoTerminal ✅</a></li>
+                <li><strong>Metaverse:</strong> <a href="https://oncyber.io/spaces/gE763XgM9uP4Zf9Z8p6I" target="_blank">NeoX OnCyber</a></li>
+                <li><strong>Game Portal:</strong> <a href="https://neoxcoin.github.io/game.html" target="_blank">NeoX Game</a></li>
                 <li><strong>OpenSea (NFT Wallet):</strong> <a href="https://opensea.io/0x2B15d8f1D634a84ACb33Fc2519acE3d13bD72BD2" target="_blank">View NFTs</a></li>
                 <li><strong>X (Twitter):</strong> <a href="https://x.com/neox__official" target="_blank">@neox__official</a></li>
-                <li><strong>Instagram:</strong> <a href="https://instagram.com/neox__official" target="_blank">@neox__official</a></li>
+                <li><strong>Instagram:</strong> <a href="https://www.instagram.com/neox__official" target="_blank">@neox__official</a></li>
                 <li><strong>TikTok:</strong> <a href="https://www.tiktok.com/@neox.world" target="_blank">@neox.world</a></li>
                 <li><strong>YouTube:</strong> <a href="https://www.youtube.com/@neox_officials" target="_blank">@neox_officials</a></li>
-                <li><strong>GitHub:</strong> <a href="https://github.com/NeoXCoin" target="_blank">NeoXCoin Repository</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/NeoXCoin/neoxcoin.github.io" target="_blank">NeoXCoin Repository</a></li>
                 <li><strong>Email:</strong> <a href="mailto:info@neoxcoin.io">info@neoxcoin.io</a></li>
             </ul>
             <p class="small">
@@ -355,11 +358,11 @@
     <!-- 底部頁尾區塊 -->
     <footer>
         <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61579442687473" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
+            <a href="https://www.facebook.com/share/15bUisvj6Z/" target="_blank"><img src="https://neoxcoin.github.io/icon-facebook-new.PNG" alt="Facebook" /></a>
             <a href="https://x.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-x-new.PNG" alt="X" /></a>
-            <a href="https://www.instagram.com/neox__official/" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
+            <a href="https://www.instagram.com/neox__official" target="_blank"><img src="https://neoxcoin.github.io/icon-instagram-new.PNG" alt="Instagram" /></a>
             <a href="https://www.tiktok.com/@neox.world" target="_blank"><img src="https://neoxcoin.github.io/icon-tiktok-new.PNG" alt="TikTok" /></a>
-            <a href="https://www.youtube.com/@NeoX_officials" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
+            <a href="https://youtube.com/@neox_officials?si=Z6PZ_vR_t6Z1_V_v" target="_blank"><img src="https://neoxcoin.github.io/icon-youtube-new.PNG" alt="YouTube" /></a>
         </div>
         <div class="footer-links">
             <a href="about.html">About</a> | <a href="faq.html">FAQ</a> | <a href="token-info.html">Token Info</a> | <a href="neox-wiki.html">Wiki</a> | <a href="disclaimer-en.html">Disclaimer</a>
