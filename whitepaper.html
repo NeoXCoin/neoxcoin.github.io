@@ -107,14 +107,13 @@ h1 {
     -webkit-text-fill-color: transparent;
     animation: textShimmer 4s linear infinite;
 }
-
-/* 修改 .tagline，同樣改為置中，並加上 margin: 0 auto 限制寬度，費事文字拉得太橫 */
+/* 修改 .tagline，將文字靠右對齊 */
 .tagline { 
     opacity: 0.85; 
-    margin: 0 auto 24px auto; /* 🟢 上下保持間距，左右 auto 幫佢置中 */
-    max-width: 800px;         /* 🟢 限制一吓行寬，置中時條線會更好睇 */
+    margin: 0 0 24px auto;    /* 🟢 改為左邊自動推開 (auto)，右邊貼齊 */
+    max-width: 100%;          /* 🟢 既然要靠右，寬度可以放大到 100% 費事限制咗佢 */
     font-size: 1.1rem; 
-    text-align: center;       /* 🟢 改為置中 */
+    text-align: right;        /* 🟢 核心修改：將 center 改成 right */
     color: var(--text-main);
     background: none;
     -webkit-background-clip: initial;
