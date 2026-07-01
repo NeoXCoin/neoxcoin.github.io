@@ -1,52 +1,93 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- 主頁 -->
+
   <url>
-    <loc>https://neoxcoin.io/index.html</loc>
-    <priority>1.00</priority>
+    <loc>https://neoxcoin.io/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>1.0</priority>
   </url>
-  <!-- 中文主頁 -->
-  <url>
-    <loc>https://neoxcoin.io/index-zh.html</loc>
-    <priority>0.90</priority>
-  </url>
-  <!-- 核心產品與教學 -->
-  <url>
-    <loc>https://neoxcoin.io/how-to-buy.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://neoxcoin.io/game.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://neoxcoin.io/metaverse.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://neoxcoin.io/nft-projects.html</loc>
-    <priority>0.80</priority>
-  </url>
-  <!-- 項目介紹與資訊 -->
+
   <url>
     <loc>https://neoxcoin.io/what-is-neox.html</loc>
-    <priority>0.70</priority>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://neoxcoin.io/token-info.html</loc>
-    <priority>0.70</priority>
+    <loc>https://neoxcoin.io/what-is-neox-zh.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.9</priority>
   </url>
+
+  <url>
+    <loc>https://neoxcoin.io/how-to-buy.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.io/how-to-buy-zh.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://neoxcoin.io/index-zh.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.io/index-global.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://neoxcoin.io/neox-game/</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://neoxcoin.io/nft-projects.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.io/nft-projects-zh.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.io/nft-projects-global.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://neoxcoin.io/whitepaper-en-print.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://neoxcoin.io/whitepaper-zh-print.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+
   <url>
     <loc>https://neoxcoin.io/neox-wiki.html</loc>
-    <priority>0.70</priority>
-  </url>
-  <!-- 輔助頁面 -->
-  <url>
-    <loc>https://neoxcoin.io/about.html</loc>
-    <priority>0.50</priority>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://neoxcoin.io/faq.html</loc>
-    <priority>0.50</priority>
+    <loc>https://neoxcoin.io/neox-wiki-zh.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.7</priority>
   </url>
+
+  <url>
+    <loc>https://neoxcoin.io/metaverse.html</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
