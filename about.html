@@ -149,42 +149,26 @@
     .tech-list li { margin-bottom: 8px; }
     .tech-list li:last-child { margin-bottom: 0; }
 
-    /* Button Style (Previous Page) */
-    .btn-nav {
-      font-size: 14px;
-      font-weight: 500;
-      padding: 10px 28px;
-      border-radius: 8px;
-      background: rgba(7, 2, 20, 0.4);
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      display: inline-flex;
-      align-items: center;
+    /* Back Home Button Row */
+    .btn-row {
+      display: flex;
       justify-content: center;
+      margin-top: 40px;
     }
-    
-    .btn-nav:hover {
-      background: rgba(0, 255, 204, 0.03);
-      border-color: var(--secondary);
-      color: var(--secondary);
-      box-shadow: 0 0 20px rgba(0, 255, 204, 0.2);
-      transform: translateY(-1px);
-      text-decoration: none;
+    .btn-back {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border);
     }
-
-    /* Next Page Button Style (Cyan Border) */
-    .btn-nav.next-page {
-      border-color: rgba(0, 255, 204, 0.3);
-      color: var(--secondary);
+    .btn-back:hover {
+      background: var(--glass);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
     }
-    .btn-nav.next-page:hover {
-      color: #ffffff;
-      border-color: #ffffff;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
-    }同步 about.html 簡約白色風格) --- */
     
     footer {
       width: 100%;
