@@ -212,29 +212,50 @@
             100% { background-position: 200% center; }
         }
         
-        /* 按鈕區域排版 */
-        .btn-row {
-            display: flex;
+        /* 全新極簡科技箭嘴按鈕 */
+        .btn-neo-arrow {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px; /* 現代感圓角 */
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-            margin-top: 40px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
         }
-        
-        .btn-back {
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border);
-            transition: all 0.2s ease;
+
+       .btn-neo-arrow svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
         }
-        
-        .btn-back:hover {
-            background: var(--glass);
-            border-color: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
+
+        /* 返回主頁：滑鼠移上去時變白、向左微動 */
+       .btn-arrow-back {
+           color: rgba(255, 255, 255, 0.6);
+       }
+       .btn-arrow-back:hover {
+           background: rgba(255, 255, 255, 0.05);
+           color: #ffffff;
+           border-color: rgba(255, 255, 255, 0.2);
+           transform: translateX(-4px);
+       }
+
+        /* 下一頁：滑鼠移上去時亮起青色（Neon Cyan）與發光效果 */
+       .btn-arrow-next {
+           color: var(--secondary); /* 自動套用你的 #00ffcc */
+           border-color: rgba(0, 255, 204, 0.2);
+       }
+       .btn-arrow-next:hover {
+           background: rgba(0, 255, 204, 0.08);
+           border-color: var(--secondary);
+           box-shadow: 0 0 20px rgba(0, 255, 204, 0.35); /* 霓虹發光感 */
+           transform: translateX(4px); /* 向右微動 */
+       }
         
         /* Social Icons */
         .social-icons { display: flex; justify-content: center; align-items: center; gap: 0; margin-bottom: 25px; }
@@ -365,11 +386,22 @@
             </p>
         </div>
 
-        <!-- 底部撳掣組件 (已加 Gap 同 Next Page) -->
-        <div class="btn-row" style="gap: 20px;">
-            <a class="btn-back" href="about-global.html">← Previous Page</a>
-            <a class="btn-back" href="press-kit-global.html">Next Page →</a>
-        </div>
+        <!-- 按鈕區塊 -->
+        <div class="btn-row" style="gap: 24px;">
+          <!-- 返回主頁（箭嘴向左 ◀） -->
+          <a class="btn-neo-arrow btn-arrow-back" href="about-global.html" aria-label="Back to home">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 4L8 12L16 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+         </a>
+
+        <!-- 下一頁（箭嘴向右 ▶） -->
+          <a class="btn-neo-arrow btn-arrow-next" href="press-kit-global.html" aria-label="Next Page">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 4L16 12L8 20" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+       </div>
     </div>
 
     <footer>
