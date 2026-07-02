@@ -155,19 +155,44 @@
       justify-content: center;
       margin-top: 40px;
     }
+    /* 基礎按鈕升級：加入玻璃擬態與漸變過渡 */
     .btn-back {
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border);
+        padding: 12px 32px;
+        border-radius: 12px; /* 稍微大一點的圓角更現代 */
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px; /* 文字與箭頭的間距 */
     }
-    .btn-back:hover {
-      background: var(--glass);
-      border-color: rgba(255,255,255,0.2);
-      transform: translateY(-2px);
+
+    /* 次要按鈕：返回主頁（內斂、靠左滑動） */
+    .btn-secondary {
+        background: rgba(255, 255, 255, 0.02);
+        color: var(--text-muted);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateX(-4px); /* 向左微動，暗示返回 */
+    }
+
+    /* 主要按鈕：下一頁（科技感流光、發光效果） */
+    .btn-primary {
+        background: linear-gradient(135deg, rgba(0, 255, 204, 0.1), rgba(163, 112, 255, 0.1));
+        color: var(--secondary);
+        border: 1px solid rgba(0, 255, 204, 0.3);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+    .btn-primary:hover {
+        background: linear-gradient(135deg, rgba(0, 255, 204, 0.2), rgba(163, 112, 255, 0.2));
+        border-color: var(--secondary);
+        box-shadow: 0 0 20px rgba(0, 255, 204, 0.3); /* 霓虹發光 */
+        transform: translateX(4px); /* 向右微動，暗示前進 */
     }
     
     footer {
@@ -308,8 +333,8 @@
     </div>
 
     <div class="btn-row" style="gap: 20px;">
-     <a class="btn-back" href="index.html">← Back to home </a>
-        <a class="btn-back" href="whitepaper.html" style="color: var(--secondary); border-color: rgba(0, 255, 204, 0.3);"> Next page →</a>
+        <a class="btn-back btn-secondary" href="index.html">Back to home</a>
+        <a class="btn-back btn-primary" href="whitepaper.html">Next Page ↗</a>
     </div>
   </div>
 
