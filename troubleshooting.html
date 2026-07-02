@@ -290,11 +290,19 @@
     }
 
     /* 確保屋仔 (Home) 同 箭嘴 在手機上絕對可見，且不會被壓扁 */
-    .btn-neo-home, .btn-neo-arrow {
-        display: inline-flex !important; 
-        visibility: visible !important;
-        opacity: 1 !important;
-        flex-shrink: 0 !important; 
+    .btn-neo-home, 
+    /* 確保箭嘴與 Home 鈕尺寸完全一致，在手機上才不會錯位 */
+    .btn-neo-arrow {
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 10px !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
     }
   </style>
 </head>
@@ -362,28 +370,22 @@
 
     </div>
 
-    <div class="btn-row" style="gap: 80px; display: flex; justify-content: center; align-items: center; margin-top: 40px;">
-      <!-- Home 按鈕 (使用向上嘅幾何屋頂 logo) -->
-      <a class="btn-neo-home" href="index.html" aria-label="Home">
-          <!-- 加入線性漸變定義的 SVG -->
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                  <!-- 定義一個 id 為 "homeGradient" 的青色到紫色漸變 -->
-                  <linearGradient id="homeGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                       <stop offset="0%" style="stop-color:#00ffcc; stop-opacity:1" />
-                       <stop offset="100%" style="stop-color:#a370ff; stop-opacity:1" />
-                  </linearGradient>
-              </defs>
-        
-              <!-- 將 path 的 fill 屬性在 Hover 時替換為 url(#homeGradient) -->
-              <path d="M3 12L12 3L21 12M6 12V21H18V12" 
-                    stroke="currentColor" 
-                    stroke-width="2.5" 
-                    stroke-linecap="round" 
-                    stroke-linejoin="round"
-                    class="home-path"/>
-          </svg>
+    <!-- 只保留 Home 按鈕，並加上 style 確保手機版不會被壓扁 -->
+    <div class="btn-row" style="display: flex; justify-content: center; align-items: center; margin-top: 40px; width: 100%;">
+  
+      <!-- 唯一的 Home 按鈕：特別加上 min-width 和 min-height 塞住手機版的擠壓 -->
+      <a class="btn-neo-home" href="index.html" aria-label="Home" style="min-width: 44px !important; min-height: 44px !important;">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 18px; height: 18px;">
+            <defs>
+                <linearGradient id="homeGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#00ffcc; stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#a370ff; stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <path d="M3 12L12 3L21 12M6 12V21H18V12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="home-path"/>
+        </svg>
       </a>
+
     </div>
   </div>
 
