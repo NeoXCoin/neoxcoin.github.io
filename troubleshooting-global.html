@@ -225,29 +225,55 @@
     .highlight-link { color: var(--primary); text-decoration: underline; }
     .highlight-link:hover { color: var(--secondary); }
 
-    /* Standardized Action Return Link */
-    .btn-row {
-      display: flex;
-      justify-content: center;
-      margin-top: 50px;
-    }
-    .btn-back {
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .btn-back:hover {
-      background: var(--glass);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
+    /* --- Home Button 升級版：圓滑 3D滑溜肥皂質感 --- */
+    .btn-neo-home,
+    .btn-neo-arrow {
+        width: 64px !important;    /* 稍微加大尺寸，讓它更有分量 */
+        height: 64px !important;   /* 稍微加大尺寸 */
+    
+        /* ===== 核心修正：將 10px 大幅增加，實現像圖中那樣的極致圓滑 ===== */
+        border-radius: 20px !important; /* 你可以根據喜好調校到 22px，越圓滑就越像肥皂 */
+    
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    
+        /* 玻璃擬態背景 */
+        background: rgba(255, 255, 255, 0.03);
+    
+        /* 核心 3D 質感：加上細緻的內陰影，模擬肥皂般的圓滑厚度 */
+        box-shadow: 
+            inset 0 2px 4px rgba(255, 255, 255, 0.05), /* 頂部高光 */
+            inset 0 -2px 4px rgba(0, 0, 0, 0.2),       /* 底部陰影 */
+            0 4px 10px rgba(0, 0, 0, 0.1);             /* 整體浮起陰影 */
+    
+        /* 幼細的半透明邊框 */
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        backdrop-filter: blur(10px);
     }
 
+    /* Hover 時，Logo 本身變成定義好的漸變色 */
+      .btn-neo-home:hover svg path.home-path {
+       stroke: url(#homeGradient); /* 使用 HTML SVG 中定義的漸變定義 ID */
+    }
+
+    /* Hover 效果：青色到紫色的霓虹漸變框與發光 */
+    .btn-neo-home:hover {
+        /* 1. 利用背景漸變和 padding 模擬漸變邊框 */
+        background: padding-box rgba(255, 255, 255, 0.05),
+                    border-box linear-gradient(135deg, #00ffcc, #a370ff);
+    
+        /* 2. 強行把原本邊框變透明，讓外層漸變透出來 */
+        border-color: transparent;
+    
+        /* 3. 雙色霓虹發光效果 */
+        box-shadow: 0 0 30px rgba(0, 255, 204, 0.4),
+                    0 0 30px rgba(163, 112, 255, 0.4);
+    
+        /* 4. 向上微動 */
+        transform: translateY(-3px) scale(1.05);
+    }
     /* --- Footer --- */
     footer {
       width: 100%;
@@ -295,11 +321,36 @@
     .footer-links a:hover { color: var(--text-main); }
     .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
-    @media (max-width: 950px) {
-      header { padding: 0 20px; }
-      .nav-links { display: none; }
-      .page-title { font-size: 34px; }
-      .trouble-card { padding: 25px 20px; }
+    @media (max-width: 900px) {
+    header { padding: 0 20px; }
+    .nav-links { display: none; }
+    .page-title { font-size: 34px; }
+    .trouble-card { padding: 25px; }
+
+    /* ===== 核心修正：強制手機版顯示三個按鈕並縮小間距 ===== */
+    .btn-row {
+        gap: 32px !important; /* 手機版將間距縮小到 32px，確保三個按鈕不會擠出螢幕 */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin-top: 40px !important;
+    }
+
+    /* 確保屋仔 (Home) 同 箭嘴 在手機上絕對可見，且不會被壓扁 */
+    .btn-neo-home, 
+    /* 確保箭嘴與 Home 鈕尺寸完全一致，在手機上才不會錯位 */
+    .btn-neo-arrow {
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 10px !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
     }
   </style>
 </head>
@@ -359,8 +410,34 @@
 
     </div>
 
-    <div class="btn-row">
-      <a class="btn-back" href="index-global.html">← Back to Home</a>
+    <!-- 只保留一個 Home 按鈕，並優化結構以實現圓滑漸變邊框 -->
+    <div class="btn-row" style="display: flex; justify-content: center; align-items: center; margin-top: 40px; width: 100%;">
+  
+      <!-- 唯一的 Home 按鈕 (加入防手機壓扁 style) -->
+      <a class="btn-neo-home" href="index-global.html" aria-label="Home" style="min-width: 64px !important; min-height: 64px !important;">
+    
+        <!-- SVG 屋仔 Logo (加入漸變定義) -->
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 26px; height: 26px;">
+            <defs>
+                <!-- 定義一個 id 為 "homeGradient" 的青色(0%)到紫色(100%)漸變 -->
+                <linearGradient id="homeGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#00ffcc; stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#a370ff; stop-opacity:1" />
+                </linearGradient>
+            </defs>
+        
+            <!-- 將 path 的 stroke (線條顏色) 設定為 var(--text-main) 或與外框一致 -->
+            <!-- Hover 時的 Logo 本身漸變特效已在 CSS 內設定 -->
+            <path d="M3 12L12 3L21 12M6 12V21H18V12" 
+                  stroke="currentColor" 
+                  stroke-width="2" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  class="home-path" 
+                  style="transition: stroke 0.4s ease;"/>
+        </svg>
+      </a>
+
     </div>
   </div>
 
