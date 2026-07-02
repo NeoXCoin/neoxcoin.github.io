@@ -274,25 +274,28 @@
     .copyright { font-size: 12px; color: rgba(255,255,255,0.4); }
 
     @media (max-width: 900px) {
-        header { padding: 0 20px; }
-        .nav-links { display: none; }
-        .page-title { font-size: 34px; }
-        .trouble-card { padding: 25px; }
+    header { padding: 0 20px; }
+    .nav-links { display: none; }
+    .page-title { font-size: 34px; }
+    .trouble-card { padding: 25px; }
 
-        /* ===== 加上以下這段，確保手機版完美顯示 ===== */
-        .btn-row {
-            gap: 40px !important; /* 手機螢幕較窄，將 80px 縮短到 40px，避免擠出螢幕之外 */
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            width: 100%;
-            box-sizing: border-box;
-        }
+    /* ===== 核心修正：強制手機版顯示三個按鈕並縮小間距 ===== */
+    .btn-row {
+        gap: 32px !important; /* 手機版將間距縮小到 32px，確保三個按鈕不會擠出螢幕 */
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin-top: 40px !important;
+    }
 
-        .btn-neo-home, .btn-neo-arrow {
-            display: inline-flex !important; /* 確保在手機上絕對不會被 hide 隱藏 */
-            flex-shrink: 0; /* 防止按鈕被手機畫面擠壓變形 */
-        }
+    /* 確保屋仔 (Home) 同 箭嘴 在手機上絕對可見，且不會被壓扁 */
+    .btn-neo-home, .btn-neo-arrow {
+        display: inline-flex !important; 
+        visibility: visible !important;
+        opacity: 1 !important;
+        flex-shrink: 0 !important; 
+    }
   </style>
 </head>
 <body>
