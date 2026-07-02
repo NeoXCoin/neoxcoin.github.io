@@ -41,8 +41,8 @@
         .back-link { display: block; margin-top: 30px; color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; }
         /* --- Wallet 頁面專用：圓滑 3D 漸變 Home Button --- */
         .btn-neo-home {
-            width: 64px !important;
-            height: 64px !important;
+            width: 44px !important;
+            height: 44px !important;
             border-radius: 20px !important; /* 核心：極致圓滑四角肥皂質感 */
             display: inline-flex !important;
             align-items: center;
@@ -145,8 +145,6 @@
           </a>
 
       </div>
-    </div>
-
     <script>
         document.getElementById('connect-btn').addEventListener('click', async () => {
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
