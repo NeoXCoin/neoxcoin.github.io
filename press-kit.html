@@ -495,6 +495,61 @@
     .market-link a { margin: 0 5px; }
     .market-link a:hover { color: var(--primary); }
 
+    /* --- Press Kit 專用：圓滑 3D 漸變 Home Button --- */
+    .btn-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .btn-neo-home {
+        width: 64px !important;
+        height: 64px !important;
+        min-width: 64px !important; /* 防止手機版被壓扁 */
+        min-height: 64px !important;
+        border-radius: 20px !important; /* 核心：極致圓滑四角 */
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    
+        /* 3D 圓滑肥皂質感內陰影 */
+        box-shadow: 
+            inset 0 2px 4px rgba(255, 255, 255, 0.05),
+            inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+            0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Hover 懸停時：外框青紫漸變 + 霓虹發光 */
+    .btn-neo-home:hover {
+        background: padding-box rgba(255, 255, 255, 0.05),
+                    border-box linear-gradient(135deg, #00ffcc, #a370ff);
+        border-color: transparent !important;
+        box-shadow: 0 0 30px rgba(0, 255, 204, 0.4),
+                    0 0 30px rgba(163, 112, 255, 0.4);
+        transform: translateY(-3px) scale(1.05);
+    }
+
+    /* SVG 屋仔線條預設顏色 */
+    .btn-neo-home svg path.home-path {
+        stroke: var(--text-main);
+        fill: none;
+        transition: stroke 0.4s ease;
+    }
+
+    /* Hover 時屋仔圖標本體變漸變色 */
+    .btn-neo-home:hover svg path.home-path {
+        stroke: url(#pressHomeGradient);
+    }
+
     /* --- 5. Footer --- */
     footer {
       width: 100%;
@@ -938,6 +993,23 @@
         </div>
       </section>
     </main>
+
+    <!-- ===== 喺呢度加：圓滑漸變 Home 按鈕 ===== -->
+    <div class="btn-row">
+      <a class="btn-neo-home" href="https://neoxcoin.github.io/" aria-label="Home">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 26px; height: 26px;">
+            <defs>
+                <!-- 定義青色到紫色的線性漸變 -->
+                <linearGradient id="pressHomeGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                    <stop offset="0%" style="stop-color:#00ffcc; stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#a370ff; stop-opacity:1" />
+                </linearGradient>
+            </defs>
+            <!-- 屋仔 Path -->
+            <path d="M3 12L12 3L21 12M6 12V21H18V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="home-path"/>
+        </svg>
+      </a>
+    </div>
 
     <!-- 完全同步首頁樣式的 Footer 區塊 -->
     <footer style="width: 100%; border-top: 1px solid var(--border); padding: 40px 0; margin-top: 50px; background: rgba(0,0,0,0.1); text-align: center;">
