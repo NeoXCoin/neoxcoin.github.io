@@ -187,27 +187,49 @@
       font-weight: 600;
     }
 
-    /* Standardized Glassmorphism Back Button */
-    .btn-row {
-      display: flex;
-      justify-content: center;
-      margin-top: 45px;
+    /* --- Wallet 頁面專用：圓滑 3D 漸變 Home Button --- */
+    .btn-neo-home {
+        width: 44px !important;
+        height: 44px !important;
+        border-radius: 18px !important; /* 核心：極致圓滑四角肥皂質感 */
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-sizing: border-box;
+    
+    /* 3D 圓滑內陰影 */
+        box-shadow: 
+            inset 0 2px 4px rgba(255, 255, 255, 0.05),
+            inset 0 -2px 4px rgba(0, 0, 0, 0.2),
+            0 4px 10px rgba(0, 0, 0, 0.1);
     }
-    .btn-back {
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: all 0.2s ease;
+
+    /* Hover 懸停特效：外框青紫漸變 + 霓虹發光 */
+    .btn-neo-home:hover {
+        background: padding-box rgba(255, 255, 255, 0.05),
+                    border-box linear-gradient(135deg, #00ffcc, #a370ff);
+        border-color: transparent !important;
+        box-shadow: 0 0 30px rgba(0, 255, 204, 0.4),
+                    0 0 30px rgba(163, 112, 255, 0.4);
+        transform: translateY(-3px) scale(1.05);
     }
-    .btn-back:hover {
-      background: var(--glass);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
+
+    /* 屋仔線條預設顏色 */
+    .btn-neo-home svg path.home-path {
+        stroke: var(--text-main);
+        fill: none;
+        transition: stroke 0.4s ease;
+    }
+
+    /* Hover 時屋仔圖標本體變漸變色 */
+    .btn-neo-home:hover svg path.home-path {
+        stroke: url(#walletHomeGradient);
     }
 
     /* --- Footer --- */
@@ -307,9 +329,23 @@
 
     </div>
 
-    <div class="btn-row">
-      <a class="btn-back" href="index-global.html">← Back to Home</a>
-    </div>
+    <!-- 升級版：圓滑 3D 漸變 Home 按鈕 -->
+        <div class="btn-row" style="display: flex; justify-content: center; align-items: center; margin-top: 35px; width: 100%;">
+  
+         <a class="btn-neo-home" href="index-global.html" aria-label="Home" style="min-width: 64px !important; min-height: 64px !important;">
+           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 26px; height: 26px;">
+               <defs>
+                   <!-- 定義青色到紫色的線性漸變 -->
+                   <linearGradient id="walletHomeGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" style="stop-color:#00ffcc; stop-opacity:1" />
+                       <stop offset="100%" style="stop-color:#a370ff; stop-opacity:1" />
+                   </linearGradient>
+               </defs>
+               <path d="M3 12L12 3L21 12M6 12V21H18V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="home-path"/>
+           </svg>
+         </a>
+
+       </div>
   </div>
 
   <footer>
