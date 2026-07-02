@@ -94,23 +94,8 @@
 <body>
 
     <header>
-        <!-- 升級版：圓滑 3D 漸變 Home 按鈕 -->
-        <div class="btn-row" style="display: flex; justify-content: center; align-items: center; margin-top: 35px; width: 100%;">
-  
-          <a class="btn-neo-home" href="index.html" aria-label="Home" style="min-width: 64px !important; min-height: 64px !important;">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 26px; height: 26px;">
-                <defs>
-                    <!-- 定義青色到紫色的線性漸變 -->
-                    <linearGradient id="walletHomeGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                        <stop offset="0%" style="stop-color:#00ffcc; stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#a370ff; stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-                <path d="M3 12L12 3L21 12M6 12V21H18V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="home-path"/>
-            </svg>
-          </a>
-
-        </div>
+        <a href="index.html"><img class="nav-logo" src="https://neoxcoin.github.io/XNXC.png"></a>
+        
         <div class="header-right">
             <div class="lang-switch">
                 <a href="add-to-wallet.html" style="color:#fff">EN</a> | <a href="add-to-wallet-zh.html">繁</a> | <a href="add-to-wallet-global.html">Global</a>
@@ -144,7 +129,23 @@
             <div class="mrow"><span>Decimals:</span> <span>18</span></div>
         </div>
 
-        <a href="index.html" class="back-link">← Back to Home</a>
+        <!-- 升級版：圓滑 3D 漸變 Home 按鈕 -->
+        <div class="btn-row" style="display: flex; justify-content: center; align-items: center; margin-top: 35px; width: 100%;">
+  
+         <a class="btn-neo-home" href="index.html" aria-label="Home" style="min-width: 64px !important; min-height: 64px !important;">
+           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 26px; height: 26px;">
+               <defs>
+                   <!-- 定義青色到紫色的線性漸變 -->
+                   <linearGradient id="walletHomeGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                      <stop offset="0%" style="stop-color:#00ffcc; stop-opacity:1" />
+                       <stop offset="100%" style="stop-color:#a370ff; stop-opacity:1" />
+                   </linearGradient>
+               </defs>
+               <path d="M3 12L12 3L21 12M6 12V21H18V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="home-path"/>
+           </svg>
+         </a>
+
+       </div>
     </div>
 
     <script>
