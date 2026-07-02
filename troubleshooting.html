@@ -186,38 +186,46 @@
     .highlight-green { color: var(--secondary); font-weight: 600; }
     .highlight-warning { color: var(--warning); font-weight: 600; }
 
-    /* Home Button 基礎樣式 */
+    /* Home Button 升級版：玻璃擬態與漸變霓虹邊框 */
     .btn-neo-home {
-        width: 44px;  /* 與箭嘴一致 */
-        height: 44px; /* 與箭嘴一致 */
-        border-radius: 10px; /* 與縮細版箭嘴一致 */
+        width: 44px;  /* 保持縮細版尺寸 */
+        height: 44px; /* 保持縮細版尺寸 */
+        border-radius: 10px; /* 保持圓角一致 */
         display: inline-flex;
         align-items: center;
         justify-content: center;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
+        backdrop-filter: blur(10px); /* 核心：背景模糊 */
+        -webkit-backdrop-filter: blur(10px); /* Safari 相容 */
+    
+        /* 玻璃擬態背景 */
         background: rgba(255, 255, 255, 0.02);
+    
+        /* 邊框設定：原本是單色，Hover 時變為漸變 */
         border: 1px solid rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(10px);
-        /* 核心顏色：青色 (與 Next 箭嘴一致) */
-        color: var(--secondary); /* 自動套用你的 #00ffcc */
-        border-color: rgba(0, 255, 204, 0.2);
     }
 
-    .btn-neo-home svg {
-        width: 18px;  /* 配合縮細版按鈕 */
-        height: 18px; /* 配合縮細版按鈕 */
-        transition: transform 0.3s ease;
+    /* Hover 時，Logo 本身變成定義好的漸變色 */
+    .btn-neo-home:hover svg path.home-path {
+        stroke: url(#homeGradient); /* 使用 HTML SVG 中定義的漸變定義 ID */
     }
 
-    /* Hover 效果：霓虹發光 */
+    /* Hover 效果：青色到紫色的霓虹漸變與發光 */
     .btn-neo-home:hover {
-        background: rgba(0, 255, 204, 0.08);
-        border-color: var(--secondary);
-        box-shadow: 0 0 20px rgba(0, 255, 204, 0.35); /* 霓虹發光感 */
-        transform: translateY(-2px); /* 向上微動 */
+        /* 1. 利用 background-image 創造Hover時的整體漸變底層 */
+        background-image: linear-gradient(135deg, rgba(0, 255, 204, 0.1), rgba(163, 112, 255, 0.1));
+    
+        /* 2. 邊框漸變：CSS 邊框不支持簡單的渐变，利用 border-image 實現 */
+        border-image: linear-gradient(135deg, #00ffcc, #a370ff) 1;
+        border-style: solid;
+    
+        /* 3. 雙色發光效果 */
+        box-shadow: 0 0 20px rgba(0, 255, 204, 0.35), 0 0 20px rgba(163, 112, 255, 0.35);
+    
+        /* 4. 向上微動 */
+        transform: translateY(-2px);
     }
-
     /* --- Footer --- */
     footer {
       width: 100%;
@@ -340,10 +348,25 @@
     <div class="btn-row" style="gap: 80px; display: flex; justify-content: center; align-items: center; margin-top: 40px;">
       <!-- Home 按鈕 (使用向上嘅幾何屋頂 logo) -->
       <a class="btn-neo-home" href="index.html" aria-label="Home">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M3 12L12 3L21 12M6 12V21H18V12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- 加入線性漸變定義的 SVG -->
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                  <!-- 定義一個 id 為 "homeGradient" 的青色到紫色漸變 -->
+                  <linearGradient id="homeGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                       <stop offset="0%" style="stop-color:#00ffcc; stop-opacity:1" />
+                       <stop offset="100%" style="stop-color:#a370ff; stop-opacity:1" />
+                  </linearGradient>
+              </defs>
+        
+              <!-- 將 path 的 fill 屬性在 Hover 時替換為 url(#homeGradient) -->
+              <path d="M3 12L12 3L21 12M6 12V21H18V12" 
+                    stroke="currentColor" 
+                    stroke-width="2.5" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round"
+                    class="home-path"/>
           </svg>
-       </a>
+      </a>
     </div>
   </div>
 
