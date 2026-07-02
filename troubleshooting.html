@@ -186,27 +186,36 @@
     .highlight-green { color: var(--secondary); font-weight: 600; }
     .highlight-warning { color: var(--warning); font-weight: 600; }
 
-    /* Return Button */
-    .btn-row {
-      display: flex;
-      justify-content: center;
-      margin-top: 50px;
+    /* Home Button 基礎樣式 */
+    .btn-neo-home {
+        width: 44px;  /* 與箭嘴一致 */
+        height: 44px; /* 與箭嘴一致 */
+        border-radius: 10px; /* 與縮細版箭嘴一致 */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        /* 核心顏色：青色 (與 Next 箭嘴一致) */
+        color: var(--secondary); /* 自動套用你的 #00ffcc */
+        border-color: rgba(0, 255, 204, 0.2);
     }
-    .btn-back {
-      padding: 12px 28px;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 600;
-      background: transparent;
-      color: var(--text-main);
-      border: 1px solid var(--border);
-      cursor: pointer;
-      transition: all 0.2s ease;
+
+    .btn-neo-home svg {
+        width: 18px;  /* 配合縮細版按鈕 */
+        height: 18px; /* 配合縮細版按鈕 */
+        transition: transform 0.3s ease;
     }
-    .btn-back:hover {
-      background: var(--glass);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
+
+    /* Hover 效果：霓虹發光 */
+    .btn-neo-home:hover {
+        background: rgba(0, 255, 204, 0.08);
+        border-color: var(--secondary);
+        box-shadow: 0 0 20px rgba(0, 255, 204, 0.35); /* 霓虹發光感 */
+        transform: translateY(-2px); /* 向上微動 */
     }
 
     /* --- Footer --- */
@@ -329,7 +338,12 @@
     </div>
 
     <div class="btn-row">
-      <a class="btn-back" href="index.html">← Back to Home</a>
+      <!-- Home 按鈕 (使用四角星節點 logo) -->
+      <a class="btn-neo-home" href="index.html" aria-label="Home">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+          </svg>
+      </a>
     </div>
   </div>
 
